@@ -1,0 +1,7 @@
+{
+  "name": "Recognize",
+  "short_name": "Recognize",
+  "gcm_sender_id": "455047296961",
+  "display": "standalone",
+  "gcm_user_visible_only": true
+}

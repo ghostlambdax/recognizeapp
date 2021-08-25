@@ -1,0 +1,34 @@
+<%= render partial: "rewards_to_redeem" %>
+
+<table style="<%= mail_styles(:table) %> background: #F4F4F4; padding: 3%;">
+  <tr>
+    <td>
+      <p style="<%= mail_styles(:p) %>">
+        <%= @recognition.comments_allowed? ? t("recognition_notifier.view_comment_share_recognition") : t("recognition_notifier.view_share_recognition")%>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div>
+        <a style="<%= mail_styles(:button) %>" href="<%= recognition_url(@recognition) %>">
+          <% if @recognition.comments_allowed? %>
+            <%= t("recognition_notifier.comment_on_recogntion") %>
+          <% else %>
+            <%= t("recognition_notifier.view_recognition") %>
+          <% end %>
+        </a>
+      </div>
+    </td>
+  </tr>
+  <% unless @sender.system_user? %>
+    <tr>
+      <td>
+        <%= link_to user_recognition_url(@sender, network: @sender.network), style: mail_styles(:text, :a) do %>
+          <%= t("recognition_notifier.send_recognition_to", name: @sender.full_name) %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+

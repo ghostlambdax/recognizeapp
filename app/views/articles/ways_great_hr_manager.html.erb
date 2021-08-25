@@ -1,0 +1,30 @@
+<% content_for :title, "Be a Great HR Manager" %>
+<%= content_for :description, "Learn 15 creative ways to be a great human resources professional that include using a ticketing system, implementing an employee recognition program, or learning people analytics." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="15 Easy Ways to be a Great HR Manager" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="15 ways to help you become a great HR manager." />
+  <meta property="og:image" content="https://recognizeapp.com/assets/pages/article-be-best-manager/top-illustration.jpg" />
+  <link rel="amphtml" href="<%= ways_great_hr_manager_url format: :amp %>">
+<% end%>
+
+<% content_for :article_title do %>15 Easy Ways to be a Great HR Manager<% end %>
+<% content_for :article_description do %>
+  <div class="centered">
+    <p class="balance-text marginBottom40 tagline">The HR role is changing from an adminstration role to a people strategy role. As technologies and alliances change, HR managers need to adapt.</p>
+
+    <%= lazy_image_tag "pages/article-be-best-manager/top-illustration.jpg", alt: "Human Resources", itemprop: "image", width: 700, height: 393 %>
+
+
+  </div>
+<% end %>
+
+
+<% content_for :article_body do %>
+
+
+
+  <%= render partial: "15_ways_great_hr_manager_body" %>
+<% end %>

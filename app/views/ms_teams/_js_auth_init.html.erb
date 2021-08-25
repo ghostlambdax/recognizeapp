@@ -1,0 +1,14 @@
+<%# meant to be in a script tag, obvs %>
+R.msTeams = R.msTeams || {};
+<% if current_user %>
+  R.msTeams.recognizeSession = {loggedIn: true, currentUserId: <%= current_user.id %>};
+<% else %>
+  <%
+    auth_complete_redirect_url = CGI.escape(ms_teams_auth_complete_url)
+    auth_popup_url = ms_teams_signup_url(redirect: auth_complete_redirect_url, viewer: nil)
+  %>
+  R.msTeams.recognizeSession = {
+    loggedIn: false, 
+    authPopupUrl: '<%= auth_popup_url.html_safe %>',
+  };
+<% end %>

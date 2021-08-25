@@ -1,0 +1,30 @@
+<%= form_for @support_email, remote: true, html: {class: "form-vertical form padding3em", data: {errorWrapper: "#contact-error-wrapper"}} do |f|%>
+  <h3>Schedule a Demo</h3>
+  <p class="balance-text">Enter in your information, and in the next screen you can choose a time on our calendar.</p>
+
+  <div id="contact-error-wrapper"></div>
+
+  <div id="fullName" class="control-group">
+    <%= f.text_field :name, placeholder: t("support_emails.name"), value: (@current_user.full_name unless !@current_user)%>
+  </div>
+
+  <div class="control-group">
+    <%= f.email_field :email, placeholder: t("support_emails.email"), value: (@current_user.email unless !@current_user) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.text_field :phone, placeholder: t("support_emails.phone") %>
+  </div>
+
+  <%= f.hidden_field :type, value: "Sales" %>
+  <%= f.hidden_field :service, value: params[:service] %>
+  <%= f.hidden_field :utm_source, value: params[:utm_source] %>
+  <%= f.hidden_field :utm_medium, value: params[:utm_medium] %>
+  <%= f.hidden_field :utm_campaign, value: params[:utm_campaign] %>
+  <%= f.hidden_field :utm_content, value: params[:utm_content] %>
+
+
+  <div class="control-group">
+    <%= f.submit t("dict.send"), class:'button button-primary button-large'  %>
+  </div>
+<% end %>

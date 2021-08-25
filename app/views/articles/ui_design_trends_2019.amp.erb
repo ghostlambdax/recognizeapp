@@ -1,0 +1,16 @@
+<% content_for :title, "Inspirational Web Design Trends of 2019" %>
+<%= content_for :description, "A look back at 2019 and the web design trends leading into 2020." %>
+
+<div class="centered">
+  <h1 itemprop="name">Inspirational Web Designs of 2019</h1>
+  <amp-img src="<%= asset_url('pages/articles/ui-design-trends-2019/banner.jpg') %>" alt="People making a website" height="409" width="545" layout='responsive'></amp-img>
+</div>
+
+<div class="centered">
+  <p class="balance-text marginBottom40 tagline">There is no question 2019 was the year of diagonal lines and illustrations. Thanks to new technologies in CSS and HTML5, it is easier to make non-block, like backgrounds and call-outs. Further, illustrators are in higher demand than ever. Art directors are calling for illustrators to be apart of the process ever since Intercom added illustrations too their website in 2017. Now there are numerous <a href="https://craftwork.design/draw-illustrations/" target="_blank">clip art design packs</a> of colorful human-like characters doing work-like activities. Of course, the best companies know they have to make their own illustrations to shine.</p>
+  <%= link_to "Learn about Recognize", root_path, class: "button button-large button-primary" %>
+
+</div>
+
+
+<%= render partial: "ui_design_trends_2019", formats: [:html]  %>

@@ -1,0 +1,38 @@
+recognitions-new.sass#companies-show
+  #company_fb_workplace_token, #company_fb_workplace_community_id, #company_fb_workplace_post_to_group_id
+    width: 300px
+
+#company_admin_settings-index
+  label.disabled
+    color: $lighterGrayTextColor
+    cursor: not-allowed
+
+  .iOSCheckContainer.iOSCheckDisabled
+    label,
+    .iOSCheckHandle
+      cursor: not-allowed
+
+  // fix for select2 insufficient search-box width for long characters
+  .company_setting_sync_groups_container
+    .select2-search__field.iOSCheckContainer.iOSCheckDisabled
+      padding-left: 0px
+      padding-right: 0px
+      margin-left: 6px
+      margin-right: 6px
+
+  #require_approval_for_provider_reward_redemptions
+    position: relative !important
+
+    .click_interceptor_overlay
+      width: 100%
+      height: 100%
+      position: absolute !important
+      z-index: 1337 !important
+      cursor: pointer
+
+  #webhook-events-table
+    width: 100%
+    table-layout: fixed
+
+    .second-row
+      width: 20%

@@ -1,0 +1,127 @@
+<% content_for :title, "Outlook Employee Recognition" %>
+<% content_for :description, "Engage staff through Recognize's employee recognition add-on inside Microsoft Outlook and Office 365." %>
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Recognize Microsoft Outlook Integration" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="Recognize provides a robust employee recognition platform inside Outlook." />
+  <meta property="og:image" content="https://recognizeapp.com/assets/pages/home-outlook/outlook.jpg" />
+<% end%>
+
+<div class="flex-points marginBottom100 top">
+  <section class="pattern-subtle_dots">
+    <div class="inner">
+      <div class="content" data-turbolinks="false">
+        <h1 class="balance-text">Employee Recognition &amp; Staff Rewards <i>for Outlook</i></h1>
+        <p class="tagline balance-text bold">Recognize is the first employee engagement platform inside Outlook.</p>
+        <ul class="check-list">
+          <li class="balance-text tagline">Send recognition with value badges and redeemable points.</li>
+          <li class="balance-text tagline">Give rewards, such as a Starbucks gift card or an on-site massage.</li>
+          <li class="balance-text tagline">View badges staff have received.</li>
+          <li class="balance-text tagline">All recognitions propagate to MS Teams, Sharepoint, Yammer, and more.</li>
+        </ul>
+        <%= schedule_demo_link utm_content: "top" %><br><br>
+        <a href="tel:8662880373">Call us 866-288-0373</a>
+      </div>
+      <div class="image">
+        <%= image_tag "pages/home-outlook/outlook.jpg", alt: "Screenshot of Recognize inside Outlook message where it pulls in the recipients of an email and allows the user to send a recognition or reward", class: 'image-boxshadow' %>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<section class="marginBottom100 centered">
+    <h2 class="balance-text">Engage Outlook users from their home office</h2>
+    <p class="balance-text tagline"><%= t('home_tour.point1') %></p>
+    <div class="youtube-video" data-id="PYJTqPtz0i4" data-play="stop"></div>
+</section>
+
+
+
+<div class="flex-points">
+  <section class="flex-point">
+    <div class="inner">
+      <div class="image"><%= lazy_image_tag 'pages/home-outlook/rewards.jpg', alt: 'Microsoft Outlook showing a window of employee rewards to redeem, such as Amazon gift card or donation to American Cancer Society.' %>
+      </div>
+      <div class="content width-500">
+        <h2 class="balance-text">Redeem rewards from Outlook</h2>
+        <p class="balance-text tagline">With two clicks from the Home tab, staff can access the employee recognition rewards catalog. This can include gift cards Recognize provides and/or company-fulfilled rewards. Company-fulfilled rewards are also available in Outlook. Employees redeem any item you can think of, such as dinner for two, vacation, or house cleaning.</p>
+        <%= link_to "View Recognize rewards", rewards_path, itemprop:"relatedLink", class: "button button-border" %>
+      </div>
+    </div>
+  </section>
+
+  <section class="flex-point">
+    <div class="inner">
+      <div class="content">
+        <h2 class="balance-text width-500">Send social recognition from the Outlook composer</h2>
+        <p class="balance-text tagline">Automatically recognize the recipients of an email your staff are composing. This makes change management very easy. Instruct your staff, if you are saying thanks or showing appreciation, click 'Send Recognition'. It is that easy!</p>
+        <p class="balance-text tagline">Recognize cares a lot about security. We do not sell or collect any data unless absolutely necessary for the sole purpose of running the best international employee recognition program on the market. Contact us to learn more.</p>
+      </div>
+
+      <div class="image"><%= lazy_image_tag 'pages/home-outlook/email-composer.jpg', alt: 'The Outlook composer sending a recognition to the email recipients.' %>
+      </div>
+    </div>
+  </section>
+
+  <section class="flex-point">
+    <div class="inner">
+      <div class="image"><%= lazy_image_tag 'pages/home-outlook/stream.jpg', alt: 'The Outlook composer sending a recognition to the email recipients.' %>
+      </div>
+      <div class="content">
+        <h2 class="balance-text width-500">Collaborate across groups on the success of your company</h2>
+        <p class="balance-text tagline">Staff can comment, like, and recognize staff from the Home tab of MS Outlook. Admins can search comments and remove comments for content control. Managers are notified via push notification or email of staff recognitions and activity. We've got everyone covered.</p>
+        <%= schedule_demo_link utm_content: "collaborate" %><br><br>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="flex-point">
+    <div class="inner">
+    <div class="content width-500">
+      <h2 class="balance-text">Administer from Outlook</h2>
+      <p class="balance-text tagline">The Outlook app isn't just for staff and managers. The app allows access to the Company Admin to run reports on rewards and recognitions. Configure your entire off-the-shelf recognition program from Outlook.</p>
+    </div>
+
+      <div class="image"><%= lazy_image_tag 'pages/home-outlook/admin.jpg', alt: 'The Outlook composer sending a recognition to the email recipients.' %>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="flex-point">
+    <div class="inner">
+
+
+      <div class="image  width-300"><%= lazy_image_tag 'pages/home-microsoft-teams-landing/office-365.png', alt: 'The Outlook composer sending a recognition to the email recipients.' %>
+      </div>
+      <div class="content width-500">
+        <h2 class="balance-text">IT setup in <code><60min</code></h2>
+        <p class="balance-text tagline">Since Recognize is in the Office 365 app stores, that means it is a standard process to install the Outlook app, Azure, Sharepoint, Teams, or Yammer. Check out our <%= link_to "Resources", resources_path %> for integration and technology documents.</p>
+        <%= link_to "Download from App Store", 'https://store.office.com/en-001/app.aspx?assetid=WA104380613', itemprop:"relatedLink", class: "button button-border" %>
+      </div>
+
+    </div>
+  </section>
+
+  <% if @post.integration_use_cases.present? %>
+
+  <section class="flex-point">
+    <div class="inner">
+      <div>
+        <%= render partial: 'cms/integrations/use_cases', locals: {use_cases: @post.integration_use_cases} %>
+      </div>
+
+    </div>
+  </section>
+
+  <% end %>
+
+</div>
+
+<%= render partial: "marketing_cta_banner" %>
+
+<%= render partial: 'footer' %>
+<%= render partial: "layouts/youtube_load" %>

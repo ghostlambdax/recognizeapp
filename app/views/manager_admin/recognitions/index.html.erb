@@ -1,0 +1,2 @@
+<% data_url = manager_admin_recognitions_path(status: params[:status], network: @company.domain, format: :json) %>
+<%= render template: "company_admin/recognitions/index", locals: {data_url: data_url, role_selection: false} %>

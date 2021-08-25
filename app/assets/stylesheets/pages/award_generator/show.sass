@@ -1,0 +1,86 @@
+.award_generator
+
+  #awardGenerator
+    border: 1px solid $lightGray
+    border-radius: 4px
+    padding: 0
+
+    .stage
+      display: flex
+      flex-direction: row
+      height: 900px
+      min-height: 100%
+      overflow: scroll
+
+
+      .text-options
+        background: lighten($lightGray, 18%)
+        width: 20%
+        padding: 10px
+        min-width: 226px
+
+        .control
+          padding-bottom: 5px
+          margin-bottom: 10px
+          border-bottom: 1px solid $lightGray
+
+      #award-viewpoint
+        transform: scale(0.33)
+        transform-origin: top left
+        padding: 25px
+
+
+  .certificateThumbnails
+    background: desaturate(lighten($headerBg, 15%), 20%)
+    padding: 10px
+
+    ul
+      display: flex
+      overflow: auto
+    li
+      padding: 5px
+      text-align: center
+      flex: 0 0 150px
+
+      p
+        color: white
+        margin: 5px 5px
+    img
+      width: 100%
+
+  .certificate-inner
+    .controls
+      width: 350px
+      padding: 5px
+      background: lighten($lightGray, 10%)
+      display: flex
+      align-items: center
+      background: #eaeaea
+      width: 100%
+
+
+      .control
+        margin: 0 20px
+        border-bottom: 1px solid $lightGray
+
+        &:last-child
+          margin-bottom: 0
+
+  .award-viewpoint
+    margin: 5px
+    width: 2550px
+
+  .award-viewpoint,
+  #awardGenerated
+    width: 100%
+    height: 100%
+    display: block
+    margin: 0
+    padding: 0
+
+
+@media(max-width: $tablet)
+  .award_generator #awardGenerator
+    #award-viewpoint
+      position: absolute
+      left: -9999px

@@ -1,0 +1,15 @@
+(function() {
+  var works = true;
+
+  try {
+    var state = window.history.replaceState("", "", "");
+  } catch(e) {
+    works = false;
+  }
+
+  if (!works) {
+    window.history.replaceState = function() {}
+  }
+
+})();
+

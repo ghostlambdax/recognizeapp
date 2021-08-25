@@ -1,0 +1,72 @@
+<div id="custom_badges" class="tab tab-pane">
+
+  <% @status = @show_active_badges ? 'active' : 'disabled' %>
+
+  <% if @company.custom_badges_enabled? %>
+
+    <%= form_for @company, html: {id: "custom-badges"}, url: update_all_company_badges_path(network: @company.domain, anchor: "custom_badges", badges_status: @status) do |f| %>
+
+      <div class="page-nav clearfix marginBottom20">
+        <div class="title-nav">
+          <div class="button-group">
+            <a href="#view-drawer-wrapper" class="drawer-trigger button button-inactive">+ Upload new badge</a>
+            <%= f.submit "Save badges", class: "button button-primary" %>
+          </div>
+          <%= render layout: 'layouts/create_catalog_dropdown', locals: {company: @company, catalog: @catalog} do |catalog| %>
+            <%= company_admin_custom_badges_link(catalog.label, network: @company.domain, catalog_id: catalog.id, status: @status) %>
+          <% end %>
+        </div>
+
+        <div class="aside-nav">
+          <div class="inner">
+            <% if @company.allow_rewards? && show_currency?(@company) %>
+              <div id="budget-wrapper" class="info-wrapper">
+                <dl>
+                  <dt class="subtle-text">
+                    Potential value given per <span class='lowercase'><%= reset_interval_noun(Interval.new(@company.reset_interval)) %></span>
+                  </dt>
+                  <dd>
+                    <h3><span id="money-budget-value" class="marginBottom0"></span></h3>
+                    <span id="point-budget-value"></span>pts - <%= link_to "Buy points", rewards_budget_path(@catalog) %>
+                  </dd>
+                </dl>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% if @show_active_badges %>
+        <div>
+          <h5>Active Badges | <%= company_admin_custom_badges_link("Disabled Badges", status: 'disabled', catalog_id: @catalog&.id) %></h5>
+          <div id="active-badges-wrapper" class="clearfix">
+            <% if @company.badges.enabled.present? %>
+              <%= render partial: "custom_badge_set",
+                        locals: { badges: @company.badges.enabled.sort_with_order }
+              %>
+            <% else %>
+              <p>There are no active badges</p>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+        <div id="disabled-badges" class="clearfix">
+          <h5><%= company_admin_custom_badges_link("Active Badges", status: 'active', catalog_id: @catalog&.id) %> | Disabled Badges</h5>
+          <% if @company.badges.non_anniversary.disabled.present? %>
+            <%= render partial: "custom_badge_set", locals: {badges: @company.badges.non_anniversary.disabled} %>
+          <% else %>
+            <p>There are no disabled badges</p>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="control-bar">
+        <%= f.submit "Save badges", class: "button button-primary" %>
+      </div>
+    <% end %>
+  <% else %>
+    <h3>Custom badges have not yet been enabled for this account</h3>
+  <% end %>
+
+  <%= content_for :drawer do %>
+    <%= render partial: "/badges/new" %>
+  <% end %>
+</div>

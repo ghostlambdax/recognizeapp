@@ -1,0 +1,12 @@
+<% 
+  webhook_events_html = render('webhook_events') 
+  recent_limit = Webhook::Event.recent_limit
+%>
+
+(function(){
+  Swal.fire({
+    title: '<%= @webhook_endpoint.subscribed_event.humanize %>',
+    html: '<%= j webhook_events_html %>',
+    width: '85%'
+  });
+})();

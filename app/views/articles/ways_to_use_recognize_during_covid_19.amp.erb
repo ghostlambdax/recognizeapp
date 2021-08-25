@@ -1,0 +1,11 @@
+<% content_for :title, @title %>
+
+<div class="centered">
+  <h1 itemprop="name"><%= @title %></h1>
+</div>
+
+<p>Written by: Allison White<br><br>
+
+<%= link_to "Learn about Recognize", root_path, class: "button button-large button-primary" %>
+
+<%= render partial: "ways_to_use_recognize_during_covid_19", formats: [:html] %>

@@ -1,0 +1,18 @@
+<% output = content_tag(:div) do %>
+  <div class="well width100">
+    <h4>Webhook has been resent for: <%= @runner.object.recognize_hashid %></h4>
+    <ul>
+      <% @runner.events.each do |event| %>
+        <li>
+          <ul>
+            <li>Status: <%= event.response_status_code %></li>
+            </li>Response: <%= event.response_payload %></li>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+(function(){
+  $(".swal2-content .output").html('<%= j output %>');
+})();

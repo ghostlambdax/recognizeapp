@@ -1,0 +1,99 @@
+<% content_for :meta_properties do %>
+  <meta property="og:title" content='<%= @post.integration_page_title&.html_safe %>' />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="<%= @post.integration_page_subtitle %>" />
+  <meta property="og:image" content="<%= @post.integration_logo.url %>" />
+<% end%>
+
+<% content_for :title, @post.integration_page_title&.html_safe %>
+<% content_for :description, @post.integration_page_subtitle&.html_safe %>
+
+
+
+<div class="integration-masthead">
+  <div class="row-fluid">
+    <div class="span4"></div>
+
+    <div class="span8">
+      <div class="content width-800">
+        <h1 class="balance-text"><%= @post.integration_page_title %></h1>
+
+        <% if @post.integration_page_subtitle.present? %>
+          <p class="tagline"><%= @post.integration_page_subtitle %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row-fluid padding30">
+  <div class="span4 integration-about-wrapper">
+    <div class="inner">
+      <div class="centered">
+        <div class="well marginBottom20">
+          <%= lazy_image_tag @post.integration_logo&.url, style: "width: 100%", alt: @post.integration_logo&.alt unless @post.integration_logo.blank? %>
+        </div>
+      </div>
+
+      <div class="integration-name-wrapper">
+        <h2 class="balance-text"><span class="small"><%= @post.integration_name %></span></h2>
+        <%= @post.integration_description&.html_safe %>
+      </div>
+
+      <hr class="hr hr-space">
+      <div class="tools">
+        <h3><span class="small">What you'll need</span></h3>
+        <ul class="tool-list">
+          <li>
+            <%= lazy_image_tag 'chrome/logo-72x72.png' %>
+            <span><%= link_to 'Recognize subscription', pricing_path %></span>
+          </li>
+          <% if @post.what_youll_need.present? %>
+            <% what_you_need = @post.what_youll_need[0] %>
+            <% if what_you_need&.does_it_need_office_365_subscription == true %>
+            <li>
+              <%= lazy_image_tag 'pages/home-microsoft-teams-landing/office-365.png' %>
+              <span>Office 365 subscription</span>
+            </li>
+            <% end %>
+
+            <% if what_you_need.does_it_need_zapier == true %>
+              <li>
+                <%= lazy_image_tag 'pages/integrations/show/zapier.png' %>
+                <span>Zapier account</span>
+              </li>
+            <% end %>
+
+            <% if what_you_need&.what_else_does_it_need.present? && what_you_need.what_else_does_it_need.length > 0 %>
+
+              <% what_you_need&.what_else_does_it_need.each do |required_app| %>
+                <li>
+                  <%= lazy_image_tag required_app.what_it_needs_logo.url, alt: required_app.what_it_needs_logo.alt %>
+                  <span><%= required_app.name_of_what_it_needs %></span>
+                </li>
+              <% end %>
+          <% end %>
+
+
+          <% end %>
+
+        </ul>
+        <hr class="hr hr-space">
+        <%= schedule_demo_link utm_content: "Side bar integrations show" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="span8">
+    <div class="marginBottom50">
+      <%= render partial: 'cms/integrations/use_cases', locals: {use_cases: @post.integration_use_cases} unless @post.integration_use_cases.blank? %>
+    </div>
+
+    <h3>Had trouble? Have an idea?</h3>
+    <p>If your company is a customer of Recognize, we'd love to help you get started.</p>
+    <%= link_to 'Contact us', contact_sales_path(body: "Zapier idea:\n\n"), class: 'button button-primary marginBottom50' %>
+  </div>
+</div>
+
+
+<%= render partial: "home/footer" unless current_user.present? %>

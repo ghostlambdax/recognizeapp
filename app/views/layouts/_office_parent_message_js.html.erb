@@ -1,0 +1,45 @@
+<script type="text/javascript" charset="utf-8">
+  (function() {
+    var url = '//appsforoffice.microsoft.com/lib/1/hosted/office.js';
+    var id = "officeScript";
+    var script = document.getElementById(id);
+    var oldPushState = window.history.pushState;
+
+    if (!script) {
+      script = document.createElement("script");
+      script.src = url;
+      script.id = 'officeScript';
+      document.body.appendChild(script);
+
+      script.onload = function () {
+        sendMessage();
+        window.history.pushState = window.history.pushState || oldPushState;
+      }
+    } else {
+      sendMessage();
+    }
+
+    function sendMessage() {
+      Office.initialize = function () {
+        var counter = 0;
+        var max = 10;
+        var interval;
+
+        interval = setInterval(function () {
+          if (counter === max) {
+            clearInterval(interval);
+          }
+
+          if (Office.context.ui.messageParent) {
+            Office.context.ui.messageParent('{status: "success"}');
+          }
+
+          counter++;
+        }, 1000)
+      }
+    }
+  })();
+</script>
+
+<%= content_for :body_attributes, 'data-turbolinks=false' %>
+

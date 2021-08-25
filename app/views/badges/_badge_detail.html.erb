@@ -1,0 +1,56 @@
+<div class="badge-page-item">
+  <%= image_tag badge.permalink(200),
+                :id => "badge-#{badge.id}",
+                :"data-imagePath" => badge.permalink,
+                :"data-relativeImagePath" => badge.permalink(200),
+                :"data-name" => badge.short_name, # used when badge is selected, pulled from js,
+                :"data-badge-id" => badge.id,
+                :"title" => badge.description
+  %>
+  <div class="content">
+    <% if page == "index" %>
+      <h3><%= badge.short_name %></h3>
+    <% else %>
+      <h1><%= badge.short_name %></h1>
+    <% end %>
+    <div class="badge-long-description"><%= simple_format(badge.long_description) %></div>
+    <p class="description balance-text"><%= simple_format(badge.description) %></p>
+
+    <div class="badge-stats">
+
+      <% show_points do %>
+        <% if show_badge_points?(badge) %>
+          <dl>
+            <dt class="subtle-text"><%= t("dict.points") %></dt>
+            <dd class="points"><%= formatted_badge_points(badge, with_label: false) %></dd>
+          </dl>
+        <% end %>
+      <% end %>
+
+      <% if badge.sending_frequency.present? %>
+        <dl><dt class="subtle-text"><%= t("badges.sending_limit") %></dt><dd><%= badge.sending_frequency_with_interval %></dd></dl>
+      <% end %>
+
+      <dl><dt class="subtle-text"><%= t("badges.sendable_by") %></dt><dd>
+        <%= badge.roles_with_permission(:send).map(&:name).join(", ").presence || t('dict.peer') %>
+      </dd></dl>
+
+      <% if badge.is_achievement %>
+        <dl><dt class="subtle-text"><%= t("badges.receiving_interval") %></dt> <dd><%= reset_interval_adverb(badge.interval).capitalize %></dd></dl>
+        <dl><dt class="subtle-text"><%= t("badges.receiving_limit") %></dt> <dd><%= badge.achievement_frequency %></dd></dl>
+      <% end %>
+
+      <dl><dt class="subtle-text"><%= t('dict.type') %></dt><dd class="type">
+        <% if badge.is_nomination? %>
+          <%= t('dict.nomination') %>
+        <% else %>
+          <%= t('dict.recognition') %>
+          <%= "(#{t('badges.requires_approval')})" if badge.requires_approval? %>
+        <% end %>
+      </dd></dl>
+
+    </div>
+
+  </div>
+
+</div>

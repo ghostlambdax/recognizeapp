@@ -1,0 +1,42 @@
+<hr class="hr">
+<% if @subscription.user_count.present? %>
+  <h3><%= t("subscriptions.users_on_package", count: @subscription.user_count) %></h3>
+  <p><%= t("subscriptions.price_user_interval", price: @subscription.unit_price, interval: @subscription.plan.interval_noun) %></p>
+  <hr>
+
+<% else %>
+  <% if @subscription.plan.present? && @subscription.plan.old_tiered_plan? %>
+    <h3><%= @subscription.plan.package.humanize%> Package: <%= @subscription.plan.min_users%> - <%= @subscription.plan.max_users%> users</h3>
+  <% else %>
+    <h3><strong><%= number_to_currency(@subscription.amount, precision: 2)%> billed <%= @subscription.charge_interval%></strong></h3>
+  <% end %>
+<% end %>
+
+<% if @subscription.plan.present? && @subscription.plan.old_tiered_plan? %>
+  <p style="font-weight:bold">
+    <%= t("subscriptions.total", amount: number_with_precision(@subscription.recurring_cost, precision: 2), interval: @subscription.plan.interval_noun) %>
+  </p>
+<% else %>
+  <p style="font-weight:bold">
+    <%= t("subscriptions.total", amount: number_with_precision(@subscription.amount || @subscription.recurring_cost, precision: 2), interval: @subscription.charge_interval_noun) %>
+  </p>
+<% end %>
+
+
+<% if @subscription.plan.present? %>
+  <h3><%= t('subscriptions.next_invoice') %></h3>
+  <% if @next_invoice %>
+    <p><%= @next_invoice.date%> - $<%= number_with_precision(@next_invoice.amount_due, precision: 2) %></p>
+  <% else %>
+    <p><%= t("dict.none") %></p>
+  <% end %>
+
+  <h3><%= t('subscriptions.previous_invoice') %></h3>
+  <ul>
+    <% @subscription.invoices.each do |i| %>
+      <li><%= i.date%> - $<%= number_with_precision(i.amount_due, precision: 2)%></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<hr class="hr marginBottom40">

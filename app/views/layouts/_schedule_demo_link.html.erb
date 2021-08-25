@@ -1,0 +1,27 @@
+<%
+  @page_has_icons = true
+
+  # https://ga-dev-tools.appspot.com/campaign-url-builder/
+
+  link_text ||= _('Schedule Live Demo')
+  css_classes ||= 'button button-primary button-large'
+  css_classes += " schedule-demo"
+
+  service ||= 'service2'
+  utm_source ||= page_id
+  utm_medium ||= 'recognizeapp.com'
+  utm_campaign ||= 'demo'
+  utm_content ||= ''
+
+  path_params = {
+      noframe: true,
+      UTM_SOURCE: utm_source,
+      UTM_MEDIUM: utm_medium,
+      UTM_CAMPAIGN: utm_campaign,
+      UTM_CONTENT: utm_content}
+
+  path = "https://recognize-sales.youcanbook.me?#{path_params.to_param}"
+
+%>
+
+<%= link_to link_text, path, class: css_classes, target: '_blank',  data: {attr: path_params.to_param} %>

@@ -1,0 +1,49 @@
+<div>
+  <div class="collapse-bar"></div>
+  <div class="child-table-wrapper">
+    <table>
+      <thead>
+      <tr>
+        <th><%= I18n.t("dict.name") %></th>
+        <th><%= I18n.t("dict.department") %></th>
+        <th><%= I18n.t("dict.country") %></th>
+        <% if @datatable.show_teams? %>
+          <th><%= I18n.t("dict.teams") %></th>
+        <% end %>
+        <% if @datatable.show_badges? %>
+          <th><%= I18n.t("dict.badges") %></th>
+        <% end %>
+        <% if @datatable.show_direct_reports? %>
+          <th><%= I18n.t("dict.direct_reports") %></th>
+        <% end %>
+      </tr>
+      </thead>
+      <tbody>
+      <% @managed_users.first(@list_truncate_limit).each do |user| %>
+        <% serialized_record = @datatable.serialized_record(user) %>
+        <tr>
+          <td class="name"><%= serialized_record.name %></td>
+          <td class="department"><%= serialized_record.department %></td>
+          <td class="country"><%= serialized_record.country%></td>
+          <% if @datatable.show_teams? %>
+            <td class="teams"><%= serialized_record.teams %></td>
+          <% end %>
+          <% if @datatable.show_badges? %>
+            <td class="badges"><%= serialized_record.badges %></td>
+          <% end %>
+          <% if @datatable.show_direct_reports? %>
+            <td class="direct_reports"><%= serialized_record.direct_reports %></td>
+          <% end %>
+        </tr>
+      <% end %>
+      <% if @managed_users.size > @list_truncate_limit %>
+        <tr>
+          <td class="see-all" colspan="4">
+            <%= link_to I18n.t("dict.see_all"), user_path(@manager, anchor: "direct-reports") %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

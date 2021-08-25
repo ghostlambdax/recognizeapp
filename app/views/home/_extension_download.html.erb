@@ -1,0 +1,28 @@
+<div id="marketing-browser-extensions-info" class="marginBottom40">
+  <div class="centered" data-turbolinks="false">
+    <h3>Download the Recognize extension &amp; replace Yammer Praise</h3>
+    <p class="marginBottom30"><a href="/recognize_ie_extension_user_guide.pdf">Read the IE installation guide</a>.</p>
+    <div class="table">
+      <%= link_to chrome_extension_url, id: "chrome", class: "item" do %>
+        <h4 class="balance-text">Google Chrome Recognize extension</h4>
+        <%= image_tag "pages/home-extension/chrome.png", alt: "Google Chrome browser" %>
+        <div class="button button-large button-no-chrome block">Install into Chrome</div>
+      <% end %>
+      <a href="/RecognizeAppIESetup.exe" id="ie" class="item">
+        <h4 class="balance-text">Microsoft Internet Explorer Recognize extension</h4>
+        <%= image_tag "pages/home-extension/ie.png", alt: "Microsoft Internet Explorer" %>
+        <div class="button button-large button-no-chrome block">Install into IE 11 or IE 10</div>
+      </a>
+      <%= link_to "https://www.microsoft.com/en-us/p/recognize/9p1t0vb997s7", id: "edge", class: "item" do %>
+        <h4 class="balance-text">Microsoft Edge Recognize extension</h4>
+        <%= image_tag "pages/home-extension/edge.png", alt: "Microsoft Edge" %>
+        <div class="button button-large button-no-chrome block">Install into Edge</div>
+      <% end %>
+      <%= link_to "/recognize.safariextz", id: "safari", class: "item" do %>
+        <h4 class="balance-text">Apple Safari Recognize extension</h4>
+        <%= image_tag "pages/home-extension/safari.png", alt: "Safari" %>
+        <div class="button button-large button-no-chrome block">Install into Safari</div>
+      <% end %>
+    </div>
+  </div>
+</div>

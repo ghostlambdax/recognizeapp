@@ -1,0 +1,234 @@
+<% quotes = [
+    {
+      background_path: image_path("pages/article-be-best-manager/share-knowledge.jpg"),
+      quote: "Volunteer your knowledge and expertise to your organization's executive leadership team -- HR leaders are strategic business partners and as such are responsible for decision-making with the company's top management.",
+      author: "Ruth Mayhew"
+    },
+    {
+      background_path: image_path("pages/article-be-best-manager/steve.jpg"),
+      quote: "If you really want to get ahead, you have to sit in as many spots as possible and find your expertise. It doesn't matter whether you start out as a recruiter or a generalist, you can learn from any position.",
+      author: "Steve Cadigan"
+    },
+    {
+      background_path: image_path("pages/article-be-best-manager/steven-rice.jpg"),
+      quote: "HR leaders can be overly risk averse to their own detriment. Fear drives mediocrity. It's necessary to take risks to move forward.",
+      author: "Steve Rice, CHRO of the Bill and Melinda Gates Foundation in Seattle"
+    },
+    {
+        background_path: image_path("pages/article-be-best-manager/wework.jpg"),
+        quote: "Having a ticketing system allows everyone to send us a message via email, app, or website that goes to a group of people. We can see who is responding and whether it needs follow up. This removes noise from our personal email and makes customer or employee issues transparent.",
+        author: "WeWork Community Associate"
+    },
+    {
+        background_path: image_path("testimonials/goodway.jpg"),
+        quote: "Recognize is a great tool for us to decide the winner of our top employee of the month contest.",
+        author: "Juli Pettijohn - Goodway Group"
+    }
+
+] %>
+
+
+<div id="introduction" class="article-list">
+
+
+  <!--  <div class="well marginBottom30">-->
+  <!--    <h3>3 Tips for Navigating HR Changes Recognition Tips</h3>-->
+  <!--    <ol>-->
+  <!--      <li><strong>Communication is key.</strong><br>Maintain open & timely channels of communication with your stakeholders.</li>-->
+  <!--      <li><strong>Invite feedback.</strong><br>Request employee input on proposed tools and processes.</li>-->
+  <!--      <li><strong>Don't be afraid of tech!</strong><br>Investing in technology, will help you inject more of a customer-focus into your HR practices.</li>-->
+  <!--    </ol>-->
+  <!--  </div>-->
+
+</div>
+
+
+
+<h2 class='balance-text'>Implement ticketing system</h2>
+<p>Tools like Zendesk help employees report issues around specific topics. Stop getting random emails about it being too cold or too hot. Have it categorized and prioritized in a ticketing system. Then you can report to leadership which issues are the biggest problem.</p>
+
+<%= render partial: "articles/quote", locals: {quote: quotes[3]} %>
+
+
+<h2 class='balance-text'>Off-the-shelf employee recognition app</h2>
+<p>HR technology is going through another big phase of growth. No time in history has it so easy for HR professionals to step up their game by adding off-the-shelf tools, like Recognize, to their staff's workflow. Whatever you do, try to keep these third party tools in one set of app hubs, such as Sharepoint or <%= link_to "Workplace by Facebook", fb_workplace_path %>.</p>
+
+<p><a href="https://recognizeapp.com">Recognize</a> - The Recognize employee recognition app allows anyone in your company to start sending and receiving recognition. The problem with building tools yourself is the unknown unknowns. Off-the-shelf employee recognition apps, like Recognize, allow you to have all the answers solved on the first day of use. That's true if you use other types of employee apps that are plug-n-play, such as wellness or learning management.
+</p>
+
+<%= render partial: "articles/quote", locals: {quote: quotes[4]} %>
+
+<h2 class="marginTop20">Use a pulse survey tool</h2>
+<p>Find out on a continuous basis the feelings, needs, and concerns of your employees</p>
+<ul class="bullet-list">
+  <li>15Five Continuous Performance Management</strong> - Combines employee feedback, pulse surveys and peer recognition via weekly check-ins.</li>
+  <li><strong>Lattice Performance Management</strong> - Provides performance management, goal setting, real-time feedback, and one-on-one tools.</li>
+  <li><strong>Culture Amp</strong> - Provides employee engagement solutions that collect, understand, and act on employee feedback to improve employee engagement.</li>
+  <li><strong>Qualtrics Employee Experience</strong> - Provides employee survey tools and 360-feedback features to measure employee engagement in real time.</li>
+  <li><strong>Hyphen</strong> - Provides employee surveys, pulse surveys, feedback platforms and smart insights to improve engagement.</li>
+  <li><strong>GetFeedback</strong> - Helps build branded, mobile-friendly engagement surveys.</li>
+</ul>
+
+<%= render partial: "articles/quote", locals: {quote: quotes[2]} %>
+
+
+<h2 class='balance-text'>Organize quarterly company townhalls</h2>
+<ul class="bullet-list">
+  <li>Take time to prepare to ensure that the meeting is efficient and fast-moving.</li>
+  <li>Have an agenda to ensure that all attendees know the basic outline of the meeting - and stick to it.</li>
+  <li>Assign a moderator that can keep the agenda moving.</li>
+  <li>Include remote workers, part time staff, other offices or branches -- everyone.</li>
+  <li>Allow for anonymous questions via your intranet site or “suggestion box” for employees that want to ask questions but prefer not to do it in a crowd.</li>
+  <li>Acknowledge team members that are going above and beyond.</li>
+  <li>Keep it comfortable - Have a space large enough to hold your whole team. Ideally, everyone should have a chair. If the agenda is extra long, you can provide coffee, tea, water, and snacks.</li>
+  <li>Ask for feedback - After the meeting, let everyone know where they can leave feedback or ask questions about the topics discussed.</li>
+</ul>
+
+<%= lazy_image_tag "pages/article-be-best-manager/analytics.jpg", class: "marginBottom40", alt: "Human Resources", itemprop: "image", height: 494, width: 600 %>
+
+<h2 class='balance-text'>Integrate a people analytics solution</h2>
+<ul class="bullet-list">
+  <li><strong>ZOHO People</strong> - Helps you with leave, attendance and time tracking so you don’t have to do it manually anymore.  It’s main area of analytics is performance appraisal.</li>
+  <li><strong>IBM Kenexa</strong> - Focus on helping you find and then retain quality employees.</li>
+  <li><strong>People Analytics by TrenData</strong> - Easily keep track of your turnover rate and other trends with its intuitive interface.</li>
+  <li><strong>Oracle HR Analytics</strong> - Incorporates data from all over the business so you have a realistic view of the current circumstances.</li>
+  <li><strong>PeopleInsight</strong> - Puts data together and pushes out actionable analytics.</li>
+  <li><strong>Crunchr</strong> - Scalable and intuitive so it’s easy to learn and implement in your unique setup.</li>
+  <li><strong>Aurion Analytics</strong> - Generates a visual presentation so it makes the data you have more meaningful.</li>
+  <li><strong>Advance Systems</strong> - Provides products for both handling current teams and managing applications for available options.  You’ll get feedback and analysis functions so you can determine where you need more assistance.</li>
+  <li><strong>Talentsoft Analytics</strong> - Get feedback on KPIs so your decision making becomes easier and accurate because it’s based on real time data.</li>
+</ul>
+
+<%= render partial: "articles/quote", locals: {quote: quotes[0]} %>
+
+
+<h2 class='balance-text'>Read the best HR and business books</h2>
+<ul class="bullet-list">
+  <li><strong>Drive</strong> -  Dan Pink examines the three elements of true motivation—autonomy, mastery, and purpose-and offers smart and surprising techniques for putting these into action.</li>
+  <li><strong>People Analytics in the Era of Big Data</strong> - Provides a blueprint for leveraging your talent pool through the use of data analytics.</li>
+  <li><strong>The One Minute Manager</strong> - Learn to use three easy-to-master management techniques that have already changed the lives of millions.</li>
+  <li><strong>Delivering Happiness</strong> - Shows how a very different kind of corporate culture is a powerful model for achieving success-and how by concentrating on the happiness of those around you, you can dramatically increase your own.</li>
+  <li><strong>Principles</strong> - Ray Dalio, one of the world’s most successful investors and entrepreneurs, shares the unconventional principles that he’s developed, refined, and used over the past forty years to create unique results in both life and business—and which any person or organization can adopt to help achieve their goals.</li>
+  <li><strong>Financial Intelligence</strong> -  Gives non-financial managers the financial knowledge and confidence for their everyday work.</li>
+  <li><strong>The Hard Thing About Hard Things</strong> - Ben Horowitz gives frank advice of management under high pressure situations. He admits that often times there are no easy answers to leading.</li>
+
+</ul>
+
+<h2 class='balance-text'>Properly manage your Glassdoor</h2>
+<p>There is nothing worse for a HR team and a leadership team than bad Glassdoor ratings. Help with onboarding and exit interviews to learn the issues people are facing or where their interests land. Why only do exit interviews when we can also interview people on the way in around their teams and hopes from a company perspective?</p>
+
+<%= lazy_image_tag "pages/article-be-best-manager/glassdoor.jpg", class: "marginBottom40", alt: "Person complaining on Glassdoor saying, 'Unless you are desperate, stay away... even then be looking ELSEWHERE' in a review about their employer", itemprop: "image", height: 265, width: 600 %>
+<p class="subtle-text marginBottom40">Exactly what you don't need.</p>
+
+<h2 class='balance-text'>Standardize the interview, hiring, and department lifecycle</h2>
+<p>Increase the objectivity and data entry of the human capitalize lifecycle. Make sure that the interview process is the same for every person who is interviewed and that the same questions are asked. Score and keep track of how well people interview and whether those questions lead to highly engaged, productive employees.</p>
+
+<%= render partial: "articles/quote", locals: {quote: quotes[1]} %>
+
+<h2 class='balance-text'>Invest in learning IT terminology</h2>
+<p>There is nothing better than HR folk who can talk the talk with IT. You’ll get more respect and communicate more easily to get work done. Know what Single Sign On (or SAML) means or why SSL is important. Encourage security training in the organization. Be as knowledgeable as possible into all things technology.</p>
+
+<div class="well">
+  <ul>
+    <li>
+      <h3>SAML or SSO</h3>
+      <p>Just know that this means how your users authenticate and login. You don't want your employees setting passwords on third party systems all over the internet. </p>
+    </li>
+
+    <li>
+      <h3>API</h3>
+      <p>Application Programming Interface is a phrase you'll probably never need to say nor hear, but we hear API all the time. That means a way for one website or app to connect and get data or send data to another website or app. <a href="https://recognizeapp.com">Recognize</a> has an API to allow other companies to display their employee recognitions on their website or app. Recognize API allows companies to sync their employee data from ADP or <%= link_to "Office 365", office365_path %>. </p>
+    </li>
+
+    <li>
+      <h3>Agile development or scrum</h3>
+      <p>Agile development is the way to run projects so that developers don't get too overwhelmed. Developers can choose from a list of tasks to put into the weekly sprint of work". It is a new way to do things compared to the old Waterfall project management style.</p>
+    </li>
+
+    <li>
+      <h3>HTTPS, SSL, and TLS</h3>
+      <p>The S in HTTPS stands for secure or encrypted. That means when you send data from one computer to another, no one between you and the other computer can read it. If you submit a form on a website that isn't HTTPS that means it doesn't have a security cerificate (SSL/TLS) and anyone can read the contents of your form if they really wanted to. SSL is an older technology for creating security certificates that has been replaced by the newer TLS protocol.</p>
+    </li>
+
+    <li>
+      <h3>OAuth</h3>
+      <p>Just like SSO, OAuth is another way for people to login to third parties without setting a password. At <a href="https://recognizeapp.com">Recognize</a>, employees can sign in via Microsoft, Yammer, or Google. These are all examples of OAuth. The difference between this and SSO is with OAuth, the user has the choice to accept it and is notified of permissions. </p>
+    </li>
+
+    <li>
+      <h3>Cloud Computing</h3>
+      <p>This simply means the system or service you are using isn't stored down the hall, but in a data center somewhere in the world and is made available to anyone, anywhere they are.</p>
+    </li>
+
+    <li>
+      <h3>Virtual Private Network (VPN)</h3>
+      <p>Your IT team can have a private network of services, apps, or computers only accessible in a secure network. You have to first login to view it.</p>
+    </li>
+
+    <li>
+      <h3>Phishing</h3>
+      <p>This is when you get an email or go to a website that looks identical the real service, but you make the mistake of clicking or submit private data, such as a password, to this website. Then the hacker will be able to take control of your data and possibly ruin your business. We have to be very careful what links we click on from the web or email. It has been shown that even sites that use Multi-Factor Authentication are still susceptible to phishing attacks.</p>
+    </li>
+
+    <li>
+      <h3>Multi-factor Authentication</h3>
+      <p>When you sign in to a website with a username and password, this is considered one factor of authentication. You have just proven you know the password. However, for sites to be more secure, they will require additional factors such as verifying you have something in your possession like a cell phone. There is a saying for access to be truly secured, you need to prove something you know, something you have, and something you are. These are three factors of authentication.</p>
+    </li>
+
+    <li><%= link_to "More terms in the Recognize Glossary", "/employee-engagement-glossary", class: "button" %>
+    </li>
+
+  </ul>
+</div>
+
+
+<%= lazy_image_tag "pages/article-be-best-manager/lightbulb.jpg", class: "marginBottom40", alt: "Human Resources", itemprop: "image", width: 600, height: 443 %>
+
+
+<h2 class='balance-text'>Cross team collaboration</h2>
+<p>Get IT, communications, and marketing together to create initiatives. Change management and aligning culture of cultures requires great communication and proper technology integration. Use these alliances to better communicate company values in the organization or produce better results than alone.</p>
+
+<h2 class='balance-text'>More integrations of tools</h2>
+<p>You need to have a Learning management tool, wellness tool, HRIS, employee recognition with <a href="https://recognizeapp.com">Recognize</a>, Slack, and more, but how do you keep track of it all? That’s why tools like <a href="https://recognizeapp.com">Recognize</a> that integrate into your other tools is critical. Look for adding tools that are already inside your Sharepoint or intranet. </p>
+
+
+<h2 class='balance-text'>Be financially savvy to be a better HR manager</h2>
+<p>The more you understand the finances of your company, the better you can make the case for what you need. If an employee happiness survey finds that 80% of your workforce isn’t being recognized and looking to jump ship, that can prove an ROI if you can calculate retention. Work with your treasurer or accounting team to understand the numbers better.</p>
+
+<div class="well marginBottom40">
+    <a href="https://www.barnesandnoble.com/p/financial-intelligence-revised-edition-karen-berman/1110913346/2660627392360" target="_blank" class="block clearfix">
+      <%= lazy_image_tag "pages/article-be-best-manager/finance.png", alt: "Cover of book Financial Intelligence", width: 258, height: 246, class: "left marginRight10" %>
+      <p><strong>Financial Intelligence</strong> - this book will make you a smarter manager. Learn the difference between an Income Statement and a Cash Flow Statement, or Non-GAAP and GAAP accounting.</p>
+
+  </a>
+</div>
+
+
+<h2 class='balance-text'>Create a company library and invite guest speakers</h2>
+<p>Having a library of curated books your company can read together will enrich and engage staff. Amazon has guest speakers on a daily basis, do the same for your staff by at least bringing someone in once a quarter to inspire your team.</p>
+<p>Andreessen Horowitz, one of the most innovative startup technology investment groups in the world, has Marc Andressen's (founder of Netscape) library in their reception. This shows a symbol of knowledge and allows staff to check out the books.</p>
+
+<%= lazy_image_tag "pages/article-be-best-manager/marc-library.jpg", class: "marginBottom40", alt: "Human Resources", itemprop: "image", width: 600, height: 450 %>
+
+
+<h2 class='balance-text'>Keep managers accountable</h2>
+<p>Let your leadership know that HR is now a strategic business asset. That means using tools like <a href="https://recognizeapp.com">Recognize</a>, or other technology solutions that show which managers are doing quality work, remind and reward managers who do quality work aligned with the company’s vision and values.</p>
+
+<p>With modern user data, HR can be informed which managers have direct reports being promoted vs which managers have direct reports quitting. Use this data to your advantage be advised on human capital management decisions.</p>
+
+
+<h2 class='balance-text'>Have fun as an HR manager</h2>
+<p>People who are excited to go back to work on Sunday evening are found to be more successful in their roles. In the words of Steve Jobs, if you wake up too many mornings in a row and aren’t happy with your life, it is time for a switch. Ask yourself how you feel about your role. Are you burnt out from bureaucracy or excited by the advent of HR technology? Make sure not to let yourself get too cynical or afraid to learn new abilities and skills.</p>
+
+
+<%#= lazy_image_tag "pages/article-2019-hr-trends/image-6.jpg", alt: "David Clark", class: "avatar", itemprop: "image", width: 100, height: 100 %>
+
+<hr class="hr hr-space">
+
+<h3>Questions & Feedback</h3>
+<p>Please email us at support@recognizeapp.com if you have any questions or feedback.</p>
+
+<%= schedule_demo_link link_text: 'Schedule a demo',service: "service2", cssclasses: "button", utm_content: 'bottom demo link' %>
+
+
+<hr class="hr hr-space">

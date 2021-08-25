@@ -1,0 +1,39 @@
+<%= t("user_notifier.name_wants_you_to_join_recognize", name: @inviter.full_name) %>
+
+<%= t("recognize.title_company_name", company: @inviter_company.name) %>
+
+<%= t('user_notifier.verify_account_now') %>
+<%= @verification_url %>
+
+
+
+<%= t('user_notifier.things_you_may_want_to_do') %>
+
+<%= t('user_notifier.edit_your_personal_info') %>
+<%= edit_user_url(@user, network: @user.network) %>
+
+<%= t('dict.send_a_recognition') %>
+<%= new_recognition_url(network: @user.network) %>
+
+<%= t('user_notifier.see_your_company_recognitions') %>
+<%= stream_url(network: @user.network) %>
+
+<%= t('outlook.use_inside') %>
+<%= marketing_outlook_url %>
+
+
+
+<%= t('user_notifier.gain_more_from_your_actions') %>
+
++ <%= t('user_notifier.official_recognition_from_colleagues') %>
++ <%= t('user_notifier.celebrate_more_often') %>
++ <%= t('user_notifier.receive_awards') %>
+
+<%= t('user_notifier.verify_account_now') %>
+<%= @verification_url %>
+
+
+
+
+
+

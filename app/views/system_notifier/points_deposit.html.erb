@@ -1,0 +1,17 @@
+<h2>Deposit Points Time!</h2>
+
+<p><%= @deposit_info.user.full_name %> - <%= @deposit_info.user.email %></p>
+<p>Get this person some points for gift cards.</p>
+
+<ol>
+  <li>
+    Amount: <%= @deposit_info.amount %>
+  </li>
+
+  <li>
+    Type: <%= @deposit_info.type_of_payment %>
+  </li>
+  <li>
+    Currency: <%= @deposit_info.currency %>
+  </li>
+</ol>

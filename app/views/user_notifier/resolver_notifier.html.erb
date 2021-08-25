@@ -1,0 +1,82 @@
+<div style="<%= mail_styles(:header_banner) %>">
+  <h1 style="<%= mail_styles(:h1, :title, :text) %>"><%= t('recognition_new.approval_recognition') %></h1>
+</div>
+
+<% if @non_direct_reports.present? %>
+  <table style="margin-bottom: 20px;">
+    <tr>
+      <td>
+        <div style="<%= mail_styles(:warning_dot) %>">
+          i
+        </div>
+      </td>
+      <td>
+        <p style="<%= mail_styles(:text, :warning_text) %>">
+          <%= t('recognition_new.multi_recipient_approval_recognition') %>
+        </p>
+      </td>
+    </tr>
+  </table>
+<% end %>
+
+<table style="width: 80%; margin-bottom: 20px;">
+  <tr>
+    <% if @direct_reports.present? %>
+      <td style="width: 60%; vertical-align: top;">
+        <label style="<%= mail_styles(:text, :label) %>"><%= t('dict.direct_reports') %></label>
+        <% @direct_reports.each do |user| %>
+          <h4 style="<%= mail_styles(:text, :h4) %>"><%= user.full_name %></h4>
+        <% end %>
+      </td>
+    <% end %>
+
+    <% if @non_direct_reports.present? %>
+      <td style="width: 40%; vertical-align: top;">
+        <label style="<%= mail_styles(:text, :label) %>"><%= t('recognitions.recipients') %></label>
+        <% @non_direct_reports.each do |user| %>
+          <h4 style="<%= mail_styles(:text, :h4) %>">
+            <% if user.id == @resolver.id %>
+              <%= t('dict.you') %>
+            <% else %>
+              <%= user.full_name %>
+            <% end %></h4>
+        <% end %>
+      </td>
+    <% end %>
+  </tr>
+</table>
+
+
+<table style="width: 80%; margin-bottom: 20px;">
+  <tr>
+    <td style="width: 60%; vertical-align: top;">
+      <label style="<%= mail_styles(:text, :label) %>"><%= t('form.badge') %></label>
+      <h4 style="<%= mail_styles(:text, :h4) %> margin-bottom: 20px;">
+        <%= image_tag(@recognition.badge.permalink, width: 30) %>
+        <%= @recognition.badge.short_name %>
+      </h4>
+    </td>
+    <td style="width: 40%; vertical-align: top;">
+      <label style="<%= mail_styles(:text, :label) %>"><%= t('form.sender') %></label>
+      <h4 style="<%= mail_styles(:text, :h4) %> margin-bottom: 20px;">
+        <%= @recognition.sender.full_name %>
+      </h4>
+    </td>
+  </tr>
+</table>
+
+
+<label style="<%= mail_styles(:text, :label) %>"><%= t('dict.message') %></label>
+<div style="<%= mail_styles(:text) %> margin-bottom: 20px;">
+  <%= @recognition.message.html_safe %>
+</div>
+
+<div style="margin-bottom: 20px;">
+  <%= mail_styles(:hr) %>
+</div>
+
+
+
+<%= link_to t('dict.approve_or_deny'), @resolve_url, style: mail_styles(:text, :button) %>
+
+<br/>

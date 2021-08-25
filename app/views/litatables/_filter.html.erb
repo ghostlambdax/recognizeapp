@@ -1,0 +1,22 @@
+<% if filter.row_group? %>
+  <div class="litatable-row-group">
+    <% filter.filters.each do |f| %>
+      <%= render "litatables/filter", filter: f %>
+    <% end %>
+  </div>
+
+<% elsif filter.select? %>
+  <div class="litatable-select-filter">
+    <%= label_tag filter.label unless filter.label.nil? %>
+    <%= select_tag filter.name, options_for_select(filter.choices, filter.selected), filter.html_opts %>
+  </div>
+
+<% elsif filter.checkbox? %>
+  <%= label_tag filter.name, class: "inline" do %>
+    <%= filter.label %>
+    <%= check_box_tag filter.name, true%>
+  <% end %>                  
+
+<% else %>
+  <% raise "not supported yet" %>
+<% end %>

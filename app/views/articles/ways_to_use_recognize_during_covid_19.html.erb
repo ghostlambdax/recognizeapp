@@ -1,0 +1,26 @@
+<% content_for :title, @title %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="<%= @title %> | Recognize" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:image" content="/assets/pages/articles/ways-to-use-recognize-during-covid-19/image1.jpg" />
+  <meta property="og:url" content="https://recognizeapp.com/ways-to-use-recognize-during-covid-19" />
+  <link rel="amphtml" href="<%= ways_to_use_recognize_during_covid_19_url format: :amp %>">
+<% end%>
+
+<% content_for :article_title do %><%= @title %><% end %>
+<% content_for :article_description do %>  
+<% end %>
+
+<% tags = ["Introduction", "Special Recognition Badges", "Social Distancing friendly Rewards", "Tasks to Encourage Wellness", "Recognize in Remote Friendly Tools", "Mobile App"] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "ways_to_use_recognize_during_covid_19", locals: {tags: tags} %>
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

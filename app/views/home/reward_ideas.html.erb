@@ -1,0 +1,118 @@
+<% @points = [
+  {
+    image: {
+      path: "pages/employee-rewards-ideas/cash.jpg",
+      title: "One of the best employee reward ideas is just plain cash."
+    },
+    title: "Cash as an employee reward",
+    body: "Everyone can use more money. It gives freedom to those who possess it. Nelson Mandella put it right, 'Money won't create success, the freedom to make it will.'<br><br>
+    In Recognize\'s <a href='/employee-recognition-report'>employee recognition report</a>, we found people reported 4.45/5 for strongly agreeing to 'When receiving recognition at my company, I prefer cash rewards.' We recommend surveying your own staff and discovering what they want. If you want to optimize your program, find out department or location differences. In Recognize, we allow your employee reward ideas to be inserted as company-fulfilled rewards or cash cards, like Visa or Mastercard.",
+  },
+  {
+    image: {
+      path: "pages/employee-rewards-ideas/giftcard.jpg",
+      title: ""
+    },
+    title: "Gift cards for employee reward",
+    body: "Gift cards provide ideas to staff of what to redeem, while at the end of the day it is cash. Using a tool like Recognize, it makes it really easy for an employee to redeem an Amazon, Target, or Starbucks gift card as an employee reward. This provides autonomy to the employee for being able to choose on their own.<br><br>We do not recommend merchandise, as gift cards take care of that and our research finds staff score only 2.39/5 for interest into merchadise as a employee reward.",
+  },
+  {
+    image: {
+      path: "pages/employee-rewards-ideas/birthday.jpg",
+      title: ""
+    },
+    title: "Donate to charity for employee reward",
+    body: "Even though charity only scored a 2.37/5 on the <a href='/employee-recognition-report'>employee recognition report</a>, it nonetheless should be considered by HR. Not only do you not have to pay taxes on it, but you get to write it off. Plus, for employees who really do have everything, this makes a great way to give back. People feel happier after giving money away to charity. Recognize gives to <a type='_blank' href='https://birthdaywishes.org/'>Birthday Wishes</a>, providing birthday parties for homeless children living in shelters. What is your company's cause?"
+  },
+  {
+    image: {
+      path: "pages/employee-rewards-ideas/cook.jpg",
+      title: ""
+    },
+    title: "Experiences for employee reward",
+    body: "Experiences faired slightly better than charity with a score of 2.41/5 on the Employee Recognition Report. Group experiences creates friendships and work friendships lead to higher retention.<br><br> The company has to out-source or manage internally the booking of experiences for employee rewards. Not the sweet spot of most companies. However, if a team really goes above and beyond, a special ball game seats or vacation for the family is always appreciated. Try to tug at people\'s heart strings.",
+  },
+  {
+    image: {
+      path: "pages/employee-rewards-ideas/agreeing.jpg",
+      title: ""
+    },
+    title: "Give status in the organization as an employee reward",
+    body: "In gamification the acroymn is SAPS or Status, Access, Power, and Stuff are the levers of motivation. These are the levers of motivation. Status can be achieved via a new job title or additional job title. Having a 'senior' added to one\'s job title is coveted by all ambitious employees. Further, as Marc Andressen, founder of Netscape, pointed out, it does not cost anything to give titles.",
+  },
+  {
+    image: {
+      path: "pages/employee-rewards-ideas/office.jpg",
+      title: ""
+    },
+    title: "Give access as employee reward",
+    body: "Access can be used to motivate employees in monetary and non-monetary ways for employee rewards. Access to a corner office is a non-monetary solution. Access to a conference is a monetary, but could be already budgeted. Brainstorm and be creative about what types of access you can provide. Keep in mind, on the Employee Recognition Report, parking spot got only 2.18/5 score.",
+  },
+  {
+    image: {
+      path: "pages/employee-rewards-ideas/power.jpg",
+      title: ""
+    },
+    title: "Provide power to make decisions or responsibility as employee reward",
+    body: "If an employee shows to be a leader in innovation through your peer-to-peer employee recognition program, give them the opportunity to make decisions in the field of innovation. Giving new decision making gives employees sense of mastery, one of the components to motivation according to Dan Pink.",
+  },
+  {
+    image: {
+      path: "pages/employee-rewards-ideas/pto.jpg",
+      title: ""
+    },
+    title: "Everyone loves paid time off",
+    body: "Paid time off got a 3.78 out of 5 on the <a href='/employee-recognition-report'>Employee Recognition Report</a>. This high score tells HR that giving paid time off as an employee reward is a great idea. Further, employees will come back more rested and more appreciative of the company. Even giving extended breaks can be enough."
+  }
+
+    ]
+  %>
+
+<%= content_for :title, "Employee Rewards Ideas" %>
+<%= content_for :description, "The top eight (8) employee rewards ideas to offer your employees as part of an employee recognition and staff rewards program." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Employee Rewards Ideas | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="Learn the top eight types of employee rewards." />
+  <meta property="og:image" content="/assets/illustrations/recognize.jpg" />
+<% end%>
+
+<section class=" centered marginTop40 marginBottom100 intro">
+  <div class="inner">
+    <h1 class="balance-text">Employee Reward Ideas</h1>
+    <p class="tagline">The top eight types of employee rewards you can offer your employees:<br> cash, gift cards, charity, power, access, paid time off, status, and experiences.</p>
+    <%= schedule_demo_link %>
+  </div>
+</section>
+
+
+<div id="points" class="">
+  <% @points.each do |point| %>
+    <div class="marginH10">
+      <div itemprop="itemListElement" class="marginBottom50 row-fluid">
+        <div class="span6">
+          <%= lazy_image_tag point[:image][:path], alt: point[:image][:title], class: "marginBottom30 width100", itemprop: "image" %>
+        </div>
+
+        <div class="span4">
+          <h2 class="balance-text"><%= point[:title] %> </h2>
+          <p class="tagline"><%= point[:body].html_safe %></p>
+
+        </div>
+      </div>
+
+    </div>
+
+  <% end %>
+
+  <div class="marginTop40 centered marginBottom100 marginH10">
+    <h2 class="balance-text">What is your employee reward idea?</h2>
+    <p class="tagline width-800 balance-text" style="margin-left: auto; margin-right: auto;">Let's start a conversation. Do you know another topic of reward to an employee beyond what was said here? Do you disagree with anything? Let's discuss it.</p>
+    <%= link_to "Contact us", contact_sales_path, class: "button button-highlight" %>
+
+  </div>
+</div>
+
+<%= render :partial => 'footer' %>

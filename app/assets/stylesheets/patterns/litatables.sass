@@ -1,0 +1,46 @@
+.litatable
+  & > .row-fluid
+    margin-bottom: 20px
+
+  .litatable-filters
+    display: inline-block
+
+  .tab.tab-pane
+    background: white
+    padding: 15px
+
+
+.dataTables_wrapper .dataTables_processing
+  background: $headerBg !important
+  color: text-color($headerBg) !important
+  width: 180px !important
+  margin: auto !important
+  margin-left: -90px !important
+  border-radius: 6px !important
+  padding: 11px !important
+  top: 50px !important
+  z-index: 1000
+
+.dataTables_wrapper .dataTable.dt-processing
+  opacity: 0.5 !important
+  @include filter(blur(1.8px))
+  zoom: 1
+
+.dt-button
+  &.buttons-colvis
+
+    #colvis-icon-wrapper
+      width: 15px
+      height: 15px
+      margin: auto
+      background: transparent asset-data-url($gearIcon) no-repeat center center
+      background-size: 15px
+      background-repeat: no-repeat
+      display: inline-block
+
+    #colvis-hidden-col-count
+      vertical-align: 8px
+
+  &.buttons-columnVisibility.active
+    color: $headerTextColor !important
+    background: $headerBg !important

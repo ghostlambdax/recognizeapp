@@ -1,0 +1,49 @@
+<div class="admin-nav-wrapper clearfix">
+  <h2>Company Admin</h2>
+  <nav class="admin-nav">
+    <ul class="clearfix">
+      <% if current_user.director?%>
+        <% if current_user.company.family.length > 1 %>
+          <select id="dept-select" name="dept" style="width:100%">
+            <%= company_family_options_for_select %>
+          </select>
+          <hr>
+        <% end %>
+      <% end %>
+
+      <%= company_admin_sidebar_link(t("layouts.company_admin_sidebar.dashboard"), company_admin_dashboard_path, {icon: 'bar-chart' }) if feature_permitted?(:recognition)  %>
+      <%= company_admin_sidebar_link(t("layouts.company_admin_sidebar.users"), company_admin_accounts_path, {data: {turbolinks: false}, icon: 'user'}) %>
+      <%= company_admin_sidebar_link(t("layouts.company_admin_sidebar.points"), summary_company_admin_points_path, {data: {turbolinks: false}, icon: 'user'}) %>
+
+      <% if feature_permitted?(:recognition)  %>
+        <li><a data-toggle="tab" href="#custom_badges"><%= feather_icon('shield', height: 15) %><%= t("layouts.company_admin_sidebar.custom_badges") %></a></li>
+      <% end %>
+
+      <%= company_admin_tertiary_sidebar_link(I18n.t("layouts.company_admin_sidebar.rewards"),company_admin_catalogs_path, "/company/rewards", {icon: 'gift'}) %>
+      <%= company_admin_sidebar_link(t("layouts.company_admin_sidebar.nominations"), company_admin_nominations_path(network: @company), {icon: 'award'}) if feature_permitted?(:nomination) %>
+      <%= company_admin_sidebar_link(t("tskz.tasks"), company_admin_completed_tasks_path(network: @company), {icon: 'check-circle'}) if feature_permitted?(:tasks)  %>
+      <%= company_admin_sidebar_link(t("layouts.company_admin_sidebar.anniversaries"), company_admin_anniversaries_settings_path, {icon: 'calendar'}) if feature_permitted?(:anniversary) %>
+      <%= company_admin_tertiary_sidebar_link(t("layouts.company_admin_sidebar.recognitions"), company_admin_recognitions_path, "/company/recognitions", {icon: 'star'}) if feature_permitted?(:recognition) %>
+      <%= company_admin_sidebar_link(t("layouts.company_admin_sidebar.comments"), company_admin_comments_path, {icon: 'message-circle'}) %>
+
+      <%= company_admin_sidebar_link(t("layouts.company_admin_sidebar.roles"), company_admin_roles_path, {icon: 'filter'}) %>
+      <%= company_admin_sidebar_link(@company.custom_labels.tags_label, company_admin_tags_path, {icon: 'tag'}) if feature_permitted?(:tags) %>
+      <%= company_admin_tertiary_sidebar_link(t("layouts.company_admin_sidebar.document_center"), company_admin_documents_path(network: current_user.company.domain), "/company/documents", {data: {turbolinks: false}, icon: 'paperclip'}) %>
+
+      <%= company_admin_tertiary_sidebar_link(t("layouts.company_admin_sidebar.settings"), company_admin_settings_path(network: current_user.company.domain), "/company/settings", {data: {turbolinks: false}, icon: 'sliders'}) %>
+
+    </ul>
+  </nav>
+</div>
+
+<div class="content-wrapper">
+  <div class='page-body'>
+
+    <% if @company.allow_admin_dashboard? %>
+      <%= render partial: "show", locals: {paid_class: "paid"} %>
+    <% else %>
+      <%= render partial: "show_sample", locals: {paid_class: "unpaid"} %>
+    <% end %>
+
+  </div>
+</div>

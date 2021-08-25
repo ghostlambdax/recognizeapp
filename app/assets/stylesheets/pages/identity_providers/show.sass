@@ -1,0 +1,62 @@
+.account_chooser
+  background: lighten(desaturate($headerBg, 30%), 60%) !important
+
+#identity_providers-show.viewer-outlook
+  padding-top: 15px !important
+
+#identity_providers-show
+
+  .list-subtle-border
+    margin-bottom: 0
+
+  #navbar
+    display: none
+
+  .well
+    width: 750px
+
+  .well.narrow
+    width: 400px
+
+  .passwordDisabled
+    text-align: center
+    display: block
+    @media (max-width: 779px)
+      margin: auto
+
+  .theme-logo
+    max-height: 55px
+
+  .well
+    max-width: 100%
+
+  .wrapper
+    margin: 0px auto 0 auto
+
+    input
+      width: 100%
+      box-sizing: border-box
+      -moz-box-sizing: border-box
+      height: 40px
+
+@media (max-width: $tablet)
+  #identity_providers-show
+    padding-top: 0 !important
+
+    #view-main-wrapper
+      padding-top: 0
+
+    .spacer
+      border-bottom: 1px solid $hrColor
+      margin-bottom: 10px
+      padding-bottom: 8px
+
+@media (min-width: $tablet)
+  #identity_providers-show
+    .list-subtle-border
+      .button,
+      .sign-in-with-google
+        width: 90%
+
+    .wrapper
+      @include flex-centered()

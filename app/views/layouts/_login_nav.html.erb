@@ -1,0 +1,16 @@
+<% if current_user.blank? %>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= t('dict.signin')%> <span class="caret"></span></a>
+    <div class="dropdown-menu" role="menu">
+      <%= render :partial => "user_sessions/login" %>
+    </div>
+  </li>
+  <li data-turbolinks="false">
+    <%= link_to "Sign up", signup_path %>
+    <a href="/sign-up"><%= t("dict.sign_up") %></a>
+  </li>
+<% else %>
+  <li>
+    <%= link_to t("layouts.login_nav.back_to", company: current_user.company.name), stream_path %>
+  </li>
+<% end %>

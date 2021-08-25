@@ -1,0 +1,28 @@
+<% content_for :title, "Become a Zoom Power User" %>
+<% content_for :description, "Top 13 tips for getting the most out of Zoom when teleconferencing for work while working from home." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Become a Zoom Power User | Recognize" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="A cheat sheet to get the most out of Zoom teleconferencing " />
+  <meta property="og:image" content="/assets/pages/articles/become-a-zoom-power-user/image1.jpg" />
+  <meta property="og:url" content="https://recognizeapp.com/become-a-zoom-power-user" />
+  <link rel="amphtml" href="<%= become_a_zoom_power_user_url format: :amp %>">
+<% end%>
+
+<% content_for :article_title do %>A cheat sheet to get the most out of Zoom teleconferencing<% end %>
+
+
+<% tags = ["Introduction", "Unique Meeting IDs", "Waiting Room", "Control Meetings", "Know Shortcuts", "Start Prepared", "Decide who to see", "Share Content", "Use Annotations", "Record a Meeting",
+           "Record Transcripts", "See who attended", "Virtual Background", "Touch Up"] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "become_a_zoom_power_user", locals: {tags: tags} %>
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

@@ -1,0 +1,16 @@
+<% content_for :title, "Be a Great HR Manager" %>
+<%= content_for :description, "15 creative ways to be a great human resources professional." %>
+
+<div class="centered">
+  <h1 itemprop="name">15 Easy Ways to be a Great HR Manager</h1>
+  <amp-img src="<%= asset_url('pages/article-2019-recognition-trends/image-1.jpg') %>" alt="In person employee recognition by shaking hands in front of group" height="400" width="600" layout='responsive'></amp-img>
+</div>
+
+<div class="centered">
+  <p class="balance-text marginBottom40 tagline">The HR role is changing from an adminstration role to a people strategy role. As technologies and alliances change, HR managers need to adapt.</p>
+  <%= link_to "Learn about Recognize", root_path, class: "button button-large button-primary" %>
+
+</div>
+
+
+<%= render partial: "15_ways_great_hr_manager_body", formats: [:html]  %>

@@ -1,0 +1,14 @@
+(function(R, $, undefined) {
+  var $comment = $("#<%= @comment.uniq_dom_id%>");
+  <% if @comment.errors.present? %>
+    $comment.find('.comment_content').before('<div class=\'error\'><h5><%= @comment.errors.full_messages.join(", ")%></h5></div>')
+  <% else %>
+    $comment.replaceWith('<%= escape_javascript(render @comment)%>');
+    // since we loose context after replacing it on dom
+    $comment = $("#<%= @comment.uniq_dom_id%>");
+    if ($comment.closest('.isotope').length > 0) {
+      $comment.closest('.isotope').isotope("reLayout");
+    }
+
+  <% end %>
+})(window.R, jQuery);

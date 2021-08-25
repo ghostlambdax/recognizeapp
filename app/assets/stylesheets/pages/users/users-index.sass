@@ -1,0 +1,135 @@
+
+#users-index
+  $rowHighlightBg: darken($lightGray, 4%)
+  $borderColor: #ccc
+
+  // these widths are for medium to large screens only
+  $directReportsColWidth: 110px
+  $nameColWidth: 125px
+
+  #users-table-wrapper
+    max-width: 1200px
+    margin: 0 auto
+
+  #users-filter-wrapper 
+    #users-search
+      padding: 0
+      input
+        float: right
+
+  #users-table
+    border: 0
+    border-bottom: 1px solid $borderColor
+
+    thead
+      background-image: none
+      th
+        padding: 10px
+        border-bottom-color: $borderColor
+
+        &.teams
+          width:  40% !important
+
+        &.country
+          min-width: 60px
+
+        @media (min-width: $tablet)
+          &.name
+            min-width: $nameColWidth
+          &.direct_reports
+            min-width: $directReportsColWidth
+
+    td
+      border-top: 0
+
+      &.direct_reports
+        a.disabled
+          pointer-events: none
+
+        // show downward arrow next to "Show" link as UI hint for row toggle-ability
+        .toggle_dr
+          padding-right: 18px
+          background: url(/assets/sort_desc.png) no-repeat center right
+          background-position-y: -5px
+
+    > tbody > tr.expanded > td
+      &:first-child
+        border-left: 1px solid $borderColor
+      &:last-child
+        border-right: 1px solid $borderColor
+
+    tr.expanded
+      > td
+        background-color: $rowHighlightBg
+        border-top: 1px solid $borderColor
+
+      // switch arrow direction when expanded
+      td.direct_reports
+        .toggle_dr
+          background-image: url(/assets/sort_asc.png)
+          background-position-y: 1px
+
+    .child-table-wrapper
+      margin-left: 5px
+
+      > table
+        border-bottom: 1px solid $borderColor
+
+    // prevent border stacking
+    .child-row:last-child > td > div > .child-table-wrapper > table
+      border-bottom: 0
+
+    .child-row
+      th
+        font-size: small
+
+      td
+        // hack: using hardcoded min-width values here because width is not working
+        &.teams
+          @media (min-width: $phone)
+            min-width: 200px
+          @media (min-width: $tablet)
+            min-width: 250px
+          @media (min-width: $desktop-small)
+            min-width: 350px
+          @media (min-width: $desktop-medium)
+            min-width: 450px
+
+        @media (min-width: $tablet)
+          &.name
+            min-width: $nameColWidth
+          &.direct_reports
+            min-width: $directReportsColWidth
+
+      & > td
+        padding: 0 0 0 8px
+        position: relative
+
+      &.shown > td
+        border-top: 1px solid $borderColor
+
+    // apply border right once only for nested tables - in the first child table
+    > tbody > .child-row.shown > td
+      border-right: 1px solid $borderColor
+
+    .collapse-bar
+      width: 5px
+      cursor: pointer
+      position: absolute
+      top: 0 // needed for FF
+      height: 100%
+      border: 1px solid $borderColor
+      border-top-width: 0
+      background-color: lighten($borderColor, 15%)
+      transition: 0.2s all ease-in-out
+
+      &:hover
+        background: darken($borderColor, 5%)
+
+    .see-all
+      border-top: 1px solid $borderColor
+      text-align: center
+
+  #users-table_paginate
+    .paginate_button:not(.current):not(.disabled):hover
+      background: $buttonPrimaryBg

@@ -1,0 +1,92 @@
+#home-office365
+
+  .masthead
+    margin-bottom: 7vw
+
+  @media (max-width: $desktop-small)
+    .recognize-marketing-header
+      flex-direction: column
+
+  .recognize-marketing-header
+    position: relative
+    justify-content: space-around
+
+    @media (min-width: $desktop-small)
+      .text-desc
+        width: 50%
+        padding-top: 50px
+        margin-left: 10px
+
+    .svg-image
+      margin-right: 10px
+
+    svg
+      position: absolute
+      z-index: -1
+      left: -30px // Due to .padding30 on masthead html
+      bottom: 0
+
+    img
+      padding-top: 50px
+
+  .apps-wrapper
+    width: 80%
+    margin: auto
+
+  @media (min-width: $desktop-medium)
+    .apps-list
+      display: flex
+      justify-content: space-around
+      flex-wrap: wrap
+
+  .app
+    @media (min-width: $desktop-medium)
+      padding: 0 5%
+      width: 450px
+
+    img
+      margin-bottom: 30px
+
+  .tutorial,
+  .quote-section
+    margin: 7vw auto 10vw
+
+  .tutorial
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.2)
+
+    @media (max-width: $tablet)
+      .arrow-right
+        display: none
+
+      img
+        width: 70px
+
+    & > *
+      margin: 0 10px
+
+    .cta
+      @media (min-width: $tablet)
+        @include h2()
+
+  hr
+    width: 75%
+
+
+  &.viewer-outlook
+    .login-recognize-account,
+    .button-yammer-plain
+      display: none !important
+
+    h1
+      margin-top: 30px
+
+      i
+        font-weight: 600
+
+    #loading
+      margin-top: 100px
+
+      p
+        font-family: arial, sans-serif
+        color: #888
+        letter-spacing: 1px

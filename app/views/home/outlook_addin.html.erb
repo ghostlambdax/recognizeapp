@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+
+<style>
+  html, body, #wrapper {
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+    min-width: 100%;
+    font-family: Lato, Helvetica, San Francisco, sans-serif;
+  }
+
+  p {
+    font-family: arial, sans-serif;
+    font-size: 11px;
+    color: #888;
+  }
+
+  #wrapper {
+    opacity: 0;
+    -webkit-transition: .5s opacity linear;
+    transition: .5s opacity linear;
+  }
+
+  #wrapper.loaded {
+    opacity: 1;
+  }
+
+  #wrapper .inner {
+    text-align: center;
+  }
+
+  .recognize {
+    color: #1568A6;
+    font-weight: 600;
+  }
+
+  .button {
+    background: #1568A6;
+    padding: 10px 20px;
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+</style>
+
+<div id="wrapper" style="display: flex; align-items: center; justify-content: center; height: 100%; min-height: 100%; width: 100%; min-width: 100%">
+  <div class="inner">
+    <% if params[:logout].present? %>
+      <h1 class="recognize">Recognize</h1>
+      <%= link_to t('dict.login'), outlook_addin_path, class: "button" %>
+    <% else %>
+      <img src="/assets/icons/outlook-progress.gif" alt="Loading Recognize">
+      <p>Loading <span class="recognize">Recognize</span></p>
+    <% end %>
+  </div>
+</div>
+
+<% # TODO use partial? %>
+<script id="officeScript" src="//appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+<%= javascript_include_tag "outlook-load" %>
+<script>
+
+  setTimeout(function() {
+      document.getElementById("wrapper").className = "loaded";
+  }, 200);
+
+  function queryParams(callback) {
+    var searchStr = window.location.search;
+    if(typeof searchStr === "undefined" ||  searchStr === "") {
+      return {};
+    }
+
+    var obj = paramStringToObject(searchStr.slice(searchStr.indexOf('?') + 1), callback);
+    return obj;
+  }
+
+  function paramStringToObject(paramString, callback) {
+    // PETE - 2015-06-10
+    // This algorithm is pretty terrible, as I'm starting to hack it up
+    // We should probably look to replace this
+    var obj = {},
+      hashes = decodeURIComponent(paramString).split('&');
+
+    for(var i = 0; i < hashes.length; i++)
+    {
+      // split on = but not == because of base64
+      // TODO: there has to be a better way, but because of the 2nd '='
+      // character negation class, the first letter of value will go away
+      // with the split, so i bring it back by wrapping it in a group
+      // and join it up later
+      var paramArray = hashes[i].split(/=([^=])/);
+
+      if(paramArray[1]) { // if there is a value
+        paramArray = [paramArray[0], paramArray[1]+paramArray[2]];
+      } else {
+        paramArray = [paramArray[0].split(/=/)[0], ""];
+      }
+
+      if(callback) {
+        paramArray = callback(paramArray[0], paramArray[1]);
+      }
+      obj[paramArray[0]] = paramArray[1];
+    }
+    return obj;
+  }
+
+  function getUrl() {
+    var params = queryParams();
+
+    var map = {
+      "stream": "/redirect/recognitions?viewer=outlook",
+      "recipient": "/redirect/recognitions/new_panel?viewer=outlook",
+      "send_recognition": "/redirect/recognitions/new?viewer=outlook"
+    };
+
+    return map[params["page"]] || map["stream"];
+  }
+
+  Office.onReady(function() {
+    var idp = new window.R.IdpRedirecter(),
+        url = getUrl(),
+        mailbox = Office.context.mailbox;
+
+    function getEndPoint() {
+      if (Office && Office.context &&
+          Office.context.mailbox &&
+          Office.context.mailbox.officeAppContext) {
+        return Office.context.mailbox.officeAppContext.get_docUrl().match("office365") ? "outlook.office365.com" : "outlook.office.com";
+
+      } else {
+        return "outlook.office.com";
+      }
+    }
+
+    url += "&referrer="+getEndPoint();
+
+    <% if params[:logout].blank? %>
+
+      <% if current_user.present? %>
+
+      window.location.assign( url );
+
+      <% else %>
+
+      mailbox.getUserIdentityTokenAsync(function(result) {
+        var outlook_identity_token = result.value;
+
+        console.log("outlook_identity_token", outlook_identity_token);
+        idp.checkIdp(Office.context.mailbox.userProfile.emailAddress, url, {referrer: getEndPoint(), outlook_identity_token: outlook_identity_token});
+      });
+
+      <% end %>
+
+    <% end %>
+
+    });
+
+</script>
+
+</body>
+
+</html>

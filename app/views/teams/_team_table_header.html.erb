@@ -1,0 +1,9 @@
+<tr id="<%=team_id%>">
+	<th class="name"> <%=t("teams.whose_teams", whose: team_type) %></th>
+	<th class="members"><%= t("dict.active_members")%></th>
+  <% show_points do %>
+	  <th class="score"><%= reset_interval_label(current_user.reset_interval)%> <%= t("teams.team") %> <%= t("dict.points")%></th>
+	<% end %>
+  <th class="res cursor" title="<%= t("dict.res_definition") %>"><%=t("dict.res")%><sup>?</sup><div><%= t('res.by_recipient')%></div></th>
+  <th class="res cursor" title="<%= t("dict.res_sender_definition") %>"><%=t("dict.res")%><sup>?</sup><div><%= t('res.by_sender')%></div></th>
+</tr>

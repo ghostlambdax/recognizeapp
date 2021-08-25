@@ -1,0 +1,98 @@
+@mixin align-items($value: stretch) {
+  align-items: $value;
+}
+@mixin animation-duration($times...) {
+  animation-duration: $times;
+}
+@mixin animation-fill-mode($modes...) {
+  animation-fill-mode: $modes;
+}
+@mixin animation-iteration-count($values...) {
+  animation-iteration-count: $values;
+}
+@mixin animation-name($names...) {
+  animation-name: $names;
+}
+@mixin animation-play-state($states...) {
+  animation-play-state: $states;
+}
+@mixin animation-timing-function($motions...) {
+  animation-timing-function: $motions;
+}
+@mixin animation($animations...) {
+  animation: $animations;
+}
+@mixin appearance($value) {
+  appearance: $value;
+}
+@mixin box-sizing($box) {
+  box-sizing: $box;
+}
+@mixin column-count($int: auto) {
+  column-count: $int;
+}
+@mixin filter($filter) {
+  filter: $filter;
+}
+@mixin linear-gradient ($pos, $g1, $g2: null,
+                       $g3: null, $g4: null,
+                       $g5: null, $g6: null,
+                       $g7: null, $g8: null,
+                       $g9: null, $g10: null,
+                       $fallback: null) {
+  $full: $g1, $g2, $g3, $g4, $g5, $g6, $g7, $g8, $g9, $g10;
+  $fallback-color: nth($g1, 1);
+  // If $fallback is a color use that color as the fallback color
+  @if (type-of($fallback) == color) or ($fallback == "transparent") {
+    $fallback-color: $fallback;
+  }
+
+  background-color:  $fallback-color;
+  background-image: linear-gradient($full);
+}
+
+@mixin display-box {
+  display: flex;
+  justify-content: center;
+}
+@mixin flex-direction($direction: row) {
+  flex-direction: $direction;
+}
+
+@mixin flex($f) {
+  flex: $f;
+}
+
+@mixin justify-content($direction: flex-start) {
+  justify-content: $direction;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} { @content; }
+
+}
+@mixin transform($property: none) {
+  transform: $property;
+}
+@mixin transition-delay($times...) {
+  transition-delay: $times;
+}
+
+@mixin transition-duration($times...) {
+  transition-duration: $times;
+}
+
+@mixin transition($properties...) {
+  @if length($properties) < 1 {
+    transition: all 0.15s ease-out 0s;
+  }
+  transition: $properties;
+}
+@mixin radial-gradient($g1, $g2, $g3) {
+  $fallback-color: nth($g2, 1);
+  background-color:  $fallback-color;
+  background-image: radial-gradient($g1, $g2, $g3);
+}
+@mixin background($backgrounds...) {
+  background: $backgrounds;
+}

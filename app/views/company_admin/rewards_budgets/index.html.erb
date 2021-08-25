@@ -1,0 +1,110 @@
+<% content_for :rewards_filter do %>
+  <%= render layout: 'layouts/create_catalog_dropdown', locals: {company: @company, catalog: @catalog, show_all_currencies_in_dropdown: false} do |catalog| %>
+    <%= link_to(catalog.label, rewards_budget_path(catalog)) %>
+  <% end %>
+<% end %>
+
+<div class="row-fluid">
+  <div class="span8">
+    <h2>Buy points for gift cards</h2>
+    <% if @company.company_badges.recognitions.without_sending_limit.size > 0 %>
+      <div class="warning">
+
+        <strong>
+          ⚠ <%= @company.company_badges.recognitions.without_sending_limit.size %> badges</strong>
+        do not have a sending limit specified. <br /><br />Without setting send limits on your badges, the amount of points awarded may exceed your budget. <br />You can update these limits
+        <strong>
+          <%= company_admin_custom_badges_link("in your badges page.", status: "active")%>
+        </strong>
+
+      </div>
+    <% end %>
+    <div class="well">
+      <%= form_for @point_form, url: company_admin_catalog_rewards_budgets_path(catalog_id: @catalog.id), id: "payment-form", remote: true do |f| %>
+
+        <div class="row-fluid">
+          <div class="span7">
+            <label>
+              Currency amount for gift cards<br>
+              <%= f.text_field :amount, type: "number", placeholder: "10,000" %>
+            </label>
+
+            <div class="marginBottom20">
+              We accept direct deposit and checks for 0% fee.
+            </div>
+
+            <button id="submit-button" type="submit" class="button button-large button-highlight form-loading-ignore">Request</button>
+          </div>
+          <div class="span5">
+            <div class="well well-white">
+              <h4>YOU ARE BUYING</h4>
+              <h4><%= @catalog.currency_prefix %><span class="purchasingAmount">0</span></h4>
+              <h5>+ <%= @catalog.currency_prefix %><span class="purchasingFee">0</span> <span class="subtleText">(<span id="purchasingFeePercentage"><%= @fee_percentage %></span>% fee)</span></h5>
+              <hr>
+              <h2><%= @catalog.currency_prefix %><span class="purchasingTotal">0</span></h2>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="row-fluid">
+        <div class="span10">
+          <%= link_to "Questions or comments?", contact_path %>
+        </div>
+        <div class="span2">
+          <p class="subtleText"><span id="pointsConversion"><%= t("dict.pts", points: @reward_calculator.points_to_currency_ratio) %></span> = <%= @catalog.currency_prefix %>1</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="span4">
+    <h2>Points bank economy</h2>
+    <dl class="dt-stats">
+      <dd>
+        <span id="currentAmount" data-current-amount="<%= @reward_calculator.reward_monetary_balance %>">
+          <%= humanized_money_with_symbol(@reward_calculator.reward_monetary_balance(money: true)).no_zeros %>
+        </span>
+        (<span id="currentPoints" data-current-points="<%= @reward_calculator.reward_points_balance %>"><%= number_with_delimiter(@reward_calculator.reward_points_balance) %></span>pts)
+      </dd>
+      <dt>Deposit Balance</dt>
+
+      <dd>
+        <span id=""><%= humanized_money_with_symbol(@reward_calculator.economy_monetary_value).no_zeros %></span>
+        (<span id=""><%= number_with_delimiter(@reward_calculator.economy_points_value) %></span>pts) 
+      </dd>
+
+      <% 
+        economy_title = "The maximum points able to be earned based upon the configured badge sending limits."
+      %>
+
+      <dt title="<%= economy_title%>">
+        Points economy (per <%= reset_interval_noun(Interval.new(@company.reset_interval)) %>)<sup>?</sup>
+      </dt>
+
+      <dd id="awarded-unredeemed">
+        <span class="value"><%= humanized_money_with_symbol(@reward_calculator.awarded_unredeemed_value).no_zeros %></span>
+        (<span class="points"><%= number_with_delimiter(@reward_calculator.awarded_unredeemed_points) %></span>pts) 
+      </dd>
+      <dt>Unredeemed</dt>
+
+      <dd id="deficitAmountWrapper" <% if @reward_calculator.in_deficit? %>class="warning"<% end %>>
+        <%= @catalog.currency_prefix %><span id="deficitAmount" class="deficitAmount" data-deficit="<%= @reward_calculator.monetary_deficit.abs %>"><%= number_with_delimiter(@reward_calculator.monetary_deficit.abs).no_zeros %></span> (<span class='deficitPoints'><%= number_with_delimiter(@reward_calculator.points_deficit.abs) %></span>pts)
+      </dd>
+      <dt title="If you want to match the rewards to the amount of points that can be given via recognition.">Amount needed to deposit<sup>?</sup></dt>
+
+      <dd class="positive">
+        <%= @catalog.currency_prefix %><span class="purchasingAmount">0</span>
+        (<span class="purchasingPoints">0</span>pts)
+      </dd>
+      <dt>Points in checkout</dt>
+
+      <dd class="success">
+        <%= @catalog.currency_prefix %><span class="newPrice">0</span>
+        (<span class="newPoints">0</span>pts)
+      </dd>
+      <dt>After purchase</dt>
+    </dl>
+  </div>
+</div>
+

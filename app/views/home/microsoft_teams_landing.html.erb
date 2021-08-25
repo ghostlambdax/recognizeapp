@@ -1,0 +1,139 @@
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Microsoft Teams Employee Recognition" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="A robust social employee recognition & rewards program inside Microsoft Teams." />
+  <meta property="og:image" content="/assets/pages/home-microsoft-teams-landing/teams-recognize.jpg" />
+<% end%>
+
+<% content_for :title, "Microsoft Teams Employee Recognition" %>
+<% content_for :description, "Learn how to implement an enterprise grade employee recognition & rewards program directly integrated into Microsoft Teams." %>
+
+<section id="main" class="padding0">
+  <section style="padding: 5%;">
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="marginBottom50">
+          <h1 class="balance-text"><%= @title %></h1>
+          <p class="balance-text tagline"><%=@intro_description %></p>
+          <ul class="check-list">
+            <li class="tagline">Peer & manager employee recognition</li>
+            <li class="balance-text tagline">Social feed of recognitions in Teams</li>
+            <li class="balance-text tagline">Celebrate anniversaries & birthdays in Teams</li>
+            <li class="balance-text tagline">400 gift cards or upload your own rewards</li>
+          </ul>
+          <div class="flex align-items-center">
+            <%= schedule_demo_link %>
+            <a href="https://appsource.microsoft.com/en-us/product/office/WA200001519" class="button button-large button-border add-to-teams" target="_blank">Add to Teams</a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="span6 marginTop50">
+        <div class="youtube-video" data-id="iQImlMQ7iIo" data-play="stop"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="all-points">
+      <section class="point1 flex">
+          <%= lazy_image_tag "awards/stevie-2018-2019.png", alt: "2018 & 2019 Stevie Winner for Total Rewards Provider" %>
+          <div class="content">
+            <h2 class="section-title white balance-text">#1 Employee Recognition Provider for Office 365</h2>
+            <%= link_to "Learn more", office365_path, class: "button button-large"%>
+          </div>
+      </section>
+
+
+      <section class="point2 flex">
+          <div class="content">
+            <h2 class="section-title balance-text">Staff rewards from Microsoft Teams</h2>
+            <p class="section-description balance-text">Recognize provides hundreds of gift card rewards at the brands your staff want. Rewards can be auto-approved or approval at redemption time. Contact us to learn the latest reward feature set.</p>
+            <%= link_to"Employee Rewards", rewards_path, class: "button button-large"%>
+          </div>
+          <%= lazy_image_tag "pages/home-microsoft-teams-landing/companies.jpg", alt: "Staff redeem gift cards in Microsoft Teams from vendors like Amazon, Visa, or Starbucks."%>
+      </section>
+
+      <section class="point3 flex">
+          <%= lazy_image_tag "pages/home-microsoft-teams-landing/teams-business.png", alt: "A business shop illustration with Microsoft teams logo", id: "microsoft-teams-logo"%>
+          <div class="content">
+            <h2 class="section-title balance-text">Enable managers to give on-the-spot bonuses in a Microsoft Teams tab</h2>
+            <p class="balance-text">Give managers an easy way to give bonuses right when good work is done. Staff can take the recognitions they earn and choose rewards from over 400 vendors. Staff can also choose from items you offer. Enter the inventory</p>
+          </div>
+      </section>
+
+      <section class="point4 flex">
+          <div class="content">
+            <h2 class="section-title balance-text">Promote & gain insight into your company values</h2>
+            <p class="balance-text">Add your company value architypes in the form of badges, including images, descriptions, titles, points, limits, roles, and more. See top performers across time and value. Managers can see their direct reports top badges.</p>
+          </div>
+            <%= lazy_image_tag "pages/home-microsoft-teams-landing/insight-code-profit.png", alt: "Insight Code and Profit recognition badge", id:"insight" %>
+      </section>
+
+      <section class="point5 flex">
+          <div class="img-container">
+            <%= lazy_image_tag "pages/home-microsoft-teams-landing/office-365.png", alt: "Office 365 logo transparent" %>
+          </div>
+          <div class="content">
+            <h2 class="section-title balance-text">Plug-n-Play for Office 365</h2>
+            <p>Only employee benefits program inside
+              <%= link_to "Outlook", marketing_outlook_path%>,
+              <a href="#">Teams</a>,
+              <%= link_to "Sharepoint", office365_path%>, and
+              <%= link_to "Azure", office365_path%>.
+            </p>
+            <%= schedule_demo_link %>
+          </div>
+      </section>
+    </div>
+  </section>
+
+
+  <section id="bottom">
+    <div class="all-points">
+      <section class="point1 flex">
+          <%= lazy_image_tag "pages/home-microsoft-teams-landing/people1.jpg", alt: "person-calling", id:"person-calling", class: "stock-images" %>
+          <div class="content pattern-seigaiha">
+            <div class="description">
+              <h2 class="section-title balance-text">Drive non-monetary daily recognition in Microsoft Teams</h2>
+              <p class="balance-text">Promote company values and staff accomplishments first and foremost. Through status, access, and power, companies can drive motivation through non-monetary strategies.</p>
+            </div>
+          </div>
+      </section>
+      <section class="point2 flex">
+          <h2 class="section-title balance-text">Automate service anniversary & rewards in Teams as your company grows</h2>
+          <div><%= lazy_image_tag "pages/home-microsoft-teams-landing/badges.png", alt: "Employee recognition badges" %></div>
+      </section>
+      <section class="point3 flex">
+          <div class="content pattern-dotpattern">
+            <div class="description">
+              <h2 class="section-title balance-text">Offer staff rewards your company provides</h2>
+              <p class="balance-text">Paid vacation for the family, dinner for two, or just the afternoon off.</p>
+            </div>
+          </div>
+          <%= lazy_image_tag "pages/home-microsoft-teams-landing/lake_side_stock.jpg", alt: "Lake photo", id: "lake-side", class: "stock-images" %>
+      </section>
+      <section class="point4 flex">
+          <%= lazy_image_tag "pages/home-microsoft-teams-landing/people2.jpg", alt: "People illustration", id: "people-drawing", class: "stock-images"   %>
+          <div class="content">
+            <h2 class="section-title balance-text">Recognize &amp; get back to work</h2>
+            <p class="balance-text">Staff need their core tools in one place. Being in Teams, Outlook, & Sharepoint accomplishes that.</p>
+          </div>
+      </section>
+    </div>
+  </section>
+
+  <section id ="schedule-demo">
+    <div class="flex">
+      <h2 class="section-title">Engage your company and your culture in Microsoft Teams</h2>
+      <%= schedule_demo_link %>
+    </div>
+  </section>
+</section>
+
+
+
+<%= render :partial => 'footer' %>
+<%= render partial: "layouts/youtube_load" %>

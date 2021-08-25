@@ -1,0 +1,6 @@
+<%= render partial: "anniversary_user_sets" if @anniversary_users.present? %>
+<% if @anniversary_users.present? && @birthday_users.present? %>
+    <div style="<%= mail_styles(:hr_styles) %>; margin: 25px 0">
+    </div>
+<%end%>
+<%= render partial: "birthday_user_sets" if @birthday_users.present? %>

@@ -1,0 +1,76 @@
+.cms_integrations
+
+#cms_integrations-index
+  @media (max-width: $tablet)
+    .top-banner
+      flex-direction: column-reverse
+      text-align: center
+
+      img
+        margin-bottom: 20px
+
+
+  .integration-list-item
+    img
+      margin-right: 10px
+      width: 25px
+      height: auto
+
+  .integration-list
+    margin: auto
+
+#cms_integrations-show
+  .wrapper-outer
+    padding-left: 0
+    padding-top: 0
+    padding-right: 0
+
+  #view-main-wrapper
+    @media (min-width: $tablet)
+      padding-top: 60px
+
+  .tool-list
+    align-items: center
+    display: flex
+
+    li
+      text-align: center
+      padding: 0 7px
+
+      img
+        display: inline-block
+        max-height: 30px
+        max-width: 80px
+        margin-bottom: 10px
+
+      span
+        display: block
+        font-size: 10px
+
+  .integration-masthead
+    background: lighten(desaturate($headerBg, 40%), 10%)
+    padding: 50px 30px
+
+    h1, p, li, strong, h2, h3, h4
+      color: white
+
+  .integration-about-wrapper
+    margin-top: -158px
+
+    @media (max-width: $tablet)
+      margin: 0 0 30px 0
+
+    .inner
+      margin: auto
+      width: 230px
+
+      @media (max-width: $tablet)
+        width: 80%
+        text-align: center
+
+        img
+          max-width: 150px
+
+
+
+

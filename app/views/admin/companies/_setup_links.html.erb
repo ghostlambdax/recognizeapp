@@ -1,0 +1,127 @@
+<div class="flex flex-wrap site-admin-dashboard-wells">
+  <div class="well">
+    <div class="package-select">
+      <h3>Package</h3>
+      <p>The pricing package purchased by the company.</p>
+      <%= form_for @company, remote: true do |f| %>
+        <%= f.select :price_package, options_for_packages(@company), {}, {class: "package-selector", data: {"endpoint": update_price_package_admin_company_path(@company)}} %>
+        <label id="save-info"></label>
+      <% end %>
+      <hr>
+      <div>
+        User sync frequency: <%= select_tag :sync_frequency, options_for_select(options_for_sync_frequency, @company.settings.sync_frequency), { prompt: 'Select sync frequency', data: {"endpoint": set_sync_frequency_admin_company_path(@company)} } %>
+        <label id="save-info"></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="well">
+    <h3>Paid Features</h3>
+    <p>This enables the <strong>Company Admin</strong> panel.</p>
+    <%= show_toggle @company.allow_admin_dashboard?,
+                    "",
+                    data: {setting: "allow_admin_dashboard", endpoint: toggle_setting_admin_company_path(@company, setting: :allow_admin_dashboard)} %>
+
+  </div>
+
+  <div class="well">
+    <h3>Automated Programs</h3>
+    <p>This enables the anniversary recognition program, and automated email communication from Recognize such as the daily and monthly summaries.</p>
+    <%= show_toggle @company.program_enabled?,
+                    "",
+                    data: {setting: "program_enabled", endpoint: toggle_setting_admin_company_path(@company, setting: :program_enabled)} %>
+
+  </div>
+
+  <div class="custom-badges well">
+    <h3>Custom badges</h3>
+    <p>Takes a few hours to fully enable.</p>
+    <div>
+      <% if @company.custom_badges_enabled? %>
+        Enabled
+      <% else %>
+        <%= link_to "Enable", enable_custom_badges_admin_company_path(@company), remote: true, method: :post, class: "enable_custom_badges_link", data: {disable_with: "Please wait..."} %>
+      <% end %>
+    </div>
+    <p class="subtle-text">Enable for all paid companies</p>
+
+  </div>
+
+  <div class="well">
+    <h3>Achievements</h3>
+    <p>This feature allows companies to limit number of recognition badges received per user.</p>
+    <%= show_toggle @company.allow_achievements?,
+                    "",
+                    data: {setting: "allow_achievements", endpoint: toggle_setting_admin_company_path(@company, setting: :allow_achievements)} %>
+    <p class="subtle-text">Enable for all paid companies</p>
+  </div>
+
+  <div class="well">
+    <h3>Allow custom field mapping</h3>
+    <p>Allow company admins to setup mappings for user custom field attributes to either MS Graph or Azure AD schema extension attributes.</p>
+    <%= show_toggle(@company.settings.allow_custom_field_mapping?, "" ,
+      title: "",
+      data: { company_setting: "allow_custom_field_mapping" , endpoint: toggle_setting_admin_company_path(@company,
+      company_setting: :allow_custom_field_mapping) }) %>
+    <p class="subtle-text">IT Only should enable this</p>
+
+  </div>
+
+  <div class="well">
+    <h3>Allow syncing of custom fields</h3>
+    <p>Allow syncing of user custom field attributes which can influence accounts spreadsheet import as wellas MS Graph and Azure AD sync.</p>
+    <%= show_toggle(@company.settings.sync_custom_fields?, "" ,
+      title: "",
+      data: { company_setting: "sync_custom_fields" , endpoint: toggle_setting_admin_company_path(@company,
+      company_setting: :sync_custom_fields) }) %>
+    <p class="subtle-text">IT Only should enable this</p>
+
+  </div>
+
+  <div class="well">
+    <h3>Webhooks</h3>
+    <p>Enable or disable a companies ability to add or manage webhooks.</p>
+    <%= show_toggle(@company.settings.allow_webhooks?, "" , title: "" , data: { input: {name: "is_active"}, company_setting: "allow_webhooks" , endpoint: toggle_setting_admin_company_path(@company, company_setting: :allow_webhooks) }) %>
+      <p class="subtle-text">IT Only should enable this</p>
+
+  </div>
+  <div class="well warning">
+    <h3>Theme</h3>
+    <p class="warning">Theme should only be enabled by Recognize Engineering. Do not enable.</p>
+    <span>
+      <%# link_to "Compile", compile_theme_admin_company_path(@company), remote: true, method: :post, class: "compile_themes_link", data: {disable_with: "Please wait..."} %>
+    </span>
+    <% if count = Delayed::Job.where(queue: "themes").size and count > 0 %>
+      <span id="theme-edit-message"><%= link_to "Theme compilation in progress (#{count})", admin_queue_path(queue: "themes") %></span>
+    <% end %>
+    <hr>
+    <%= show_toggle @company.has_theme?,
+                    "",
+                    id: "custom-theme-toggle", data: {setting: "has_theme", endpoint: toggle_setting_admin_company_path(@company, setting: :has_theme)}, wrapper_class: "inline" %>
+    <%= link_to "Edit", "javascript://none", id: "edit-theme-link", data: {
+        endpoint: company_admin_customizations_path(network: @company.domain),
+        compileendpoint: compile_theme_admin_company_path(@company),
+        method: :post,
+        stylesheet: @company&.customizations&.stylesheet || ""} %>
+    <p class="subtle-text">IT Only should enable this</p>
+
+  </div>
+
+  <div class="well">
+    <h3>Recaptcha</h3>
+    <p>To enable or disable the added authentication security test.</p>
+    <%= show_toggle @company.settings.recaptcha?,
+                    "",
+                    data: {company_setting: "recaptcha", endpoint: toggle_setting_admin_company_path(@company, company_setting: :recaptcha)} %>
+
+  </div>
+
+  <div class="well">
+    <h3>Frontline Logout</h3>
+    <p>Help frontline workers easily login so another person can login. Will show logout button in toolbar.</p>
+    <%= show_toggle @company.settings.frontline_logout?,
+                    "",
+                    data: {company_setting: "frontline_logout", endpoint: toggle_setting_admin_company_path(@company, company_setting: :frontline_logout)} %>
+
+  </div>
+</div>

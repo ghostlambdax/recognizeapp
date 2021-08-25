@@ -1,0 +1,34 @@
+<%= render 'notice_and_inline_js_for_stream' %>
+
+<div class="top-background"></div>
+
+<% unless params[:code] || current_user.has_read_welcome? %>
+  <%= render 'welcome_notice' %>
+<% end %>
+
+<div class="flex justify-content-center align-items-start relative">
+  <%
+    # STREAM
+  %>
+  <div class="stream-wrapper flex">
+    <div id="stream" class="opacity0">
+      <% if @is_first_page %>
+        <div class="recognition-card selected-team-name no-box-shadow">
+          <%= render partial: 'recognitions/company_name' %>
+          <% if @team %><h4 class="team-name"><%= @team.name %></h4><% end %>
+
+          <% if @filter_by.present? %>
+            <%# Note: Currently there can only be one possible filter at a time (of two total filters) %>
+            <%# this output needs to be formatted in a better way to group the active filter list if a new filter is added %>
+
+            <% @filter_by.each do |badge| %>
+              <p><%= badge %></p>
+            <% end %>
+          <% end %>
+        </div>
+      <% end  %>
+
+      <%= render 'recognitions_with_default', recognitions: @recognitions %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,146 @@
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Award Certificate for Service Anniversaries" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="Print out or download the PDF award certificate template for years of service employee recognition. Generate for free; no sign of required." />
+  <meta property="og:image" content="/assets/pages/award-generator/service-thumb.jpg" />
+<% end%>
+
+<% content_for :title, _("Award Certificate for Service Anniversaries") %>
+<% content_for :description, _("Print out or download the PDF award certificate template for years of service employee recognition. Generate for free; no sign of required.") %>
+
+<link href="https://fonts.googleapis.com/css2?family=Bitter&display=swap" rel="stylesheet">
+
+<h1><%= feather_icon('award', {width: 45, height: 30, color: '#868D90'}) %>
+  <%= _('Service Anniversary Award Certificate') %></h1>
+<p class="tagline width-800 balance-text"><%= _('Use the Recognize service anniversary award template to create a certificate to give to employees as a PDF or printed out. Sign the PDF after you create it. All totally free to give employee recognition to staff.') %></p>
+
+  <section id="awardGenerator" class="marginBottom30">
+
+  <div class="certificate-inner">
+    <div class="controls">
+      <div class="control"><a id='export-pdf' href="javascript://" class="button button-primary"><%= _('Generate PDF') %></a>
+      </div>
+      <div>
+        <label><%= _('Font') %></label>
+        <input type='text' value='bitter, serif' id='fontFamily'>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="text-options">
+        <div class="control" id='bigNumber'
+          data-align="center"
+          data-x=690
+          data-y=470
+          data-fontSize=280
+          data-draggable="true"
+          data-fill="#ffffff"
+          data-width="350"
+        >
+
+          <label for="bigNumber"><%= _('Big Number') %></label>
+          <input id='bigNumber-text' type='text' value='7'>
+          <input type='color' id='bigNumber-color'>
+        </div>
+
+
+        <div class="control" id='title'
+             data-x=1710
+             data-y=300
+             data-fontSize=200
+             data-draggable="true"
+             data-fill="#235f93"
+             data-width="1300"
+        >
+
+          <label for="title-text"><%= _('Title') %></label>
+          <input id='title-text' type='text' value="<%= _('Service Anniversary Award') %>">
+          <input type='color' value='#235f93'>
+        </div>
+
+        <div class="control" id='description'
+             data-x=1710
+             data-y=940
+             data-fontSize=100
+             data-draggable="true"
+             data-fill="#000000"
+             data-width="1000"
+        >
+
+          <label for="description-text"><%= _('Description') %></label>
+          <input id='description-text' type='text' value="<%= _('For 7 years of service at Acme Inc.') %>">
+          <input type='color' value='#000000'>
+        </div>
+
+
+        <div class="control" id='signature'
+             data-x=2430
+             data-y=2200
+             data-fontSize=50
+             data-draggable="true"
+             data-fill="#888888"
+             data-width="540"
+             data-align="center"
+        >
+
+          <label for="signature-text"><%= _('Signature') %></label>
+          <input id='signature-text' type='text' value="<%= _('Signature') %>">
+          <input type='color' value='#888888'>
+        </div>
+
+
+
+
+        <div class="control" id='name'
+             data-x=1530
+             data-y=1600
+             data-fontSize=120
+             data-draggable="true"
+             data-fill="#000000"
+             data-width="1500"
+             data-align="center"
+        >
+
+          <label for="name-text"><%= _('Name') %></label>
+          <input id='name-text' type='text' value="<%= _('Name here') %>">
+          <input type='color' value='#000000'>
+        </div>
+
+
+        <div class="control" id='date'
+             data-x=1570
+             data-y=2050
+             data-fontsize=50
+             data-draggable="true"
+             data-fill="#000000"
+             data-width="520"
+             data-align="center"
+        >
+
+          <label for="date-text"><%= _('Date') %></label>
+          <input id='date-text' type='text' value="<%= _('May 24th, 2021') %>">
+          <input type='color' value='#000000'>
+        </div>
+      </div>
+      <div id="award-viewpoint"></div>
+    </div>
+  </div>
+
+</section>
+
+<section class="marginBottom50">
+<h3 class=""><%= t("dict.language") %></h3>
+
+
+  <% CompanySetting.available_locale_options.each do |name, lang|  %>
+
+    <%= link_to name, "?locale=#{lang}", class: 'margin5 inline-block' %>
+
+  <% end %>
+
+</section>
+
+
+<%= render partial: 'home/footer' %>
+
+<%= javascript_include_tag "3p/konva" %>

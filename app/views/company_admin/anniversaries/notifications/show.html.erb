@@ -1,0 +1,91 @@
+<h5>Anniversary/Birthday Email Notifications</h5>
+
+
+<%= form_tag change_roles_company_admin_anniversaries_notifications_path(network: @company.domain), method: :put, remote: true, id: "anniversary-form" do %>
+    <p><label>Choose who will receive an email when it is an employee's birthday or anniversary at the company.</label></p>
+
+
+    <div class="row">
+
+      <div class="span4">
+        <h5 class="marginTop15">Roles</h5>
+
+        <% if @roles.present? || @company_roles.present? %>
+            <table class="table-hover notification">
+              <thead>
+              <tr>
+                <th class="small-text subtle-text">Anniversary</th>
+                <th class="small-text subtle-text">Birthday</th>
+              </tr>
+              </thead>
+              <tbody>
+              <%@roles.each do |role|%>
+                  <tr>
+                    <td>
+                      <%= check_box_tag "anniversary[roles][#{role.id}]", nil, @company.role_is_notified_of_anniversary?(role), :class => "role_toggle"%>
+                    </td>
+                    <td>
+                      <%= check_box_tag "birthday[roles][#{role.id}]", nil, @company.role_is_notified_of_birthday?(role), :class => "role_toggle"%>
+                    </td>
+                    <td>
+                      <%= role.long_name %>
+                    </td>
+                  </tr>
+              <%end%>
+              <tr><td colspan="2"><hr></td></tr>
+              <%@company_roles.each do |role|%>
+                  <tr>
+                    <td>
+                      <%= check_box_tag "anniversary[company_roles][#{role.id}]", nil, @company.company_role_is_notified_of_anniversary?(role), :class => "role_toggle"%>
+                    </td>
+                    <td>
+                      <%= check_box_tag "birthday[company_roles][#{role.id}]", nil, @company.company_role_is_notified_of_birthday?(role), :class => "role_toggle"%>
+                    </td>
+                    <td>
+                      <%= role.name %>
+                    </td>
+                  </tr>
+              <%end%>
+              </tbody>
+            </table>
+        <%end%>
+
+      </div>
+
+      <div class="span6">
+        <h5 class="marginTop15">Team Managers</h5>
+
+        <% if @teams.present? %>
+            <table class="table-hover">
+              <thead>
+              <tr>
+                <th class="small-text subtle-text">Anniversary</th>
+                <th class="small-text subtle-text">Birthday</th>
+              </tr>
+              </thead>
+              <tbody>
+              <%@teams.each do |team|%>
+                  <tr>
+                    <td>
+                      <%= check_box_tag "anniversary[teams][#{team.id}]",  nil, @company.team_is_notified_of_anniversary?(team), :class => "role_toggle_individual_team"%>
+                    </td>
+                    <td>
+                      <%= check_box_tag "birthday[teams][#{team.id}]",  nil, @company.team_is_notified_of_birthday?(team), :class => "role_toggle_individual_team"%>
+                    </td>
+                    <td>
+                      <%= team.name%>
+                    </td>
+              <%end%>
+              </tr>
+              </tbody>
+            </table>
+        <%end%>
+
+        <%= submit_tag "Save Changes", :style => "display:none"%>
+
+      </div>
+
+    </div>
+
+<% end %>
+

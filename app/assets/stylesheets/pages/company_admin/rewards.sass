@@ -1,0 +1,131 @@
+@media (min-width: 700px)
+  .company_admin_rewards
+    .action-wrapper
+      min-width: 150px
+
+.company-admin-wrapper, .manager-admin-wrapper
+  .title-nav
+    max-width: 360px
+
+  .title-nav,
+  .aside-nav
+    width: 100%
+    float: none
+    flex: 1
+
+  .tab-nav
+    margin: 0
+
+
+.rewards-admin-nav
+  .title-nav
+    max-width: 100% !important
+
+#company_admin_rewards-index
+  .page-nav .aside-nav .dropdown-wrapper
+    text-align: left
+
+  .primary-nav-content
+    z-index: 1000
+
+#company_admin_redemptions-index
+  .aside-nav
+    nav
+      @include flex-display()
+      @include justify-content(space-between)
+
+.create-reward-button-wrapper
+  margin-right: 32px
+
+  .dropdown-menu
+    overflow: hidden !important
+
+.company_admin_rewards
+  #rewards-table_wrapper
+    .title
+      height: 20px
+
+    td.title
+      font-size: 16px!important
+    th.title
+      font-size: 13px!important
+      font-weight: normal
+    .actions
+      min-width: 80px
+
+  .image-field, .image
+    img
+      max-width: 150px
+
+.company_admin_rewards .table .title
+  font-size: inherit !important
+  margin-top: inherit !important
+
+.company_admin_rewards
+  .image-wrapper
+    margin-top: 20px
+
+  .form-wrapper
+    flex: 2
+    margin-right: 10px
+
+  form
+
+    .reward-image
+      max-width: 100%
+      max-height: 200px
+
+    .face-value
+      width: 100px
+
+    .quantity
+      width: 150px
+
+  textarea
+    height: 100px
+
+  .title
+    height: 44px
+    font-size: 26px !important
+
+  .input-xlarge
+    width: 100%
+    font-size: 18px
+
+  .success-mention
+    display: inline-block
+
+  #rewards-header-area
+    width: 100%
+    overflow: hidden
+
+@media (max-width: 1690px)
+  .company_admin_rewards
+    .page-nav
+      .title-nav
+        max-width: 320px
+        margin-right: 1%
+
+
+@media (max-width: 930px)
+  .company_admin_rewards
+    form
+      flex-direction: column
+
+    .image-wrapper
+      order: 0
+
+    .form-wrapper
+      order: 1
+
+@media (max-width: 500px)
+  .company_admin_rewards
+    .reward-card
+      width: 90%
+      margin: 20px auto
+      float: none
+
+#company_admin_rewards_transactions-index
+  .txn-available-balance
+    float: right
+    margin-bottom: 0

@@ -1,0 +1,303 @@
+#home-microsoft_teams_landing
+  #main
+    .add-to-teams
+      margin-left: 10px
+    .all-points
+      section
+        padding: 50px 100px
+
+    #features
+      width: 100%
+      .content
+        max-width: 100%
+        width: 550px
+      .all-points
+        .flex
+          justify-content: space-around
+        .point1
+          background-color: $headerBg
+          padding: 20px 200px
+          .content
+            width: 460px
+            line-height: 26px
+        .point2
+          .content
+            padding-top: 50px
+        .point3
+          background-color: #f3f4f7
+          padding: 50px 30px
+          .content
+            width: 500px
+            padding-left: 75px
+            padding-top: 50px
+        .point4
+          padding: 50px 50px
+          .content
+            h2
+              width: 375px
+            p
+              width: 440px
+        .point5
+          background-color: #f3f4f7
+          padding: 10px 50px
+          height: 200px
+          .flex
+            justify-content: space-around
+            padding-left: 300px
+
+          .img-container
+            width: 250px
+            position: relative
+
+            img
+              position: absolute
+              top: -60px
+              height: 300px
+              width: 100%
+
+    #bottom
+      max-width: 852px
+      margin: 100px auto
+      border: 1px solid grey
+      .all-points
+        .flex
+          height: inherit
+          justify-content: space-around
+        img.stock-images
+          width: 36%
+          max-width: 100%
+          max-height: 100%
+          object-fit: cover
+          object-position: 70% 30%
+        .content
+          width: 64%
+          max-width: 100%
+        .point1
+          height: 350px
+          padding: 0
+          margin: 0
+          img
+            height: 100%
+          .content
+            position: relative
+            .description
+              position: absolute
+              top: 20%
+              left: 10%
+        .point2
+          padding: 50px 50px 50px 50px
+          background-color: #294A8E
+          text-align: center
+          flex-wrap: wrap
+          img
+            width: 90%
+          h2, p
+            color: white
+
+        .point3
+          height: 275px
+          padding: 0
+          margin: 0
+          img
+            height: 100%
+          .content
+            position: relative
+            .description
+              position: absolute
+              top: 25%
+              left: 10%
+        .point4
+          height: 275px
+          background-color: #294A8E
+          padding: 0
+          margin: 0
+          img
+            height: 100%
+          .content
+            h2, p
+              color: white
+            padding: 50px 50px
+
+    #schedule-demo
+      width: 100%
+      background-color: #f3f4f7
+      .flex
+        padding: 20px 0
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        text-align: center
+
+@media (min-width: 1024px) and (max-width: 1280px)
+  #home-microsoft_teams_landing
+    #main
+      #features
+        .all-points
+          .point1
+            padding: 20px 0px
+          .point2
+            .content
+              padding-top: 0px
+            img
+              width: 400px
+          .point4
+            .content
+              width: 390px
+              p
+                width: 375px
+          .point5
+            .flex
+              padding-left: 100px
+            .content
+              width: 440px
+
+@media (min-width: 767px) and (max-width: 1023px)
+  #home-microsoft_teams_landing
+    #main
+      #features
+        .flex
+          flex-wrap: wrap
+          text-align: center
+          align-items: center
+        .all-points
+          section
+            padding: 10px 50px
+          .point2
+            .content
+              padding-bottom: 20px
+              p
+                width: unset
+          .point3
+            .content
+              padding-left: unset
+              padding-top: 20px
+          .point4
+            .content
+              h2
+                width: unset
+              p
+                width: unset
+          .point5
+            height: unset
+            .flex
+              padding-left: unset
+            .img-container
+              position: unset
+              img
+                position: unset
+                top: unset
+      #bottom
+        width: 100%
+        max-width: 850px
+        .all-points
+          .point2
+            img
+              width: 90%
+
+@media (min-width: 320px) and (max-width: 766px)
+  #home-microsoft_teams_landing
+    #main
+      #features
+        .flex
+          flex-wrap: wrap
+          text-align: center
+          align-items: center
+
+        .all-points
+          section
+            padding: 10px 50px
+          .point1
+            padding: 10px 0
+
+          .point2
+            .content
+              padding-bottom: 20px
+              p
+                width: unset
+            img
+              width: 400px
+          .point3
+            .content
+              padding-left: unset
+              padding-top: 20px
+
+            .content
+              h2
+                width: unset
+              p
+                width: unset
+          .point4
+            .content
+              h2
+                width: unset
+              p
+                width: unset
+          .point5
+            height: unset
+            .flex
+              padding-left: unset
+            .img-container
+              position: unset
+              img
+                position: unset
+                top: unset
+      #bottom
+        .all-points
+          .point1
+            .content
+              position: relative
+              .description
+                position: absolute
+                top: 5%
+                left: 10%
+          .point3
+            .content
+              position: relative
+              .description
+                position: absolute
+                top: 15%
+                left: 10%
+          .point4
+            .content
+              padding: 25px 50px
+      @media(min-width: 320px) and (max-width: 479px)
+        #bottom
+          width: 100%
+          text-align: center
+          margin: 0
+          .flex
+            flex-wrap: wrap
+          .all-points
+
+            .point1
+              height: unset
+              .content
+                width: 100%
+                height: 300px
+                .description
+                  padding: 30px 5px
+                  position: unset
+              .stock-images
+                width: 100%
+              img#person-calling
+                height: 300px
+            .point2
+              height: unset
+              width: 100%
+            .point3
+              height: unset
+              flex-direction: column-reverse
+              img#lake-side
+                width: 100%
+              .content
+                width: 100%
+                height: 250px
+                .description
+                  padding: 35px 5px
+                  position: unset
+            .point4
+              height: unset
+              .content
+                padding: 50px 0px
+              img
+                width: 100%

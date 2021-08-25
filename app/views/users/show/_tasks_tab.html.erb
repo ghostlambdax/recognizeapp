@@ -1,0 +1,35 @@
+<% if @completed_tasks.present? %>
+  <table class="table table-striped">
+    <th class="task-date"><%= t("dict.date") %></th>
+    <th class="task-name"><%= t("tasks.task") %></th>
+    <th class="task-comment"><%= t("tasks.comment") %></th>
+    <th class="task-points"><%= t("dict.points") %></th>
+    <th class="task-status"><%= t("dict.status") %></th>
+
+    <% @completed_tasks.each do |completed_task| %>
+      <tr>
+        <td>
+          <p><%= localize_datetime(completed_task.created_at, :friendly_with_time) %></p>
+        </td>
+        <td>
+          <p><%= completed_task.task.name %></p>
+        </td>
+        <td>
+          <p><%= completed_task.comment %></p>
+        </td>
+        <td>
+          <p>
+            <%= completed_task.total_points if completed_task.approved? %>
+          </p>
+        </td>
+        <td>
+          <p>
+            <%= completed_task.status_label %>
+          </p>
+        </td>
+      </tr>
+  <% end %>
+  </table>
+<% else %>
+  <p class="list-empty-warning"><%= t("tskz.no_tasks") %></p>
+<% end %>

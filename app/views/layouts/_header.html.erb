@@ -1,0 +1,208 @@
+<header id="header" class="clearfix loading ios-hidden" role="navigation" aria-label="Primary">
+  <div class="primary-controls clearfix">
+      <aside id="header-controls" class="clearfix">
+        <% if !current_user.personal_account? %>
+          <% if feature_permitted?(:recognition) %>
+              <% stream_label = t("dict.stream") %>
+          <% elsif feature_permitted?(:anniversary) %>
+              <% stream_label = t('dict.anniversaries') %>
+          <% end %>
+
+          <%= link_to root_path, id: "header-stream" do %>
+            <div><%= feather_icon('grid', color: 'white', width: 24) %></div><span><%= stream_label %></span>
+          <% end %>
+        <% end %>
+
+        <%
+          new_recognition_link_opts = {id: "header-recognize", class: "recognize-new"}
+          if current_user.sent_recognitions.size == 0
+            new_recognition_link_opts[:title] = "Send your first recognition! Can you think of someone who has done something awesome?"
+            new_recognition_link_opts[:class] = "#{new_recognition_link_opts[:class]} pulser-base"
+          end
+        %>
+
+        <% if feature_permitted?(:recognition) %>
+          <%= link_to new_recognition_path(network: current_user.network, dept: nil), new_recognition_link_opts do %>
+            <div><%= feather_icon('star', color: 'white', width: 24) %></div><span><%= t("dict.recognize")%></span>
+          <% end %>
+        <% end %>
+
+
+        <% unless current_user.personal_account? %>
+          <% if current_user.allow_stats? && feature_permitted?(:leaderboards) %>
+            <%= link_to reports_path(network: current_user.network, dept: nil), id: "header-reporting" do %>
+              <div><%= feather_icon('list', color: 'white', width: 24) %></div><span><%= t("dict.stats")%></span>
+            <% end %>
+          <% end %>
+
+          <%= link_to users_path(network: current_user.network, dept: nil), id: "header-users" do %>
+            <div><%= feather_icon('users', color: 'white', width: 24) %></div><span><%= t("dict.users")%></span>
+          <% end %>
+
+          <% if feature_permitted?(:recognition) || feature_permitted?(:nomination) %>
+            <%= link_to company_badges_path(dept: nil), id: "header-badges" do %>
+              <div><%= feather_icon('shield', color: 'white', width: 24) %></div><span><%= t("dict.badges")%></span>
+            <% end %>
+          <% end %>
+
+          <% if permitted_to?(:index, :hall_of_fame, object: current_user, skip_attribute_test: false) && feature_permitted?(:hall_of_fame) %>
+            <%= link_to hall_of_fame_index_path(dept: nil), id: "header-fame"  do %>
+              <div><%= feather_icon('award', color: 'white', width: 24) %></div><span><%= t("dict.fame")%></span>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <% show_points(current_user.company) do %>
+          <% if permitted_to?(:index, :redemptions, object: current_user, skip_attribute_test: false) %>
+            <%= link_to redemptions_path(dept: nil), id: "header-rewards" do %>
+              <div><%= feather_icon('gift', color: 'white', width: 24) %></div><span><%= t("dict.rewards")%></span>
+            <% end %>
+          <% end %>
+        <% end %>
+      </aside>
+  </div>
+
+  <div id="header-loggedin-logo" data-turbolinks="false">
+    <% if company_customization_primary_logo.present? %>
+      <%= image_tag company_customization_primary_logo.thumb.url %>
+    <% elsif has_theme? && @company.custom_theme.legacy?%>
+      <%= image_tag "themes/#{company_theme_id}/logo_small.png" , alt: "Company logo" %>
+    <% else %>
+      <h3><%= t("recognize.recognize")%></h3>
+    <% end %>
+
+  </div>
+
+  <aside class="clearfix secondary-controls">
+
+    <%= link_to user_path(current_user, dept: nil), id: "header-profile-wrapper", class: "clearfix" do %>
+      <%= image_tag(current_user.avatar.small_thumb.url, class: "profile-pic pull-left avatar") if current_user.avatar %>
+
+      <div class="profile">
+        <h2><%= current_user.full_name %></h2>
+        <% show_points(current_user.company) do %>
+          <div class="stats">
+            <dl>
+              <dt class="offscreen" title='<%= t("stats.total_score")%>'><%= t("stats.total_score")%></dt>
+              <dd id="total_points"><%= interval_points(current_user) %></dd>
+            </dl>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <a id="header-settings" class="header-menu-trigger" href="#settings-menu">
+      <div><%= feather_icon('settings', height: 24) %></div>
+      <span><%= t("dict.menu")%></span>
+    </a>
+
+    <% if current_user.company.settings.frontline_logout? %>
+      <%= link_to logout_path, class: "analyticsClick frontline-logout", data: { turbolinks: false } do %>
+        <div><%= feather_icon('log-out') %></div>
+        <span><%= t('dict.logout', height: 24)%></span>
+      <% end %>
+    <% end %>
+  </aside>
+</header>
+
+
+
+
+
+
+
+
+<div class="clear"></div>
+
+<ul id="settings-menu" class="header-menu visibility-hidden">
+
+  <% if current_user.admin? %>
+    <li class="admin">
+      <%= feather_icon('alert-triangle', color: 'white', width: 17) %>
+      <%= link_to "Site Admin", admin_path%>
+    </li>
+  <% end%>
+
+
+  <% if !current_user.personal_account? && current_user.allow_teams? && feature_permitted?(:teams)%>
+    <li class="teams">
+      <%= feather_icon('flag', color: 'white', width: 17) %>
+      <%= link_to t('dict.team_directory'), teams_path(network: current_user.network, dept: nil), id: "menu-teams", class: "analyticsClick" %>
+    </li>
+  <% end %>
+
+  <% if current_user.allow_invite? %>
+       <li class="invite">
+         <%= feather_icon('user-plus', color: 'white', width: 17) %>
+         <%= viewer_link_to t('dict.invite'), invite_users_path(network: current_user.network, dept: nil), ms_teams_viewer?, id: "menu-invite", class: "analyticsClick" %>
+       </li>
+  <% end %>
+
+  <% if current_user.company.subscription.present? && permitted_to?(:edit, current_user.company.subscription) %>
+    <li class="billing" data-turbolinks="false">
+      <%= feather_icon('credit-card', color: 'white', width: 17) %>
+      <%= link_to t('dict.billing'), subscription_path(current_user.company.subscription, dept: nil), id: "menu-billing", class: "analyticsClick" %>
+    </li>
+  <% end %>
+
+  <% if current_user.company_admin? %>
+    <li class="product-updates" >
+      <%= feather_icon('bell', color: 'white', width: 17) %>
+      <%= link_to t('help.product_updates'), cms_product_updates_path, data: {turbolinks: "false"} %>
+    </li>
+  <% end%>
+
+  <% if permitted_to?(:manage, current_user.company) && feature_permitted?(:manager) %>
+    <li class="admin" data-turbolinks="false">
+      <%= feather_icon('git-commit', color: 'white', width: 17) %>
+      <%= link_to t('manager_admin.manager_portal'), manager_admin_dashboard_path(network: current_user.company.domain, dept: nil)%>
+    </li>
+  <% end%>
+
+  <% if permitted_to?(:show, current_user.company) %>
+    <% company_admin_path = feature_permitted?(:recognition) ? company_admin_dashboard_path(network: current_user.company.domain) : company_admin_anniversaries_settings_path(network: current_user.network) %>
+    <li id="company-admin-link" class="admin" data-turbolinks="false">
+      <%= feather_icon('sliders', color: 'white', width: 17) %>
+      <%= viewer_link_to t('dict.company_admin'), company_admin_path, ms_teams_viewer? %>
+    </li>
+  <% end%>
+
+  <li class="support contact-us-link">
+    <%= feather_icon('send', color: 'white', width: 17) %>
+    <%= viewer_link_to t('dict.contact'), contact_path(dept: nil), iframe_viewer? %>
+  </li>
+
+  <li class="help">
+    <%= feather_icon('help-circle', color: 'white', width: 17) %>
+    <%= viewer_link_to t("dict.help"), help_path(dept: nil), iframe_viewer? %>
+  </li>
+
+  <% if iframe_viewer? %>
+    <li class="new-window">
+      <%= feather_icon('external-link', color: 'white', width: 17) %>
+      <%= viewer_link_to t('dict.new_window'), request.original_url, true %>
+    </li>
+  <% end %>
+
+  <% if false # TODO Bring back switch accounts issue #3925 %>
+  <li data-turbolinks="false">
+    <%= feather_icon('home', color: 'white', width: 17) %>
+    <%= link_to _('Switch accounts'), account_chooser_path(switch_accounts: true), class: "analyticsClick" %>
+  </li>
+  <% end %>
+
+  <li class="logout" data-turbolinks="false">
+    <%= feather_icon('power', color: 'white', width: 17) %>
+    <%= link_to t('dict.logout'), logout_path, class: "analyticsClick", id:"menu-logout" %>
+  </li>
+</ul>
+
+<% unless current_user.personal_account? %>
+  <div id="search-popup" class="visibility-hidden" role="search">
+    <label id="header-search-label" for="header-search-input"><%= t("users.search_users") %></label>
+    <input type="search" id="header-search-input" placeholder="<%= t("users.search_users") %>" />
+    <div id="header-search-results"></div>
+  </div>
+<% end %>
+
+

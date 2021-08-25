@@ -1,0 +1,15 @@
+<div class="clearfix leaderboard-wrapper <%= leaderboard_class %>">
+  <div class="page-main marginBottom10">
+    <%# yield %>
+    <div class="filter-wrapper clearfix" id="leaderboard_filters">
+      <%= render partial: "layouts/leaderboard/badge_filter" %>
+      <%= render partial: "layouts/leaderboard/team_filter" if show_leaderboard_team_filter? %>
+      <%= render partial: "layouts/leaderboard/company_role_filter" if show_leaderboard_role_filter? %>
+      <%= render partial: "layouts/leaderboard/attribute_value_filter" if show_leaderboard_attribute_value_filter? %>
+    </div>
+  </div>
+  <aside class="page-aside">
+    <%= render partial: "layouts/time_selector" %>
+  </aside>
+  <%= render partial: "layouts/leaderboard/metric_selector" if show_leaderboard_metric_selector? %>
+</div>

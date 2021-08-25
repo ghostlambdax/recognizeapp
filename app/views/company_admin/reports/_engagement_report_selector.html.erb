@@ -1,0 +1,14 @@
+<% links = [reports_roles_link, reports_teams_link, reports_departments_link, reports_countries_link] %>
+<div class="dropdown-wrapper select-catalog-button-wrapper">
+  <div class="dropdown">
+    <button class="button button-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+      <%= label %>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" id="create-reward-dropdown" role="menu" aria-labelledby="dropdownMenu1">
+      <% links.each do |link| %>
+        <li role="presentation" class="<%= 'active' if link == reports_roles_link %>"><%= link %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.5",
+    "version": "1.2.0",
+    "id": "00928935-88fb-4492-928e-e7315793f383",
+    "packageName": "com.recognizeapp.microsoft.teams",
+    "developer": {
+        "name": "Recognize",
+        "websiteUrl": "https://recognizeapp.com",
+        "privacyUrl": "https://recognizeapp.com/privacy",
+        "termsOfUseUrl": "https://recognizeapp.com/terms",
+        "mpnId": "5196284"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "Recognize",
+        "full": "Recognize - Employee Recognition & Rewards"
+    },
+    "description": {
+        "short": "Social employee recognition & staff rewards",
+        "full": "The #1 employee recognition and rewards platform for Microsoft Teams, Outlook and Office 365.\n\nhttps://recognizeapp.com/microsoft-teams-employee-recognition\n\nEasily send employee recognition to recipients of emails. View your company’s social recognition feed. View your recognition profile to see the digital badges you’ve earned the most. Admins can administer the program from Microsoft Teams as well.\n\nIn a Microsoft Teams tab:\n+ View company recognitions\n+ Get points for years of service or birthday\n+ Send peer-to-peer or leader-to-peer recognition\n+ Redeem gift cards and company-fulfilled rewards\n+ See people analytics for users, groups, or the company\n+ Administer the program\n\n** Recognize subscription\nRecognize is free to try! If your company is looking to customize your employee recognition program there is a fee for every user, go to https://recognizeapp.com/pricing to see the latest subscription pricing.\n\n** Special note for first time users\nSigning up and logging in may take up about one minute to complete.\n\nContact us for help - support@recognizeapp.com"
+    },
+    "accentColor": "#F9F9FA",
+    "configurableTabs": [
+        {
+            "configurationUrl": "https://recognizeapp.com/ms_teams/tab_config?viewer=ms_teams&entity_id={entityId}",
+            "canUpdateConfiguration": true,
+            "scopes": [
+                "team"
+            ],
+            "supportedSharePointHosts": [
+                "sharePointWebPart"
+            ]
+        }
+    ],
+    "staticTabs": [
+        {
+            "entityId": "recognize-personal",
+            "name": "Profile",
+            "contentUrl": "https://recognizedev.ngrok.io/ms_teams/start?viewer=ms_teams",
+            "websiteUrl": "https://recognizedev.ngrok.io/ms_teams/start",
+            "scopes": [
+                "personal"
+            ]
+        }
+    ],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": [
+        "*.recognizeapp.com"
+    ]
+}

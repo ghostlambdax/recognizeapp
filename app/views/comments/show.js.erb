@@ -1,0 +1,6 @@
+
+$("#<%= @comment.uniq_dom_id%>").replaceWith('<%= escape_javascript(render partial: @comment)%>')
+var $comment = $("#<%= @comment.uniq_dom_id%>");
+if ($comment.closest('.isotope').length > 0) {
+  $comment.closest('.isotope').isotope("reLayout");
+}

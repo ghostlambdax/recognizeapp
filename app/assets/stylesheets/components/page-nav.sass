@@ -1,0 +1,57 @@
+.page-body > .page-nav:first-child
+  padding: 0
+
+.page-nav
+  display: flex
+
+  .title-nav
+    width: 55%
+    margin-right: 5%
+    display: flex
+    align-items: center
+
+    .title
+      margin-right: 4vw
+
+  .aside-nav
+    width: 40%
+
+    .dropdown-wrapper
+      text-align: right
+
+    & > .inner
+      text-align: left
+      display: inline-block
+
+  .filters
+    display: flex
+    margin-bottom: 5px
+
+
+
+@media (min-width: 651px)
+  .page-nav
+    .aside-nav
+      display: flex
+      justify-content: flex-end
+      align-items: flex-end
+
+
+@media (max-width: 850px)
+  .page-nav
+    .text-right
+      text-align: left
+
+@media (max-width: 650px)
+  .page-nav
+    display: block
+
+    .title-nav,
+    .aside-nav
+      width: 100%
+      max-width: 100% !important
+
+    .title-nav
+      border-bottom: 1px solid #ccc
+      margin-bottom: 10px
+      padding-bottom: 10px

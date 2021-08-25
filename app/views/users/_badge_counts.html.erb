@@ -1,0 +1,13 @@
+<% employee_top_badges =  employee.badge_counts(order: :desc, limit:3) %>
+<% if employee_top_badges.present? %>
+  <% employee_top_badges.each do |badge, count| %>
+    <span class="marginRight10">
+                <%= image_tag badge.permalink(50, request.protocol), width: 25 %>
+      <%= badge.short_name %>: <%= count %>
+              </span>
+  <% end %>
+<% else %>
+  <span class="subtle-text">
+    <%= t('manager_admin.dashboard.no_badges_yet') %>
+  </span>
+<% end %>

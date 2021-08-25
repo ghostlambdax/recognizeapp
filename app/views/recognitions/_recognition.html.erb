@@ -1,0 +1,110 @@
+  <%# Recognition card to be shown on pages such as stream page, team#show, user#show %>
+    <div class="recognition-card r-r-card" id="recognition-card-<%= recognition.id%>" %>
+      <div class="recognition-inner">
+
+        <div class="content">
+
+          <div class="inner">
+
+            <%= link_to recognition_path(recognition), class: "recognition-detail-link badge-wrapper clearfix" do %>
+              <div class="clearfix">
+
+                <%= image_tag recognition.badge.permalink(100, request.protocol), class: "image-wrapper" %>
+
+                <div class="to-wrapper clearfix">
+                  <div class="to">
+                    <h4 itemprop="award"><%= recognition.badge.short_name%></h4>
+                    <ul class="recipient-list">
+
+                      <% recognition.recipients.each do |recipient| %>
+                        <li itemscope itemtype="http://schema.org/Person">
+
+                            <% if recipient.try(:avatar).present? %>
+                              <%= image_tag(recipient.avatar.small_thumb.url, class: "profile-pic pull-left avatar") %>
+                            <% end %>
+                            <strong itemprop="name"><%= recipient.full_name%></strong>
+                            <% if !recipient.kind_of?(User) && (!current_user.present? || (recipient.company.name != current_user.company.name)) %>
+                              <br>
+                              <i itemprop="worksFor"> <%= recipient.company.name %></i>
+                            <% end %>
+                        </li>
+                     <% end %>
+                  </ul>
+                  </div>
+
+                </div>
+              </div>
+            <% end %>
+            <div class="from-wrapper message-wrapper" id="message_wrapper_<%= recognition.id%>">
+              <dl itemscope itemtype="http://schema.org/Person">
+                <% if recognition.reason.present? %>
+                  <dt>Reason</dt>
+                  <dd class="message"><p><%= recognition.reason %></p></dd>
+                <% end %>
+                <dt><%= t("dict.message") %></dt>
+
+                <div class="message-outer">
+                  <dd class="message">
+                    <%= recognition_message(recognition) %>
+                  </dd>
+                  <div class="overflow-overlay">
+                    <div class="fade">
+                    </div>
+                    <div class="read-more">
+                      <a href="<%= recognition_path(recognition) %>">
+                        <span class="text"><%= t('dict.read_more') %></span>
+                        <%= feather_icon('chevron-down', width: 20, height: 20) %>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+
+                <dt><%= t("dict.from") %></dt>
+                <dd class="from" itemprop="name">
+                  <%= link_to_unless recognition.sender.system_user?, recognition.sender_name, user_path(recognition.sender)%>
+                  <% if recognition.is_cross_company? && !recognition.sender.personal_account? %>
+                    <i itemprop="worksFor"><%= recognition.authoritative_company.name %></i>
+                  <%end%>
+                </dd>
+                <dt><%= t("dict.time") %></dt>
+                <dd class="time subtle-text" title="<%= localize_datetime(recognition.created_at, :friendly_with_time)%>">
+                  <%= _("%{time} ago") % { time: time_ago_in_words(recognition.created_at) } %>
+                </dd>
+              </dl>
+            </div>
+            <div class="comment-wrapper">
+              <div class='loading'>
+                <span class='comment-avatar'></span>
+                <span class='comment-text w-60'></span>
+                <br>
+                <span class='comment-avatar'></span>
+                <span class='comment-text'></span>
+              </div>
+            </div>
+
+            <div class="recognition-action-wrapper">
+              <% if permitted_to?(:edit, recognition) or permitted_to?(:destroy, recognition)%>
+                <div class="options clearfix">
+                  <div class="options-trigger"><%= t("dict.menu") %><div class="gear-big gear"></div><div class="gear-small gear"></div></div>
+                  <div class="clear"></div>
+                  <ul class="options-menu clearfix">
+                    <% if permitted_to?(:edit, recognition)%>
+                      <li>
+                        <%= link_to t("dict.edit"), edit_recognition_path(recognition), class: "recognition-edit button-inactive button", data: {event: "recognition-edit"}%>
+                      </li>
+                    <% end%>
+
+                    <% if permitted_to?(:destroy, recognition)%>
+                      <li>
+                        <%= render "recognitions/delete_button", recognition: recognition, button_class: "button-inactive button" %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+            </div>
+          </div><!-- end of inner -->
+        </div> <!-- end of content -->
+      </div>
+    </div>

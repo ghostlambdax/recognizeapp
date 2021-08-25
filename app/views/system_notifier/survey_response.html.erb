@@ -1,0 +1,8 @@
+<h3>From: <%= @survey.email %></h3>
+
+<% @survey.data.each do |key, value| %>
+  <p><%= key %>:<br>
+    <%= value %>
+  </p>
+<% end %>
+

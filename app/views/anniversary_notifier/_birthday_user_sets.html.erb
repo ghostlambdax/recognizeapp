@@ -1,0 +1,43 @@
+<%
+  if @weekend_birthday_users.present?
+    saturday_birthday_users = @weekend_birthday_users[:saturday]
+    sunday_birthday_users = @weekend_birthday_users[:sunday]
+    today_birthday_users = @birthday_users - saturday_birthday_users - sunday_birthday_users
+  else
+    today_birthday_users = @birthday_users
+  end
+  weekday_year_day_format = lambda { |date| date.strftime("%A, %b #{date.day.ordinalize}") }
+%>
+
+<h2 style="<%= mail_styles(:h2, :text, :title) %>"><%= t("notifier.birthdays") %></h2><br/>
+
+<%if @weekend_birthday_users.present?%>
+  <% friday = Date.current %>
+
+  <%if saturday_birthday_users.present?%>
+    <% saturday = friday + 1.day %>
+    <%= render partial: "birthday_users",
+               locals: {
+                   birthday_users: saturday_birthday_users,
+                   day: weekday_year_day_format.call(saturday)
+               } %>
+  <%end%>
+  <%if sunday_birthday_users.present?%>
+    <% sunday = friday + 2.days %>
+    <%= render partial: "birthday_users",
+               locals: {
+                   birthday_users: sunday_birthday_users,
+                   day: weekday_year_day_format.call(sunday)
+               } %>
+  <%end%>
+<%end%>
+
+<%if today_birthday_users.present?%>
+  <%= render partial: "birthday_users",
+             locals: {
+                 birthday_users: today_birthday_users,
+                 day: t('datetime.today')
+             } %>
+<%end%>
+
+

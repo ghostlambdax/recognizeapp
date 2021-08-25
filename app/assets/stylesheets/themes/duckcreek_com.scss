@@ -1,0 +1,24 @@
+$headerBg: #3b3487;
+$linkColor: $headerBg;
+$btnBlueTopColor: #7e6bf5;
+$buttonPrimaryBg: $btnBlueTopColor;
+$bodyText: #4e4a54;
+$defaultFontFamily: Montserrat, Lato, Helvetica, San Francisco, Sans Serif;
+$latoFontFamily: $defaultFontFamily;
+
+@import "application";
+
+#recognitions-certificate h1,
+#recognitions-certificate {
+  font-family: $defaultFontFamily;
+}
+
+#recognitions-certificate h1 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.recognition-card .image-wrapper, .within-stream .image-wrapper {
+  border-radius: 0;
+  box-shadow: none;
+}

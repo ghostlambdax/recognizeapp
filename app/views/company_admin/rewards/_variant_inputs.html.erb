@@ -1,0 +1,19 @@
+<div class="control-group variants marginBottom10">
+  <% if reward.discrete_provider_reward? %>
+    <%= form.fields_for :variants, reward.variants.select { |x| x.provider_reward_variant&.status == "active" }.sort_by(&:face_value) do |builder| %>
+      <%= render 'variant_fields', form: builder %>
+    <% end %>
+  <% else %>
+
+    <% if reward.variable_provider_reward? %>
+      <div>Min: <%= humanized_money_with_symbol(Money.from_amount(reward.provider_reward.min_value, reward.catalog.currency)) %> Max: <%= humanized_money_with_symbol(Money.from_amount(reward.provider_reward.max_value, reward.catalog.currency)) %></div>
+    <% end %>
+
+    <%= form.fields_for :variants, reward.variants.sort_by(&:face_value) do |builder| %>
+      <%= render 'variant_fields', form: builder %> 
+    <% end %>
+
+    <%= link_to_add_fields "Add variant", form, :variants %>
+  <% end %>
+ 
+</div>

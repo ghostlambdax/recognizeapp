@@ -1,0 +1,16 @@
+<% content_for :title, "Great Ways to Foster Authentic Employee Engagement" %>
+<%= content_for :description, "Ten easy steps to improve employee engagement through recognition, social environments, and more." %>
+
+<div class="centered">
+  <h1 itemprop="name">15 Easy Ways to be a Great HR Manager</h1>
+  <amp-img src="<%= asset_url('pages/articles/ways-foster-engagement/1.jpg') %>" alt="A photo of a group of people putting their arms together." height="400" width="600" layout='responsive'></amp-img>
+</div>
+
+<div class="centered">
+  <p class="balance-text marginBottom40 tagline">When it comes to the workforce of today, it’s safe to say, we most definitely are not in Kansas anymore. With no shortage of tools and apps for communication and a blossoming culture of flextime and remote working, the term “clocking in” is fast becoming a figurative expression.</p>
+  <%= link_to "Learn about Recognize", root_path, class: "button button-large button-primary" %>
+
+</div>
+
+
+<%= render partial: "ways_foster_engagement", formats: [:html]  %>

@@ -1,0 +1,19 @@
+(function(){
+  var bodyId = $body.attr("id"), card;
+
+  if (bodyId === "recognitions-show") {
+    Turbolinks.visit("/", { action: "replace" });
+  } else {
+    var $recognitionCard = $("#recognition-card-<%= @recognition.id%>");
+    var $isotopeEl = $(".isotope");
+    // isotope is now initialized for full screen mode only
+    if ($isotopeEl.length) {
+      $isotopeEl.isotope( 'remove', $recognitionCard );
+    } else { // remove manually
+      $recognitionCard.fadeOut('slow', function(){
+        $(this).remove();
+      });
+    }
+
+  }
+})();

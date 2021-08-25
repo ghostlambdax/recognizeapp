@@ -1,0 +1,45 @@
+<div class="row row-fluid yammer-download-wrapper" data-turbolinks="false">
+  <div class="span6">
+    <h3 class="balance-text"><%= t('welcome.step_1_replace_yammer') %></h3>
+    <p class="balance-text"><%= t('welcome.best_yammmer') %></p>
+
+    <div class="browsers flex-centered">
+      <%= link_to chrome_extension_url, id: "chrome", class: "button-download" do %>
+        <%= image_tag "pages/home-extension/chrome.png", alt: "Google Chrome browser" %>
+        <%= t('browser_extensions.install_into_chrome') %>
+      <% end %>
+      <a href="/RecognizeAppIESetup.exe" id="ie" class="button-download light">
+        <%= image_tag "pages/home-extension/ie.png", alt: "Microsoft Internet Explorer" %>
+        <%= t('browser_extensions.install_into_ie') %>
+      </a>
+      <%= link_to "/recognize.safariextz", id: "safari", class: "button-download light" do %>
+        <%= image_tag "pages/home-extension/safari.png", alt: "Safari" %>
+        <%= t('browser_extensions.install_into_safari') %>
+      <% end %>
+    </div>
+  </div>
+  <div class="span6 enable-yammer-wrapper">
+    <h3 class="balance-text"><%= t('welcome.step_2_go_to_yammer_html') %></h3>
+    <%= image_tag "pages/signup/welcome/yammer/enable-yammer.gif", alt: t('welcome.click_recognize_where_praise') %>
+    <%= link_to t('dict.learn_more'), extension_path, class: "block marginVertical20" %>
+  </div>
+</div>
+
+<div class="row row-fluid two-action-welcome-wrapper marginBottom20" data-turbolinks="false">
+  <div class="span6">
+    <h3><%= t('welcome.increase_yammer_usage_gamification') %></h3>
+    <div>
+      <%= image_tag "pages/home-yammer-gamification/flow.png", alt: t('welcome.yammer_flow'), class: "marginBottom30", height: 160 %>
+    </div>
+    <%= link_to t('dict.learn_more'), yam_gam_path, class: "button button-primary button-large" %>
+
+  </div>
+  <div class="span6">
+    <h3><%= t('home_why.values') %></h3>
+    <div>
+      <%= image_tag "pages/tour/point1.png", alt: t('home_pricing.customize_badges'), class: "marginBottom30", height: 160 %>
+    </div>
+    <%= link_to t('welcome.see_whats_customizable'), company_path, class: "button button-primary button-large" %>
+
+  </div>
+</div>

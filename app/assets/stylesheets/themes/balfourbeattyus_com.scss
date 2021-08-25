@@ -1,0 +1,118 @@
+$headerBg: #005d99;
+$linkColor: $headerBg;
+$btnBlueTopColor: $linkColor;
+$defaultFontFamily: Calibri, Arial, sans serif;
+$latoFontFamily: $defaultFontFamily;
+
+@import "application";
+
+#badge-list .badge-item:hover, #badge-list-best .badge-item:hover {
+  background: transparent !important;
+}
+
+#badge-list .badge-item:hover, #badge-list-best .badge-item:hover, #badge-list .badge-item, #badge-list-best .badge-item {
+  border-color: transparent !important;
+}
+
+#recognize-badge-list-wrapper {
+  background: white !important;
+
+  * {
+    color: #888888 !important;
+  }
+}
+
+#badges-index .badges-in-page .badge-item:nth-child(odd) {
+  &, &:hover {
+    background: transparent !important;
+  }
+}
+
+#badges-show .top-dark {
+  background: white !important;
+
+  * {
+    color: #888888 !important;
+  }
+}
+
+#settings-menu .help {
+  display: none;
+}
+
+#badges-index .badges-in-page .badge-item:hover {
+  background: transparent !important;
+}
+
+iframe#launcher {
+  display: none !important;
+}
+
+.welcome-help-link {
+  display: none !important;
+}
+
+.contact-us-link {
+  display: none;
+}
+
+
+/* Balfour Certificate */
+
+#recognitions-certificate {
+  .certificate {
+    top: 219px;
+
+    .avatar {
+      display: none;
+    }
+  }
+
+  h1 {
+    margin-bottom: 15px !important;
+    font-size: 50px;
+  }
+
+  h1, .subtitle {
+    color: #1b6aac;
+  }
+
+  .certificate {
+    .subtitle {
+      font-size: 31px;
+      line-height: 35px;
+      margin-bottom: 34px;
+    }
+
+    .certificate-date {
+      display: none;
+    }
+
+    .avatar, .badge {
+      width: 125px;
+      height: 125px;
+    }
+
+    .personal {
+      margin-bottom: 25px !important;
+    }
+
+    .name {
+      font-weight: 600;
+    }
+
+    .quote {
+      max-width: 860px;
+      font-family: $defaultFontFamily !important;
+      font-size: 21px;
+      font-style: normal;
+    }
+
+    .by-whom {
+      margin-top: 7px;
+      display: block;
+      text-align: center;
+    }
+  }
+}
+

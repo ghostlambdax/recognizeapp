@@ -1,0 +1,469 @@
+# Chinese translations for recognize package.
+# Copyright (C) 2021 recognize
+# This file is distributed under the same license as the recognize package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recognize 1.0\n"
+"Report-Msgid-Bugs-To: contact@translation.io\n"
+"POT-Creation-Date: 2021-05-26 15:19-0500\n"
+"PO-Revision-Date: 2021-05-26 22:19+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese\n"
+"Language: zh\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n!=1;\n"
+"\n"
+
+#: ../../../app/datatables/catalogs_datatable.rb:87
+msgid "Catalog"
+msgstr "目录"
+
+#: ../../../app/datatables/catalogs_datatable.rb:95
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:10
+msgid "Redemptions"
+msgstr "赎回"
+
+#: ../../../app/datatables/catalogs_datatable.rb:103
+msgid "Settings"
+msgstr "设置"
+
+#: ../../../app/jobs/sms_notifier_job.rb:8
+#: ../../../app/services/recognition_sms_notifier.rb:42
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:14
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:17
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:22
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:32
+msgid ""
+"\n"
+"Reply with STOP to opt out of additional messages"
+msgstr ""
+"\n"
+"使用STOP回复以选择退出其他消息"
+
+#: ../../../app/lib/fb_workplace/helpers/bot_helpers.rb:90
+msgid "Are you sure you want to reset your account connection?"
+msgstr "您确定要重置您的帐户连接吗？"
+
+#: ../../../app/lib/fb_workplace/helpers/bot_helpers.rb:91
+msgid "Reset connection"
+msgstr "重置连接"
+
+#: ../../../app/lib/fb_workplace/webhook/link.rb:33
+msgid "Sent"
+msgstr "已发送"
+
+#: ../../../app/lib/fb_workplace/webhook/page.rb:108
+msgid ""
+"Your account connection has been cleared. Type 'Connect' if you would like to "
+"reconnect "
+msgstr "您的帐户连接已清除。如果您想重新连接，请输入“连接”"
+
+#: ../../../app/models/webhook/endpoint.rb:15
+msgid "^Target url must a properly formatted url."
+msgstr "^目标网址必须为格式正确的网址。"
+
+#: ../../../app/views/admin/index/_admin_header.html.erb:5
+msgid "Dashboard"
+msgstr "仪表板"
+
+#: ../../../app/views/admin/index/_admin_header.html.erb:6
+msgid "Engagement"
+msgstr "订婚"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:3
+msgid "Service Anniversary Award Certificate Template"
+msgstr "服务周年纪念奖证书模板"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:4
+msgid ""
+"Use the Recognize service anniversary award template to create a certificate t"
+"o give to employees as a PDF or printed out. Sign the PDF after you create it."
+" All totally free to give employee recognition to staff."
+msgstr "使用“认可服务周年纪念奖励”模板创建证书，以PDF或打印出的形式提供给员工。创建PDF后对其进行签名。所有这些都是完全免费的，以使员工认可员工。"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:10
+#: ../../../app/views/layouts/award_certificate.html.erb:11
+msgid "Generate PDF"
+msgstr "产生PDF"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:13
+#: ../../../app/views/layouts/award_certificate.html.erb:14
+msgid "Font Families"
+msgstr "字体家族"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:29
+msgid "Big Number"
+msgstr "大数字"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:44
+msgid "Title"
+msgstr "标题"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:45
+msgid "Service Anniversary Award"
+msgstr "服务周年奖"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:58
+msgid "Description"
+msgstr "描述"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:59
+msgid "For 7 years of service at Acme Inc."
+msgstr "在Acme Inc.服务了7年。"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:74
+#: ../../../app/views/award_generator/service_anniversary.html.erb:75
+msgid "Signature"
+msgstr "签名"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:92
+msgid "Name"
+msgstr "名称"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:93
+msgid "Name here"
+msgstr "在此命名"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:108
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:8
+msgid "Date"
+msgstr "日期"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:109
+msgid "May 24th, 2021"
+msgstr "2021年5月24日"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:9
+msgid "Product Updates"
+msgstr "产品更新"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:10
+msgid ""
+"Recognize keeps getting better with weekly deployments. Check back regularly f"
+"or improvements and fixes."
+msgstr "每周部署使Recognize变得越来越好。定期检查以获取改进和修复。"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:14
+msgid "Recognize Product Updates"
+msgstr "识别产品更新"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:15
+msgid ""
+"Recognize is updated almost every week. Major updates and fixes are listed her"
+"e to help customers and prospective customers learn of continued improvements."
+msgstr "识别几乎每周都会更新。此处列出了主要更新和修补程序，以帮助客户和潜在客户了解持续的改进。"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:16
+msgid "Check server status"
+msgstr "检查服务器状态"
+
+#: ../../../app/views/companies/_badge.html.erb:181
+msgid "one person"
+msgid_plural "%{count} people"
+msgstr[0] "一个人"
+msgstr[1] ""
+
+#: ../../../app/views/company_admin/accounts/edit.html.erb:6
+msgid "Edit Users"
+msgstr "编辑使用者"
+
+#: ../../../app/views/company_admin/accounts/show.html.erb:2
+msgid "Users"
+msgstr "用户"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:7
+msgid "Top toolbar logo"
+msgstr "顶部工具栏徽标"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:13
+msgid ""
+"A white transparent png image to go in the top\n"
+"            toolbar. Many companies choose to make it the name of their progra"
+"m."
+msgstr ""
+"白色透明png图像进入顶部\n"
+"            工具栏。许多公司选择使其成为其程序的名称。"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:25
+msgid "Stream page logo"
+msgstr "流页面徽标"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:31
+msgid ""
+"A color logo that goes on the Stream page. Many\n"
+"            companies choose to have it be their company logo. The background "
+"has to be white."
+msgstr ""
+"流页面上的彩色徽标。许多\n"
+"            公司选择将其作为公司徽标。背景必须为白色。"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:5
+msgid "Theming"
+msgstr "主题化"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:8
+msgid "Security"
+msgstr "安全"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:12
+msgid "Recognition"
+msgstr "承认"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:15
+msgid "Nomination"
+msgstr "提名奖"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:18
+msgid "Tasks"
+msgstr "任务"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:21
+msgid "Leaderboards"
+msgstr "排行榜"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:24
+msgid "Hall of Fame"
+msgstr "名人堂"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:27
+msgid "Rewards"
+msgstr "奖赏"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:31
+msgid "Yammer"
+msgstr "抱怨"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:34
+msgid "Microsoft"
+msgstr "微软"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:37
+msgid "Google"
+msgstr "谷歌"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:40
+msgid "Workplace by Facebook"
+msgstr "Facebook的工作场所"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:43
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:14
+msgid "Webhooks"
+msgstr "网络挂钩"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:47
+msgid "User settings"
+msgstr "用户设置"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:50
+msgid "Points"
+msgstr "点数"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:53
+msgid "User Management"
+msgstr "用户管理"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:56
+msgid "Kiosk Mode"
+msgstr "信息亭模式"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:9
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:35
+msgid "Edit"
+msgstr "编辑"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:14
+msgid "Edit Webhook"
+msgstr "编辑网络挂钩"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:15
+msgid "Webhook has been saved"
+msgstr "Webhook已保存"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:20
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:36
+msgid "Destroy"
+msgstr "破坏"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:24
+msgid "Are you sure want to delete this webhook?"
+msgstr "您确定要删除此Webhook吗？"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:28
+msgid "Events"
+msgstr "大事记"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:5
+msgid "Examples"
+msgstr "例子"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:8
+msgid ""
+"● Notify a rewards provider that a user redeemed a reward in order to fulfill "
+"a custom company reward."
+msgstr "●通知奖励提供者用户已兑现奖励以实现自定义公司奖励。"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:9
+msgid "● Post a recognition to Slack or Microsoft Teams."
+msgstr "●向Slack或Microsoft Teams发布认可。"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:18
+msgid ""
+"Webhooks allow you to notify third party systems when events on Recognize occu"
+"r"
+msgstr "Webhooks允许您在识别事件发生时通知第三方系统"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:23
+#: ../../../spec/features/company_admin/settings/webhooks_spec.rb:15
+#: ../../../spec/features/company_admin/settings/webhooks_spec.rb:25
+msgid "Add new"
+msgstr "添新"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:23
+msgid "Create Webhook"
+msgstr "创建Webhook"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:23
+msgid "Webhook has been created!"
+msgstr "Webhook已创建！"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:31
+msgid "Enable"
+msgstr "启用"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:32
+msgid "Event"
+msgstr "事件"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:33
+msgid "Method"
+msgstr "方法"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:34
+msgid "Endpoint"
+msgstr "终点"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:37
+msgid "Recent events"
+msgstr "最近发生的事件"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:48
+msgid "Coming Soon!"
+msgstr "即将推出！"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:49
+msgid "If you would like early access, please contact support@recognizeapp.com"
+msgstr "如果您想抢先体验，请联系support@recognizeapp.com"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:9
+msgid "Status Code"
+msgstr "状态码"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:10
+msgid "Request"
+msgstr "请求"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:11
+msgid "Response"
+msgstr "回复"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:14
+msgid "Url"
+msgstr "网址"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:15
+msgid "Payload"
+msgstr "有效载荷"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:16
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:18
+msgid "Headers"
+msgstr "标头"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:17
+msgid "Data"
+msgstr "数据"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:36
+msgid "No webhooks have been triggered yet"
+msgstr "尚未触发任何Webhook"
+
+#: ../../../app/views/home/pricing.html.erb:99
+msgid "Sign Up & Upgrade"
+msgstr "注册和升级"
+
+#: ../../../app/views/layouts/_create_catalog_dropdown.html.erb:5
+#: ../../../app/views/layouts/_create_catalog_dropdown.html.erb:9
+msgid "All currencies"
+msgstr "所有货币"
+
+#: ../../../app/views/layouts/_header.html.erb:190
+msgid "Switch accounts"
+msgstr "切换帐户"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:7
+msgid "Direct Reports"
+msgstr "直接报告"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:8
+msgid "Recognitions"
+msgstr "认可"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:9
+msgid "Anniversaries"
+msgstr "周年纪念日"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:11
+msgid "Approved"
+msgstr "批准"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:12
+msgid "Pending"
+msgstr "有待"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:13
+msgid "Denied"
+msgstr "被拒绝"
+
+#: ../../../app/views/layouts/_schedule_demo_link.html.erb:6
+msgid "Schedule Live Demo"
+msgstr "安排现场演示"
+
+#: ../../../app/views/layouts/application.html.erb:17
+msgid "Skip to main content"
+msgstr "跳到主要内容"
+
+#: ../../../app/views/recognitions/_company_name.html.erb:3
+#: ../../../app/views/recognitions/_company_name.html.erb:8
+msgid "Company logo"
+msgstr "公司标志"
+
+#: ../../../app/views/recognitions/_form_fullscreen.html.erb:97
+#: ../../../app/views/recognitions/new_panel.html.erb:78
+msgid "Sign in to Yammer to post to Yammer"
+msgstr "登录到Yammer以发布到Yammer"
+
+#: ../../../app/views/recognitions/_recognition.html.erb:72
+msgid "%{time} ago"
+msgstr "%{time}之前"
+
+#: ../../../app/views/redemptions/_reward.html.erb:17
+msgid "Terms"
+msgstr "条款"
+
+#: ../../../app/views/users/show.html.erb:48
+msgid "1 year"
+msgid_plural "%{num} years"
+msgstr[0] "1年"
+msgstr[1] ""

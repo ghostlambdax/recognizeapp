@@ -1,0 +1,25 @@
+<li class="article-post">
+  <% if a[:link] == 'schedule_demo' %>
+    <div class="well width100 pattern-seigaiha padding30 lazy">
+      <h3>You Better Recognize</h3>
+      <p>See if an official recognition program is right for your company.</p>
+      <%= schedule_demo_link %>
+    </div>
+  <% else %>
+    <%= link_to a[:link] do %>
+      <div class="avatar-wrapper flex">
+        <div class="avatar">
+          <% if a[:image].present? %>
+            <%= lazy_image_tag a[:image], alt: a[:alt] %>
+          <% end %>
+        </div>
+
+        <div class="marginLeft10 content">
+          <h3><%= a[:title] %></h3>
+          <p><%= a[:description].html_safe %></p>
+          <div class="button button-border">Read more</div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</li>

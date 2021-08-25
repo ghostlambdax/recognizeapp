@@ -1,0 +1,2 @@
+ids = Company.where(allow_admin_dashboard: true).joins(:funds_accounts).where("funds_accounts.balance > 0").where.not(domain: ["planet.io", "recognizeapp.com"]).pluck(:id)
+User.includes(:company).where(company_id: ids).map{|u| [u.email, u.company.domain, (u.redeemable_points / (u.company.points_to_currency_ratio*1)).to_f]}.reject{|a| a[2] == 0}.group_by{|a| a[1]}.map{|k,data| [k, data.sum{|d| d[2]}]}

@@ -1,0 +1,50 @@
+version: '3'
+services:
+  recognize:
+    build:
+      context: ../
+      dockerfile: nclouds/Dockerfile
+      args:
+        buildtime_env: "development"
+        buildtime_region: "us-east-1"
+    environment:
+      - DATABASE_MYSQL_USERNAME=root
+      - DATABASE_MYSQL_PASSWORD=root
+      - DATABASE_MYSQL_HOST=localmysql
+      - aws_elasticache_endpoint=localredis
+      # - START_UP="ssl"
+    extra_hosts:
+      - "l.recognizeapp.com:127.0.0.1"
+    ports:
+      - "3000"
+      - "50000"
+    # volumes:
+    #   - ../:/recognize # Linux Os
+    #   - recognize-sync:/recognize:nocopy # nocopy is important Win/Mac Os
+    networks:
+      - recognizenet
+    depends_on:
+      - localmysql
+      - localredis
+  localmysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - recognizenet
+  localredis:
+    image: redis
+    networks:
+      - recognizenet
+networks:
+  recognizenet:
+
+# volumes: # only for Win/Mac with docker-sync
+#   recognize-sync: # only for Win/Mac with docker-sync
+#     external: true # only for Win/Mac with docker-sync
+
+# Run:
+# cd nclouds
+# docker-compose build
+# docker-compose run --rm recognize ./nclouds/start_delayedjobs.sh
+# docker-compose up recognize

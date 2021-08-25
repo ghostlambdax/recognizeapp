@@ -1,0 +1,59 @@
+.plans-full .plan__header .plan__custom-cta, .plans-full .plan__header .plan__price {
+  border-bottom: 4px solid #e1e9f1;
+}
+
+.plan__annual__incentive, .plan__price__risk, .plan__price__starting {
+  display: block;
+  font-size: 1rem;
+  color: #98a2a7;
+}
+
+@media screen and (min-width: 540px) {
+  .plan__price__price {
+    font-size: 3rem;
+  }
+
+  .plan__price__duration {
+    font-size: 1rem;
+  }
+}
+
+
+.plan__price__price {
+  display: inline-block;
+  position: relative;
+  font-size: 44px;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #002838;
+}
+
+.plan_price_value {
+  line-height: 64px;
+  display: block;
+}
+
+.plan__price__decimals_currency {
+  position: absolute;
+  top: 8px;
+  left: 100%;
+  font-size: 1rem;
+  padding-left: .25em;
+  white-space: nowrap;
+}
+
+.plan__price__currency {
+  color: #98a2a7;
+}
+
+.plan__price__duration {
+  font-weight: 600;
+}
+
+.plan__annual__incentive, .plan__price__risk, .plan__price__starting, .plan__price__duration {
+  font-size: 1rem;
+}
+
+.plan__annual__incentive, .plan__price__risk, .plan__price__starting {
+  display: block;
+}

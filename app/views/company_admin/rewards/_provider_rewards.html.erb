@@ -1,0 +1,29 @@
+<% unless @company_money.balance > 0 %>
+  <div class="well minWidth100 marginBottom20">
+    <h3>Almost ready for gift cards!</h3>
+    <p>You need to deposit money with us before these gift cards are available in the Rewards Page. Gift cards are for <%= link_to "Silver Package", pricing_path, target: '_blank' %> customers.</p>
+    <p>The money deposited is 100% your money and you have the right to request remaining balance back.</p>
+    <%= link_to "Deposit rewards money", company_admin_catalog_rewards_budgets_path(@catalog), class: "button button-primary" %>
+  </div>
+<% end %>
+
+<table id="provider_rewards" class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Image</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th width="1%">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% provider_rewards.each do |provider_reward| %>
+      <tr id="provider_reward_<%= provider_reward.id %>" class="template_reward">
+        <td class="image-field"><%= image_tag(provider_reward.image_url) %></td>
+        <td><%= provider_reward.name %><br /><span class="subtle-text"><%= provider_reward.reward_type %></span></td>
+        <td><%= provider_reward.description.html_safe %></td>
+        <td class="action-wrapper"><%= add_provider_reward_button(provider_reward, @catalog) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

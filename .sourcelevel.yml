@@ -1,0 +1,37 @@
+# https://docs.sourcelevel.io/configuration/
+styleguide: Recognize/linters
+engines:
+  reek:
+    enabled: false
+  fixme:
+    enabled: false
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
+  rubocop:
+    enabled: true
+  brakeman:
+    enabled: true
+  scss-lint:
+    enabled: true
+  duplication:
+    config:
+      languages:
+        - ruby
+    enabled: true
+  remark-lint:
+    enabled: true
+  bundler-audit:
+    enabled: true
+exclude_paths:
+  - bin
+  - config
+  - db
+  - public
+  - script
+  - spec
+  - test
+  - vendor
+  - app/assets/stylesheets/3p
+  - app/assets/javascripts/3p

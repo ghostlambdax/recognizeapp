@@ -1,0 +1,44 @@
+<footer class="footer-exp clearfix" role="contentinfo">
+  <div class="inner">
+    <ul class="no-bullets">
+      <li class="subtext" data-turbolinks="false"><%= link_to "Help", help_path, class: "button button-highlight" %></a></li>
+      <li class="subtext"><a href="https://status.recognizeapp.com">Status &amp; Updates</a></li>
+      <li class="subtext">
+        <%= link_to 'Articles', articles_path %>
+      </li>
+      <li class="subtext"><a href="/terms">Terms of Use</a></li>
+      <li class="subtext"><a href="/privacy">Privacy Policy</a></li>
+      <li class="subtext"><a href="/recognize-privacy-shield-policy.pdf">Privacy Shield Policy</a></li>
+      <li class="subtext"><a href="/gdpr">GDPR / User Rights</a></li>
+    </ul>
+
+    <ul class="no-bullets">
+      <li class="subtext" data-turbolinks="false"><%= link_to "Contact sales", contact_sales_path, class: "button button-highlight" %></a></li>
+      <li class="subtext"><a href="mailto:support@recognizeapp.com">Support@recognizeapp.com</a></li>
+      <li class="subtext"><a href="mailto:sales@recognizeapp.com">Sales@recognizeapp.com</a></li>
+
+      <li class="subtext" itemprop="address">Recognize HQ<br><%= t("recognize.address_full") %></li>
+      <li class="subtext"><a href="tel:8662880373" itemprop="telephone">(866) 288-0373</a></li>
+    </ul>
+
+    <div class="subtext">
+      <h3 class="flex logo">
+        <div><%= lazy_image_tag 'chrome/logo-mark-white.png', alt: "Recognize logo white" %></div>
+        Recognize
+      </h3>
+      <p>Recognize is an international employee recognition and rewards program. Our team is dedicated to providing
+        continuous new features around integration into business tools, such as Outlook or Workday, customizations to
+        our fit customer's needs, while maintaining low costs. Contact us to learn more.</p>
+
+      <% unless is_amp? %>
+        <a href='https://www.capterra.com/reviews/148439/Recognize?utm_source=vendor&utm_medium=badge&utm_campaign=capterra_reviews_badge'>  <img border='0' src='https://assets.capterra.com/badge/de19e48bfc82df4e5303330421b61b21.png?v=2104830&p=148439' height=55 alt='Capterra reviews of Recognize'/></a>
+
+        <a target="_blank" href="https://prighter.com/q/19536839965"><img width="100" src="https://gdpr-rep.eu/certificateofrepresentation/19536839965/getwebcertificate.png" alt="Recognize certificate of Art 27 representation"></a>
+      <% end %>
+    </div>
+
+
+
+  </div>
+
+</footer>

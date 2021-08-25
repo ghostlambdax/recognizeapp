@@ -1,0 +1,103 @@
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Global Employee Recognition Case Study" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="Promoting Company Values in a Global Workforc.e" />
+  <meta property="og:image" content="https://recognizeapp.com/assets/pages/case-study/dealogic/index-card.jpg" />
+<% end%>
+
+<% content_for :title, "Global Employee Recognition Case Study" %>
+<% content_for :description, "Promoting Company Values in a Segmented Global Workforce. Learn how a global financial services company uses employee recognition connect their remote workforce." %>
+
+<section class="case-study-article">
+  <section class="cs-banner lazy gradient-cover-white">
+    <p class="balance-text subtle-text">Dealogic Case Study</p>
+    <h1 class="balance-text">Employee Recognition in a Global Workforce</h1>
+    <div>
+      <a href="/docs/case-study/DealogicCaseStudy.pdf" class="button button-primary button-small">Download <sup>PDF</sup></a>
+    </div>
+  </section>
+
+  <section class="case-study-section">
+
+    <div class="flex flex-sidepanel">
+      <div>
+        <h2>A Global Financial Services Company</h2>
+        <p>Dealogic was established in 1983 in the UK as a financial services company. They provide a financial markets platform for hundreds of firms all over the globe. Their platform connects banks and investors in one place, allowing them to access content, analysis, and technology that will help them to determine the right opportunities and distribute deals to the right buyers. Within the platform, clients are able to analyze wallet share, manage risk, align operations, and comply with regulation. Their services are also used by media companies for financial publications, such as the Wall Street Journal Investment Banking Scorecard. Their mission is to “To deliver the best and most innovative software technology and the most respected and trusted content through highly skilled, connected, and creative people.”</p>
+      </div>
+
+      <dl class="stylized-dl">
+        <dt>Company Size</dt>
+        <dd>500+</dd>
+        <dt>Locations</dt>
+        <dd>10</dd>
+        <dt>Industry</dt>
+        <dd>Financial Services</dd>
+        <dt>Country</dt>
+        <dd>Global</dd>
+      </dl>
+    </div>
+
+  </section>
+
+  <section class="case-study-section">
+    <%= render partial: "articles/quote", locals: {quote: {
+        quote: "At Dealogic, we recognize employees want to feel relevant – that they are valued for their contributions and for who they are. That’s why ‘recognition’ is at the center of our employee engagement strategy, and we’ve been very pleased with the results.",
+        author: "Carolyn Cresswell",
+        background_path: image_path("pages/case-study/dealogic/c.png")
+    }} %>
+  </section>
+
+
+  <section class="case-study-section">
+    <em class="case-study-category-text">The Challenge</em>
+    <h2>Connecting a Workforce Segmented Across 10 Global Locations</h2>
+    <p>With a workforce of over 500 employees distributed across 10 global locations in London, New York, Hong Kong, Tokyo, Budapest, São Paulo, Sydney, Mumbai, Beijing, and Singapore, Dealogic needed a way to unite their employees across offices. In order to connect their workforce, Dealogic envisioned the ability to promote and share company values and culture regardless of location. They also wanted their new employee recognition platform to leverage Yammer, a tool they had already successfully implemented within the organization.</p>
+  </section>
+
+
+
+  <section class="case-study-section">
+    <em class="case-study-category-text">The Solution</em>
+    <h2>Custom Badges to Promote Company Values</h2>
+    <p>Dealogic chose Recognize because they were able to recognize their employees for exhibiting their company values. With Recognize, they could create custom badges based upon their different company values and send these to employees who lived each value. They also loved that Recognize integrated with Yammer, centralizing employee recognition and social collaboration in one place, so that employees never have to leave their workflow to send and receive recognitions. </p>
+  </section>
+
+  <section class="case-study-section">
+    <div class="flex flex-sidepanel">
+      <div>
+        <em class="case-study-category-text">The Results</em>
+        <h2>Engaged, Happy, and Connected Employees</h2>
+        <p>Since implementing Recognize over 3 years ago, Dealogic still has amazing employee engagement, with over 66% of staff receiving recognition each month, and has sent over 42,000 recognitions. Dealogic also implemented a company-wide Employee Appreciation week, hosting special events and giving out special awards to top-performers.</p>
+        <h3>Top Employee Recognition Badges</h3>
+        <%= lazy_image_tag "pages/case-study/dealogic/badges.jpg", alt: "Dealogic's top badges", class: "" %>
+      </div>
+
+      <div style="width: 200px; max-width: 100%;">
+        <dl class="dt-stats centered">
+          <dd>66%</dd>
+          <dt>Receive monthly recognition</dt>
+        </dl>
+        <dl class="dt-stats centered">
+          <dd>42,000</dd>
+          <dt>Recognitions submitted in three years</dt>
+        </dl>
+        <dl class="dt-stats centered">
+          <dd>3+</dd>
+          <dt>Years with Recognize</dt>
+        </dl>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="case-study-section">
+    <em class="case-study-category-text">Concluding Thoughts</em>
+    <h2>United Employees Through Employee Recognition</h2>
+    <p>Implementing an employee recognition program with Recognize is an easy way to promote company values and unite employees across multiple locations. For more information about the Recognize platform, or if you’d like to be featured in a future case study, please contact support at support@recognizeapp.com.</p>
+  </section>
+
+</section>
+
+<%= render "home/footer" %>

@@ -1,0 +1,69 @@
+<div class="task-submission-wrapper">
+  <div class="task-submission-header padding10">
+    <div class="avatar-wrapper"><%= image_tag(@submitter.avatar.small_thumb.url, itemprop: "image", class: "avatar", style: "vertical-align: middle") %></div>
+    <div>
+      <div class="name"><%= @submitter.full_name%></div>
+      <div class="job-title"><%= @submitter.job_title%></div>
+    </div>
+  </div>
+
+  <% has_description = @task_submission.description.present? %>
+  <div class="task-submission-subheader <%= "padding10" if has_description %>">
+    <%= @task_submission.description %>
+  </div>
+
+  <div class="task-submission-body">
+    <%
+      update_endpoint = if controller.class == CompanyAdmin::Tskz::TaskSubmissionsController
+                          company_admin_task_submission_path(@task_submission)
+                        else
+                          manager_admin_task_submission_path(@task_submission)
+                        end
+    %>
+    <%= form_for(@task_submission,
+                 url: update_endpoint,
+                 as: :task_submission,
+                 remote: true) do |f| %>
+      <%= f.hidden_field :request_form_id, value: SecureRandom.uuid %>
+      <table>
+        <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th><%= t('tasks.quantity') %></th>
+          <th><%= t('dict.task') %></th>
+          <th><%= @company.custom_labels.task_tags_label.singularize(I18n.locale) %></th>
+          <th><%= t('dict.points') %></th>
+          <th><%= t('dict.comment') %></th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @task_submission.completed_tasks.each do |completed_task| %>
+            <tr>
+              <td class="actions">
+                <%= f.fields_for :completed_tasks, completed_task do |completed_task_field| %>
+                  <%= completed_task_field.hidden_field :id  %>
+                  <%= completed_task_field.radio_button :status_id, Tskz::States.approved, checked: true%>
+                  <%= completed_task_field.label "status_id_#{Tskz::States.approved}", t("dict.approve") %>
+                  <%= completed_task_field.radio_button :status_id, Tskz::States.denied %>
+                  <%= completed_task_field.label "status_id_#{Tskz::States.denied}", t("dict.deny") %>
+                <% end %>
+              </td>
+              <td><%= completed_task.quantity %></td>
+              <td><%= completed_task.task.try(:name) %></td>
+              <td><%= completed_task.tag.try(:name) %></td>
+              <td><%= completed_task.points %></td>
+              <td><%= completed_task.comment %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <div class="control-group task-submission-approval-comment marginTop15">
+        <%= f.text_area :approval_comment, placeholder: "#{t("tskz.task_submission.approval_comment_placeholder")}(#{t("dict.optional")})", rows:4  %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

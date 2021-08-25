@@ -1,0 +1,1 @@
+<%= t("layouts.mailer.greetings", name: ((@user.present? and @user.first_name.present?) ? @user.first_name : t("layouts.mailer.default_name"))) %>,

@@ -1,0 +1,3 @@
+<h2><%= t("users.user_directory") %></h2>
+
+<%= litatablify(@datatable, endpoint: users_path, daterange: false, nav_tabs: false, minimal_table_styles: true) %>

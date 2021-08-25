@@ -1,0 +1,35 @@
+# Spanish translations for recognize package.
+# Copyright (C) 2020 recognize
+# This file is distributed under the same license as the recognize package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recognize 1.0\n"
+"Report-Msgid-Bugs-To: contact@translation.io\n"
+"POT-Creation-Date: 2020-10-28 11:13-0600\n"
+"PO-Revision-Date: 2020-10-28 18:13+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Spanish\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"\n"
+
+#: ../../../app/views/admin/index/_admin_header.html.erb:23
+msgid "Dashboard"
+msgstr ""
+
+#: ../../../app/views/admin/index/_admin_header.html.erb:24
+msgid "Engagement"
+msgstr ""
+
+#: ../../../app/views/company_admin/accounts/edit.html.erb:6
+msgid "Edit Users"
+msgstr ""
+
+#: ../../../app/views/company_admin/accounts/show.html.erb:2
+msgid "Users"
+msgstr ""

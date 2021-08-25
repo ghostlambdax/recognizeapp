@@ -1,0 +1,27 @@
+<h3>Deposit Money</h3>
+<%= form_for @money_depositer, url: deposit_money_admin_company_path(@company), remote: true do |f| %>
+
+  <div class="row-fluid">
+    <div class="span3">
+      <%= f.label :amount %>
+      <%= f.number_field :amount, min: 0 %>
+    </div>
+    <div class="span3">
+      <%= f.label :funding_source_id, "Funding Source" %>
+      <%= f.select :funding_source_id, options_for_select(Rewards::FundingSources.options_for_select), {} %>
+    </div>
+  </div>
+
+  <div class="marginBottom10">
+    Current balance: <%= humanized_money_with_symbol(Money.from_amount(@money_depositer.balance, @money_depositer.balance_currency)) %>
+  </div>
+
+  <div>
+    <%= f.label :comment %>
+    <%= f.text_field :comment, placeholder: "Check number, date, etc", style: "width: 300px" %>
+  </div>
+
+  <%= hidden_field_tag :form_id, SecureRandom.uuid %>
+  <%= f.submit "Deposit", class: "button" %>
+
+<% end %>

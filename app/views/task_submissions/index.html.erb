@@ -1,0 +1,40 @@
+<div class="flex-centered">
+
+  <div class="centered flexed-wrapper">
+    <h1 class="marginBottom40"><%= t("tasks.thanks_for_submitting") %></h1>
+
+    <div>
+      <table class="table table-striped tasks-table">
+        <tr>
+          <th><%=	t('tasks.task') %></th>
+          <th><%=	@task_submission.company.custom_labels.task_tags_label %></th>
+          <th><%=	t('tasks.quantity') %></th>
+        </tr>
+        <% if @task_submission.completed_tasks.present? %>
+          <% @task_submission.completed_tasks.each do |c_task| %>
+            <tr>
+              <td>
+                <%= c_task.task.name %>
+              </td>
+              <td>
+                <%= c_task.tag.try(:name) %>
+              </td>
+              <td>
+                <%= c_task.quantity %>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td>
+              <%= @task_submission.description %>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+</div>

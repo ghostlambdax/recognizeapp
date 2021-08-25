@@ -1,0 +1,8 @@
+<li>
+
+  <h2><%= video[:snippet][:title] %></h2>
+  <p class="marginBottom30"><%= video[:snippet][:description].html_safe %></p>
+
+  <div class="youtube-video" data-id="<%= video[:snippet][:resourceId][:videoId] %>" data-width="100%" data-play="stop"></div>
+
+</li>

@@ -1,0 +1,16 @@
+(function(){
+  <% if @recognition.errors.empty? %>
+    var $table = $("table#recognitions-table");
+    var $approval_link = $table.find("#recognition-actions-<%= @recognition.slug %>");
+    var $recognitionRows = $approval_link.parents('table').find('.<%= @recognition.slug %>');
+    var status_column_class = ".status",
+        action_wrapper_class = ".actions";
+
+    $approval_link.html('<%= @recognition.status_label %>');
+    $recognitionRows.find(status_column_class).html('<%= @recognition.status_label %>');
+    $recognitionRows.find(action_wrapper_class).html('');
+
+  <% else %>
+    <%# this case is already handled by the relevant page %>
+  <% end %>
+})();

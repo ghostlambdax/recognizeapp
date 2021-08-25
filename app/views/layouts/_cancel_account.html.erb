@@ -1,0 +1,7 @@
+  <hr class="hr hr-space">
+  <%
+    opts = {url: user_path(id: account.id, network: account.network), remote: true, html: {method: :delete, id: "cancel-account", data: {errorWrapper: "#cancel-account-error-wrapper"}}}
+  %>
+  <%= form_for account, opts do |f| %>
+    <%= f.submit t("dict.cancel_account"), class:'button button-no-chrome danger unlocked' %>
+  <% end %>

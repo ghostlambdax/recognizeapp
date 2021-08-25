@@ -1,0 +1,10 @@
+<script type="text/javascript" charset="utf-8">
+  window.R = window.R || {};
+  window.R.domain = "<%= @current_user ? @current_user.company.domain : "" %>";
+
+  <!-- localised default values for swal confirmation-->
+  window.R.confirmationDialog = {
+    confirmationTitle: '<%= I18n.t("confirmation_dialog.title_text") %>',
+    confirmButtonText: '<%= I18n.t("confirmation_dialog.confirm_button_text") %>'
+  };
+</script>

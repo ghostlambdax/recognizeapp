@@ -1,0 +1,43 @@
+<section id="rewards">
+  <% if @redemptions.present? %>
+    <table class="table table-striped">
+      <th class="reward-table-date"><%= t("dict.date") %></th>
+      <th class="reward-table-title"><%= t("reward.reward") %></th>
+      <th class="reward-table-status"><%= t("dict.status") %></th>
+      <th class="reward-table-contact"><%= t("dict.contact") %></th>
+
+      <% @redemptions.each do |redemption| %>
+        <tr>
+          <td>
+            <p><%= localize_datetime(redemption.created_at, :friendly_with_time) %></p>
+          </td>
+
+          <td>
+            <p><%= format_redemption_title(redemption) %></p>
+          </td>
+
+          <td>
+            <p>
+              <%= redemption_status_text(redemption.status) %>
+              <br>
+              <% if current_user == @user %>
+                <%= reward_view_details_link(redemption) %>
+              <% end %>
+            </p>
+          </td>
+
+          <td>
+            <p>
+              <% manager = redemption.reward.manager_with_default %>
+              <a href="mailto:<%= manager.email %>">
+                <%= t("users.rewards.notified_manager", name: manager.full_name, email: manager.email) %>
+              </a>
+            </p>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p class="list-empty-warning"><%= t("rewards.no_redemptions") %></p>
+  <% end %>
+</section>

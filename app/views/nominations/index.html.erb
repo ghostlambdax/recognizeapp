@@ -1,0 +1,17 @@
+<div class="flex-centered">
+
+  <div class="centered">
+    <h1 class="marginBottom40"><%= t("nominations.thanks_for_your_nomination") %></h1>
+
+    <div class="well">
+
+      <div>
+        <h2><%= @nomination.recipient.full_name %></h2>
+        <%= image_tag @nomination.badge.image_url, width: 80, class: "avatar" %>
+        <h4><%= @nomination.badge.short_name %></h4>
+      </div>
+    </div>
+  </div>
+
+</div>
+

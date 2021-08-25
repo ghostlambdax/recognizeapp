@@ -1,0 +1,46 @@
+<table class="company-dry-run-report" style="width: 100%;">
+  <tr>
+    <td style="vertical-align: top;">
+      <h2 style="border-top: 5px solid blue; padding-top: 5px; <%= mail_styles(:h2, :text, :gray) %>">
+        <%= company.name %> (<%= emails.count %>)
+      </h2>
+      <div style="padding-left: 20px;">
+        <% error_count = errors.count %>
+        <% if errors.present? %>
+          <div class="errors">
+            <h2><%= "#{error_count.to_s} " if error_count > 1 %><%= "Error".pluralize(error_count) %> encountered!</h2>
+            <% errors.each do |exception_str, recipient_emails| %>
+              <h3>Exception: <i><%= exception_str %></i></h3>
+              <% if recipient_emails.present? %>
+                <p style="<%= mail_styles(:p, :text) %>">Affected Recipients: <%= recipient_emails %></p>
+              <% end %>
+              <%= mail_styles(:hr) %>
+              <br>
+            <% end %>
+          </div>
+          <br>
+        <% end %>
+        <% if emails.present? %>
+          <% if errors.present? %>
+            <p style="<%= mail_styles(:p, :text) %>">Emails unaffected by the <%= 'exception'.pluralize(error_count) %>:</p>
+          <% end %>
+          <table class="successful-recipients" style="width: 100%;">
+            <tr>
+              <th>Recipient</th>
+              <th>Subject</th>
+            </tr>
+            <% emails.each_with_index do |email, index| %>
+              <% odd = index % 2 == 0 %>
+              <tr style="<% if odd %>background: #f4f4f4;<% end %>">
+                <td style="padding: 20px; width: 40%;"><h4 style="<%= mail_styles(:h4, :text, :margin0) %>"><%= email.to.join(',') %></h4></td>
+                <td style="padding: 20px; width: 40%;"><h4 style="<%= mail_styles(:h4, :text, :margin0) %>"><%= email.subject %></h4></td>
+              </tr>
+            <% end %>
+          </table>
+        <% else %>
+          <p style="<%= mail_styles(:p, :text) %>">No emails would be sent.</p>
+        <% end %>
+      </div>
+    </td>
+  </tr>
+</table>

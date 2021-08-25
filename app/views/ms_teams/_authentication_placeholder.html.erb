@@ -1,0 +1,15 @@
+<div class="ms-teams-unauthenticated-content">
+  <h2>Please sign in to continue</h2>
+  <%#
+    NOTE: This button needs to be handled by MsTeams
+          specific js (ms_teams/auth.js), otherwise communication 
+          will be broken upon successful auth which results in the 
+          closing of the pop up window. 
+  %>
+  <button id="ms-teams-signin-btn">Sign in</button>
+  <div class="errors"></div>
+</div>
+
+<div class="ms-teams-authenticated-content hidden">
+  <%= yield %>
+</div>

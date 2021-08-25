@@ -1,0 +1,57 @@
+#home-employee_nominations
+
+  #intro
+    background: darken($headerBg, 20%)
+
+    .graphic
+      width: 750px
+
+  #dashboard
+    position: relative
+    padding: 0
+
+    & > img
+      float: left
+      margin-left: -9%
+      width: 75%
+      margin-top: -51px
+      box-shadow: 0 -10px 10px rgba(0,0,0,.5)
+
+    .inner
+      float: right
+      width: 30%
+      margin: 50px 0px 0 0
+
+  #ideas
+    ul
+      max-width: 600px
+      margin: auto
+
+    li
+      margin: 15px
+      display: inline-block
+      vertical-align: top
+      font-weight: 600
+
+@media (min-width: 768px)
+  #home-employee_nominations
+    #view-main-wrapper
+      padding-top: 44px !important
+
+@media (max-width: 850px)
+  #home-employee_nominations
+    #intro
+      display: block !important
+
+@media (max-width: 1195px)
+  #home-employee_nominations
+    #dashboard
+      text-align: center
+
+      img
+        width: 100%
+
+      .inner
+        width: 100%
+        margin: 2em auto 2em auto
+        float: none

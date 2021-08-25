@@ -1,0 +1,23 @@
+#!/bin/bash
+# This file should be in bin/parallel_tests
+
+# updates CI node total based on parallel_tests concurrency
+THREAD_NODE_TOTAL=$(( $PARALLEL_TESTS_CONCURRENCY * $CI_NODE_TOTAL ))
+
+if [ "$TEST_ENV_NUMBER" == "" ]; then
+  PARALLEL_TESTS_CONCURRENCY_INDEX=0
+else
+  PARALLEL_TESTS_CONCURRENCY_INDEX=$(( $TEST_ENV_NUMBER - 1 ))
+fi
+
+THREAD_INDEX=$(( $PARALLEL_TESTS_CONCURRENCY_INDEX + ($PARALLEL_TESTS_CONCURRENCY * $CI_NODE_INDEX) ))
+
+# logs info about ENVs to ensure everything works
+# echo THREAD_NODE_TOTAL=$THREAD_NODE_TOTAL CI_NODE=$CI_NODE_INDEX THREAD_INDEX=$THREAD_INDEX PARALLEL_TESTS_CONCURRENCY=$PARALLEL_TESTS_CONCURRENCY TEST_ENV_NUMBER=$TEST_ENV_NUMBER
+
+# you can customize your knapsack_pro command here to use regular or queue mode
+# bundle exec rake knapsack_pro:queue:rspec
+echo "CI_NODE_TOTAL=$THREAD_NODE_TOTAL CI_NODE_INDEX=$THREAD_INDEX bundle exec rake knapsack_pro:queue:rspec"
+# CI_NODE_TOTAL=$THREAD_NODE_TOTAL CI_NODE_INDEX=$THREAD_INDEX bundle exec rake knapsack_pro:queue:rspec
+# KNAPSACK_PRO_CI_NODE_TOTAL=$THREAD_NODE_TOTAL KNAPSACK_PRO_CI_NODE_INDEX=$THREAD_INDEX bundle exec rake knapsack_pro:rspec
+KNAPSACK_PRO_CI_NODE_TOTAL=$THREAD_NODE_TOTAL KNAPSACK_PRO_CI_NODE_INDEX=$THREAD_INDEX bundle exec rake knapsack_pro:queue:rspec

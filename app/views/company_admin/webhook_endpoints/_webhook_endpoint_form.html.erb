@@ -1,0 +1,67 @@
+<% 
+  form_opts = {}
+  form_opts[:index] = webhook_endpoint.id if webhook_endpoint.persisted?
+%>
+<%= form_for [:company_admin, webhook_endpoint], form_opts do |f| %>
+  <div class="control-group text-left">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: "width100" %>
+  </div>
+
+  <div class="control-group text-left">
+    <%= f.label :subscribed_event %>
+      <%= f.select :subscribed_event, Webhook::Endpoint.allowed_event_types.sort.map{|evt| [evt.humanize,evt]} %>
+  </div>
+
+  <div class="control-group text-left">
+    <%= f.label :target_url %>
+    <%= f.text_field :target_url, class: "width100" %>
+  </div>
+
+  <div class="control-group text-left">
+    <%= f.label :request_method %>
+    <%= f.select :request_method, Webhook::Endpoint.allowed_request_methods %>
+  </div>
+
+  <div class="control-group text-left">
+    <%= f.label :payload_template, class: "inline" %> 
+    <%= f.text_area :payload_template, class: "width100" %>
+    <%= f.check_box :escape_all_values %> 
+    <%= f.label :escape_all_values, _("Escape all quotes in payload"), class: "inline" %><sup title="Use ' | escape_js'  if you just want to escape individual fields">?</sup>
+  </div>
+
+  <div class="control-group text-left">
+    <%= f.label :conditions_template %>
+    <%= f.text_area :conditions_template, class: "width100" %>
+  </div>
+  
+  <div class="control-group text-left">
+    <%= f.label :request_headers %>
+      <%= f.text_area :request_headers, class: "width100" %>
+  </div>
+  
+  <div class="control-group text-left">
+    <% token_value = webhook_endpoint.authentication_token_ciphertext.present? ? Webhook::Endpoint.token_mask_stars : nil %>
+    <%= f.label :authentication_token %>
+    <%= f.password_field :authentication_token, value: token_value, class: "width100" %>
+  </div>
+
+  <% if webhook_endpoint.persisted? %>
+    <div class="control-group text-left select2-wrapper">
+
+      <% test_objects = webhook_endpoint.recent_objects %>
+      <% if test_objects.length > 0 %>
+        <%= label_tag "Recent events"%>
+        <%# select_tag :recent_events, options_for_select(test_objects.map{|o| ["#{o.created_at.to_formatted_s(:db)}(#{o.recognize_hashid}) - #{o.summary_label}", o.to_global_id.to_s,]}), read_only: true, class: "recent_events select2 width100" %>
+        <%= select_tag :recent_events, [], read_only: true, class: "recent_events select2-remote width100", data: {endpoint: event_objects_company_admin_webhook_endpoint_path(webhook_endpoint) } %>
+        <%= link_to "See payload", "javacript:;", class: "smallPrint seePayloadLink", data: {endpoint: show_test_payload_company_admin_webhook_endpoint_path(webhook_endpoint)} %>
+        | 
+        <%= link_to "Send to endpoint", "javacript:;", class: "smallPrint testWebhookLink", data: {endpoint: send_test_webhook_company_admin_webhook_endpoint_path(webhook_endpoint)}  %>
+        <div class="output marginTop10"></div>
+      <% else %>
+        <%= _('Create some data for this event in order to send a test') %>
+      <% end %>
+    </div>
+  <% end %>
+
+<% end %>

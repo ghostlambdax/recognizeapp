@@ -1,0 +1,60 @@
+<% if params[:recognition_created] == "true" && current_user && @company.fb_workplace_client.connected? && !@recognition.fb_workplace_post_id.present? && !@recognition.is_private? %>
+  <script type="text/javascript" charset="utf-8">
+      $(document).one("turbolinks:load", function() {
+          Swal.fire({
+              title: '<%= t("fb_workplace.share_to_workplace") %>',
+              text: "<%= t('fb_workplace.tag_others').html_safe %>",
+              imageUrl: '<%= asset_url "3p/workplace/hands.jpg" %>',
+              imageWidth: 277,
+              imageHeight: 209,
+              imageAlt: 'Two people connecting. Workplace by Facebook',
+              animation: false,
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: '<%= t("fb_workplace.share_to_workplace") %>'
+          }).then(function (result) {
+              console.log(result);
+              if (result.value === true) {
+                  var url = '<%= workplace_share_helper(current_user.company, @recognition.permalink).html_safe %>';
+                  var options = 'toolbar=0,status=0,resizable=1,width=626,height=436';
+                  window.open(url, 'sharer', options);
+              }
+          });
+      });
+  </script>
+<% end %>
+
+<% if current_user && @company.fb_workplace_client.connected? %>
+  <script type="text/javascript" charset="utf-8">
+      (function(d, s, id){
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
+          fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'Messenger'));
+
+      $("#workplace_share").on(R.touchEvent, function(e) {
+          var url = '<%= workplace_share_helper(current_user.company, @recognition.permalink).html_safe %>';
+          var options = 'toolbar=0,status=0,resizable=1,width=626,height=436';
+          window.open(url,'sharer',options);
+      });
+
+  </script>
+<% end %>
+
+<% # Close %>
+<% if params[:recognition_created] == "true" && @recognition.fb_workplace_post_id.present? %>
+
+  <script id='closeWorkplaceFBJS' type="text/javascript" charset="utf-8">
+      window.extAsyncInit = function() {
+          MessengerExtensions.requestCloseBrowser(function success() {
+              // webview closed
+          }, function error(err) {
+              // an error occurred
+          });
+      }
+  </script>
+
+<% end %>

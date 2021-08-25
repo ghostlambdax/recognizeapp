@@ -1,0 +1,81 @@
+<hr class="hr hr-space" />
+<h2>Single Sign On</h2>
+<p>Enterprise login management to control who has access to which systems and to avoid adding passwords to additional third party products.</p>
+<div class="row-fluid saml-settings">
+  <div class="span6 well">
+    <h3>SSO Settings</h3>
+    <%= form_for @saml_configuration, url: company_saml_configuration_path, method: :put, remote: true do |f| %>
+      <div class="control-group">
+        <div class="marginBottom20" id="enable-sso">
+          <%= show_toggle @saml_configuration.is_enabled, "Enable SSO", input: {name: "saml_configuration[is_enabled]"}, data: {setting: "saml_configuration[is_enabled]"}%>
+        </div>
+        <div id="force-sso">
+          <%= show_toggle @company.settings.force_sso, "Force SSO", input: {name: "settings[force_sso]"}, data: {setting: "settings[force_sso]"}%>
+        </div>
+        <label class="checkbox-title"> Disabling this will prevent automatic redirection to SSO provider from login page.</label>
+      </div>
+
+      <fieldset>
+        <legend class="">Simple configuration</legend>
+        <div class="form-control">
+          <%= f.label :metadata_url %>
+          <%= f.text_field :metadata_url, class: 'width100' %>
+        </div>
+        <div class="form-control marginBottom10">
+          <%= f.submit "Save settings", class: "button button-border" %>
+        </div>        
+      </fieldset>
+
+      <fieldset id="saml-custom-fieldset">
+        <legend class="">Advanced configuration</legend>      
+        <% fields = [:entity_id, :sso_target_url, :slo_target_url] %>
+        <% fields.each do |field| %>
+          <div class="form-control">
+            <%= f.label field %>
+            <%= f.text_field field, class: 'width100' %>
+          </div>
+        <% end %>
+
+        <div class="form-control">
+          <%= f.label :name_identifier_format %>
+          <%= f.text_field :name_identifier_format, value: @saml_configuration.name_identifier_format || "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress", class: 'width100' %>
+        </div>
+
+        <div class="form-control">
+          <%= f.label :certificate %>
+          <%= f.text_area :certificate, class: 'width100' %>
+        </div>
+      </fieldset>
+
+      <div class="form-control">
+        <%= f.submit "Save settings", class: "button button-border" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="span5 offset1">
+    <h5>Notes</h5>
+    <ol>
+      <li>Simple configuration via metadata xml will take precedence over advanced configurations.</li>
+      <li>Leave metadata url blank if you would like to use the advanced configuration.</li>
+      <li>Learn more: <a href="https://recognize.zendesk.com/hc/en-us/articles/226678267">Setting up single sign-on using Active Directory with ADFS and SAML</a></li>
+    </ol>
+
+    <hr>
+    <h5>Please use these settings for your ADFS Relying Party Trust or IDP settings.</h5>
+    <ul class="white-zebra-list">
+      <li>
+        <h6>Service Provider Metadata url</h6>
+        <pre>https://<%= "#{Recognize::Application.config.host}/#{@company.domain}" %>/saml/metadata</pre>
+      </li>
+      <li>
+        <h6>CS (Consumer) URL Validator</h6>
+        <pre>^https:\/\/<%= "#{Recognize::Application.config.host}\\/#{@company.domain}".gsub(/\./, "\\.") %>\/saml\/acs\/$</pre>
+      </li>
+      <li>
+        <h6>ACS (Consumer) URL</h6>
+        <pre>https://<%= "#{Recognize::Application.config.host}/#{@company.domain}" %>/saml/acs</pre>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<section id="achievements-tag" class="tab tab-pane">
+  <h3><%= t("user_show.num_achievements", num: @achievements.count)%></h3>
+  <hr class="hr hr-space">
+  <div id="recognitions-achievements">
+    <%= render :partial => "recognitions/recognition_inline", :collection => @achievements, :as => :recognition %>
+  </div>
+</section>

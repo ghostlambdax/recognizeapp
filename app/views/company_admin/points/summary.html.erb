@@ -1,0 +1,7 @@
+<% content_for :points_filter do %>
+  <span></span>
+<% end %>
+<h2><span title="This table shows a summary of points across your organization's people." data-placement="right">
+  Point Activity Summary
+</span></h2>
+<%= litatablify(@datatable, endpoint: summary_company_admin_points_path, daterange: false) %>

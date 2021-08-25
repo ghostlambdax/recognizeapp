@@ -1,0 +1,369 @@
+<% content_for :title, "Employee Recognition App Guide" %>
+<% content_for :description, "Learn how to understand or buy an employee recognition program for your company. Follow the requirements of Fortune 500 employee recognition programs." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Employee Recognition App Guide | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="All you need consider when purchasing or building an employee recognition app." />
+  <meta property="og:image" content="/assets/illustrations/employee_recognitions_screen_color.jpg" />
+<% end%>
+
+
+<% content_for :article_title do %>Employee Recognition App Guide<% end %>
+<% content_for :article_description do %>
+  <p class="balance-text marginBottom40 tagline">The number of employee recognition software providers can be overwhelming. This guide covers what we hope is everything you need to consider. This article helps to educate companies on the right questions to ask. It is based on our own learnings and <strong>directly from Fortune 500 employee recognition RFPs</strong>. Use this guide to make the right decisions in buying or building an employee recognition and rewards app.<% end %></p>
+
+
+
+<% content_for :article_body do %>
+
+    <h2>What is an employee recognition app?</h2>
+    <p>An employee recognition app is a technology solution to employee recognition & rewards, or the process of a company allowing peers, managers, or leadership to provide official endorsement. An employee recognition app or employee recognition vendor is a strategy to outsource this functional and strategic aspect of human resources. Companies can take an off-the-shelf provider, customize it to their needs, and deploy it to their staff.</p>
+
+    <h2>Why employee recognition apps matter</h2>
+    <p>The most dangerous parts of running a business are the unknown unknowns. Consider the features or requirements in an employee recognition program. Now consider the sub features of those features. For instance, do you want staff to send recognition to each other. Where do those users come from? Do they give monetary recognition? Is there an approval process? Do we need an approval process? How do we manage privacy? Can staff turn off notifications? The feature list starts to balloon. We don’t realize what is important before we are confronted with those situations and thought experiments. By going with an off-the-shelf provider, you are ensured to launch a recognition program within a month. Plus, even if the employee recognition app you pick isn’t perfect, it will get you there, at least 80% of the way. At that point, you can learn and iterate.</p>
+
+    <%= lazy_image_tag "illustrations/employee_recognitions_screen_color.jpg", alt: "An illustration of an employee recognition app on a laptop.", class: "width100 marginBottom50" %>
+
+
+    <!-- Uer management -->
+
+    <div id="user_management" class="article-list">
+
+      <h2>User management</h2>
+
+      <h3>What is user management?</h3>
+      <p>User management is how you store, organize, and distribute your employee organizational chart. User management is also known as user provisioning. Wherever this data is stored it is important to be working with third party employee recognition vendors. For instance, if your data is stored in Workday or another more walled HRIS, it might be hard to work with third parties not pre-approved by the HRIS. Whereas if you are on Office 365 as well or solely using Azure Active Directory, then you can share your employee data with third parties making it easy to get started. Recognize app integrates itself right into Office 365, Yammer, and SCIM. SCIM is a standard web protocol for user management. If an employee recognition vendor integrates with SCIM, sFTP, or Office 365 it can often make your life easier to automatically sync user data.
+      </p>
+
+
+      <h3>Does it sync your user data?</h3>
+      <p>User management involves ensuring that your employee data is added, moved, or removed from SaaS or third-party systems in a timely manner. There are three types of user management integrations: manual, bulk, and automatic. Manual user management involves an administrator or HR professional manually keep the data up to date. This should only be used for small companies or for outlying conditions. Bulk user management can be accomplished via a CSV or spreadsheet import. This is a step better than manual user management, however, it still requires someone to remember to keep the data up to date and to do it without human error. Automatic user management is the ideal method for large companies or companies with highly fluid workforces. Automatic user management can be accomplished via SCIM, sFTP import, or api integrations like an Office365 sync.</p>
+
+      <h3>How often is the data synced?</h3>
+      <p>Is it critical to sync users frequently. This is important to ensure that joiners have access to their important business tools quickly and leavers' access is revoked promptly. A best practice is to sync user management data to employee recognition apps on a daily basis.</p>
+
+
+      <h3>Can the employee recognition software send your user data or an API?</h3>
+      <p>Most companies don´t worry about this one as much, but highly technical companies or companies with a larger budget, will want access to an Application Programming Interface (API). APIs are how systems talk to each other. APIs are used every day in many of the apps you use. It enables one website or data source to talk to other websites or data sources. APIs are no more than password protected websites that return data that looks a lot like a list of text, called JSON data format. Recognize has an API to send user data, get employee recognitions, send employee recognitions, redemptions, and more. Then, your web development team could display them in different ways or send recognition dynamically based on other systems.</p>
+
+      <h3>Can staff easily sign in to the employee recognition app without creating a new account?</h3>
+      <p>Beyond user or data management is how staff members are going to login and access their account regardless if you have pre-populated their account with data or not. This is also known as user authentication. We highly recommend signing up for a single sign on provider if you haven’t already. It is easy to do through your IT team. There are many options out there, such as Okta and OneLogin. It allows your staff to set one password and then have access to apps you control. Recognize is in the Okta store and most employee recognition vendors are integrated into SAML. SAML is a standard practice for Single Sign On (SSO). </p>
+
+      <p>If you don’t use SSO, then how else can you make it easy for staff to login? Login with Google, Yammer, Microsoft are all ways for OAuth to login with an existing account. OAuth is a bit different from SSO but gets you to the same place, which is allowing your staff to login without creating a new account.</p>
+
+
+    </div>
+
+    <!-- Integrations -->
+
+    <div id="integrations" class="article-list marginTop50">
+
+      <h2>Integrations</h2>
+
+      <h3>Is it integrated into the tools you use?</h3>
+      <p>This is a big one for any company that hasn’t already used an employee recognition app. Let’s face it, your employees can’t remember all the websites you have signed up for them. Putting your tools inside of other tools helps increase engagement up to 8x in our research. Can the employee recognition app you choose be inside of your email client, your web browser, your phone, your digital displays, your intranet, or your social collaboration tools? If so, then you’ll see higher adoption, less training requirements, and long term engagement.</p>
+
+      <h3>What tools are you already using?</h3>
+      <p>To figure out what is the lowest hanging fruit in terms of top screen time with your employees, what are the most essential apps that your staff members already use? Common answers are email, intranet, text message, or Google Chrome or Microsoft Edge. Other out of box ideas is the HDTV in the lobby, visible to employees as they walk in or out of the office. Can the employee recognition app be inside of the apps that make up for at least 30% of your employees screen time?</p>
+
+      <h3>If you aren’t using any existing tools is standalone okay?</h3>
+      <p>Most often in this scenario when your staff haven’t experienced yet-another-website fatigue, adding a standalone recognition program will succeed. In this case, your staff will often use your social recognition program as their primary social hub. However, if you add more social collaboration tools, such as Workplace by Facebook, Yammer, or Slack, then a standalone social employee recognition app may become less important in that way and so direct integration with an employee recognition app is critical.</p>
+
+      <h3>Solving the “yet another website” problem</h3>
+      <p>At some point, your staff will say “not yet another website or app!”, if they haven´t already. The solution is to start bundling tools together. Outlook, Slack, Workplace by Facebook, intranet, or Sharepoint all have great integration systems to add other systems. Can the systems you already use include an off-the-shelf employee recognition program?</p>
+
+      <h3>TVs</h3>
+      <p>Large HDTVs are becoming more and more affordable. TVs are great to passively showcase data to employees. Check if the employee recognition app you want to use has a way to showcase public recognitions on a carousel made for TV.</p>
+
+    </div>
+
+
+    <div id="rewards" class="article-list marginTop50">
+
+      <!-- Rewards -->
+
+      <h2>Rewards</h2>
+
+      <h3>Monetary vs. non-monetary employee rewards</h3>
+      <p>Employee rewards do not have to be only bonuses although employees prefer them over almost anything according to our employee recognition report. At the same time, staff members want to know they are making a difference and they are important. Employee rewards can communicate that. If you want an employee rewards program that includes non-monetary or company-fulfilled, make sure the vendor you choose has that ability.</p>
+
+      <h3>Do you pay your staff well?</h3>
+      <p>If you pay your staff adequately, then bonuses may not be as interesting as other levers you can pull. A senior HR director at a 40,000 employee computer company told us, “Our staff’s garages are full of stuff, they don’t need more stuff.” Double check with staff to discover what kind of employee rewards resonates with them.</p>
+
+      <h3>Status Access Power Stuff</h3>
+      <p>SAPS stands for status, access, power, and stuff. In gamification these are the main levers you can pull to motivate people. Examples include giving a senior job title, access to a conference, power to make a type of final decision, or give them monetary stuff.</p>
+
+
+      <h3>Non-monetary employee reward examples</h3>
+
+      <h4>Paid time off</h4>
+
+      <p>Our research shows employees prefer paid time off, over any non-monetary reward. It enables staff to spend more time with their loved ones and come back refreshed, more productive.</p>
+
+      <h4>Parking spot</h4>
+      <p>Parking spot is only useful to companies that have lots that are often full. Recognize team visited a customer recently and we saw first-hand, people circling around looking for parking. That’s a great example for that type of reward.</p>
+
+      <h4>Survey staff</h4>
+
+      <p>Again, survey your staff and find out what kind of rewards are best for them. As well as the employee recognition apps you choose if they have a survey to give to your employees.</p>
+
+      <h3>Monetary employee reward examples and questions</h3>
+      <p>You’ll want to check the types of monetary rewards the employee recognition vendors provide. Some have Visa cash cards or reporting you can hand to accounting for bonuses. Other give bonuses through direct deposit.</p>
+
+      <h4>Gift cards and cash cards</h4>
+      <p>Most employee recognition programs have gift cards included either manually or digitally. </p>
+
+      <h5>How are returns managed?</h5>
+      <p>The most important part is if you can be refunded. Will the employees receive their points back once a redemption is returned? Can there be returns? What is acceptable for you based on their costs?</p>
+
+      <h4>Experiences</h4>
+      <p>Thinking outside the box, do you want to offer experiences in your employee rewards app? Experiences can add diversity to your rewards catalog and help even out the spread of options. Recognize research shows employees aren’t interested into experiences as much as cash or paid time off. Thus, it is good to keep in mind the diminishing return on reward options.</p>
+
+      <h4>What countries do you operate in?</h4>
+      <p>If you operate in more than one country you’ll want to provide options to both. International rewards are complicated. For instance, if a person is in Asia with the Asia cost center and gives recognition to someone in the USA, where does the budget come from and how much is available, when that American goes to redeem a reward,? These are questions that a top employee recognition app should be able to answer. The simpler the answer the better.</p>
+
+      <h5>Does the system support currency catalogs?</h5>
+      <p>How does the employee recognition provider handle international rewards or even different sets of rewards within a country? </p>
+
+
+      <h3>Value-based system vs. point-based system vs. literal cash.</h3>
+      <p>Different employee recognition vendors have different approaches to currency for rewards. Recognize uses a value-based badge system, where employees give each other badges that are worth points. Those points can be used in the rewards catalogs. Other vendors do not have badges worth points. Instead, they only have points and employees give those points to each other. The employee must determine how many points to give in each recognition. Lastly, some employee recognition apps have employees say how much cash they are literally giving an employee. </p>
+
+      <p>At the end of the day, the best strategy is the one with all three features. Employees can give badges worth points, and/or extra points, and have cash deposited into their bank.</p>
+
+      <h4>Advantages of values</h4>
+      <p>A value-based system makes it easy for employees to focus on values rather than arbitrary points. Some say staff shouldn’t need to focus on how many points, acts are worth. The leadership should decide that ahead of time based on what’s most important and symbolize that as badges worth different amounts of points. Points are only a currency this school of thought uses.</p>
+
+      <h4>Advantage of points</h4>
+      <p>Points put power in the employees´ hands, giving them autonomy to choose how significant recognition is worth. Another advantage to points in general is they can be more easily used internationally, rather than consider exchange rates at the point of recognition. The danger here is staff end up giving micro bonuses, something staff aren’t that interested in according to our research, or do not know how to be consistent in their recognition. </p>
+
+      <h4>Advantage of cash</h4>
+      <p>A cash-based system where employees literally say “here´s 50$”, is useful in that it is fully transparent. This type of system can skip the rewards catalog option and give the money through payroll. The disadvantage is that for international companies, giving foreign currency can be confusing or a cash-only system can be difficult to offer non-monetary rewards, such as paid time off.</p>
+
+      <h3>Employees upping their own points</h3>
+      <p>Does it make sense for your organization for people to pay themselves to get more points to give? Some companies do this. Seems crazy, but some employee recognition programs allow a manager to use their own credit card to buy more points, or currency, to give out. </p>
+
+      <h3>Transfer points</h3>
+      <p>Some employee recognition programs allow people to give other people points to give. This is great for people who aren’t outgoing to give employee recognition, while their friend is and they can transfer.</p>
+
+      <h3>Expiring of points</h3>
+      <p>This is when at some point, points can’t be given anymore or can’t be redeemed. The former is fine where that simply keeps the points´ budget throttled, to make sure equal to or less than the budget of points is given in a time period. The latter is where an employee receives points that should have been budgeted, and then they expire. Check if the vendor you work with has either of these features if needed.</p>
+
+      <h3>Points budgeting</h3>
+      <p>How simple is the process to keep your company or cost centers within budget? Some programs allow you to enter the total budget and then give percentages to different roles, groups or cost centers. Other systems restrict the amount of recognition given by different roles to create a budgeting structure. Since a basic recognition program is easy to make, a lot of employee recognition apps do not have an advanced budgeting or international support.</p>
+
+      <h4>Balance safe guarding</h4>
+      <p>How does the employee recognition app keep the rewards within budget?</p>
+      <p>Can you go into a negative balance? If so, what is that process like? If not, do the rewards turn off? These questions are important to know ahead of time so that you aren't caught off guard now owing money.</p>
+
+      <h4>Extra points</h4>
+      <p>Is there a way to get extra points in the program for more motivation? Recognize has points for giving recognition, commenting, or liking recognitions. Anniversaries are another automatic way to get points in an employee recognition program. Extra points can come from levels, triggered from events in or out of the employee recognition program.</p>
+
+    </div>
+
+    <!-- Programs -->
+
+    <div id="programs" class="article-list marginTop50">
+
+      <h2>Employee recognition programs</h2>
+
+      <h3>Peer to peer employee recognition</h3>
+      <p>Do you want your staff to give recognition to each other? This is highly recommended as it is a way for your management to have visibility into the day to day.</p>
+
+      <h4>Approval process</h4>
+      <p>Can staff receive recognition instantly or is there an approval process? Can it be both? Ideally, staff can give value-based recognition or simply thank on a weekly basis. Some recognition may be worth money or a special award, in which case certain roles in the organization will want to approve.</p>
+
+      <h3>Manager or roles-based to peer</h3>
+      <p>Manager recognition is highly recommended. Gallup reports manager recognition is the most sought form of recognition from employees and having a manager-integrated recognition program is critical. </p>
+
+      <h3>Social vs. private recognition</h3>
+      <p>Social recognition adds social proof to the importance of company values and behaviors. It brings a distributed workforce organization together into one view.</p>
+      <p>Private recognition is great for those more sensitive moments, such as bonuses. Can the program force privacy on certain types of recognition?</p>
+
+      <h3>Employee nomination scheme</h3>
+      <p>	An employee nomination software is where employees vote for an employee of the month, quarter or year across categories, such as Innovator of the Year.</p>
+
+      <h4>Employee nomination approval process</h4>
+      <p>How complicated do you need the approval process to be? Is there a needed workflow between roles who decide award winners? What happens when there is an award winner?</p>
+
+      <h3>Emplyee service &amp; birthday anniversary program</h3>
+      <p>Most companies celebrate work anniversaries and birthdays. It is the easiest and most predictable form of employee recognition. When choosing a provider, you want the data to be easily synced, so you don´t have to worry if someone will be recognized or not. You’ll want a program that allows for different years to be chosen and not every year necessarily. </p>
+
+      <h4>What is the employee service date range and frequency?</h4>
+      <p>Some employee recognition programs can do first year of service and up. While other employee recognition programs, like Recognize, provide first week, first month, third month, and six month recognition as well.</p>
+
+      <h4>Monetary vs. non-monetary employee anniversary rewards</h4>
+      <p>Can you assign money or points to a year of service award? Can it be non-monetary recognition? Recognize allows for companies to assign redeemable points to any event.</p>
+
+      <h4>Private vs. social employee anniversary recognition</h4>
+      <p>Do you want the anniversaries to be public or private by default? Do you even have the option with the employee recognition vendor?</p>
+
+      <h4>In-person vs. digital</h4>
+      <p>Are staff members remote or co-located? If co-located, some recognition programs can make something or you can do something offline, such as a birthday card.</p>
+
+      <h4>Birthdays</h4>
+      <p>Do you want to celebrate either publicly or privately employee birthdays? Do you want to give money associated with the birthday?</p>
+
+      <h4>Service date</h4>
+      <p>How frequently do you want to have employee service date recognition? Companies with high turnover enjoy recognizing first month and third month. All companies should give rewards for at least first year, third, fifth, etc.</p>
+
+      <h4>Marriage</h4>
+      <p>Some employee recognition programs can give recognition for special events. Is this something you want in your program? How would that data be shared with the program?</p>
+
+      <h3>Employee incentives program</h3>
+      <p>Part of employee recognition is incentivizing staff to complete tasks or contribute in a specific way. These are considered conditional rewards, because members of the staff know if they complete the task they will be recognized or rewarded. Incentives work best with tasks that are non-knowledge based, such as a wellness or training program.</p>
+
+      <h3>Survey system</h3>
+      <p>Although not in the direct wheel house of employee recognition, a number of employee recognition vendors also have a pulse survey tool. These additional tools allow companies to ask specific questions and get feedback about the company, managers, or employees. There are companies that specifically do this and do it well. It depends if you want something that is okay at a lot of things, or awesome at a few things. Regardless, companies must keep a pulse on their staff’s needs and feelings.</p>
+
+      <h3>Wellness</h3>
+      <p>Most companies consider a wellness program low on the priorities but research finds healthier workers are more productive and take less sick days. Can employee recognition vendors also provide a wellness program to some capacity? What are your requirements for corporate wellness?</p>
+
+    </div>
+
+    <!-- The details -->
+
+    <div id="the_details" class="article-list marginTop50">
+
+      <h2>The details</h2>
+
+      <h3>Communication of updates</h3>
+      <p>How do employee recognition apps communicate new features and updates? The typical options are Twitter, newsletters, in app notifications. Do they automatically enable updates or allow the admins to choose? Do they email or notify employees or just admins?</p>
+
+      <h3>Analytics</h3>
+      <p>Being able to understand the data is critical as HR moves to a strategy business role, in what is becoming a mature service economy. There are three types of analytics: Descriptive, Predictive, and Prescriptive. All three can play into people analytics. For instance, descriptive is what we typically see in employee recognition tools. It describes the data in such way, that it tells you how many recognitions were sent and how many employees joined the company. Predictive would go farther and tell you that these employees may be promoted or that they quit due to past data. Lastly, prescriptive would then say, based on the type of recognition if you give this recognition you are more likely to retain this employee. This is where we are headed with people analytics and you should know the level of ability in the employee recognition vendor of choice. If they don’t have the functionality now, ask them about their roadmap.</p>
+
+      <h3>Training</h3>
+      <p>Admins, executives, managers, and employees may all need different types of training. If the program is easy to use, employees shouldn’t require any training, just as there isn’t any training to use Facebook or Instagram - user experience usability should solve the training issue. However, managers need to understand the importance and be given strategies or tools to being a great manager. Plus, training shows the managers the leadership buy-in into the program. For admins, are there videos, searchable FAQs, PDFs, or conference trainings to help?</p>
+
+      <h3>Support</h3>
+      <p>HR professionals aren’t just looking for a software program, they are also looking to get a strategic engagement partner. Who is going to be helping them get started with the employee recognition vendor’s software/app?</p>
+
+      <h4>IT support</h4>
+      <p>Do you get a team or individuals you interact with, to get IT or program help? Do you need to pay extra for that?</p>
+
+      <h4>Department-specific program support</h4>
+      <p>Across sales, account management, and customer support, do you have an assigned representative or is it self-service? What support does your company need?</p>
+
+      <h4>Email, FAQs, telephone</h4>
+      <p>What level of support do you need? To find out, ask yourself how many countries or time zones do you operate within? Most companies Recognize works with are fine with 24hr email support. However, what is the employee recognition app’s plan when the site goes down in the middle of the night?</p>
+
+      <h4>Extra costs</h4>
+      <p>Can you pay extra for 24hr telephone support and is that something you actually need?</p>
+
+      <h4>Turn off vendor support</h4>
+      <p>Sometimes companies want to control how support is given. If this is important to you, can you turn off support links for employees in the employee recognition app?
+      </p>
+
+      <h3>Frequency of employee recognition software updates</h3>
+      <p>The frequency of updates determines how fast they fix bugs or improve the application. Further, less frequent update interval indicates lower budget for R&D. Recognizeapp.com updates the application at least once a week if not twice.</p>
+
+      <h3>How much of the subscription or payment goes to R&D?</h3>
+      <p>Just as we want our donations to charity to go the charity and not fancy offices, the same applies for enterprise services your company purchases. If you are paying a yearly subscription, then every year there need to be continuous updates and improvements. </p>
+
+      <h3>How does the employee recognition software handle fraud / abuse?</h3>
+      <p>If there is money involved, there is fraud and abuse without question. An employee rewards app needs to prevent fraud in some way, either it is an approval process for each redemption or there should be an intelligent fraud detection and prevention system.</p>
+
+      <h3>Measuring success</h3>
+      <p>How does the employee recognition software you are working with measure success? How do you know when you have succeeded? Quantitative and qualitative surveys help, but also looking at safety instances, sales records or retention numbers for more correlations beyond surveys.</p>
+
+      <h3>Awards</h3>
+      <p>One of the oldest styles of recognition is giving an award certificate or plaque. With Web to print technology, it is easy to offer printable rewards in an employee recognition app. Will you want to print or give awards? What about physical plaques? Do you want to give these? Different vendors give different amounts of abilities. The traditional employee recognition companies can but newer companies like Recognize are more focused on digital recognition while still have the option to print an award certificate.</p>
+      <p>Another important question for awards is if the employee recognition app supports customization to your brand for award certificates or plaques. Customization and branding communicates to your company the quality and uniqueness of your employee recognition program.</p>
+
+      <h3>Notifications</h3>
+      <p>How staff members are notified, the frequency, and the content are some of the most important aspects of any tool. The primary tools for notifications to employees in technology are text SMS messaging, push notifications for desktop computers or smart phones, and email. Ideally, employees are immediately notified through the communication channel of their choice when they are recognized. Managers should get monthly reports of who has been recognized and who hasn’t been recognized. Admins should know the health of their program via notifications. Sometimes too many notifications are a bad thing. People can ignore too frequent notifications or notifications with unless information.</p>
+
+      <h4>Individual privacy and notification settings</h4>
+      <p>Employees have the right to change notifications or level of privacy. In Recognize, employees can choose if anniversary recognitions are sent privately. Employees, managers, and admins all have different notifications they can adjust.</p>
+
+      <h3>Team or group employee recognition</h3>
+      <p>To keep the recognition engagement (the percentage of employees who are recognized in your company) score up, having team recognition makes it much easier. Simply choose an entire team or location and recognize them.</p>
+
+      <h3>Theming of the employee recognition software</h3>
+      <p>Personalization is important to the enterprise because it makes the off-the-shelf employee recognition solutions become a part of their internal strategy. Recognize goes as far as letting you change the adjective or noun of the program. Rather than it saying “Who do you want to Recognize?”, it can ask: “Who do you want to star?” It should be up to you. At the very least, your employee recognition vendor can change the name/colors of the web app or change the styles of the emails. When talking to vendors, ask them about customization.</p>
+
+      <h3>Security</h3>
+      <p>Security is increasingly important even to small companies. Most employee recognition vendors do not have official security certification and even when they do, it doesn’t guarantee data security. It does guarantee that the company has systems in place to lower the chances. Questions about pen testing, disaster recovery policy, service level agreements, and password strength should be asked regardless of certification. </p>
+
+      <h4>Certification</h4>
+      <p>The reason many employee recognition apps do not have security certification is cost and time. It costs tens of thousands of dollars to reach certification. However, companies should all be doing pen-testing, encrypting data at rest, and have an incident response plan.</p>
+
+      <h5>ISO 27001 &amp Soc 2/3</h5>
+      <p>These are the standards in security certification. It means that company follows specific standards for security, such as pen testing and audits. It isn't crucial that the company follows this, but their hosting provider where your data is actually stored or code is deployed must follow these protocols. AWS and Azure both have ISO 27001.</p>
+
+
+      <h5>Encryption</h5>
+      <p>There are two important parts of encryption: encrypting the data sent from your computer to the server and encrypting your data once it is stored in a database. If the website submits forms and isn't HTTPS in the URL bar of the browser or the network requests, then that's a big red flag. Further, the employee recognition software vendor must be storing the data encrypted in the database at rest. That means if someone steals the database, they will not know what is in it.</p>
+
+      <h5>Intrusion detection architecture</h5>
+      <p>The infamous 2017 Equifax showed they didn't have accurate detection architecture or they would have known earlier that unwanted guests were in their system download databases. What is your SaaS partners or employee recognition app vendor's architecture for detecting intrusion? At Recognize, we are notified every time someone logs into our systems. Further, only specific qualified senior engineers have access to production databases.</p>
+
+      <h5>Where is your data stored?</h5>
+      <p>Is your data stored in a secure location owned by Amazon or Microsoft, or is the data stored onsite? If not in the USA, are you allowed to work with companes that have user data stored in USA? For GDPR this is okay as long as the company is part of Privacy Shield. Yet Australian Government will not allow data to be stored outside of Australia. Check if your employee recognition vendor has a way to store data in your country. Additional fees typically apply for this.</p>
+
+      <h5>Incident response plan</h5>
+      <p>What is the official procedure of the company when an issue occurs, such as the website goes down or if there is an earthquake at the vendor's HQ?</p>
+
+      <h5>Audits</h5>
+      <p>How often are third party white-hat hacker groups allowed to scan and penetrate the vendor's system? What security issues are outstanding if any?</p>
+
+      <h5>Training of staff</h5>
+      <p>At Recognize, every employee goes through a security training. The training entails employees learning best practices to how to keep their systems secure. For instance, employees must keep their computers locked when away from the desk or how to check an email's sender domain to ensure autheniticity. Check to make sure the employee recognition vendor has security training for all staff.</p>
+
+
+      <h3>Mobile</h3>
+      <p>Depending on the type of staff you have, a mobile app can increase usage. The question is: can you auto-install apps on your staff’s phones? Or do they have to download it themselves? What is the adoption or engagement of existing similar tools for both scenarios? Mobile is important but the level of importance may vary across organizations. It is good to know where your company stands before investing time into a solution.</p>
+
+      <h4>Critical mobile features</h4>
+      <p>First and foremost, being able to send and receive employee recognition is the most important. Secondly, viewing your own profile and accessing your reward redemptions. Third, is being able to redeem rewards from mobile, rather than from mobile web or desktop. Fourth can be an auxiliary program access, such as nominations.</p>
+      <p>One requirement for mobile enterprise is supporting single sign on or Oauth, with Microsoft for login ease. </p>
+      <p>Can recognitions be shared from mobile to internal or external tools?</p>
+
+      <h3>Responsive website</h3>
+      <p>A mobile app may be less important if the employee recognition vendor has a responsive web app. For the past eight years, new web development technologies have enabled websites to adapt to different screen sizes. If you can resize a browser on a website, does the website adapt?</p>
+
+      <h3>GDPR</h3>
+      <p>Named the Y2K of the 2010s, GDPR is the reason everyone received privacy emails in May of 2018. Jokes aside, GDPR is the step in the right direction for unified user rights and privacy. If you have staff in Europe, this is a requirement or you may lose your pants. Minimum fine is $20,000,000 for violations. </p>
+
+      <h4>Privacy shield</h4>
+      <p>To ensure compliance from processors or controllers (GDPR speak for if you create or own data, or simply data passes through it), companies need to be registered with Privacy Shield if in the USA. It lets companies in USA work with European companies.</p>
+
+      <h5>User rights</h5>
+      <p>Your employees require the right to privacy, psxedoanonymization, and to be forgotten. They have the right to their data in a machine-readable format. All of which needs to be easily accessible from the employee recognition app’s website. Check https://Recognizeapp.com/user-rights for Recognize’s GDPR compliance. </p>
+
+      <h3>Disaster recovery plan</h3>
+      <p>If an employee recognition vendor doesn’t have a disaster recovery plan, then they have never worked with a 500+ employee company. Big companies require vendors to fill out detailed spreadsheets. Disaster Recovery Plan is what a company does if their HQ catches on fire? What do you do if the website is hacked? Good questions to answer for any company. </p>
+
+      <h3>Fee structure</h3>
+      <p>Employee recognition apps can make money in a variety of ways: subscription, redemptions, or points.</p>
+
+      <p><strong>Subscription</strong> is where your company pays a standard monthly or yearly cost. It can vary by employee size. Typically, an employee count determines the cost. The upside is you are free to add any number of admins, awards, points, or redemptions. The downside is if you don’t use it, you still pay for it. Some companies are moving to paying for only active monthly users. The upside to this is you seemingly only pay for employees who use it. The downside is you won’t know the total price at the end of the year. Furthermore, the vendor is incentivized to keep your staff active. This seems like a good thing but the vendor may do things that make the program less efficient for you, such as not showing the recognition message in the email notification, to get you to login.</p>
+
+      <p><strong>Redemption</strong> structure is where a company pays a fee for every redemption that occurs. This demotivates the company to promote rewards. Some recognition vendors have both subscription fees and redemption fees.</p>
+
+      <p><strong>Point fee</strong> structure is where companies pre-buy points, sometimes at a mark-up, for staff to give to each other or redeem themselves. Seems nuts, but there are programs out there that allow staff to redeem the points they don’t give out, demotivating them to give points! This pay structure is one that may result in buying points that are never redeemed or expire. Some employee recognition apps have points fee and a subscription fee.</p>
+
+      <p><strong>Onboarding</strong> fee is where there is a one-time cost for languages, a setup, or an international reward catalogs. It can also include internal marketing communication tools, such as mugs or banners the vendor can send to your company.</p>
+
+  </div>
+
+  <hr>
+  <div class="marginVertical50">
+    <h3 class="balance-text">Find out how Recognize stacks up with these criteria.</h3>
+    <p>Recognize is an employee recognition & rewards solution. Striving to help companies communicate company values while retaining top staff. Recognize is built using gamification, social, and integrated solutions to engage company culture.</p>
+    <%= schedule_demo_link link_text: 'Schedule a call',service: "service2", cssclasses: "button", utm_campaign: 'Articles', utm_content: 'Bottom of employee recognition app guide' %> </p>
+
+  </div>
+
+
+
+<% end %>
+
+<% tags = ["User management", "Integrations", "Rewards", "Programs", "The details"] %>
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

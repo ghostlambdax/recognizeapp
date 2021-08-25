@@ -1,0 +1,60 @@
+.css-arrow
+  display: inline-block
+  width: 0
+  height: 0
+
+  &.up
+    border-left: 6px solid transparent
+    border-right: 6px solid transparent
+    border-bottom: 8px solid $success
+
+  &.down
+    border-left: 6px solid transparent
+    border-right: 6px solid transparent
+    border-top: 8px solid $warningBg
+
+
+.delta-cards
+  display: flex
+  flex-wrap: wrap
+  margin: 0
+
+  .delta-card
+    padding: 10px 17px
+    background: white
+    border: 1px solid $gray
+    border-radius: 6px
+    width: 15%
+    margin: 0 5% 30px 0
+    min-width: 120px
+
+    &.chromeless
+      background: transparent
+      border-color: white
+
+    &:first-child
+      margin-left: 0
+
+    &:last-child
+      margin-right: 0
+
+    .description
+      dt
+        color: lighten($headerBg, 30%)
+
+      dd
+        font-size: $h3
+        line-height: $h3
+        margin-bottom: 16px
+
+    .delta
+
+      .bad
+        color: $warningBg
+
+      .good
+        color: $success
+
+      p:last-child
+        margin-bottom: 0
+

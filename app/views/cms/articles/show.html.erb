@@ -1,0 +1,76 @@
+<% og_image = @post.image.present? ? @post.image.url : asset_url('illustrations/recognize.jpg') %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="<%= @post.title %>" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="<%= @post.description.gsub(%r{</?[^>]+?>}, '') %>" />
+  <meta property="og:image" content="<%= og_image %>" />
+  <link rel="amphtml" href="<%= cms_article_url(slug: params[:slug], format: :amp) %>">
+<% end %>
+
+<% article_sections = [] %>
+<% content_for :title, @post.title %>
+<% content_for :description, @post.description&.html_safe %>
+
+<% content_for :article_title, @post.title %>
+
+<% content_for :article_description do %>
+  <p><%= @post.date %></p>
+
+  <% if @post.image.present? %>
+    <div class="marginBottom20 main-article-image">
+      <%= lazy_image_tag @post.image.url, alt: @post.image.alt %>
+    </div>
+  <% end %>
+
+  <%= @post.description&.html_safe %>
+
+
+  <%= render partial: 'layouts/microdata_json', formats: :html, locals: {
+      type: "Article",
+      description: "#{@post.description}",
+      image: "#{@post.image.url}",
+      name: "#{@post.title}",
+      headline: "#{@post.title}",
+      author: "Recognize",
+      datePublished: "#{@post.date}",
+      publisher: "Recognize"
+  } %>
+
+<% end %>
+
+<% if @post.sections.present? %>
+
+  <% content_for :article_body do %>
+
+    <% @post.sections.each do |section| %>
+
+      <% article_sections << section.section_name %>
+
+      <div id='<%= section.section_name.gsub(' ', '_').downcase %>' class='article-list'>
+        <h2><%= section.title %></h2>
+        <%= section.body.html_safe %>
+      </div>
+
+    <% end %>
+
+  <% end %>
+
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "articles/article_menu", locals: {tags: article_sections} %>
+<% end %>
+
+<% if false # @tags.present? %>
+  <% @tags.each do |tag| %>
+    <div class="subtle-text tag">
+      <%= link_to tag.name, cms_tag_path(tag.id) %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<%= render partial: "layouts/youtube_load" %>

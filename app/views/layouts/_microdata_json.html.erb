@@ -1,0 +1,24 @@
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@graph": [
+      {
+          "@type": "<%= type || ""  %>",
+          "description": "<%= description || ""  %>",
+          "name": "<%= name || ""  %>",
+          "author": "<%= author || ""  %>",
+          "image": "<%= image || ""  %>",
+          "datePublished": "<%= datePublished || ""  %>",
+          "headline": "<%= headline || ""  %>",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Recognize",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "<%= asset_url('chrome/logo-blue-256.png') %>"
+            }
+          }
+      }
+    ]
+  }
+  </script>

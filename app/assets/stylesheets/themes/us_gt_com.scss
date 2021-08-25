@@ -1,0 +1,22 @@
+$headerBg: #4F2D7F;
+$btnBlueTopColor: #4F2D7F;
+$buttonPrimaryBg: #4F2D7F;
+$menuBg: #4f2d7f;
+$linkColor: $headerBg;
+
+$defaultFontFamily: "GT Walsheim", "Myriad Pro", "helvetica neue", helvetica, arial, sans-serif;
+$latoFontFamily: "GT Walsheim", Lato, "San Francisco", "Helvetica Neue", Helvetica, "Myriad Pro", Arial, sans-serif;
+
+@import "application";
+
+
+html body#recognitions-certificate {
+  h1 {
+    font-family: "GT Walsheim", helvetica, "helvetica neue", sans-serif !important;
+    font-size: 36px;
+  }
+}
+
+html body#recognitions-certificate {
+  font-family: $defaultFontFamily !important;
+}

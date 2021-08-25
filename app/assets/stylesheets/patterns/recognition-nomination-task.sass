@@ -1,0 +1,89 @@
+%primary_tab_styles
+  font-weight: 600 !important
+  color: $headerBg
+
+%secondary_tab_styles_hover
+  @include transform(translate(0, 0px))
+  border-color: $headerBg !important
+  background: lighten($lightGray, 4%)
+  box-shadow: 0px 5px 16px 1px rgba(100,100,100,.2)
+
+html
+  .recognitions:not(#recognitions-show)
+    nav
+      > .recognition-page-trigger
+        @extend %primary_tab_styles
+      > .nomination-page-trigger:hover
+        @extend %secondary_tab_styles_hover
+      > .tasks-page-trigger:hover
+        @extend %secondary_tab_styles_hover
+
+  .nominations:not(#nominations-show)
+    nav
+      > .nomination-page-trigger
+        @extend %primary_tab_styles
+      > .tasks-page-trigger:hover
+        @extend %secondary_tab_styles_hover
+      > .recognition-page-trigger:hover
+        @extend %secondary_tab_styles_hover
+
+  .task_submissions:not(#task_submissions-show)
+    nav
+      > .tasks-page-trigger
+        @extend %primary_tab_styles
+      > .recognition-page-trigger:hover
+        @extend %secondary_tab_styles_hover
+      > .nomination-page-trigger:hover
+        @extend %secondary_tab_styles_hover
+
+
+@media (min-width: 449px)
+  .recognition-type
+    nav
+      width: 450px
+      display: table
+
+.recognitions:not(#recognitions-show),
+.nominations:not(#nominations-show),
+.task_submissions:not(#task_submissions-show)
+  background: white
+
+  .recognition-type
+    margin-bottom: 20px
+    @include flex-display()
+    @include justify-content(center)
+
+    nav
+      max-width: 100%
+      text-align: center
+      display: flex
+      justify-content: center
+
+    nav > a
+      display: inline-block
+      font-size: $h4FontSize
+      padding: 15px
+      margin-bottom: 0em
+      position: relative
+      overflow: hidden
+      font-weight: 100
+      @include transitionTransform(.4s, $cubic)
+      @include transform(translate(0, 4px))
+      border-bottom: 1px solid $lightGray
+
+      @media (max-width: 400px)
+        font-size: 16px
+        line-height: 16px
+
+      &:only-child
+        display: none
+
+      @media (max-width: $phone)
+        padding-left: 0
+        padding-right: 0
+
+      div
+        position: relative
+        display: inline-block
+        padding-left: 12px
+        padding-right: 12px

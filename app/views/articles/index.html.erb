@@ -1,0 +1,312 @@
+<% content_for :title, 'Recognize Articles' %>
+<% content_for :description, "The research, thought pieces, and blogging from the Recognize Team on topics around employee recognition, culture, and employee health." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Recognize Articles | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="Thought leadership from the Recognize Team" />
+  <meta property="og:image" content="/assets/illustrations/recognize.jpg" />
+<% end%>
+
+<div class="padding30">
+  <h1 class="offscreen">Recognize Articles</h1>
+
+  <div class="row-fluid row-fluid-reverse">
+    <div class="span4">
+      <div class="well centered marginBottom30">
+        <%= image_tag 'chrome/logo-72x72.png', alt: 'Recognize logo' %>
+        <h3>Schedule a Demo</h3>
+        <p>See how companies benefit from an enterprise employee recognition program that doesn't break the budget.</p>
+        <%= schedule_demo_link %>
+      </div>
+    </div>
+    <div class="span8">
+      <p class="subline"></p>
+
+      <%
+        articles = [
+                    {
+                        title: 'Amazing Award Certificates',
+                        description: "In honor of all the great work employees do out there, Recognize is providing 10 free incredible employee award certificate templates for various occasions.",
+                        image: 'pages/articles/amazing-award-certificates/image1.jpg',
+                        alt: 'Service Anniversary Award Certificate',
+                        link: amazing_award_certificates_path
+                    },
+                    {
+                        title: '5 Ways to Use Recognize during COVID-19',
+                        description: "Ways your company can use platforms like Recognize to make your employees' lives better during the ongoing pandemic",
+                        image: 'pages/articles/ways-to-use-recognize-during-covid-19/image1.jpg',
+                        alt: 'A woman working from home',
+                        link: ways_to_use_recognize_during_covid_19_path
+                    },
+                    {
+                        title: 'Cultivate Positive Remote Work Experience',
+                        description: "10 ways your company can cultivate a positive remote work experience so that everybody wins.",
+                        image: 'pages/articles/cultivate-positive-remote-work-experience/image1.jpg',
+                        alt: 'A woman working from home',
+                        link: cultivate_positive_remote_work_experience_path
+                    },
+                    {
+                        title: 'Employee Recognition in Okta',
+                        description: "How you can use identity and access management providers like Okta hand in hand with Recognize",
+                        image: 'pages/articles/employee-recognition-in-okta/image2.jpg',
+                        alt: 'Screenshot of Recognize app in Okta Integration Network',
+                        link: employee_recognition_in_okta_path
+                    },
+                    {
+                        title: 'Become a Zoom Power User',
+                        description: "A cheat sheet to get the most out of Zoom teleconferencing",
+                        image: 'pages/articles/become-a-zoom-power-user/image1.jpg',
+                        alt: 'Laptop with video conference call going on in an app like Zoom',
+                        link: become_a_zoom_power_user_path
+                    },
+                    {
+                        title: 'Banking Health Survey',
+                        description: "Recognize published the survey results looking at health of workers in the finance industry and employee recognition.",
+                        image: 'pages/articles/banking-survey/top.jpg',
+                        alt: 'Banking buildings',
+                        link: banking_survey_path
+                    },
+                    {
+                        title: 'Utilizing employee recognition & incentives to combat Coronavirus in your company',
+                        description: "How we can utilize employee recognition and help ourselves to fight the coronavirus outbreak.",
+                        image: 'pages/articles/ways-to-combat-coronavirus/image1.jpg',
+                        alt: "A mother washing a child's hands",
+                        link: ways_to_combat_coronavirus_path
+                    },
+                    {
+                        title: 'Combat Burnout in Healthcare',
+                        description: "How Recognition and Engagement can combat Burnout in Healthcare",
+                        image: 'pages/articles/combat-healthcare-burnout/main.jpg',
+                        alt: 'A nurse looking tired',
+                        link: combat_healthcare_burnout_path
+                    },
+                    {
+                        title: 'Human Resource Trends for 2020',
+                        description: "See Recognize's predictions for 2020 in HR, while we also look back at 2019 trends.",
+                        image: 'pages/articles/2020-hr-trends/main.jpg',
+                        alt: '2020 text design on creative business symbols',
+                        link: hr_trends_2020_path
+                    },
+                    {
+                        title: 'Website Design Trends of 2019',
+                        description: "Our writings can't always be about HR and employee engagement. Here's a look at the web designs we saved in 2019 that we loved.",
+                        image: 'pages/articles/ui-design-trends-2019/design-26.gif',
+                        alt: 'IFTTT homepage with animating illustration showing people connecting apps for a connected home or for safer data',
+                        link: ui_design_trends_2019_path
+                    },
+                    {
+                        title: 'How to Engage your Employees in Office 365',
+                        description: "How to leverage your existing Office 365 subscription to engage and retain employees.",
+                        image: 'pages/articles/engage-employees-office-365/office-365.jpg',
+                        alt: 'Office 365 application with magnifying glass',
+                        link: engage_employees_office_365_path
+                    },
+                    {
+                        title: 'How to run an awesome volunteer program with Recognize Incentives',
+                        description: "As the dust settles on new year celebrations, it doesn't take long for good wishes to turn to new year's resolutions. With 2019 undoubtedly wrapping up as a year to put climate change and sustainability on the map and make the world “Greta” again, why not kick off 2020 with the resolve to give back a little?",
+                        image: 'pages/articles/volunteer/1.jpg',
+                        alt: 'People smiling',
+                        link: run_volunteer_program_path
+                    },
+
+                    {
+                        title: 'Ways to Foster Employee Engagement',
+                        description: '10 Great Ways to Foster Authentic Employee Engagement from reducing stress to getting feedback.',
+                        image: 'pages/articles/ways-foster-engagement/1.jpg',
+                        alt: 'A photo of a group of people putting their arms together.',
+                        link: ways_foster_employee_engagement_path
+                    },
+                    {
+                        title: 'Mental Health Research',
+                        description: 'A Recognize-funded study into the correlation between low sense of appreciation and issues with mental health.',
+                        image: 'pages/articles/mental_health_research/woman-stairs.jpg',
+                        alt: 'Woman on stairs sad',
+                        link: mental_health_research_path
+                    },
+
+                    {
+                        title: 'Employee Recognition Stats for Healthcare',
+                        description: 'A look into nurse burn out and the effects of recognition within health industry, such as hospitals or medical technology fields.',
+                        image: 'pages/articles/healthcare_recognition/exhausted-nurse.jpg',
+                        alt: 'Unhappy nurses are disengaged nurses, which causes healthcare and clinic businesses to suffer.',
+                        link: employee_recognition_stats_for_healthcare_path
+                    },
+
+                    {
+                        link: 'schedule_demo'
+                    },
+
+                    {
+                        title: 'Employee Recognition Report',
+                        description: 'Research into what employees want in an employee recognition and from their company.',
+                        image: 'pages/article-2019-recognition-trends/image-1.jpg',
+                        alt: 'People shaking hands',
+                        link: employee_recognition_report_2019_path
+                    },
+
+                    {
+                        title: 'Human Resource Trends for 2019',
+                        description: 'Where HR is going in 2019 and a look back at 2018 events. Recognize pretended more technology and a marrying of IT and HR.',
+                        image: 'pages/article-2019-hr-trends/image-1.jpg',
+                        alt: 'People shaking hands',
+                        link: hr_trends_2019_path
+                    },
+
+                    {
+                        title: 'Employee Recognition Trends for 2019',
+                        description: 'At look back at 2018 and what the road ahead in 2019 for trends in employee recognition.',
+                        image: 'pages/article-2019-recognition-trends/image-5.jpg',
+                        alt: 'People shaking hands',
+                        link: employee_recognition_trends_2019_path
+                    },
+
+                    {
+                        title: 'Employee Recognition Ideas',
+                        description: 'An ever growing list of quotes, ideas, book suggestions within over 100 ideas to recognize and reward your employees.',
+                        image: 'illustrations/breakroom_birthday_party_color.jpg',
+                        alt: 'A fun birthday party at work illustration',
+                        link: top_employee_recognition_ideas_path
+                    },
+
+                    {
+                        title: 'Employee Recognition App Guide',
+                        description: 'Learn from the big guys. Recognize took RFPs on employee recognition from Fortune 500 companies and compiled what they care about into this article.',
+                        image: 'illustrations/employee_recognitions_screen_color.jpg',
+                        alt: 'A computer screen showing recognitions with a kitty cat peering.',
+                        link: employee_recognition_app_guide_path
+                    },
+                    {
+                        title: 'Habits of Top HR Managers',
+                        description: '15 creative ways to be a great human resources professional.',
+                        image: 'pages/article-be-best-manager/top-illustration.jpg',
+                        alt: 'Human Resources illustration',
+                        link: ways_great_hr_manager_path
+                    },
+
+                    {
+                        title: 'Company Holiday Party & Year-End Staff Bonus Guide',
+                        description: 'Learn what staff really want from employee benefits for holiday parties and end of year bonuses.',
+                        image: 'pages/article-holiday-party/tree.jpg',
+                        alt: 'Christmas tree illustration',
+                        link: holiday_party_path
+                    },
+
+                    {
+                        title: 'Employee Recognition and Health in the Workplace',
+                        description: 'Employee recognition doesn’t only help promote productivity in the office; it also improves the overall health and well-being of your workers.',
+                        image: 'http://blog.recognizeapp.com/wp-content/uploads/2019/08/Picture1.png',
+                        alt: 'Coworkers shaking hands',
+                        link: 'http://blog.recognizeapp.com/employee-recognition-and-health-in-the-workplace/'
+                    },
+
+                    {
+                        title: 'Distributed Workforce Infographic 2013',
+                        description: 'See the tools and trends of working from home and distributed workforces.',
+                        link: "/distributed-workforce-infographic",
+                        image: 'pages/home-distributed_workforce_infographic/thumb.png',
+                        alt: 'Pie and bar graphs'
+                    },
+
+                    {
+                        title: 'Employee Appreciation Day: 8 Ideas Your Staff Will Love',
+                        description: 'Employee Appreciation Day takes place on the first Friday of every March, and was created as a way to show recognition and appreciation for all the hard work employees do throughout the year.',
+                        image: 'http://blog.recognizeapp.com/wp-content/uploads/2019/02/shutterstock_1046237458.jpg',
+                        alt: 'Illustration of people giving thumbs-up.',
+                        link: 'http://blog.recognizeapp.com/employee-appreciation-day-8-tips-your-staff-will-love/'
+                    },
+
+                    {
+                        title: 'What Men Can Do To Prevent Workplace Sexual Harassment',
+                        description: 'Sexual harassment has dominated headlines in recent weeks, with the Harvey Weinstein exposé closely followed by revelations about Kevin Spacey and Louis C.K. But workplace sexual harassment isn’t limited to Hollywood. ',
+                        image: 'http://blog.recognizeapp.com/wp-content/uploads/2017/11/image5.jpg',
+                        alt: 'Coworkers talking.',
+                        link: 'http://blog.recognizeapp.com/workplace-sexual-harassment/'
+                    },
+
+                    {
+                        title: 'Top 10 employee engagement tips on Facebook Workplace',
+                        description: 'Facebook Workplace is a communication and productivity tool for businesses. It utilizes the great parts of Facebook to help companies work together more effectively. Take a look at the 10 creative ways to engage employees on Facebook Workplace.',
+                        image: 'http://blog.recognizeapp.com/wp-content/uploads/2017/09/download.jpeg',
+                        alt: 'Workplace by Facebook logo',
+                        link: 'http://blog.recognizeapp.com/top-10-employee-engagement-tips-on-facebook-workplace/'
+                    },
+
+                    {
+                        title: 'The State of People Analytics Stats',
+                        description: '9% of companies use predictive analytics or big data to analyze people trends. See more top stats.',
+                        image: 'http://blog.recognizeapp.com/wp-content/uploads/2017/06/safe_image-7.jpeg',
+                        alt: 'People connecting and talking',
+                        link: 'http://blog.recognizeapp.com/the-state-of-people-analytics-infographic/'
+                    },
+
+                    {
+                        title: '5 Critical Areas for IT Adoption of Employee Recognition',
+                        description: 'You’ve decided that your company deserves a modern recognition program. You’ve received buy-in from your executive leadership. The last hurdle to pass is approval from IT.',
+                        image: 'http://blog.recognizeapp.com/wp-content/uploads/2017/06/pexels-photo-297755-1.jpeg',
+                        alt: 'People working on laptops',
+                        link: 'http://blog.recognizeapp.com/5-critical-areas-for-it-adoption-of-employee-recognition/'
+                    },
+
+                    {
+                        title: '16 Must-Answer Employee Engagement Questions for Your Staff',
+                        description: 'When was the last time you or your HR initiated an employee engagement survey at your company? In Recognize, we provide a way to ask these questions when you start the program and six months later.',
+                        image: 'http://blog.recognizeapp.com/wp-content/uploads/2017/06/pexels-photo-430207-1.jpeg',
+                        alt: 'Abstract polygon pattern',
+                        link: 'http://blog.recognizeapp.com/16-employee-engagement-survey-questions-to-ask-your-staff/'
+                    },
+
+                    {
+                        title: '14 Employee Recognition Tips and Trends of 2017',
+                        description: 'From forward-thinking companies from all over the world, this is what we see as trends, advice, and tips for employee recognition and employee rewards.
+',
+                        image: 'https://cdn.pixabay.com/photo/2017/11/09/16/16/man-2933984_1280.jpg',
+                        alt: 'Man and woman looking',
+                        link: 'http://blog.recognizeapp.com/14-employee-recognition-tips-and-trends-of-2017/'
+                    },
+
+                    {
+                        title: 'Seven Must-Know Types of Employee Rewards',
+                        description: 'How do you pick the best types of employee rewards for your company? There are numerous methods of praising staff. Each and every company’s situation is unique, and what might work for one doesn’t necessarily have to work for another. To try and help you determine the best way to motivate your workforce, we have sought to compile some employee rewards for you to consider. Here are seven of them.',
+                        image: 'http://blog.recognizeapp.com/wp-content/uploads/2017/04/employee-reward.jpeg',
+                        alt: 'Sunset in the tropics',
+                        link: 'http://blog.recognizeapp.com/seven-types-of-employee-rewards/'
+                    }
+
+
+
+        ]
+      %>
+
+
+      <ul class="articles">
+        <% @cms_articles.each_with_index do |a, index|
+          post_data = {}
+          post_data[:title] = a.title
+          post_data[:description] = a.description
+          post_data[:link] = cms_article_path(a.slug)
+
+          if a.image.present?
+            post_data[:alt] = a.image.alt
+            post_data[:image] = a.image.url
+          end
+
+        %>
+          <%= render partial: 'articles/article_post', locals: {a: post_data, is_first: (index == 0)} %>
+        <% end %>
+
+        <% articles.each do |a| %>
+          <%= render partial: 'articles/article_post', locals: {a: a} %>
+        <% end %>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<%= render 'home/footer' %>

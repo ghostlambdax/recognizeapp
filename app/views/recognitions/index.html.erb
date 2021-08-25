@@ -1,0 +1,100 @@
+<%
+  # We don't use mixpanel anymore. does this still need to be here?
+
+  # we  need to trigger an alias command right after signup so that mixpanel
+  # will keep the guest session history and associate it with the logged in
+  # user that we've called "identify" for.
+  # See analytics-facade.js'
+%>
+
+<%= render 'notice_and_inline_js_for_stream' %>
+
+<%= render 'welcome_notice' unless ms_teams_configurable_tab? || current_user.has_read_welcome? %>
+
+<div class="flex justify-content-center align-items-start relative <%unless allow_teams? %>no-teams<% end %>">
+
+    <div class="left-column <%= 'width0' if ms_teams_configurable_tab? %>" data-ms_teams="<%= ms_teams_configurable_tab? ? 'true' : 'false' %>">
+      <% unless ms_teams_configurable_tab? %>
+        <%= render partial: 'recognitions/company_name' %>
+      <% end %>
+
+      <div id="recognition-details">
+        <% if !current_user.subscribed_account? && !ms_teams_configurable_tab? %>
+          <div class="well marginBottom20 block">
+            <ul class="blue-links" data-turbolinks="false">
+              <li>
+                <%= viewer_link_to 'Upgrade Account', welcome_path(upgrade: true), iframe_viewer? %>
+              </li>
+              <li>
+                <%= viewer_link_to "View Company Admin", company_path(network: current_user.company.domain), iframe_viewer?  %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+        <%= render 'filter_by', margin_top: (ms_teams_configurable_tab? ? 'marginTop100' : '') %>
+
+        <% if allow_teams? && !ms_teams_configurable_tab? %>
+          <ul id="team-list" class="team-list blue-links">
+            <li <% if @selected_team.blank? %>class="current"<% end %>><h4 class="flex align-items-center"><span class="star current blue-link-icon"><span class="offscreen">Joined</span></span><%= link_to t('dict.all_recognitions'), recognitions_path, class: 'link' %></h4></li>
+
+            <% if current_user.company.teams.present? %>
+              <%= render 'team_list', teams: @my_teams, my_teams: true %>
+              <% if @my_teams.present? %>
+                <li class="no-highlight"><hr></li>
+              <% end %>
+              <%= render 'other_teams', teams: @teams %>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+
+
+  <% # STREAM %>
+
+  <div class="stream-wrapper flex">
+
+    <div class="right-column">
+      <%= render 'filter_by' %>
+      <% unless ms_teams_configurable_tab? %>
+        <div class="view-mode-wrapper">
+          <% unless ms_teams_viewer? %>
+            <div class="flex justify-content-start">
+              <%
+                full_grid_path = recognitions_grid_path(network: @company.domain, animate: false, team_id: params[:team_id], filter_by: params[:filter_by])
+                grid_title = t('recognitions.grid_description')
+                grid_target = params[:viewer].present? ? '_blank' : nil
+              %>
+              <%= link_to full_grid_path, class: "flex align-items-center", title: grid_title, target: grid_target, id: 'grid-link' do %>
+                <%= render partial: '/home/patterns/grid-icon' %>
+                <%= t("dict.grid") %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="buttons-wrapper clearfix">
+        <a id="column-switch" href="#recognition-details" class="column-switch block"><%= t("dict.filters") %></a>
+        <a id="recognition-close" href="#stream-wrapper" class="column-switch">×&nbsp;<%= t("dict.close") %></a>
+      </div>
+    </div>
+
+    <div id="stream" class="opacity0">
+
+      <div class="recognition-card selected-team-name no-box-shadow">
+        <h2>
+          <% if allow_teams? && @selected_team.present? %>
+            <%= @selected_team.name %>
+          <% else %>
+            <%= t('dict.all_recognitions') %>
+          <% end %>
+        </h2>
+      </div>
+
+      <%= render 'recognitions_with_default', recognitions: @recognitions %>
+    </div>
+  </div>
+</div>
+
+<%= render partial: "layouts/office_parent_message_js" if outlook_popup? %>

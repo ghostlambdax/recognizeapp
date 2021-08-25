@@ -1,0 +1,18 @@
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+    <tr>
+      <th><%= _('Enable') %></th>
+      <th><%= _('Event') %></th>
+      <th><%= _('Method') %></th>
+      <th class="width100"><%= _('Endpoint') %></th>
+      <th><%= _('Edit')%></th>
+      <th><%= _('Destroy')%></th>
+      <th title="The 100 most recent webhook events"><%= _('Recent events') %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @webhooks.each do |endpoint| %>
+    <%= render "company_admin/webhook_endpoints/webhook_endpoint_row", webhook_endpoint: endpoint %>
+  <% end %>
+  </tbody>
+</table>

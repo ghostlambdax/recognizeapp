@@ -1,0 +1,24 @@
+<% content_for :page_header do %>
+  <%= page_nav({title: t("tskz.tasks")}) do %>
+      <nav class="tab-nav marginBottom0">
+        <ul class="clearfix marginTop10">
+          <%= nav_link_to_tasks_index %>
+          <%= nav_link_to_tasks_setup %>
+        </ul>
+      </nav>
+  <% end %>
+<% end %>
+
+
+<% content_for :admin_content do %>
+  <%= page_layout do %>
+    <%= render_flash %>
+    <div class="tskz-tasks-admin-wrapper">
+      <%= yield %>
+    </div>
+
+  <% end %>
+
+<% end %>
+
+<%= render template: "layouts/company_admin" %>

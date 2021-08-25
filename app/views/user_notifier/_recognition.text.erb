@@ -1,0 +1,13 @@
+<%= t('layouts.mailer.you_received_a_recognition_for') %>
+<%= badge.short_name %>
+
+<% if recognition.message_plain.present? %>
+  "<%= recognition.message_plain %>"
+<% end%>
+
+<%= t('recognitions.sent_from') %>
+<% if recognition.is_cross_company? %>
+  <%= t("user_notifier.sender_from_company", sender: recognition.sender_name, company: sender.company.name) %>
+<% else %>
+  <%= recognition.sender_name %>
+<% end %>

@@ -1,0 +1,2 @@
+<%= link_to "#{t("dict.create")} #{t("dict.task")}", new_company_admin_task_path, class: "button button-primary" %>
+<%= litatablify(@datatable, endpoint: company_admin_tasks_path, daterange: false) %>

@@ -1,0 +1,488 @@
+# French translations for recognize package.
+# Copyright (C) 2021 recognize
+# This file is distributed under the same license as the recognize package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recognize 1.0\n"
+"Report-Msgid-Bugs-To: contact@translation.io\n"
+"POT-Creation-Date: 2021-05-26 15:19-0500\n"
+"PO-Revision-Date: 2021-05-26 22:19+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French\n"
+"Language: fr_CA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+"\n"
+
+#: ../../../app/datatables/catalogs_datatable.rb:87
+msgid "Catalog"
+msgstr "Catalogue"
+
+#: ../../../app/datatables/catalogs_datatable.rb:95
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:10
+msgid "Redemptions"
+msgstr "Rachats"
+
+#: ../../../app/datatables/catalogs_datatable.rb:103
+msgid "Settings"
+msgstr "Paramètres"
+
+#: ../../../app/jobs/sms_notifier_job.rb:8
+#: ../../../app/services/recognition_sms_notifier.rb:42
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:14
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:17
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:22
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:32
+msgid ""
+"\n"
+"Reply with STOP to opt out of additional messages"
+msgstr ""
+"\n"
+"Répondez avec STOP pour désactiver les messages supplémentaires"
+
+#: ../../../app/lib/fb_workplace/helpers/bot_helpers.rb:90
+msgid "Are you sure you want to reset your account connection?"
+msgstr "Voulez-vous vraiment réinitialiser la connexion de votre compte?"
+
+#: ../../../app/lib/fb_workplace/helpers/bot_helpers.rb:91
+msgid "Reset connection"
+msgstr "Réinitialiser la connexion"
+
+#: ../../../app/lib/fb_workplace/webhook/link.rb:33
+msgid "Sent"
+msgstr "Expédié"
+
+#: ../../../app/lib/fb_workplace/webhook/page.rb:108
+msgid ""
+"Your account connection has been cleared. Type 'Connect' if you would like to "
+"reconnect "
+msgstr ""
+"La connexion à votre compte a été effacée. Tapez 'Connect' si vous souhaitez v"
+"ous reconnecter"
+
+#: ../../../app/models/webhook/endpoint.rb:15
+msgid "^Target url must a properly formatted url."
+msgstr "^ L'URL cible doit être correctement formatée."
+
+#: ../../../app/views/admin/index/_admin_header.html.erb:5
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: ../../../app/views/admin/index/_admin_header.html.erb:6
+msgid "Engagement"
+msgstr "Engagement"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:3
+msgid "Service Anniversary Award Certificate Template"
+msgstr "Modèle de certificat de récompense d'anniversaire de service"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:4
+msgid ""
+"Use the Recognize service anniversary award template to create a certificate t"
+"o give to employees as a PDF or printed out. Sign the PDF after you create it."
+" All totally free to give employee recognition to staff."
+msgstr ""
+"Utilisez le modèle de récompense anniversaire de service Reconnaître pour crée"
+"r un certificat à remettre aux employés sous forme de PDF ou imprimé. Signez l"
+"e PDF après l'avoir créé. Tout est totalement gratuit pour donner la reconnais"
+"sance des employés au personnel."
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:10
+#: ../../../app/views/layouts/award_certificate.html.erb:11
+msgid "Generate PDF"
+msgstr "Générer un PDF"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:13
+#: ../../../app/views/layouts/award_certificate.html.erb:14
+msgid "Font Families"
+msgstr "Familles de polices"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:29
+msgid "Big Number"
+msgstr "Grand nombre"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:44
+msgid "Title"
+msgstr "Titre"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:45
+msgid "Service Anniversary Award"
+msgstr "Prix anniversaire de service"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:58
+msgid "Description"
+msgstr "La description"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:59
+msgid "For 7 years of service at Acme Inc."
+msgstr "Pour 7 ans de service chez Acme Inc."
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:74
+#: ../../../app/views/award_generator/service_anniversary.html.erb:75
+msgid "Signature"
+msgstr "Signature"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:92
+msgid "Name"
+msgstr "Nom"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:93
+msgid "Name here"
+msgstr "Nommez ici"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:108
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:8
+msgid "Date"
+msgstr "Rendez-vous amoureux"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:109
+msgid "May 24th, 2021"
+msgstr "24 mai 2021"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:9
+msgid "Product Updates"
+msgstr "Mises à jour du produit"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:10
+msgid ""
+"Recognize keeps getting better with weekly deployments. Check back regularly f"
+"or improvements and fixes."
+msgstr ""
+"Reconnaître ne cesse de s'améliorer avec les déploiements hebdomadaires. Reven"
+"ez régulièrement pour des améliorations et des correctifs."
+
+#: ../../../app/views/cms/product_updates/index.html.erb:14
+msgid "Recognize Product Updates"
+msgstr "Reconnaître les mises à jour des produits"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:15
+msgid ""
+"Recognize is updated almost every week. Major updates and fixes are listed her"
+"e to help customers and prospective customers learn of continued improvements."
+msgstr ""
+"Reconnaître est mis à jour presque chaque semaine. Les principales mises à jou"
+"r et correctifs sont répertoriés ici pour aider les clients et les clients pot"
+"entiels à prendre connaissance des améliorations continues."
+
+#: ../../../app/views/cms/product_updates/index.html.erb:16
+msgid "Check server status"
+msgstr "Vérifier l'état du serveur"
+
+#: ../../../app/views/companies/_badge.html.erb:181
+msgid "one person"
+msgid_plural "%{count} people"
+msgstr[0] "une personne"
+msgstr[1] "%{count} personnes"
+
+#: ../../../app/views/company_admin/accounts/edit.html.erb:6
+msgid "Edit Users"
+msgstr "Modifier les utilisateurs"
+
+#: ../../../app/views/company_admin/accounts/show.html.erb:2
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:7
+msgid "Top toolbar logo"
+msgstr "Logo de la barre d'outils supérieure"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:13
+msgid ""
+"A white transparent png image to go in the top\n"
+"            toolbar. Many companies choose to make it the name of their progra"
+"m."
+msgstr ""
+"Une image png transparente blanche pour aller en haut\n"
+"            barre d'outils. De nombreuses entreprises choisissent d'en faire l"
+"e nom de leur programme."
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:25
+msgid "Stream page logo"
+msgstr "Logo de la page de diffusion"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:31
+msgid ""
+"A color logo that goes on the Stream page. Many\n"
+"            companies choose to have it be their company logo. The background "
+"has to be white."
+msgstr ""
+"Un logo couleur qui apparaît sur la page Stream. Beaucoup\n"
+"            les entreprises choisissent que ce soit le logo de leur entreprise"
+". Le fond doit être blanc."
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:5
+msgid "Theming"
+msgstr "Thème"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:8
+msgid "Security"
+msgstr "Sécurité"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:12
+msgid "Recognition"
+msgstr "Reconnaissance"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:15
+msgid "Nomination"
+msgstr "Nomination"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:18
+msgid "Tasks"
+msgstr "les tâches"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:21
+msgid "Leaderboards"
+msgstr "Classements"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:24
+msgid "Hall of Fame"
+msgstr "temple de la renommée"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:27
+msgid "Rewards"
+msgstr "Récompenses"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:31
+msgid "Yammer"
+msgstr "Geindre"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:34
+msgid "Microsoft"
+msgstr "Microsoft"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:37
+msgid "Google"
+msgstr "Google"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:40
+msgid "Workplace by Facebook"
+msgstr "Lieu de travail par Facebook"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:43
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:14
+msgid "Webhooks"
+msgstr "Webhooks"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:47
+msgid "User settings"
+msgstr "Paramètres utilisateur"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:50
+msgid "Points"
+msgstr "Points"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:53
+msgid "User Management"
+msgstr "Gestion des utilisateurs"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:56
+msgid "Kiosk Mode"
+msgstr "Mode kiosque"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:9
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:35
+msgid "Edit"
+msgstr "Modifier"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:14
+msgid "Edit Webhook"
+msgstr "Modifier le Webhook"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:15
+msgid "Webhook has been saved"
+msgstr "Webhook a été enregistré"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:20
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:36
+msgid "Destroy"
+msgstr "Supprimer"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:24
+msgid "Are you sure want to delete this webhook?"
+msgstr "Voulez-vous vraiment supprimer ce webhook?"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:28
+msgid "Events"
+msgstr "Événements"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:5
+msgid "Examples"
+msgstr "Exemples"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:8
+msgid ""
+"● Notify a rewards provider that a user redeemed a reward in order to fulfill "
+"a custom company reward."
+msgstr ""
+"● Avertissez un fournisseur de récompenses qu'un utilisateur a utilisé une réc"
+"ompense afin de remplir une récompense d'entreprise personnalisée."
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:9
+msgid "● Post a recognition to Slack or Microsoft Teams."
+msgstr "● Publiez une reconnaissance sur Slack ou Microsoft Teams."
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:18
+msgid ""
+"Webhooks allow you to notify third party systems when events on Recognize occu"
+"r"
+msgstr ""
+"Les webhooks vous permettent d'avertir les systèmes tiers lorsque des événemen"
+"ts sur Reconnaître se produisent"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:23
+#: ../../../spec/features/company_admin/settings/webhooks_spec.rb:15
+#: ../../../spec/features/company_admin/settings/webhooks_spec.rb:25
+msgid "Add new"
+msgstr "Ajouter un nouveau"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:23
+msgid "Create Webhook"
+msgstr "Créer un Webhook"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:23
+msgid "Webhook has been created!"
+msgstr "Webhook a été créé!"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:31
+msgid "Enable"
+msgstr "Activer"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:32
+msgid "Event"
+msgstr "un événement"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:33
+msgid "Method"
+msgstr "Méthode"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:34
+msgid "Endpoint"
+msgstr "Point final"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:37
+msgid "Recent events"
+msgstr "Événements récents"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:48
+msgid "Coming Soon!"
+msgstr "Bientôt disponible!"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:49
+msgid "If you would like early access, please contact support@recognizeapp.com"
+msgstr ""
+"Si vous souhaitez un accès anticipé, veuillez contacter support@recognizeapp.c"
+"om"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:9
+msgid "Status Code"
+msgstr "Code d'état"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:10
+msgid "Request"
+msgstr "Demande"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:11
+msgid "Response"
+msgstr "Réponse"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:14
+msgid "Url"
+msgstr "URL"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:15
+msgid "Payload"
+msgstr "Charge utile"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:16
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:18
+msgid "Headers"
+msgstr "En-têtes"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:17
+msgid "Data"
+msgstr "Les données"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:36
+msgid "No webhooks have been triggered yet"
+msgstr "Aucun webhook n'a encore été déclenché"
+
+#: ../../../app/views/home/pricing.html.erb:99
+msgid "Sign Up & Upgrade"
+msgstr "Inscription et mise à niveau"
+
+#: ../../../app/views/layouts/_create_catalog_dropdown.html.erb:5
+#: ../../../app/views/layouts/_create_catalog_dropdown.html.erb:9
+msgid "All currencies"
+msgstr "Toutes les devises"
+
+#: ../../../app/views/layouts/_header.html.erb:190
+msgid "Switch accounts"
+msgstr "Changer de compte"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:7
+msgid "Direct Reports"
+msgstr "Rapports directs"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:8
+msgid "Recognitions"
+msgstr "Reconnaissances"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:9
+msgid "Anniversaries"
+msgstr "Anniversaires"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:11
+msgid "Approved"
+msgstr "Approuvé"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:12
+msgid "Pending"
+msgstr "en attendant"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:13
+msgid "Denied"
+msgstr "Refusé"
+
+#: ../../../app/views/layouts/_schedule_demo_link.html.erb:6
+msgid "Schedule Live Demo"
+msgstr "Planifier une démo en direct"
+
+#: ../../../app/views/layouts/application.html.erb:17
+msgid "Skip to main content"
+msgstr "Passer au contenu principal"
+
+#: ../../../app/views/recognitions/_company_name.html.erb:3
+#: ../../../app/views/recognitions/_company_name.html.erb:8
+msgid "Company logo"
+msgstr "Logo d'entreprise"
+
+#: ../../../app/views/recognitions/_form_fullscreen.html.erb:97
+#: ../../../app/views/recognitions/new_panel.html.erb:78
+msgid "Sign in to Yammer to post to Yammer"
+msgstr "Connectez-vous à Yammer pour publier sur Yammer"
+
+#: ../../../app/views/recognitions/_recognition.html.erb:72
+msgid "%{time} ago"
+msgstr "Il y a %{time}"
+
+#: ../../../app/views/redemptions/_reward.html.erb:17
+msgid "Terms"
+msgstr "termes"
+
+#: ../../../app/views/users/show.html.erb:48
+msgid "1 year"
+msgid_plural "%{num} years"
+msgstr[0] "1 an"
+msgstr[1] "%{num} ans"

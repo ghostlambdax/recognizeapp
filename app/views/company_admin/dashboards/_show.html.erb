@@ -1,0 +1,167 @@
+
+<% if @company.has_sent_or_received_recognitions? %>
+
+  <!--[if lt IE 9]>
+    <%= javascript_include_tag "3p/excanvas.compiled.js" %>
+  <![endif]-->
+
+  <% top_badge_length = @top_badges.length %>
+
+  <%= javascript_tag do %>
+
+    var windowEventListener = (window.addEventListener) ? window.addEventListener : window.attachEvent;
+
+    windowEventListener("load", function() {
+        $('a[data-toggle="tab"]').on('shown', function (e) {
+        var href = e.target.getAttribute("href");
+        if (href !== "#graphs") {
+          $("#tooltip").hide();
+        } else {
+          $("#tooltip").show();
+        }
+      });
+  });
+
+  <% end%>
+
+
+  <div id="dashboard" class="tab tab-pane active">
+
+    <section class="delta-stats-wrapper">
+
+      <h3><%= @users.size %> Users</h3>
+
+      <ul class="delta-cards user-delta-cards">
+        <%= render partial: "layouts/delta_stat_card", locals: {label: 'Today', last_label: 'Yesterday', tooltip_text: Interval.daily.upto_now(shift: -1, as_text: true), this_query: @users.where(['users.created_at > ?', Interval.daily.start]).size, last_query: @users.where(created_at: Interval.daily.upto_now(shift: -1)).size, css_class: "day users"}%>
+        <%= render partial: "layouts/delta_stat_card", locals: {label: 'This Week', last_label: 'Last week', tooltip_text: Interval.weekly.upto_now(shift: -1, as_text: true), this_query: @users.where(['users.created_at > ?', Time.current.beginning_of_week]).size, last_query: @users.where(created_at: Interval.weekly.upto_now(shift: -1)).size, css_class: "week users"}%>
+        <%= render partial: "layouts/delta_stat_card", locals: {label: 'This Month', last_label: 'Last month', tooltip_text: Interval.monthly.upto_now(shift: -1, as_text: true), this_query: @users.where(['users.created_at > ?', Time.current.beginning_of_month]).size, last_query: @users.where(created_at: Interval.monthly.upto_now(shift: -1)).size, css_class: "month users"}%>
+        <%= render partial: "layouts/delta_stat_card", locals: {label: 'This Quarter', last_label: 'Last quarter', tooltip_text: Interval.quarterly.upto_now(shift: -1, as_text: true), this_query: @users.where(['users.created_at > ?', Time.current.beginning_of_quarter]).size, last_query: @users.where(created_at: Interval.quarterly.upto_now(shift: -1)).size, css_class: "quarter users"}%>
+        <%= render partial: "layouts/delta_stat_card", locals: {label: 'This Year', last_label: 'Last year', tooltip_text: Interval.yearly.upto_now(shift: -1, as_text: true), this_query: @users.where(['users.created_at > ?', Time.current.beginning_of_year]).size, last_query: @users.where(created_at: Interval.yearly.upto_now(shift: -1)).size, css_class: "year users"}%>
+      </ul>
+
+      <h3><%= @recognitions.size %> Recognitions</h3>
+
+      <div>
+        <ul class="delta-cards recognition-delta-cards">
+          <%= render partial: "layouts/delta_stat_card", locals: {label: 'Today', last_label: 'Yesterday', tooltip_text: Interval.daily.upto_now(shift: -1, as_text: true), this_query: @recognitions.where(['recognitions.created_at > ?', Interval.daily.start]).size, last_query: @recognitions.where(created_at: Interval.daily.upto_now(shift: -1)).size, css_class: "day recognitions"}%>
+          <%= render partial: "layouts/delta_stat_card", locals: {label: 'This Week', last_label: 'Last week', tooltip_text: Interval.weekly.upto_now(shift: -1, as_text: true), this_query: @recognitions.where(['recognitions.created_at > ?', Time.current.beginning_of_week]).size, last_query: @recognitions.where(created_at: Interval.weekly.upto_now(shift: -1)).size, css_class: "week recognitions"}%>
+          <%= render partial: "layouts/delta_stat_card", locals: {label: 'This Month', last_label: 'Last month', tooltip_text: Interval.monthly.upto_now(shift: -1, as_text: true), this_query: @recognitions.where(['recognitions.created_at > ?', Time.current.beginning_of_month]).size, last_query: @recognitions.where(created_at: Interval.monthly.upto_now(shift: -1)).size, css_class: "month recognitions"}%>
+          <%= render partial: "layouts/delta_stat_card", locals: {label: 'This Quarter', last_label: 'Last quarter', tooltip_text: Interval.quarterly.upto_now(shift: -1, as_text: true), this_query: @recognitions.where(['recognitions.created_at > ?', Time.current.beginning_of_quarter]).size, last_query: @recognitions.where(created_at: Interval.quarterly.upto_now(shift: -1)).size, css_class: "quarter recognitions"}%>
+          <%= render partial: "layouts/delta_stat_card", locals: {label: 'This Year', last_label: 'Last year', tooltip_text: Interval.yearly.upto_now(shift: -1, as_text: true), this_query: @recognitions.where(['recognitions.created_at > ?', Time.current.beginning_of_year]).size, last_query: @recognitions.where(created_at: Interval.yearly.upto_now(shift: -1)).size, css_class: "year recognitions"}%>
+        </ul>
+      </div>
+    </section>
+
+    <section class="marginBottom20 admin-avatar-section">
+      <h3><%=t("dashboard.current_admins")%></h3>
+      <ul class="flex flex-wrap">
+        <% @company.company_admins.each do |admin| %>
+          <li class="centered marginRight10 marginBottom10">
+
+            <%= link_to user_path(admin), class: 'smallPrint' do %>
+              <%= image_tag admin.avatar.small_thumb.url, title: strip_tags(admin.label), width: 25, height: 25, class: 'avatar', id: "admin-avatar-#{admin.id}" %><br>
+              <%= admin.label %>
+            <% end %>
+          </li>
+
+        <% end %>
+      </ul>
+    </section>
+
+    <% report = Report::Badge.new(@company, 3.months.ago.beginning_of_day, Time.current) %>
+    <%= render partial: "graphs/badge_graph", locals: {report:  report } if report.data.length > 0 %>
+
+
+    <div class="row-fluid marginBottom40">
+      <div class="span6">
+        <div id="recognition-badge-graph-wrapper" class="padding10">
+
+          <h3><%= t("dashboard.top_badges")%></h3>
+
+          <div id="piechart"></div>
+        </div>
+      </div>
+
+      <div class="span6">
+        <div id="recognition-user-status-graph-wrapper" class="padding10">
+
+          <h3><%= t("dashboard.users_by_status")%></h3>
+
+          <div id="piechart-user-by-status"></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="cursor" title="<%= t("dict.res_definition") %>">RES<sup>?</sup></h3>
+    <div class="row-fluid">
+      <div class="span6">
+
+        <h4>By recipients</h4>
+          <%= render partial: "layouts/res_widget",
+                     locals: {
+                         wrapper_id: "res-score",
+                         wrapper_class: "res-score",
+                         res_type: :by_recipient,
+                         res_calculator: @res_calculator
+                     } %>
+      </div>
+
+      <div class="span6">
+        <h4>By senders</h4>
+        <%= render partial: "layouts/res_widget",
+                   locals: {
+                       wrapper_id: "res-score-sender",
+                       wrapper_class: "res-score",
+                       res_type: :by_sender,
+                       res_calculator: @res_calculator
+                   } %>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    (function() {
+      var data = [];
+      var userStatusData = [];
+      window.R = window.R || {};
+      window.R.company = window.R.company || {};
+      window.R.company.dashboard = window.R.company.dashboard || {};
+
+      <% @top_badges.each_with_index do |data, i| %>
+        data.push({
+          name: "<%= data[1][:badge].short_name%>",
+          y: <%= data[1][:count]%>
+        });
+      <% end %>
+
+      <% @users_by_status.each do |status, count| %>
+        userStatusData.push({
+          name: "<%= status.titleize%>",
+          y: <%= count%>
+        });
+      <% end %>
+
+      window.R.company.dashboard.topBadges = [{
+        name: 'Top Badges',
+        colorByPoint: true,
+        data: data
+      }];
+
+      window.R.company.dashboard.usersByStatus = [{
+        name: 'Users By Status',
+        colorByPoint: true,
+        data: userStatusData
+      }];
+
+    })();
+  </script>
+
+<% else %>
+  <div class='page-body'>
+    <div id="dashboard" class="tab tab-pane active">
+      <h2>Get Started</h2>
+      <p>Looks like your company hasn't sent any recognitions yet.</p>
+      <p>Please send at least one so that we can show data associated with your recognitions in this dashboard. </p>
+    </div>
+  </div>
+<% end %>

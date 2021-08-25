@@ -1,0 +1,10 @@
+<div class="centered flex-centered">
+  <div class="high-count-inner">
+    <h1><%= t('signups.check_your_email') %></h1>
+    <p><%= t('welcome.size_of_company_large_enough_for_account_manager') %></p>
+    <%= link_to new_recognition_path, class: "button" do %>
+      <%= t('dict.send_a_recognition') %>
+    <% end %>
+    <a href="javascript://" class="button button-primary slideable-trigger" data-from="#user-count-high" data-to="#user-count-low"><%= t('welcome.purchase_now') %>></a>
+  </div>
+</div>

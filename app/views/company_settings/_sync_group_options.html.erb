@@ -1,0 +1,29 @@
+<div id="sync-enabled-options">
+  <div class="marginBottom20" id="sync-groups">
+    <label class="checkbox-title">Sync users from these <%= long_name %> groups</label>
+    <div class="company_setting_sync_groups_container pagelet" data-endpoint="<%= company_admin_sync_groups_path(network: @company.domain, provider: provider) %>">
+      <%= select_tag("company_setting[sync_groups]", options_from_collection_for_select([], :id, :name)) %>
+    </div>
+    <p class="subtle-text marginTop10">If no groups are selected, your entire company will be synced</p>
+  </div>
+</div>
+
+<div class="marginBottom20" id="sync-teams">
+  <%= show_toggle @company.sync_teams?, "Sync teams", data: { setting: "sync_teams" } %>
+</div>
+
+<% if  provider.to_sym == :microsoft_graph %>
+  <div class="marginBottom20" id="sync-active-users">
+    <%= show_toggle !@company.filter_account_enabled_users_in_microsoft_graph_sync?,
+                    "Sync disabled users",
+                    data: {
+                        setting: "settings[sync_filters[microsoft_graph][accountEnabled]]",
+                        invert_values: true
+                    } %>
+  </div>
+<% end %>
+
+<div class="marginBottom20" id="manual-sync">
+  <%= button_to("Run User Sync", company_admin_user_sync_jobs_path(domain: @company.domain), remote: true, class: "button button-border", form: { class: 'marginBottom0' }) %>
+</div>
+

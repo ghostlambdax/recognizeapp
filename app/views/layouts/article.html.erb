@@ -1,0 +1,44 @@
+<% content_for :content do %>
+  <div class="article-title-section">
+    <div class="text-center">
+      <h1 itemprop="name" class="balance-text"><%= yield :article_title %></h1>
+    </div>
+
+    <%= yield :article_description %>
+
+    <% unless @button == false %>
+    <div class="centered marginVertical20">
+      <hr>
+      <%= schedule_demo_link link_text: 'Contact us to learn more', service: "service2", cssclasses: "button marginBottom0" %>
+      <hr class="hr hr-space marginBottom50">
+    </div>
+    <% end %>
+
+
+  </div>
+
+  <div class="article-wrapper padding10" <% if @list.present? && @list == true %> itemscope itemtype="http://schema.org/ItemList"<% end %>>
+
+    <aside>
+      <%= yield :article_side %>
+    </aside>
+
+    <section>
+      <%= yield :article_body %>
+    </section>
+
+  </div>
+
+  <%= render partial: 'home/schedule_demo_incentive_point' %>
+
+<% end %>
+
+<%= render template: "layouts/application" %>
+
+<script type="text/javascript" charset="utf-8">
+  new window.R.ScrollMenu("#article-menu", ".article-list", '.article-wrapper');
+</script>
+
+<%= render :partial => 'home/footer' unless current_user.present?  %>
+
+<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=59a0a67439509a0011b10c94&product=sticky-share-buttons"></script>

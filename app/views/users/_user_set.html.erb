@@ -1,0 +1,33 @@
+<% user_ep = defined?(user_endpoint) ? user_endpoint : company_admin_accounts_path %>
+<div id="user-set-wrapper">
+  <table id="user-set" class="table table-striped table-bordered table-ranking table-condensed table-hover table-responsive" data-endpoint="<%= user_ep %>" data-network="<%= company.domain %>">
+    <thead>
+    <tr>
+      <th class="not-mobile"><%= @company.uses_employee_id? ? 'Employee ID' : 'Id'%></th>
+      <th><%= t("dict.first_name") %></th>
+      <th><%= t("dict.last_name") %></th>
+      <th class="email"><%= t("dict.email") %></th>
+      <% if @company.in_family? %>
+          <th class="dept"><%= t("dict.department") %></th>
+      <% end %>
+      <th class="phone"><%= t('user_edit.phone') %></th>
+      <th class="manager"><%= t("dict.manager") %></th>
+      <th class="teams"><%= t("company_admin.accounts.company_teams") %></th>
+      <th class="not-mobile"><%= t("company_admin.accounts.system_roles") %></th>
+      <th><%= t("dict.admin") %></th>
+      <th><%= t("company_admin.accounts.company_roles") %></th>
+      <th class=""><%= t("dict.department") %></th>
+      <th class=""><%= t("dict.country") %></th>
+      <th class=""><%= t("dict.status") %></th>
+      <th class="not-mobile"><%= t("dict.created_at") %></th>
+      <th class="not-mobile"><%= t("company_admin.accounts.edit_profile") %></th>
+      <th class="not-mobile"><%= t("dict.actions") %></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+</div>
+
+<%= render partial: "company_admin/rewards/rewards_manager" %>

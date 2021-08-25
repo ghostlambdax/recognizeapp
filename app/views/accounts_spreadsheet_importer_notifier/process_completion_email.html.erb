@@ -1,0 +1,17 @@
+<h2 style="<%= mail_styles(:h2, :text, :title) %>">The Recognize user spreadsheet import completed.</h2>
+
+<p style="<%= mail_styles(:p) %>">
+  Total account records: <%= @import_summary.total_records_count %>
+</p>
+<p style="<%= mail_styles(:p) %>">
+  Successful records: <%= @import_summary.successful_records_count %>
+</p>
+<p style="<%= mail_styles(:p) %>">
+  Failed records: <%= @import_summary.failed_records_count %>
+</p>
+<p style="<%= mail_styles(:p) %>">
+  Records that saved but require attention: <%= @import_summary.saved_but_require_attention_records_count %>
+</p>
+
+<%= link_to 'Last user spreadsheet import report', show_last_import_company_admin_accounts_spreadsheet_importers_url(network: @company.domain), style: "#{mail_styles(:button)}; margin-top: 20px;" %>
+

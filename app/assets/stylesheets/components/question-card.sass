@@ -1,0 +1,54 @@
+
+.topic-label
+  font-size: 12px
+  font-weight: 600
+  color: complement($headerBg)
+  cursor: default
+  margin: 0 0 3px 0
+
+@each $c in $questionColors
+  $i: index($questionColors, $c)
+
+  .question-cards li:nth-child(#{$i})
+    border-left: 3px solid $c
+
+    label
+      color: $c
+
+    &:after
+      background: $c
+
+.question-cards
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+
+  & > li
+    background: #fff
+    position: relative
+    width: 490px
+    padding: 30px
+    margin: 50px
+
+    label
+      font-weight: 600
+
+    &:after
+      content: '?'
+      position: absolute
+      right: 10px
+      top: 10px
+      border-radius: 50%
+      color: white
+      font-weight: 600
+      width: 26px
+      height: 26px
+      text-align: center
+      padding-top: 1px
+      font-size: 20px
+
+@media (max-width: $tablet)
+  .question-cards
+    & > li
+      margin: 25px 0
+

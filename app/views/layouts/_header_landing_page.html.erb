@@ -1,0 +1,26 @@
+<nav id="navbar" class="navbar navbar-default" role="navigation" <% unless use_marketing_manifests? %>data-turbolinks="false"<% end %>>
+
+  <div class="container-fluid">
+
+    <div class="block-content center-block">
+      <div class="row-fluid align-middle">
+
+        <div class="span6 pull-left">
+          <a href="/" <% unless use_marketing_manifests? %>data-turbolinks="false"<% end %>>
+            <%= image_tag("chrome/logo-with-name-white.png", alt: "Recognize", id: "logo-with-name") %>
+          </a>
+        </div>
+
+        <div class="span6">
+          <span class="phone-number pull-right">
+            <a href="mailto:sales@recognizeapp.com" target="_blank" style="color: white;">sales@recognizeapp.com</a>
+          </span>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /.container-fluid -->
+</nav>
+
+

@@ -1,0 +1,38 @@
+<hr class="hr hr-space" />
+
+<% examples = content_tag(:span) do %>
+  <p>
+    <%= _('Examples')%>
+  </p>
+  <ul>
+    <li><%= _('● Notify a rewards provider that a user redeemed a reward in order to fulfill a custom company reward.')%></li>
+    <li><%= _('● Post a recognition to Slack or Microsoft Teams.')%></li>
+  </ul>
+<% end %>
+
+<div id='webhooks' class="row-fluid scroll-item">
+  <h3><%= _('Webhooks') %></h3>
+  <div class="row-fluid marginBottom10">
+    <div class="span8">
+      <p>
+        <%= _('Webhooks allow you to notify third party systems when events on Recognize occur')%><sup title="<%= examples%>">?</sup>.
+      </p>
+    </div>
+    <div class="span4 text-right">
+      <% if @company.settings.allow_webhooks? %>
+        <%= link_to_swal_form _('Add new'), "company_admin/webhook_endpoints/_webhook_endpoint_form" , render: {locals: {webhook_endpoint: Webhook::Endpoint.new }}, link_opts: {class: 'button button-primary'}, swal_form: { id: "new_webhook_endpoint" , title: _('Create Webhook'), successmessage: _('Webhook has been created!') } %>
+      <% end %>
+    </div>
+  </div>
+  <% if @company.settings.allow_webhooks? %>
+    <%= pagelet company_admin_webhook_endpoints_path %>
+  <% else %>
+    <div class="well width100">
+      <h5><%= _('Request access')%></h5>
+      <p><%= _('Webhooks can transfer points to a third party company store provider. Another use case is posting recognitions to MS Teams, Slack, or other communication channels.')%></p>
+      <p><%= _('To access Webhooks, please contact us at support@recognizeapp.com')%>.</p>
+    </div>
+  <% end %>
+</div>
+
+<hr class="hr hr-space" />

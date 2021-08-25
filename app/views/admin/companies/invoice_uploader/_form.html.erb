@@ -1,0 +1,35 @@
+<%= form_for InvoiceDocument.new, url: upload_invoice_admin_company_path, remote: true, authenticity_token: true, html: { id: 'invoice_uploader_form', class: "form-horizontal" } do |f| %>
+  <div class="well">
+    <div class="control-group">
+      <label class="control-label"><%= f.label :description %></label>
+      <div class="controls">
+        <%= f.text_field :description, class: "marginBottom10" , id: 'description' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">
+        <%= f.label :due_date %>
+      </label>
+      <div class="controls">
+        <%= f.date_field :due_date, placeholder: 'MM/DD/YYYY' , class: 'marginBottom10' , id: 'due_date' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">
+        <%= f.label :file %>
+      </label>
+      <div class="controls">
+        <%= f.file_field :file, style: "width: 205px" %>
+      </div>
+    </div>
+
+    <div>&nbsp;</div>
+    <%= f.submit "Upload", class: "button button-primary" %>
+    <div class="file-attach-progress">
+      <div class="message marginBottom10"></div>
+      <div class="progress-bar"><div class="progress-inner"><span class="right"></span></div></div>
+    </div>
+  </div>
+<% end %>

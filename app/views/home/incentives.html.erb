@@ -1,0 +1,155 @@
+<%= content_for :title, "Employee Incentive App" %>
+<%= content_for :description, 'Create a flexible and customizable employee incentive program to promote wellness, KPIs, and whatever your heart desires.' %>
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Employee Incentive App | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="Create a flexible and customizable employee incentive app to promote wellness, KPIs, and whatever your heart desires." />
+  <meta property="og:image" content="/assets/illustrations/recognize.jpg" />
+<% end%>
+
+<%= image_tag "pages/home-incentives/illustration.png", alt: "An illustration of good deeds to be recognized in our employee incentive app, such as car pooling.", class: "top-illustration" %>
+
+<section class=" centered">
+  <div class="inner">
+    <h1 class="balance-text">Employee Incentive App</h1>
+    <p class="tagline">Drive the behaviors ideal for your company.<br> Create your own incentives staff report for manager approval and bonuses.</p>
+    <%= schedule_demo_link %>
+  </div>
+</section>
+
+
+<div id="points" class="">
+  <section id="video">
+    <div class="inner">
+      <div class="row-fluid">
+        <div class="span6" data-no-turbolink='true'>
+          <h2 class="balance-text">From sales bonuses to wellness, it is easy to setup an employee incentive app</h2>
+          <p class="tagline balance-text">Create any type of tasks you want completed by specific roles in the company. For instance, have customer service specific tasks or technology specific tasks. Keep it fresh and add new tasks anytime.</p>
+
+        </div>
+        <div class="span6">
+          <div id="youtube-video" class="youtube-video" data-id="BvkDJkrYT9U"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="">
+    <div class="inner">
+      <div class="centered">
+        <h2 class="balance-text">How to make tasks in an employee incentive app</h2>
+        <p class="tagline balance-text">Send us a spreadsheet of tasks or create them in the Company Admin.
+          <br>Pick a category for reporting and a role for who can complete the task.
+          <br> Also choose a value that can be tied to points or a bonus.</p>
+
+
+      </div>
+      <div class="centered">
+        <%= image_tag "pages/home-incentives/make.gif", alt: "Make any task easy in the Recognize employee incentive app" %>
+      </div>
+
+
+    </div>
+    <div class="centered">
+    </div>
+  </section>
+  <section id="">
+    <div class="inner">
+      <div class="centered">
+        <h2 class="balance-text">Employees report completion of tasks in the employee incentive app</h2>
+        <p class="tagline balance-text">A weekly wellness report, security certification, or following safety protocol, are all ideas for an employee incentive app. Staff can report tasks in Chrome, Outlook, Sharepoint, from this website, and more.</p>
+      </div>
+
+    </div>
+    <div class="centered">
+      <%= image_tag "pages/home-incentives/report.gif", alt: "Report tasks" %>
+    </div>
+  </section>
+
+  <section id="">
+    <div class="inner">
+      <div class="centered">
+        <h2 class="balance-text">Painless manager workflow</h2>
+
+        <p class="tagline balance-text">Managers are notified when their direct reports complete the tasks. They have access to review and approve all their direct reports in the manager portal.</p>
+        <p class="tagline balance-text">Managers and admins get a report of which tasks were completed by whom and what is the value of those tasks for a possible bonus or recognition.</p>
+      </div>
+        <div class="centered">
+          <%= image_tag "pages/home-incentives/approve.gif", alt: "Approve tasks" %>
+        </div>
+      </div>
+  </section>
+
+  <section class="centered" data-no-turbolink='true'>
+    <h2>Staff use Recognize Incentives in the integrations</h2>
+    <p>Complete tasks from Microsoft Teams, Outlook, Workplace by Facebook, and more.</p>
+
+
+    <div class="youtube-video" data-id="UtrE1rXWdXM" data-play="stop"></div><br>
+    <span class="marginBottom50 block">See more <%= link_to 'Recognize videos', recognize_videos_path %></span>
+    <%= schedule_demo_link %>
+  </section>
+
+  <section id="rewards-ideas">
+    <div class="inner centered">
+      <h2 class="balance-text">Employee incentive app ideas</h2>
+      <p class="tagline balance-text">
+        A list of possible employee incentive ideas you can use in Recognize.
+      </p>
+
+
+
+      <div class="row-fluid">
+        <div class="span6">
+
+          <h3>Wellness Program</h3>
+          <ul class="clearfix marginBottom40">
+            <li class="tagline">Biked to work</li>
+            <li class="tagline">Walked for 15min-1hr</li>
+            <li class="tagline">Ate vegetarian for a day/week</li>
+            <li class="tagline">Meditated for 5min-1hr</li>
+          </ul>
+
+          <h3>Environmental & Social Responsibility Program</h3>
+          <ul class="clearfix marginBottom40">
+            <li class="tagline">Carpooled</li>
+            <li class="tagline">Started battery recycling</li>
+            <li class="tagline">Started compost program</li>
+            <li class="tagline">Volunteered</li>
+            <li class="tagline">Donated</li>
+            <li class="tagline">Cleaned a park</li>
+          </ul>
+      </div>
+
+        <div class="span6">
+
+      <h3>Safety Program</h3>
+      <ul class="clearfix marginBottom40">
+        <li class="tagline">Followed safety protocol</li>
+        <li class="tagline">Asked for help</li>
+        <li class="tagline">No incidents in 30 days</li>
+        <li class="tagline">Moved slowly</li>
+      </ul>
+
+      <h3>Sales Bonus Program</h3>
+      <ul class="clearfix marginBottom40">
+        <li class="tagline">Opened new account</li>
+        <li class="tagline">Reached sales quota</li>
+        <li class="tagline">Opened new loan/credit card/service</li>
+        <li class="tagline">Contacted 100 prospects in a day</li>
+      </ul>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <%= render partial: 'home/schedule_demo_incentive_point' %>
+
+</div>
+
+<%= render partial: "layouts/youtube_load" %>
+<%= render :partial => 'footer' %>

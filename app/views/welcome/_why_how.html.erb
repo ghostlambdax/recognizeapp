@@ -1,0 +1,49 @@
+<div class="why-how">
+  <div class="inner">
+    <div class="row-fluid">
+
+      <% unless current_user.subscribed_account? %>
+        <!-- The value props of recognize -->
+        <h2><%= t('welcome.why_recognize') %></h2>
+        <%= render partial: "welcome/value_props" %>
+      <% end %>
+
+      <div class="animated-gifs clearfix">
+        <h2><%= t('home_tour.how_recognize_works') %></h2>
+        <div class="image-title">
+          <div class="title">
+            <h3><%= t('welcome.sending_a_recognition') %></h3>
+          </div>
+
+          <%= image_tag "pages/signup/welcome/#{@integration}/send.gif", alt: t('welcome.creating_a_recognition'), class: "marginBottom40" %>
+        </div>
+
+        <% unless current_user.subscribed_account? %>
+          <div class="image-title">
+            <div class="title">
+              <h3><%= t('welcome.configure_the_badges') %></h3>
+            </div>
+            <%= image_tag "pages/signup/welcome/configure.gif", alt: t('welcome.configure_the_badges') %>
+          </div>
+
+          <div class="image-title">
+            <div class="title">
+              <h3><%= t('welcome.redeeming_a_reward') %></h3>
+            </div>
+            <%= image_tag "pages/signup/welcome/redeem.gif", alt: t('welcome.redeeming_a_reward') %>
+
+          </div>
+        <% end %>
+        
+        <div class="image-title">
+          <div class="title">
+            <h3><%= t('welcome.employee_recognition_award') %></h3>
+          </div>
+          <%= image_tag "pages/signup/welcome/awards.gif", alt: t('welcome.receive_certificate_awards') %>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

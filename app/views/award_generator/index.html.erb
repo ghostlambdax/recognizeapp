@@ -1,0 +1,23 @@
+
+  <%   certificates = [{file: 'years-of-service.png', text: 'Years of Service'},
+                       {file: 'promotion.png', text: 'Promotion'},
+                       {file: 'employee-of-the-month.png', text: 'Employee of the Month'},
+                       {file: 'employee-of-month-2.png', text: 'Employee of the Month II'},
+                       {file: 'employee-of-the-quarter.png', text: 'Employee of the Quarter'},
+                       {file: 'employee-of-the-year.png', text: 'Employee of the Year'},
+                       {file: 'presidents-award.png', text: "President's Award"},
+                       {file: 'certificate-of-achievement.png', text: 'Certificate of Achievement'},
+                       {file: 'certificate-of-recognition.png', text: 'Certificate of Recognition'},
+                       {file: 'certificate-of-recognition2.png', text: 'Certificate of Recognition II'}]
+  %>
+
+  <nav class="certificateThumbnails">
+    <ul>
+      <% certificates.each do |c| %>
+        <li>
+          <%= image_tag "pages/award-generator/#{c[:file]}", alt: c[:text] %>
+          <p><%= c[:text] %></p>
+        </li>
+      <% end %>
+    </ul>
+  </nav>

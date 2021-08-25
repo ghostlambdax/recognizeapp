@@ -1,0 +1,34 @@
+<% content_for :title, "Inspirational Web Design Trends of 2019" %>
+<%= content_for :description, "A look back at 2019 and the web design trends leading into 2020. Check out the designs of the top websites and the common trends among them." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="2019 Web Design Roundup" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="A look back at 2019 and the great web design trends, such as illustrations and curvy pastel backgrounds." />
+  <meta property="og:image" content="https://recognizeapp.com/assets/pages/articles/ui-design-trends-2019/banner.jpg" />
+  <link rel="amphtml" href="<%= ui_design_trends_2019_url format: :amp %>">
+<% end%>
+
+<% content_for :article_description do %>
+  <div class="centered">
+    <p class="balance-text marginBottom40 tagline">
+      There is no question 2019 was the year of diagonal lines and illustrations. Thanks to new technologies in CSS and HTML5, it is easier to make non-block, like backgrounds and call-outs. Further, illustrators are in higher demand than ever. Art directors are calling for illustrators to be apart of the process ever since Intercom added illustrations too their website in 2017. Now there are numerous <a href="https://craftwork.design/draw-illustrations/" target="_blank">clip art design packs</a> of colorful human-like characters doing work-like activities. Of course, the best companies know they have to make their own illustrations to shine.
+    </p>
+    <%= lazy_image_tag "pages/articles/ui-design-trends-2019/banner.jpg", alt: "People making a website", itemprop: "image" %>
+  </div>
+<% end %>
+
+
+<% tags = [] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "ui_design_trends_2019" %>
+<% end %>
+
+<% content_for :article_title do %><%= @designs.length %> Inspirational Web Designs of 2019<% end %>
+
+<% content_for :article_side do %>
+
+<% end %>

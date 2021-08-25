@@ -1,0 +1,8 @@
+<%= render partial: "rewards_header"%>
+
+<h3>Company Reward Balances</h3>
+<div>
+  <p>Tango Balance: <%= number_to_currency(TangoCard::Client.recognize_balance) %></p>
+  <p>Customer Total Balance: <%= number_to_currency(Rewards::FundsAccount.primary.sum(:balance)) %></p>
+</div>
+<%= litatablify @datatable, endpoint: admin_rewards_path, daterange: false %>

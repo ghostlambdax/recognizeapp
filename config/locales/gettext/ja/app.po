@@ -1,0 +1,471 @@
+# Japanese translations for recognize package.
+# Copyright (C) 2021 recognize
+# This file is distributed under the same license as the recognize package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recognize 1.0\n"
+"Report-Msgid-Bugs-To: contact@translation.io\n"
+"POT-Creation-Date: 2021-05-26 15:19-0500\n"
+"PO-Revision-Date: 2021-05-26 22:19+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"\n"
+
+#: ../../../app/datatables/catalogs_datatable.rb:87
+msgid "Catalog"
+msgstr "カタログ"
+
+#: ../../../app/datatables/catalogs_datatable.rb:95
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:10
+msgid "Redemptions"
+msgstr "償還"
+
+#: ../../../app/datatables/catalogs_datatable.rb:103
+msgid "Settings"
+msgstr "設定"
+
+#: ../../../app/jobs/sms_notifier_job.rb:8
+#: ../../../app/services/recognition_sms_notifier.rb:42
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:14
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:17
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:22
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:32
+msgid ""
+"\n"
+"Reply with STOP to opt out of additional messages"
+msgstr ""
+"\n"
+"追加のメッセージをオプトアウトするには、STOPで返信します"
+
+#: ../../../app/lib/fb_workplace/helpers/bot_helpers.rb:90
+msgid "Are you sure you want to reset your account connection?"
+msgstr "アカウント接続をリセットしてもよろしいですか？"
+
+#: ../../../app/lib/fb_workplace/helpers/bot_helpers.rb:91
+msgid "Reset connection"
+msgstr "接続をリセット"
+
+#: ../../../app/lib/fb_workplace/webhook/link.rb:33
+msgid "Sent"
+msgstr "送信済み"
+
+#: ../../../app/lib/fb_workplace/webhook/page.rb:108
+msgid ""
+"Your account connection has been cleared. Type 'Connect' if you would like to "
+"reconnect "
+msgstr "アカウント接続がクリアされました。再接続する場合は、「接続」と入力します"
+
+#: ../../../app/models/webhook/endpoint.rb:15
+msgid "^Target url must a properly formatted url."
+msgstr "^ターゲットURLは適切にフォーマットされたURLでなければなりません。"
+
+#: ../../../app/views/admin/index/_admin_header.html.erb:5
+msgid "Dashboard"
+msgstr "ダッシュボード"
+
+#: ../../../app/views/admin/index/_admin_header.html.erb:6
+msgid "Engagement"
+msgstr "エンゲージメント"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:3
+msgid "Service Anniversary Award Certificate Template"
+msgstr "サービスアニバーサリーアワード証明書テンプレート"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:4
+msgid ""
+"Use the Recognize service anniversary award template to create a certificate t"
+"o give to employees as a PDF or printed out. Sign the PDF after you create it."
+" All totally free to give employee recognition to staff."
+msgstr ""
+"Recognize service周年記念アワードテンプレートを使用して、PDFまたは印刷物として従業員に提供する証明書を作成します。作成後、PDFに署名し"
+"ます。スタッフに従業員の認識を与えるためにすべて完全に無料です。"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:10
+#: ../../../app/views/layouts/award_certificate.html.erb:11
+msgid "Generate PDF"
+msgstr "PDFを生成する"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:13
+#: ../../../app/views/layouts/award_certificate.html.erb:14
+msgid "Font Families"
+msgstr "フォントファミリー"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:29
+msgid "Big Number"
+msgstr "ビッグナンバー"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:44
+msgid "Title"
+msgstr "タイトル"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:45
+msgid "Service Anniversary Award"
+msgstr "サービスアニバーサリーアワード"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:58
+msgid "Description"
+msgstr "説明"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:59
+msgid "For 7 years of service at Acme Inc."
+msgstr "AcmeInc。で7年間勤務。"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:74
+#: ../../../app/views/award_generator/service_anniversary.html.erb:75
+msgid "Signature"
+msgstr "署名"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:92
+msgid "Name"
+msgstr "名称"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:93
+msgid "Name here"
+msgstr "ここに名前を付けます"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:108
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:8
+msgid "Date"
+msgstr "日付"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:109
+msgid "May 24th, 2021"
+msgstr "2021年5月24日"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:9
+msgid "Product Updates"
+msgstr "製品の更新"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:10
+msgid ""
+"Recognize keeps getting better with weekly deployments. Check back regularly f"
+"or improvements and fixes."
+msgstr "Recognizeは、毎週の展開で改善を続けています。定期的にチェックして、改善と修正を確認してください。"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:14
+msgid "Recognize Product Updates"
+msgstr "製品の更新を認識する"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:15
+msgid ""
+"Recognize is updated almost every week. Major updates and fixes are listed her"
+"e to help customers and prospective customers learn of continued improvements."
+msgstr "Recognizeはほぼ毎週更新されます。主要な更新と修正は、顧客と見込み顧客が継続的な改善について学ぶのを助けるためにここにリストされています。"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:16
+msgid "Check server status"
+msgstr "サーバーのステータスを確認する"
+
+#: ../../../app/views/companies/_badge.html.erb:181
+msgid "one person"
+msgid_plural "%{count} people"
+msgstr[0] "一人"
+msgstr[1] ""
+
+#: ../../../app/views/company_admin/accounts/edit.html.erb:6
+msgid "Edit Users"
+msgstr "ユーザーの編集"
+
+#: ../../../app/views/company_admin/accounts/show.html.erb:2
+msgid "Users"
+msgstr "ユーザー"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:7
+msgid "Top toolbar logo"
+msgstr "トップツールバーのロゴ"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:13
+msgid ""
+"A white transparent png image to go in the top\n"
+"            toolbar. Many companies choose to make it the name of their progra"
+"m."
+msgstr ""
+"上部に表示される白い透明なpng画像\n"
+"            ツールバー。多くの企業はそれを彼らのプログラムの名前にすることを選びます。"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:25
+msgid "Stream page logo"
+msgstr "ストリームページのロゴ"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:31
+msgid ""
+"A color logo that goes on the Stream page. Many\n"
+"            companies choose to have it be their company logo. The background "
+"has to be white."
+msgstr ""
+"ストリームページに表示されるカラーロゴ。たくさんの\n"
+"            企業はそれを自社のロゴにすることを選択します。背景は白でなければなりません。"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:5
+msgid "Theming"
+msgstr "テーマ"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:8
+msgid "Security"
+msgstr "セキュリティ"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:12
+msgid "Recognition"
+msgstr "認識"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:15
+msgid "Nomination"
+msgstr "指名"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:18
+msgid "Tasks"
+msgstr "タスク"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:21
+msgid "Leaderboards"
+msgstr "リーダーボード"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:24
+msgid "Hall of Fame"
+msgstr "栄誉殿堂"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:27
+msgid "Rewards"
+msgstr "リワード"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:31
+msgid "Yammer"
+msgstr "Yammer"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:34
+msgid "Microsoft"
+msgstr "マイクロソフト"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:37
+msgid "Google"
+msgstr "グーグル"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:40
+msgid "Workplace by Facebook"
+msgstr "Facebookの職場"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:43
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:14
+msgid "Webhooks"
+msgstr "Webhook"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:47
+msgid "User settings"
+msgstr "ユーザー設定"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:50
+msgid "Points"
+msgstr "POINTS"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:53
+msgid "User Management"
+msgstr "ユーザー管理"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:56
+msgid "Kiosk Mode"
+msgstr "キオスクモード"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:9
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:35
+msgid "Edit"
+msgstr "編集"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:14
+msgid "Edit Webhook"
+msgstr "Webhookを編集する"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:15
+msgid "Webhook has been saved"
+msgstr "Webhookが保存されました"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:20
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:36
+msgid "Destroy"
+msgstr "削除"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:24
+msgid "Are you sure want to delete this webhook?"
+msgstr "このWebhookを削除してもよろしいですか？"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:28
+msgid "Events"
+msgstr "イベント"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:5
+msgid "Examples"
+msgstr "例"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:8
+msgid ""
+"● Notify a rewards provider that a user redeemed a reward in order to fulfill "
+"a custom company reward."
+msgstr "●カスタム会社の報酬を履行するためにユーザーが報酬を引き換えたことを報酬プロバイダーに通知します。"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:9
+msgid "● Post a recognition to Slack or Microsoft Teams."
+msgstr "●SlackまたはMicrosoftTeamsに表彰を投稿します。"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:18
+msgid ""
+"Webhooks allow you to notify third party systems when events on Recognize occu"
+"r"
+msgstr "Webhookを使用すると、Recognizeのイベントが発生したときにサードパーティのシステムに通知できます。"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:23
+#: ../../../spec/features/company_admin/settings/webhooks_spec.rb:15
+#: ../../../spec/features/company_admin/settings/webhooks_spec.rb:25
+msgid "Add new"
+msgstr "新しく追加する"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:23
+msgid "Create Webhook"
+msgstr "Webhookを作成する"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:23
+msgid "Webhook has been created!"
+msgstr "Webhookが作成されました！"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:31
+msgid "Enable"
+msgstr "有効にする"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:32
+msgid "Event"
+msgstr "イベント"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:33
+msgid "Method"
+msgstr "方法"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:34
+msgid "Endpoint"
+msgstr "終点"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:37
+msgid "Recent events"
+msgstr "最近のイベント"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:48
+msgid "Coming Soon!"
+msgstr "近日公開！"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:49
+msgid "If you would like early access, please contact support@recognizeapp.com"
+msgstr "早期アクセスをご希望の場合は、support @ recognizeapp.comまでご連絡ください。"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:9
+msgid "Status Code"
+msgstr "ステータスコード"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:10
+msgid "Request"
+msgstr "リクエスト"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:11
+msgid "Response"
+msgstr "応答"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:14
+msgid "Url"
+msgstr "URL"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:15
+msgid "Payload"
+msgstr "ペイロード"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:16
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:18
+msgid "Headers"
+msgstr "ヘッダー"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:17
+msgid "Data"
+msgstr "データ"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:36
+msgid "No webhooks have been triggered yet"
+msgstr "Webhookはまだトリガーされていません"
+
+#: ../../../app/views/home/pricing.html.erb:99
+msgid "Sign Up & Upgrade"
+msgstr "サインアップ＆アップグレード"
+
+#: ../../../app/views/layouts/_create_catalog_dropdown.html.erb:5
+#: ../../../app/views/layouts/_create_catalog_dropdown.html.erb:9
+msgid "All currencies"
+msgstr "すべての通貨"
+
+#: ../../../app/views/layouts/_header.html.erb:190
+msgid "Switch accounts"
+msgstr "アカウントを切り替える"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:7
+msgid "Direct Reports"
+msgstr "直接レポート"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:8
+msgid "Recognitions"
+msgstr "認識"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:9
+msgid "Anniversaries"
+msgstr "記念日"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:11
+msgid "Approved"
+msgstr "承認済み"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:12
+msgid "Pending"
+msgstr "保留中"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:13
+msgid "Denied"
+msgstr "拒否されました"
+
+#: ../../../app/views/layouts/_schedule_demo_link.html.erb:6
+msgid "Schedule Live Demo"
+msgstr "ライブデモのスケジュール"
+
+#: ../../../app/views/layouts/application.html.erb:17
+msgid "Skip to main content"
+msgstr "メインコンテンツにスキップ"
+
+#: ../../../app/views/recognitions/_company_name.html.erb:3
+#: ../../../app/views/recognitions/_company_name.html.erb:8
+msgid "Company logo"
+msgstr "会社のロゴ"
+
+#: ../../../app/views/recognitions/_form_fullscreen.html.erb:97
+#: ../../../app/views/recognitions/new_panel.html.erb:78
+msgid "Sign in to Yammer to post to Yammer"
+msgstr "Yammerにサインインして、Yammerに投稿します"
+
+#: ../../../app/views/recognitions/_recognition.html.erb:72
+msgid "%{time} ago"
+msgstr "%{time}前"
+
+#: ../../../app/views/redemptions/_reward.html.erb:17
+msgid "Terms"
+msgstr "条件"
+
+#: ../../../app/views/users/show.html.erb:48
+msgid "1 year"
+msgid_plural "%{num} years"
+msgstr[0] "1年"
+msgstr[1] ""

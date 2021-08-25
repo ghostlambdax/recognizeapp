@@ -1,0 +1,21 @@
+<div class="article-quote">
+
+  <% if quote[:background_path].present? %>
+    <% if is_amp? %>
+      <amp-img src="<%= image_path(quote[:background_path]) %>" alt="<%= quote[:author] %> quote" height="100" width="124" class="left" style="margin-right: 10px;"></amp-img>
+  <% else %>
+      <div class="background lazy" <% if quote[:background_path].present? %>data-src="<%= quote[:background_path] %>"<% end %>></div>
+    <% end %>
+  <% end %>
+
+  <div class="content">
+    <blockquote>
+      <div>
+        <%= quote[:quote].html_safe %>
+      </div>
+    </blockquote>
+    <% if quote[:author].present? %>
+      <cite class="balance-text">- <%= quote[:author] %></cite>
+    <% end %>
+  </div>
+</div>

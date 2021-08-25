@@ -1,0 +1,127 @@
+<%= content_for :title, "User Rights & GDPR"%>
+<%= content_for :description, "Keep your data safe and GDPR compliant with Recognize's employee recognition and staff rewards program."%>
+
+<section id="intro" class="animate-hidden animate-1">
+  <div class="inner">
+    <h1>GDPR, User Rights &amp; Privacy</h1>
+    <p class="tagline">Recognize complies with the GDPR and respects the rights of all company's employees. <em>Last updated March 19th, 2021</em></p>
+    <a target="_blank" href="https://prighter.com/q/19536839965"><img width="200"
+            src="https://gdpr-rep.eu/certificateofrepresentation/19536839965/getwebcertificate.png"
+            alt="Recognize certificate of Art 27 representation"></a>
+
+  </div>
+
+  <%= render partial: "home/patterns/bw.svg" %>
+</section>
+
+<div id="points" class="animate-hidden animate-2">
+
+  <section id="point1-wrapper" class="clearfix">
+    <div class="inner clearfix row-fluid">
+      <div class="span6">
+        <h2>How Recognize Handles Privacy</h2>
+        <ul class="check-list">
+          <li>Conforms to GDPR</li>
+          <li>Privacy Shield Certified</li>
+          <li>Doesn't sell any data</li>
+          <li>Provides 100% data transparency</li>
+        </ul>
+      </div>
+      <div class="span6">
+        <%= image_tag "pages/user_rights/desk-worker.png",  alt: "An illustration of an employee working at their desk." %>
+      </div>
+    </div>
+  </section>
+
+  <section id="point2-wrapper" class="clearfix">
+    <div class="inner clearfix">
+      <div class="">
+        <h2>GDPR</h2>
+        <p>The GDPR is a European Union (EU) privacy law and came into law in May 2018. It regulates how organizations that are subject to the Regulation treats or uses the personal data of people located in the European Union. Since Recognize transmits, changes, and stores personal data of EU citizens, Recognize follows GDPR guidelines and rules.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="clearfix">
+    <div class="inner clearfix">
+      <h2>For Companies</h2>
+      <div class="row-fluid">
+        <div class="span4">
+          <h3>Data</h3>
+          <ul class="bullet-list">
+            <li>All data transferred into and created in the Recognize platform is monitored by its source, purpose, and who its shared with. <%= link_to "Contact Us", contact_path%> for this list.</li>
+            <li>Personal information stored is minimized and is only transferred to GDPR compliant sub-processors when absolutely necessary. See our <%= link_to "Privacy Policy", privacy_policy_path %> for our list of sub-processors.</li>
+            <li>Users can leverage all of their data rights following our <%= link_to "Data Subject Access Requests Policy", data_subject_access_requests_path, target: :_blank %>.</li>
+            <li>Recognize will retain subscribed company data up until a retention window after a company's account no longer is active. <%= link_to "Contact Us", contact_path%> for our data retention policy.</li>
+            <li>Recognize follows the principle of data protection by design and default. All employees must undergo security and privacy training. Developers follow the Secure Development Lifecycle (SDLC).</li>
+          </ul>
+        </div>
+        <div class="span4">
+          <h3>Accountability &amp; Management</h3>
+          <ul class="bullet-list">
+            <li>Recognize has appointed a Data Protection Officer and a representative in the EU who reviews all our privacy and compliance processes as well as handles issues interfacing with local authorities.</li>
+            <li>Recognize is prepared and committed to reporting all data breach notifications to companies and local authorities within 72 hours. </li>
+            <li>Recognize has Data Processing Agreements with all our subprocessors who may store personal information.</li>
+          </ul>
+        </div>
+        <div class="span4">
+          <h3>Consent</h3>
+          <ul class="bullet-list">
+            <li>Users must affirmatively consent to our cookie policy, privacy policy, and terms of service before signing up.</li>
+            <li>Consent can be rescinded or restricted at any time.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="point3-wrapper" class="clearfix">
+    <div class="inner clearfix">
+      <div class="">
+        <h2>For Individuals</h2>
+        <p>It is your right to access or remove your personal data. Learn more about how Recognize handles <%= link_to 'data subject access requests', data_subject_access_requests_path, target: :_blank, rel: "noindex,nofollow" %>.</p>
+
+        <hr class="hr hr-space">
+        <%
+         rights = [
+           "Request access to personal data",
+           "Rectify your personal data",
+           "Request erasure of your personal data",
+           "Request restriction of your personal data's processing",
+           "Request porting of your personal data",
+           "Object to the processing of your personal data",
+           "Object to the processing of your personal data for direct marketing purposes",
+           "Make a request regarding automated decision-making/profiling",
+           "Revoke the consent I gave to the processing of my personal data"
+          ]
+        %>
+
+        <ul class="check-list">
+          <% rights.each do |right| %>
+            <li><%= right %></li>
+          <% end %>
+        <hr class="hr hr-space">
+        <%= link_to "Make a privacy request", "https://prighter.com/dsrtool/19536839965", class: 'button' %>
+
+        
+      </div>
+
+    </div>
+  </section>
+
+  <section id="the-team" class="clearfix">
+    <div class="inner clearfix centered">
+      <h2>Additional resources</h2>
+
+      <%= link_to "Privacy policy", "/privacy", class: "button" %>
+      <%= link_to "Terms of service", "/terms", class: "button" %>
+      <%= link_to "Cookie policy", "/cookies", class: "button" %>
+
+    </div>
+  </section>
+
+</div>
+
+
+
+<%= render :partial => 'footer' %>

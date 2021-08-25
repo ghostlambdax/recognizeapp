@@ -1,0 +1,19 @@
+<div class="marginBottom10">
+  <%= render_flash %>
+</div>
+
+<div id="saml_signing_in_loading" class="centered">
+  <img src="/assets/icons/outlook-progress.gif" alt="Loading Recognize">
+  <h3><%= t("saml.signing_in") %></h3>
+
+  <% if @popup_url.present? %>
+
+    <p class="tagline balance-text"><%= t("saml.window_opening_instructions") %></p>
+
+    <hr>
+
+    <p><%= t("saml.allow_popups_html", link: (link_to t("dict.please_click_here"), @popup_url, target: "_blank", class: "openPopup")) %></p>
+
+
+  <% end %>
+</div>

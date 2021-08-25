@@ -1,0 +1,71 @@
+$lightenedHR: desaturate(lighten($headerBg, 50%), 50%)
+#home-employee_recognition_programs
+  .hr
+    border-color: $lightenedHR
+
+  .intro
+    display: flex
+    justify-content: space-evenly
+    padding-bottom: 0
+
+    img
+      max-height: 800px
+
+      @media (max-width: 1460px)
+        max-height: 500px
+
+      @media (max-width: 915px)
+        display: none
+
+    .inner
+      padding: 5vw
+      width: 50%
+
+      @media (max-width: 915px)
+        width: 100%
+
+
+  .programs-list
+    display: flex
+    width: 96%
+    max-width: 100%
+    margin: auto
+    justify-content: space-evenly
+    flex-wrap: wrap
+
+  .program-card
+    width: 46%
+    margin: 2%
+    border: 1px solid black
+    box-shadow: 0 0 20px rgba(100,100,100,.5)
+    padding: 15px
+
+    @media (max-width: 2150px)
+      width: 96%
+
+    .avatar-horizontal-wrapper img
+      align-self: start
+      width: 150px
+
+      @media (max-width: 930px)
+        width: 50px
+
+    .details
+      justify-content: flex-start
+      flex-wrap: wrap
+
+      .stars
+        @include h4()
+
+      dt
+        border-bottom: 1px solid $lightenedHR
+        padding-bottom: 5px
+        margin-bottom: 5px
+
+        h3
+          vertical-align: top
+          display: inline
+          color: $headerBg
+
+      dl
+        padding: 0 15px 15px

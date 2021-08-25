@@ -1,0 +1,40 @@
+language: ruby
+dist: precise
+rvm:
+- 2.2.2
+install: bundle install --without='development production' --path vendor/bundle --jobs=3
+  --retry=3
+before_script:
+- mysql -e 'create database myapp_test;'
+- cp config/local.yml.travis config/local.yml
+- cp config/database.yml.sample config/database.yml
+- cp config/credentials.yml.travis config/credentials.yml
+script:
+- RAILS_ENV=test bundle exec rake recognize:init
+- RAILS_ENV=test bin/rake assets:precompile
+- xvfb-run bin/rspec_$TEST_SUITE
+cache:
+  directories:
+  - vendor/bundle
+before_install:
+- export TZ=America/Los_Angeles
+- openssl aes-256-cbc -K $encrypted_3d5bf18f5d91_key -iv $encrypted_3d5bf18f5d91_iv
+  -in credentials.yml.enc -out credentials.yml -d -in config/credentials.yml.travis.enc
+  -out config/credentials.yml.travis -d
+services:
+- redis-server
+sudo: false
+env:
+- TEST_SUITE=nofeatures
+- TEST_SUITE=features
+notifications:
+  email:
+  - peter@recognizeapp.com
+  - alex@recognizeapp.com
+  slack:
+    secure: QVM1PTbkL0rsczKmzjonGeboW4oNkzO3kdbs14VZh8hMwyLly/urgkVwvFJcXa9nP3vJRAIcUGVcLKnyuU23Mt72rRkJ2Jguy5nTQf9SNFCqmgX3wsEFweCz/I0QnwtLOP+sMFqf+nlA/aVeQrPciMIVp5rytoRNjLhAVVP159k=
+addons:
+  apt:
+    packages:
+      - libqtwebkit-dev
+      - libqtwebkit4    

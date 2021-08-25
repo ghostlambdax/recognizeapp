@@ -1,0 +1,77 @@
+<script src="https://unpkg.com/@microsoft/teams-js@1.3.7/dist/MicrosoftTeams.min.js" integrity="sha384-glExfvkpce98dO2oN+diZ/Luv/5qrZJiOvWCeR8ng/ZxlhpvBgHKeVFRURrh+NEC" crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script>
+<script>
+(function() {
+    'use strict';
+
+    // Call the initialize API first
+    microsoftTeams.initialize();
+
+    // Check the initial theme user chose and respect it
+    microsoftTeams.getContext(function(context){
+        if (context && context.theme) {
+            setTheme(context.theme);
+        }
+    });
+
+    // Handle theme changes
+    microsoftTeams.registerOnThemeChangeHandler(function(theme) {
+        setTheme(theme);
+    });
+
+    // Save configuration changes
+    microsoftTeams.settings.registerOnSaveHandler(function(saveEvent) {
+        // Let the Microsoft Teams platform know what you want to load based on
+        // what the user configured on this page
+        microsoftTeams.settings.setSettings({
+            configName: "recognizeConnectorConfig",
+            contentUrl: "<%= ms_teams_connector_config_url %>", // Mandatory parameter
+            entityId: "12345" // Mandatory parameter
+        });
+
+        microsoftTeams.settings.getSettings(function(settings){
+          // alert(settings.webhookUrl);
+          $("#webhookUrl").text(settings.webhookUrl)
+          console.log("Settings: ", settings);
+          saveEvent.notifySuccess();
+        });
+        // Tells Microsoft Teams platform that we are done saving our settings. Microsoft Teams waits
+        // for the app to call this API before it dismisses the dialog. If the wait times out, you will
+        // see an error indicating that the configuration settings could not be saved.
+        //saveEvent.notifySuccess();
+    });
+
+    // Logic to let the user configure what they want to see in the tab being loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      microsoftTeams.settings.setValidityState(true);
+    });
+
+    // Set the desired theme
+    function setTheme(theme) {
+        if (theme) {
+            // Possible values for theme: 'default', 'light', 'dark' and 'contrast'
+            document.body.className = 'theme-' + (theme === 'default' ? 'light' : theme);
+        }
+    }
+
+    // Create the URL that Microsoft Teams will load in the tab. You can compose any URL even with query strings.
+    function createTabUrl() {
+        var tabChoice = document.getElementById('tabChoice');
+        var selectedTab = tabChoice[tabChoice.selectedIndex].value;
+
+        return window.location.protocol + '//' + window.location.host + '/redirect/' + selectedTab + "?viewer=ms_teams";
+    }
+})();
+  
+</script>
+<h1> Recognize Teams Tab</h1>
+<div class="font-semibold font-title">
+  Configure your Recognize Connector here
+  <p>
+    <div id="webhookUrl">
+    </div>
+  </p>
+</div>

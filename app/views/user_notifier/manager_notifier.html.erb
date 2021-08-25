@@ -1,0 +1,36 @@
+<h2  style="<%= mail_styles(:h2, :text) %> margin-bottom: 20px;">
+  <%= image_tag  @recipient.avatar_small_thumb_permalink, style: "border-radius: 50%;vertical-align: middle;height: 50px;width:50px;"%>
+  <%=
+    t("notifier.has_been_recognized", name: @recipient.full_name).concat(".")
+  %>
+</h2>
+<%= render partial: "user_notifier/recognition", locals: {
+                                                 sender: @sender,
+                                                 badge: @recognition.badge,
+                                                 recognition: @recognition
+                                               }
+%>
+
+<div style="margin-top: 15px;">
+  <a style="<%= mail_styles(:button) %>" href="<%= recognition_url(@recognition) %>"><%= t("recognition_notifier.view_recognition") %></a>
+</div>
+
+<% if @recognition.badge.is_anniversary? %>
+  <h4 style="<%= mail_styles(:h4, :text) %>">
+    <%= t("notifier.about_the_recipient") %>
+  </h4>
+
+  <p style="<%= mail_styles(:p, :text) %> margin-bottom: 10px;" class="birthday_privacy_info">
+    <strong style="font-weight: 600;">
+      <%= t("notifier.birthday_privacy") %>
+    </strong>:
+    <%= birthday_privacy_label(@recipient) %>
+  </p>
+
+  <p style="<%= mail_styles(:p, :text) %> margin-bottom: 10px;" class="anniversary_privacy_info">
+    <strong style="font-weight: 600;">
+      <%= t("notifier.anniversary_privacy") %>
+    </strong>:
+    <%= anniversary_privacy_label(@recipient) %>
+  </p>
+<% end %>

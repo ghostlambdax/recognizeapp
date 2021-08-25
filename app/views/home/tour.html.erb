@@ -1,0 +1,93 @@
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Peer Employee Recognition" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="Send and receive employee recognition inside various tools, like Outlook or Slack. Earn points to redeem rewards, including gift cards and non-monetary employee rewards." />
+  <meta property="og:image" content="/assets/illustrations/recognize.jpg" />
+<% end%>
+
+<% content_for :description, "Learn how a value driven recognition program makes a difference for your staff rewards program by focusing on core values and tracking company culture." %>
+<%= content_for :title, "Employee Recognition Tour" %>
+
+<section id="intro" class="animate-hidden animate-1 animate">
+  <div class="inner">
+    <h1><%= _('Upgrade Your Spot Bonus Program') %></h1>
+    <p class="tagline balance-text">Instantly deliver spot bonuses tied to company values. Staff earn points to either redeem a reward immediately or accumulate points for a bigger item.</p>
+    <%= schedule_demo_link utm_content: "Top of how it works" %>
+  </div>
+
+  <%= render partial: "home/patterns/purple.svg" %>
+</section>
+
+<div id="points"  class="animate-hidden animate-2 animate">
+
+  <section id="point1-wrapper" class="clearfix">
+    <div class="inner">
+      <div class="content">
+        <h2 class="balance-text"><%= t('home_tour.point1_title') %></h2>
+        <p class="balance-text"><%= t('home_tour.point1') %></p>
+        <%= link_to "See the customizations", customizations_path, id: "tour-customizations", itemprop:"relatedLink", class: "button button-border" %>
+
+      </div>
+      <div class="image"><span class="offscreen"><%= t('home_tour.send_badges_like_punctual_and_innovative') %></span></div>
+
+    </div>
+  </section>
+
+  <section id="point2-wrapper" class="clearfix">
+    <div class="inner">
+      <div class="image"><span class="offscreen"></span></div>
+      <div class="content">
+        <h2 class="balance-text"><%= _('Track Spot Bonuses') %></h2>
+        <p class="balance-text"><%= t('home_tour.point2') %></p>
+        <%= link_to "View the available analytics", analytics_path, id: "menu-analytics", itemprop:"relatedLink", class: "button button-border" %>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="point3-wrapper"class="clearfix">
+    <div class="inner">
+      <div class="content">
+        <h2><%= t('home_tour.point3_title') %></h2>
+        <p class="balance-text"><%= t('home_tour.point3') %></p>
+        <%= link_to "See the engagement strategy", engagement_path, id: "tour-engagement", itemprop: "relatedLink", class: "button button-border" %>
+
+      </div>
+      <div class="image"><span class="offscreen"></span></div>
+
+    </div>
+  </section>
+
+  <section id="point4-wrapper" class="clearfix">
+    <div class="inner">
+      <div class="image"><span class="offscreen"></span></div>
+
+      <div class="content">
+        <h2 class="balance-text"><%= t('home_tour.point4_title') %></h2>
+        <p class="balance-text"><%= t('home_tour.point4') %></p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="point5-wrapper" class="clearfix">
+    <div class="inner">
+      <div class="content">
+        <h2 class="balance-text"><%= t('home_tour.point5_title') %></h2>
+        <p class="balance-text"><%= t('home_tour.point5') %></p>
+      </div>
+      <div class="image"><span class="offscreen"></span></div>
+    </div>
+  </section>
+</div>
+
+<section id="action">
+  <div class="inner">
+    <div class="content">
+      <%= render partial: "/home/bottom" %>
+    </div>
+  </div>
+</section>
+
+<%= render :partial => 'footer' %>

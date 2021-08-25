@@ -1,0 +1,12 @@
+(function(){
+  <% if @current_user_destroyed%>
+    Swal.fire({
+      title: "<%= t('users.thank_you_for_using_recognize') %>",
+      text: "<%= t('users.if_you_suggestions_recognize_contact_us') %>"
+    }).then(function(){
+      window.location = "/";
+    });
+  <% else %>
+    <%= render :partial => 'update_users_datatable_row', locals: {user: @user} %>
+  <% end %>
+})();

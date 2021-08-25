@@ -1,0 +1,102 @@
+(function (R, $) {
+    var popup;
+    var transition = new window.R.Transition();
+
+    <% if @user.blank? %>
+    $("#password-wrapper .well").html("<h3 class='centered'><%= t('account_chooser.account_not_found') %></h3>");
+    transition.slide("#please-wait-wrapper", "#password-wrapper");
+
+    <% elsif @params[:pw_reset].present? && @params[:pw_reset] == 'true' %>
+    setTimeout(function () {
+        Turbolinks.visit('<%= new_password_reset_path(network: @user.network, email: @user.email) %>');
+    }, 800);
+
+    <% elsif iframe_viewer? && !ms_teams_viewer? %>
+    <%# MsTeams Viewer will already be in a popup, so go through the normal redirection flow %>
+    <%
+      # TODO: Copied and pasted from application_controller. Refactor
+      decoder = Recognize::OutlookJwtDecoder.new(@params[:outlook_identity_token])
+      decoder.validate
+      user = User.where(network: @params[:network].gsub(/^\//, ''), outlook_identity_token: decoder.unique_id).first
+
+      if decoder.valid? && user.present?
+        # user matches token in iframe
+        # so, no need to pop open anything
+        @popup_url = false
+      else
+
+        if @user.company.saml_enabled_and_forced?
+          @popup_url = sso_saml_index_url(network: @user.network, popup: params[:viewer])#"/#{@user.network}/saml/sso"
+        else
+          opts = { network: @user.network, email: @user.email, viewer: nil, popup: params[:viewer]}
+          @popup_url = identity_provider_url(opts)
+        end
+
+        if @params[:outlook_identity_token].present?
+          @popup_url = add_params_to_url(@popup_url, {outlook_identity_token: @params[:outlook_identity_token]})
+        end
+
+      end
+
+      @placeholder = capture { j render(partial: "saml/placeholder") }
+    %>
+
+  $('#please-wait-wrapper .waiting-content').fadeOut("slow", function() {
+    var $div = $("<%= @placeholder %>").hide();
+    $(this).replaceWith($div);
+    $div.fadeIn("slow");
+  });
+
+  <% if @popup_url %>
+
+    if (window.Office) {
+      Office.initialize = function() {
+        openPopup();
+      };
+    } else {
+      openPopup();
+    }
+
+    function openPopup() {
+      popup = R.utils.openWindow('<%= @popup_url %>', 520, 570, function (response) {
+        R.utils.checkLoginStatus(function() {
+          $("#saml_signing_in_loading, #saml_signing_in_loading").hide();
+          $("#loggedin-message").removeClass("hidden");
+
+          <% if @params[:redirect].present? %>
+          window.location = '<%= @params[:redirect] %>';
+          <% else %>
+          <% @params = @params[:viewer].present? ? {viewer: @params[:viewer]} : {} %>
+          window.location = '<%= root_path(@params) %>';
+          <% end %>
+        }, {network: '<%= @params[:network] %>', referrer: '<%= @params[:referrer] %>', response: response}, response.value);
+
+        if (response.status == "failed") {
+          Swal.fire({
+            html: '<h3>To open the popup</h3><p>Please ensure popups are enabled.</p> <a class="button button-primary open-popup" href="javascript://">Open popup</a>',
+            showConfirmButton: false
+          });
+        }
+      });
+    }
+
+    $document.on(R.touchEvent, ".open-popup", function() {
+      openPopup();
+      Swal.close();
+    });
+
+  <% end %>
+
+
+  <% else %>
+  setTimeout(function(){
+    <% if @user.company.saml_enabled_and_forced? %>
+    // see application_controller.rb:97 inside #routing_error for the hardcoded url below
+    // the `params[:redirect]` used invalidly here is handled appropriately there
+    Turbolinks.visit('<%= "#{@user.network}/saml/sso/#{@params[:redirect]}?viewer=#{@params[:viewer]}" %>');
+    <% else %>
+    Turbolinks.visit('<%= identity_provider_path(network: @user.network, email: (params[:email].present? ? params[:email] : @user.email), viewer: params[:viewer], redirect: params[:redirect]) %>');
+    <% end %>
+  }, 800)
+  <% end %>
+})(window.R, jQuery);

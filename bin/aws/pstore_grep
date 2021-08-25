@@ -1,0 +1,2 @@
+# Usage: aws/pstore_grep <grep expression>
+aws ssm describe-parameters --region us-west-1 | jq --raw-output '.Parameters[].Name' |grep $1 |xargs -L10 echo |xargs -L1 aws ssm get-parameters --query "Parameters[*].{Name:Name,Value:Value,Type:Type}" --with-decryption --output text --region us-west-1 --names

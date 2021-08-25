@@ -1,0 +1,13 @@
+<div id="rewards-header-area" class="clearfix">
+  <div class="page-main marginBottom10">
+    <h2>
+      <%= link_to("Back", company_admin_catalog_rewards_path(@catalog), class: "button button-chromeless align-middle") %>
+      <%= t("rewards.template_rewards") %>
+    </h2>
+    <%= render_flash %>
+  </div>
+</div>
+
+<div id="template-rewards-area" class="tab tab-pane active clearfix">
+  <%= render("template_rewards", rewards: @rewards, catalog: @catalog) %>
+</div>

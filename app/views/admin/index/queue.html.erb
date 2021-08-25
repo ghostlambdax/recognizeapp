@@ -1,0 +1,46 @@
+<% if params[:purge_failed_queue].present? %>
+  <script>
+      $document.on('turbolinks:load', function() {
+          $("#failed-queue").click();
+      });
+  </script>
+<% end %>
+
+<h2 class="inline">
+  Delayed Job Background Task Queue
+</h2>
+<div class="well marginBottom20 inline q"><%= link_to "Experimental Queue Admin", "/admin/delayed_job", target: :blank %></div>
+<div>
+  <span style="font-weight:bold">Delayed Job tasks:</span> <%= @jobs.count %>
+  <span style="font-weight:bold">Failed Delayed Job tasks:</span> <%= @failed_jobs.count %>
+</div>
+<div>
+  <span style="font-weight:bold">Counts: </span><%= @counts.map { |q, count| (q.present? ? link_to(q, admin_queue_path(queue: q)) + ": #{count}" : link_to("queue", admin_queue_path) + ": #{count}") }.join(",").html_safe %>
+</div>
+
+<div>
+  <a href="#" id="active-queue" class="button button-small button-highlight">Active Jobs</a>
+  <a href="#" id="failed-queue" class="button button-small button-warning">Failed Jobs</a>
+</div>
+<hr>
+
+<div>
+  <%= link_to "Clear :refresh_cached_yammer_groups", admin_clear_queue_task_path(:refresh_cached_yammer_groups!), method: :post, class: "button button-danger" %>
+  <%= link_to "Clear :prime_caches", admin_clear_queue_task_path(:prime_caches!), method: :post, class: "button button-danger"  %>
+</div>
+<hr>
+
+<div id="active_jobs">
+  <h2>Jobs being processed</h2>
+  <%= litatablify(@datatable, endpoint: admin_queue_path, namespace: 'active_delayed_jobs')%>
+</div>
+
+<div id="failed_jobs" style="display:none">
+  <h2>Failed jobs <%= link_to "Purge failed jobs", admin_purge_failed_queue_path, remote: true, method: :post, data: {disable_with: "Purging...", confirm: "Are you sure you want to delete all the failed jobs"}, style: "font-size:14px"%></h2>
+  <%= litatablify(@datatable, endpoint: admin_queue_path(failed_queue: true), namespace: 'failed_delayed_jobs')%>
+</div>
+
+<% content_for :afterjs do %>
+  <%= javascript_include_tag("pages/admin_index/queue.js") %>
+<% end%>
+

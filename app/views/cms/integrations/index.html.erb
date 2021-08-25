@@ -1,0 +1,74 @@
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Recognize Integrations" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="See how Recognize integrations with over 2,000 tools." />
+  <meta property="og:image" content="/assets/pages/integrations/social-media-pic.jpg" />
+<% end%>
+
+<% content_for :title, "Recognize Integrations" %>
+<% content_for :description, "The Recognize employee recognition software integtrations with over 2,000 tools and apps." %>
+
+<div class="top-banner flex flex-justify-center align-items-center padding10 width-1000 margin-auto">
+  <div class="marginRight25">
+    <h1 class="balance-text">Recognize Software Integrations</h1>
+    <p class="tagline balance-text">Recognize helps employees send &amp; share recognition from anywhere to anywhere with integration into 200 business apps and services.</p>
+    <%= schedule_demo_link utm_content: "Top of integrations" %>
+  </div>
+
+  <%= lazy_image_tag 'pages/integrations/logo-quilt.png', class: 'width-500', alt: 'Logos of popular products Recognize integrates, such as Azure, Teams, Zendesk, Trello, and Zapier.' %>
+</div>
+
+<hr class="hr marginBottom50">
+
+
+<ul class="integration-list width-1000 padding10">
+  <% @categories.each do |c| %>
+    <% posts = wp_client.posts_for_category(c.id) %>
+    <% unless (c.slug == 'integration' || c.slug == 'uncategorized') || posts.blank? %>
+      <li class="marginBottom75">
+        <div class="flex align-items-center marginBottom20">
+          <% if c.description.present? %>
+            <span class="marginRight5">
+              <%= feather_icon(c.description)%>
+            </span>
+          <% end %>
+
+          <h2 class="small-h2 marginBottom0"><%= c.name&.html_safe %></h2>
+        </div>
+
+        <ul>
+          <% posts.each do |post| %>
+            <% path = post.existing_link_url.present? ? post.existing_link_url : cms_integration_path(slug: post.slug) %>
+            <li class="marginBottom40 integration-list-item">
+              <% if post.integration_logo.present? %>
+                <div class="flex">
+                  <div><%= lazy_image_tag post.integration_logo.url, alt: post.integration_logo.alt %></div>
+              <% end %>
+              <h3><%= link_to post.integration_name, path %></h3>
+
+              <% if post.integration_logo.present? %>
+                </div>
+              <% end %>
+
+              <div class="flex justify-content-between">
+                <div class="flex1">
+                  <%= post.integration_description&.html_safe %>
+                </div>
+
+                <div>
+                  <%= link_to 'See details', path, class: 'button button-small marginH15' %>
+                </div>
+
+              </div>
+
+
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= render :partial => 'home/footer' unless current_user.present? %>

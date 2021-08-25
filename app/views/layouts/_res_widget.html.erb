@@ -1,0 +1,18 @@
+<%
+  wrapper_id = wrapper_id.presence || ''
+  wrapper_class = wrapper_class.presence || ''
+
+  res_calc_report = res_calculator.report
+  total_users_count = res_calc_report.users.size
+  unique_users_count = (res_type == :by_recipient) ? res_calc_report.unique_recipient_count : res_calc_report.unique_sender_count
+  res_data_value = (res_type == :by_recipient) ? res_calculator.res_score : res_calculator.sender_res_score
+%>
+<div id="<%= wrapper_id %>"
+     class="<%= wrapper_class %>"
+     title="<%= t(
+                    "dict.res_unique_to_total_users",
+                    unique_users_count: unique_users_count,
+                    total_users_count: total_users_count
+                ) %>"
+     data-res="<%= res_data_value %>">
+</div>

@@ -1,0 +1,85 @@
+<%
+  idp_company = defined?(company) ? company : @company
+  email = defined?(email) ? email : nil
+  network = defined?(network) ? network : nil
+%>
+
+<% if (idp_company.disable_passwords? || params[:no_account] == "true") %>
+  <% idp_width =  'span12' %>
+  <% cssKlass = 'narrow' %>
+<% else %>
+  <% idp_width =  'span4' %>
+  <% cssKlass = '' %>
+<% end %>
+
+
+<div class="identity-providers well<% if idp_company.disable_passwords? %> passwordDisabled <% end %>">
+  <%= render_flash(include_errors: @user) %>
+
+  <% if company_customization_primary_logo.present? %>
+    <%= image_tag company_customization_primary_logo.thumb.url, class: 'block marginBottom20 theme-logo' %>
+  <% elsif has_theme? && @company.custom_theme.legacy? %>
+    <%= image_tag "themes/#{company_theme_id}/logo_large.png", alt: "Company logo", class: 'theme-logo marginBottom20 block' %>
+  <% end %>
+
+  <% if params[:viewer] && params[:viewer] == "outlook" && (params[:no_account] == "true") %>
+    <h1><% _('Recognize Sign Up') %> %></h1>
+    <p class="balance-text"><%= _("Sign in with your provider below to access your company's employee recognition program. No account necessary!") %></p>
+  <% else %>
+    <% if params[:fb_workplace_params].present? %>
+      <h1><%= t("identity_providers.fb_workplace_sign_in", company: idp_company.name) %></h1>
+    <% else %>
+      <h1><%= t("identity_providers.sign_in", company: idp_company.name) %></h1>
+    <% end %>
+  <% end %>
+
+  <% if idp_company.disable_passwords? || popup? %>
+    <p><%= _('Sign in to Recognize with one of the options below.') %></p>
+  <% end %>
+
+  <div class="row-fluid <%= cssKlass %>" data-turbolinks="false">
+    <div class="<%= idp_width %> service-providers">
+      <ul class="list-subtle-border condensed">
+        <% if idp_company.saml_enabled? %>
+          <li>
+            <%= link_to_saml t('saml.sign_in', company: idp_company.name), network: idp_company.domain, outlook_identity_token: params[:outlook_identity_token] %>
+          </li>
+        <% end %>
+
+        <% if idp_company.allow_microsoft_graph_oauth? %>
+          <li>
+            <%= link_to_o365 t('home.office365.sign_in'), params: {redirect: root_path, network: params[:network], outlook_identity_token: params[:outlook_identity_token]} %>
+          </li>
+        <% end %>
+
+        <% if idp_company.allow_yammer_auth? %>
+          <li>
+            <%= link_to_yammer t('yammer.sign_in'), params: {redirect: root_path, network: params[:network], outlook_identity_token: params[:outlook_identity_token]} %>
+          </li>
+        <% end %>
+
+        <% if idp_company.allow_google_login? && !mobile_viewer? %>
+          <li>
+            <%= link_to_google t('user_session.sign_in_with_google'), params: {redirect: root_path, network: params[:network], outlook_identity_token: params[:outlook_identity_token]} %>
+          </li>
+        <% end %>
+
+      </ul>
+    </div>
+
+    <% unless idp_company.disable_passwords? %>
+
+      <div class="span8">
+        <div class="spacer"></div>
+        <div>
+          <h3 class="balance-text"><%= t("identity_providers.have_user_pass") %></h3>
+          <%= render "user_sessions/login", skip_oauth_logins: true, send_remote: true, show_network: true, email: email, network: network %>
+        </div>
+      </div>
+
+    <% end %>
+
+
+
+  </div>
+</div>

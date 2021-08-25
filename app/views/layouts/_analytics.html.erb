@@ -1,0 +1,33 @@
+<script type="text/javascript">
+  (function () {
+    'use strict';
+
+    <% if !Rails.env.test? %>
+    if(typeof(analytics) !== "undefined") {
+      analytics.page(); // segment.io
+    }
+    <% end %>
+
+    <% if current_user && !Rails.env.test? %>
+    if(typeof(analytics) !== "undefined") {
+      var context = {};
+      analytics.identify('<%= current_user.id %>', {
+        network: '<%= current_user.network %>',
+        admin_enabled: '<%= current_user.company.allow_admin_dashboard%>',
+        subscription_status: '<%= current_user.company.subscription.try(:status_label) %>',
+        company_created_at: '<%= current_user.company.created_at.to_i %>',
+        company_id: '<%= current_user.company_id %>',
+        company_name: '<%= current_user.company.name %>'
+      }, context);
+    }
+    <% end %>
+
+    window.ga=window.ga||function(){(ga.q = ga.q || []).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-38411538-1', 'auto');
+
+    ga('require', 'cleanUrlTracker', {stripQuery: true, queryDimensionIndex: 1, trailingSlash: 'remove'})
+    ga('require', 'outboundFormTracker', {});
+    ga('require', 'outboundLinkTracker');
+    ga('require', 'urlChangeTracker');
+  })();
+</script>

@@ -1,0 +1,6 @@
+<% if is_live_production_server? %>
+Sitemap: https://recognizeapp.com/sitemap.xml.gz
+<% else %>
+User-Agent: *
+Disallow: /
+<% end %>

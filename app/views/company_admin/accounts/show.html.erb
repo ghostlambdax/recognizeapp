@@ -1,0 +1,12 @@
+<div id="accounts" class="page-body">
+  <%= page_nav({title: _('Users')}) do %>
+    <%= link_to 'Import', new_company_admin_accounts_spreadsheet_importers_path(network: @company.domain), id: "new-accounts-spreadsheets-importer", class: 'button' %>
+    <%= link_to 'Bulk edit', edit_company_admin_accounts_path(network: @company.domain), id: "edit-accounts", class: 'button' %>
+    <%= link_to 'Broadcast', "javascript://", id: "invite-accounts", class: 'button', data: {form: render("company_admin/bulk_mailers/form").gsub("\n", "")} %>
+  <% end %>
+  <hr class="hr hr-space marginBottom10">
+
+  <%= litatablify(@users_datatable, endpoint: company_admin_accounts_path, daterange: false) %>
+</div>
+
+<%= render partial: "company_admin/rewards/rewards_manager" %>

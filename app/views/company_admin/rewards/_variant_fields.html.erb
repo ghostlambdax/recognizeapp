@@ -1,0 +1,67 @@
+<% 
+  # Discrete provider rewards get checkboxes
+  # Company managed rewards and variable provider rewards get expanding set of fields
+%>
+
+<% if @reward.discrete_provider_reward? %>
+
+  <fieldset>
+    <%#
+      # form#object for discrete rewards are either saved Reward::RewardVariants or
+      # stubbed out Reward::RewardVariants depending on whether this reward has selected
+      # that variant or not. 
+      # 
+      # In other words, when a variant is selected, its saved to the @reward#variants
+      # When its deselected, that RewardVariant association is deleted
+      # 
+      # This is the reason we do: checked: form.object.persisted?
+      # 
+      #
+    %>
+    <%= form.label :provider_reward_variant_id do %>
+      <%= form.check_box :provider_reward_variant_id,
+                         {checked: form.object.is_enabled? && form.object.persisted?, class: 'toggle_variant'},
+                         form.object.provider_reward_variant_id, form.object.provider_reward_variant_id %>
+      <%= form.hidden_field :is_enabled, class: "variant_is_enabled" %>
+      <%= humanized_money_with_symbol(Money.from_amount(form.object.face_value, form.object.reward.catalog.currency)).no_zeros %>
+    <% end  %>
+  </fieldset>
+
+
+<% else %>
+  <%
+  error_id = "errors-#{form.index}"
+  provider_reward_variant_id = if @reward.variable_provider_reward?
+    # A variable `provider_reward` has only one `provider_reward_variant`.
+    @reward.provider_reward.provider_reward_variants.active.first.id
+  else
+    form.object.provider_reward_variant_id
+  end
+  %>
+
+  <% if form.object.is_enabled? %>
+    <fieldset data-persisted=<%= form.object.persisted? %> id="reward_variants"%>
+      <div id="<%= error_id %>"></div>
+      <div class="flex">
+        <%= form.hidden_field :provider_reward_variant_id, value: provider_reward_variant_id %>
+
+        <div><%= form.text_field :face_value, placeholder: I18n.t("rewards.face_value_placeholder"), class: "face-value", data: {errorelement: "##{error_id}"} %></div>
+
+        <% unless @reward.provider_reward? %>
+          <div><%= form.number_field :quantity, placeholder: I18n.t("rewards.quantity_placeholder"), min: 0, data: {errorelement: "##{error_id}"}, class: "quantity marginLeft5" %></div>
+          <div><%= form.text_field :label, placeholder: I18n.t("rewards.label_placeholder"), data: {errorelement: "##{error_id}"}, class: "label marginLeft5" %></div>
+        <% end %>
+
+        <div><%= form.hidden_field :is_enabled, class: "variant_is_enabled" %></div>
+        <div><%= link_to t('dict.remove'), 'javascript://', class: 'button button-chromeless remove_variant marginLeft5' %></div>
+
+        <% if form.object.persisted? && form.object.is_enabled? && form.object.reward.has_variants_with_quantity? %>
+          <p class="subtle-text flex-centered">
+            <%= t("rewards.redeemed_certain_times_already", times: form.object.existing_company_redemptions_count_in_interval) %>
+          </p>
+        <% end %>
+
+      </div>
+    </fieldset>
+  <% end %>
+<% end %>

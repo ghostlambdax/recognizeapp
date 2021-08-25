@@ -1,0 +1,10 @@
+<% form_url = defined?(data_url) ? data_url : company_admin_recognitions_path(status: params[:status], network: @company.domain, format: :json) %>
+
+<h1><%= admin_recognitions_page_header %></h1>
+<hr class="hr hr-space">
+<%= litatablify(@recognitions_datatable, endpoint: form_url) %>
+
+<% if params[:status] != "pending_approval" %>
+  <% note_key = controller_path.include?('manager_admin') ? 'manager_admin' : 'company_admin' %>
+  <div class="subtle-text"><%= t("company_admin.recognitions.datatable_note.#{note_key}").html_safe %></div>
+<% end %>

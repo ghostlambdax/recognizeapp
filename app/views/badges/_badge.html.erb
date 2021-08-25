@@ -1,0 +1,50 @@
+<%= content_tag(:li,
+                class: "badge-item",
+                id: "badge-item-#{badge.id}",
+                data: {
+                  'badge-id' => badge.id,
+                  'force-private' => badge.force_private_recognition? ? true : nil
+                }) do %>
+  <div class="badge-inner">
+    <div class="badge-image-wrapper">
+      <% if true#badge.custom? %>
+        <%= image_tag badge.permalink(200),
+                      :width => 130,
+                      :height => 130,
+                      :id => "badge-#{badge.id}",
+                      :class => "badge-image-small",
+                      :"data-imagePath" => badge.permalink,
+                      :"data-relativeImagePath" => badge.permalink(200),
+                      :"data-name" => badge.short_name, # used when badge is selected, pulled from js,
+                      :"data-badge-id" => badge.id
+        %>
+      <% else %>
+        <div id="badge-<%= badge.id%>" class="badge-<%= badge.name %>" data-imagePath="<%= badge.permalink %>" data-cssclass="badge-<%= badge.name %>" data-name="<%= badge.short_name %>" data-badge-id="<%= badge.id%>"></div>
+      <% end %>
+    </div>
+
+    <div class="content">
+      <h3><%= badge.short_name %></h3>
+
+      <% if badge.requires_approval? %>
+        <% point_info = [t("badges.requires_approval"), formatted_badge_points(badge)].compact.join(', ') %>
+        <span class="smallPrint nowrap">(<%= point_info %>)</span>
+      <% else %>
+        <% show_points do %>
+          <% if badge.points > 0 && !badge.is_nomination? %>
+            <span class="smallPrint nowrap">(<%= t("dict.pts", points: badge.points) %>)</span>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <p class="badges-remaining-wrapper" data-quantity="">
+      </p>
+
+      <% if current_user.can_send_achievements? && badge.is_achievement?%>
+        <p><%= t('dict.achievement') %></p>
+      <% end %>
+      <p><%= simple_format(badge.description) %></p>
+
+    </div>
+  </div>
+<% end %>

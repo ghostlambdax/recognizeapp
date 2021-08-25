@@ -1,0 +1,143 @@
+<nav id="navbar" class="navbar navbar-default" role="navigation" <% unless use_marketing_manifests? %>data-turbolinks="false"<% end %>>
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span>Menu</span>
+      </button>
+      <a id="logo" class="navbar-brand" href="/">
+        <span id="logo-text" itemprop="name"><%= t("recognize.recognize")%></span>
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= schedule_demo_link utm_content: "top nav", css_classes: "header-link" %>
+        </li>
+        <li>
+          <a href="/pricing">Pricing</a>
+        </li>
+        <li class="dropdown grande-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Product <span class="caret"></span></a>
+          <div class="dropdown-menu" role="menu">
+            <div class="link-group-wrapper">
+              <div class="link-group">
+                <div class="links">
+                  <div class="inner">
+                    <h4>Employee recognition programs</h4>
+                    <ul>
+                      <li><%= link_to "Social Spot Bonus", tour_path, id: "menu-tour", class: "analyticsClick"  %></li>
+                      <li><%= link_to "Rewards", rewards_path, id: "menu-rewards", class: "analyticsClick" %></li>
+                      <li><%= link_to "Service Anniversaries", marketing_anniversaries_path,  class: "analyticsClick", id: "menu-anniversaries" %></li>
+                      <li><%= link_to "Nominations", employee_nominations_path, id: "menu-nominations" %></li>
+                      <li><%= link_to "Incentives", incentives_path, id: "menu-incentives", class: "analyticsClick"  %></li>
+                      <li><%= link_to "Award Certificates", awards_path, id: "menu-awards", class: "analyticsClick" %></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="link-group">
+                <div class="links">
+                  <div class="inner">
+                    <h4>Integrations</h4>
+                    <ul>
+                      <li><%= link_to "Office 365", office365_path,  class: "analyticsClick", id: "menu-office365" %></li>
+                      <li><%= link_to "Microsoft Teams", microsoft_teams_employee_recognition_path, class: "analyticsClick"%></li>
+                      <li><%= link_to "Outlook", marketing_outlook_path, class: "analyticsClick"%></li>
+                      <li><%= link_to "Gmail", cms_integration_path(slug: 'gmail'), class: "analyticsClick"%></li>
+                      <li><%= link_to "Workplace by Facebook", fb_workplace_path, id: "menu-fb-workplace", class: "analyticsClick"  %></li>
+                      <li><%= link_to "Mobile Apps", mobile_path, id: "menu-mobile", class: "analyticsClick"  %></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grande-menu-bottom">
+              <%= link_to features_path, id: "menu-features", class: "analyticsClick h4" do %>
+                <%= feather_icon('list') %> All Features
+              <% end %>
+
+              <%= link_to cms_integrations_path, class: "h4" do %>
+                <%= feather_icon('package') %> All Integrations
+              <% end %>
+
+            </div>
+          </div>
+        </li>
+
+        <li id="strategy-nav" class="dropdown grande-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Strategy <span class="caret"></span></a>
+          <div class="dropdown-menu" role="menu">
+            <div class="link-group-wrapper">
+              <div class="link-group">
+                <div class="links">
+                  <div class="inner">
+                    <ul>
+                      <li><%= link_to "Why Employee Recognition", why_path, id: "menu-why", class: "analyticsClick"  %></li>
+                      <li><%= link_to "Healthcare Employee Recognition", healthcare_landing_path %></li>
+                      <li><%= link_to "Finance Employee Recognition", banking_landing_path %></li>
+                      <li><%= link_to 'Employee Recognition Preferences', employee_recognition_report_2019_path %></li>
+                      <li><%= link_to "Employee Recognition Ideas", top_employee_recognition_ideas_path %></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="link-group">
+                <div class="links">
+                  <div class="inner">
+                    <ul>
+                      <li><%= link_to 'Engage Employees During Coronavirus', ways_to_use_recognize_during_covid_19_path %></li>
+                      <li><%= link_to "Employee Recognition Report", demo_survey_path %></li>
+                      <li><%= link_to "Foster Employee Engagement", ways_foster_employee_engagement_path %></li>
+
+                      <li><%= link_to "Employee Recognition App Guide", employee_recognition_app_guide_path, id: "menu-app-guide" %></li>
+                      <li><%= link_to "Resources", resources_path %></li>
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grande-menu-bottom">
+              <%= link_to articles_path, class: "h4" do %>
+                <%= feather_icon('file-text') %> Articles
+              <% end %>
+              <%= link_to recognize_videos_path, class: "h4" do %>
+                <%= feather_icon('youtube') %> Videos
+              <% end %>
+            </div>
+          </div>
+        </li>
+
+        <li id="case-study-nav">
+          <%= link_to "Case Studies", case_study_path %>
+        </li>
+
+        <% if current_user.blank? %>
+          <li id="signup-menu">
+            <a href="/sign-up">Free Trial</a>
+          </li>
+
+          <li id="login-menu" class="dropdown" data-turbolinks="false">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= t('dict.signin')%> <span class="caret"></span></a>
+            <div class="dropdown-menu" role="menu">
+              <%= render :partial => "user_sessions/login", locals: { fields_should_not_have_id: true } %>
+            </div>
+          </li>
+        <% end %>
+
+        <% if current_user.present? %>
+          <li id="dashboard-menu" data-turbolinks="false">
+            <%= link_to "Back to #{current_user.company.name}", stream_path %>
+          </li>
+        <% end %>
+
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

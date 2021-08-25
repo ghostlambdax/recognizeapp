@@ -1,0 +1,34 @@
+<section id='badges' class='badges'>
+  <% if !@badge_counts.present? || @badge_counts.length == 0 %>
+    <p class="list-empty-warning marginBottom40"><%= t('user_show.has_not_received_any_recognitions', name: @user.full_name) %> </p>
+  <% end %>
+  <ul>
+    <% @badge_counts.each do |badge, count| %>
+      <li class="avatar-horizontal-wrapper marginBottom15">
+        <% percentage = count.to_f/@user.received_recognitions.approved.size.to_f * 100.0 %>
+        <%= image_tag(badge.image.small_thumb.url) %>
+        <div>
+          <dl>
+            <dt><strong><%= badge.short_name %></strong></dt>
+            <dd>
+              <label>
+                <%= t('dict.frequency.times.other', count: count) %>
+              </label>
+
+              <div class="bar-line">
+                <div class="line" style='width: <%= "#{percentage}%;" %>'></div>
+                <%= "#{percentage.to_i}%" %>
+              </div>
+
+            </dd>
+          </dl>
+
+
+        </div>
+
+      </li>
+    <% end %>
+  </ul>
+
+
+</section>

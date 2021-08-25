@@ -1,0 +1,27 @@
+<aside class="options-wrapper">
+  <ul class="users top-users flex">
+    <% @current_winners_groups.each do |group| %>
+      <% next if group.user_ids.blank? %>
+      <li>
+        <label><%= group.time_period %></label>
+        <div class="users-wrapper">
+          <% group.user_ids.each do |user_id| %>
+            <div class="user">
+              <% if user = user_map[user_id] %>
+                <%= link_to user_path(user) do %>
+                  <%= image_tag user.avatar.thumb.url %>
+                  <p class="name smallPrint"><%= user.full_name %></p>
+                <% end %>
+              <% else %>
+                <% user = User.with_deleted.find(user_id) %>
+                <%= image_tag user.avatar.thumb.url %>
+                <p class="name"><%= user.full_name %></p>
+            <% end %>
+            </div>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+
+  </ul>
+</aside>

@@ -1,0 +1,21 @@
+<h1>Anniversary Delivery Report for <%= Time.now.to_formatted_s(:long_ordinal) %>
+
+<% if @results[:fail].present? %>
+  <h2>Failed Results:</h2>
+  <ul>
+    <% @results[:fail].sort_by{|r| r[:company].domain.downcase}.each do |result| %>
+      <li><%= result[:company].domain %> | <%= result[:sa_users].length %> service anniversaries | <%= result[:b_users].length %> birthdays | <%= result[:exception] %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @results[:success].present? %>
+  <h2>Successful Results:</h2>
+  <ul>
+    <% @results[:success].sort_by{|r| r[:company].domain.downcase}.each do |result| %>
+      <li><%= result[:company].domain %> | <%= result[:sa_users].length %> service anniversaries | <%= result[:b_users].length %> birthdays </li>
+    <% end %>
+  </ul>
+<% end %>
+
+

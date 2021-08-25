@@ -1,0 +1,36 @@
+<%= render partial: "top_employee_recognition_content" %>
+<% total_items = @the_basics.length + @core_strategies.length + @creative.length + @non_monetary.length + @perks.length + @remote_workers.length + @frontline.length%>
+
+<% content_for :title, "Top Employee Recognition Ideas" %>
+<%= content_for :description, "Get the best #{total_items} ideas for employee recognition, including core strategies, creative ideas, great employee perks, and even non-monetary ideas." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="<%= total_items %> Top Employee Recognition Ideas" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="Learn the foundations of employee recognition, core strategies, creative ideas, great employee perks, and even non-monetary ideas." />
+  <meta property="og:image" content="https://recognizeapp.com/assets/illustrations/marching_band-1.0.jpg" />
+  <link rel="amphtml" href="<%= top_employee_recognition_ideas_url format: :amp %>">
+<% end%>
+
+<% content_for :article_title do %><span id="countArticleList"><%= total_items %></span> Top Employee Recognition Ideas<br>
+  <%= feather_icon('award', {width: 45, height: 30, color: '#868D90'}) %>
+  <%= feather_icon('smartphone', {width: 45, height: 30, color: '#868D90'}) %>
+  <%= feather_icon('credit-card', {width: 45, height: 30, color: '#868D90'}) %>
+  <%= feather_icon('star', {width: 45, height: 30, color: '#868D90'}) %>
+
+
+<% end %>
+<% content_for :article_description do %>
+  <p class="balance-text marginBottom40 tagline centered">Employee recognition is the act of showing staff appreciation for the good work they do. It can be a formal process, such as in a communication tool, or an informal process, a side conversation between a manager and an employee. Employee recognition can come in many forms and events, including employee service anniversaries or employee of the month. Recognize research finds 49% of people have left companies for not being recognized. Thus, anything a company can do will be well received. The following are an ever growing list of the top employee appreciation ideas. If you have your idea or success story, send it our way!<% end %>
+</p>
+
+<% content_for :article_body do %>
+  <%= render partial: "top_recognition_ideas" %>
+<% end %>
+
+<% tags = ["Foundations", "Core strategies", "Creative", "Perks", "Non-monetary", "Remote workers", "Frontline"] %>
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

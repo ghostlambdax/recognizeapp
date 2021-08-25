@@ -1,0 +1,113 @@
+html.fullscreen
+
+  #recognitions-show
+    #recognition-show-top #main-text .message p
+      font-size: 45px
+      line-height: 50px
+
+    h1
+      font-size: 35px
+      line-height: 38px
+
+    h4
+      font-size: 45px
+      font-weight: 600
+      line-height: 48px
+
+    .comments-form
+      display: none
+
+    .edit-delete,
+    .privacy-wrapper
+      display: none !important
+
+  #recognitions-grid
+
+    .recognition-card
+      .recognition-inner
+        transition: 2s transform $cubic
+
+    .kioskSelected.recognition-card
+      z-index: 10000 !important
+
+      .recognition-inner
+        transform: scale(1.5)
+
+      .content
+        box-shadow: 0 0 35px 4px rgba(0,0,0,.5)
+
+    .stream-wrapper
+      width: 100%
+      margin: 0 125px
+
+    #stream
+      overflow: visible !important
+
+    .wrapper-outer
+      padding-left: 0px !important
+      padding-right: 0px !important
+
+    form.new_comment
+      display: none !important
+
+  .theme-logo-large
+    max-height: 80px
+    max-width: 180px
+    margin: auto !important
+    float: none !important
+
+    & + h1
+      display: none
+
+  #wrapper-outer > .wrapper
+    .stream-toolbar-wrapper
+      float: none !important
+
+      & + .buttons-wrapper
+        position: absolute
+        right: 10px
+
+html.fullscreen
+
+  #stream
+    min-width: 100%
+
+  .logout
+    #navbar
+      display: none
+
+  .recognition-card
+    width: 500px
+    max-width: 22%
+    margin: 1%
+
+  #header,
+  #feedback-link,
+  .purechat,
+  #instantRecognition,
+  .add-new,
+  #latest-popular-buttons
+    display: none
+
+  .top-background
+    background: $headerBg
+    height: 11px
+    width: 100%
+    position: absolute
+    top: 0
+    left: 0
+
+  body
+    #view-main-wrapper
+      padding-top: 90px
+
+@media (max-width: 1100px)
+  html.fullscreen
+    .recognition-card
+      width: 100%
+      max-width: 100%
+      margin: 10px 0
+
+@media (max-width: 600px)
+  .view-mode-wrapper
+    display: none

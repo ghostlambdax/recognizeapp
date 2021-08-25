@@ -1,0 +1,28 @@
+<% content_for :page_header do %>
+  <%= page_nav({title: tertiary_title, cssclass: 'recognitions-admin-nav'}) do %>
+    <div class="aside-nav">
+      <nav class="tab-nav">
+        <ul class="clearfix marginTop10">
+          <%= render "tertiary_nav" %>
+        </ul>
+      </nav>
+    </div>
+  <% end %>
+<% end %>
+
+<% content_for :admin_content do %>
+  <%= page_layout do %>
+    <%= render_flash %>    
+    <%= yield %>
+  <% end %>
+
+<% end %>
+
+<% if manager_admin_controller? %>
+  <%= render template: "layouts/manager_admin" %>
+<% else %>
+  <%= render template: "layouts/company_admin" %>
+<% end %>
+
+
+

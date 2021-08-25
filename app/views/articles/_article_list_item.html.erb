@@ -1,0 +1,26 @@
+<li <% if article_list_item[:tags].present? %>
+    class="<% article_list_item[:tags].each do |tag| %><%= tag.sub!(" ", "_") %> <% end %>"
+    <% end %> itemprop="itemListElement">
+
+  <% if article_list_item[:image].present? %>
+    <div itemprop="duringMedia">
+      <%= lazy_image_tag article_list_item[:image][:path], alt: article_list_item[:image][:title], class: "marginBottom30 lazy", itemprop: "image" %>
+    </div>
+  <% end %>
+
+  <div>
+    <% if article_list_item[:title].present? %>
+      <h3 class="balance-text" itemprop="name"><%= article_list_item[:title].html_safe %></h3>
+    <% end %>
+
+    <% if article_list_item[:body].present? %>
+      <p><%= article_list_item[:body].html_safe %></p>
+    <% end %>
+  </div>
+
+  <% if article_list_item[:quotes].present? %>
+    <% article_list_item[:quotes].each do |quote| %>
+      <%= render partial: "articles/quote", locals: {quote: quote} %>
+    <% end %>
+  <% end %>
+</li>

@@ -1,0 +1,11 @@
+<h1> Auth here</h1>
+<button id="auth">Auth</button>
+<script>
+  var authTokenRequest = {
+    successCallback: function(result) { console.log("Success: " + result); },
+    failureCallback: function(error) { console.log("Failure: "+ error); }
+  };
+  $("#auth").click(function(){
+    microsoftTeams.authentication.getAuthToken(authTokenRequest);
+  })
+</script>

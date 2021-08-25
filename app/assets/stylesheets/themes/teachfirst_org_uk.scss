@@ -1,0 +1,10 @@
+$headerBg: #002663;
+$linkColor: #0088ce;
+$btnBlueTopColor: $linkColor;
+$buttonPrimaryBg: $linkColor;
+
+@import "application";
+
+.has-theme header #header-loggedin-logo img {
+  height: 25px;
+}

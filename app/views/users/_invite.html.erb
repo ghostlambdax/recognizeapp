@@ -1,0 +1,45 @@
+<% if current_user.subscribed_account? %>
+  <p>
+    <%= t('users.add_users_with_email', company: current_user.company.domain) %><br>
+    <%= link_to t('links.contact_us'), new_support_email_path, class: "contact-us-link" %>
+  </p>
+<% else %>
+  <p class="intro"><%= t('users.your_account_can_only_consist_of', domain: current_user.company.domain) %></p>
+  <%= viewer_link_to t('users.upgrade_to_add_other_domains'), upgrade_path, iframe_viewer?, class: "button button-no-chrome" %>
+<% end %>
+
+<div class="hr-thick hr-space"></div>
+
+<% if params[:email] %>
+  <p class="form-errors"><%= t('users.user_has_not_joined_recognize_invite_them') %></p>
+<% end %>
+
+<div id="invite-row" class="row-fluid">
+
+  <div class="span4">
+    <h3><%= t("invite.invite_by_email") %></h3>
+    <p><%= t("invite.insert_an_email") %></p>
+    <div class="clearfix analyticsEvent" data-event="invite-individual-user" data-eventtype="click">
+      <div class="invite-email-group clearfix control-group" >
+        <%= text_field_tag "user[invitations][]", params[:email], class: "text clone-input text-medium analyticsEvent", placeholder: t("invite.email_label"), data: {event: 'invite-individual-user', eventtype: "click"} %>
+      </div>
+      <% if params[:email] %>
+        <div class="invite-email-group clearfix control-group" >
+          <%= text_field_tag "user[invitations][]", "", class: "text clone-input text-medium analyticsEvent", placeholder: t("invite.email_label"), data: {event: 'invite-individual-user', eventtype: "click"} %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% unless current_user.personal_account? && !current_user.allow_yammer_auth? %>
+    <div id="invite-yammer-wrapper" class="span4">
+      <h3><%= t("yammer.invite") %></h3>
+      <p><%= t("invite.here_is_a_list_of_a_few_people_in_yammer") %></p>
+      <div id="yammer-invite-suggestions-wrapper"><%= image_tag "icons/outlook-progress.gif"%></div>
+    </div>
+  <% end %>
+  <div class="span4">
+    <h3><%= t('invite.batch_invite') %></h3>
+    <p><%= t('users.batch_invite_for_paid') %></p>
+    <p><%= t('users.email_us_to_get_started_html') %></p>
+  </div>
+</div>

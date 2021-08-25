@@ -1,0 +1,43 @@
+.use-case-partial-wrapper
+  .use-case-image
+    max-height: 250px
+
+  ul li
+    list-style: disc
+    list-style-position: outside
+    margin-bottom: 5px
+    margin-left: 19px
+    overflow: visible
+
+
+.integration-use-cases
+  list-style: none
+  counter-reset: section
+
+  & > li
+    margin-bottom: 50px
+    counter-increment: section
+    position: relative
+    padding-left: 40px
+    border-bottom: 1px dashed #e4e4e4
+    padding-bottom: 25px
+    margin-bottom: 25px
+
+    &:last-child
+      border-bottom: 0
+
+    &:before
+      content: counter(section)
+      left: 0
+      position: absolute
+      border-radius: 50%
+      padding: 5px
+      height: 31px
+      width: 31px
+      text-align: center
+      border: 1px solid black
+
+  .integration-use-case-image
+    width: 500px
+    max-width: 100%
+

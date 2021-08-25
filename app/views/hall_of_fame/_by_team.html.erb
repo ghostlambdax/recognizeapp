@@ -1,0 +1,28 @@
+<ul class="teams">
+
+  <% hall_of_fame.teams.each do |team| %>
+    <li class="team">
+
+      <div class="team-info">
+        <h5><%= team.name %></h5>
+      </div>
+      <div class="time-periods-wrapper" data-rightEnd='false'>
+        <a class="arrow-clip arrow-clip-left hidden" href="javascript://"><div><span><%= t("hall_of_fame.see_more") %></span></div></a>
+
+        <ul class="time-periods clearfix">
+          <% 
+            opts = { team_id: team.id } 
+            opts[:interval] = params[:interval] if params[:interval].present?
+            opts[:badge_id] = params[:badge_id] if params[:badge_id].present? 
+          %>
+          <%= pagelet group_by_team_hall_of_fame_index_path(opts) %>
+        </ul>
+
+        <a class="arrow-clip arrow-clip-right" href="javascript://"><div><span><%= t("hall_of_fame.see_more") %></span></div></a>
+      </div>
+
+
+    </li>
+  <% end %>
+
+</ul>

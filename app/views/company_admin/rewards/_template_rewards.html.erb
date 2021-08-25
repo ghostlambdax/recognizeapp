@@ -1,0 +1,20 @@
+<table id="template_rewards" class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Image</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th width="1%">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% rewards.each do |reward| %>
+      <tr id="template_reward_<%= reward.id %>" class="template_reward">
+        <td class="image-field"><%= image_tag(reward.image_url) %></td>
+        <td><%= reward.title %></td>
+        <td><%= reward.description %></td>
+        <td class="action-wrapper"><%= add_template_reward_button(catalog, reward) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

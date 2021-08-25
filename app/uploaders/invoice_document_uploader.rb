@@ -1,0 +1,3 @@
+class InvoiceDocumentUploader < DocumentUploader
+
+end

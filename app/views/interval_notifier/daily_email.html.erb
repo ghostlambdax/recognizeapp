@@ -1,0 +1,52 @@
+<%# this file was adapted from app/views/email_blast/daily_blast.html.erb  %>
+
+<div style="text-align: center; ">
+  <h2 style="padding: 0 25px; display: inline-block; <%= mail_styles(:h2, :text, :title) %>"><%= t("email_blast.daily.title") %></h2>
+</div>
+
+
+<% sent_recognition_count = @recognitions.size
+   is_only_one = sent_recognition_count == 1; %>
+
+<% if sent_recognition_count == 0 %>
+  <%# note: this conditional branch is not currently triggered in practice
+      because daily emails are only sent out when recognitions are present %>
+  <h3 style="text-align: center; margin: 30px 0; padding: 0; <%= mail_styles(:h3, :text) %>">
+    <%= t("email_blast.daily.question") %>
+  </h3>
+<% else %>
+  <div id="recognition-list" style="margin: 15px -5% 0 0; padding: 0; <% if is_only_one %> text-align: center;<% end %>">
+
+    <% @recognitions.each_with_index do |recognition, i| %>
+      <a style="<%= mail_styles(:recognitionCard) %> text-decoration: none; <% if is_only_one %> text-align: left; display: inline-block; float: none;<% end %>" href="<%= recognition.permalink %>">
+        <div style="background: #f7f9fc; padding: 7px;">
+          <img src="<%= recognition.badge.permalink(100, 'http:') %>" style="float: left; margin-right: 10px; width: 38%; max-width: 100px;">
+          <div style="float: left; width: 57%; padding-top: 7px;">
+            <div style="float: left; width: 25%; margin-right: 5px;">
+              <% likes = recognition.approvals.size %>
+              <% if likes > 0 %>
+                <span style="<%= mail_styles(:counter, :text) %>">+<%= likes %></span>
+              <% end %>
+            </div>
+            <h4 style="float: left; margin-bottom: 5px; margin-top: 0; font-size: 15px; width: 70%; <%= mail_styles(:h4, :text) %>"><strong style="<%= mail_styles(:text) %>"><%= recognition.sender_name %></strong> to <strong style="<%= mail_styles(:text) %>"><%= recognition.recipients.collect{|r| r.full_name}.to_sentence %></strong></h4>
+            <div style="clear:both;margin: -1px 0 7px 0;height: 0;"></div>
+            <div><%= recognition_message_for_mail(recognition) %></div>
+            <p style="<%= mail_styles(:text, :p, :textSubtle) %>"><%= t("dict.ago_in_words", time: time_ago_in_words(recognition.created_at)) %></p>
+          </div>
+          <%= mail_styles(:clear) %>
+        </div>
+      </a>
+
+      <% if ((i+1) % 2) == 0 %>
+        <%= mail_styles(:clear) %>
+      <% end %>
+    <% end %>
+
+    <%= mail_styles(:clear) %>
+  </div>
+<% end %>
+
+<div style="text-align: center; margin: 10px 0 30px 0;">
+  <%= link_to t("email_blast.view_all_recognitions") , recognitions_url(network: @user.network), style: mail_styles(:button)%>
+</div>
+

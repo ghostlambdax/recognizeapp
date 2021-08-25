@@ -1,0 +1,14 @@
+<% network = role.company.domain %>
+
+<tr id="company-role-<%= role.id %>" class="company-role-row">
+  <td><%= role.name %></td>
+  <td>
+    <%= link_to("Edit", edit_company_admin_role_path(network: network, id: role.id),
+                class: "button button-chromeless", remote: true) %>
+  </td>
+  <td>
+    <%= link_to("Delete", company_admin_role_path(network: network, id: role.id),
+                remote: true, method: :delete, class: "button button-chromeless swalConfirm",
+                data: { confirm: "Are you sure you want to remove this role? All existing role assignments will be removed. This cannot be undone." }) %>
+  </td>
+</tr>

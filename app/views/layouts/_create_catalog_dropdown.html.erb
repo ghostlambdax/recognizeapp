@@ -1,0 +1,22 @@
+<% show_all_currencies_in_dropdown = true if local_assigns[:show_all_currencies_in_dropdown].nil? %>
+
+<% if company.catalogs.size > 1 %>
+  <div class="dropdown-wrapper select-catalog-button-wrapper">
+    <div class="dropdown">
+      <button class="button button-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+        <%= catalog&.label || _('All currencies') %>
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" id="create-reward-dropdown" role="menu" aria-labelledby="dropdownMenu1">
+        <% if show_all_currencies_in_dropdown %>
+          <li role="presentation"><%= link_to _('All currencies'), url_for, class: ("active" unless params[:catalog_id].present?) %></li>
+        <% end %>
+        <% company.catalogs.each do |catalog| %>
+          <li role="presentation">
+            <%= yield(catalog) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

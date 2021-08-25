@@ -1,0 +1,33 @@
+<% content_for :title, "Volunteer Program in Recognize Incentives" %>
+<%= content_for :description, "How to run an awesome volunteer program using an incentive program that also pairs well with a rewards and recognition to support your volunteers." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Volunteer Program in Recognize Incentives" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="How to run an awesome volunteer program with Recognize Incentives" />
+  <meta property="og:image" content="https://recognizeapp.com/assets/pages/articles/volunteer/1.jpg" />
+  <link rel="amphtml" href="<%= ways_great_hr_manager_url format: :amp %>">
+<% end%>
+
+<% content_for :article_title do %>Tips to Run a Great Volunteer Program for your Nonprofit or Organization<% end %>
+<% content_for :article_description do %>
+  <div class="centered">
+    <p class="balance-text marginBottom40 tagline">
+      As the dust settles on new year celebrations, it doesn't take long for good wishes to turn to new year's resolutions. With 2019 undoubtedly wrapping up as a year to put climate change and sustainability on the map and make the world “Greta” again, why not kick off 2020 with the resolve to give back a little?
+    </p>
+    <%= lazy_image_tag "pages/articles/volunteer/1.jpg", alt: "People smiling", itemprop: "image" %>
+  </div>
+<% end %>
+
+
+<% tags = ['Intro', "Why", "Design", "Roadmap", 'Recognition', 'Reach Out', 'Inspiration', 'Try Yourself'] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "volunteer_program_body" %>
+<% end %>
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

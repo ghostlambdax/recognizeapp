@@ -1,0 +1,187 @@
+<% content_for :title, @title %>
+
+<% content_for :content do %>
+  <div class="wrapper-section-1">
+      <div class="wrapper-overlay">
+        <div class="block-content center-block text-center">
+          <div class="title"><%= @title %></div>
+          <div class="title title-cond"><%= @title_contd %></div>
+          <div class="sub-title"><%= @subtitle %></div>
+          <%= schedule_demo_link link_text: 'FREE LIVE DEMO',service: "service2", css_classes: "button-landing-page green-shadowed", utm_campaign: 'Landing page', utm_content: 'Demo link' %>
+          <div class="image-wrapper hidden-phone">
+            <%= image_tag(@main_image, alt: "Hall of fame", class: "main-image") %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper-section-2">
+      <div class="wrapper-overlay">
+        <div class="block-content center-block text-center">
+          <div class="customers">
+            <%= image_tag("pages/home-index/kaiser.png", class: "kaiser") %>
+            <%= image_tag("pages/home-index/metrobank.png", class: "metrobank hidden-phone") %>
+            <%= image_tag("pages/home-index/campbells.png", class: "campbells") %>
+            <%= image_tag("themes/thebbb_org/logo_large.png", class: "bbb") %>
+            <%= image_tag("themes/weatrust_com/logo_large.png", class: "weatrust hidden-phone") %>
+            <%= image_tag("themes/sydney_edu_au-ICT/logo_large.png", class: "sydney_edu hidden-phone") %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper-section-3">
+      <div class="wrapper-overlay">
+        <div class="block-content center-block">
+
+          <div class="inner-block text-center">
+            <div class="title ">
+              Super-Charged Employee Recognition, Rewards, and More
+            </div>
+            <div class="sub-title center-block hidden-phone">
+              <div class="wrapper">
+                Recognize includes features such as automatic employee anniversary and birthday recognition, on-the-spot social employee recognition, manager recognition, and nomination voting.
+              </div>
+            </div>
+          </div>
+
+          <div class="inner-block">
+            <div class="img-block hidden-phone">
+              <%= image_tag("pages/tour/point3.png", class: "top-employees-teams") %>
+            </div>
+            <div class="desc-block">
+              <div class="description">
+                <div class="title">Employee Recognition</div>
+                <div class="sub-title">Drive focus on company values and increase engagement through Recognize's unique badges and points strategy.</div>
+              </div>
+              <div class="description">
+                <div class="title">Rewards</div>
+                <div class="sub-title">Create your own rewards catalog of automatic gift cards, experiences, and non-monetary rewards staff redeem with points.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="inner-block">
+            <div class="desc-block">
+              <div class="description">
+                <div class="title">Nominations & Awards</div>
+                <div class="sub-title">Secretly nominate employees for awards in given time periods, such as innovation award or employee of the quarter.</div>
+              </div>
+              <div class="description">
+                <div class="title">Service Anniversaries</div>
+                <div class="sub-title">It takes just five minutes: you choose which year to celebrate, what the message will be, and how many points it is worth.</div>
+              </div>
+            </div>
+            <div class="img-block hidden-phone">
+              <%= image_tag("pages/home-anniversaries/setup.png", class: "service-anniversaries") %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper-section-4">
+      <div class="wrapper-overlay">
+        <div class="block-content center-block text-center">
+          <%= schedule_demo_link link_text: 'FREE LIVE DEMO',service: "service2", css_classes: "button-landing-page button-white", utm_campaign: 'Landing page', utm_content: 'Demo link' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper-section-5">
+      <div class="wrapper-overlay">
+        <div class="block-content center-block">
+          <div class="integration-text">
+            <div class="title">Workflow Integrations</div>
+            <div class="sub-title">Build stronger, happier staff by sending recognition where everyone already works.</div>
+          </div>
+          <div class="integration-icons">
+            <div>
+              <%= image_tag("pages/home-index/integrations/office365.png") %>
+              <%= image_tag("pages/home-index/integrations/slack-2.png", class: "slack") %>
+              <%= image_tag("pages/home-index/integrations/chrome.png") %>
+              <%= image_tag("pages/home-index/integrations/yammer-2.png", class: "yammer") %>
+              <%= image_tag("pages/home-index/integrations/onelogin.png", class: "onelogin") %>
+              <%= image_tag("pages/home-index/integrations/android.png", class: "android hidden-phone") %>
+              <%= image_tag("pages/home-index/integrations/okta.png", class: "okta hidden-phone") %>
+              <%= image_tag("pages/home-index/integrations/ios.png", class: "ios") %>
+              <%= image_tag("pages/home-index/integrations/workplace-2.png", class: "workplace hidden-phone") %>
+            </div>
+            <div class="title">
+              ... And More!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper-section-6">
+      <div class="block-content center-block text-center">
+        <div class="testimonial">
+          <%= image_tag("pages/landing-pages-capterra/quotation-mark.png", alt: "Quote", class: "quotation-icon hidden-phone") %>
+          <div class="testimony">
+            "There is nothing more important than keeping our employees motivated and engaged. Recognize allows everyone on the team to celebrate their own successes and those of their co-workers.
+            <br>
+            <br>
+            Integration with Yammer and Slack means that <strong>we're not taking on extra administrative or training burden, we're just getting more bang for our buck on the tools we're already using.</strong>"
+          </div>
+          <%= image_tag("pages/landing-pages-capterra/5-star-rating.png", alt: "Capterra rating", class: "star-rating") %>
+          <div class="client-name">
+            Capterra Reviewer: Ben Ringold
+          </div>
+          <div class="client-designation">
+            Technical Director, Hypothetical Software
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper-section-7">
+      <div class="wrapper-overlay">
+        <div class="block-content center-block">
+          <div class="row-fluid">
+            <div class="span6 hidden-phone">
+              <%= image_tag("pages/home-index/movement.png", alt: "Movement", width: "95%") %>
+            </div>
+            <div class="span6">
+              <div class="title">
+                Join The <em><i><span class="blue-text">8,000</span></i></em> Companies That Signed Up With Recognize...
+              </div>
+              <div class="sub-title">
+                <em><span class="blue-text">90%</span></em> of users say they will stay longer with their employer.
+              </div>
+              <div class="sub-title">
+                <em><span class="blue-text">96%</span></em> say they feel more connected with their employer.
+              </div>
+              <div class="sub-title">
+                <em><span class="blue-text">84%</span></em> say it reinforces company values.
+              </div>
+              <%= schedule_demo_link link_text: 'FREE LIVE DEMO',service: "service2", css_classes: "button-landing-page green-shadowed", utm_campaign: 'Landing page', utm_content: 'Demo link' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper-section-8" class="clearfix">
+      <div class="block-content center-block">
+        <div class="clearfix">
+          <div class="pull-left">
+            Call: (866) 288-0373
+            <br>
+            Email: sales@recognizeapp.com
+          </div>
+          <div class="image-container pull-right hidden-phone">
+            <a href="https://www.capterra.com/p/148439/Recognize/#reviews" target="_blank"><%= image_tag("pages/landing-pages-capterra/capterra_rating.png", alt: "Capterra rating") %></a>
+          </div>
+        </div>
+        <div class="smallPrint text-center">
+          Copyright © <%= Time.now.year.to_s %> Recognize. All Rights Reserved.
+        </div>
+      </div>
+    </div>
+
+<% end %>
+
+<%= render template: "layouts/application" %>

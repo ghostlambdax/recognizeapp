@@ -1,0 +1,27 @@
+#company_admin_top_employees-index
+  .leaderboard-wrapper
+    .metric-wrapper .button
+      @media (max-width: $phone)
+        border-radius: 4px
+        border: 1px solid #CCC
+        padding: 10px 14px
+
+    .value-filter-wrapper
+      @media (min-width: $phone + 1)
+        float: left
+
+    .filter-wrapper
+      margin-bottom: 5px // overrides default 10px to account for the additional 5px in .dropdown-wrapper below
+      > .dropdown-wrapper
+        background: #f1f1f1
+        border-radius: 4px
+        margin-bottom: 5px
+
+        @media (max-width: $phone)
+          width: 100%
+
+        .dropdown-toggle
+          width: 100%
+
+        .selected-wrapper
+          padding: 0 10px

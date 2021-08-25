@@ -1,0 +1,317 @@
+// covers all occurrences of recognition message: recognition show, new/edit, cards, CA datatables
+.recognitions .message,
+.recognitions .trumbowyg-editor,
+.company_admin_recognitions .trumbowyg-editor,
+.manager_admin_recognitions .trumbowyg-editor,
+.recognition-card .message
+  img
+    width: auto
+    height: auto
+    max-width: 100%
+    max-height: 480px
+    // same as the max height for uploaded image
+    display: block
+    margin: 5px 0
+
+    &[src$=".gif"]
+      // reduced size limit for gifs
+           max-width: 300px
+           max-height: 300px
+
+// show page and card
+.recognitions .message,
+.recognition-card .message-outer
+  margin-bottom: 15px
+
+#infscr-loading
+  display: none !important
+
+#recognitions-index, #recognitions-grid
+
+  .recognition-card.no-box-shadow:not(.selected-team-name)
+    height: 150px !important
+
+  .recognition-card + .selected-team-name
+    display: none
+
+  .star
+    width: 10px
+    height: 10px
+
+    &:after
+      font-size: 15px
+      line-height: 10px
+
+  .left-column
+    max-width: 100%
+    width: 325px
+
+  .no-teams .left-column
+    width: 200px
+    max-width: 100%
+
+  #view-main-wrapper
+    padding-top: 65px
+
+  .right-column
+    margin: 0 0 15px 20px
+
+  .left-column,
+  .right-column,
+  #stream
+    padding-top: 5px
+
+  .team-list
+    overflow: auto
+    margin-bottom: 0
+
+    li:last-child
+      margin-bottom: 70px
+
+  .column-switch
+    display: none
+    float: right
+
+  #view-main-wrapper
+    padding-bottom: 0
+
+  .theme-logo-large
+    max-width: 180px
+    margin-right: 9px
+    max-height: 60px
+
+  #stream .theme-logo-large
+    margin-top: 0
+
+    & + h1
+      left: -9999px
+      position: absolute
+
+.recognitions
+  .checkbox-wrapper
+    display: inline-block
+
+  h1
+    margin-bottom: 5px
+
+    .content
+      .approval_link
+        width: 8px
+        height: 8px
+      .approved
+        background: asset-url('icons/glyphicons-halflings.png') -117px -146px no-repeat
+      .unapproved
+        background: asset-url('icons/glyphicons-halflings.png') -94px -146px no-repeat
+
+      ol
+        list-style: none
+        margin: 0
+        padding: 0
+        line-height: 1em
+
+  h3.cursor
+    position: relative
+    z-index: 2
+
+  #res-score
+    margin: -50px auto 0 auto
+
+  .recogntion-option-wrapper
+    position: relative
+    top: 3px
+    left: 5px
+    float: left
+
+    a
+      padding: 5px 7px
+      border-radius: 3px
+
+  .add-new:hover
+    box-shadow: 0 0 3px 1px rgba(153, 153, 153, 0.73)
+
+  .stream-wrapper
+    flex-direction: row-reverse
+    justify-content: flex-end
+    position: relative
+    z-index: 1
+
+  #stream
+    margin-top: 15px
+    min-height: 500px
+    margin: 0
+    @include transition(.3s opacity ease-in-out)
+    max-width: 100%
+    overflow: auto
+
+    &.loading
+      opacity: .5
+
+  .no-teams #stream
+    overflow: visible
+
+  #recognition-details
+    .filter-by-list
+      display: none
+
+  #infscr-loading
+    bottom: 5px
+    right: 5px
+    position: absolute
+
+    img
+      margin-right: 5px
+
+    #column-switch
+      display: none
+
+  #stream-send-recognition
+    box-shadow: 0 0 1px 1px #666
+    background: #fff
+    border-radius: 5px
+    padding: 20px
+    height: 150px
+    width: 100px
+
+  .filter-by-list
+    ul li
+      margin: 6px 0
+      padding: 5px 10px
+      .link
+        color: $linkColor
+        &:before
+          content: '\2713'
+          padding: 0 6px 0 0
+          color: $linkColor
+          visibility: hidden
+      &:hover
+        background-color: lighten($lightGray, 15%) !important
+        border-radius: 5px
+      &.selected
+        background-color: lighten($lightGray, 15%) !important
+        border-radius: 5px
+        .link:before
+          visibility: visible
+    .no-highlight
+      background-color: white
+
+.viewer-ms_teams.no-nav #stream, .viewer-ms_teams.no-nav .stream-wrapper
+  width: 100%
+
+.marginTop100
+  margin-top: 100px
+
+.width0
+  width: 0px !important
+
+.stream-wrapper
+  width: 100%
+  #stream
+    width: 100%
+
+@media (min-width: 1540px)
+  #recognitions-index
+    .left-column
+      width: auto
+      min-width: 325px
+      max-width: 500px
+
+@media (max-width: 1280px)
+  #recognitions-index
+    #team-list
+      .link
+        font-size: 16px
+
+@media (max-width: 1160px)
+  #recognitions-index, #recognitions-grid
+    #stream
+      width: 100%
+  html.ie #recognitions-index, #recognitions-grid
+    #stream
+      width: 100% // For Sharepoint in IE
+
+@media (max-width: 1020px)
+  #recognitions-index, #recognitions-grid
+    .stream-wrapper
+      width: 100%
+
+    .no-teams
+      .left-column
+        position: absolute
+        left: 20px
+
+@media (min-width: ($tablet + 1))
+  body#recognitions-index:not(.no-teams)
+    overflow: hidden
+
+  .recognitions .buttons-wrapper
+    .column-switch.block
+      display: none !important
+
+  #stream.displayNone
+    display: block !important
+
+@media (max-width: $tablet)
+  #recognitions-index, #recognitions-grid
+    .stream-wrapper
+      flex-direction: column
+    .team-list
+      overflow: visible
+
+    .no-teams
+      padding-top: 23px
+
+    #view-main-wrapper
+      padding-top: 40px
+
+    #first-user-welcome
+      display: none !important
+
+    #stream
+      padding-top: 40px
+      overflow: visible
+
+    .recognitions .buttons-wrapper
+      float: none
+      width: 100%
+      clear: both
+
+    #view-main-wrapper
+      .button-group
+        float: left
+        width: auto
+
+  #recognitions-index
+    .left-column
+      position: absolute
+      left: 0
+      top: 0
+      width: calc(98% - 10px)
+
+    #recognition-details
+      display: none
+
+  .recognitions .recogntion-option-wrapper,
+  .view-mode-wrapper
+    display: none
+
+  #recognition-details
+    .filter-by-list
+      display: block !important
+
+  .right-column
+    .filter-by-list
+      display: none
+
+@media (max-width: 450px)
+  #recognitions-index
+    // remaining 30% is for the filter / close icon next to the name
+    .left-column .company-name
+      width: 70%
+
+@media (min-width: 1300px)
+  #recognitions-index
+    #stream
+      width: 900px
+
+  .recognitions .stream-wrapper
+    justify-content: center

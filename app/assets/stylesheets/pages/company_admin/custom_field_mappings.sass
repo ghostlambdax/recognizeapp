@@ -1,0 +1,29 @@
+#company_admin_custom_field_mappings-show
+  table
+    // `odd` rows have a certain background-color for bootstrap table-striped - overwrite the property.
+    tr.selected, tr:nth-child(odd).selected > td
+      background-color: #B0BED9 !important
+
+    th.key
+      width: 130px
+    td.key
+      input
+        width: 120px
+
+    td.provider_key
+      input
+        width: 300px
+
+    th.provider_type
+      width: 190px
+    td.provider_type
+      select
+        width: 180px
+
+    td.mapped_to
+      select
+        width: 150px
+
+    input:read-only
+      background-color: #e9eaea !important
+

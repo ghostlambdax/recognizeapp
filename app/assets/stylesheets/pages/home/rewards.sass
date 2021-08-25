@@ -1,0 +1,68 @@
+#home-rewards
+  #gift-cards
+    background: #fff
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: 50px
+
+    .img
+      max-width: none
+      margin-left: -80px
+      background: asset-url('pages/home-rewards/gift-cards.png') no-repeat 0 0
+      height: 233px
+      width: 116%
+
+    .inner
+      max-width: 100%
+      text-align: center
+
+  #rewards-cards
+    background: #fff
+    padding-top: 50px
+
+    .img
+      background: asset-url('pages/home-rewards/rewards-animated.gif') no-repeat 0 0
+      width: 1051px
+      height: 320px
+      margin: auto
+
+  #rewards-ideas
+    ul
+      max-width: 720px
+      margin: auto
+
+    li
+      margin: 15px
+      display: inline-block
+      vertical-align: top
+      font-weight: 600
+
+  #types-of-rewards
+    .inner
+      max-width: 1200px
+
+@media (min-width: 1100px)
+  #home-rewards
+    #types-of-rewards
+      img
+        margin-top: -70px
+
+
+@media (max-width: 800px)
+  #home-rewards
+    #gift-cards
+      .img
+        background-image: asset-url('pages/home-rewards/gift-cards-mobile.png')
+        margin: 0 auto
+        width: 392px
+        background-size: 100%
+        max-width: 100%
+
+
+    #rewards-cards
+      .img
+        width: 387px
+        height: 485px
+        background-image: asset-url('pages/home-rewards/reward-card.png')
+        background-size: 100%
+        max-width: 100%

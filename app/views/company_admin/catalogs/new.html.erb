@@ -1,0 +1,7 @@
+<h2><%= t('company_admin.rewards.catalog.new_catalog') %></h2>
+<%= render("form", {
+  catalog: @catalog,
+  company_roles: @company_roles,
+  url: company_admin_catalogs_path(network: @company.domain),
+  edit: false
+}) %>

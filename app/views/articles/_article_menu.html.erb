@@ -1,0 +1,9 @@
+<ul id="article-menu" class="blue-links">
+  <h4>Article sections</h4>
+  <% tags.each do |tag| %>
+    <li>
+      <a href="#<%= tag.parameterize(separator: '_') %>" class="animate-scroll"><%= tag %></a>
+    </li>
+  <% end %>
+
+</ul>

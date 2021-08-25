@@ -1,0 +1,15 @@
+function(data, row, column, node) {
+  <% eff = export_format_functions_js %>
+  switch(column) {
+    <% datatable.column_attributes.each do |i, c| %>
+      <% if c[:export_format].present? %>
+      case <%= i %>:
+      <%= eff[c[:export_format]].html_safe %>
+      break;
+      <% end %>
+    <% end %>
+    default:
+      return data;
+  }
+}
+

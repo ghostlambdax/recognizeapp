@@ -1,0 +1,11 @@
+<% content_for :title, @title %>
+
+<div class="centered">
+  <h1 itemprop="name"><%= @title %></h1>
+</div>
+
+<p>Written by: Katie Pia Moran<br><br>
+
+<%= link_to "Learn about Recognize", root_path, class: "button button-large button-primary" %>
+
+<%= render partial: "cultivate_positive_remote_work_experience", formats: [:html] %>

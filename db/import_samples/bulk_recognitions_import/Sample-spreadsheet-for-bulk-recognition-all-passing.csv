@@ -1,0 +1,11 @@
+sender_email,receiver_email_or_phone,badge,message,
+alex@recognizeapp.com,peter@recognizeapp.com,Brilliant,"Great job!!!"
+alex@recognizeapp.com,"kate@recognizeapp.com, dev@recognizeapp.com",Responsive,"Amazingly Responsive",50
+howie@recognizeapp.com,"peter@recognizeapp.com, alex@recognizeapp.com",Boss,"You are an amazing boss!",
+dev@recognizeapp.com,kate@recognizeapp.com,Friend,"You are such an amazing friend!!!",20
+martin@recognizeapp.com,alex@recognizeapp.com,Determined,"Wow, Great Determination!",
+pavel@recognizeapp.com,martin@recognizeapp.com,Fun,"Its so much fun to work with you!",
+kate@recognizeapp.com,pavel@recognizeapp.com,Coffee maker,"Starbucks baristas can't hold a candle to you!!!",
+martin@recognizeapp.com,kate@recognizeapp.com,Organized,"Amazingly organized.",
+peter@recognizeapp.com,dev@recognizeapp.com,Efficient,"Top notch Efficiency!!!",
+peter@recognizeapp.com,howie@recognizeapp.com,Skilled,"The best in the biz!!!",

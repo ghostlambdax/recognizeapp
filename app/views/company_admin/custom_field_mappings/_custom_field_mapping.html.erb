@@ -1,0 +1,9 @@
+<% custom_field_mapping = find_or_build_custom_field_mapping(@company, custom_field_key) %>
+<tr class="custom_field_mapping_for_<%= custom_field_key %>">
+  <td><%= custom_field_mapping.key %></td>
+  <td><%= custom_field_mapping&.provider_type&.humanize %></td>
+  <td><%= custom_field_mapping&.provider_key %></td>
+  <td><%= custom_field_mapping&.provider_attribute_key %></td>
+  <td><%= custom_field_mapping&.name %></td>
+  <td><%= custom_field_mapping&.mapped_to %></td>
+</tr>

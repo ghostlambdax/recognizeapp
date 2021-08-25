@@ -1,0 +1,30 @@
+<h2>Recognitions</h2>
+<%= will_paginate @recognitions %>
+<table class="table table-striped table-bordered table-condensed table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th class="span2">Sent</th>
+      <th>Sender domain</th>
+      <th>Sender</th>
+      <th class="span2">Recipients</th>
+      <th>Badge</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recognitions.each do |recognition| %>
+    <tr class="<%= 'warning' if recognition.is_instant %>">
+      <td><%= recognition.id %></td>
+      <td><%= localize_datetime(recognition.created_at, :friendly) %></td>
+      <td><%= recognition.authoritative_company.domain %></td>
+      <td rel="tooltip" title="<%= recognition.authoritative_company.domain %>"><%= recognition.sender_name %></td>
+      <td><%= recognition.recognition_recipients.map{|rr| "<span rel='tooltip' title='#{rr.user.company.domain}'>#{rr.user.full_name}</span>"}.join(", ").html_safe %></td>
+      <td><%= image_tag recognition.badge.permalink, style: "height: 12px"%> <%= recognition.badge.short_name %></td>
+      <td><%= recognition.message[0..254] if recognition.message %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @recognitions %>

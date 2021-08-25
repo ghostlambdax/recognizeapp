@@ -1,0 +1,83 @@
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Employee Recognition Case Studies" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="Case studies of innovative companies using Recognize to promote a culture of employee recognition." />
+  <meta property="og:image" content="https://recognizeapp.com/assets/pages/case-study/social-graphic.jpg" />
+<% end%>
+
+<% content_for :title, "Employee Recognition Case Studies" %>
+
+<% content_for :description, "Learn how to model your recognition program by examples of other smart companies using Recognize to create their employee recognition program." %>
+
+<% case_studies = [
+    {
+        title: "Increasing Employee Engagement in a Credit Union with 50 Locations",
+        path: visions_fcu_case_study_path,
+        image_path: image_path("pages/case-study/visions-fcu/index-card.jpg")
+    },
+    {
+        title: "Non-Monetary Employee Recognition in the Non-Profit Space",
+        path: teachfirst_case_study_path,
+        image_path: image_path("pages/case-study/teachfirst/index-card.jpg")
+    },
+
+    {
+        title: "Create All-For-One Mentality Across Remote Workforce",
+        path: goodwaygroup_case_study_path,
+        image_path: image_path("pages/case-study/goodwaygroup/index-card.jpg")
+    },
+    {
+        title: "Promote a Customer Service-Driven Mindset Through Employee Recognition",
+        path: metrobank_case_study_path,
+        image_path: image_path("pages/case-study/metrobank/index-card.jpg")
+    },
+
+    {
+        title: "Creative Agency Ties Company Values to Automated Employee Recognition",
+        path: ideascollide_case_study_path,
+        image_path: image_path("pages/case-study/ideascollide/index-card.jpg")
+    },
+
+    {
+        title: "Reduce Burnout With Employee Recognition in a Healthcare Environment",
+        path: corvallisclinic_case_study_path,
+        image_path: image_path("pages/case-study/corvallisclinic/index-card.jpg")
+    },
+
+    {
+        title: "Focus International Staff Behind Company Values Integrated into Yammer",
+        path: dealogic_case_study_path,
+        image_path: image_path("pages/case-study/dealogic/index-card.jpg")
+    }
+]
+%>
+
+<section id="intro" class="">
+  <div class="inner" data-turbolinks="false">
+    <h1 class="balance-text">Employee Recognition Case Studies</h1>
+    <p class="tagline balance-text"><strong>Recognize drives company culture and employee recognition. How a company uses it is up to them. Check out the case studies for how to best utilize a great employee recognition program.</strong></p>
+    <%= schedule_demo_link utm_campaign: 'case study top' %>
+
+  </div>
+  <%= render partial: "home/patterns/bw.svg" %>
+
+</section>
+
+<div class="case-study-wrapper">
+
+  <% case_studies.each do |case_study| %>
+
+    <div style="background-image: url('<%= case_study[:image_path] %>')" class="case-study-item lazy gradient-cover-white">
+      <div class="content">
+        <h2><%= case_study[:title] %></h2>
+        <%= link_to "Read Recognize Case Study", case_study[:path], class: "button button-primary" %>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>
+
+
+<%= render "home/footer" %>

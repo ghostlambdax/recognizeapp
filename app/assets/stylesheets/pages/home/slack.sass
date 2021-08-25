@@ -1,0 +1,65 @@
+$slackGray: #FBFBFB
+
+#home-slack
+  .banner
+    text-align: center
+    padding: 5em 0
+
+    .inner
+      max-width: 600px
+      margin: 0 auto 0 auto
+
+    h1
+      margin-bottom: 1em
+
+  .add-wrapper
+    padding: 27px 80px
+    display: inline-block
+    background: $slackGray
+    border: 1px solid #B9B9B9
+    box-shadow: inset 0px 0px 7px 3px rgba(148,148,148,0.17)
+    border-radius: 10px
+
+
+  img.slack-banner
+    margin-bottom: 1em
+
+  .reasons-wrapper
+    background: #F9F9F9
+    @include flex-display()
+
+    .reason
+      padding: 2em
+      border-right: 1px solid #E2E2E2
+      width: 50%
+
+      &:last-child
+        border-right: 0
+
+      h2
+        font-size: 2em
+
+  .how-to
+
+    img
+      margin-bottom: 1em
+
+  .next, .how-to
+    padding: 3em 15vw
+    text-align: center
+
+
+  .next
+    background: $slackGray
+
+@media (max-width: 670px)
+  #home-slack
+
+    .next, .how-to
+      padding: 1em
+
+    .reasons-wrapper
+      display: block
+
+      .reason
+        width: 100%

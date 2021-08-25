@@ -1,0 +1,9 @@
+<% content_for :title, @title %>
+
+<div class="centered">
+  <h1 itemprop="name"><%= @title %></h1>
+</div>
+
+<%= link_to "Learn about Recognize", root_path, class: "button button-large button-primary" %>
+
+<%= render partial: "amazing_award_certificates", formats: [:html] %>

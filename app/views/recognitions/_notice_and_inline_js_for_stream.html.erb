@@ -1,0 +1,14 @@
+<% # Come up with a better usage of notices %>
+<% if nil #unless params[:code]%>
+  <%= render partial: "layouts/notice" %>
+<%end %>
+
+<% if flash[:newly_signedup] %>
+  <% content_for :pagejs do %>
+    <% javascript_tag do %>
+      var triggerAlias = true;
+    <% end %>
+  <% end %>
+<% end %>
+
+<% content_for_stream_page %>

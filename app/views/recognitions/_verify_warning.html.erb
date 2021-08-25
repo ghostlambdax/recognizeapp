@@ -1,0 +1,29 @@
+<div id="new_user_recognition_warning">
+  <div class="inner">
+    <%= image_tag("icons/letter.png") %>
+    <div class="text">
+      <h5><%= t("recognitions.sent_email_to_verify_account_html") %></h5>
+      <p><%= t("recognitions.verified_account_description") %></p>
+      <%= link_to t("verify.resend_verification_email"), resend_verification_email_path(set_referrer: true), class: 'button resend_verification_email_trigger' %>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    $('.resend_verification_email_trigger').on(R.touchEvent, function (e) {
+        var url = $(e.target).attr('href'); // Must save before formLoading as it changes the URL to javascript://
+        e.preventDefault();
+        window.recognize.patterns.formLoading.setupButtons(e.target);
+
+        $.post({
+            url: url,
+            data: {ajax: true},
+            complete: function (data) {
+                window.R.ui.swalHelpers.success("<%= t('dict.resent') %>", "<%= t('forgot_password.instruction_email') %>");
+                window.recognize.patterns.formLoading.resetButton();
+            }
+        });
+
+        return false;
+    });
+</script>

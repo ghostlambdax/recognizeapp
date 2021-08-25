@@ -1,0 +1,19 @@
+<h3 style="<%= mail_styles(:h3, :text, :title) %>">
+  <%= day %>
+</h3>
+
+
+<% anniversary_users.each do |anniversary_user|%>
+    <div style="margin-bottom: 30px;" class="anniversary-user">
+
+      <%= link_to user_url(anniversary_user, network: anniversary_user.network), style: "#{mail_styles(:a)} text-decoration: none; margin-bottom: 10px; display: inline-block;" do %>
+          <%= image_tag(anniversary_user.avatar.small_thumb.url, itemprop: "image", class: "avatar", style: "vertical-align: middle") if anniversary_user.avatar %>
+      <% end %>
+
+      <p style="<%= mail_styles(:p, :text) %> margin-bottom: 10px;"><%= anniversary_user.full_name %> has been with <%=anniversary_user.company.name%> for <%=anniversary_user.years_of_service%> year<%= anniversary_user.years_of_service == 1 ? "" : "s"%>!</p>
+
+      <h5 style="<%= mail_styles(:h5, :text) %> margin-bottom: 10px;"><strong style="font-weight: 600;"><%= t("notifier.anniversary_privacy") %></strong>: <%= anniversary_privacy_label(anniversary_user) %></h5>
+
+      <%= link_to t("anniversary.profile", name: anniversary_user.full_name), user_url(anniversary_user, network: anniversary_user.network), style: mail_styles(:text, :a) %>
+  </div>
+<%end%>

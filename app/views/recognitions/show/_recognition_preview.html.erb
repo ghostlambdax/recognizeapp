@@ -1,0 +1,9 @@
+<div class="clearfix">
+  <div class="well span6">
+    <div>
+      <h2><%= recognition.recipients.map(&:full_name).join(", ")%></h2>
+      <%= image_tag recognition.badge.image_url, width: 80, class: "badge-image" %>
+      <h4><%= recognition.badge.short_name %></h4>
+    </div>
+  </div>
+</div>

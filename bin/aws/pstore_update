@@ -1,0 +1,14 @@
+# Usage: aws/pstore_update <name> <type> <value>
+name=$1
+type=$2
+value=$3
+
+echo "Command: aws_pstore_update $name $type $value"
+
+echo "Old Value: `$(dirname "$0")/pstore_grep $name`"
+
+output="`aws ssm put-parameter --overwrite --name $name --type $type --value $value`"
+
+echo "New Value (check matches command value): `$(dirname "$0")/pstore_grep $name`"
+
+echo $output

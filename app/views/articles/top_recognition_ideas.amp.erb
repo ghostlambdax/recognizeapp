@@ -1,0 +1,16 @@
+<% content_for :title, "Top Employee Recognition Ideas" %>
+<%= content_for :description, "Get the best ideas for employee recognition, including core strategies, creative ideas, great employee perks, and even non-monetary ideas." %>
+
+<div class="centered">
+  <h1 itemprop="name">101 Top Employee Recognition Ideas</h1>
+  <amp-img src="<%= asset_url('illustrations/marching_band-small.jpg') %>" alt="A marching band going through an office" height="365" width="650" layout='responsive'></amp-img>
+</div>
+
+<p>Employee recognition is the act of showing staff appreciation for the good work they do. It can be a formal process, such as in a communication tool, or an informal process, a side conversation between a manager and an employee. Employee recognition can come in many forms and events, including employee service anniversaries or employee of the month. Gallup reports nearly two-thirds of employees have not received recognition in the past year. Thus, anything a company can do will be well received.</p>
+
+<%= link_to "Learn about Recognize", root_path, class: "button button-large button-primary" %>
+
+
+
+<%= render partial: "top_employee_recognition_content", formats: [:html] %>
+<%= render partial: "top_recognition_ideas", formats: [:html] %>

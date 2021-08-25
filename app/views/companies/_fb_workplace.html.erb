@@ -1,0 +1,62 @@
+<hr class="hr hr-space" />
+
+<div id='workplace' class="row-fluid fb-workplace-settings scroll-item">
+  <%
+    integration_txt = @company.settings.fb_workplace_token.present? ? "Manage integration" : "Install integration"
+    app_id = Recognize::Application.config.rCreds.dig("fb_workplace", "app_id")
+    redirect_uri = "https://#{Rails.application.config.host}/fb_workplace/callback"
+    permissions = "message,link_unfurling"
+    app_name = "Recognize"
+    app_name << " - #{Rails.application.config.host.split(".").first}" unless is_live_production_server?
+
+    fb_install_url = "https://work.workplace.com/work/admin/apps?app_id=#{app_id}"
+    # fb_install_url = "https://work.workplace.com/v3.3/dialog/work/app_install?app_id=#{app_id}&redirect_uri=#{redirect_uri}&permissions=#{permissions}&suggested_page_name=#{app_name}"
+  %>
+  <h3>Workplace by Facebook Settings</h3>
+
+  <%= link_to integration_txt, fb_install_url, target: :blank, class: "button marginBottom20" %>
+
+  <h4>Auto-linking Accounts</h4>
+  <p>
+    Workplace accounts can be auto-linked to Recognize accounts as long as all user emails match in both places (Workplace + Recognize). This results in a more seamless onboarding experience for end users. When turned off, end users must go through an explicit account linking flow. Turn off if user emails do not match in Workplace and Recognize or you have frontline workers who do not have email addresses.
+  </p>
+  <div id="auto-link-workplace-settings">
+    <%= show_toggle @company.settings.autolink_fb_workplace_accounts?, "Enable autolinking" , data:
+      {setting: "settings[autolink_fb_workplace_accounts]" } %>
+  </div>
+
+  <% if false # because we aren't going to be posting
+              # automatically to Workplace any longer. %>
+
+    <%= show_toggle @company.settings.fb_workplace_enable_post_to_group?,
+                  "Post to Group",
+                  data: {setting: "settings[fb_workplace_enable_post_to_group]"} %>
+
+    <%= form_for @company.settings, url: update_settings_company_path, remote: true do |f| %>
+      <%
+        # FB doesnt want us to show this info for 3rd party integrations
+        # But leaving here in case want to change logic to support Custom integrations
+      %>
+      <% if false %>
+        <div class="control-group marginTop10">
+          <%= f.label :fb_workplace_community_id, "Community Id" %>
+          <%= f.text_field :fb_workplace_community_id, {data: {endpoint: company_admin_settings_path}} %>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :fb_workplace_token, "Access Token" %>
+          <%= f.text_area :fb_workplace_token, {data: {endpoint: company_admin_settings_path}} %>
+        </div>
+      <% end %>
+      <div class="control-group">
+        <%= f.label :fb_workplace_post_to_group_id, "Selected Group" %>
+        <%= f.select :fb_workplace_post_to_group_id, [], {}, data: {
+          selectedgroupid: @company.settings.fb_workplace_post_to_group_id,
+          groupsendpoint: fb_workplace_groups_company_admin_settings_path,
+          endpoint: company_admin_settings_path} %>
+          <div class="subtle-text">Don't see the group you are looking for? Make sure you have admin rights on that group in Workplace for it to appear.</div>
+          <div class="subtle-text">If you haven't yet connected your account, try typing 'connect' in the Recognize bot chat.</div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

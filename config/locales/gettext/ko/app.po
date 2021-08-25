@@ -1,0 +1,473 @@
+# Korean translations for recognize package.
+# Copyright (C) 2021 recognize
+# This file is distributed under the same license as the recognize package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recognize 1.0\n"
+"Report-Msgid-Bugs-To: contact@translation.io\n"
+"POT-Creation-Date: 2021-05-26 15:19-0500\n"
+"PO-Revision-Date: 2021-05-26 22:19+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Korean\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"\n"
+
+#: ../../../app/datatables/catalogs_datatable.rb:87
+msgid "Catalog"
+msgstr "목록"
+
+#: ../../../app/datatables/catalogs_datatable.rb:95
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:10
+msgid "Redemptions"
+msgstr "상환"
+
+#: ../../../app/datatables/catalogs_datatable.rb:103
+msgid "Settings"
+msgstr "설정"
+
+#: ../../../app/jobs/sms_notifier_job.rb:8
+#: ../../../app/services/recognition_sms_notifier.rb:42
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:14
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:17
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:22
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:32
+msgid ""
+"\n"
+"Reply with STOP to opt out of additional messages"
+msgstr ""
+"\n"
+"추가 메시지를 수신하지 않으려면 STOP으로 답장하세요."
+
+#: ../../../app/lib/fb_workplace/helpers/bot_helpers.rb:90
+msgid "Are you sure you want to reset your account connection?"
+msgstr "계정 연결을 재설정 하시겠습니까?"
+
+#: ../../../app/lib/fb_workplace/helpers/bot_helpers.rb:91
+msgid "Reset connection"
+msgstr "연결 재설정"
+
+#: ../../../app/lib/fb_workplace/webhook/link.rb:33
+msgid "Sent"
+msgstr "보냄"
+
+#: ../../../app/lib/fb_workplace/webhook/page.rb:108
+msgid ""
+"Your account connection has been cleared. Type 'Connect' if you would like to "
+"reconnect "
+msgstr "계정 연결이 해제되었습니다. 다시 연결하려면 '연결'을 입력하십시오."
+
+#: ../../../app/models/webhook/endpoint.rb:15
+msgid "^Target url must a properly formatted url."
+msgstr "^ 대상 URL은 올바른 형식의 URL이어야합니다."
+
+#: ../../../app/views/admin/index/_admin_header.html.erb:5
+msgid "Dashboard"
+msgstr "계기판"
+
+#: ../../../app/views/admin/index/_admin_header.html.erb:6
+msgid "Engagement"
+msgstr "약혼"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:3
+msgid "Service Anniversary Award Certificate Template"
+msgstr "서비스 기념일 상 인증서 템플릿"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:4
+msgid ""
+"Use the Recognize service anniversary award template to create a certificate t"
+"o give to employees as a PDF or printed out. Sign the PDF after you create it."
+" All totally free to give employee recognition to staff."
+msgstr ""
+"Recognize 서비스 기념일 수상 템플릿을 사용하여 직원에게 PDF로 제공하거나 인쇄 할 수있는 인증서를 만듭니다. PDF를 만든 후 서"
+"명하십시오. 모두 무료로 직원에게 직원을 인정합니다."
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:10
+#: ../../../app/views/layouts/award_certificate.html.erb:11
+msgid "Generate PDF"
+msgstr "PDF 생성"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:13
+#: ../../../app/views/layouts/award_certificate.html.erb:14
+msgid "Font Families"
+msgstr "글꼴 패밀리"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:29
+msgid "Big Number"
+msgstr "큰 숫자"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:44
+msgid "Title"
+msgstr "표제"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:45
+msgid "Service Anniversary Award"
+msgstr "봉사 기념일 상"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:58
+msgid "Description"
+msgstr "기술"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:59
+msgid "For 7 years of service at Acme Inc."
+msgstr "Acme Inc.에서 7 년 근무"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:74
+#: ../../../app/views/award_generator/service_anniversary.html.erb:75
+msgid "Signature"
+msgstr "서명"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:92
+msgid "Name"
+msgstr "앱 이름"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:93
+msgid "Name here"
+msgstr "여기에 이름"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:108
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:8
+msgid "Date"
+msgstr "날짜"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:109
+msgid "May 24th, 2021"
+msgstr "2021 년 5 월 24 일"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:9
+msgid "Product Updates"
+msgstr "제품 업데이트"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:10
+msgid ""
+"Recognize keeps getting better with weekly deployments. Check back regularly f"
+"or improvements and fixes."
+msgstr "Recognize는 주간 배포를 통해 계속 향상됩니다. 개선 및 수정 사항을 정기적으로 확인하십시오."
+
+#: ../../../app/views/cms/product_updates/index.html.erb:14
+msgid "Recognize Product Updates"
+msgstr "제품 업데이트 인식"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:15
+msgid ""
+"Recognize is updated almost every week. Major updates and fixes are listed her"
+"e to help customers and prospective customers learn of continued improvements."
+msgstr ""
+"인식은 거의 매주 업데이트됩니다. 고객과 잠재 고객이 지속적인 개선 사항을 배울 수 있도록 주요 업데이트 및 수정 사항이 여기에 나열되어 있"
+"습니다."
+
+#: ../../../app/views/cms/product_updates/index.html.erb:16
+msgid "Check server status"
+msgstr "서버 상태 확인"
+
+#: ../../../app/views/companies/_badge.html.erb:181
+msgid "one person"
+msgid_plural "%{count} people"
+msgstr[0] "한 사람"
+msgstr[1] ""
+
+#: ../../../app/views/company_admin/accounts/edit.html.erb:6
+msgid "Edit Users"
+msgstr "사용자 편집"
+
+#: ../../../app/views/company_admin/accounts/show.html.erb:2
+msgid "Users"
+msgstr "사용자"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:7
+msgid "Top toolbar logo"
+msgstr "상단 툴바 로고"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:13
+msgid ""
+"A white transparent png image to go in the top\n"
+"            toolbar. Many companies choose to make it the name of their progra"
+"m."
+msgstr ""
+"흰색 투명 png 이미지가 상단으로 이동\n"
+"            툴바. 많은 회사에서 프로그램 이름으로 지정합니다."
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:25
+msgid "Stream page logo"
+msgstr "스트림 페이지 로고"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:31
+msgid ""
+"A color logo that goes on the Stream page. Many\n"
+"            companies choose to have it be their company logo. The background "
+"has to be white."
+msgstr ""
+"스트림 페이지에 표시되는 컬러 로고입니다. 많은\n"
+"            회사는이를 회사 로고로 선택합니다. 배경은 흰색이어야합니다."
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:5
+msgid "Theming"
+msgstr "테마"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:8
+msgid "Security"
+msgstr "보안"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:12
+msgid "Recognition"
+msgstr "인식"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:15
+msgid "Nomination"
+msgstr "지명"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:18
+msgid "Tasks"
+msgstr "과제"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:21
+msgid "Leaderboards"
+msgstr "리더 보드"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:24
+msgid "Hall of Fame"
+msgstr "명예의 전당"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:27
+msgid "Rewards"
+msgstr "REWARDS"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:31
+msgid "Yammer"
+msgstr "불평"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:34
+msgid "Microsoft"
+msgstr "마이크로 소프트"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:37
+msgid "Google"
+msgstr "구글"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:40
+msgid "Workplace by Facebook"
+msgstr "Facebook의 직장"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:43
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:14
+msgid "Webhooks"
+msgstr "웹훅"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:47
+msgid "User settings"
+msgstr "사용자 설정"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:50
+msgid "Points"
+msgstr "전철기"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:53
+msgid "User Management"
+msgstr "사용자 관리"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:56
+msgid "Kiosk Mode"
+msgstr "키오스크 모드"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:9
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:35
+msgid "Edit"
+msgstr "수정"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:14
+msgid "Edit Webhook"
+msgstr "Webhook 편집"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:15
+msgid "Webhook has been saved"
+msgstr "웹훅이 저장되었습니다."
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:20
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:36
+msgid "Destroy"
+msgstr "삭제"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:24
+msgid "Are you sure want to delete this webhook?"
+msgstr "이 웹훅을 삭제 하시겠습니까?"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:28
+msgid "Events"
+msgstr "이벤트"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:5
+msgid "Examples"
+msgstr "예"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:8
+msgid ""
+"● Notify a rewards provider that a user redeemed a reward in order to fulfill "
+"a custom company reward."
+msgstr "● 사용자가 맞춤형 회사 보상을 이행하기 위해 보상을 사용했음을 보상 공급자에게 알립니다."
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:9
+msgid "● Post a recognition to Slack or Microsoft Teams."
+msgstr "● Slack 또는 Microsoft Teams에 표창을 게시합니다."
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:18
+msgid ""
+"Webhooks allow you to notify third party systems when events on Recognize occu"
+"r"
+msgstr "Webhook을 사용하면 Recognize 이벤트가 발생할 때 타사 시스템에 알릴 수 있습니다."
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:23
+#: ../../../spec/features/company_admin/settings/webhooks_spec.rb:15
+#: ../../../spec/features/company_admin/settings/webhooks_spec.rb:25
+msgid "Add new"
+msgstr "새로운 걸 더하다"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:23
+msgid "Create Webhook"
+msgstr "Webhook 생성"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:23
+msgid "Webhook has been created!"
+msgstr "웹훅이 생성되었습니다!"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:31
+msgid "Enable"
+msgstr "활성화"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:32
+msgid "Event"
+msgstr "행사"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:33
+msgid "Method"
+msgstr "방법"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:34
+msgid "Endpoint"
+msgstr "끝점"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:37
+msgid "Recent events"
+msgstr "최근 이벤트"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:48
+msgid "Coming Soon!"
+msgstr "곧 출시됩니다!"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:49
+msgid "If you would like early access, please contact support@recognizeapp.com"
+msgstr "앞서 해보기를 원하시면 support@recognizeapp.com으로 문의하세요."
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:9
+msgid "Status Code"
+msgstr "상태 코드"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:10
+msgid "Request"
+msgstr "의뢰"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:11
+msgid "Response"
+msgstr "응답"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:14
+msgid "Url"
+msgstr "url"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:15
+msgid "Payload"
+msgstr "유효 탑재량"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:16
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:18
+msgid "Headers"
+msgstr "헤더"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:17
+msgid "Data"
+msgstr "데이터"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:36
+msgid "No webhooks have been triggered yet"
+msgstr "아직 웹훅이 트리거되지 않았습니다."
+
+#: ../../../app/views/home/pricing.html.erb:99
+msgid "Sign Up & Upgrade"
+msgstr "가입 및 업그레이드"
+
+#: ../../../app/views/layouts/_create_catalog_dropdown.html.erb:5
+#: ../../../app/views/layouts/_create_catalog_dropdown.html.erb:9
+msgid "All currencies"
+msgstr "모든 통화"
+
+#: ../../../app/views/layouts/_header.html.erb:190
+msgid "Switch accounts"
+msgstr "계정 전환"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:7
+msgid "Direct Reports"
+msgstr "직접 보고서"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:8
+msgid "Recognitions"
+msgstr "인정"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:9
+msgid "Anniversaries"
+msgstr "기념일"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:11
+msgid "Approved"
+msgstr "승인 된"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:12
+msgid "Pending"
+msgstr "대기 중"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:13
+msgid "Denied"
+msgstr "거부"
+
+#: ../../../app/views/layouts/_schedule_demo_link.html.erb:6
+msgid "Schedule Live Demo"
+msgstr "라이브 데모 예약"
+
+#: ../../../app/views/layouts/application.html.erb:17
+msgid "Skip to main content"
+msgstr "메인 컨텐츠로 가기"
+
+#: ../../../app/views/recognitions/_company_name.html.erb:3
+#: ../../../app/views/recognitions/_company_name.html.erb:8
+msgid "Company logo"
+msgstr "회사 로고"
+
+#: ../../../app/views/recognitions/_form_fullscreen.html.erb:97
+#: ../../../app/views/recognitions/new_panel.html.erb:78
+msgid "Sign in to Yammer to post to Yammer"
+msgstr "Yammer에 로그인하여 Yammer에 게시"
+
+#: ../../../app/views/recognitions/_recognition.html.erb:72
+msgid "%{time} ago"
+msgstr "%{time} 전"
+
+#: ../../../app/views/redemptions/_reward.html.erb:17
+msgid "Terms"
+msgstr "이용 약관"
+
+#: ../../../app/views/users/show.html.erb:48
+msgid "1 year"
+msgid_plural "%{num} years"
+msgstr[0] "일 년"
+msgstr[1] ""

@@ -1,0 +1,23 @@
+<script id="r-overlay" type="text/x-handlebars-template">
+  <div role="dialog" aria-labelledby="yj-simple-lightbox--title" data-qaid="lightbox" class=" r-hidden yj-simple-lightbox">
+    <div class="yj-simple-lightbox--content yj-create-lightbox-group r-overlay-wrapper" role="document">
+      <span tabindex="-1" style="position:absolute; left:0px; top:0px"></span>
+      {{#if title}}
+        <h1 id="yj-simple-lightbox--title" data-qaid="lightbox-title" class="yj-simple-lightbox--header-bar">
+          {{title}}
+        </h1>
+      {{/if}}
+      <div role="button" class="yj-simple-lightbox--header-close-button" data-speechtip="" data-qaid="lightbox-close">
+        <span class="yamicon yamicon-x yamicon-xx-small"></span>
+        <span class="yj-acc-hidden">Close</span>
+      </div>
+      <div data-qaid="lightbox-content" class="yj-simple-lightbox--content-container "  style="overflow: hidden; min-height: 665px;">
+        {{{content}}}
+      </div>
+    </div>
+  </div>
+</script>
+
+<script id="r-iframe" type="text/x-handlebars-template">
+  <iframe id="{{id}}" src="{{url}}" style="height: 550px; width: 100%;"></iframe>
+</script>

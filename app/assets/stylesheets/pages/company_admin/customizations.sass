@@ -1,0 +1,21 @@
+#company_admin_customizations-show, #company_admin_customizations-update
+  .color-picker-form
+    label
+      display: inline-block
+  .header_logo label, .header_logo img, .uploader-image-thumbnail
+    display: block
+
+  #email
+    border: 1px solid gray
+
+    #email-toolbar
+      padding: 20px 15px
+      @include flex-display()
+      @include justify-content(space-between)
+
+      img
+        max-width: 80px
+
+    #email-body
+      padding: 15px
+      height: 195px

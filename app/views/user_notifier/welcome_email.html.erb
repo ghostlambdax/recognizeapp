@@ -1,0 +1,21 @@
+<h2 style="<%= mail_styles(:text, :h2, :title) %> margin-bottom: 10px;"><%= t('help.welcome_to_recognize') %></h2>
+
+<table style="<%= mail_styles(:table) %>">
+  <tr>
+    <td colspan="2">
+      <p style="<%= mail_styles(:text, :p) %>">
+        <% if @user.consider_as_contact? %>
+          <%= t('user_notifier.congrats_first_to_sign_up') %>
+        <% else %>
+          <%= t('recognize.description_end_user') %>
+        <% end %>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to t('dict.recognize_a_colleague'), new_recognition_url(network: @user.network), style: "#{mail_styles(:button)} text-transform: capitalize;" %>
+      <%= link_to t('user_edit.edit_profile'), user_url(@user, network: @user.network), style: "#{mail_styles(:button)} text-transform: capitalize; background: gray; border-color: gray;" %>
+    </td>
+  </tr>
+</table>

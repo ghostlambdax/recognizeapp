@@ -1,0 +1,10 @@
+#!/bin/bash
+EnvironmentType=${1}
+AWS_PROFILE=${2:-recognize}
+PemKey=${3:-~/.ec2/recognize_$EnvironmentType.pem}
+Command=${4:-'rails'}
+echo "Starting support shell for:"
+echo " -- $EnvironmentType [$AWS_PROFILE] $PemKey \"$Command\""
+echo "If you just wish to have a shell, run:"
+echo " -- nclouds/support-container.sh $EnvironmentType $AWS_PROFILE $PemKey"
+nclouds/support-container.sh $EnvironmentType $AWS_PROFILE $PemKey "$Command"

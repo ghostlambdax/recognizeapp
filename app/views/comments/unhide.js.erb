@@ -1,0 +1,17 @@
+(function(R, $, undefined) {
+  if ($("#<%= @comment.uniq_dom_id%>").length > 0){
+    // Used in recognition show
+    $("#<%= @comment.uniq_dom_id%>").replaceWith('<%= escape_javascript(render partial: @comment)%>')
+  }else {
+    // Used in comments datatable
+    <% id_prefix = params[:comment_id_prefix] %>
+    var $comment = $("<%= "##{id_prefix}#{@comment.id}"%>");
+    $comment.removeClass('hidden-comment');
+    <%
+      link_opts = { remote: true, method: :put, class: "hideLink" }
+      path_opts = params[:comment_id_prefix] ? {comment_id_prefix: params[:comment_id_prefix]} : {}
+      hide_link = link_to(t("dict.hide"), hide_recognition_comment_path(@recognition, @comment, path_opts), link_opts)
+    %>
+    $comment.find(".unhideLink").replaceWith('<%= escape_javascript(hide_link)%>');
+  }
+})(window.R, jQuery);

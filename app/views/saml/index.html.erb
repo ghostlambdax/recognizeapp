@@ -1,0 +1,35 @@
+<div class="flex-centered">
+  <section id="full_name-wrapper" class="well well-shadow user-session-content">
+    <h1 class="balance-text"><%= t("recognize.welcome_to_recognize") %></h1>
+    <h3 itemprop="headline" class="balance-text"><%= t("forms.one_last_thing") %></h3>
+
+    <div class="content"><div class="content-inner">
+      <div class="headline">
+        <h3><%= t("forms.please_tell_us_your_name") %></h3>
+      </div>
+      <%= form_for @user, url: complete_saml_index_path(network: @user.network), method: :put, html: {data: {errorwrapper: "#full_name-wrapper .form-error-wrapper"}}, remote: true do |f|%>
+        <%= hidden_field_tag "first_sso_login_for_user", @first_sso_login_for_user %>
+        <div class="form-error-wrapper"></div>
+        <div class="text-field-wrapper marginTop5">
+          <div class="inner">
+            <div class="form-wrapper">
+              <%= f.hidden_field :email, id: "full_name-hidden-email", class: "hidden-email" %>
+              <div class="name-field-wrapper">
+                <%= f.text_field :first_name, type: "text", placeholder: t("forms.first_name"), class: "field"%>
+              </div>
+              <div class="name-field-wrapper">
+                <%= f.text_field :last_name, type: "text", placeholder: t("forms.last_name"), class: "field"%>
+              </div>
+              <div class="consent marginTop10 marginBottom10">
+                <%=terms_consent_checkbox_with_label(f) %>
+              </div>
+              <%= button_tag t('dict.next'), id: "full_name_signup_next_btn", class: "button-highlight button left" %>
+            </div>
+          </div>
+        </div>
+      <% end%>
+
+    </div></div>
+  </section>
+</div>
+

@@ -1,0 +1,20 @@
+<h1>
+  <div style="float:left">Hi <%= current_user.first_name %></div> 
+  <div style="float:right;font-size:16px;margin-right:5px"><%= link_to "Logout", logout_path(entity_id: params[:entity_id]), id: "tab-config-logout-link", data: { turbolinks: false } %> </div>
+</h1>
+<p>
+  <div>
+    <h5>Configuring tab for <span id="channelName"></span> channel</h5>
+    <div>
+      <label for="tabName">Tab Name</label>
+      <%# disabled because I think MS doesn't let you edit tab name once created %>
+      <input id="tabName" name="tabName" type="text" value="<%= @tab_config.tab_name || 'Recognize' %>" <%= 'disabled' if @tab_config.entity_id.present? %> title="<%= I18n.t('ms_teams.tab_config.name_tooltip')%>">
+    </div>
+    <div>
+      <label for="tabChoice">
+        Page
+      </label>
+      <%= select_tag 'tabChoice', ms_teams_tab_choice_options, id: 'tabChoice', include_blank: "Select a team or all company"%>
+    </div>
+  </div>
+</p>

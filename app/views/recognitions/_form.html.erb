@@ -1,0 +1,20 @@
+<% 
+  # NOTE: the intention behind the show_form param
+  #       is a way to specify only one form to post from
+  #       as normally there would be a toggle for recognitions, nominations, and tasks
+  #       Now, you can say: ?show_form=recognition and it will only
+  #       show the recognition form without the link to any other way to post
+  recognition_only = params[:show_form] == 'recognition' 
+%>
+<%= render "recognitions/nomination_task_toggle" if @recognition.new_record? && !recognition_only %>
+
+<div id="recognition-send-form" <% if recognition_only %> class="marginTop15"<%end %>>
+  <% if @recognition.new_record? %>
+    <%= render partial: 'form_fullscreen' %>
+  <% else %>
+    <%= render partial: 'edit_form_fullscreen' %>
+  <% end %>
+
+  <%= render partial: 'badge_list', locals: {badge_set: sendable_recognition_badges } %>
+
+</div>

@@ -1,0 +1,176 @@
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Automated Work Service Anniversaries & Employee Birthday Rewards" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="An easy-to-use, automatic employee recognition program for birthday and anniversaries." />
+  <meta property="og:image" content="/assets/pages/home-mobile/stream.jpg" />
+<% end%>
+
+<% content_for :title, "Work Anniversary Recognition" %>
+<% content_for :description, "Off-the-shelf solution to the most common form of employee recognition. Give rewards and comment on anniversaries from easy-to-use apps." %>
+<% content_for :meta_keywords, "Employee Service Awards, Employee birthday rewards, staff anniversaries, employee anniversaries" %>
+
+<div class="banner">
+  <div class="inner">
+    <div>
+      <h1>Work Anniversary Program &amp; Employee Birthday Recognition</h1>
+      <p class="tagline">Start an all-star program with automatic <%= link_to "rewards", rewards_path %> and a social feed of work anniversaries.<br>
+        Configurable, enterprise solution for the most common form of employee recognition.</p>
+    </div>
+    <div class="buttons">
+      <%= schedule_demo_link css_classes: 'button button-large' %>
+
+    </div>
+  </div>
+
+  <%= lazy_image_tag "pages/home-anniversaries/badges.png", alt: "All the work anniversary graphics for a birthday or anniversary" %>
+</div>
+
+<div class=" padding30">
+
+    <div class="steps-wrapper">
+      <div class="text-center marginBottom30">
+        <h2>Three Easy Steps</h2>
+      </div>
+
+      <ul class="anniversary-steps">
+        <li>
+          <%= lazy_image_tag "pages/home-anniversaries/icon-address.png", alt: "Birthday icon" %>
+          <p>Import your staff’s start dates & birthdays with Office 365, sFTP, spreadsheet, or manually.</p>
+        </li>
+        <li>
+          <%= lazy_image_tag "pages/home-anniversaries/icon-birthday.png", alt: "Address icon" %>
+          <p>Choose which work anniversaries to activate: one week to sixty years. Add personalized messages and images to each event.</p>
+        </li>
+        <li>
+          <%= lazy_image_tag "pages/home-anniversaries/icon-glass.png", alt: "Rewards icon" %>
+          <p>Choose rewards staff can redeem with the points they earn, such as gift cards (Visa, Amazon, Starbucks) or company items (Paid Time Off, Sweatshirt).</p>
+        </li>
+      </ul>
+    </div>
+
+
+
+<!--    <div class="plan__price">-->
+<!--      <span class="plan__price__starting">Starting at</span>-->
+<!--      <span class="plan__price__price"><span class="plan_price_value">$390</span><sup class="plan__price__decimals_currency"><span class="plan__price__decimals"></span><span class="plan__price__currency">(USD)</span></sup></span>-->
+<!--      <span class="plan__price__duration">/year</span>-->
+<!--      <span class="plan__price__risk">Risk-free for 60 days.</span>-->
+<!--      <hr class="hr">-->
+<!--      <ul class="check-list">-->
+<!--        <li class="balance-text" style="">400+ international gift cards</li>-->
+<!--        <li class="balance-text" style="">Add your own rewards</li>-->
+<!--        <li class="balance-text" style="">Individual or company-wide privacy for birthday or anniversaries</li>-->
+<!--        <li class="balance-text" style="">Inside Outlook, Office 365, Sharepoint, TVs, SMS, Workplace by Facebook, Okta &amp; many others</li>-->
+<!--        <li class="balance-text" style="">Automatic notifications for managers or specific roles</li>-->
+<!--        <li class="balance-text" style="">Customizable emails &amp; web app</li>-->
+<!--        <li class="balance-text" style="">Secure &amp; scalable. USA-based company</li>-->
+<!--      </ul>-->
+<!--    </div>-->
+
+</div>
+
+<div id="points">
+  <section id="stream">
+    <div class="inner">
+      <div class="row-fluid flex-centered">
+        <div class="span5">
+          <h2 class="balance-text">Employee service program visible to everyone</h2>
+          <p class="tagline balance-text">The Recognize platform is social or private for work anniversaries. Whenever someone has a work anniversary, the whole company can see in the Recognize stream, which you can display in your intranet or a tv in your lobby. Staff can also choose to have their events private where they still get points but only they can see it.</p>
+
+          <p>Staff can also view, comment, or like the work anniversaries from the <%= link_to "Recognize mobile app", mobile_path %>, Workplace by Facebook, Outlook, and more.</p>
+        </div>
+        <div class="span7">
+          <%= lazy_image_tag "pages/home-mobile/stream.jpg", alt: "Viewing the work years of service awards in an app that allows people to comment or like the recognitions." %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="integrations">
+    <div class="inner">
+      <div class="row-fluid">
+        <div class="span4">
+          <%= lazy_image_tag "pages/home-anniversaries/fb-workplace-logo.png", alt: "Workplace by Facebook logo" %>
+          <h2 class="balance-text">
+            Work anniversary program in <%= link_to "Workplace by Facebook", fb_workplace_path %>
+          </h2>
+          <p class="tagline balance-text">Recognize provides the entire work anniversary program within Workplace by Facebook. Staff receive private messages in Workplace Chat when it is their special day. It will show the message you have created. Plus, it provides them a way to redeem rewards inside Workplace. Managers are also notified in Workplace of their direct reports work anniversary or birthday. There are plenty of ways to share the events on Workplace.</p>
+        </div>
+        <div class="span4">
+          <%= lazy_image_tag "pages/home-anniversaries/mobile-icon.png", alt: "Mobile smart phone icon" %>
+          <h2 class="balance-text">Work anniversary program in mobile</h2>
+          <p class="tagline balance-text">Download the well designed <%= link_to "mobile app", mobile_path %> from Recognize. Staff receive work anniversary from the mobile app on their special day. Your staff can access their reward redemptions from the Recognize mobile app. View colleague's public anniversaries or birthday events to comment or like. For users that don't download the Recognize mobile app, companies can set up SMS notifications and utilize the mobile web app.</p>
+        </div>
+        <div class="span4">
+          <%= lazy_image_tag "pages/home-anniversaries/office365-logo.png", alt: "Office 365 logo" %>
+
+          <h2 class="balance-text">Work anniversary program in <%= link_to "Office 365", office365_path %></h2>
+          <p class="tagline balance-text">Utilize user sync, SSO, Sharepoint,  <%= link_to "Yammer", extension_path %>, and  <%= link_to "Outlook", marketing_outlook_path %> to create a highly visible work anniversary program. Recognize is the best employee recognition and rewards program in Office 365 with a number of different connections. Staff love accessing rewards in Outlook. They can comment or like the work anniversaries from a Sharepoint page or the Yammer feed. Recognize makes the anniversary program top of mind across various tools. Set up for IT takes 1/2 day or less.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="user_sync">
+    <div class="inner">
+      <div class="row-fluid flex-centered">
+        <div class="span5">
+          <h2 class="balance-text">Import employee anniversary dates with Office 365 or sFTP</h2>
+          <p class="tagline balance-text">Recognize has user sync abilities with Office 365, SSO, and Yammer. You can always do an import and update via spreadsheets.</p>
+        </div>
+        <div class="span7">
+          <%= lazy_image_tag "pages/home-anniversaries/sync.png", alt: "Enable user sync with a few clicks with Office 365 to capture work anniversary dates." %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="setup">
+    <div class="inner">
+      <div class="row-fluid flex-centered">
+        <div class="span5">
+          <h2 class="balance-text">Takes five minutes to set up the Recognize employee service program</h2>
+          <p class="tagline balance-text">The admin completes a one-time setup to insert which years to celebrate, what the message will be, and how much each event is worth in a systematic way. Plus, upload a graphic or gif to symbolize each event.</p>
+        </div>
+        <div class="span7">
+          <%= lazy_image_tag "pages/home-anniversaries/setup.png", alt: "Shows easy setup choices, such as enabling specific events like first year of service recognition.", class: "shadow" %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="birthday">
+    <div class="inner">
+      <div class="row-fluid flex-centered">
+        <div class="span5">
+          <h2 class="balance-text">Automatic employee celebration in your work anniversary program</h2>
+          <p class="tagline balance-text">Your staff can update their Recognize profile to include their birthday and start date for recognition. Each employee can choose their privacy settings for anniversaries or birthday. At the start of the program, admins can choose to make all anniversaries or birthdays private. It all depends on you.</p>
+        </div>
+        <div class="span7">
+          <%= lazy_image_tag "pages/home-anniversaries/birthdays.png", alt: "Showing automatic birthday recognition." %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="inner">
+      <div class="row-fluid flex-centered">
+        <div class="span5">
+          <h2 class="balance-text">Manager Service Manager Reporting</h2>
+          <p class="tagline balance-text">Managers have a calendar list view of all their direct report anniversaries and birthdays. Admins can see the entire company.</p>
+        </div>
+        <div class="span7">
+          <div class="youtube-video" data-id="te5En1ocSvU"></div><br>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <%= render partial: "marketing_cta_banner" %>
+</div>
+
+<%= render partial: 'home/footer' %>
+<%= render partial: "layouts/youtube_load" %>

@@ -1,0 +1,21 @@
+<% if @company.yammer_stats_synced_at.present?  && @group_stats.present?%>
+    <table class="leaderboard yammer-groups">
+      <tr class="header-row">
+        <td></td>
+        <td></td>
+        <td><%= t("dict.likes") %></td>
+      </tr>
+      <% @group_stats[0..19].each do |stat| %>
+          <tr class="leaderboard-item">
+            <td class="rank"><%= stat.rank %>.</td>
+            <td class="">
+              <%= stat.group_name %>
+            </td>
+            <td class="points"><%= stat.like_count %></td>
+          </tr>
+      <%end%>
+    </table>
+<%else%>
+    <h4><%= t('reports.no_data') %></h4>
+<%end%>
+

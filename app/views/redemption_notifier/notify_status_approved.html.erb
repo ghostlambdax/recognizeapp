@@ -1,0 +1,41 @@
+<h2 style="<%= mail_styles(:h2, :text, :title) %>"><%=t("rewards.redemption_was_approved", reward_title: @reward.title).concat(".")%></h2><br/>
+
+<p style="<%= mail_styles(:h3, :text, :title) %>">
+  <% unless @redemption.auto_approved? %>
+    <%= t("rewards.redemption_approved_body_approver", reward_title: @reward.title, full_name: @approver.full_name) %>
+    <br><br>
+  <% end%>
+  <% unless @reward.provider_reward? %>
+      <% if  @redemption.additional_instructions.present? %>
+          <%= render partial: 'additional_instructions', locals: { reward: @reward, redemption: @redemption } %>
+      <% else %>
+        <p style="<%= mail_styles(:text, :p) %>"><%= t("rewards.redemption_approved_body_contact_manager", email: @approver.email) %></p>
+    <% end %>
+  <% end %>
+
+</p>
+
+<% if @reward.provider_reward? %>
+
+  <% claim_presenter = @redemption.claim_presenter %>
+
+  <% if claim_presenter.claim_infos.present? %>
+    <h3 style="<%= mail_styles(:h3, :text) %> margin-top: 0">
+      <% claim_presenter.claim_infos.each do |claim_info| %>
+        <div><%= claim_info.html_safe %></div>
+      <% end %>
+    </h3>
+  <% end %>
+
+  <% if claim_presenter.instructions.present? %>
+    <div style="border: 1px dotted #808080; padding: 10px;">
+      <%= claim_presenter.instructions.html_safe %>
+    </div>
+  <% else %>
+    <%= mail_styles(:hr) %>
+  <% end %>
+
+  <div style="<%= mail_styles(:text) %> margin-top: 20px">
+    <%= t('rewards.how_to_redeem_later', link: user_url(@user, network: @user.network, anchor: 'rewards')).html_safe %>
+  </div>
+<% end %>

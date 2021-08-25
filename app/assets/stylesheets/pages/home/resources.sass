@@ -1,0 +1,87 @@
+#home-resources
+  #intro
+    background-image: url(/assets/patterns/footer_lodyas.png)
+
+    .resource-list li a
+      padding-top: 10px
+      padding-bottom: 10px
+
+
+  .resource-list
+    margin: 0 20px 20px 0
+
+    &.wrapped-list
+      display: flex
+      flex-direction: column
+      height: 277px
+      flex-wrap: wrap
+
+    &:empty
+      display: none
+
+    li
+      border-bottom: 1px solid #B2B2B2
+
+      &:last-child
+        border-bottom: 0
+
+      a
+        display: block
+        padding: 17px 20px
+        font-size: 16px
+        @include transitionTransform(linear, .3s)
+        @include transform(translate(0, 0))
+
+      a,
+      a:hover
+        color: #fff !important
+
+      a:hover
+        @include transform(translate(3px, 0))
+
+  #topics
+    & > section
+      padding: 3em
+
+      h2
+        color: white
+
+      .inner
+        width: 800px
+        max-width: 100%
+        padding: 45px 0
+        margin: auto
+
+
+    section
+      @include radial-gradient(at 31% 127%, #AFC2C9 48%, #778E98 100%)
+
+      .resource-list li
+        background: #5c747d
+
+    section:nth-child(3n)
+      @include radial-gradient(at 50% 100%, #D2E8D9 54%, #889B98 100%)
+
+      .resource-list li
+        background: #81a6a0
+
+    section:nth-child(5n)
+      @include radial-gradient(at 187% 100%, #f7f0ed 47%, #aea09e 100%)
+
+      .resource-list li
+        background: #a69794
+
+    section:nth-child(4n)
+      @include radial-gradient(at 50% 100%, #C6CBD4 55%, #90979D 100%)
+
+      .resource-list li
+        background: rgba(119, 142, 152, .7)
+
+@media (max-width: $tablet)
+  #home-resources
+    #topics
+      .inner > .flex,
+      .wrapped-list
+        flex-direction: column
+        height: 100%
+

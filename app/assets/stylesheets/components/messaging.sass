@@ -1,0 +1,114 @@
+.errors
+  background: $errorBg
+  display: inline-block
+  padding: 10px
+  color: $errorTextColor
+
+.form-errors:not(:empty),
+.payment-errors:not(:empty)
+  padding: 18px 15px 18px 50px
+  background: $errorBg image_url('icons/flash.png') 15px center no-repeat
+  border: 1px solid lighten($headerBg, 10%)
+  background-size: 21px
+  @include messageBox()
+
+.payment-errors,
+.form-errors
+  color: $formTextColor
+
+  h4,
+  .header,
+  li,
+  p
+    color: $formTextColor
+
+.form-errors h4,
+.form-erros .header
+  margin: 0 0 3px 0
+  line-height: 20px
+
+.form-errors ul,
+.form-errors ol
+  margin: 0
+  padding: 0
+
+.form-errors li
+  list-style: none
+  margin: 0
+  padding: 5px 0
+  font-size: 14px
+  color: white
+  list-style: disc
+  list-style-position: inside
+
+form .error ol
+  margin: 0
+  padding: 0
+  list-style: none
+
+form label.error
+  color: $warningBg
+  font-weight: 600
+
+form .error
+  margin: 5px 0
+  @include transition(.3s opacity ease-in-out)
+  opacity: 1
+
+  &.not-visible
+    opacity: 0
+
+
+  h5
+    @include errors()
+    background: darken($lightRed, 5%)
+    margin: 0
+
+.list-empty-warning,
+.subtle-text
+  color: $gray !important
+
+.list-empty-warning
+  margin: 15px 0 30px
+  font-size: 17px
+  font-weight: 300
+
+@media (max-width: 480px)
+  .form-errors
+    background-color: $errorMobileBg
+
+.message-info
+  background: $messageBgColor image_url('icons/announcement.png') 15px center no-repeat
+  padding: 9px 10px 9px 47px
+  background-size: 22px
+  @include messageBox()
+  color: text-color($headerBg)
+
+.message-info:empty
+  visibility: hidden
+
+.message-info h4,
+.message-info p,
+.message-info li
+  color: #fff
+
+  &:last-child,
+  &:only-child
+    margin-bottom: 0
+
+.message-info p:last-child
+  margin-bottom: 0
+
+
+.message-important
+  @include linear-gradient(to left, #78D19A, #4FCE7B)
+  border-radius: 8px
+  padding: 5px
+  color: #fff
+
+  h1, h2, h3, h4, h5, p, li
+    color: #fff
+
+  p:last-child
+    margin-bottom: 0
+    padding-bottom: 0

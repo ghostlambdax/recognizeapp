@@ -1,0 +1,11 @@
+(function() {
+  <% if @campaign.errors[:unarchive].empty? %>
+    $("#campaign-<%=@campaign.id %>").fadeOut();
+  <% else %>
+    Swal.fire({
+      title: 'Unarchive action failed',
+      text: '<%= @campaign.errors[:unarchive].first %>',
+      icon: 'error'
+    });
+  <% end %>
+})();

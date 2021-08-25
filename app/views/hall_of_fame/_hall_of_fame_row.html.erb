@@ -1,0 +1,25 @@
+<% if time_period_groups.empty? && params[:start_date].blank? %>
+  <li class="time-period">
+    <h5 class="time-period-title">
+      <%= t("hall_of_fame.no_winners") %>
+    </h5>
+    <ul class="users clearfix"></ul>
+  </li>
+<% end %>
+
+<% time_period_groups.each do |group| %>
+  <%= render "winning_group" , group: group %>
+<% end %>
+
+<% if time_period_groups.present? && time_period_groups.length == HallOfFame::PER_ROW %>
+  <li class="time-period see-more-wrapper">
+    <div class="flex">
+      <% 
+        opts = { start_date: time_period_groups.last.report.from, interval: params[:interval] }
+        opts["#{entity}_id"] = entity_id # team or badge
+        url = request.params.merge(opts) 
+      %>
+      <%= button_tag t("hall_of_fame.see_more"), class: "displayNone see-more-button" , data: {endpoint: url_for(url), "show-processing": true} %>
+    </div>
+  </li>
+<% end %>

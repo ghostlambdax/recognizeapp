@@ -1,0 +1,109 @@
+<% if current_user.subscribed_account? %>
+  <div class="marginVertical20">
+    <div class="centered">
+      <h1 class="balance-text"><%= current_user.company.custom_labels.welcome_page_tagline %></h1>
+      <p class="tagline marginBottom40 balance-text"><%= current_user.company.custom_labels.welcome_page_description %></p>
+      <%= render partial: "welcome/primary_actions" %>
+      <div id="youtube-video" class="youtube-video" data-id="<%= @youtube_id %>"></div>
+      <%= render partial: "layouts/youtube_load" %>
+    </div>
+    <div class="why-recognize">
+      <div class="row-fluid">
+        <div class="span7">
+          <%= image_tag "pages/home-why/point4.png", alt: "An office building with a rising sun behind it." %>
+        </div>
+        <div class="span4 well">
+          <h2><%= t("welcome.download_integration_title") %></h2>
+          <p><%= t("welcome.we_get_it_html") %></p>
+          <ul class="blue-links">
+            <li>
+              <a href="https://store.office.com/en-001/app.aspx?assetid=WA104380613" target="_blank">Outlook</a>
+            </li>
+            <li>
+              <%= link_to "Chrome", chrome_extension_url, target: "_blank" %>
+            </li>
+            <li>
+              <%= link_to "Yammer", extension_path, target: "_blank" %>
+            </li>
+            <li>
+              <%= link_to t("dict.mobile"), mobile_path, target: "_blank" %>
+            </li>
+            <li>
+              <%= link_to "Office 365", office365_path, target: "_blank" %>
+            </li>
+            <li>
+              <%= link_to "Azure", "https://azuremarketplace.microsoft.com/en-in/marketplace/apps/aad.recognize", target: "_blank" %>
+            </li>
+            <li>
+              <%= link_to "Slack", slack_path, target: "_blank" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div id="experimental-group-1" class="displayNone">
+    <%= render partial: "home/generate_strategy" %>
+  </div>
+
+  <div id="start" class="slideable <% if @step != "count" && params[:upgrade].blank? %>current<% end %>">
+    <div id="control-group">
+      <div class="top">
+        <h1 class="balance-text"><%= integration_title %></h1>
+        <p class="tagline balance-text"><%= integration_subtitle %></p>
+
+        <% if current_user.company.subscription.present? %>
+          <%= link_to t("dict.upgrade"), upgrade_path, class: "button button-large button-primary" %>
+        <% else %>
+          <span data-turbolinks="false"><%= link_to t('links.contact_us'), contact_sales_path, class: "button button-chromeless button-large contact-us-link" %></span>
+
+          <div class="pulser-wrapper marginBottom30">
+            <div class="pulser" title="<%= t('welcome.contact_us_for_package_deals_discounts') %>"></div>
+            <%= link_to t("dict.upgrade"), "javascript://", class: "button button-large button-primary slideable-trigger", data: {
+                                   from: "#start",
+                                   to: "#user-count"
+                                 } %>
+          </div>
+        <% end %>
+        <br>
+
+        <% if @integration == "yammer" %>
+          <%= render partial: "welcome/yammer_start" %>
+        <% end %>
+
+        <div id="youtube-video" class="youtube-video" data-id="<%= @youtube_id %>"></div>
+        <%= render partial: "layouts/youtube_load" %>
+      </div>
+
+      <section class="bottom-action">
+        <div class="inner">
+          <h3><%= t('welcome.test_drive') %></h3>
+          <div class="marginBottom20">
+            <%= link_to t('welcome.invite_colleagues'), invite_users_path, class: "button" %>
+            <%= link_to t('welcome.send_test_recognition'), new_recognition_path, class: "button" %>
+          </div>
+          <div  data-turbolinks="false">
+            <h3>Resources</h3>
+            <%= link_to t('welcome.resources'), resources_path, id: 'home-resources-page-bottom-link' %>
+            <%= link_to t('dict.mobile'), mobile_path %>
+            <%= link_to "Yammer", extension_path %>
+            <%= link_to t('rewards.rewards'), rewards_path %>
+            <%= link_to t('dict.nominations'), employee_nominations_path %>
+            <%= link_to "Office 365 & Sharepoint", office365_path %>
+            <%= link_to t('dict.awards'), awards_path %>
+            <%= link_to t('dict.infographic'), distributed_workforce_infographic_path %>
+            <%= link_to t('dict.pricing'), pricing_path %>
+            <%= link_to t('dict.case_study'), case_study_path %>
+            <span><%= link_to t('dict.contact'), contact_sales_path %></span>
+          </div>
+        </div>
+      </section>
+
+      <%= render partial: "welcome/why_how" %>
+    </div>
+  </div>
+
+  <%= render partial: "welcome/steps" %>
+
+<% end %>

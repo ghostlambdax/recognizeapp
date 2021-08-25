@@ -1,0 +1,133 @@
+<%= render :partial => 'layouts/head' %>
+
+<body id=<%= page_id %>
+                  class="<%= yield :page_body_class %><%= body_classes %>"
+        <% if current_user %> data-loggedin=true data-name="<%= current_user.company.domain %>" data-uid="<%= current_user.id %>"
+        data-email="<%= current_user.email %>" data-slashdate-format="<%= localized_js_slashdate_format %>"
+        <% end %> data-script="<%= js_class %>"
+        data-parent-name="<%= current_user.company.parent_company.domain if current_user and current_user.company.child_company? %>"
+  <%= yield :body_attributes %> <% if use_marketing_layout? %>itemscope itemtype="http://schema.org/Organization" <% end %>>
+
+  <!--[if lt IE 9]>
+  <div id="ie">
+  <![endif]-->
+
+  <%= include_gon %>
+
+  <a href="#wrapper-outer" class="offscreen"><%= _('Skip to main content') %></a>
+
+  <% if content_for? :drawer %>
+    <div id="view-drawer-wrapper" role="toolbar">
+      <div class="inner">
+        <header><h3><%= yield :drawer_title %></h3> <span class="drawer-trigger">✕</span></header>
+        <%= yield :drawer %>
+      </div>
+    </div>
+  <% end %>
+
+  <div id="view-main-wrapper">
+  <% if due_invoice.present? && !is_home? %>
+    <%= render partial: 'layouts/invoice_due' %>
+  <% end %>
+  <% if show_header? %>
+    <% if @use_landing_page_menu %>
+      <%= render :partial => "layouts/header_landing_page" %>
+    <% else %>
+      <% if use_marketing_layout? %>
+        <%= render :partial => "layouts/header_marketing" unless outlook_viewer? %>
+      <% else %>
+        <%= render partial: "layouts/header" %>
+      <% end %>
+    <% end %>
+  <% elsif ms_teams_configurable_tab? %>
+    <div class="flex" style="display:flex;justify-content:space-between;margin-top:5px">
+      <% unless ms_teams_on_tab_choice_page? %>
+      <div style="width:15%;margin-left:5px">
+        <%= link_to t('dict.back'), ms_teams_entity.tab_choice(include_entity_id: true), class: "button button-small" %>
+      </div>
+      <% end %>
+      <div style="width:20%;min-width:200px">
+        <%= link_to "Open Recognize", "https://recognizeapp.com", class: "button new-window", target: :blank %> |
+        <%= link_to "Logout", logout_path, id: "menu-logout", data: {turbolinks: false} %>
+      </div>
+      </div>
+    <% end %>
+
+    <% if current_user.present? %>
+        <script type="text/javascript">
+            (function () {
+              'use strict';
+              window.R = window.R || {};
+            })();
+        </script>
+    <% end %>
+
+    <%= render partial: "layouts/admin_warning" %>
+    <% if show_upgrade_banner? %>
+      <%= render partial: "layouts/upgrade_banner" %>
+    <% end %>
+
+
+    <div id="wrapper-outer" class="wrapper-outer">
+      <div class="wrapper" role="main">
+        <%= content_for?(:content) ? yield(:content) : yield %>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!--[if lt IE 9]>
+  </div>
+  <![endif]-->
+
+  <%= render partial: "layouts/desktop_notifications" if load_push_notification_code? %>
+
+  <% if true || Rails.env.production? || !Rails.configuration.local_config.has_key?("skip_analytics") %>
+
+    <% if show_help_widget? && !use_marketing_layout?%>
+<!--Start of recognize Zendesk Widget script-->
+      <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=7975af0e-97d5-4159-ac63-adfffc40861b" async onload="setLocale()"> </script>
+
+      <script>
+        // zendesk widget tries to track if it has already been loaded with the variable `zEACLoaded`
+        // (probably to prevent from accidentally including more than once on the same page).
+        // When the page is refreshed, the value for the variable is reset(to undefined) and the widget loads.
+        // However turbolinks visit doesn't reset the value for the variable therby making the widget think
+        // its already loaded when its not. The following code fixes the issue and displays the widget after
+        // turbolinks visit as well.
+        window.addEventListener('turbolinks:before-render', function () {
+          window.zEACLoaded = undefined;
+        });
+
+        // sets locale
+        function setLocale(){
+          var locale = "<%= current_user.present? ? current_user.locale : 'en' %>"
+          zE('webWidget', 'setLocale', locale);
+        }
+      </script>
+<!-- End of recognize Zendesk Widget script -->
+
+    <% end %>
+
+  <%= render partial: 'layouts/analytics' %>
+
+
+
+  <% end %>
+
+  <% if (page_id == "signups-welcome") %>
+
+    <%= stylesheet_link_tag "application", media: "all" %>
+
+  <% end %>
+
+  <%= render partial: "layouts/disable_animations" if Rails.env.test? %>
+
+  <%= render partial: "layouts/cookie_policy" if show_cookie?  %>
+
+  <%= render partial: 'layouts/icons' if @page_has_icons.present? && @page_has_icons == true %>
+</body>
+</html>
+
+

@@ -1,0 +1,48 @@
+<% 
+  feature_notice_version = "v6.79"
+  show_feature_notice = true
+  show_feature_notice &&= (current_user.yammer_id.present? || current_user.auth_with_yammer?) # delete when notice is no longer specific to yammer
+  show_feature_notice &&= !current_user.has_read_feature?(feature_notice_version)
+%>
+
+<% if show_feature_notice %>
+  <div id="notice" class="hidden widget-box marginBottom20">
+    <a href="javascript://" id="notice-close" class="close-icon"></a>
+
+    <h3><%= t("layouts.notice.yammer_title") %></h3>
+
+    <div class="inner clearfix" data-turbolinks="false">
+      <p>
+        <span id="notice-message"></span>
+        <%= link_to t("dict.learn_more"), office365_path, class: "button button-primary" %>
+      </p>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+  
+    var noticeElement = document.getElementById("notice");
+
+    if (!!noticeElement) {
+      $(noticeElement).removeClass("hidden");
+    }
+
+    function sendNoticeRead() {
+      $.ajax({
+        type: "put",
+        url: '<%= has_read_new_feature_user_path(current_user)%>',
+        data: {'feature' : '<%= feature_notice_version %>'}
+      });
+    }
+
+    $document = window.$document || $(document);
+
+    $document.on(R.touchEvent, "#notice-close", function(e) {
+      e.preventDefault();
+
+      $("#notice").fadeOut("fast");
+
+      sendNoticeRead();
+    });
+  </script>
+<% end %>

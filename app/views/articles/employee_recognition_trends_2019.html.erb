@@ -1,0 +1,32 @@
+<% content_for :title, "2019 Trends in Corporate Recognition" %>
+<% content_for :description, "See Recognize's predictions for 2019 employee rewards, while we also look back at 2018 employee recognition trends." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="2019 Trends in Employee Recognition & Employee Rewards | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="See Recognize's predictions for 2019 corporate employee recognition, while we also look back at 2018 trends." />
+  <meta property="og:image" content="/assets/illustrations/recognize.jpg" />
+  <link rel="amphtml" href="<%= employee_recognition_trends_2019_url format: :amp %>">
+<% end%>
+
+
+<% content_for :article_title do %>2019 Trends in Corporate Recognition and Employee Rewards<% end %>
+<% content_for :article_description do %>
+  <%= lazy_image_tag "pages/article-2019-recognition-trends/image-3.jpg", alt: "employee recognition trends in 2019.", class: "marginBottom30 marginRight30 left", itemprop: "image" %>
+
+  <p class="balance-text tagline">In an increasingly demanding and stressful work culture, employees expect some type of recognition for their hard work and achievements. Companies that fail to recognize their workers through some type of acknowledgement and/or reward end-up damaging employee morale, productivity, and retention (<a href="https://www.business2community.com/human-resources/10-employee-recognition-stats-cant-ignore-01878458" target="_blank">Heller, 2017</a>). But <strong>companies with robust employee recognition programs are known to have 31% lower voluntary turnover</strong> than those that don’t (Anderson, 2018).</p>
+  <div class="clear"></div>
+<% end %>
+
+<% tags = ["2018 Trends", "2019 Trends", "Corporate Recognition Helps", "Final Thoughts"] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "2019_recognition_trends_body", locals: {tags: tags} %>
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

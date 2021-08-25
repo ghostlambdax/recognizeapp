@@ -1,0 +1,54 @@
+<h1 style="<%= mail_styles(:h1, :title, :text) %>">
+  <%= @heading %>
+</h1>
+
+<div id="metadata" style="background-color: #fafad2; padding: 5px 20px">
+  <p style="<%= mail_styles(:text) %>">Total email count: <%= @report.total_email_count %></p>
+  <p style="<%= mail_styles(:text) %>">
+    <%= company_count_info_for_dry_run(@report.company_count, @report.results.count) %>
+  </p>
+  <p style="<%= mail_styles(:text) %>">Reference time: <%= format_dry_run_time(@reference_time) %></p>
+  <% if @filtered_company_names %>
+    <p style="<%= mail_styles(:text) %>">Filtered Companies (input filter): <%= @filtered_company_names %></p>
+  <% end %>
+  <% if @report.total_error_count.positive? %>
+    <p style="<%= mail_styles(:text) %>">
+      <strong>Errors encountered</strong>: <%= @report.total_error_count %>
+      (<%= @report.unique_error_count %> unique,
+      <%= @report.erroneous_company_count %> <%= 'company'.pluralize(@report.erroneous_company_count) %> affected)
+    </p>
+  <% end %>
+</div>
+
+<%= mail_styles(:hr) %>
+<br>
+
+<% if @report.company_count.positive? %>
+  <% if @report.global_errors.present? %>
+    <div id="global-errors" style="padding: 20px; margin-bottom: 20px; background-color: #ff000078;">
+      <h2 style="<%= mail_styles(:h2, :title, :text) %>">Global errors: (affecting all companies in report)</h2>
+      <ul style="margin-top: 0">
+        <% @report.global_errors.each do |error_str| %>
+          <li style="<%= mail_styles(:text) %> margin-bottom: 10px"><%= error_str %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% @report.results_excluding_global_errors.each do |company_report| %>
+    <%= render 'company_dry_run_report', company: company_report.company, emails: company_report.emails, errors: company_report.errors %>
+    <br>
+  <% end %>
+  <% if @report.companies_with_empty_results.present? %>
+    <% if @report.results.present? %>
+      <br><%= mail_styles(:hr) %><br>
+    <% end %>
+    <div class="empty-result-companies">
+      <h2 style="<%= mail_styles(:h2, :title, :text) %>">Companies with empty results</h2>
+      <% @report.companies_with_empty_results.each do |company| %>
+        <li style="<%= mail_styles(:text) %> margin-bottom: 10px"><%= company.name %></li>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p style="<%= mail_styles(:p, :text) %>">No company would be eligible for the run.</p>
+<% end %>

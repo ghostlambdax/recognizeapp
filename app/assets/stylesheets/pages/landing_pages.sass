@@ -1,0 +1,543 @@
+body
+  &.logout
+    @media (max-width: $tablet)
+      padding-top: 0 !important
+
+  &.landing_pages
+    $title-mobile-font-size: 17px
+    $title-mobile-line-height: 24px
+    $subtitle-mobile-font-size: 14px
+    $subtitle-mobile-line-height: 22px
+
+    img
+      height: auto
+      max-width: 100%
+
+    @media (min-width: $phone + 1) and (max-width: $desktop-medium)
+      .wrapper-section-3,
+      .wrapper-section-5,
+      .wrapper-section-7,
+      .wrapper-section-8,
+      #navbar
+        padding: 0 15px
+
+
+    #view-main-wrapper
+      padding-top: 0
+      padding-bottom: 0
+
+    .block-content
+      max-width: 1080px
+      padding-top: 3%
+      padding-bottom: 3%
+      @media (max-width: $tablet)
+        max-width: 680px
+      @media (max-width: $phone)
+        max-width: 300px
+        padding-top: 5%
+        padding-bottom: 5%
+
+    #navbar
+      position: static
+      margin-bottom: 0
+
+      &.navbar
+        min-height: 80px
+
+      #logo-with-name
+        width: 200px
+        @media (max-width: $phone)
+          width: 126px
+
+      .phone-number
+        color: white
+        font-size: 18px
+        margin-top: 10px
+        @media (max-width: $phone)
+          font-size: 14px
+          margin-top: 6px
+
+      .block-content
+        padding: 18px 0
+        @media (max-width: $phone)
+          padding-top: 30px
+
+    .wrapper-outer
+      padding-right: 0 !important
+      padding-left: 0 !important
+
+    .wrapper
+      margin: 0
+
+    .title
+      font-size: 34px
+      font-weight: normal
+      line-height: 45px
+      color: rgb(51, 51, 51)
+      @media (max-width: $tablet)
+        font-size: 24px
+        line-height: 32px
+      @media (max-width: $phone)
+        font-size: $title-mobile-font-size
+        line-height: $title-mobile-line-height
+
+    .sub-title
+      font-size: 20px
+      line-height: 32px
+      color: rgb(99, 99, 99)
+      @media (max-width: $tablet)
+        font-size: 16px
+        line-height: 22px
+      @media (max-width: $phone)
+        font-size: $subtitle-mobile-font-size
+        line-height: $subtitle-mobile-line-height
+
+    .blue-text
+      color: rgb(21, 104, 166)
+
+    .button-landing-page
+      display: inline-block
+      border-radius: 3px
+      font-size: 18px
+      margin: 20px 30px
+      padding: 15px
+      min-width: 350px
+      text-align: center
+      @media (max-width: $phone)
+        padding: 13px
+        min-width: 275px
+        width: 100%
+        font-size: 16px
+        margin: 0
+
+      &.button-white
+        color: #1568A6
+        background: #fff
+
+      &.green-shadowed
+        background: #8cb615
+        color: #fff
+        @media (min-width: $phone + 1)
+          box-shadow: 0 5px 10px -2px #888888
+
+      &.button-transparent
+        border-style: solid
+        border-color: #fff
+        border-width: 2px
+        background: transparent
+        color: #fff
+
+    .marginTop100
+      margin-top: 100px
+
+
+    .wrapper-section-1
+      background: url(/assets/chrome/background.jpg)
+      @media (max-width: $phone)
+        background: white
+        @include background(linear-gradient(#fff, #F3F4F8))
+
+      .wrapper-overlay
+        @media (min-width: $phone + 1)
+          background: white
+          background: rgba(255,255,255,0.43)
+
+      .block-content
+        padding-left: 5%
+        padding-right: 5%
+        @media (max-width: $phone)
+          padding-left: 0
+          padding-right: 0
+
+      .title
+        &:first-child
+          margin-top: 15px
+          @media (max-width: $tablet)
+            margin-top: 10px
+          @media (max-width: $phone)
+            margin-top: 0
+        &.title-cond
+          margin-top: 7px
+          @media (max-width: $phone)
+            font-size: $subtitle-mobile-font-size
+
+      .sub-title
+        margin-top: 26px
+        @media (max-width: $phone)
+          margin-top: 20px
+
+      .button-landing-page
+        margin-top: 30px
+        margin-bottom: 30px
+        @media (max-width: $phone)
+          margin-bottom: 5px
+          margin-top: 20px
+
+      .image-wrapper
+        margin-top: 30px
+
+        .main-image
+          border-top-right-radius: 4px
+          border-top-left-radius: 4px
+          display: block
+
+    .wrapper-section-2
+      border-top: solid 3px #1568A6
+      border-bottom: solid 1px #f0f0f0
+      position: relative
+      margin-top: -320px
+      @media (max-width: $tablet - 1)
+        margin-top: 0px
+
+      .wrapper-overlay
+        background: white
+
+      .block-content
+        max-width: none
+        padding: 35px 0
+        @media (max-width: $desktop-small)
+          padding: 25px 0
+        @media (max-width: $phone)
+          padding: 15px 0
+
+      .customers
+        img
+          margin-right: 35px
+          @media (min-width: $desktop-small +1) and (max-width: $desktop-medium)
+            max-width: 150px
+            max-height: 40px
+          @media (min-width: $tablet + 1) and (max-width: $desktop-small)
+            margin-right: 30px
+            max-width: 120px
+            max-height: 30px
+          @media (max-width: $tablet)
+            max-width: 100px
+            max-height: 40px
+          @media (max-width: $phone)
+            max-width: 80px
+            max-height: 30px
+          &:last-child
+            margin-right: 0
+
+        .kaiser
+          position: relative
+          @media (max-width: $tablet)
+            bottom: 2px
+          @media (min-width: $tablet + 1)
+            bottom: 4px
+          @media (min-width: $desktop-medium + 1)
+            width: 152px
+            bottom: 0
+        .metrobank
+          @media (min-width: $tablet)
+            max-height: 22px
+          @media (min-width: $desktop-small + 1)
+            max-height: 35px
+          @media (min-width: $desktop-medium + 1)
+            width: 127px
+            max-height: none
+        .bbb
+          @media (max-width: $tablet - 1)
+            position: relative
+            top: 3px
+            margin-right: 0
+          @media (min-width: $tablet)
+            max-height: 35px
+          @media (min-width: $desktop-small)
+            max-height: 45px
+          @media (min-width: $desktop-medium + 1)
+            width: 96px
+            max-height: none
+        .campbells
+          position: relative
+          @media (max-width: $phone)
+            top: 4px
+          @media (max-width: $tablet)
+            top: 2px
+          @media (min-width: $desktop-small + 1)
+            top: 3px
+          @media (min-width: $desktop-medium + 1)
+            width: 169px
+            top: 0
+        .weatrust
+          @media (min-width: $desktop-medium + 1)
+            width: 189px
+        .sydney_edu
+          @media (min-width: $desktop-medium + 1)
+            width: 158px
+
+
+    .wrapper-section-3
+      position: relative
+
+      @media (min-width: $tablet)
+        .desc-block, .img-block
+          float: left
+          width: 48.7%
+          margin-left: 2.5%
+          &:first-child
+            margin-left: 0
+
+      @media (min-width: $desktop-small)
+        .desc-block
+          width: 57.5%
+        .img-block
+          width: 40%
+
+      .title
+        font-size: 30px
+        @media (max-width: $phone)
+          font-size: $title-mobile-font-size
+
+      .sub-title .wrapper
+        margin: 18px 100px
+        padding: 0px 20px
+
+      .inner-block
+        @extend .clearfix
+        &:nth-child(2)
+          margin-top: 50px
+          @media (max-width: $phone)
+            margin-top: 25px
+        &:last-child
+          margin-top: 100px
+          @media (max-width: $desktop-small)
+            margin-top: 50px
+          @media (max-width: $tablet)
+            margin-top: 0
+
+      .description
+        position: relative
+        margin-top: 20px
+        @media (min-width: $phone + 1)
+          padding-left: 35px
+          margin-bottom: 40px
+
+        &:before
+          @media (min-width: $phone + 1)
+            background-image: url(/assets/chrome/logo-72x72.png)
+            background-repeat: no-repeat
+            background-size: 28px 28px
+            content: ""
+            height: 28px
+            width: 28px
+            left: 0px
+            top: 2px
+            position: absolute
+
+
+        .title
+          font-size: 22px
+          line-height: 34px
+          font-weight: bold
+          display: inline-block
+          @media (max-width: $phone)
+            font-size: $title-mobile-font-size
+
+        .sub-title
+          font-size: 18px
+          line-height: 29px
+          @media (max-width: $phone)
+            font-size: $subtitle-mobile-font-size
+            line-height: $subtitle-mobile-line-height
+
+
+      .top-employees-teams
+        width: 571px
+
+      .service-anniversaries
+        box-shadow: 0 0 20px 2px #888888
+        width: 500px
+
+      .top-employees-teams,
+      .service-anniversaries
+        @media (max-width: $desktop-small)
+          margin-top: 10%
+
+      .wrapper-overlay
+        background: white
+
+
+    .wrapper-section-4,
+    .wrapper-section-6
+      background: #1568a6
+      background-image: url(/assets/chrome/simple-dashed.png)
+      background-repeat: repeat
+
+    .wrapper-section-4
+      @media (max-width: $phone)
+        background-image: none
+
+      .block-content
+        padding: 15px 0
+
+      .button-landing-page
+        margin: 15px 20px
+        @media (max-width: $phone)
+          background: #8cb615
+          color: #fff
+          margin: 10px 0
+
+    .wrapper-section-5
+      text-align: center
+
+      .block-content
+        padding: 50px 0
+        @media (max-width: $phone)
+          padding: 30px 0
+
+      .title
+        font-size: 28px
+        @media (max-width: $phone)
+          font-size: $title-mobile-font-size
+          line-height: 26px
+
+      .sub-title
+        @media (min-width: $phone + 1)
+          font-size: 18px
+
+      .integration-text .title
+        margin-bottom: 20px
+
+      .integration-icons
+        margin-top: 10px
+        padding: 0 60px
+        @media (max-width: $phone)
+          padding: 0
+
+        img
+          margin-left: 20px
+          margin-right: 20px
+          margin-top: 30px
+          max-width: 200px
+          @media (max-width: $phone)
+            margin-left: 5px
+            margin-right: 5px
+            margin-top: 15px
+            width: 90px
+          @media (max-width: $desktop-small)
+            max-width: 150px
+            max-height: 50px
+        .onelogin
+          @media (min-width: $tablet) and (max-width: $desktop-small)
+            position: relative
+            top: 2px
+        .android
+          @media (min-width: $desktop-small + 1)
+            width: 56px
+        .okta
+          @media (min-width: $desktop-small + 1)
+            max-height: 40px
+          @media (min-width: $tablet) and (max-width: $desktop-small)
+            max-height: 30px
+        .ios
+          position: relative
+          @media (min-width: $desktop-medium + 1)
+            max-height: 50px
+          @media (max-width: $desktop-small)
+            bottom: 3px
+          @media (min-width: $desktop-small + 1) and (max-width: $desktop-medium)
+            max-height: 50px
+          @media (min-width: $tablet) and (max-width: $desktop-small)
+            max-height: 35px
+          @media (min-width: $phone + 1) and (max-width: $tablet - 1)
+            bottom: 5px
+            max-height: 40px
+          @media (max-width: $phone)
+            width: 62px
+        .workplace
+          position: relative
+          @media (min-width: $tablet) and (max-width: $desktop-small)
+            top: 4px
+          @media (min-width: $desktop-small + 1)
+            width: 208px
+            top: 6px
+        .slack
+          @media (min-width: $tablet) and (max-width: $desktop-small)
+            max-height: 35px
+          @media (min-width: $desktop-small + 1)
+            width: 173px
+          @media (max-width: $phone)
+            width: 80px
+
+        .title
+          margin-top: 30px
+          @media (max-width: $tablet)
+            margin-top: 20px
+
+    .wrapper-section-6
+      color: white
+
+      .block-content
+        padding-left: 5%
+        padding-right: 5%
+        @media (max-width: $phone)
+          padding-left: 0
+          padding-right: 0
+
+      .quotation-icon
+        margin-bottom: 3%
+        margin-top: 1%
+
+      .star-rating
+        margin-bottom: 2%
+        margin-top: 3%
+        @media (max-width: $phone)
+          width: 40%
+
+      .testimonial
+        line-height: 35px
+        font-size: 22px
+        @media (max-width: $tablet)
+          font-size: 18px
+        .testimony
+          font-style: italic
+        .client-name
+          font-weight: bold
+        .client-designation
+          font-size: 18px
+
+      @media (max-width: $phone)
+        .testimonial
+          line-height: 20px
+          font-size: 13px
+          .testimony
+            font-style: italic
+          .client-name
+            font-weight: bold
+          .client-designation
+            font-size: 10px
+
+
+    .wrapper-section-7
+      .title
+        margin-bottom: 25px
+      .sub-title
+        margin-bottom: 15px
+
+      img
+        @media (max-width: $desktop-small)
+          margin-top: 15%
+
+      .button-landing-page
+        margin-left: 0
+
+    .wrapper-section-8
+      background: #2b2d37
+      color: white
+      font-size: 16px
+      line-height: 24px
+      padding-bottom: 3%
+      @media (max-width: $phone)
+        font-size: 12px
+        line-height: 18px
+
+      .image-container
+        width: 22%
+
+      .small-print
+        font-size: 12px
+        margin-top: 6%
+        @media (max-width: $phone)
+          font-size: 7px
+          margin-top: 15%

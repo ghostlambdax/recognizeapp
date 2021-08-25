@@ -1,0 +1,12 @@
+<h2 style="<%= mail_styles(:text, :h2, :title) %>"><%=t("rewards.redemption_was_denied", reward_title: @reward.title) %></h2><br/>
+
+<p style="<%= mail_styles(:text, :p) %>">
+
+  <%= t("rewards.redemption_denied_body", reward_title: @reward.title, full_name: @denier.full_name, email: @denier.email) %>
+
+</p>
+
+<% if @reward.provider_reward? %>
+  <h3 style="<%= mail_styles(:text, :h3, :title) %>"><%= t('rewards.how_to_redeem') %></h3>
+  <p style="<%= mail_styles(:text, :p) %>"><%= t('rewards.how_to_redeem_gift_cards') %></p>
+<% end %>

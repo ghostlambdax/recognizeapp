@@ -1,0 +1,13 @@
+<% content_for :rewards_filter do %>
+  <%= render layout: 'layouts/create_catalog_dropdown', locals: {company: @company, catalog: @catalog, show_all_currencies_in_dropdown: false} do |catalog| %>
+    <%= link_to(catalog.label, company_admin_catalog_rewards_path(catalog)) %>
+  <% end %>
+<% end %>
+
+<div class="clearfix">
+  <h2 class="left"><%= "#{@catalog.label} Rewards Catalog" %></h2>
+  <%=link_to 'Edit', edit_company_admin_catalog_path(@catalog), class: 'catalog-edit' %>
+</div>
+
+<%= render "company_admin/rewards/create_reward_dropdown" %>
+<%= litatablify(@datatable, endpoint: company_admin_catalog_rewards_path(catalog_id: @catalog), daterange: false) %>

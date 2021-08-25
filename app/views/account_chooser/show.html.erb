@@ -1,0 +1,89 @@
+<% if outlook_viewer? %>
+  <script src="//appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+<% end %>
+
+<div id="account-chooser-wrapper" class="slideable
+  <% if @accounts.size > 1 || @accounts.empty? %> current
+  <% end %>">
+  <div class="outer">
+    <div class="well well-shadow">
+
+      <% unless @accounts.present? %>
+        <% new_window_opts = iframe_viewer? ? {target: '_blank', id: 'signUpNewCompany'} : {} %>
+        <% the_signup_url = iframe_viewer? ? sign_up_url(popup: params[:viewer]) : sign_up_url %>
+
+        <%= image_tag 'chrome/logo-64x64.png', alt: 'Recognize logo' %>
+        <h1>Welcome to Recognize</h1>
+
+        <% if outlook_viewer? %>
+          <div class="non-mobile-description">
+        <% end %>
+
+        <p id='signUpDescription'>You are the first person in your company to sign up for Recognize. Good news is it is
+          free to sign up. If you like what you see, schedule a demo to see the paid features.</p>
+        <%= link_to "Sign up", the_signup_url, {class: "button button-primary popup-sign-up"}.merge(new_window_opts) unless params[:reload] == 'true' %>
+
+        <% reload_css_class_names = params[:reload] == 'true' ? 'button button-primary' : 'hidden button button-primary' %>
+        <%= link_to 'Reload', add_params_to_url(request.original_url, reload: true), id: 'reloadButton', class: reload_css_class_names %>
+        <%= link_to "Pricing", pricing_path, class: "button" unless outlook_viewer? %>
+
+        <% if outlook_viewer? %>
+          <!-- Outlook does not allow links to be clicked on Android/iPhone versions. Hence the complication (8/25/2020) -->
+          </div>
+          <div class="mobile-description">
+            <p>To sign up for Recognize, you'll need to go to https://recognizeapp.com from a web browser first.</p>
+          </div>
+        <% end %>
+
+
+      <% else %>
+        <h1><%= t("account_chooser.select_your_organization") %></h1>
+        <ul>
+          <% @accounts.each do |account| %>
+            <%
+              account_email = params[:email].present? ? params[:email] : (account.email.present? ? account.email : account.phone)
+              link_params = {network: account.network, email: account_email}
+              link_params[:oauth] = params[:oauth] if params[:oauth].present?
+              link_params[:pw_reset] = params[:pw_reset] if params[:pw_reset].present?
+              link_params[:mobile] = params[:mobile] if params[:mobile].present?
+              link_params[:redirect] = params[:redirect] if params[:redirect].present?
+              link_params[:outlook_identity_token] = params[:outlook_identity_token] if params[:outlook_identity_token].present?
+              link_params[:viewer] = params[:viewer] if params[:viewer].present?
+              link_params[:switch_accounts] = params[:switch_accounts] if params[:switch_accounts].present?
+            %>
+
+            <li class="marginBottom10">
+              <%= link_to account.company.name, account_chooser_path(link_params), remote: true, method: :put, class: "account-chooser-button button button-grande block" %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div id="please-wait-wrapper" class="slideable<% if @accounts.size == 1 %> current<% end %>">
+  <div class="outer">
+    <div class="well well-shadow centered well-white">
+        <div class="waiting-content">
+          <%= image_tag 'icons/outlook-progress.gif', alt: "Loading" %>
+        </div>
+
+
+      <div id="loggedin-message" class="hidden">
+        <h4><%= t('account_chooser.logged_in') %></h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="password-wrapper" class="slideable">
+  <div class="outer">
+    <div class="well well-shadow">
+      <a href="javascript://" data-from="#password-wrapper" data-to="#account-chooser-wrapper" class="slideable-trigger marginBottom20 block" data-direction="reverse"><%= t("dict.back") %></a>
+
+      <h3><%= t("account_chooser.enter_password") %></h3>
+      <%= render partial: "user_sessions/login", locals: {send_remote: true, show_network: true} %>
+    </div>
+  </div>
+</div>

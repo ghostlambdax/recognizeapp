@@ -1,0 +1,291 @@
+$articleHighlight: desaturate(lighten($headerBg, 60%), 40%)
+
+#articles-index
+  .articles
+
+    li:first-child
+      .avatar-wrapper
+        flex-direction: column
+
+      .avatar,
+      .content
+        width: 100%
+        height: auto
+        margin-bottom: 20px
+
+      .content
+        h3
+          font-size: 38px
+          line-height: 52px
+
+    .avatar
+      width: 40%
+
+    .content
+      width: 60%
+
+    .article-post
+      padding-bottom: 25px
+      margin-bottom: 25px
+      border-bottom: 1px solid $lightGray
+
+    .article-post > a
+      display: block
+      padding: 20px
+
+      &:hover
+        background: $articleHighlight
+
+
+@media (max-width: 650px)
+  #articles-index
+    .articles
+      .avatar-wrapper.flex
+        display: block !important
+        margin-bottom: 10px
+
+      .marginLeft10.content
+        margin-left: 0 !important
+
+      .avatar,
+      .content
+        width: 100%
+
+      .avatar
+        overflow: hidden
+        border-radius: 0
+        margin-bottom: 10px
+
+        img
+          display: block
+          min-width: 100%
+          height: auto
+
+
+.articles, .case_study
+  .wrapper
+    p, li, blockquote
+      font-size: 18px
+      line-height: 28px
+
+#cms_articles-show,
+body.articles:not(#articles-index)
+  &::before
+    content: ''
+    height: 700px
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    background: $articleHighlight
+
+    @media (min-width: $tablet)
+      clip-path: polygon(0 0, 100% 0%, 100% 70%, 0% 100%)
+
+
+.articles,
+#cms_articles-show
+  .section-title
+    margin-top: 100px
+
+  .article-wrapper,
+  .article-title-section
+    p, li, label
+      font-size: 18px
+      line-height: 26px
+
+  #view-main-wrapper
+    padding-bottom: 0
+    position: relative
+
+  @media (min-width: $tablet)
+    .wrapper-outer
+      padding: 0
+
+  .flex
+    .flex-33
+      width: 33%
+
+      img
+        width: 97%
+        @include transitionTransform(.2s, ease-in-out)
+
+        &:hover
+          @include transform(scale(1.03))
+
+  h1
+    font-size: 60px
+    line-height: 70px
+    font-weight: 600
+
+  h2
+    font-weight: 600
+
+  .article-wrapper h3
+    font-weight: 600
+
+  .article-wrapper
+    width: 1200px
+    margin: auto
+    max-width: 100%
+    @include flex-display()
+    flex-direction: row-reverse
+    justify-content: center
+
+    ol
+      list-style: decimal
+      margin-left: 30px
+
+    ol, ul
+      li
+        margin-bottom: 10px
+        overflow: visible
+
+    & > section
+      width: 650px
+      margin-right: 20px
+
+    & > aside
+      width: 300px
+
+  .article-title-section
+    width: 1000px
+    max-width: 100%
+    margin: 40px auto 0
+
+  .section-ends
+    margin-bottom: 50px
+
+
+  .article-list
+    margin-bottom: 100px
+
+    & > li
+      margin-bottom: 75px !important
+
+    img
+      max-width: 100%
+      margin-bottom: 20px
+
+  .well
+    p
+      line-height: 23px
+
+  #article-menu
+    width: 300px
+    max-width: 100%
+    background: #fff
+
+$articleQuoteBg: desaturate(lighten($headerBg, 60%), 10%)
+$articleBorderRadius: 6px
+
+.cms_articles,
+.articles
+  blockquote
+
+    &, p
+      font-size: 21px !important
+      font-style: italic
+      line-height: 27px !important
+
+.cms_articles
+  .article-wrapper
+    blockquote
+      background: $articleQuoteBg
+      padding: 20px
+      position: relative
+      border-radius: $articleBorderRadius
+
+      &:before
+        @include quoteBefore()
+
+      &:after
+        @include quoteAfter()
+
+.article-quote
+  border-radius: $articleBorderRadius
+  margin: 0 0 20px 0
+  position: relative
+  display: flex
+  background: $articleQuoteBg
+  overflow: hidden
+
+  strong, cite
+    color: $gray
+    display: block
+    margin-left: 12px
+
+  blockquote
+    margin: 1em 12px
+
+  .content
+    position: relative
+    margin: 0 0 10px 0
+    align-self: flex-start
+    padding: 0 10px 10px 25px
+    width: 100%
+
+    div
+      position: relative
+      z-index: 2
+
+    &:before
+      @include quoteBefore()
+      left: -9px
+
+    &:after
+      @include quoteAfter()
+
+  .background
+    background-size: cover
+    height: 215px
+    width: 290px
+
+
+@media (max-width: 1010px)
+  html body.articles .wrapper-outer,
+  html #cms_articles-show .wrapper-outer
+    .article-wrapper
+      display: block !important
+
+      #article-menu
+        &.fixed
+          position: static !important
+          width: 100% !important
+
+      & > section,
+      & > aside
+        width: 100% !important
+
+      & > section
+        margin-top: 20px
+        margin-right: 0 !important
+
+      & > aside
+        .well
+          .span4
+            display: none
+
+@media (max-width: $tablet)
+  .articles,
+  #cms_articles-show
+    .article-title-section
+      text-align: center
+      margin-top: 30px
+
+@media (max-width: 750px)
+  .articles,
+  #cms_articles-show
+    h1
+      font-size: 40px
+      line-height: 45px
+
+  .article-quote
+    display: block !important
+
+    .content
+      padding: 20px 10px
+      width: 100%
+
+  #article-menu
+    position: static !important

@@ -1,0 +1,1 @@
+get '/award-certificate/service-anniversary', to: 'award_generator#service_anniversary', as: :award_generator_service_anniversary

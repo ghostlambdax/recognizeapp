@@ -1,0 +1,10 @@
+$headerBg: #520055;
+$btnBlueTopColor: #520055;
+$buttonPrimaryBg: #520055;
+@import "application";
+
+.teams {
+  .team-toggle {
+    display: none !important;
+  }
+}

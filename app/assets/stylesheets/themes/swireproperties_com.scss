@@ -1,0 +1,33 @@
+$headerBg: #333399;
+$linkColor: $headerBg;
+$btnBlueTopColor: #333399;
+$buttonPrimaryBg: #333399;
+$defaultFontFamily: Calibri, Lato, Helvetica, Simsun, sans-serif;
+$latoFontFamily: $defaultFontFamily;
+
+@import "application";
+
+.has-theme header#header #header-loggedin-logo img {
+  height: 100px;
+  max-height: 100%;
+}
+
+header#header #header-loggedin-logo {
+  z-index: 1000;
+  width: auto;
+  height: auto;
+}
+
+.has-theme header#header #header-loggedin-logo {
+  top: 70%;
+}
+
+header#header {
+  overflow: visible;
+}
+
+html[lang='zh-TW'] {
+  * {
+    font-family: SimSun, sans-serif !important;
+  }
+}

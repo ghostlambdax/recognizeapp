@@ -1,0 +1,15 @@
+<% content_for :page_body_class, 'page-layout ' %>
+
+<div id="<% if defined?(id) %><%= id %><% end %>" class="page-layout <% if defined?(classnames) %><%= classnames %><% end %>">
+
+  <header class="page-header">
+
+    <%= yield :page_header %>
+
+  </header>
+
+  <section class="page-body" role="main">
+    <%= yield %>
+  </section>
+
+</div>

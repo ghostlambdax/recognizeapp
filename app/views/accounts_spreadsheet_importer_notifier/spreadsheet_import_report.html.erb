@@ -1,0 +1,22 @@
+<h2 style="<%= mail_styles(:h2, :text, :title) %>">The Recognize user spreadsheet import could not be completed.</h2>
+
+<p style="<%= mail_styles(:p) %>">
+  <div>Import for: <%= @importer.company.name %></div>
+  <div>File: <%= Rails.configuration.host == "recognizeapp.com" ? File.basename(@importer.url) : @importer.url%></div>
+</p>
+
+<p style="<%= mail_styles(:p) %>">
+  <ul>
+    <% @importer.errors.each do |attribute, message| %>
+      <% full_message = message.starts_with?("^") ? message[1..-1] : "#{attribute.to_s.humanize} #{message}" %>
+      <li><%= full_message %></li>
+    <% end %>
+  </ul>
+</p>
+
+<hr>
+<p style="<%= mail_styles(:p) %>">
+  Don't want to continue to receive these reports?
+  <%= link_to t('links.contact_us'), contact_url, style: "#{mail_styles(:button)}; margin-top: 20px;" %>
+</p>
+

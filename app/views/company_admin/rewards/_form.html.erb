@@ -1,0 +1,114 @@
+<%
+  submit_text = defined?(edit) && edit.present? ? t("dict.save") : t("dict.add")
+%>
+
+<div class="reward-card">
+  <%= form_for(reward, url: url, remote: true, multipart: true, authenticity_token: true, class: "row-fluid") do |f| %>
+    <div class="form-wrapper span8">
+      <div class="control-group">
+        <%= f.label(:title, t("rewards.title_of_reward"), for: "reward_title") %>
+        <%= f.text_field(:title, class: "input-xlarge title-input", placeholder: t("rewards.sample_title_of_reward")) %>
+      </div>
+
+      <div class="control-group">
+        <%= f.label(:description, t("rewards.description_of_reward"), for: "reward_description") %>
+        <%= f.text_area(:description, class: "input-xlarge description-input", placeholder: t("rewards.sample_description_of_reward")) %>
+      </div>
+
+      <div class="control-group">
+        <%= f.label(:reward_type, t("rewards.reward_type"), for: "reward_type") %>
+        <%= f.text_field(:reward_type, class: "input title-input") %>
+      </div>
+
+      <div class="control-group">
+        <% lm = link_to t('dict.learn_more'), "https://recognize.zendesk.com/hc/en-us/articles/115003937351-Send-custom-redemption-instructions-the-user-", target: :blank %>
+        <%= f.label(:additional_instructions, t("rewards.additional_instructions_for_user_html", learn_more: lm), for: "reward_additional_instructions") %>
+        <%= f.text_area(:additional_instructions, class: "input-xlarge additional-instructions-input", placeholder: t("rewards.sample_additional_instructions_of_reward")) %>
+      </div>
+
+      <h5><%= t("rewards.how_much_value") %></h5>
+      <div class="well marginBottom10 width100">
+        <%= render partial: 'company_admin/rewards/variant_inputs', locals: {reward: reward, form: f} %>
+      </div>
+      <div class="control-group">
+        <h5><%= t("rewards.frequency_and_interval") %></h5>
+        <%= f.text_field(:frequency, type: :number, placeholder: "10", min: 0, style: "width: 50px;") %>
+        <select style="width: 100px;" name="reward[interval_id]">
+          <% Interval::RESET_INTERVALS_WITH_NULL.each do |value, name| %>
+            <% name = reward_interval_name(value, name) %>
+            <% selected = reward.interval_id == value ? "selected='true'" : "" %>
+            <option value="<%= value %>" <%= selected %>><%= name %></option>
+          <% end %>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <h5><%= t("rewards.total_quantity") %></h5>
+        <% if reward.persisted? %>
+            <p class="subtle-text"><%= t("rewards.redeemed_certain_times_already", times: reward.existing_company_redemptions_count_in_interval) %></p>
+        <% end %>
+        <%= f.text_field(:quantity, type: :number, placeholder: "10", min: 0, style: "width: 50px;", disabled: f.object.has_variants_with_quantity?, data: {persisted_quantity: f.object.quantity}) %>
+        <select style="width: 100px;" name="reward[quantity_interval_id]">
+          <% Interval.reset_intervals_with_null.each do |value, name| %>
+            <% name = reward_quantity_interval_name(value, name) %>
+            <% selected = reward.quantity_interval_id == value ? "selected='true'" : "" %>
+            <option value="<%= value %>" <%= selected %>><%= name %></option>
+          <% end %>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <h5>
+          <%= t("rewards.manager") %>
+          <span title="<%= t('rewards.company_reward_manager_explanation') %>">
+            <i><%= t('dict.required') %></i>&nbsp;<sup>?</sup>
+          </span>
+        </h5>
+
+        <%= f.select(:manager_id, [[reward.manager.try(:label), reward.manager_id]], { selected: reward.manager_id }, class: "reward-manager-select") %>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :enabled do %>
+          <%= f.check_box(:enabled) %>
+          <span>Enabled</span>
+        <% end %>
+      </div>
+
+      <% if can_publish_reward_template?(reward.company) && !reward.provider_reward? %>
+        <div class="control-group">
+          <%= f.label :published do %>
+            <%= f.check_box(:published) %>
+            <span>Publish as template?</span>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="control-group">
+        <div class="file-attach-progress">
+          <div class="message"></div>
+          <div class="progress-bar">
+            <div class="progress-inner"><span class="right"></span></div>
+          </div>
+        </div>
+        <%= f.submit(submit_text, class: "button button-primary rewards-edit-submit") %>
+        <%= link_to("Cancel", company_admin_catalog_rewards_path(catalog_id: reward.catalog_id), class: "button button-chromeless") %>
+      </div>
+    </div>
+      <div class="image-wrapper span4">
+        <% if params[:reward].present? && params[:reward][:template_id].present? %>
+            <%= f.hidden_field(:template_id, value: params[:reward][:template_id]) %>
+        <% end %>
+        <%= image_tag(reward.image_url, class: "reward-image") %>
+
+      <% unless reward.provider_reward? %>
+        <div class="control-group">
+          <%= f.label(:image, "At least a 250x380 pixel image") %>
+          <%= f.file_field(:image) %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<%= render("rewards_manager") %>

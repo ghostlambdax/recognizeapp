@@ -1,0 +1,99 @@
+<%= javascript_tag do %>
+    <%
+       company_data = @graph_data[:companies].to_array.to_s
+       recognition_data = @graph_data[:recognitions].to_array.to_s
+       user_data = @graph_data[:users].to_array.to_s
+       approval_data = @graph_data[:approvals].to_array.to_s
+       comment_data = @graph_data[:comments].to_array.to_s
+       company_fulfilled_redemption_data = @graph_data[:company_fulfilled_redemptions].to_array.to_s
+       provider_redemption_data = @graph_data[:provider_redemptions].to_array.to_s
+       provider_redemption_amounts = @graph_data[:provider_redemption_amounts].to_array.to_s
+
+    %>
+    var datasets = {
+    "companies": {label: "Companies", data: <%= company_data%>},
+    "recognitions": {label: "Recognitions", data: <%= recognition_data%>},
+    "users": {label: "Users", data: <%= user_data%>},
+    "likes": {label: "Likes", data: <%= approval_data%>},
+    "comments": {label: "Comments", data: <%= comment_data%>},
+    };
+
+    var commentsData = {
+    "comments": {label: "Comments", data: <%= comment_data%>},
+    };
+
+    var redemptionsData = {
+    "company_fulfilled_redemptions": {label: "Company Redemptions", data: <%= company_fulfilled_redemption_data%>},
+    "provider_redemptions": {label: "Provider Redemptions", data: <%= provider_redemption_data%>},
+    "provider_redemption_amounts": {label: "$/week", data: <%= provider_redemption_amounts %>, yaxis: 2}
+    };
+
+<% end%>
+
+<%= javascript_tag do %>
+    var rightAxis = {
+          alignTicksWithAxis: 1,
+          position: "right",
+          formatter: "usdFormatter"    
+        };
+
+    R.ui.graphData('#comments-graph', commentsData);
+    R.ui.graphData('#redemptions-graph', redemptionsData, {"y2": rightAxis});
+<% end %>
+<div id="admin-flipboard" class="row-fluid">
+  <div class="flipboard-wrapper span4">
+    <h3>Today</h3>
+    <% condition = Time.now.midnight%>
+    <%= render partial: "layouts/flipboard", locals: {label: "Companies", number: @companies.where(['companies.created_at > ?', condition]).count}%>
+    <%= render partial: "layouts/flipboard", locals: {label: "Users", number: @users.where(['users.created_at > ?', condition]).count}%>
+    <%= render partial: "layouts/flipboard", locals: {label: "Recognitions", number: @recognitions.where(['recognitions.created_at > ?', condition]).count}%>
+  </div>
+
+  <div class="flipboard-wrapper span4">
+    <h3>This week</h3>
+    <% condition = Time.now.beginning_of_week %>
+    <%= render partial: "layouts/flipboard", locals: {label: "Companies", number: @companies.where(['companies.created_at > ?', condition]).count}%>
+    <%= render partial: "layouts/flipboard", locals: {label: "Users", number: @users.where(['users.created_at > ?', condition]).count}%>
+    <%= render partial: "layouts/flipboard", locals: {label: "Recognitions", number: @recognitions.where(['recognitions.created_at > ?', condition]).count}%>
+  </div>
+
+  <div class="flipboard-wrapper span4">
+    <h3>Total</h3>
+    <%= render partial: "layouts/flipboard", locals: {label: "Companies", number: @companies.count}%>
+    <%= render partial: "layouts/flipboard", locals: {label: "Users", number: @users.count}%>
+    <%= render partial: "layouts/flipboard", locals: {label: "Recognitions", number: @recognitions.count}%>
+  </div>
+</div>
+<div class="hr hr-space"></div>
+
+<div id="series" class="clearfix marginTop15">
+  <% [:companies, :recognitions, :users, :likes].each do |series|%>
+      <label class="checkbox left" style="margin-right: 10px">
+        <%= check_box_tag "#{series}_checkbox", series, true%> <%= series%>
+      </label>
+  <% end%>
+  <%= link_to "reset", "", id: "reset"%>
+</div>
+<div id="placeholder" style="width: 100%; height: 200px;"></div><div id="legend"></div>
+
+<div style="display: flex;margin-top: 20px">
+  <div style="width: 50%">
+    <div id="comments-graph">
+      <div class="placeholder" style="width: 100%; height: 200px;"></div><div class="legend"></div>
+    </div>
+  </div>
+
+  <div style="width: 50%">
+    <div id="redemptions-graph">
+      <div class="series">
+        <% [:company_fulfilled_redemptions, :provider_redemptions, :provider_redemption_amounts].each do |series|%>
+            <label class="checkbox left" style="margin-right: 10px">
+              <%= check_box_tag "#{series}_checkbox", series, true%> <%= series.to_s.humanize%>
+            </label>
+        <% end%>
+        <%= link_to "reset", "", class: "reset"%>
+      </div>
+      <div class="placeholder" style="width: 100%; height: 200px;"></div><div class="legend"></div>
+    </div>
+  </div>
+</div>

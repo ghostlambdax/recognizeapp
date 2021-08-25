@@ -1,0 +1,13 @@
+<%= render :partial => "layouts/mailer/header"%>
+
+<%= render partial: "user_notifier/recognition", locals: {
+    sender: @sender,
+    badge: @badge,
+    recognition: @recognition
+  }
+%>
+
+------
+
+<div><%= yield %></div>
+<%= render :partial => "layouts/mailer/footer"%>

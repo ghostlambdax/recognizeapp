@@ -1,0 +1,10 @@
+<span>{{task_submission.date}}</span>
+{{#if task_submission.summary}}
+  <span> | {{task_submission.summary}}</span>
+{{/if}}
+
+{{#if task_submission.pending}}
+<span class="resolve-task-submission-wrapper">
+  <a href="javascript://" data-tasksubmissionid="{{task_submission.id}}" class="resolve-task-submission-link button button-primary" data-editendpoint={{task_submission.edit_endpoint}}><%= I18n.t("dict.resolve") %></a>
+</span>
+{{/if}}

@@ -1,0 +1,91 @@
+<% content_for :title, "Automatic Yammer Gamification" %>
+
+<section id="intro">
+  <div class="inner">
+    <h1 class="balance-text">Increase Yammer Engagement By At Least 30%</h1>
+    <p class="tagline balance-text">Send badges and give rewards to staff who like, reply, and post on Yammer.</p>
+    <%= link_to "Sign Up For Early Access", "https://alexgrande.youcanbook.me/?service=service1", data: {'ycbm-modal': "true"}, class: "button button-primary button-large" %>
+  </div>
+  <%= render partial: "home/patterns/purple_dark.svg" %>
+</section>
+
+<div id="points">
+  <section class="quotes">
+    <div class="inner">
+      <ul class="row-fluid">
+        <li class="span6">
+          <%= testimonial_html(8) %>
+        </li>
+        <li class="span6">
+          <%= testimonial_html(11) %>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="inner">
+      <div class="row-fluid">
+        <div class="span6">
+          <h2 class="balance-text">Save Your Social Initiative</h2>
+          <p class="tagline balance-text">Is your staff not using Yammer as much as you expected? Is your social initiative in danger of failing? Badging, points, and tangible rewards are shown to increases usage. We will give your staff badges worth redeemable points for using Yammer.</p>
+        </div>
+        <div class="span6">
+          <%= image_tag "pages/home-yammer-gamification/flow.png", alt: "Create a gamification strategy around Yammer." %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="likes">
+    <div class="inner">
+      <div class="row-fluid">
+        <div class="span4">
+          <%= image_tag "pages/home-yammer-gamification/likes@2x.png", alt: "Yammer Likes will trigger recognition badges." %>
+        </div>
+        <div class="span8">
+          <h2 class="balance-text">Fueled By Competition &amp; Rewards</h2>
+          <p class="tagline balance-text">Getting started with new things isn’t easy for everyone. Give your staff a boost for being social in your company.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sync">
+    <div class="inner">
+      <div class="row-fluid">
+        <div class="span6">
+          <h2 class="balance-text">No User Onboarding Necessary</h2>
+          <p class="tagline balance-text">Recognize is a leader in Yammer integration. We automatically sync your users once your company admin logins to Recognize. No spreadsheets, LDAP, ActiveDirectory, or headaches to get started. <strong>Staff simply experience Recognize</strong>.</p>
+        </div>
+        <div class="span6">
+          <%= image_tag "pages/home-yammer-gamification/sync.png", alt: "Sync users automatically with Yammer" %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="post">
+    <div class="inner">
+      <div class="row-fluid">
+        <div class="span6">
+          <%= image_tag "pages/home-yammer-gamification/post.png", alt: "Yammer Likes will trigger recognition badges." %>
+        </div>
+        <div class="span6">
+          <h2 class="balance-text">Never Leave Yammer</h2>
+          <p class="tagline balance-text"><strong>Staff simply experience Recognize gamification.</strong> Using Yammer messages and posting, we inform individual staff and Yammer groups who are using Yammer the most and what they have received because of it. Staff will go to Recognize only to redeem rewards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section  data-turbolinks="false">
+    <div class="inner text-center">
+      <h2 class="balance-text">Help Staff Discover Yammer</h2>
+      <%= link_to "Schedule a demo", "https://alexgrande.youcanbook.me/?service=service1", data: {'ycbm-modal': "true"}, class: "button button-primary button-large" %>
+    </div>
+  </section>
+</div>
+
+
+<%= render :partial => 'footer' %>

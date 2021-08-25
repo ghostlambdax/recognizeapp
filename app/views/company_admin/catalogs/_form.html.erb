@@ -1,0 +1,47 @@
+<div class="catalog-form-wrapper">
+  <div class="row-fluid">
+    <div class="span6">
+      <%= form_for(catalog, remote: true, url: url, multipart: true, authenticity_token: true) do |f| %>
+        <div class="control-group">
+          <h5><%= t('dict.currency')%></h5>
+          <%= f.select :currency,
+                       options_for_select(currencies_options_for_select(Rewards::Currency.supported_currencies), f.object.currency),
+                       { include_blank: "Select a currency" },
+                       disabled: edit %>
+        </div>
+
+        <div class="control-group">
+          <%
+            ratio_frozen = !catalog.can_modify_points_to_currency_ratio?
+            pending_redemption_error = t('activerecord.errors.models.catalog.pending_redemptions').delete_prefix('^')
+          %>
+          <%= content_tag(:h5, title: ratio_frozen ? pending_redemption_error : '') do %>
+            Points Ratio to <span id="ratio-currency-symbol"></span>1<% if ratio_frozen %><sup>?</sup><% end %>
+          <% end %>
+          <%# Note: the decimals digits in :step allowed here should be in sync with the :scale in database
+              this cannot be checked in validation because it is type casted right-away during assignment from param %>
+          <%= f.text_field(:points_to_currency_ratio, type: :number, min: 0, step: 0.00001, disabled: ratio_frozen) %>
+          <div id="ratio-hint" class="hidden"></div>
+        </div>
+
+        <div class="control-group">
+          <h5>
+            <%= t('dict.roles_for_access') %>
+          </h5>
+          <%= f.select :company_roles, options_from_collection_for_select(company_roles, :id, :name, f.object.company_roles.map(&:id)), {}, multiple: true, class: "company-role-select" %>
+        </div>
+
+        <div class="control-group">
+          <label>
+            <%= f.check_box(:is_enabled) %>
+            <span>Enabled</span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <%= f.submit t("dict.save"), class: "button button-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

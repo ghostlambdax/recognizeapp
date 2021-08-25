@@ -1,0 +1,17 @@
+<div class="centered">
+  <%= feather_icon('alert-triangle') %>
+  <h2><%= t("authentications.try_again") %></h2>
+  <p class="tagline balance-text"><%= t("authentications.go_differently") %></p>
+
+  <hr>
+  <%= render_flash %>
+
+  <% if params[:strategy] == "yammer" %>
+    <ul>
+      <li><%= t("authentications.yammer") %></li>
+    </ul>
+  <% end %>
+
+  <p><%= t("authentications.contact_us_html", link: link_to("contact us", contact_path)) %></p>
+
+</div>

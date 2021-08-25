@@ -1,0 +1,16 @@
+<div class="yammer-groups-wrapper" data-endpoint="<%= yammer_groups_path(network: @company.domain, client: yammer_groups_select_client, groups_scope: groups_scope) %>">
+  <%= image_tag("icons/outlook-progress.gif", style: "display:none; height: 30px; width: 30px", class: "ajax-loader") %>
+
+  <span class="select-wrapper" style="display: none">
+    <%= yammer_groups_select(yammer_groups_select_client.to_sym, current_user) %>
+  </span>
+
+  <div class="warning-wrapper" style="display: none">
+    <p class="warning"></p>
+    <%= prompt_for_yammer_authentication(yammer_groups_select_client.to_sym, current_user, reauthenticate: true) %>
+  </div>
+
+  <div class="reauthenticate-if-needed-wrapper" style="display: none">
+    <%= prompt_for_yammer_authentication(yammer_groups_select_client.to_sym, current_user) unless current_user.auth_with_yammer? %>
+  </div>
+</div>

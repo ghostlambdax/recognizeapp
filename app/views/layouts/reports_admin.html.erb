@@ -1,0 +1,33 @@
+<% content_for :page_header do %>
+  <% content_for :left_nav do %>
+    <nav class="clearfix">
+      <%= yield(:engagement_report_selector) %>
+    </nav>
+  <% end %>
+
+  <% 
+    page_nav_title = yield(:tertiary_nav_label).presence || 'Dashboard' 
+  %>
+  <%= page_nav({title: page_nav_title, cssclass: 'reports-admin-nav'}) do %>
+
+      <div class="aside-nav">
+        <nav class="tab-nav">
+          <ul class="clearfix marginTop10">
+            <%= reports_nav_dashboard_link %>
+            <%= reports_top_employees_index_link %>
+            <%= reports_engagement_link %>
+          </ul>
+        </nav>
+      </div>
+
+  <% end %>
+<% end %>
+
+<% content_for :admin_content do %>
+  <%= page_layout do %>
+    <%= render_flash %>
+    <%= yield %>
+  <% end %>
+<% end %>
+
+<%= render template: "layouts/company_admin" %>

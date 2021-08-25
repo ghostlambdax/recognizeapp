@@ -1,0 +1,486 @@
+# Czech translations for recognize package.
+# Copyright (C) 2021 recognize
+# This file is distributed under the same license as the recognize package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recognize 1.0\n"
+"Report-Msgid-Bugs-To: contact@translation.io\n"
+"POT-Creation-Date: 2021-05-26 15:19-0500\n"
+"PO-Revision-Date: 2021-05-26 22:19+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Czech\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1)?0:((n>=2&&n<=4)?1:2);\n"
+"\n"
+
+#: ../../../app/datatables/catalogs_datatable.rb:87
+msgid "Catalog"
+msgstr "Katalog"
+
+#: ../../../app/datatables/catalogs_datatable.rb:95
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:10
+msgid "Redemptions"
+msgstr "Vykoupení"
+
+#: ../../../app/datatables/catalogs_datatable.rb:103
+msgid "Settings"
+msgstr "Nastavení"
+
+#: ../../../app/jobs/sms_notifier_job.rb:8
+#: ../../../app/services/recognition_sms_notifier.rb:42
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:14
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:17
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:22
+#: ../../../spec/jobs/sms_notifier_job_spec.rb:32
+msgid ""
+"\n"
+"Reply with STOP to opt out of additional messages"
+msgstr ""
+"\n"
+"Odpovězte pomocí STOP, abyste se odhlásili z dalších zpráv"
+
+#: ../../../app/lib/fb_workplace/helpers/bot_helpers.rb:90
+msgid "Are you sure you want to reset your account connection?"
+msgstr "Opravdu chcete obnovit připojení k účtu?"
+
+#: ../../../app/lib/fb_workplace/helpers/bot_helpers.rb:91
+msgid "Reset connection"
+msgstr "Obnovte připojení"
+
+#: ../../../app/lib/fb_workplace/webhook/link.rb:33
+msgid "Sent"
+msgstr "Odesláno"
+
+#: ../../../app/lib/fb_workplace/webhook/page.rb:108
+msgid ""
+"Your account connection has been cleared. Type 'Connect' if you would like to "
+"reconnect "
+msgstr ""
+"Připojení vašeho účtu bylo vymazáno. Pokud se chcete znovu připojit, zadejte „"
+"Připojit“"
+
+#: ../../../app/models/webhook/endpoint.rb:15
+msgid "^Target url must a properly formatted url."
+msgstr "^ Cílová adresa URL musí mít správně naformátovanou adresu URL."
+
+#: ../../../app/views/admin/index/_admin_header.html.erb:5
+msgid "Dashboard"
+msgstr "přístrojová deska"
+
+#: ../../../app/views/admin/index/_admin_header.html.erb:6
+msgid "Engagement"
+msgstr "Angažovanost"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:3
+msgid "Service Anniversary Award Certificate Template"
+msgstr "Šablona certifikátu k výročí ocenění služby"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:4
+msgid ""
+"Use the Recognize service anniversary award template to create a certificate t"
+"o give to employees as a PDF or printed out. Sign the PDF after you create it."
+" All totally free to give employee recognition to staff."
+msgstr ""
+"Použijte šablonu Ocenění výročí služby Recognize k vytvoření certifikátu, kter"
+"ý bude zaměstnancům vydán jako PDF nebo vytištěn. Po vytvoření soubor PDF pode"
+"pište. Všichni zcela zdarma, aby zaměstnanci uznali zaměstnance."
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:10
+#: ../../../app/views/layouts/award_certificate.html.erb:11
+msgid "Generate PDF"
+msgstr "Vytvořit PDF"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:13
+#: ../../../app/views/layouts/award_certificate.html.erb:14
+msgid "Font Families"
+msgstr "Rodiny písem"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:29
+msgid "Big Number"
+msgstr "Velké číslo"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:44
+msgid "Title"
+msgstr "Titul"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:45
+msgid "Service Anniversary Award"
+msgstr "Cena za výročí služby"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:58
+msgid "Description"
+msgstr "Popis"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:59
+msgid "For 7 years of service at Acme Inc."
+msgstr "Po dobu 7 let služby ve společnosti Acme Inc."
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:74
+#: ../../../app/views/award_generator/service_anniversary.html.erb:75
+msgid "Signature"
+msgstr "Podpis"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:92
+msgid "Name"
+msgstr "Název"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:93
+msgid "Name here"
+msgstr "Pojmenujte zde"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:108
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:8
+msgid "Date"
+msgstr "Datum"
+
+#: ../../../app/views/award_generator/service_anniversary.html.erb:109
+msgid "May 24th, 2021"
+msgstr "24. května 2021"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:9
+msgid "Product Updates"
+msgstr "Aktualizace produktu"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:10
+msgid ""
+"Recognize keeps getting better with weekly deployments. Check back regularly f"
+"or improvements and fixes."
+msgstr ""
+"Rozpoznávání se díky týdennímu nasazení stále zlepšuje. Pravidelně kontrolujte"
+" vylepšení a opravy."
+
+#: ../../../app/views/cms/product_updates/index.html.erb:14
+msgid "Recognize Product Updates"
+msgstr "Rozpoznat aktualizace produktu"
+
+#: ../../../app/views/cms/product_updates/index.html.erb:15
+msgid ""
+"Recognize is updated almost every week. Major updates and fixes are listed her"
+"e to help customers and prospective customers learn of continued improvements."
+msgstr ""
+"Rozpoznávání je aktualizováno téměř každý týden. Zde jsou uvedeny hlavní aktua"
+"lizace a opravy, které zákazníkům a potenciálním zákazníkům pomohou naučit se "
+"o neustálých vylepšováních."
+
+#: ../../../app/views/cms/product_updates/index.html.erb:16
+msgid "Check server status"
+msgstr "Zkontrolujte stav serveru"
+
+#: ../../../app/views/companies/_badge.html.erb:181
+msgid "one person"
+msgid_plural "%{count} people"
+msgstr[0] "jedna osoba"
+msgstr[1] "%{count} lidí"
+msgstr[2] ""
+
+#: ../../../app/views/company_admin/accounts/edit.html.erb:6
+msgid "Edit Users"
+msgstr "Upravit uživatele"
+
+#: ../../../app/views/company_admin/accounts/show.html.erb:2
+msgid "Users"
+msgstr "Uživatelé"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:7
+msgid "Top toolbar logo"
+msgstr "Horní logo panelu nástrojů"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:13
+msgid ""
+"A white transparent png image to go in the top\n"
+"            toolbar. Many companies choose to make it the name of their progra"
+"m."
+msgstr ""
+"Nahoře bílý průhledný obrázek png\n"
+"            Panel nástrojů. Mnoho společností si zvolilo název svého programu."
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:25
+msgid "Stream page logo"
+msgstr "Logo stránky streamu"
+
+#: ../../../app/views/company_admin/customizations/show.html.erb:31
+msgid ""
+"A color logo that goes on the Stream page. Many\n"
+"            companies choose to have it be their company logo. The background "
+"has to be white."
+msgstr ""
+"Barevné logo umístěné na stránce Stream. Mnoho\n"
+"            společnosti si zvolí, aby to bylo jejich logo společnosti. Pozadí "
+"musí být bílé."
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:5
+msgid "Theming"
+msgstr "Theming"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:8
+msgid "Security"
+msgstr "Bezpečnostní"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:12
+msgid "Recognition"
+msgstr "Uznání"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:15
+msgid "Nomination"
+msgstr "Jmenování"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:18
+msgid "Tasks"
+msgstr "Úkoly"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:21
+msgid "Leaderboards"
+msgstr "Výsledkové tabulky"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:24
+msgid "Hall of Fame"
+msgstr "síň slávy"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:27
+msgid "Rewards"
+msgstr "Odměny"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:31
+msgid "Yammer"
+msgstr "Stěžovat si"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:34
+msgid "Microsoft"
+msgstr "Microsoft"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:37
+msgid "Google"
+msgstr "Google"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:40
+msgid "Workplace by Facebook"
+msgstr "Workplace by Facebook"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:43
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:14
+msgid "Webhooks"
+msgstr "Webhooky"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:47
+msgid "User settings"
+msgstr "Uživatelské nastavení"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:50
+msgid "Points"
+msgstr "Body"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:53
+msgid "User Management"
+msgstr "správa uživatelů"
+
+#: ../../../app/views/company_admin/settings/_settings_nav.html.erb:56
+msgid "Kiosk Mode"
+msgstr "Režim kiosku"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:9
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:35
+msgid "Edit"
+msgstr "Upravit"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:14
+msgid "Edit Webhook"
+msgstr "Upravit Webhook"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:15
+msgid "Webhook has been saved"
+msgstr "Webhook byl uložen"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:20
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:36
+msgid "Destroy"
+msgstr "Smazat"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:24
+msgid "Are you sure want to delete this webhook?"
+msgstr "Opravdu chcete tento webhook smazat?"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoint_row.html.erb:28
+msgid "Events"
+msgstr "Události"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:5
+msgid "Examples"
+msgstr "Příklady"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:8
+msgid ""
+"● Notify a rewards provider that a user redeemed a reward in order to fulfill "
+"a custom company reward."
+msgstr ""
+"● Upozorněte poskytovatele odměn, že uživatel uplatnil odměnu, aby splnil vlas"
+"tní odměnu společnosti."
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:9
+msgid "● Post a recognition to Slack or Microsoft Teams."
+msgstr "● Odešlete uznání společnosti Slack nebo Microsoft Teams."
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:18
+msgid ""
+"Webhooks allow you to notify third party systems when events on Recognize occu"
+"r"
+msgstr ""
+"Webhooky vám umožňují upozornit systémy třetích stran, když dojde k událostem "
+"v rozpoznávání"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:23
+#: ../../../spec/features/company_admin/settings/webhooks_spec.rb:15
+#: ../../../spec/features/company_admin/settings/webhooks_spec.rb:25
+msgid "Add new"
+msgstr "PŘIDAT NOVÝ"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:23
+msgid "Create Webhook"
+msgstr "Vytvořte Webhook"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:23
+msgid "Webhook has been created!"
+msgstr "Webhook byl vytvořen!"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:31
+msgid "Enable"
+msgstr "Umožnit"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:32
+msgid "Event"
+msgstr "Událost"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:33
+msgid "Method"
+msgstr "Metoda"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:34
+msgid "Endpoint"
+msgstr "Koncový bod"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:37
+msgid "Recent events"
+msgstr "Nedávné události"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:48
+msgid "Coming Soon!"
+msgstr "Brzy!"
+
+#: ../../../app/views/company_admin/settings/_webhook_endpoints.html.erb:49
+msgid "If you would like early access, please contact support@recognizeapp.com"
+msgstr "Pokud chcete získat přednostní přístup, kontaktujte support@recognizeapp.com"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:9
+msgid "Status Code"
+msgstr "Stavový kód"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:10
+msgid "Request"
+msgstr "Žádost"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:11
+msgid "Response"
+msgstr "Odezva"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:14
+msgid "Url"
+msgstr "URL"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:15
+msgid "Payload"
+msgstr "Užitečné zatížení"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:16
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:18
+msgid "Headers"
+msgstr "Záhlaví"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:17
+msgid "Data"
+msgstr "Data"
+
+#:
+#: ../../../app/views/company_admin/webhook_endpoints/_webhook_events.html.erb:36
+msgid "No webhooks have been triggered yet"
+msgstr "Zatím nebyly spuštěny žádné webhooky"
+
+#: ../../../app/views/home/pricing.html.erb:99
+msgid "Sign Up & Upgrade"
+msgstr "Zaregistrujte se a upgradujte"
+
+#: ../../../app/views/layouts/_create_catalog_dropdown.html.erb:5
+#: ../../../app/views/layouts/_create_catalog_dropdown.html.erb:9
+msgid "All currencies"
+msgstr "Všechny měny"
+
+#: ../../../app/views/layouts/_header.html.erb:190
+msgid "Switch accounts"
+msgstr "Přepněte účty"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:7
+msgid "Direct Reports"
+msgstr "Přímé zprávy"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:8
+msgid "Recognitions"
+msgstr "Uznání"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:9
+msgid "Anniversaries"
+msgstr "Výročí"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:11
+msgid "Approved"
+msgstr "schválený"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:12
+msgid "Pending"
+msgstr "až do"
+
+#: ../../../app/views/layouts/_manager_admin_sidebar.html.erb:13
+msgid "Denied"
+msgstr "Odepřeno"
+
+#: ../../../app/views/layouts/_schedule_demo_link.html.erb:6
+msgid "Schedule Live Demo"
+msgstr "Naplánujte si živou ukázku"
+
+#: ../../../app/views/layouts/application.html.erb:17
+msgid "Skip to main content"
+msgstr "Přeskočit na hlavní obsah"
+
+#: ../../../app/views/recognitions/_company_name.html.erb:3
+#: ../../../app/views/recognitions/_company_name.html.erb:8
+msgid "Company logo"
+msgstr "Logo společnosti"
+
+#: ../../../app/views/recognitions/_form_fullscreen.html.erb:97
+#: ../../../app/views/recognitions/new_panel.html.erb:78
+msgid "Sign in to Yammer to post to Yammer"
+msgstr "Chcete-li přidat příspěvek do Yammeru, přihlaste se do Yammeru"
+
+#: ../../../app/views/recognitions/_recognition.html.erb:72
+msgid "%{time} ago"
+msgstr "%{time} před"
+
+#: ../../../app/views/redemptions/_reward.html.erb:17
+msgid "Terms"
+msgstr "Podmínky"
+
+#: ../../../app/views/users/show.html.erb:48
+msgid "1 year"
+msgid_plural "%{num} years"
+msgstr[0] "1 rok"
+msgstr[1] "%{num} let"
+msgstr[2] ""

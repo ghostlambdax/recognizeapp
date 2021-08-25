@@ -1,0 +1,21 @@
+<section id="culture">
+  
+  <div class="row-fluid">
+    <div class="span4 offset1">
+      <%= image_tag "firstuser/people.png", alt: "Engaged employees" %>
+    </div>
+    <div class="span7">
+      <h2><%= t("culture_of_recognition.culture_of_employee_recognition")%></h2>
+      
+      
+      <ul class="bullet-list marginBottom10">
+        <li><h4><%= t("culture_of_recognition.highlight_staff_in_meetings") %></h4></li>
+        <li><h4><%= t("culture_of_recognition.remind_daily_standup") %></h4></li>
+        <li><h4><%= t("culture_of_recognition.recognize_someone_weekly") %></h4></li>
+      </ul>
+      
+      <%= link_to t("culture_of_recognition.contact_us"), contact_path, class: "button"%>
+      
+    </div>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+<% if is_grid_view? || permitted_to?(:show, comment) %>
+  <div id="<%= comment.uniq_dom_id%>" class="comment clearfix <%= 'hidden-comment' if comment.is_hidden?%>" itemscope itemtype="http://schema.org/Comment">
+    <%= image_tag comment.commenter.avatar.small_thumb.url, alt: "#{comment.commenter.full_name} #{t('dict.avatar')}", class: "avatar"  %>
+    <div class="comment-inner">
+        <p itemprop="comment" class="comment-content">
+          <strong itemprop="author"><%= link_to comment.commenter.full_name, comment.commenter %> </strong> <%= comment.content %>
+
+          <span class="subtle-text block smallPrint marginBottom10" itemprop="dateCreated" title="<%= localize_datetime(comment.created_at, :friendly_with_time)%>">
+            <%= t("dict.ago_in_words", time: time_ago_in_words(comment.created_at)) %>
+          </span>
+        </p>
+        <%
+          links = []
+          links << link_to(t("dict.edit"), edit_recognition_comment_path(@recognition, comment), remote: true) if permitted_to?(:edit, comment)
+          links << link_to(t("dict.delete"), recognition_comment_path(@recognition, comment), remote: true, method: :delete) if permitted_to?(:destroy, comment)
+          if comment.is_hidden?
+            links << link_to(t("dict.unhide"), unhide_recognition_comment_path(@recognition, comment), remote: true, method: :put, class: "unhideLink") if permitted_to?(:hide, comment)
+          else
+            links << link_to(t("dict.hide"), hide_recognition_comment_path(@recognition, comment), remote: true, method: :put, class: "hideLink") if permitted_to?(:hide, comment)
+          end
+        %>
+        <%= links.join(" | ").html_safe %>
+    </div>
+  </div>
+<% end %>

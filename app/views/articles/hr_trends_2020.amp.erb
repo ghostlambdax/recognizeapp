@@ -1,0 +1,13 @@
+<% content_for :title, "2020 HR Trends" %>
+<% content_for :description, "See Recognize's predictions for 2020 in HR, while we also look back at 2019 trends." %>
+
+<div class="centered">
+  <h1 itemprop="name">2020 Trends in Human Resources</h1>
+  <%= lazy_image_tag "pages/articles/2020-hr-trends/main.jpg", alt: "2020 text design on creative business symbols", class: "marginBottom30", itemprop: "image", width: 400, height: 400 %>
+</div>
+
+<p>Written by: Katie-Pia Moran<br><br>
+
+<%= link_to "Learn about Recognize", root_path, class: "button button-large button-primary" %>
+
+<%= render partial: "2020_hr_trends_body", formats: [:html] %>

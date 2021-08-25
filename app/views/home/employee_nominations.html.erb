@@ -1,0 +1,83 @@
+<%= content_for :title, "Employee Nominations" %>
+<% content_for :description, "Create a configurable workflow for your employee nominations program. Learn how to use employee nominations to drive engagement and discover top staff in your company." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Employee Award Nomination Software | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="If you are looking for reliable employee award nomination software, visit Recognize today and learn more about the features we can offer!" />
+  <meta property="og:image" content="/assets/illustrations/recognize.jpg" />
+<% end%>
+
+<section id="intro">
+  <div class="inner">
+    <h1 class="balance-text">Employee Nomination Software</h1>
+    <p class="tagline marginBottom10 balance-text">A configurable workflow to manage the employee of the month program or yearly Presidents Award.</p>
+    <%= schedule_demo_link cssclasses: "margin20" %>
+    <a href="/nominations.pdf" class="button button-highlight button-large margin10">Download PDF</a><br>
+    <%= lazy_image_tag "pages/home-nominations/employee-of-graphic.png", alt: "An example of our employee nomination software UI.", class: "graphic" %>
+  </div>
+</section>
+<div id="points">
+
+  <section id="dashboard" class="clearfix">
+    <div class="inner" data-turbolinks="false">
+      <h2 class="balance-text">An Employee Nomination Software That Pays For Itself</h2>
+      <p class="tagline balance-text">An Employee nomination software enhances every company qualitatively. Recognize's unique nomination system automates the collection of information, saving staff time. It saves your company time thanks to our Chrome Extension, Mobile, Yammer, Sharepoint, and intranet integrations.</p>
+      <%= schedule_demo_link css_classes: 'button', utm_content: 'it-pays-for-itself' %>
+    </div>
+
+    <%= lazy_image_tag "pages/home-nominations/dashboard.jpg", alt: "The employee nomination admin dashboard allows admins to see who has been nominated in a given time period and why they were nominated." %>
+  </section>
+
+
+  <section id="allow">
+    <div class="inner centered">
+      <h2 class="balance-text">Just Takes One Click to Start Employee Nominations with Recognize</h2>
+      <p class="tagline">Setting up an employee nomination is as easy as creating a custom badge in Recognize. Just click on <strong>nomination badge</strong>.</p>
+      <%= lazy_image_tag "pages/home-nominations/badge.jpg", alt: "Create a badge to send as an employee nomination by clicking on in the settings." %>
+
+    </div>
+
+  </section>
+
+  <section id="ideas">
+    <div class="inner centered">
+      <h2 class="balance-text">Employee Nomination Ideas in Recognize</h2>
+      <ul>
+        <li class="tagline">Innovation Award</li>
+        <li class="tagline">Safety Award</li>
+        <li class="tagline">Presidents' Award</li>
+        <li class="tagline">Employee of the Month</li>
+        <li class="tagline">Employee of the Quarter</li>
+        <li class="tagline">Employee of the Year</li>
+        <li class="tagline">Customer Service Award</li>
+        <li class="tagline">IT Award</li>
+        <li class="tagline">Risk Taker Award</li>
+        <li class="tagline">Efficiency Award</li>
+        <li class="tagline">Incredible Award</li>
+        <li class="tagline">Helpful Award</li>
+        <li class="tagline">Responsive Award</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <section id="awarded">
+    <div class="inner">
+      <div class="row-fluid">
+        <div class="span6">
+          <h2 class="balance-text">See Why Employees are Nominated using Recognize</h2>
+          <p class="tagline">For the first time staff will be able to vote through out the whole year and the admins can see why at any point for any time period.</p>
+          <%= link_to "See our Rewards", rewards_path, class: "button button-primary" %>
+        </div>
+        <div class="span6">
+          <%= lazy_image_tag "pages/home-nominations/awarded.jpg", alt: "See who, what, and why is happening with an employee nomination." %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<%= render :partial => 'footer' %>

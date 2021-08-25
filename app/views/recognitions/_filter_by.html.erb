@@ -1,0 +1,26 @@
+<% if @company.price_package != 'anniversary' && @anniversary_recognitions_present %>
+  <div class="filter-by-list <%= margin_top if defined?(margin_top) %> ">
+    <%
+      anniversary_selected = @filter_by.blank? || @filter_by.include?('anniversary')
+      recognition_selected = @filter_by.blank? || @filter_by.include?('recognition')
+    %>
+    <ul class="marginTop10">
+      <%= link_to recognitions_path, {'data-badge' => 'anniversary'} do %>
+        <li class="<%= anniversary_selected ? 'selected' : '' %>">
+          <span class="link"><%= I18n.t('dict.anniversaries') %></span>
+        </li>
+      <% end %>
+
+      <%= link_to recognitions_path, {'data-badge' => 'recognition'}  do %>
+        <li class="<%= recognition_selected ? 'selected' : '' %>">
+          <span class="link"><%= I18n.t('dict.peer_to_peer') %></span>
+        </li>
+      <% end %>
+    </ul>
+    <% if !ms_teams_configurable_tab? %>
+      <div class="no-highlight">
+        <hr>
+      </div>
+    <% end %>
+  </div>
+<% end %>

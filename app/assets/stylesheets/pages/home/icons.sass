@@ -1,0 +1,58 @@
+#home-icons
+  .sidepanel-wrapper
+    @include flex-display()
+    padding-left: 10px
+    padding-right: 10px
+
+    .side
+      flex: 1
+      margin-right: 50px
+
+    .main
+      flex: 2
+
+  .icons-wrapper
+    width: 1200px
+    max-width: 100%
+    margin: 30px auto
+
+  .size-example
+    @include flex-display()
+    @include align-items(flex-end)
+    float: right
+    margin-top: -71px
+
+    li
+      margin-right: 7px
+
+      &:last-child
+        margin-right: 0
+        margin-left: -23px
+
+  .border-left-1px
+    border-left: 1px solid #D7D7D7
+
+  .grid-5
+    & > li
+      float: left
+      margin: 25px 0
+      width: 20%
+      text-align: center
+
+      img
+        width: 75px
+        max-width: 100%
+
+
+@media (max-width: $tablet)
+  #home-icons
+    .sidepanel-wrapper
+      display: block !important
+
+    .size-example
+      float: none
+      margin-top: 0
+
+    .sidepanel-wrapper
+      .side
+        margin-right: 0

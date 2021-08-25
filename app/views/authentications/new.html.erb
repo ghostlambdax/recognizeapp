@@ -1,0 +1,9 @@
+<%= content_for :title, "Employee recognition programs with #{auth_method_title(@auth_service.provider)}" %>
+<%= content_for :description, "Use #{auth_method_title(@auth_service.provider)} to login to your employee recognition and staff rewards program that is managed by your company." %>
+
+<div class="login-wrapper well width-500 centered">
+  <%= image_tag 'chrome/logo-72x72.png', alt: 'Recognize logo' %>
+  <h2>Login to Recognize</h2>
+  <% link_method = "link_to_#{@auth_service.provider}" %>
+  <%= send(link_method) %>
+</div>

@@ -1,0 +1,22 @@
+  
+</div><!-- outer wrapper-->
+
+<div id="recognize-mailer-footer">
+  <% if @user  && @user.persisted? %>
+    <p style="<%= mail_styles(:text, :p, :textSubtle) %> margin: 10px 0;">
+      <%= t("layouts.mailer.footer.manage_notifications_html", profile: link_to(t("layouts.mailer.footer.edit_profile_page"), edit_user_url(@user, network: @user.network), style: mail_styles(:a))) %>
+    </p>
+
+    <p style="<%= mail_styles(:text, :p, :textSubtle) %> margin: 10px 0;">
+      <%= t("layouts.mailer.footer.to_unsubscribe_html", link: link_to(t("dict.click_here"), unsubscribe_url(@user.unsubscribe_token), style: mail_styles(:a))) %>
+    </p>
+
+    <% unless @user.company.disable_passwords? %>
+      <p style="<%= mail_styles(:text, :p, :textSubtle) %> margin-bottom: 10px;"><%= t("layouts.mailer.footer.forgot_password_html", link: link_to(t("dict.reset_password"), new_password_reset_url, style: mail_styles(:a))) %></p>
+    <% end %>
+  <% end %>
+
+  <p style="<%= mail_styles(:text, :p, :textSubtle) %> margin-bottom: 10px;"><%= t("layouts.mailer.footer.questions_html", link: link_to(t("layouts.mailer.footer.contact_us_here"), contact_url, style: mail_styles(:a))) %></p>
+
+  <p style="<%= mail_styles(:text, :p, :textSubtle) %> padding-bottom:15px; margin-bottom: 0;" >Recognize - <%= t("recognize.address_full") %></p>
+</div>

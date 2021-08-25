@@ -1,0 +1,96 @@
+<h1 style="<%= mail_styles(:h1, :title, :text) %>"><%= t("engagement_report.admin.state_of_managers") %></h1>
+
+<% unless @report.has_sent_recognition_data? %>
+
+  <p style="<%= mail_styles(:p, :text) %>"><%= t('engagement_report.admin.no_recognitions', interval: reset_interval_noun(@report.interval).downcase) %></p>
+
+<% else %>
+
+  <p style="<%= mail_styles(:p, :text) %>"><%= t('engagement_report.admin.description', company_name: @company.name) %></p>
+  <table style="width: 100%;">
+
+    <tr>
+      <td style="vertical-align: top; <% if @bottom_sending_managers.present? %>width: 47%; padding-right: 3%;<% end %>">
+        <table style="width: 100%; border-top: 5px solid green; padding-top: 5px;" >
+          <tr>
+            <td>
+              <h2 style="<%= mail_styles(:h2, :text) %>"><%= t('engagement_report.admin.top_managers', interval: reset_interval_noun(@report.interval).downcase) %></h2>
+            </td>
+
+            <td style="text-align: right;">
+              <a href="mailto:?bcc=<%= @top_sending_managers.map(&:email).join(", ") %>&subject=Thanks for being a good manager&body=Hi there! Thanks for being so active in our employee recognition program!" style="<%= mail_styles(:button) %> display: inline-block;">Draft email</a>
+
+            </td>
+          </tr>
+        </table>
+
+        <ul style="<%= mail_styles(:list) %>">
+          <% @top_sending_managers.each_with_index do |manager, index| %>
+            <% odd = index % 2 == 0 %>
+            <li style="padding: 20px; <% if odd %>background: #f4f4f4;<% end %>">
+              <table style="width: 100%;">
+                <tr>
+                  <td>
+                    <h4 style="<%= mail_styles(:h4, :text) %>"><%= link_to manager.full_name, user_url(manager) %></h4>
+                    <a href="mailto:<%= manager.email %>" style="<%= mail_styles(:a, :text) %>"><%= t("dict.email") %></a>
+                  </td>
+                  <td style="width:60px;">
+                    <% manager.sent_recognitions_count = manager.sent_recognitions_count.present? ? manager.sent_recognitions_count : 0 %>
+                    <p style="<%= mail_styles(:p, :text) %> font-size: 11px;"><%= t("engagement_report.sent_recognitions_html", count: manager.sent_recognitions_count) %></p>
+                  </td>
+                </tr>
+              </table>
+            </li>
+          <% end %>
+        </ul>
+      </td>
+
+      <% if @bottom_sending_managers.present? %>
+
+        <td style="width: 47%; vertical-align: top; padding-left: 3%;">
+          <table style="width: 100%; border-top: 5px solid red; padding-top: 5px;" >
+            <tr>
+              <td>
+                <h2 style="<%= mail_styles(:h2, :text) %>">
+                  <%= t('engagement_report.admin.bottom_managers', interval: reset_interval_noun(@report.interval).downcase) %>
+                </h2>
+              </td>
+
+              <td style="text-align: right;">
+                <a href="mailto:?bcc=<%= @bottom_sending_managers.map(&:email).join(", ") %>&subject=Please recognize your direct reports&body=Hi there! This is a friendly reminder to send recognition to your direct reports. Thanks!" style="<%= mail_styles(:button) %> display: inline-block;">Draft email</a>
+
+              </td>
+            </tr>
+          </table>
+
+          <ul style="<%= mail_styles(:list) %>">
+            <% @bottom_sending_managers.each_with_index do |manager, index| %>
+              <% odd = index % 2 == 0 %>
+              <li style="padding: 20px; <% if odd %>background: #f4f4f4;<% end %>">
+
+                <table style="width: 100%;">
+                  <tr>
+                    <td>
+                      <h4 style="<%= mail_styles(:h4, :text) %>"><%= link_to manager.full_name, user_url(manager) %></h4>
+                      <a href="mailto:<%= manager.email %>" style="<%= mail_styles(:a, :text) %>"><%= t("dict.email") %></a>
+                    </td>
+                    <td style="width:60px;">
+                      <% manager.sent_recognitions_count = manager.sent_recognitions_count.present? ? manager.sent_recognitions_count : 0 %>
+                      <p style="<%= mail_styles(:p, :text) %> font-size: 11px;"><%= t("engagement_report.sent_recognitions_html", count: manager.sent_recognitions_count) %></p>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+            <% end %>
+          </ul>
+
+        </td>
+
+
+      <% end %>
+
+    </tr>
+
+  </table>
+
+<% end %>

@@ -1,0 +1,567 @@
+
+.button-full-width {
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+
+.button,
+body .stripe-button-el span {
+  background: #eeeeee;
+  @include linear-gradient(-180deg, #eeeeee 0%, darken(#eeeeee, 7%) 100%);
+  border: 1px solid #979797;
+  color: text-color(#eeeeee);
+  text-transform: none;
+  border-radius: 4px;
+  border: 1px solid #CCC;
+  padding: 10px 14px;
+  line-height: 13px;
+  cursor: pointer;
+  box-shadow: 0 1px 6px 0px rgba(200,200,200,0.6);
+  @include appearance(none);
+  font-size: 13px;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  margin: 1px;
+  position: relative;
+  font-weight: 400;
+
+  &:active {
+    box-shadow: none;
+    @include transform(scale(0.98) translate(0, 1px));
+  }
+
+  &:hover:not(.button-no-chrome) {
+    border-color: darken($btnLightTopColor, 20%);
+  }
+
+  sup {
+    font-size: 0.7em;
+  }
+}
+
+.button:focus {
+  outline: 0;
+}
+
+@include keyframes(animatedBackground) {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+.button:disabled,
+input[type=submit]:disabled,
+.button:disabled:hover,
+input[type=submit]:disabled:hover {
+  background-color: $lightGray;
+  background-image: none;
+  color: #7D7D7D;
+}
+
+select.button {
+  min-height: 35px;
+}
+
+.button i {
+  height: 15px;
+  width: 12px;
+  float: right;
+}
+
+.button .arrow-previous {
+  background: asset-url('icons/button-default-arrow-previous.png');
+  float: left;
+  margin: 1px 10px 0 0;
+}
+
+.button-light .arrow-previous {
+  background: asset-url('icons/button-light-arrow-previous.png');
+}
+
+.button.disabled {
+  background: $btnLightBottomColor;
+}
+
+.no-touch .button:hover {
+  text-decoration: none;
+}
+
+.button-pressed {
+  z-index: 2;
+}
+
+$pressedButtonColor: saturate($headerBg, 20%);
+
+.button-pressed {
+  background: $pressedButtonColor;
+  color: text-color($pressedButtonColor);
+  box-shadow: none;
+}
+
+.button-primary {
+  background: $buttonPrimaryBg;
+  @include linear-gradient(-180deg, $buttonPrimaryBg 0%, darken($buttonPrimaryBg, 7%) 100%);
+  color: text-color($buttonPrimaryBg);
+  border: 1px solid darken($buttonPrimaryBg, 20%);
+  text-shadow: 0 1px 0 rgba(136, 136, 136, 0.71);
+
+  &:hover {
+    background: darken($buttonPrimaryBg, 20%);
+    border-color: $buttonPrimaryBg;
+
+    &:after {
+      border-color: lighten($buttonPrimaryBg, 20%);
+    }
+
+    &:before {
+      border-color: $buttonPrimaryBg;
+    }
+  }
+}
+
+.button-primary.disabled {
+  background: $btnBlueBottomColor;
+}
+
+@mixin button-dark() {
+  background: #7b8699;
+  border: 1px solid #747986;
+  border-bottom: 1px solid #5e626b;
+  border-radius: 3px;
+  color: text-color(#7b8699);
+  text-decoration: none;
+  padding: 8px 12px;
+  display: inline-block;
+}
+
+@mixin buttonDarkActive() {
+  background: #3e4356;
+  color: text-color(#3e4356);
+}
+
+.button-dark {
+  @include button-dark();
+}
+
+.button-dark:active {
+  @include buttonDarkActive();
+}
+
+.button-light {
+  background: #feffff;
+  color: #575757;
+  font-weight: 400;
+  box-shadow: none;
+  text-transform: 0;
+}
+
+.button-large {
+  font-size: 18px;
+  line-height: 20px;
+  padding: 17px 33px !important;
+
+  &.button-chromeless:hover {
+    padding: 16px 35px !important;
+  }
+}
+
+.button-grande.button-arrow {
+  border-radius: 5px 0 0 5px;
+}
+
+.button-grande {
+  /* Rectangle 2: */
+  background: $headerBg;
+  border: 1px solid darken($headerBg, 10%);
+  font-size: 22px;
+  color: text-color(lighten($headerBg, 10%));
+  line-height: 27px;
+  padding: 15px 22px;
+
+
+  &.button-arrow:after, &.button-arrow:before {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &.button-arrow:after {
+    border-color: rgba(136, 183, 213, 0);
+    border-left-color: $headerBg;
+    border-width: 38px;
+    margin-top: -38px;
+  }
+
+  &.button-arrow:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-left-color: darken($headerBg, 10%);
+    border-width: 39px;
+    margin-top: -39px;
+  }
+
+}
+
+.button-light:active {
+  background: #f5f5f8;
+}
+
+.button-small {
+  padding: 7px 10px !important;
+  text-transform: capitalize;
+  box-shadow: none;
+  font-size: 13px;
+  line-height: 13px;
+  border-radius: 2px;
+  text-shadow: none;
+  font-weight: 400;
+}
+
+.button .arrow-forward {
+  background: asset-url("icons/button-highlight-arrow.png") center center no-repeat;
+  margin: 1px 5px 0 10px;
+  box-shadow: none;
+}
+
+.button span {
+  @include transition(.2s padding ease-in-out)
+}
+
+.button i {
+  @include transition(.2s opacity ease-in-out)
+}
+
+.button-primary i + span {
+  padding-left: 21px;
+}
+
+.button-highlight,
+html body .stripe-button-el span {
+  background: $highlightTopColor;
+  color: text-color($highlightTopColor);
+  border: 1px solid darken($highlightTopColor, 20%);
+}
+
+.button-highlight {
+  color: white !important;
+}
+
+.button-highlight,
+.button-big,
+html body .stripe-button-el span {
+  padding: 14px 26px;
+}
+
+.ios .button-highlight {
+  line-height: 20px
+}
+
+
+.button-highlight:hover,
+html body .stripe-button-el span:hover {
+  background: lighten($highlightTopColor, 10%);
+}
+
+.button-highlight:active,
+html body .stripe-button-el span:active {
+  background: darken($highlightBottomColor, 1%);
+}
+
+/*  From Bootstrap  */
+.button[class^="icon-"], .button[class*=" icon-"] {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-image: asset-url("icons/glyphicons-halflings-white.png");
+  background-repeat: no-repeat;
+}
+
+.icon-ok {
+  background-position: -288px 0;
+  margin-top: -1px;
+  position: absolute;
+  top: 11px;
+}
+
+.button-small .icon-ok {
+  top: 6px;
+}
+
+.icon-close {
+  background-position: -313px 0;
+  cursor: pointer;
+}
+
+.icon-edit {
+  background-position: 0 -73px;
+  box-shadow: none;
+}
+
+.button-group {
+  display: inline-block;
+
+  .button {
+    border-radius: 0;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 10px 12px;
+    float: left;
+    box-shadow: none;
+  }
+
+  .button:first-child {
+    border-radius: 8px 0 0 8px;
+    border-right: none;
+  }
+
+  .button:last-child:nth-child(2) {
+    border-left: 1px solid  #9DA9B6;
+  }
+
+  .button:last-child {
+    border-radius: 0 8px 8px 0;
+    border-left: 0;
+  }
+
+  .button.active {
+    background: $headerBg;
+    color: text-color($headerBg);
+  }
+
+}
+
+.button-inactive {
+  background: #eff1f5;
+  color: #888;
+  text-shadow: 0 -1px 0 rgba(236, 236, 236, 0.8);
+  box-shadow: none;
+
+  &:active {
+    @include transform(none);
+  }
+}
+
+.button-inactive:hover,
+.button-inactive:active {
+  background: #DADDE4;
+}
+
+.button-yammer-signup,
+.button-yammer-signup:active {
+  background-repeat: no-repeat;
+  background-size: 10% 100%;
+}
+
+
+html body .button-yammer-signup,
+html body .button-microsoft-graph-signup,
+.identity-providers .service-providers .button {
+  letter-spacing: 0.05em;
+  @include defaultFontFamily();
+}
+
+html body .button-yammer-signup,
+html body .button-microsoft-graph-signup {
+  color: #fff;
+  padding-left: 44px;
+  text-shadow: 0 -1px 0 #084065;
+  border-radius: 3px;
+
+  img {
+    display: none;
+  }
+}
+
+html body .button-yammer-signup {
+  border: 1px solid #0f7cc4;
+  background-image: asset-url("3p/yammer-logo.svg");
+  background-color: #48aff3;
+  background-position: 10px center;
+}
+
+.button-yammer-signup:active {
+  background-color: #228ed5;
+  background-image: asset-url("3p/yammer-logo.svg");
+}
+
+.ie10 .button-yammer-signup {
+  background-image: asset-url("3p/yammer-logo.png");
+  background-color: #48aff3;
+  text-shadow: none;
+}
+
+html body .button-microsoft-graph-signup {
+  border: 1px solid darken(#0178d6, 10%);
+  background-image: asset-url("3p/windows-logo.png");
+  background-color: #0178d6;
+  background-position: 10px center;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+}
+
+.button-tall {
+  padding: 12px 10px;
+  border-radius: 3px;
+}
+
+.button-no-chrome, .button-chromeless {
+  @include appearance(none);
+  border: none !important;
+  background: transparent;
+  box-shadow: none;
+  padding: 10px 7px;
+  border-radius: 3px;
+  color: $linkColor;
+
+  &:hover {
+    border: 1px solid $buttonPrimaryBg !important;
+    padding: 9px 6px;
+  }
+
+  &:active {
+    @include transform(none);
+  }
+}
+
+.button-border {
+  @include appearance(none);
+  background: transparent;
+  box-shadow: none;
+  padding: 7px;
+  border-radius: 3px;
+  color: $linkColor;
+  border: 1px solid $linkColor;
+
+  &:active {
+    @include transform(none);
+  }
+}
+
+.button-success {
+  background: $success;
+  color: text-color($success);
+}
+
+.button-border-highlight {
+  border-color: $greenBright;
+  color: $greenBright;
+  padding: 15px 0;
+  font-size: 15px;
+  background: transparent;
+  padding: 20px 40px;
+}
+
+.button-no-chrome:hover {
+  box-shadow: 0 0 3px 1px rgba(153, 153, 153, 0.73);
+}
+
+.button-danger {
+  background: $danger;
+}
+
+.button-o365-plain,
+.button-yammer-plain {
+  box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.79);
+  display: inline-block;
+  font-size: 19px;
+  color: white;
+  padding: 21px 30px;
+  line-height: 22px;
+  margin: 20px 10px;
+  border: 0;
+  vertical-align: top;
+}
+
+.button-o365-plain {
+  background: #216DCB;
+  background-image: none !important;
+
+  &:hover {
+    background: lighten(#216DCB, 10%);
+  }
+}
+
+.button-yammer-plain {
+  background: #336595;
+
+  &:hover {
+    background: lighten(#336595, 10%);
+  }
+}
+
+.button-download {
+  @include linear-gradient(-180deg, #269FE6 0%, #037DC5 100%);
+  @include transition(all .8s $cubic);
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
+  border-radius: 6px;
+  padding: 30px 30px 25px 83px;
+  position: relative;
+  color: white;
+  font-size: 23px;
+  line-height: 24px;
+  text-align: left;
+  border: none;
+  margin-bottom: 5em;
+
+  &:hover {
+    @include linear-gradient(-180deg, lighten(#269FE6, 10%) 0%, lighten(#037DC5, 10%) 100%);
+    color: white !important;
+    @include transform(translate(0, -5px));
+  }
+
+  &:active {
+    @include transition-duration(.2s);
+    @include transform(translate(0,0));
+    box-shadow: inset 0 0 11px rgba(0, 0, 0, 0.5);
+    @include linear-gradient(180deg, #269FE6 0%, #037DC5 100%);
+  }
+
+  &:before {
+    content: "";
+    background: asset_url("pages/home-office365/download-icon.png") no-repeat center center;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    margin-top: -30px;
+  }
+
+  span {
+    font-size: 13px;
+    display: block;
+    margin: 10px 0 0 0;
+  }
+
+  &.light {
+    color: $headerBg;
+    @include linear-gradient(-180deg, #ECECEC 0%, #C5C5C5 100%);
+
+    &:hover {
+      color: $headerBg !important;
+    }
+
+    &:before {
+      background: asset_url("pages/home-office365/download-icon-blue.png") no-repeat center center;
+    }
+  }
+
+}
+
+@media (max-width: $tablet) {
+  .button-large {
+    padding: 13px 20px !important;
+  }
+}

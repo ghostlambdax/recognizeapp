@@ -1,0 +1,29 @@
+<% if current_user and ((current_user.admin? and (params[:network].present? and (!params[:network].casecmp?("uploads")))))%>
+  <% if Delayed::Job.where(failed_at: nil).count > 50000 %>
+    <div class="delayed_queue_warning">
+      <p>Delayed Queue has exceeded 50k.</p>
+      <p>Please visit <%= link_to "Admin Background Task page", admin_queue_path %></p>
+    </div>
+
+  <% end %>
+<% end %>
+
+<% if current_user and ((current_user.admin? and (params[:network].present? and (!params[:network].casecmp?("uploads")) and !params[:network].casecmp?(current_user.network))) or current_user.acting_as_superuser)%>
+<div title="<%= params[:controller]+"#"+params[:action]%> for <%= Company.where(domain: params[:network]).first.try(:name)%>" style="background-color: #fff;
+  margin-bottom: 10px;
+  border: 1px solid #0928b8;
+  position: fixed;
+  width: 80px;
+  border-radius: 4px;
+  bottom: 50px;
+  right: 10px;
+  z-index: 10000;
+  padding: 5px;">
+  Hey admin!<br>
+<% if current_user.acting_as_superuser %>
+  <%= link_to "Return", admin_login_as_path(id: current_user.acting_as_superuser)%>
+<% else %>
+  <%= link_to "Return", admin_path%>
+<% end %>
+</div>
+<% end%>

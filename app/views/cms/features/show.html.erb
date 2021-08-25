@@ -1,0 +1,75 @@
+<% og_image = @post.image && @post.image.present? ? @post.image.url : (@post.points && @post.points[0].image.url) %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="<%= @post.title %>" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="" />
+  <meta property="og:image" content="<%= og_image %>" />
+<% end %>
+
+<% content_for :title, @post.title %>
+<% content_for :description, @post.description&.html_safe %>
+
+<section class="home-intro pattern-footer_lodyas">
+  <div class="inner">
+    <h1 class="balance-text"><%= @post.title %></h1>
+    <p class="tagline color-white balance-text">
+      <%= @post.description %>
+    </p>
+    <%= schedule_demo_link %>
+  </div>
+</section>
+
+<% if @post.image.present? %>
+  <div class="feature-image marginBottom20">
+    <%= lazy_image_tag @post.image.url, alt: @post.image.alt %>
+  </div>
+<% end %>
+
+<% if @tags.present? %>
+  <% @tags.each do |tag| %>
+    <div class="subtle-text tag">
+      <%= link_to tag.name, cms_tag_path(tag.id) %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if @post.points.present? %>
+
+<section class="points">
+  <% @post.points.each do |p| %>
+    <% unless p.image.blank? && p.title.blank? && p.description.blank? %>
+      <section class="point">
+
+        <div class="inner">
+          <div class="point-body">
+            <% if p.icon.present? %>
+              <%= feather_icon(p.icon, {height: '25px', color: '#abc1ca'}) %>
+            <% end %>
+            <h2 class="balance-text"><%= p.title %></h2>
+            <% if p.body.present? %>
+            <div class="tagline"><%= p.body.html_safe %></div>
+            <% end %>
+          </div>
+
+          <% if p.image.present? %>
+          <div class="point-image">
+            <div class="inner">
+              <%= lazy_image_tag p.image.url, alt: p.image.alt, style: "width: 100%" %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+
+      </section>
+    <% end %>
+  <% end %>
+
+</section>
+<% end %>
+
+<%= render partial: 'home/schedule_demo_incentive_point' unless current_user.present? %>
+
+
+<%= render partial: "home/footer" unless current_user.present? %>

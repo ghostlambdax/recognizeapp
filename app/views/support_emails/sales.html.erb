@@ -1,0 +1,55 @@
+<%= content_for :title, "Contact the Recognize Team" %>
+<%= content_for :description, "Get started with your own employee recognition and rewards programs today by contacting the Recognize Team." %>
+
+<%= render_flash %>
+
+<div class="form-centered well" itemscope itemtype="https://schema.org/ContactPage">
+
+  <h1 itemprop="name" class="balance-text"><%= t("support_emails.sales_contact") %></h1>
+  <p itemprop="name"><%= t("support_emails.sales_description_html") %></p>
+
+  <%= form_for @support_email, remote: true, html: {class: "form-vertical form", data: {errorWrapper: "#contact-error-wrapper"}} do |f|%>
+
+    <nav class="tab-nav">
+      <ul class="clearfix" data-turbolinks="false">
+        <li class="active"><%= link_to t("support_emails.sales_inquiry"), contact_sales_path %></li>
+        <li><%= link_to t('support_emails.support'), contact_path %></li>
+      </ul>
+    </nav>
+
+    <div id="contact-error-wrapper"></div>
+
+    <div id="fullName" class="control-group">
+      <%= f.text_field :name, placeholder: t("support_emails.name"), value: (@current_user.full_name unless !@current_user)%>
+    </div>
+
+    <div class="row-fluid">
+      <div class="row">
+        <div class="span6">
+          <div class="control-group">
+            <%= f.text_field :phone, placeholder: t("support_emails.phone") %>
+            <span class="help-block"><strong class="cursor" title="<%= t('support_emails.sales_why_give_phone') %>"><%= t('support_emails.telephone_is_required') %><sup>?</sup></strong></span>
+          </div>
+        </div>
+        <div class="span6">
+          <div class="control-group">
+            <%= f.email_field :email, placeholder: t("support_emails.email"), value: (@current_user.email unless !@current_user) %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="control-group marginTop10">
+      <%= f.text_area :message, rows: 10, placeholder: t("support_emails.how_can_we_help"), value: @body %>
+    </div>
+
+    <%= f.hidden_field :type, value: "Sales" %>
+    <%= f.hidden_field :utm_source, value: params[:utm_source] %>
+
+    <div class="control-group">
+      <%= form_recaptcha_tags %>
+      <%= f.submit t("dict.send"), class:'button button-primary button-large captcha-trigger-button'%>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,65 @@
+<div class="right">
+<%= render layout: 'layouts/create_catalog_dropdown', locals: {company: @company, catalog: @catalog} do |catalog| %>
+  <%= link_to catalog.label, company_admin_anniversaries_settings_path(catalog_id: catalog.id) %>
+<% end %>
+</div>
+
+<h5>Badge Settings</h5>
+<p>Choose how you would like to automatically <%= t("dict.recognize") %> people's anniversaries.</p>
+
+<ul id="anniversary-list">
+  <% @anniversary_badges.each do |badge| %>
+    <li class="marginBottom20" id="badge-<%= badge.anniversary_template_id %>">
+      <%= form_for badge, url: update_badge_company_admin_anniversaries_settings_path(network: @company.domain), id: "", remote: true, method: :put do |f| %>
+        <%= f.hidden_field :anniversary_template_id %>
+        <div class="row-fluid fields">
+          <div class="span3 centered marginBottom10">
+            <%= image_tag (badge.image.thumb.url || default_anniversary_badge_image(badge)), height: "75", class:"anniversary-badge-image" %>
+
+            <input name="badge[is_enabled]" type="hidden" value="0" />
+
+            <!-- BEGIN-- Image uploader -->
+            <div class="marginVertical20">
+              <div class="badge_image_edit_container">
+                <input type="button" style="width:40%" class="button button-border change_badge_image" title="Allows to upload new badge image." value="Change" />
+                <div class="inner_container">
+                  <span class="centered subtle-text smallPrint block"><%= t("badges.upload_instructions") %><br />Crop image to badge</span>
+                  <div class="file-attach-progress">
+                    <div class="message"></div>
+                    <div class="progress-bar"><div class="progress-inner"><span class="right"></span></div></div>
+                  </div>
+                  <div class="control-group" id="badge-image-control">
+                    <%= f.file_field :image %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- END -- Image uploader -->
+
+            <%= show_toggle badge.persisted? && !badge.disabled?, "", input: {name: "badge[is_enabled]"} %>
+          </div>
+
+          <div class="span9">
+            <div class="row-fluid marginBottom10">
+              <div class="span8">
+                <%= f.text_field :short_name, id: "badge-short_name-#{badge.anniversary_template_id}", class: "badge-input-short_name" %>
+              </div>
+              <div class="span2">
+                <%= f.text_field :points, type: :number, id: "badge-points-#{badge.anniversary_template_id}", class: "badge-input-points" %> <%= t('dict.points') %>
+              </div>
+              <% if @company.allow_rewards? && show_currency?(@company) %>
+                <div class="span2">
+                  <p class="currency-value"></p>
+                </div>
+              <% end %>
+            </div>
+
+            <%= f.text_area :anniversary_message, id: "badge-message-#{badge.anniversary_template_id}", class: "badge-input-message", rows: 2 %>
+          </div>
+        </div>
+
+      <% end %>
+    </li>
+    <hr>
+  <% end %>
+</ul>

@@ -1,0 +1,6 @@
+<%
+  opts = { url: destroy_recognition_path(recognition), remote: true, method: :delete, html: { class: "recognition-delete" }, data: {event: "recognition-delete"} }
+%>
+<%= form_for recognition, opts do |f| %>
+  <%= f.submit t("dict.delete"), class: button_class %>
+<%end%>

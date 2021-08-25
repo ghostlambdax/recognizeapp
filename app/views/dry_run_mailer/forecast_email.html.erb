@@ -1,0 +1,83 @@
+<h1 style="<%= mail_styles(:h1, :title, :text) %>">
+  <%= @heading %>
+</h1>
+
+<div id="metadata" style="background-color: #fafad2; padding: 5px 20px">
+  <p style="<%= mail_styles(:text) %>">Total email count: <%= @report.total_email_count %></p>
+  <p style="<%= mail_styles(:text) %>"><%= run_count_info_for_forecast(@total_run_count, @report.results.count) %></p>
+  <p style="<%= mail_styles(:text) %>"><%= company_count_info_for_dry_run(@report.unique_company_count, @report.unique_company_with_results_count) %></p>
+  <p style="<%= mail_styles(:text) %>">Reference time range: </p>
+  <table style="<%= mail_styles(:table) %> margin: 0 0 20px 20px">
+    <tr style="<%= mail_styles(:text) %>"><td style="width: 50px">From:</td><td><%= format_dry_run_time(@reference_time_range.begin) %></td></tr>
+    <tr style="<%= mail_styles(:text) %>"><td>To:</td><td><%= format_dry_run_time(@reference_time_range.end) %></td></tr>
+  </table>
+  <% if @filtered_company_names %>
+    <p style="<%= mail_styles(:text) %>">Filtered Companies (input filter): <%= @filtered_company_names %></p>
+  <% end %>
+  <% if @report.total_error_count.positive? %>
+    <p style="<%= mail_styles(:text) %>">
+      <strong>Errors encountered</strong>: <%= @report.total_error_count %>
+      (<%= @report.unique_error_count %> unique,
+      <%= @report.erroneous_company_count %> <%= 'company'.pluralize(@report.erroneous_company_count) %> affected)
+    </p>
+  <% end %>
+</div>
+<%= mail_styles(:hr) %>
+<br>
+<%# there is a quirk where an error can be present in super_global_errors, but not in global_errors
+    this happens when all the run reports contain single company result only %>
+<% if @report.super_global_errors.present? || @report.global_errors.present? %>
+  <div id="global-errors"  style="padding: 20px; margin-bottom: 20px; background-color: #ff000078;">
+    <h2 style="<%= mail_styles(:h2, :text) %>">Global errors:</h2>
+    <% if @report.super_global_errors.present? %>
+      <h3 style="<%= mail_styles(:h3, :text) %>"> Errors affecting all runs:</h3>
+      <ul style="margin-top: 0">
+        <% @report.super_global_errors.each do |error_str| %>
+          <li style="<%= mail_styles(:text) %> margin-bottom: 10px"><%= error_str %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <% remaining_global_errors = @report.global_errors(false) %>
+    <% if remaining_global_errors.present? %>
+      <h3 style="<%= mail_styles(:h3, :text) %>"> Errors affecting some runs:</h3>
+      <ul style="margin-top: 0">
+        <% remaining_global_errors.each do |error_str| %>
+          <li style="<%= mail_styles(:text) %> margin-bottom: 10px"><%= error_str %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @report.results.count.positive? %>
+  <% @report.results.each_with_index do |(reference_time, run_report), index| %>
+    <div class="run-results" style="border-bottom: 1px solid #d3d3d3; padding: 20px 0; ">
+      <h2 style="<%= mail_styles(:h2) %>"><%= "#{index + 1}. #{reference_time.inspect}" %></h2>
+      <div style="padding-left: 20px">
+        <% results = run_report.results_excluding_global_errors(@report.super_global_errors)
+           results.each do |company_report| %>
+          <%= render 'company_dry_run_report', company: company_report.company,
+                     emails: company_report.emails,
+                     errors: company_report.errors %>
+          <br>
+        <% end %>
+        <%#
+          # Note on Possible Enhancement:
+          # like super global errors, companies with empty results across all runs could be detected too
+          # and shown just once in the end as such
+        %>
+        <% if run_report.companies_with_empty_results.present? %>
+          <div class="empty-result-companies">
+            <h3 style="<%= mail_styles(:h3, :title, :text) %> margin-top: 0">Companies with empty results:</h3>
+            <% run_report.companies_with_empty_results.each do |company| %>
+              <li style="<%= mail_styles(:text) %> margin-bottom: 10px"><%= company.name %></li>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <br>
+  <% end %>
+<% else %>
+  <p style="<%= mail_styles(:p, :text) %>">No company would be eligible for the run.</p>
+<% end %>

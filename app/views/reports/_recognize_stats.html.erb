@@ -1,0 +1,43 @@
+
+<%
+  pagelet_params = {
+      network: current_user.network,
+      badge_id: params[:badge_id],
+      start_date: params[:start_date],
+      end_date: params[:end_date]
+  }
+%>
+
+<% grid_css_class = current_user.allow_top_employee_stats? && current_user.allow_you_stats? ? "span4" : "span6" %>
+
+<div class="stats-columns-wrapper row-fluid">
+  <% if current_user.allow_you_stats? %>
+      <div class="<%= grid_css_class %>">
+        <h2><%= t("dict.you") %></h2>
+        <div class="pagelet" data-endpoint="<%= user_reports_path(pagelet_params) %>">
+          <div class="loading-wrapper">
+            <%= image_tag "icons/outlook-progress.gif" %>
+          </div>
+        </div>
+      </div>
+      <% if current_user.allow_teams? %>
+          <div class="<%= grid_css_class %>">
+            <h2><%= t("dict.teams") %></h2>
+            <div class="pagelet" data-endpoint="<%= team_reports_path(pagelet_params) %>">
+              <div class="loading-wrapper">
+                <%= image_tag "icons/outlook-progress.gif" %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+  <% end %>
+
+  <% if current_user.allow_top_employee_stats? %>
+      <div class="<%= grid_css_class %>">
+        <h2><%= @company.custom_labels.top_users_label %></h2>
+        <div id="rank" class="pagelet" data-endpoint="<%= top_users_reports_path(network: @company.domain, badge_id: params[:badge_id], start_date: params[:start_date], end_date: params[:end_date], interval: params[:interval]) %> #wrapper-outer .wrapper">
+          <%= image_tag "icons/outlook-progress.gif" %>
+        </div>
+      </div>
+  <% end %>
+</div>

@@ -1,0 +1,55 @@
+<h2 style="<%= mail_styles(:h2, :text, :title) %> padding: 0;"><%= t("user_notifier.name_wants_you_to_join_recognize", name: @inviter.full_name) %></h2>
+
+<table style="<%= mail_styles(:table) %>">
+  <tr>
+    <td>
+      <p style="<%= mail_styles(:p, :text) %>"><%= t("recognize.title_company_name", company: @inviter_company.name) %></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="<%= @verification_url %>" style="<%= mail_styles(:button) %> margin: 0; "><%= t('user_notifier.verify_account_now') %></a>      
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3 style="<%= mail_styles(:h3, :text) %>"><strong><%= t('user_notifier.things_you_may_want_to_do') %></strong></h3>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <ul>
+        <li style="<%= mail_styles(:p, :text) %>">
+          <a href="<%= edit_user_url(@user, network: @user.network) %>" style="<%= mail_styles(:text, :a) %> display: block;"><%= t('user_notifier.edit_your_personal_info') %></a>
+        </li>
+        <li style="<%= mail_styles(:p, :text) %>"><a href="<%= new_recognition_url(network: @user.network) %>" style="<%= mail_styles(:text, :a) %> display: block;"><%= t('dict.send_a_recognition') %></a>
+        </li>
+        <li style="<%= mail_styles(:p, :text) %>"><a href="<%= stream_url(network: @user.network) %>" style="<%= mail_styles(:text, :a) %> display: block;"><%= t('user_notifier.see_your_company_recognitions') %></a>
+        </li>
+        <li style="<%= mail_styles(:p, :text) %>">
+          <%= link_to t('outlook.use_inside'), marketing_outlook_url, style: mail_styles(:text, :a) %>
+        </li>
+      </ul>
+      <%= mail_styles(:hr) %><br>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3 style="<%= mail_styles(:h3, :text) %>"><%= t('user_notifier.gain_more_from_your_actions') %></h3>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <ul style="margin-bottom: 20px;">
+        <li style="<%= mail_styles(:p, :text) %>"><%= t('user_notifier.official_recognition_from_colleagues') %></li>
+        <li style="<%= mail_styles(:p, :text) %>"><%= t('user_notifier.celebrate_more_often') %></li>
+        <li style="<%= mail_styles(:p, :text) %>"><%= t('user_notifier.receive_awards') %></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="<%= @verification_url %>" style="<%= mail_styles(:button) %>"><%= t('user_notifier.verify_account_now') %></a>
+    </td>
+  </tr>
+</table>

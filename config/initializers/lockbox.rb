@@ -1,0 +1,1 @@
+Lockbox.master_key = Rails.application.config.rCreds.dig('lockbox', 'master_key')

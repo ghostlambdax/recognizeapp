@@ -1,0 +1,8 @@
+<%
+   if current_user && current_user.company.customizations.present? && current_user.company.customizations.end_user_guide.present?
+     url = current_user.company.customizations.end_user_guide.url
+   else
+     url = "https://cms-assets.recognizeapp.com/wp-content/uploads/2020/10/04191631/Getting-Started-Recognize.pdf"
+   end
+%>
+<a href="<%= url %>" class="button button-large"><%= t("help.getting_started_guide") %></a>

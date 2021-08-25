@@ -1,0 +1,15 @@
+<div class="clear"></div>
+<%= link_to t("dict.export_to_csv"), "javascript://", id: "exportCSV-top-employees" %>
+
+  <div class="metric-wrapper button-group right marginBottom10 marginTop10">
+
+  <% button_pressed_class = (params[:sort].blank? || params[:sort] == 'received_recognitions') ? 'button-pressed' : '' %>
+  <%= link_to t("dict.received_recognitions"), send(leaderboard_report_path_method, leaderboard_path_args.merge(sort: 'received_recognitions')), class: "button #{button_pressed_class}" %>
+
+  <% button_pressed_class = (params[:sort] == 'sent_recognitions') ? 'button-pressed' : '' %>
+  <%= link_to t("dict.sent_recognitions"), send(leaderboard_report_path_method, leaderboard_path_args.merge(sort: 'sent_recognitions')), class: "button #{button_pressed_class}" %>
+
+  <% button_pressed_class = (params[:sort] == 'points') ? 'button-pressed' : '' %>
+  <%= link_to t("dict.points"), send(leaderboard_report_path_method, leaderboard_path_args.merge(sort: 'points')), class: "button #{button_pressed_class}" %>
+
+</div>

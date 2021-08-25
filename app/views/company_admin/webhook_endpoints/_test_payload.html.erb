@@ -1,0 +1,18 @@
+<div class="well width100">
+  <h5>Test payload: <%= @runner.object.recognize_hashid %></h5>
+  <% if @webhook_endpoint.conditions_template.present? %>
+    <h6>Conditions</h6>
+    <div class="marginBottom10">
+      <%= @runner.conditions_str %>
+    </div>
+  <% end %>
+  <h6>Payload</h6>
+  <div class="marginBottom10">
+    <%= @runner.payload_str %>
+  </div>
+  <h6>Request Headers</h6>
+  <div>
+    <%= @runner.filtered_req_headers %>
+  </div>
+
+</div>

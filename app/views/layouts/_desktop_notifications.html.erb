@@ -1,0 +1,64 @@
+<script type="text/javascript" src="//cdn.pushwoosh.com/webpush/pushwoosh-web-notifications.js" async></script>
+<script type="text/javascript">
+  (function() {
+    var deviceTokenTimer = 0;
+    var giveUpLimit = 100;
+
+    Pushwoosh = window.Pushwoosh || [];
+    Pushwoosh.push(['init', {
+      logLevel: 'debug', // or info
+      applicationCode: '9D81E-0C7CC',
+      safariWebsitePushID: 'web.recognize',
+      defaultNotificationTitle: 'Recognize',
+      defaultNotificationImage: 'https://recognizeapp.com/assets/chrome/logo_180x180.png'
+    }]);
+
+    Pushwoosh.push(function(api) {
+      var userRecord = window.localStorage[api.pushToken+"-user"];
+
+      if (userRecord && (userRecord !== "<%= current_user.id %>")) {
+        if (window.localStorage[api.pushToken]) {
+          $.ajax({
+            url: window.localStorage[api.pushToken],
+            type: "DELETE"
+          });
+        }
+
+        api.unregisterDevice();
+      }
+
+
+      function sendDeviceToken() {
+        if (api && api.pushToken) {
+          clearTimeout(deviceTokenTimer);
+
+          $.ajax({
+            url: "<%= user_device_tokens_path(current_user) %>",
+            method: "POST",
+            data: {
+              client_id: "5e568d3f90915896e44fae62b480a6748cb2cc8b65b1c4e6a54bc4a1604148c2",
+              device_platform: "web",
+              device_token: api.pushToken
+            },
+            success: function(data) {
+              window.localStorage[api.pushToken] = data.url;
+              window.localStorage[api.pushToken+"-user"] = "<%= current_user.id %>";
+            }
+          });
+
+        } else {
+          deviceTokenTimer = setTimeout(sendDeviceToken, 100);
+        }
+
+        if ((giveUpLimit--) === 0) {
+          clearTimeout(deviceTokenTimer);
+        }
+
+      }
+
+      api.registerDevice().then(function() {
+        sendDeviceToken();
+      });
+    });
+  })();
+</script>

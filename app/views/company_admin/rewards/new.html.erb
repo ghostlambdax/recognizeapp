@@ -1,0 +1,23 @@
+<% content_for :rewards_filter do %>
+<span></span>
+<% end %>
+
+<div id="rewards-header-area" class="clearfix">
+  <div class="page-main marginBottom10">
+    <% if params[:template_id].present? %>
+      <h2><%= t("rewards.add_reward") %></h2>
+    <% else %>
+      <h2><%= t("rewards.new_reward") %></h2>
+    <% end %>
+  </div>
+</div>
+
+<% if @reward.provider_reward? %>
+    <%= render(
+          "provider_form",
+          reward: @reward,
+          url: company_admin_catalog_rewards_path(@catalog),
+        ) %>
+<% else %>
+  <%= render("form", reward: @reward, url: company_admin_catalog_rewards_path(@catalog)) %>
+<% end %>

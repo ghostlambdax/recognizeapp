@@ -1,0 +1,8 @@
+<% @catalog = Catalog.find_by_id(params[:catalog_id].to_i) %>
+<% content_for :rewards_filter do %>
+  <%= render layout: 'layouts/create_catalog_dropdown', locals: {company: @company, catalog: @catalog} do |catalog| %>
+    <% params = catalog.present? ? { catalog_id: catalog.id } : {}  %>
+    <%= rewards_nav_link(company_admin_redemptions_path(params), catalog.label) %>
+  <% end %>
+<% end %>
+<%= litatablify(@datatable, endpoint: request.fullpath) %>

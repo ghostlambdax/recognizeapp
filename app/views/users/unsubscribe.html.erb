@@ -1,0 +1,15 @@
+<div class="centeredPage">
+  <div class="well width-500 centered" id="unsubscribe-wrapper">
+    <% if @user.email_setting.global_unsubscribe %>
+      <h2><%=t("users.you_have_already_been_unsubscribed") %></h2>
+      <p><%= t('users.you_may_manage_settings_edit_profile') %></p>
+      <%= link_to t('users.change_email_settings_edit_profile'), edit_user_url(@user), class: "button" %>
+    <%else %>
+      <h2><%=t("users.please_click_below_to_unsubscribe") %></h2>
+      <p>Email: <%=@user.email %></p>
+      <%= form_for @user, url: unsubscribe_path, remote: true do |f|%>
+        <%=f.submit t("users.unsubscribe"), id: "unsubscribe-button", class: "button button-primary" %>
+      <%end %>
+    <%end %>
+  </div>
+</div>

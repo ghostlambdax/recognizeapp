@@ -1,0 +1,38 @@
+CLASS MACHINE 
+ 
+  CATEGORY !!Recognize_Category
+    CATEGORY !!Extensions_Category
+      KEYNAME "Software\Policies\Google\Chrome"
+        POLICY !!RecognizeChrome_Policy 
+            #if version >= 4 
+                SUPPORTED !!SUPPORTED_WindowsXPSP1 
+            #endif 
+
+            KEYNAME "Software\Policies\Google\Chrome\ExtensionInstallForcelist"
+
+            EXPLAIN !!ExtensionInstallForcelist_Explain
+            VALUENAME "1"
+              VALUEON "khonmmgfpdbncbianbikkhchhgleeako;https://clients2.google.com/service/update2/crx"
+              VALUEOFF "" 
+
+        END POLICY 
+        POLICY !!RecognizeFirefox_Policy
+            #if version >= 4 
+                SUPPORTED !!SUPPORTED_WindowsXPSP1 
+            #endif 
+
+        END POLICY
+    END CATEGORY
+  END CATEGORY
+
+[Strings]
+SUPPORTED_WindowsXPSP1="Microsoft Windows XP SP2 or later"
+Recognize_Category="Recognize"
+Extensions_Category="Extensions"
+Chrome_Category="Chrome"
+RecognizeChrome_Policy="Chrome"
+RecognizeFirefox_Policy="Firefox"
+ExtensionInstallForcelist_Part="Extension IDs and update URLs to be silently installed"
+ExtensionInstallForcelist_Policy="Configure the list of force-installed extensions"
+ExtensionInstallForcelist_Explain="Allows you to specify a list of extensions that will be installed silently, without user interaction.\n\nFor Windows instances that are not joined to an Active Directory\ndomain, forced installation is limited to extensions listed in the\nChrome Web Store.\n\nEach item of the list is a string that contains an extension ID and an update URL delimited by a semicolon (;). The extension ID is the 32-letter string found e.g. on chrome://extensions when in developer mode. The update URL should point to an Update Manifest XML document as described at https://developer.chrome.com/extensions/autoupdate. Note that the update URL set in this policy is only used for the initial installation; subsequent updates of the extension will use the update URL indicated in the extension's manifest.\n\nFor each item, Google Chrome will retrieve the extension specified by the extension ID from the update service at the specified update URL and silently install it.\n\nFor example, lcncmkcnkcdbbanbjakcencbaoegdjlp;https://clients2.google.com/service/update2/crx installs the Google SSL Web Search extension from the standard Chrome Web Store update URL. For more information about hosting extensions, see: https://developer.chrome.com/extensions/hosting.\n\nUsers will be unable to uninstall extensions that are specified by this policy. If you remove an extension from this list, then it will be automatically uninstalled by Google Chrome. Extensions specified in this list are also automatically whitelisted for installation; the ExtensionsInstallBlacklist does not affect them.\n\nNote that the source code of any extension may be altered (potentially\nrendering the extension dysfunctional) by using Developer Tools. If\nthis is a concern, the DeveloperToolsDisabled policy should be set.\n\nIf this policy is left not set the user can uninstall any extension in Google Chrome."
+ExtensionInstallForcelist_Part="Extension IDs and update URLs to be silently installed"

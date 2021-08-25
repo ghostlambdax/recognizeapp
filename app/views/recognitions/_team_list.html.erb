@@ -1,0 +1,17 @@
+<% teams.each do |team| %>
+  <li class="team-item<%= ' own-team' if my_teams %><%= ' current' if team.id == @selected_team&.id %>">
+    <h4 class="flex align-items-center">
+      <span class="star blue-link-icon<%= ' current' if my_teams %>">
+        <% if my_teams %>
+          <span class="offscreen">Joined</span>
+        <% end %>
+      </span>
+      <%= link_to team.name, recognitions_path(team_id: team.to_param),
+                  class: "link#{' my_team_icon' if my_teams}", id: "team-#{team.to_param}" %>
+    </h4>
+
+    <span class="detail-link">
+      <%= link_to t('dict.details'), team_path(team) %>
+    </span>
+  </li>
+<% end %>

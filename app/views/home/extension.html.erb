@@ -1,0 +1,145 @@
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Employee Recognition & Rewards in Yammer from Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="Send and receive employee recognition inside Yammer. Never leave Yammer to redeem rewards or view other employee's recognitions." />
+  <meta property="og:image" content="/assets/illustrations/recognize.jpg" />
+<% end%>
+
+<% content_for :title, t('home_extension.extension')%>
+<% content_for :description,"Send and receive employee recognition inside Yammer. Never leave Yammer to redeem rewards or view other employee's recognitions." %>
+<% content_for :meta_keywords, "Yammer, Yammer integrations, Yammer employee engagement, Yammer gamification" %>
+
+
+<link href="//vjs.zencdn.net/4.5/video-js.css" rel="stylesheet">
+<script src="//vjs.zencdn.net/4.5/video.js"></script>
+<section id="intro-video-wrapper">
+
+    <div class="">
+      <h1 class="balance-text">
+        <%= t('home_extension.title')  %>
+      </h1>
+      <%= schedule_demo_link %>
+    </div>
+  <div id="video-wrapper" class="">
+    <video id="yammer-video" class="video-js vjs-default-skin"
+      controls data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }' width="859" height="432"
+      poster="<%= asset_path('pages/home-extension/poster.jpg') %>">
+     <source src="<%= asset_path('video.mp4') %>" type='video/mp4' />
+    </video>
+  </div>
+</section>
+
+
+<div id="title-sub" class="centered">
+  <h2><%= t('home_extension.subtitle') %></h2>
+</div>
+
+<div id="functionality-wrapper" class="">
+  <%= render partial: "home/extension_download" %>
+  <div class="inner">
+    <h3 class="balance-text">Recognize out of box Yammer integration</h3>
+    <p class="balance-text">By signing in with Yammer at Recognizeapp.com, your company can easily improve employee engagement.</p>
+    <section  class="table-functionality table-functionality-single">
+      <div class="row">
+        <div class="functionality">
+          <h4><div class="check">Yes</div> Recognitions show on Yammer</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="functionality">
+          <h4><div class="check">Yes</div> Sign in to Recognize from Yammer</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="functionality">
+          <h4><div class="check">Yes</div> Recognize Yammer users</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="functionality">
+          <h4><div class="check">Yes</div> Instantly recognize Yammer users</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="functionality">
+          <h4><div class="check">Yes</div> Invite Yammer users to Recognize</h4>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="inner">
+    <h3>Browser extension Yammer integration</h3>
+    <p>By installing the <strong>Recognize browser extension</strong>, an add-on for your web browser, Recognize is embedded inside Yammer.com.</p>
+
+
+    <section  class="table-functionality table-functionality-single">
+      <div class="row">
+        <div class="functionality">
+          <h4><div class="check">Yes</div>Send recognitions from Yammer</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="functionality">
+          <h4><div class="check">Yes</div>Recognitions show on user's Yammer profile</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="functionality">
+          <h4><div class="check">Yes</div>Recognize Yammer posts</h4>
+        </div>
+      </div>
+    </section></div>
+  </div>
+<div id="points">
+  <section id="point2-wrapper" class="clearfix">
+    <div class="inner clearfix">
+      <div class="image"><span class="offscreen"></span></div>
+      <div class="content">
+        <h2><%= t('home_extension.point2') %></h2>
+        <p><%= t('home_extension.point2_description') %></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="point3-wrapper"class="clearfix">
+    <div class="inner clearfix">
+      <div class="content">
+        <h2><%= t('home_extension.point3') %></h2>
+        <p><%= t('home_extension.point3_description') %></p>
+      </div>
+      <div class="image"><span class="offscreen"></span></div>
+
+    </div>
+  </section>
+
+  <section id="point4-wrapper" class="clearfix">
+    <div class="inner clearfix">
+      <div class="image"><span class="offscreen"></span></div>
+
+      <div class="content">
+        <h2><%= t('home_extension.point4') %></h2>
+        <p><%= t('home_extension.point4_description') %></p>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+</div> <!-- main content -->
+
+
+
+<section id="action">
+  <div class="inner">
+    <div class="content">
+      <%= render partial: "/home/bottom" %>
+    </div>
+  </div>
+</section>
+
+
+<%= render :partial => 'footer' %>

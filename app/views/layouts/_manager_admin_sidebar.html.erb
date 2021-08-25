@@ -1,0 +1,18 @@
+<div class="admin-nav-wrapper clearfix" role="navigation">
+  <h2><%= t('manager_admin.manager_portal') %></h2>
+  <nav class="admin-nav">
+    <ul class="clearfix">
+
+      <%# company_admin_sidebar_link("Dashboard", manager_admin_dashboard_path(network: @company.domain)) %>
+      <%= company_admin_sidebar_link(_("Direct Reports"), manager_admin_users_path(network: @company.domain), {icon: 'user'}) if permitted_to?(:index, :manager_admin_users) %>
+      <%= company_admin_sidebar_link(_("Recognitions"), manager_admin_recognitions_path(network: current_user.company.domain), {icon: 'star'}) if permitted_to?(:index, :manager_admin_recognitions) %>
+      <%= company_admin_sidebar_link(_("Anniversaries"), manager_admin_anniversaries_calendar_path(network: current_user.company.domain), {icon: 'calendar'}) if permitted_to?(:show, :manager_admin_anniversaries_calendars) %>
+      <%= company_admin_sidebar_link(_("Redemptions"), manager_admin_redemptions_path(status: 'all'), {icon: 'gift'}) if permitted_to?(:index, :manager_admin_redemptions) %>
+      <%= company_admin_sidebar_link(_("Approved"), manager_admin_redemptions_path(status: 'approved'), {icon: 'gift', dept: nil}) if permitted_to?(:index, :manager_admin_redemptions) %>
+      <%= company_admin_sidebar_link(_("Pending"), manager_admin_redemptions_path(status: 'pending'), {icon: 'gift', dept: nil}) if permitted_to?(:index, :manager_admin_redemptions) %>
+      <%= company_admin_sidebar_link(_("Denied"), manager_admin_redemptions_path(status: 'denied'), {icon: 'gift', dept: nil}) if permitted_to?(:index, :manager_admin_redemptions) %>
+      <%= company_admin_sidebar_link(t("tskz.tasks"), manager_admin_completed_tasks_path(network: @company.domain), {icon: 'check-circle'}) if permitted_to?(:index, :manager_admin_tskz_completed_tasks) %>
+      <%= company_admin_sidebar_link(t("layouts.company_admin_sidebar.document_center"), manager_admin_documents_path(network: @company.domain), {icon: 'paperclip'}) if permitted_to?(:index, :manager_admin_documents) %>
+    </ul>
+  </nav>
+</div>

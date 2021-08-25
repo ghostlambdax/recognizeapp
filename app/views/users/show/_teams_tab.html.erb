@@ -1,0 +1,14 @@
+<section id="teams" class="tab tab-pane">
+  <%= link_to t("dict.teams"), teams_path(network: current_user.network), class: "button button-inactive marginBottom20" unless @user != current_user %>
+  <% unless @user.teams.blank? %>
+    <% @user.teams.each do |team| %>
+      <h2><%= link_to team.name, team_path(team) %></h2>
+    <% end %>
+  <% else %>
+
+    <% if @user != current_user %>
+      <p class="list-empty-warning"><%= t("user_show.is_not_on_any_teams", name: @user.full_name) %></p>
+    <% end %>
+
+  <% end %>
+</section>

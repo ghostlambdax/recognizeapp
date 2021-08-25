@@ -1,0 +1,85 @@
+<h3>User sync</h3>
+<p>Pulling or pushing employee metadata to Recognize in order to recognize, notify, and find your staff.</p>
+
+<% if params[:dept].present? && !params[:dept].casecmp?(current_user.network) %>
+  <div>User sync is not currently configurable while using the Departments feature. Please <%= link_to "contact us", contact_path %> if you need assistance</div>
+<% else %>
+  <% providers = UserSync.providers_to_label_map %>
+
+  <div class="marginBottom20" id="allow-sync-enabled">
+    <%= show_toggle @company.sync_enabled?, "Enable sync", data: { setting: "sync_enabled" } %>
+  </div>
+
+  <div class="marginBottom20" id="allow-sync-phone-data">
+    <%= show_toggle @company.settings.sync_phone_data?,
+                    "Sync phone number",
+                    data: {setting: "settings[sync_phone_data]"} %>
+  </div>
+  <div class="marginBottom20" id="allow-sync-managers">
+    <%= show_toggle @company.settings.sync_managers?,
+                    "Sync managers",
+                    data: {setting: "settings[sync_managers]"} %>
+  </div>
+  <div class="marginBottom20" id="allow-sync-service-anniversary-data">
+    <%= show_toggle @company.settings.sync_service_anniversary_data?,
+                    "Sync hire date and birthday",
+                    data: {setting: "settings[sync_service_anniversary_data]"} %>
+  </div>
+  <div class="marginBottom20" id="allow-sync-display-name">
+    <%= show_toggle @company.settings.sync_display_name?,
+                    "Sync display name",
+                    data: {setting: "settings[sync_display_name]"} %>
+  </div>
+  <div class="marginBottom20" id="allow-sync-job-title">
+    <%= show_toggle @company.settings.sync_job_title?,
+                    "Sync job title",
+                    data: {setting: "settings[sync_job_title]"} %>
+  </div>
+  <div class="marginBottom20" id="allow-sync-department">
+    <%= show_toggle @company.settings.sync_department?,
+                    "Sync department",
+                    data: {setting: "settings[sync_department]"} %>
+  </div>
+  <div class="marginBottom20" id="allow-sync-country">
+    <%= show_toggle @company.settings.sync_country?,
+                    "Sync country",
+                    data: {setting: "settings[sync_country]"} %>
+  </div>
+
+  <%= render "companies/extension_mapping" if @company.allow_admin_dashboard? && @company.settings.allow_custom_field_mapping? %>
+
+  <label class="checkbox-title">Choose sync provider</label>
+  <%= form_for @company, url: update_settings_company_path(network: @company.domain), remote: true, method: :post, html: {id: "sync-provider-form", class: "marginBottom0"} do |f| %>
+    <%= f.select :sync_provider, options_from_collection_for_select(providers, :first, :second, @company.sync_provider) %>
+  <% end %>
+
+
+  <% providers.each do |provider, long_name| %>
+    <% chosen_provider = @company.sync_provider.to_sym %>
+    <div id="sync_provider_<%= provider %>" class="sync-provider-wrapper <%= 'displayNone' unless chosen_provider == provider %>">
+      <% if @company.can_configure_sync?(provider, current_user) %>
+
+        <% if provider == :sftp %>
+          <%= render "company_settings/sftp_sync_options" %>
+        <% else %>
+          <%= render "company_settings/sync_group_options", provider: provider, long_name: long_name %>
+        <% end %>
+        
+      <% else %>
+
+        <% if @company.sync_groups(provider: provider).present? %>
+          <div class="company_setting_sync_groups_container pagelet" data-endpoint="<%= company_admin_sync_groups_path(network: @company.domain, provider: provider, disabled: true) %>">
+            <%= select_tag("company_setting[sync_groups]", options_from_collection_for_select([], :id, :name)) %>
+          </div>
+        <% end %>
+
+        <%= send("link_to_#{provider}", "Authenticate with #{long_name}", admin_consent: true, redirect: request.fullpath+"#settings")%> 
+        <div class="subtleText">You must authenticate with <%= long_name %> and be an administrator with <%= long_name %> in order to edit the groups that will be synced.</div>
+
+      <% end %>
+    </div>
+  <% end %>
+  <%if @company.last_synced_at.present? %>
+    <label class="subtle-text marginTop10"> Last sync: <%= localize_datetime(@company.last_synced_at, :slash_date_with_time) %> </label>
+  <%end %>
+<% end %>

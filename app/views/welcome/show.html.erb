@@ -1,0 +1,31 @@
+
+<% if current_user.subscribed_account? %>
+    <% integration_title = t('recognize.welcome_to_recognize') %>
+    <% integration_subtitle = t('recognize.description_end_user') %>
+<% else %>
+  <% if @integration == "office365" %>
+    <% integration_title = t('value_props.office365') %>
+    <% integration_subtitle = t('value_props.office365_description') %>
+  <% elsif @integration == "yammer" %>
+    <% integration_title = t('value_props.yammer') %>
+    <% integration_subtitle = t('value_props.yammer_description') %>
+  <% else %>
+    <% integration_title = t('value_props.reason_title_5') %>
+    <% integration_subtitle = t('value_props.reason_5') %>
+  <% end %>
+<% end %>
+
+<div id="welcome-wrapper" class="marginBottom20">
+  <% if current_user.subscribed_account? && current_user.company_admin? %>
+    <%= render partial: "welcome/activated" %>
+  <% else %>
+    <%= render partial: "welcome/start", locals: {
+        integration_title: integration_title,
+        integration_subtitle: integration_subtitle
+    } %>
+  <% end %>
+
+
+</div>
+
+<%= render partial: "layouts/office_parent_message_js" if outlook_popup? %>

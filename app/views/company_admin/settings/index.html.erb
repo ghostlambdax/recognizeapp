@@ -1,0 +1,502 @@
+<%= content_for :body_attributes do %>
+  data-company-scope="<%= @company.domain %>"
+<% end %>
+  <h1>Settings</h1>
+  <hr class="hr hr-space">
+
+  <div class="row-fluid">
+    <div class="span8">
+      <label>Display name</label>
+      <div class="marginBottom20">
+        <%= form_for @company, url: company_path(network: @company.domain), remote: true do |f| %>
+          <%= f.text_field :name %>
+          <%= f.submit "Save", class: "button"%>
+        <% end %>
+      </div>
+      <div>
+        <%= show_toggle @company.program_enabled?,
+                  "Program enabled",
+                  data: {setting: "program_enabled"} %>
+      <p class="subtle-text small-text">This setting controls all automated features of Recognize, such as the anniversaries program, user sync, engagement emails, etc.</p>
+
+      </div>
+
+  <h2>General</h2>
+  <p>Settings are instantly set, but may require you to <strong>reload</strong> your page to see the changes.</p>
+  <hr>
+  <div class="marginBottom20">
+    <h3>Default interval</h3>
+    <p>This is what is shown as how many points a user has received in their toolbar. It also acts as the default interval for the date inputs. <strong>Points are retained every interval</strong>. The interval is just to show the user how many points to they have. It also sets a default time period for calendars.</p>
+
+    <%= select_tag "reset-interval", options_for_reset_interval(@company), data: {setting: "reset_interval"}, class: "old-autosave" %>
+    <label class="checkbox-title">Change the interval at which users' and teams' points are reset</label>
+  </div>
+  <hr>
+  <div class="marginBottom20" id="restrict-avatar">
+    <%= show_toggle @company.restrict_avatar_access?,
+                    "Restrict users from editing profile avatars",
+                    data: {setting: "restrict_avatar_access"} %>
+  </div>
+
+  <% if feature_permitted?(:teams) %>
+    <div id="allow-teams-setting" class="marginBottom20">
+      <%= show_toggle @company.allow_teams?, "Allow teams", data: {setting: "allow_teams"} %>
+    </div>
+  <% end %>
+
+  <% if feature_permitted?(:recognition) %>
+    <div class="marginBottom20">
+      <%= show_toggle @company.allow_daily_emails?,
+      "Send daily recognition summary email to all users",
+      data: {setting: "allow_daily_emails"} %>
+      <p class="subtle-text small-text">Turning on this setting resets user choice in their profile settings.</p>
+    </div>
+  <% end %>
+
+  <% # GOLD Package %>
+
+  <% if feature_permitted?(:manager) %>
+    <div class="marginBottom20" id="allow_manager_of_manager_notifications">
+      <%= show_toggle @company.settings.allow_manager_of_manager_notifications,
+                      "Allow Recognition Notifications for manager's manager ",
+                      data: { setting: "settings[allow_manager_of_manager_notifications]" } %>
+      <p class="subtle-text small-text">Manager of a manager can get notified when a direct report of the manager is recognized.</p>
+    </div>
+  <% end %>
+
+  <div class="marginBottom20 scroll-item" id='theming'>
+    <h3>Theming</h3>
+    <p>Choose colors for your email, upload certificate background, and more. For website colors, contact <%= link_to 'Support', support_emails_path %>.</p>
+    <%= link_to "Theme customizations", company_admin_customizations_path, class: 'button' %>
+
+  </div>
+
+  <h3 id="security" class="scroll-item">Security &amp; privacy</h3>
+  <div class="marginBottom20" id="private-user-profiles">
+    <%= show_toggle @company.private_user_profiles?,
+                    "Private user profiles",
+                    data: {setting: "private_user_profiles"} %>
+  </div>
+
+  <div class="marginBottom20">
+    <%= show_toggle @company.disable_passwords?,
+                    "Disable passwords",
+                    data: {setting: "disable_passwords"} %>
+    <p class="subtle-text small-text">By disabling passwords, users may only authenticate with Yammer, Google, or Active Directory.</p>
+  </div>
+
+  <div class="marginBottom20">
+    <%= show_toggle @company.disable_signups?,
+                    "Disable signups",
+                    data: {setting: "disable_signups"} %>
+    <p class="subtle-text small-text">By disabling signups, users may not manually sign up. They must be imported by an admin.</p>
+  </div>
+
+  <div class="marginBottom20" id="allow_phone_authentication">
+    <%= show_toggle @company.settings.allow_phone_authentication?,
+                    "Allow authentication with phone numbers",
+                    data: {setting: "settings[allow_phone_authentication]"} %>
+  </div>
+
+  <div class="marginBottom20" id="allow-invite">
+    <%= show_toggle @company.allow_invite?,
+                    "Allow users to invite others",
+                    data: {setting: "allow_invite"} %>
+  </div>
+
+  <hr>
+
+  <h2>Programs</h2>
+
+
+  <% if feature_permitted?(:recognition) %>
+    <h3 id="recognition" class="scroll-item">Recognition</h3>
+    <div class="marginBottom20" id="allow-recognition-sms-notifications">
+      <%= show_toggle @company.allow_recognition_sms_notifications?,
+        "Allow SMS notifications for recognitions",
+        data: {setting: "allow_recognition_sms_notifications"} %>
+      <p class="subtle-text small-text">Users can get notified by text message(SMS) to their cell phone when they are recognized.</p>
+    </div>
+
+    <div class="marginBottom20">
+      <%= show_toggle @company.limit_sending_to_intracompany_only?,
+                      "Limit sending to within company only",
+                      data: {setting: "limit_sending_to_intracompany_only"} %>
+      <p class="subtle-text small-text">When enabled, recognitions may only be sent to existing users in your organization.</p>
+    </div>
+
+    <div class="marginBottom20">
+      <%= show_toggle @company.message_is_required?,
+                      "Message is required to send a recognition",
+                      data: {setting: "message_is_required"} %>
+    </div>
+
+    <div class="marginBottom20">
+      <%= show_toggle @company.global_privacy?,
+                      "Limit new recognitions to be accessible only to your organization",
+                      data: {setting: "global_privacy"} %>
+      <p class="subtle-text small-text">Turning off this setting will allow new recognitions to be accessible to the public(search engines, Linkedin, etc) as well.</p>
+    </div>
+
+    <div class="marginBottom20" id="allow-manager-to-resolve-recognition-she-sent">
+      <%= show_toggle @company.settings.allow_manager_to_resolve_recognition_she_sent?,
+                      "Allow manager to resolve recognitions they sent",
+                      data: {setting: "settings[allow_manager_to_resolve_recognition_she_sent]"} %>
+      <p class="subtle-text small-text">When enabled, managers can approve the recognitions they send to their direct reports.</p>
+    </div>
+
+    <div class="marginBottom20" id="allows_private">
+      <%= show_toggle @company.allows_private_recognitions?,
+                      "Allow staff to make recognitions private within your company that only sender, recipient, and admins can see",
+                      data: {setting: "allows_private"}, disabled: @badges_with_forced_privacy_present,
+                      title: @badges_with_forced_privacy_present ? 'Private recognitions cannot be disabled at the moment because there are badges that force privacy.' : nil %>
+      <p class="subtle-text small-text">This allows staff to send a personal message to people without others knowing.</p>
+    </div>
+
+    <% if feature_permitted?(:tags) %>
+      <div class="marginBottom20" id="show-tags-wrapper">
+        <%= show_toggle @company.show_recognition_tags?,
+                        "Allow adding tags while sending recognition",
+                        data: {setting: "show_recognition_tags"} %>
+        <p class="subtle-text small-text"><!-- TODO: Pick a better description -->This allows users to choose from a variety of custom tags set by company admin, while sending recognition. Tags can help organize recognitions. It also translates to tags in Yammer.</p>
+      </div>
+
+      <div class="marginBottom20" id="require-recognition-tags" style="display:<%=@company.show_recognition_tags? ? 'block' : 'none'%>">
+        <%= show_toggle @company.settings.require_recognition_tags?,
+                        "Require tags while sending recognition",
+                        data: {setting: "settings[require_recognition_tags]"} %>
+      </div>
+    <% end %>
+
+    <hr class="hr hr-space">
+  <% end %>
+
+  <% if feature_permitted?(:recognition) %>
+    <h4>Recognition editor settings</h4>
+    <% editor_settings = @company.settings.recognition_editor_settings %>
+    <div class="marginBottom20" id="recognition_wysiwyg_editor_enabled">
+      <%= show_toggle @company.recognition_wysiwyg_editor_enabled?,
+                      "Enable WYSIWYG editor",
+                      data: {setting: "recognition_wysiwyg_editor_enabled"} %>
+    </div>
+    <div class="marginBottom20" id="allow_links">
+      <%= show_toggle editor_settings[:allow_links],
+                      "Allow inserting links",
+                      data: {setting: "settings[recognition_editor_settings[allow_links]]"} %>
+    </div>
+    <div class="marginBottom20" id="allow_inserting_images">
+      <%= show_toggle editor_settings[:allow_inserting_images],
+                      "Allow inserting images from external links",
+                      data: {setting: "settings[recognition_editor_settings[allow_inserting_images]]"} %>
+    </div>
+    <div class="marginBottom20" id="allow_uploading_images">
+      <%= show_toggle editor_settings[:allow_uploading_images],
+                      "Allow uploading custom images",
+                      data: {setting: "settings[recognition_editor_settings[allow_uploading_images]]"} %>
+    </div>
+    <div class="marginBottom20" id="allow_gif_selection">
+      <%= show_toggle editor_settings[:allow_gif_selection],
+                      "Allow GIF selection",
+                      data: {setting: "settings[recognition_editor_settings[allow_gif_selection]]"} %>
+    </div>
+  <% end %>
+
+  <hr class="hr hr-space">
+
+  <% if feature_permitted?(:nomination) %>
+    <h3 id="nominations" class="scroll-item">Nominations</h3>
+    <div class="marginBottom20" id="allow-nominations">
+      <%= show_toggle @company.allow_nominations?,
+      "Allow Nominations",
+      data: {setting: "allow_nominations"} %>
+    </div>
+
+    <div class="marginBottom20" id="nomination-message-is-required">
+      <%= show_toggle @company.nomination_message_is_required?,
+      "Message is required",
+      data: {setting: "nomination_message_is_required"} %>
+    </div>
+
+    <div class="marginBottom20">
+      <%= show_toggle @company.allow_quick_nominations?,
+      "Allow quick nominations",
+      data: {setting: "allow_quick_nominations"} %>
+      <p class="subtle-text small-text">Quick nominations can be given by managers or admins on the Recognitions view in Company Admin or Manager Portal.</p>
+    </div>
+
+    <div class="marginBottom20">
+      <%= select_tag "nomination_global_award_limit_interval_id", options_for_global_nomination_award_limit(@company), data: {setting: "nomination_global_award_limit_interval_id"} , class: "old-autosave" %>
+      <label class="checkbox-title">Set a global limit to which a user may be awarded as the winner of a nomination badge.</label>
+    </div>
+  <% end %>
+
+  <% if feature_permitted?(:tasks) %>
+    <hr>
+    <h3 id="tasks" class="scroll-item">Tasks</h3>
+    <div class="marginBottom20" id="tasks-enabled">
+      <%= show_toggle @company.settings.tasks_enabled?,
+                      "Enable Tasks",
+                      data: {setting: "settings[tasks_enabled]"} %>
+    </div>
+
+    <div class="marginBottom20" id="tasks-redeemable">
+      <%= show_toggle @company.settings.tasks_redeemable?,
+          "Make points from tasks redeemable",
+                      data: {setting: "settings[tasks_redeemable]"} %>
+      <p class="subtle-text small-text">Allows points earned from approved tasks to be redeemed for rewards.</p>
+    </div>
+
+    <%= render "company_settings/stats_configuration" %>
+
+  <% end %>
+
+
+  <% if feature_permitted?(:hall_of_fame) %>
+    <hr>
+
+    <h3 id="hall_of_fame" class="scroll-item">Hall of Fame</h3>
+    <p>This feature will allow your staff to see the top employees each month, quarter, or year. Filter by company, team, or badge.</p>
+
+    <div class="marginBottom20">
+      <%= show_toggle @company.allow_hall_of_fame?,
+                      "Enable the Hall Of Fame feature",
+                      data: {setting: "allow_hall_of_fame"} %>
+    </div>
+    <hr>
+
+  <% end %>
+
+
+  <h3 id="rewards" class="scroll-item">Rewards</h3>
+  <p>Allow your staff to redeem items of  your choice for points they earn from recognition.</p>
+  <div id="allow-rewards" class="marginBottom20">
+    <%= show_toggle @company.allow_rewards?,
+                    "Allow rewards",
+                    data: {setting: "allow_rewards"} %>
+  </div>
+
+  <div id="require_approval_for_provider_reward_redemptions" class="marginBottom20">
+    <div class="click_interceptor_overlay"></div>
+    <%= show_toggle @company.require_approval_for_provider_reward_redemptions?,
+        "Require approval for gift card redemptions",
+        data: {
+            setting: "require_approval_for_provider_reward_redemptions",
+            swal_description: "Any new provider reward (non company-fulfilled reward) redeemed will be automatically approved."
+        } %>
+  </div>
+
+  <% unless @company.primary_funding_account.balance? || !feature_permitted?(:gift_cards) %>
+    <div id="currency-selection">
+      <h4>Currency Settings</h4>
+      <p>Change the currency for rewards.</p>
+      <%= select_tag "currency", options_for_select(currencies_options_for_select, @company.currency), data: {setting: "currency"}, class: "old-autosave" %>
+    </div>
+  <% end %>
+
+  <hr>
+
+  <h2>Integrations</h2>
+  <h3 id="yammer" class="scroll-item">Yammer settings</h3>
+  <div class="marginBottom20">
+    <%= show_toggle @company.allow_posting_to_yammer_wall?,
+                    "Allow posting recognition events to Yammer wall",
+                    id: "allow-posting-to-yammer-wall",
+                    data: {setting: "allow_posting_to_yammer_wall"} %>
+
+    <div class="company_post_to_yammer_group_id_wrapper" style="<%= "display: none" unless @company.allow_posting_to_yammer_wall? %>">
+      <p class="marginBottom5">Yammer group to post all recognitions to. Users must individually authenticate to Yammer and have permission to
+           post to this group. This is useful if, for example, you want to post all recognitions to the All Company group or other central group that highlights recognitions.</p>
+      <%= render partial: 'layouts/yammer_groups', locals: { groups_scope: :company } %>
+    </div>
+  </div>
+
+
+  <div class="marginBottom20">
+    <%= show_toggle @company.allow_yammer_connect?,
+                    "Allow users to connect to Yammer",
+                    id: "allow-yammer-connect",
+                    data: {setting: "allow_yammer_connect"} %>
+  </div>
+
+  <div class="marginBottom20">
+    <%= show_toggle @company.allow_yammer_manager_recognition_notification?,
+                    "Allow managers to be private messaged on yammer upon recognition",
+                    id: "allow-yammer-manager-recognition-notification",
+                    data: {setting: "allow_yammer_manager_recognition_notification"} %>
+  </div>
+
+
+  <% if feature_permitted?(:recognition) %>
+    <h4>Instant recognitions</h4>
+    <p>Instant recognitions are the group of avatars on the stream page that can be instantly recognized by tapping their avatar. (Currently only for Yammer users).</p>
+    <div class="marginBottom20">
+      <%= show_toggle @company.allow_instant_recognition?,
+                      "Allow instant recognitions",
+                      id: "allow-instant-recognition",
+                      data: {setting: "allow_instant_recognition"} %>
+    </div>
+  <% end %>
+
+  <hr>
+  <h3 id="microsoft" class="scroll-item">Microsoft settings</h3>
+  <p>Settings for Office365, Sharepoint, etc.</p>
+
+  <div class="marginBottom20">
+    <%= show_toggle @company.allow_microsoft_graph_oauth?,
+                    "Allow signing in via Office365",
+                    data: {setting: "allow_microsoft_graph_oauth"} %>
+
+  </div>
+
+  <div class="marginBottom20">
+    <%= show_toggle @company.settings.sync_email_with_upn?,
+                "Synchronize email with userPrincipalName",
+                data: {setting: "settings[sync_email_with_upn]"} %>
+  </div>
+
+  <div class="marginBottom20">
+    <label class="checkbox-title">Authentication Field</label>
+    <div class="subtle-text">Employee ID and UPN do not support Just-In-Time provisioning. User accounts must be provisioned (manual, user sync or sFTP) for these users to log in.</div>
+    <%= select_tag "company[settings][authentication_field]", options_for_enum(@company.settings, :authentication_field), data: {setting: "settings[authentication_field]"}, class: "old-autosave" %>
+
+  </div>
+
+  <hr>
+  <h3 id="google" class="scroll-item">Google settings</h3>
+
+  <div class="marginBottom20">
+    <%= show_toggle @company.allow_google_login?,
+                    "Allow signing in via Google",
+                    data: {setting: "allow_google_login"} %>
+  </div>
+
+  <div class="marginBottom20">
+    <%= show_toggle @company.allow_google_contact_import?,
+    "Allow users to import their google contacts",
+    data: {setting: "allow_google_contact_import"} %>
+  </div>
+
+  <%= render partial: "companies/fb_workplace" %>
+  <%= render partial: "company_admin/settings/webhook_endpoints" %>
+
+  <h2 id="profile" class="scroll-item">User settings</h2>
+
+  <% if feature_permitted?(:manager) %>
+    <h3>Engagement emails for managers &amp; admins</h3>
+    <p>Recognize sends interval-based engagement summary emails to managers and admins. Admins receive an email showing which managers are active or need a reminder. Managers get an email showing them the employees that may need more recognition and also their all-stars. These notifications can be turned off in the individual admin or manager profile edit page.</p>
+    <div id="engage_admin_mailer" class="marginBottom20">
+      <%= show_toggle @company.allow_admin_report_mailer,
+                      "Admin email about managers",
+                      data: {setting: "allow_admin_report_mailer"} %>
+    </div>
+
+    <div id="engage_manager_mailer" class="marginBottom20">
+    <%= show_toggle @company.allow_manager_report_mailer,
+                    "Manager email about direct reports",
+                    data: {setting: "allow_manager_report_mailer"} %>
+
+    </div>
+  <% end %>
+  <hr>
+  <h3>User profile settings</h3>
+  <p><strong>Only for new users</strong>, they will automatically have these settings as specified below. Existing users will not change. <br >Ideally, choose these settings before importing all your users.</p>
+  <div class="marginBottom20">
+    <label class="checkbox-title">Choose default locale</label>
+    <%= select_tag "default-locale", options_for_locales(@company.settings.default_locale), data: {setting: "settings[default_locale]"}, class: "old-autosave" %>
+  </div>
+
+  <div class="marginBottom20">
+    <%= autosave_setting_form do |form| %>
+      <%= form.label :timezone, t("company_setting.select_a_default_timezone"), class: "control-label" %>
+      <%= form.time_zone_select :timezone, nil, include_blank: true %>
+    <% end %>
+  </div>
+
+
+  <h3>Birthday &amp; anniversary privacy</h3>
+  <p>Recognize can send automatic recognition to staff visible to the whole company on the stream and user profile. See <%= link_to "your anniversary settings here.", company_admin_anniversaries_settings_path %></p>
+  <div class="marginBottom20" id="receive-anniversary-recognitions-privately">
+    <h4>Anniversary privacy</h4>
+    <%= show_toggle @company.settings.default_anniversary_recognition_privacy,
+                    "When enabled, new users will have their anniversary recognitions set to private.",
+                    data: {setting: "settings[default_anniversary_recognition_privacy]"} %>
+  </div>
+  <div class="marginBottom20" id="receive-birthday-recognitions-privately">
+    <h4>Birthday privacy</h4>
+    <%= show_toggle @company.settings.default_birthday_recognition_privacy,
+                    "When enabled, new users will have their birthday recognitions set to private.",
+                    data: {setting: "settings[default_birthday_recognition_privacy]"} %>
+  </div>
+
+  <div class="marginBottom20">
+    <%= form_for @company.settings, url: update_settings_company_path(network: @company.domain), remote: true, method: :post, html: {id: "company_setting_recognition_custom_sender_name", class: "marginBottom0"} do |f| %>
+      <h4>Anniversary recognition custom sender name </h4>
+      <%= f.text_field :anniversary_recognition_custom_sender_name, name: "company[settings[anniversary_recognition_custom_sender_name]]" %>
+      <label class="marginBottom5">When set, it is used as the name of the sender of anniversary recognitions.</label>
+      <%= f.submit "Save sender name", class: "button button-border"%>
+    <% end %>
+  </div>
+
+  <h3>Manager defaults</h3>
+
+  <% if feature_permitted?(:recognition) %>
+    <div class="marginBottom20" id="receive-direct-report-peer-recognition-notifications">
+      <h5>Receive direct report peer recognition notifications</h5>
+      <%= show_toggle @company.settings.default_receive_direct_report_peer_recognition_notifications,
+                      "When enabled, will set default setting for receiving notifications from peer recognitions",
+                      data: {setting: "settings[default_receive_direct_report_peer_recognition_notifications]"} %>
+    </div>
+  <% end %>
+
+  <div class="marginBottom20" id="receive-direct-report-anniversary-notifications">
+    <h5>Receive direct report anniversary notifications</h5>
+    <%= show_toggle @company.settings.default_receive_direct_report_anniversary_notifications,
+                    "When enabled, will set default setting for receiving notifications from anniversaries",
+                    data: {setting: "settings[default_receive_direct_report_anniversary_notifications]"} %>
+  </div>
+
+  <div class="marginBottom20" id="receive-direct-report-birthday-notifications">
+    <h5>Receive direct report birthday notifications</h5>
+    <%= show_toggle @company.settings.default_receive_direct_report_birthday_notifications,
+                    "When enabled, will set default setting for receiving notifications from birthdays",
+                    data: {setting: "settings[default_receive_direct_report_birthday_notifications]"} %>
+  </div>
+
+  <hr class="hr hr-space">
+  <h2 id="points" class="scroll-item">Points</h2>
+  <%= render partial: "companies/recognition_limits" if feature_permitted?(:recognition) %>
+  <hr class="hr hr-space">
+
+  <div class="row-fluid">
+
+    <% if feature_permitted?(:recognition) %>
+      <div class="span8">
+        <%= render partial: "companies/point_values" %>
+      </div>
+    <% end %>
+
+    <div class="span4">
+      <div id="hide-points" class="well">
+        <h3>Hide points for end users</h3>
+        <p class="warning">Note: If rewards are still enabled and badges have points, staff will receive redeemable points for the rewards.</p>
+        <%= show_toggle @company.hide_points?,
+                        "Hide all mentions of points to end users",
+                        data: {setting: "hide_points"} %>
+      </div>
+    </div>
+  </div>
+  <hr class="hr hr-space">
+
+  <h2 id="user-manager" class="scroll-item">User management</h2>
+  <%= render partial: "companies/user_sync" %>
+  <%= render partial: "companies/saml" %>
+  <%= render partial: "companies/kiosk" %>
+  <%= render partial: "layouts/cancel_account", locals: {account: @user} %>
+
+    </div>
+
+    <div class="span4">
+     <%= render partial: 'company_admin/settings/settings_nav' %>
+    </div>
+  </div>
+</div>

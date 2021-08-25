@@ -1,0 +1,198 @@
+$grande-padding-left: 7px
+$borderColorForGrandeNav: #1C70AD
+$grandeBottomBg: #f6fcff
+
+.navbar-nav
+  margin-left: 0
+  margin-right: 0
+
+
+@mixin noButton()
+  background: none
+  padding: 0
+  display: block
+  border: 0
+  text-align: left
+
+@mixin grandeMenuPlainLinks()
+  font-size: 14px
+  list-style: none
+  font-weight: 400
+  margin: 0 0 5px 0
+  padding: 0
+
+#ie
+  .grande-menu
+    .link-group
+      padding: 0 15px
+
+    ul
+      padding: 0
+
+    h4 + ul
+      display: none
+
+    li, .btn, li a, h4
+      @include grandeMenuPlainLinks()
+
+    .btn
+      @include noButton()
+
+.grande-menu
+  .dropdown-menu
+    padding: 0
+
+@media (min-width: 767px)
+  .grande-menu
+    .dropdown-menu
+      width: 800px !important
+
+@media (max-width: 767px)
+  .navbar-nav .open .dropdown-menu
+    background: white
+
+  .grande-menu
+    .dropdown-menu
+      padding-left: 10px
+      padding-right: 10px
+
+    h4, ul
+      padding-left: 0
+
+    h4
+      margin-bottom: 0
+      padding-bottom: 0
+
+    ul
+      margin-bottom: 15px
+
+    li, .btn, li a, h4
+      @include grandeMenuPlainLinks()
+
+    .btn, .links a
+      @include noButton()
+
+    a
+      margin: 10px 0
+
+      &:hover
+        background: $grandeBottomBg
+        color: text-color($grandeBottomBg)
+
+
+@media (max-width: $tablet)
+  .grande-menu
+    .grande-menu-bottom
+      .feather
+        height: 16px
+
+@media (min-width: 769px)
+  .grande-menu
+    &.its-too-narrow-now
+      position: static
+
+      .dropdown-menu
+        left: 0
+        border-radius: 4px !important
+
+    &.open
+      .dropdown-menu
+        display: block
+
+    .grande-menu-bottom
+      border-top: 1px solid #1C70AD
+      display: flex
+      background: $grandeBottomBg
+
+      a
+        display: block
+        width: 50%
+        margin: 0
+        padding: 10px 15px
+        display: flex
+        line-height: 22px
+
+        &:hover
+          color: darken($linkColor, 15%)
+
+        .feather
+          margin-right: 5px
+
+        &:first-child
+          padding-left: 30px
+
+        &:last-child
+          padding-right: 30px
+          border-left: 1px solid $borderColorForGrandeNav
+
+
+    .dropdown-menu
+      width: 760px
+      @include grandeMenuBorder()
+
+      .link-group-wrapper
+        display: table
+        width: 100%
+
+      .link-group
+        display: table-cell
+        width: 50%
+
+        .links
+          width: 100%
+
+          a
+            font-size: 17px
+
+      .links
+        padding: 15px 30px
+        box-sizing: border-box
+
+        ul
+          list-style: none
+          margin: 0
+          padding: 0
+
+        li
+          margin: 0 0 10px 0
+
+          a:not(.btn):not(.button)
+            font-weight: 400
+            line-height: 15px
+
+        .inner
+          & > h4
+            padding-left: $grande-padding-left
+
+          h4
+            margin-bottom: 5px
+
+        a
+          display: block
+          text-decoration: none
+
+          &.btn
+            padding: 3px 10px
+            margin-bottom: 10px
+
+            &:last-child
+              margin-bottom: 0
+
+        a:not(.btn):not(.button)
+          padding: $grande-padding-left
+
+          &:hover
+            background-color: $grandeBottomBg
+            color: darken($linkColor, 15%)
+
+        &.naked .inner ul
+          border-left: none !important
+
+        .inner
+          border-left: 2px solid $borderColorForGrandeNav
+
+
+
+    &.grande-menu-vertical
+      .dropdown-menu
+        width: auto

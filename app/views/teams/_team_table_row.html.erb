@@ -1,0 +1,63 @@
+<%
+  # TODO: add support for time/date picker to customize the calculator/report
+  #       also, we should really be working with the report object since that is a superset
+  #       of the res calculator - the res calculator should really be within the report class
+  #       but yea...
+  res_calculator = team.res_calculator
+%>
+<tr id="team_<%= team.id %>" class="<%= user_on_team ? 'user_team' : 'other_team' %>">
+  <td class="name">
+    <%= favorite_team_tag(team.id, favorite_error_title) %>
+    <%= link_to team_path(team) do %>
+      <h3><%= team.name %></h3>
+    <% end %>
+    <div class="thumbnail bootstrap-check">
+      <% if user_on_team %>
+        <%= link_to team_assignment_path(team_id: team), remote: true, method: team_method, class: "team-toggle #{team_class} button button-primary" do %>
+            <%= feather_icon('check', color: 'white', height: 15) %>
+            <span><%= button_text %></span>
+        <% end %>
+      <% else %>
+        <%= link_to team_assignment_path(team_id: team), remote: true, method: team_method, class: "team-toggle #{team_class} button button-inactive" do %>
+          <span><%= button_text %></span>
+        <% end %>
+      <% end %>
+    </div>
+  </td>
+
+  <td class="members">
+    <%= team.users.not_disabled.count %>
+  </td>
+
+  <% show_points do %>
+    <td class="score">
+      <h3><%= team.total_interval_points %></h3>
+    </td>
+  <% end %>
+
+  <td class="res">
+    <% if team.users.active.size > 0 %>
+        <% res_calculator = team.res_calculator %>
+        <%= render partial: "layouts/res_widget",
+                   locals: {
+                       wrapper_id: "team-res-#{team.id}",
+                       wrapper_class: "res-score",
+                       res_type: :by_recipient,
+                       res_calculator: res_calculator } %>
+    <% end %>
+  </td>
+
+  <td class="res res-sender">
+    <% if team.users.active.size > 0 %>
+        <%= render partial: "layouts/res_widget",
+                   locals: {
+                       wrapper_id: "team-res-#{team.id}-sender",
+                       wrapper_class: "res-score res-score-sender",
+                       res_type: :by_sender,
+                       res_calculator: res_calculator } %>
+    <% end %>
+  </td>
+
+
+
+</tr>

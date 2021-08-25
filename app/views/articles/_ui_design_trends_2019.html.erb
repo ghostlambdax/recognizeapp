@@ -1,0 +1,149 @@
+<% @designs = [
+
+    {
+        image_url: 31,
+        alt: 'WeWork homepage a search form by location a photo of an office',
+        title: 'WeWork',
+        description: 'Nevermind the IPO drama that plagued WeWork, their website is smashing. In this screenshot, they had a horizontal slider of amazing office spaces. Plus, their negative space search by location form is adds design to function. Airbnb take note!'
+    },
+    {
+        image_url: 30,
+        alt: 'A website showing a menu of options',
+        title: 'Reply.io',
+        description: 'Reply has a cool sequence tool for marketing and sales. They also have a neat menu. We love the subtle icons and usable menu for Case Studies. One downside is the continuous arrows. If the redundancy is reduced, they could highlight a key menu item with a single arrow.'
+    },
+    {
+        image_url: 28,
+        alt: 'Leadfeeder website',
+        title: 'Leadfeeder',
+        description: 'Leadfeeder has done a great job at capturing a screenshot of what they do on the right. Even as there product changes, this core idea stays the same. Further, the Capterra star reviews right at the top adds social proof.'
+    },
+    {
+        image_url: 29,
+        alt: 'Leadfeeder sign up page',
+        title: 'Leadfeeder Sign up',
+        description: 'Once again, Leadfeeder shows social proof with a testimonial on the sign up page. Thanks to listening to their customers, they show the pain concerns or value props above the testimonial.'
+    },
+    {
+        image_url: 27,
+        alt: 'What a year 2019 with confetti',
+        title: 'JustWorks 2019 What a Year',
+        description: 'JustWorks sent an email with a nice top banner. The use of color is a great example of overlapping text. Animated GIF with the confetti moving would have made it even better.'
+    },
+    {
+        image_url: 26,
+        alt: 'IFTTT Homepage with animated illustration of characters that symbolize different apps doing things like security or moving data to Gmail',
+        title: 'IFTTT Homepage Illustration',
+        description: 'Currently our favorite homepage. This animated video does an amazing job explaining all the options with the connections.',
+        type: 'gif'
+    },
+    {
+        image_url: 25,
+        alt: 'A blog article',
+        title: 'Stripe Blog',
+        description: 'Stripe will be in any design roundup. Their homepage is always creative. Even their blog has style. The blog has a subtle gradient background and a nice author card.'
+    },
+    {
+        image_url: 24,
+        alt: 'Mixpanel email',
+        title: 'Mixpanel Email',
+        description: 'In this Mixpanel email, they give a preview of their downloadable report in a simple, but creative display. The report is falling from the sky with the currently very popular shadow effect. The doc shows a nice clay-style illustration that is very classy.'
+    },
+    {
+        image_url: 23,
+        alt: 'Charlie.com homepage',
+        title: "Charlie's homepage",
+        description: "Charlie.com does a nice job using flowing pastel backgrounds to add focus and separation. Plus, the social proof as a value prop is a double win."
+    },
+    {
+        image_url: 19,
+        alt: 'A testimonial',
+        title: 'Testimonial with color',
+        description: 'The wavy lines, the color, and the clear text adds a lot of fun.'
+    },
+    {
+        image_url: 18,
+        alt: 'Homepage showing mobile screenshots',
+        title: 'Use of fonts',
+        description: 'Notice this company is using two very different fonts. The title font adds class that goes well with the icons.'
+    },
+    {
+        image_url: 16,
+        alt: 'Microsoft illustration',
+        title: "Microsoft Teams",
+        description: "Microsoft Teams knew they had to put out all the stops if going to go head to head with Slack. Their team did a good job creating a design pattern with the human illustrations."
+    },
+    {
+        image_url: 15,
+        alt: 'MS illustrations',
+        title: "More MS Teams"
+    },
+    {
+        image_url: 14,
+        alt: "Typeform sign up",
+        title: "Typeform",
+        description: "Adding an illustration inside the card pointing at the sign up is a new look."
+    },
+    {
+        image_url: 13,
+        alt: "Third Way Menu",
+        title: 'Third Way',
+        description: "The icons are a nice touch to the menu. The colors make it extremely clear."
+    },
+    {
+        image_url: 12,
+        alt: "Woman testimonial",
+        title: "Testimonial",
+        description: "Another really nice example of social proof with the stat on the right and the vertical line separator. Only problem is the grid background and the circle background in top left will be out of style in a year."
+    },
+    {
+        image_url: 11,
+        alt: "Illustration",
+        title: "Another illustration",
+        description: "2019 was definitely the year of illustrations."
+    },
+    {
+        image_url: 10,
+        alt: "Dark DNA explainer",
+        title: "Process explainer",
+        description: "Three step explainer with beautiful illusrtations in a dark science-style theme."
+    },
+    {
+        image_url: 8,
+        alt: "Uber email",
+        title: "Uber Receipt",
+        description: "Clear explainer with large text, but style has room for a fun illustration. To the dismay of front end web developers, diagonal lines are now all the rage."
+    },
+    {
+        image_url: 6,
+        alt: "",
+        title: "Explainer illustration",
+        description: "The illusrtation clearly explains the benefits with additional use."
+    },
+    {
+        image_url: 5,
+        alt: "Orange repeating symbols representing parts of a product",
+        title: "Sophisticated icons",
+        description: "Modern icons with gradient repeating to create a sense of continuity."
+    }
+
+
+
+
+
+
+] %>
+
+<ul>
+  <% @designs.each do |d| %>
+    <% type = d[:type].present? ? d[:type] : 'png'  %>
+
+    <li class="marginBottom100">
+      <h2><%= d[:title] %></h2>
+      <p><%= d[:description] %></p>
+      <%= lazy_image_tag "pages/articles/ui-design-trends-2019/design-#{d[:image_url]}.#{type}", alt: d[:alt] %>
+    </li>
+  <% end %>
+
+</ul>
+

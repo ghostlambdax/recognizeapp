@@ -1,0 +1,34 @@
+<div id="steps">
+
+  <% if current_user.subscribed_account? %>
+    <% if feature_permitted?(:recognition) %>
+      <p><%= t("recognize.description_end_user") %></p>
+    <% elsif feature_permitted?(:anniversary) %>
+      <p><%= t("recognize.description_anniversary_html") %></p>
+    <% end %>
+  <% else %>
+    <p><%= t("recognize.description") %></p>
+  <% end %>
+
+  <% if feature_permitted?(:recognition) %>
+    <%= link_to t("welcome_steps.send_a_recognition"), new_recognition_path, id: "welcome-send-recognition", class: "button analyticsEvent recognize-new button-primary", data: {event: "welcome new recognition link"} %>
+
+
+    <% if current_user.subscribed_account? %>
+      <%= link_to t("recognitions_index.introduction"), welcome_path, target: "_blank", class: "button button-no-chrome" %>
+    <% else %>
+      <span data-turbolinks="false"><%= link_to t("dict.sales"), contact_sales_path, target: "_blank", class: "button button-no-chrome" %></span>
+      <a data-turbolinks="false" href="/tour" class="button button-no-chrome" target="_blank"><%= t("dict.tour_recognize") %></a>
+    <% end %>
+
+    <%= link_to t("dict.help"), help_path, target: "_blank", class: "button button-no-chrome welcome-help-link" %>
+    <%= link_to t('dict.invite_a_colleague'), invite_users_path, class: "button button-no-chrome", target: "_blank" if current_user.allow_invite? %>
+    <% if permitted_to?(:show, current_user.company) && current_user.subscribed_account? %><%= link_to t("welcome.checklist"), welcome_path(checklist: true), class: "button button-no-chrome" %><% end %>
+
+  <% else %>
+    <% # For only anniversary users %>
+    <%= link_to t("dict.help"), help_path, target: "_blank", class: "button button-no-chrome welcome-help-link" %>
+    <%= link_to t('dict.invite_a_colleague'), invite_users_path, class: "button button-no-chrome", target: "_blank" if current_user.allow_invite? %>
+  <% end %>
+
+</div>

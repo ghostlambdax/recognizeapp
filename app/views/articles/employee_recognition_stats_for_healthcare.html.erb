@@ -1,0 +1,35 @@
+<% content_for :title, @title %>
+<% content_for :description, "Seven ways to combat nurse burnout and what causes." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Nurse Burnout and Employee Recognition Stats" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="Real stores from medical professionals on the effects of medical burnout and how to reduce the problem." />
+  <meta property="og:image" content="/assets/pages/articles/healthcare_recognition/exhausted-nurse.jpg" />
+  <link rel="amphtml" href="<%= employee_recognition_stats_for_healthcare_url format: :amp %>">
+<% end%>
+
+
+<% content_for :article_title do %>Nurse Burnout<% end %>
+<% content_for :article_description do %>
+  <p class="tagline centered"><b>Seven ways to combat nurse burnout</b> in your healthcare organization, and how employee recognition can help.</p>
+
+  <div class="centered">
+    <%= lazy_image_tag "pages/articles/healthcare_recognition/exhausted-nurse.jpg", alt: "Unhappy nurses are disengaged nurses, which causes healthcare and clinic businesses to suffer", itemprop: "image", class: "marginBottom20" %>
+  </div>
+
+  <p>With employee turnover rates in the healthcare industry over <%= link_to 'double the national average', 'http://ispub.com/IJHCA/1/2/10882', target: '_blank' %>, medical organizations are acutely aware of burnout’s role in the crisis. In order to combat burnout and help reduce employee turnover, HR and leadership must work together to come up with creative solutions to the problem. Based off research and surveys, we found that implementing an employee recognition program as well as offering rewards such as more paid time off can help to reduce burnout in the healthcare industry.</p>
+
+<% end %>
+
+<% tags = ['What is nurse burn out?', 'What causes burn out?', 'Why is nurse burnout a problem?', 'Reduce nurse burnout', 'Recognize healthcare research', 'Employee recognition solution', 'Seven strategies', 'Contact us', 'References'] %>
+
+<% content_for :article_body do %>
+  <%= render partial: "employee_recognition_stats_for_healthcare", locals: {tags: tags} %>
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

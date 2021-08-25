@@ -1,0 +1,314 @@
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="<%= t('users.name_recognize_profile', name: @user.full_name) %>" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="<%= t('users.user_profile_description', name: @user.full_name) %>" />
+  <meta property="og:image" content="<%= @user.avatar.file.thumb.url %>" />
+<% end%>
+
+<% content_for :title, t('users.name_recognize_profile', name: @user.full_name) %>
+
+<% content_for :description, t('users.user_profile_description', name: @user.full_name) %>
+
+<% content_for :page_class, (@user == current_user ? "current-user-profile" : "")%>
+<% content_for_stream_page %>
+
+
+<section class="width-1400 margin-auto">
+  <div class="user-wrapper">
+    <section class="main">
+      <section class="well well-white up-avatar-wrapper width100 padding0">
+        <% if @user.avatar.present? %>
+          <div class="text-centered">
+            <div class="up-avatar-header text-centered">
+              <div class="avatar-wrapper">
+                <% avatar_url = @user.avatar.default? ? image_url(@user.avatar.url) : @user.avatar.url %>
+                <div style="background-image: url(<%= avatar_url %>);" class="avatar-img"></div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="user-inner flex align-items-center justify-content-center">
+          <div class="centered">
+            <h1><span class="prettyBig"><%= @user.full_name %></span></h1>
+            <% if @user.job_title.present? %><p class="tagline"><%= @user.job_title %></p><% end %>
+          </div>
+
+          <div class="user-profile-stats flex justify-content-around padding10">
+            <% if @user.start_date.present? %>
+              <div class="stat">
+                <dl>
+                  <dt class="offscreen">
+                    Start date
+                  </dt>
+                  <dd>
+                    <h3 class="years_since title">
+                      <i data-feather="calendar" title="Start date"></i>
+                      <%= n_("1 year", "%{num} years", r_years_since(@user.start_date)) % { num: r_years_since(@user.start_date) }%>
+                    </h3>
+                    <p><%= I18n.t("user_edit.start_date") %> <%= localize_datetime(@user.start_date, :friendly) %></p>
+                  </dd>
+                </dl>
+              </div>
+            <% end %>
+
+            <% unless @user.employees.blank? || @user.employees.not_disabled.size === 0 %>
+              <div class="stat">
+                <dl>
+                  <dt class="offscreen">Employees</dt>
+                  <dd>
+                    <a href='#direct-reports' class="direct-report-trigger block">
+                      <h3 class="title"><i data-feather="git-commit"></i>
+                        <%= @user.employees.not_disabled.size %>
+                      </h3>
+                      <p><%= t('dict.direct_reports') %></p>
+                    </a>
+                  </dd>
+                </dl>
+              </div>
+            <% end %>
+
+            <% if @user.allow_teams? %>
+              <div class="stat teams-stat">
+                <dl>
+                  <dt class="marginBottom0"><h3 class="title" title="<%= t('dict.teams') %>"><i data-feather="users"></i> <%= @user.teams.size %></h3></dt>
+                  <dd>
+                    <% if @user.teams.blank? %>
+                      <p class="subtle-text"><%= t('teams.teams') %></p>
+                    <% else %>
+                      <% @user.teams[0..9].each do |team| %>
+                        <p class="inlineBlock marginRight5 marginBottom5"><%= team.name %></p>
+                      <% end %>
+                    <% end %>
+                    </ul>
+                  </dd>
+                </dl>
+              </div>
+            <% end %>
+
+            <div class="stat cta-wrapper">
+              <%= link_to t("user_edit.edit_profile"), edit_user_path(current_user), id: "edit-profile-button", class: "button button-big" if @user == current_user%>
+              <%= link_to t("links.recognize_other", name: @user.full_name), user_recognition_path(@user), id: "edit-profile-button", class: "button button-big button-primary" if current_user.blank? || (@user != current_user && feature_permitted?(:recognition)) %>
+            </div>
+
+
+          </div>
+        </div>
+
+      </section>
+    </section>
+
+    <section class="side">
+      <div class="well well-white width-300">
+        <h3><%= t('dashboard.top_badges') %></h3>
+       <%= render partial: 'users/show/badges_tab' %>
+      </div>
+    </section>
+  </div>
+
+  <% iconSize = "20px" %>
+
+  <div class="user-wrapper user-profile-navbar-wrapper">
+    <div class="main">
+      <nav class="marginVertical30">
+        <ul class="nav nav-pills">
+          <li class='active' >
+            <a class='flex align-items-center recognition-nav-item' href="#recognition-tab" data-toggle="tab" data-event="recognition-tab" eventtype="click" eventproperties='{"content": "recognition"}'>
+            <i data-feather="star" width="<%=iconSize %>" height="<%=iconSize %>" class="marginRight5"></i>
+            <%= t("dict.recognitions") %>
+          </a></li>
+
+          <% if (@user == current_user || (current_user.present? && permitted_to?(:show, current_user.company))) && permitted_to?(:show_completed_tasks, @user) && feature_permitted?(:tasks) %>
+            <li><a id='tasks-user-tab' class='flex align-items-center' href="#tasks" data-toggle="tab" data-event="incentives-tab" eventtype="click" eventproperties='{"content": "incentives"}'>
+              <i data-feather="check-circle" width="<%=iconSize %>" height="<%=iconSize %>" class="marginRight5"></i>
+              <%= t("tskz.tasks") %>
+            </a></li>
+          <% end %>
+
+            <% if (@user == current_user || (current_user.present? && permitted_to?(:show, current_user.company))) && can_see_user_rewards?(@user) %>
+              <li><a class='flex align-items-center' href="#redemptions-tab" data-toggle="tab" data-event="redemptions-tab" eventtype="click" eventproperties='{"content": "redemptions"}'>
+                <i data-feather="gift" width="<%=iconSize %>" height="<%=iconSize %>" class="marginRight5"></i>
+                <%= t("manager_portal.redemptions") %>
+              </a></li>
+            <% end %>
+
+          <% if can_show_points_tab? %>
+            <% show_points(current_user.company) do %>
+              <li><a class='flex align-items-center' href="#points-tab" data-toggle="tab" data-event="points-tab" eventtype="click" eventproperties='{"content": "points"}'>
+                <i data-feather="activity" width="<%=iconSize %>" height="<%=iconSize %>" class="marginRight5"></i>
+                <%= t("dict.points") %>
+              </a></li>
+            <% end %>
+          <% end %>
+
+          <% if feature_permitted?(:manager) && @user.manager? %>
+            <li id="direct-reports-user-tab"><a class='flex align-items-center' href="#direct-reports" data-toggle="tab" data-event= "user-tab" eventtype="click" eventproperties='{"content": "direct-reports"}'>
+              <i data-feather="git-commit" width="<%=iconSize %>" height="<%=iconSize %>" class="marginRight5"></i>
+              <%= t("dict.direct_reports") %>
+            </a></li>
+          <% end %>
+
+        </ul>
+      </nav>
+    </div>
+
+    <section class="side" style="width: 300px; height: 0; visibility: hidden;"></section>
+  </div>
+
+  <% if can_show_points_tab?  %>
+    <section id="points-tab" class="tab tab-pane">
+      <div class="user-wrapper">
+        <% if @point_history_datatable.present? %>
+          <section class="main">
+            <%= litatablify(@point_history_datatable, endpoint: user_points_path(@user)) %>
+          </section>
+          <section class="side">
+            <div class="well width-300 well-white">
+              <h3><%= t('dict.points') %></h3>
+              <dl class="stylized-dl">
+                <dt><%= number_with_delimiter(@user.total_points, :delimiter => ',') %></dt>
+                <dd><%= t('dict.total_points') %></dd>
+                <dt class="interval_points"><%= interval_points(@user) %></dt>
+                <dd><%= t('dict.interval_points') %></dd>
+              </dl>
+            </div>
+          </section>
+
+        <% else %>
+          <section class="main">
+            <p class="list-empty-warning"><%= t('user_show.no_points_yet') %></p>
+          </section>
+        <% end %>
+      </div>
+
+    </section>
+
+  <% end %>
+
+  <% if (@user == current_user || (current_user.present? && permitted_to?(:show, current_user.company))) && can_see_user_rewards?(@user) %>
+    <section id="redemptions-tab" class="tab tab-pane">
+      <div class="user-wrapper reverse">
+        <section class="main">
+          <% # Peter let's clean up this conditional %>
+          <%= render 'users/show/rewards_tab' %>
+        </section>
+        <% if @redemptions.present? %>
+          <section class="side">
+            <div class="well width-300 well-white">
+              <h3><%= t('manager_portal.redemptions') %></h3>
+              <dl class="stylized-dl">
+                <dt><%= @redemptions.size.to_i %></dt>
+                <dd><%= t('manager_portal.redemptions') %></dd>
+                <dt><%= @redemptions.select { |r| r.status == "approved" }.size %></dt>
+                <dd><%= t('dict.approved') %></dd>
+              </dl>
+            </div>
+          </section>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+
+  <% if (@user == current_user || (current_user.present? && permitted_to?(:show, current_user.company))) && permitted_to?(:show_completed_tasks, @user) && feature_permitted?(:tasks) %>
+    <section id="tasks" class="tab tab-pane">
+      <div class="user-wrapper reverse">
+        <section class="main">
+          <%= render 'users/show/tasks_tab' %>
+        </section>
+        <% if @completed_tasks.present? %>
+          <section class="side">
+            <div class="well width-300 well-white">
+              <h3>Tasks</h3>
+              <dl class="stylized-dl">
+                <dt><%= @completed_tasks.size.to_i %></dt>
+                <dd>Completed</dd>
+                <dt class="total-points"><%= @total_task_points %></dt>
+                <dd><%= t('dict.total_points') %></dd>
+              </dl>
+            </div>
+          </section>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+
+  <section id="recognition-tab" class="reverse tab tab-pane active">
+    <% received_count = @user.received_recognitions.approved.size.to_i  %>
+    <% sent_count = @user.sent_recognitions.approved.size.to_i  %>
+    <% recognitions_present = (received_count + sent_count) > 0 %>
+    <div class="user-wrapper reverse <%= 'no-sidebar' unless recognitions_present %>">
+      <section class="main">
+        <ul class="nav nav-pills marginBottom20">
+          <% if @achievements.present? %>
+            <li id="achievements-trigger">
+              <a href="#achievements-tag" data-toggle="tab" data-event= "achievement-tab" eventtype="click" eventproperties='{"content": "recognition"}'>
+                <%= t("dict.achievement") %>
+              </a>
+            </li>
+          <% end %>
+          <li class="active">
+            <a id='received-trigger' href="#received" data-toggle="tab" data-event= "received-recognition-tab" eventtype="click" eventproperties='{"content": "recognition"}'>
+              <%= t("dict.received") %>
+            </a>
+          </li>
+          <li>
+            <a id='sent-trigger' href="#sent" data-toggle="tab" data-event= "sent-recognition-tab" eventtype="click" eventproperties='{"content": "recognition"}'>
+              <%= t("dict.sent") %>
+            </a>
+          </li>
+        </ul>
+
+        <%# FIXME: Adding skip_user_check: true to allow logged out access to this for now %>
+        <%# We may need to revise this when making user profiles forced private or perhaps other circumstances %>
+        <% if feature_permitted?(:recognition, skip_user_check: true) %>
+          <% if @achievements.present? %>
+            <%= render 'users/show/achievements_tab' %>
+          <% end %>
+          <%= render 'users/show/sent_tab' %>
+
+          <%= render 'users/show/received_tab' %>
+        <% end %>
+
+      </section>
+
+      <% if recognitions_present %>
+        <section class="side">
+          <div class="well width-300 well-white">
+            <h3><%= t('dict.recognitions') %></h3>
+            <dl class="stylized-dl">
+              <dt><%= received_count %></dt>
+              <dd><%= t('dict.received') %></dd>
+
+              <dt><%= sent_count %></dt>
+              <dd><%= t('dict.sent') %></dd>
+
+            </dl>
+          </div>
+        </section>
+      <% end %>
+    </div>
+  </section>
+
+  <% if feature_permitted?(:manager) && @user.manager? %>
+    <%= render 'users/show/direct_reports_tab' %>
+  <% end %>
+
+</section>
+
+
+<script type="text/template" id='redemptionDetails'>
+  <h2>{{title}}</h2>
+
+  {{#extraInfo}}
+  <h4>{{{this}}}</h4>
+  {{/extraInfo}}
+
+  {{#if instructions}}
+  <div class="redemptionInstructions">
+    {{{instructions}}}
+  </div>
+  {{/if}}
+
+  {{{redemptionAdditionalInstructions}}}
+</script>

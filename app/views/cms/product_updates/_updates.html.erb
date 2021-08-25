@@ -1,0 +1,19 @@
+<% pus.each do |pu| %>
+<li class="marginBottom75">
+  <% path = pu.existing_link_url.present? ? pu.existing_link_url : cms_integration_path(id: pu.id) %>
+  <h2><%= link_to pu.product_update_title, path %></h2>
+  <p><%= pu.product_update_date %></p>
+
+  <% if pu.product_update_image.present? %>
+    <div style="height: 300px;" class="marginBottom20"><%= lazy_image_tag pu.product_update_image.url, alt: pu.product_update_image.alt %></div>
+  <% end %>
+
+  <%= pu.product_update_description&.html_safe %>
+
+  <% wp_client.get_tags_by_post(pu.id).each do |tag| %>
+    <div class="subtle-text tag">
+      <%= link_to tag.name, cms_tag_path(tag.id) %>
+    </div>
+  <% end %>
+</li>
+<% end %>

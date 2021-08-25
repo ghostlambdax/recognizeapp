@@ -1,0 +1,35 @@
+.label-badge {
+  background-color: #b5b5b5;
+  color: #fff;
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 2;
+  font-weight: bold;
+  padding: 3px 7px;
+  border-radius: 10px;
+  text-align: center;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-transform: uppercase;
+
+  .feather {
+    position: relative;
+    top: 3px;
+  }
+}
+
+a.label-badge:hover, a.label-badge:focus {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.label-badge a {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.label-badge:empty {
+  display: none;
+}

@@ -1,0 +1,35 @@
+<% if @message.present? %>
+  <p style="<%= mail_styles(:text, :p) %> margin-bottom: 50px;">
+    <strong><%= @resolver.full_name %></strong>: "<%= @message %>"
+  </p>
+<% end %>
+
+<table style="width: 100%; text-align: left; margin-bottom: 50px;">
+  <tr>
+    <th style="<%= mail_styles(:text, :p) %>"><%= t("dict.date") %></th>
+    <th style="<%= mail_styles(:text, :p) %>"><%= t("tasks.task") %></th>
+    <th style="<%= mail_styles(:text, :p) %>"><%= t("dict.status") %></th>
+  </tr>
+  <% @completed_tasks.each do |completed_task| %>
+    <tr>
+      <td>
+        <p style="<%= mail_styles(:text, :p) %>"><%= localize_datetime(completed_task.created_at, :friendly_with_time) %></p>
+      </td>
+      <td>
+        <p style="<%= mail_styles(:text, :p) %>"><%= completed_task.task.name %></p>
+      </td>
+      <td>
+        <p style="<%= mail_styles(:text, :p) %>">
+          <%= completed_task.status_label %>
+        </p>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+<div>
+  <%= link_to t('tskz.notifier.view_tasks'),
+              user_url(@submitter, network: @submitter.company.domain, anchor: 'tasks'),
+              style: mail_styles(:text, :button) %>
+</div>

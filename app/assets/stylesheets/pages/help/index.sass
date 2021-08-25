@@ -1,0 +1,111 @@
+@import "components/marketing-footer"
+
+#help-index
+  .help-top
+    padding: 0 40px
+    zoom: 1
+
+  #view-main-wrapper
+    padding-bottom: 0
+
+  #wrapper-outer
+    padding-left: 0 !important
+    padding-right: 0 !important
+
+  .banner
+    @media (min-width: $tablet)
+      text-align: center
+      padding: 50px
+
+  .resources
+    padding-bottom: 0
+
+    a:not(.button)
+      color: lighten(desaturate($headerBg, 15%), 50%)
+      font-weight: 600
+      text-decoration: underline
+
+    & > div
+      background: $headerBg
+      padding: 40px
+      @include flex-display()
+
+      .content
+        flex: 0 0 50%
+
+      .videos
+        margin: 0 2%
+
+        iframe
+          max-height: 200px
+
+
+      &, p, li, h2, h3, h4
+        color: white
+
+      &:first-child
+        background: tint($headerBg, 10%)
+
+      &:nth-child(2)
+        background: tint($headerBg, 20%)
+
+      &:nth-child(3)
+        background: tint($headerBg, 30%)
+
+      &:last-child
+        background: tint($headerBg, 40%)
+
+  .help
+    padding-bottom: 0
+    background: saturate($headerBg, 20%)
+
+    &, h2, h3, h4, p
+      color: white
+
+    .content
+      float: left
+      width: 60%
+      padding: 40px 50px
+
+      h2
+        font-size: 40px
+
+    .actions
+      float: right
+      width: 40%
+
+      ul
+        margin-bottom: 0
+
+        li:nth-child(2) a
+          background: saturate(tint($headerBg, 20%), 30%)
+
+        li:last-child a
+          background: saturate(tint($headerBg, 30%), 30%)
+
+      a
+        font-size: 20px
+        padding: 30px
+        display: block
+        background: saturate(tint($headerBg, 10%), 30%)
+        color: white
+
+
+@media (max-width: 650px)
+  #help-index
+    #wrapper-outer
+      .wrapper
+        margin: 0
+
+    .resources
+      & > div
+        display: block !important
+
+        .videos
+          margin: 15px 0
+
+    .help
+      .content,
+      .actions
+        width: 100%
+        float: none

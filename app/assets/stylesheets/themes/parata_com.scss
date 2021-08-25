@@ -1,0 +1,7 @@
+$headerBg: #254a9f;
+$headerBg_style: linear-gradient(90deg, #191970 0%, #397C3C 100%);
+$linkColor: $headerBg;
+$btnBlueTopColor: $linkColor;
+$buttonPrimaryBg: $linkColor;
+
+@import "application";

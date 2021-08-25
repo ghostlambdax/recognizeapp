@@ -1,0 +1,4 @@
+<% if teams.present? %>
+  <%= render 'team_list', teams: teams, my_teams: false %>
+  <li class="team-paginate"><%= will_paginate teams, {param_name: "teams_page", params: {controller: "recognitions", action: 'teams'}} %></li>
+<% end %>

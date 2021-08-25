@@ -1,0 +1,39 @@
+#
+# NOTICE: the .dockerignore at the root of the project should be the main/used
+#    .dockerignore file; however, nclouds/.dockerignore is used when doing
+#    local/docker-compose builds. The two files should always be the same!
+#
+
+.git
+.gitignore
+.github
+.env-setup
+.sass-cache
+README.*
+REWARDS_MIGRATION_README.txt
+TESTING.md
+erd.pdf
+
+/config/local.yml
+/config/database.yml
+/config/credentials.yml
+/config/newrelic.yml
+
+# database
+db/recognizedemo.sql
+db/import_samples
+
+/doc
+
+/log/*
+!/log/.keep
+/tmp
+/spec
+
+#/app/assets/**
+#!/app/assets/images/badges
+
+/vendor/assets
+/lib/assets
+public/uploads
+public/assets

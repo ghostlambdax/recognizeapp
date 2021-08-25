@@ -1,0 +1,33 @@
+body.long-language
+  .button-group
+    .button
+      padding-right: 6px
+      padding-left: 6px
+
+  #header-controls a,
+  #header-settings
+    padding-right: 7px
+    padding-left: 7px
+
+  #header a
+    font-size: 11px
+
+@media (max-width: 1430px)
+  body.long-language
+    .button-group .button
+      padding-right: 6px
+      padding-left: 6px
+
+@media (max-width: 1250px) and (min-width: $headerMobileBreak + 1)
+  body.long-language
+    #header-controls
+      span
+        position: absolute
+        left: -9999px
+
+@media (max-width: $tablet)
+  body.long-language
+    #header-controls a,
+    #header-settings
+      padding-right: 3px
+      padding-left: 3px

@@ -1,0 +1,80 @@
+{
+        "containerDefinitions": [
+          {
+            "name": "recognize-rails",
+            "image": "{{ECR_IMAGE}}",
+            "cpu": 0,
+            "links": [],
+            "portMappings": [],
+            "essential": true,
+            "entryPoint": [],
+            "command": [
+              "/bin/bash",
+              "-c",
+              "{{COMMAND}}"
+            ],
+            "environment": [
+              {
+                "name": "EnvironmentType",
+                "value": "{{ENVIRONMENT_TYPE}}"
+              },
+              {
+                "name": "AWS_ACCOUNT_ID",
+                "value": "{{AWS_ACCOUNT_ID}}"
+              },
+              {
+                "name": "AWS_DEFAULT_REGION",
+                "value": "{{AWS_DEFAULT_REGION}}"
+              },
+              {
+                "name": "DataDogAPIKey",
+                "value": "{{DataDogAPIKey}}"
+              }
+            ],
+            "mountPoints": [
+              {
+                "sourceVolume": "efs-public",
+                "containerPath": "/usr/src/app/public"
+              }
+            ],
+            "volumesFrom": [],
+            "secrets": [],
+            "dnsServers": [],
+            "dnsSearchDomains": [],
+            "extraHosts": [],
+            "dockerSecurityOptions": [],
+            "dockerLabels": {},
+            "ulimits": [],
+            "logConfiguration": {
+              "logDriver": "awslogs",
+              "options": {
+                "awslogs-group": "{{TASK_LOG_GROUP}}",
+                "awslogs-region": "{{AWS_DEFAULT_REGION}}",
+                "awslogs-stream-prefix": "{{TASK_LOG_STREAM_PREFIX}}"
+              },
+              "secretOptions": []
+            },
+            "systemControls": []
+          }
+        ],
+        "family": "{{TASK_FAMILY}}",
+        "taskRoleArn": "arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/TaskDefinitionRole-recognize-{{ENVIRONMENT_TYPE}}",
+        "executionRoleArn": "arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/ecsTaskExecutionRole",
+        "networkMode": "awsvpc",
+        "volumes": [
+          {
+            "name": "efs-public",
+            "efsVolumeConfiguration": {
+              "fileSystemId": "{{EFS_FILE_SYSTEM_ID}}",
+              "rootDirectory": "/"
+            }
+          }
+        ],
+        "placementConstraints": [],
+        "requiresCompatibilities": [
+          "FARGATE"
+        ],
+        "cpu": "{{CPU_UNITS}}",
+        "memory": "{{MEM_UNITS}}",
+        "tags": [{"key": "rEnv", "value": "{{ENVIRONMENT_TYPE}}"}]
+}

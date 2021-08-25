@@ -1,0 +1,25 @@
+<% content_for :title, @title %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="<%= @title %> | Recognize" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:image" content="/assets/pages/articles/amazing-award-certificates/image1.jpg" />
+  <meta property="og:url" content="https://recognizeapp.com/amazing-award-certificates" />
+  <link rel="amphtml" href="<%= amazing_award_certificates_url format: :amp %>">
+<% end%>
+
+<% content_for :article_title do %><%= @title %><% end %>
+
+<% tags = ["Introduction", "Service Anniversary", "Employee of the month", "Employee of the Quarter", "President Award", "Certificate of Recognition", "Modern Certificate of Recognition",
+  "Promotion Award", "Modern Employee of the Month", "Employee of the Year", "Certificate of Achievement", "Download Free Award Certificates"] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "amazing_award_certificates", locals: {tags: tags} %>
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

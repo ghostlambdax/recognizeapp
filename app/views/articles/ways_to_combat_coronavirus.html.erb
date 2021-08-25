@@ -1,0 +1,28 @@
+<% content_for :title, "Use employee recognition to combat Coronavirus in your company" %>
+<% content_for :description, "In this article, we will see how we can utilize employee recognition and help ourselves to fight the coronavirus outbreak" %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Utilizing employee recognition & incentives to combat Coronavirus in your company | Recognize" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="How we can utilize employee recognition and help ourselves to fight the coronavirus outbreak" />
+  <meta property="og:image" content="/assets/pages/articles/ways-to-combat-coronavirus/image1.jpg" />
+  <meta property="og:url" content="https://recognizeapp.com/ways-to-combat-coronavirus" />
+  <link rel="amphtml" href="<%= ways_to_combat_coronavirus_url format: :amp %>">
+<% end%>
+
+<% content_for :article_title do %>Utilizing employee recognition & incentives to combat Coronavirus in your company<% end %>
+<% content_for :article_description do %>
+<% end %>
+
+<% tags = ["Introduction", "Social Collaboration Tool", "Recognize Good Hygiene", "Practice Social Distancing", "Staying Home", "Sleep, Drink and Eat", "Exercising at Home", "Meditation", "Teleconferencing", "Bad Apples"] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "ways_to_combat_coronavirus", locals: {tags: tags} %>
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

@@ -1,0 +1,120 @@
+#home-healthcare_landing,
+#home-banking_landing
+  .intro
+    display: flex
+    justify-content: space-between
+    padding-bottom: 0
+
+    .inner
+      padding: 5vw
+      width: 50%
+
+  .brad-buckets
+    background: #7C91E4
+    display: flex
+    margin-bottom: 4vh
+    padding: 1px
+
+    .bucket
+      background: #DEE9FF
+      border: 5px solid #FFFFFF
+      box-shadow: 0 0 16px 0 rgba(0,0,0,0.50)
+      width: 50%
+      margin: 20px
+      padding: 20px
+
+      img
+        max-width: none
+
+  .badges
+    background: #F6F8FA
+    border: 1px solid #585858
+    box-shadow: 0 0 19px 0 rgba(0,0,0,0.50)
+    border-radius: 7px
+    padding: 40px
+    width: 930px
+    margin: auto
+    max-width: 94%
+
+    ul
+      display: flex
+      justify-content: space-around
+      flex-wrap: wrap
+
+      li
+        margin: 20px
+        width: 44%
+
+      .content
+        flex: 1
+
+
+  .todos
+    background: #EBF1F8
+    border: 1px solid #979797
+    padding: 201px 20px 20px 20px
+    position: relative
+    top: -81px
+    z-index: -1
+    margin-bottom: -81px
+
+    @media (min-width: 600px)
+      clip-path: polygon(0 6%, 100% 0%, 100% 100%, 0% 100%)
+
+    ul
+      width: 900px
+      margin: auto
+      max-width: 100%
+
+      li
+        margin-bottom: 30px
+
+        .item img
+          max-width: 300px
+          width: 300px
+
+@media (max-width: 1160px)
+  #home-healthcare_landing,
+  #home-banking_landing
+    .intro
+      img
+        margin-right: -191px
+
+@media (max-width: 915px)
+  #home-healthcare_landing,
+  #home-banking_landing
+    .intro
+      img
+        margin-right: -300px
+
+@media (max-width: 815px)
+  #home-healthcare_landing,
+  #home-banking_landing
+    .badges
+      ul
+        display: block
+
+        li
+          width: 100%
+
+@media (max-width: 750px)
+  #home-healthcare_landing,
+  #home-banking_landing
+    .intro
+      .inner
+        width: 100%
+        padding: 3vw
+
+      img, .image-wrap
+        display: none
+
+    .brad-buckets
+      display: block
+
+      .bucket
+        width: auto
+
+    .todos
+      .item
+        img
+          max-width: 100px !important

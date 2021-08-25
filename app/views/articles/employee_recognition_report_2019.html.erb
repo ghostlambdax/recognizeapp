@@ -1,0 +1,45 @@
+<% content_for :title, "2019 Employee Recognition Report" %>
+<% content_for :description, "Discover differences across gender, age, or job level on preferences and needs in employee recognition." %>
+
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="2019 Employee Recognition Report | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="Differences between age, gender and more in employee recognition preferences." />
+  <meta property="og:image" content="pages/articles/2019_employee_recognition_report/happy-employees.jpg" />
+  <link rel="amphtml" href="<%= employee_recognition_report_2019_url format: :amp %>">
+<% end%>
+
+
+<% content_for :article_title do %>2019 Employee Recognition Report<% end %>
+<% content_for :article_description do %>
+
+  <div class="row-fluid">
+    <div class="span7">
+      <%= image_tag "pages/articles/2019_employee_recognition_report/happy-employees.jpg", alt: "Employees celebrating the recognition they received.", class: 'marginRight10 maxWidth100', itemprop: "image" %>
+    </div>
+
+    <div class="span5">
+      <p class="balance-text tagline">Last year, the Recognize Team ran a number of surveys on employee recognition and analyzed the results. This year, the team has examined how demographic groups (such as gender, age, etc.) prefer to receive employee recognition in different ways. Here, we provide initial research on how organizations can tailor recognition to different populations and satisfy a diverse range of people.</p>
+
+      <p class="balance-text tagline">Data came from a number of surveys that are further explained in the following reports:</p>
+      <ul class="marginBottom40">
+        <li><%= link_to 'Employee Recognition Report 2018', demo_survey_path, target:'_blank' %></li>
+        <li><%= link_to 'Nurse Burnout Research', employee_recognition_stats_for_healthcare_path, target:'_blank' %></li>
+        <li><%= link_to 'Holiday Party Research', holiday_party_path, target:'_blank' %></li>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<% tags = ['Summary', 'Age', 'Gender', 'Job Level', 'Income Level', 'Education', 'Miscellaneous', 'Conclusion'] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "2019_employee_recognition_report", locals: {tags: tags} %>
+<% end %>
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

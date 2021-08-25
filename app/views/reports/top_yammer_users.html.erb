@@ -1,0 +1,25 @@
+<% if @company.yammer_stats_synced_at.present? && @user_stats.present? %>
+
+    <table class="leaderboard yammer-users">
+      <tr class="header-row">
+        <td></td>
+        <td></td>
+        <td><%= t('dict.likes') %></td>
+      </tr>
+      <% @user_stats[0..19].each do |stat| %>
+          <tr class="leaderboard-item">
+            <td class="rank"><%= stat.rank %>.</td>
+            <td class="">
+              <%= link_to user_path(stat.user) do %>
+                  <%= image_tag(stat.user.avatar.small_thumb.url, style: "height: 15px;vertical-align:middle;") %>
+                  <%= stat.user.full_name %>
+              <% end %>
+            </td>
+            <td class="points"><%= stat.like_count %></td>
+          </tr>
+      <%end%>
+    </table>
+<%else%>
+    <h4><%= t('reports.no_data') %></h4>
+<%end%>
+

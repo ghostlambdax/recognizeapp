@@ -1,0 +1,221 @@
+<%= content_for :title, "Finance Employee Recognition" %>
+<%= content_for :description, "Ideas to create a culture of appreciation amongst your banking, credit unions, and finance  staff through an employee recognition program" %>
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Banking Employee Recognition | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="Credit unions, banks, and finance staff need quarterly recognition to stay engaged. Learn more in our research." />
+  <meta property="og:image" content="/assets/pages/banking-landing/top.jpg" />
+<% end%>
+
+<section class="intro">
+  <div class="inner">
+    <h1 class="balance-text">Finance Employee Recognition</h1>
+    <p class="tagline">Credit unions and banks need to consider a multi-faceted approach to combat nurse burnout. Adding employee recognition to your workflow helps reach healthcare goals of reduced burnout.</p>
+    <%= schedule_demo_link %>
+  </div>
+  <div class="image-wrap">
+    <%= image_tag 'pages/banking-landing/top.jpg', alt: 'An illustration of banking professionals in front of a bank that is inside a laptop.' %>
+
+  </div>
+</section>
+
+<section class="brad-buckets">
+  <div class="bucket h-container">
+    <div class="item">
+      <%= lazy_image_tag 'pages/healthcare-landing/icon-research.png', alt: 'An icon of a clipboard with a chedcklist to symbolize a survey as part of the medical burnout research' %>
+    </div>
+
+    <div>
+      <h2 class="balance-text">Banking Employee Recognition Survey</h2>
+      <p>We surveyed over two hundred banking professions from every walk of life on their feelings of work, health, and employee recognition.</p>
+      <%= link_to 'See results', banking_survey_path %>
+    </div>
+  </div>
+
+  <div class="bucket h-container">
+    <div class="item">
+      <%= lazy_image_tag 'pages/healthcare-landing/icon-casestudy.png', alt: 'An icon of a paper report.' %>
+    </div>
+
+    <div>
+      <h2 class="balance-text">Banking Case Study</h2>
+      <p>How to increase employee engagement and customer service in the banking industry through an integrated employee recognitino program without any gift card rewards.</p>
+      <%= link_to 'See case study', metrobank_case_study_path %>
+    </div>
+  </div>
+</section>
+
+
+<section id='values' class="badges marginBottom50">
+  <div class="centered">
+    <h2 class="balance-text">Company values for spot rewards in the finance industry</h2>
+    <p class="tagline balance-text">The following are company values that banking companies can use to promote excellence, quality, and culture with credit union, banking, and finance staff.</p>
+    <%= link_to 'Download', 'banking-values.zip', target: "_blank", class: "button button-primary" %>
+    <hr class="hr hr-space">
+  </div>
+  <% badges = [{
+                   name: 'Cha Ching',
+                   description: 'For working with customers to increase deposit growth and help us reach our goals.',
+                   path: 'badges/banking/CHA-CHING@75px.png',
+                   alt: 'Fireworks of bursting streams of color icon'
+               },
+               {
+                name: 'Supportive',
+                description: 'For focusing the goals of the customer and helping them achieve them.',
+                path: 'badges/banking/CHEERFUL@75px.png',
+                alt: 'A calendar check mark icon'
+               },
+               {
+                   name: 'Community Impact',
+                   description: 'For doing volunteer work to support the community.',
+                   path: 'badges/banking/COMMUNITYIMPACT@75px.png',
+                   alt: 'A syringe icon'
+               },
+               {
+                   name: 'Customer First',
+                   description: "Putting the customer's needs and desires first and doing what ever possible to make the customer happy.",
+                   path: 'badges/banking/CUSTOMERFIRST@75px.png',
+                   alt: 'A red megaphone icon'
+               },
+               {
+                   name: 'Fraud Buster',
+                   description: 'Working hard to stop fraud. Reporting suspicious transactions, checks, loans, and wires.',
+                   path: 'badges/banking/FRAUDBUSTER@75px.png',
+                   alt: 'A handshake icon'
+               },
+               {
+                   name: 'Human Firewall',
+                   description: 'Always being vigilant of security and privacy and reporting suspcisous activity observed in emails or phone calls to the IT team or Security Division.',
+                   path: 'badges/banking/HUMANFIREWALL@75px.png',
+                   alt: 'A person with star ribbon icon'
+               },
+               {
+                   name: 'Listener',
+                   description: "Listening and really trying to understand customer's complaints or needs.",
+                   path: 'badges/banking/LISTENER@75px.png',
+                   alt: 'A person with both hands in the air icon'
+               },
+               {
+                   name: 'Suggestion Evolution',
+                   description: 'For offering suggestions that improve or disrupt current products, services, or processes.',
+                   path: 'badges/banking/SUGGESTIONEVOLUTION@75px.png',
+                   alt: 'A person washing their hands icon'
+               },
+               {
+                   name: 'Surprise and Delight',
+                   description: 'Thank you for surprising and delighting our customers and turning them into loyal customers!',
+                   path: 'badges/banking/SURPRISEANDDELIGHT@75px.png',
+                   alt: 'A home symbol icon'
+               }] %>
+
+
+  <ul>
+    <% badges.each do |b| %>
+      <li class="h-container">
+        <div class="item">
+          <%= lazy_image_tag b[:path], alt: b[:alt] %>
+        </div>
+
+        <div class="content">
+          <h3><%= b[:name] %></h3>
+          <p><%= b[:description] %></p>
+        </div>
+      </li>
+
+    <% end %>
+  </ul>
+
+
+</section>
+<!--
+<section class="todos">
+  <div class="centered">
+    <h2 class="marginBottom50">10 Todos for a Successful Healthcare Employee Recognition Program</h2>
+  </div>
+
+  <% ideas = [{
+                title: 'Include everyone',
+                description: 'Make sure all staff have access to the employee recognition portal. Have Recognize inside Outlook, mobile, TVs in hallways and everywhere people work.',
+                path: 'pages/healthcare-landing/ideas/docs.jpg',
+                alt: 'Nurses standing at a table'
+              },
+              {
+                  title: 'Give rewards your staff want',
+                  description: 'The number one requested reward from healthcare workers is extra paid time off. Paid time off can help burnt out healthcare workers to recharge and find their passion for their work again. Offering relaxation experiences such as massages, yoga, or meditation classes can also help staff to relax and reduce burnout.',
+                  path: 'pages/employee-rewards-ideas/pto.jpg',
+                  alt: 'A man going on vacation'
+              },
+              {
+                  title: 'Everyone deserves recognition',
+                  description: 'Use award certificates to give status. Make the recognition personal. Ensure everyone is recognized at least twice a year for meaningful contributions.',
+                  path: 'pages/healthcare-landing/ideas/happy-doc.jpg',
+                  alt: 'A happy nurse'
+              },
+              {
+                  title: 'Promote what’s important',
+                  description: 'Give recognition around your organization’s specific values such as Safety, HIPAA Compliance, Patient Feedback, or Infection Protection.',
+                  path: 'pages/healthcare-landing/ideas/nurse-safe.jpg',
+                  alt: 'A nurse using safety procedures'
+              },
+              {
+                  title: 'Encourage health and wellness',
+                  description: 'With Recognize, you can incentivize your staff to take care of their physical and mental health by offering rewards for steps, exercising, or biking to work.',
+                  path: 'pages/healthcare-landing/ideas/wellness.jpg',
+                  alt: 'Nurse holding a salad'
+              },
+              {
+                  title: 'Provide easy peer-to-peer recognition',
+                  description: 'Reducing barriers for your staff to send recognition is key in ensuring adoption. Add a recognition tool to Outlook, mobile, or shared kiosks, and make sure everyone can be invited to use the platform.',
+                  path: 'chrome/logo-blue-256.png',
+                  alt: 'Recognize icon'
+              },
+              {
+                  title: 'Correlate recognition data to KPIs',
+                  description: 'Is your recognition and rewards program lowering the rate of infection, number of safety issues, or HIPAA violations at your organization? Track data points and correlate KPIs to see relationships.',
+                  path: 'pages/healthcare-landing/ideas/kpi.jpg',
+                  alt: 'A photo showing a number of icons symbolizing KPIs, such as wellness and efficiency.'
+              },
+              {
+                  title: 'Choose partners that value privacy and security',
+                  description: 'Knowing that your data is safe and protected is crucial for healthcare organizations. Make sure that any vendors you work with store employee data encrypted and that contract agreements do not allow selling of personal data.',
+                  path: 'pages/healthcare-landing/ideas/hipaa.jpg',
+                  alt: 'HIPAA Compliant icon'
+              },
+              {
+                  title: 'Develop a communications strategy',
+                  description: 'Use posters, free standing banners, desk cards, email signatures, and town halls to communicate the recognition program and how it can be best utilized.',
+                  path: 'pages/healthcare-landing/ideas/communications.jpg',
+                  alt: 'Medical professionals looking at an ipad'
+              },
+              {
+                  title: 'Train managers',
+                  description: 'Managers are the rubber that meets the road in a recognition program. Set time aside with your recognition vendor to host webinars where managers can learn best practices.',
+                  path: 'pages/healthcare-landing/ideas/training.jpg',
+                  alt: 'Healthcare workers conducting a training and holding a clipboard'
+              }] %>
+
+
+  <ul>
+
+    <% ideas.each do |i| %>
+      <li class="h-container">
+        <div class="item">
+          <%= lazy_image_tag i[:path], alt: i[:alt] %>
+        </div>
+        <div class="content">
+          <h3><%= i[:title] %></h3>
+          <p><%= i[:description] %></p>
+        </div>
+
+
+      </li>
+
+    <% end %>
+
+  </ul>
+</section>
+-->
+<%= render partial: "marketing_cta_banner" %>
+
+<%= render partial: 'home/footer' %>

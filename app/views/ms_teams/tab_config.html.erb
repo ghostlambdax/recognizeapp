@@ -1,0 +1,15 @@
+<% content_for :pagejs do %>
+  var configPersistenceUrl = '<%= ms_teams_settings_url.html_safe %>';
+
+  <% unless params[:removeTab].present? %>
+  R.msTeams.tabChoices = <%= raw ms_team_tab_choices.as_json %>;
+  <% end %>
+
+  R.msTeams.tabConfig(<%= @company&.id || 'null' %>, configPersistenceUrl, <%= !!params[:removeTab] %>);
+<% end %>
+
+<% if params[:removeTab].present? %>
+  <%= render partial: "tab_removal" %>
+<% else %>
+  <%= render partial: "tab_config" %>
+<% end %>

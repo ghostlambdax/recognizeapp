@@ -1,0 +1,205 @@
+.yammer-groups-wrapper
+  margin-bottom: 15px
+
+.trumbowyg-box, .trumbowyg-editor, .trumbowyg-textarea
+  min-height: 125px
+
+.image-wrapper
+  margin-top: 15px
+
+.marginBottom10
+  margin-bottom: 10px
+
+.marginRight10
+  margin-right: 10px
+
+.offscreen
+  position: absolute
+  left: -9999px
+
+.recipient-remove
+  cursor: pointer
+
+#badge-trigger
+  display: block
+  border-radius: 50%
+  background-size: 85px 85px
+  display: inline-block
+
+  &, img
+    width: 85px
+    height: 85px
+
+.text-center
+  text-align: center
+
+#badge-edit
+  display: none
+
+.image-wrapper.chosen #badge-edit
+  display: inline-block
+
+
+#badge-list
+  list-style: none
+
+  .badge-item
+    margin-bottom: 30px
+    cursor: pointer
+    @include transition(background .5s linear)
+    padding: 3px
+
+    &:hover
+      background: #EFF6FC
+
+    .badge-inner
+      position: relative
+      min-height: 80px
+
+      .badge-image-wrapper
+        position: absolute
+        left: 0px
+        top: 0px
+        width: 80px
+
+        img
+          width: 80px
+          height: 80px
+
+      .content
+        padding-left: 90px
+
+  .button.button-small
+    padding: 4px 20px 6px
+    display: inline-block
+    border: 1px solid black
+    margin: 5px 0 10px
+
+    & + .smallPrint
+      display: block
+
+.recipient-wrapper
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 10px
+
+  h4
+    margin: 0
+
+#chosen-recepient-wrapper
+  .inner .message
+    display: none
+
+#chosen-recepient-wrapper.no-recipients
+  .inner .message
+    display: block
+
+#badge-name
+  margin: 0 0 10px 0
+
+
+form.loading .ms-Button
+  .loader
+    display: inline-block
+
+    span
+      @include animation(panelLoader 1s infinite)
+
+  .submit-text
+    display: none
+
+form .ms-Button
+  .loader
+    display: none
+    text-align: center
+
+    span
+      background: #000
+      border-radius: 50%
+      height: 5px
+      width: 5px
+      margin: 0 3px
+      display: inline-block
+      vertical-align: middle
+      @include transitionTransform(.5s, $cubic)
+
+      &:first-child
+        animation-delay: 0s
+
+      &:nth-child(2)
+        animation-delay: 0.2s
+
+      &:last-child
+        animation-delay: 0.4s
+
+@include keyframes(panelLoader)
+  0%
+    @include transform(translate(0,-3px))
+
+  100%
+    @include transform(translate(0, 3px))
+
+
+#complete-recognition
+  text-align: center
+
+.error
+  background: #fde7e9
+  padding: 5px
+  border-radius: 3px
+  display: inline-block
+
+  h5, p
+    margin: 0
+
+.hr-space
+  margin: 30px 0 10px
+
+@mixin msFabricTextFieldPlaceholder()
+  font-family: 'Segoe UI Semilight WestEuropean','Segoe UI Semilight','Segoe WP Semilight','Segoe UI','Segoe WP',Tahoma,Arial,sans-serif
+
+
+.tags-wrapper
+  .tags-select:not(.select2-hidden-accessible)
+    display: none // hide original element until select2 renders
+
+  ::-webkit-input-placeholder
+    @include msFabricTextFieldPlaceholder()
+
+  input:-moz-placeholder
+    @include msFabricTextFieldPlaceholder()
+
+  input:-ms-input-placeholder
+    @include msFabricTextFieldPlaceholder()
+
+  .select2
+    input[type="search"]
+      height: 23px        // override a generic (non-select2) style
+      margin-top: 7px
+      margin-bottom: 5px
+
+    .select2-selection
+      border-color: #ccc
+
+    ul.select2-selection__rendered
+      //padding-left: 0
+
+      .select2-selection__choice
+        margin-top: 8px // default 5px for these
+        margin-left: 8px
+        margin-right: 0
+        &:first-child
+          margin-left: 8px
+
+    // override default select2 focus behavior to make it consistent with other inputs
+    // this chunk copied from bootstrap-forms.scss
+    &.select2-container--focus .select2-selection
+      border-color: rgba(82, 168, 236, 0.8)
+      outline: 0
+      outline: thin dotted \9
+// box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6) // this is overridden
+
+// remove default 3px margin-right to bring the question-icon closer
+#is-private-recognition label
+  margin-right: 0

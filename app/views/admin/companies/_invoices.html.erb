@@ -1,0 +1,48 @@
+<h3>Invoices</h3>
+<div>
+  <%= link_to 'Upload Invoice', "javascript://", id: "upload-invoice", class: 'button button-primary', data: {form: render("admin/companies/invoice_uploader/form").gsub("\n", "")} %>
+  <div class="subtle-text">NOTE: this only shows the last 5 invoices</div>
+</div>
+<table class="table table-bordered invoice-table table-responsive">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th style="width:60%">Description</th>
+      <th>Due Date</th>
+      <th>Date Paid</th>
+      <th style="width:35%">Invoice</th>
+      <th style="width:10%">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @invoice_documents.each do |id| %>
+    <tr>
+      <td><%= id.id %></td>
+      <td>
+        <%= text_area_tag( "description", id.description, data: {
+            remote: true, 
+            url: update_invoice_admin_company_path(@company, invoice_id: id.id),
+            method: 'PUT'}, style: "width:100%") %>          
+      </td>
+      <td>
+        <%= text_field_tag( "due_date", id.due_date, style: "width:150px", data: {
+            remote: true, 
+            url: update_invoice_admin_company_path(@company, invoice_id: id.id),
+            method: 'PUT'}, type: "date") %>
+          
+      </td>
+      <td>
+        <%= text_field_tag( "date_paid", id.date_paid, style: "width:150px", data: {
+            remote: true, 
+            url: update_invoice_admin_company_path(@company, invoice_id: id.id),
+            method: 'PUT'}, type: "date") %>
+      </td>
+      <td><%= link_to id.filename, id.url %></td>
+      <td>
+        <%= button_tag 'Delete', class: "button button-danger right delete-invoice", style: "color: white", data: {
+            endpoint: delete_invoice_admin_company_path(@company, invoice_id: id.id)} %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

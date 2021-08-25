@@ -1,0 +1,17 @@
+<div class="text-centered">
+  <%= image_tag 'chrome/logo-72x72.png', alt: 'Recognize logos'  %>
+  <h1>Recognize + Microsoft Teams</h1>
+  <h3>
+    Sorry! We couldn't find the tab settings for your organization
+  </h3>  
+  <div class="well text-left" style="max-width: 800px">
+    <h4>Are you sure you are logged in to the correct account?</h4>
+    <h5>You are currently logged in to: <%= current_user.company.name %> (<%= current_user.company.domain %>)'s account, but this tab may have been installed by someone in a different organization. In order to access this tab, the user you are logged in as must be in the same organization that installed this tab.</h5>
+    <h5>Please <%= link_to "Logout", logout_path %> and try a different Recognize account or contact your company administrator.</h5>
+    <h5>If you are the company administrator, try reinstalling the Teams app.</h5>
+    <p class="subtle-text">Entity: <%= params[:entity_id] %></p>
+  </div>
+</div>
+
+
+

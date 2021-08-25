@@ -1,0 +1,11 @@
+﻿Email,First name,Last name,Job title(optional), Phone(optional),Team(optional),Roles(optional),Start date mm/dd/yyyy(optional),Birthday mm/dd(optional),Manager Email(optional - must be users in Recognize)
+September.April@dummycompany.com,September,April,9,8013769999,,Role p,,,
+October.May@dummycompany.com,October,May,9,8013770000,,Role p,,,
+November.June@dummycompany.com,November,June,Manager,8013770001,,,,,
+December.July@dummycompany.com,December,July,Custodian,8013770002,,,,,
+January.August@dummycompany.com,January,August,,8013770003,,,,,
+February.September@dummycompany.com,February,September,Office boy,8013770004,,,,,
+March.October@dummycompany.com,March,October,HR,8013770005,,,,,
+April.November@dummycompany.com,April,November,,8013770006,,,,,
+May.December@dummycompany.com,May,December,,8013770007,,,,,
+June.January@dummycompany.com,June,January,,8013770008,,,,,

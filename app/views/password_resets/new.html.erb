@@ -1,0 +1,27 @@
+<%
+  page_options = options_for_password_reset
+%>
+
+<%= content_for :title, page_options[:page_title] %>
+<%= content_for :description, page_options[:description] %>
+
+<%= render_flash %>
+
+<h1><%= page_options[:title]%></h1>
+
+<div class="form-vertical">
+  <%= form_tag password_resets_path, class:"form-vertical" do %>
+    <%= hidden_field_tag('pw_reset', page_options[:pw_reset]) %>
+    <div class="control-group">
+      <div class="controls">
+        <%= label_tag t("forgot_password.login")%>
+        <%= text_field_tag :email, params[:email], placeholder: t("dict.login_placeholder"), required: true %>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <%= submit_tag page_options[:button_text], class: "button button-primary" %>
+      </div>
+    </div>
+  <% end%>
+</div>

@@ -1,0 +1,111 @@
+#case_study-metrobank
+  .cs-banner
+    background-image: asset_url("pages/case-study/metrobank/index-card.jpg")
+    height: 400px
+
+#case_study-teachfirst
+  .cs-banner
+    background-image: asset_url("pages/case-study/teachfirst/banner.jpg")
+    height: 400px
+
+#case_study-goodwaygroup
+  .cs-banner
+    background-image: asset_url("pages/case-study/goodwaygroup/index-card.jpg")
+    height: 400px
+
+#case_study-ideascollide
+  .cs-banner
+    background-image: asset_url("pages/case-study/ideascollide/banner.jpg")
+    height: 400px
+
+#case_study-dealogic
+  .cs-banner
+    background-image: asset_url("pages/case-study/dealogic/index-card.jpg")
+    height: 400px
+
+#case_study-corvallisclinic
+  .cs-banner
+    background-image: asset_url("/assets/pages/case-study/corvallisclinic/index-card.jpg")
+    height: 400px
+
+#case_study-visions_fcu
+  .cs-banner
+    background-image: asset_url("/assets/pages/case-study/visions-fcu/index-card.jpg")
+    height: 400px
+
+.case_study .case-study-article
+  width: 1000px
+  margin: 50px auto
+  padding: 0 3vw
+  max-width: 100%
+
+  blockquote
+    font-size: 18px
+    line-height: 27px
+
+  .cs-banner
+    background-size: cover
+    padding: 3vw
+    border-top: 5px solid $headerBg
+    margin-bottom: 3vh
+
+  .case-study-section
+    margin-bottom: 40px
+
+
+.case-study-category-text
+  color: lighten($headerBg, 10%)
+  font-style: italic
+  display: block
+
+.case_study
+
+  .case-study-wrapper
+    display: flex
+    flex-wrap: wrap
+    margin: 50px auto
+
+    .case-study-item
+      background-repeat: no-repeat
+      background-size: cover
+      padding: 35px
+      width: 30%
+      height: 400px
+      border: 2px solid $headerBg
+      margin: 20px 1.5%
+      border-radius: 3px
+
+      .content
+        height: 100%
+
+      h2
+        font-weight: 600
+        text-shadow: 0 0 26px #fff
+        line-height: 42px
+
+      .button
+        position: absolute
+        bottom: 40px
+        box-shadow: 0 0 10px #000
+
+@media (max-width: 1350px)
+  .case_study
+    .case-study-wrapper
+      .case-study-item
+        width: 48%
+        margin-left: 1%
+        margin-right: 1%
+
+@media (max-width: 870px)
+  .case_study
+    .case-study-wrapper
+      .case-study-item
+        width: 96%
+        margin: 20px auto
+        height: auto
+
+        .button
+          position: static
+          bottom: 0
+
+

@@ -1,0 +1,15 @@
+<h3 style="<%= mail_styles(:text, :h3) %>">
+  <%= day %>
+</h3>
+
+<% birthday_users.each do |birthday_user| %>
+    <div style="margin-bottom: 30px;" class="birthday-user">
+
+      <%= link_to user_url(birthday_user, network: birthday_user.network), style: "#{mail_styles(:a)} text-decoration: none; margin-bottom: 10px; display: inline-block;" do %>
+          <%= image_tag(birthday_user.avatar.small_thumb.url, itemprop: "image", class: "avatar", style: "vertical-align: middle") if birthday_user.avatar %>
+          <%= t("anniversary.profile", name: birthday_user.full_name) %>
+      <%end%>
+
+      <h5 style="<%= mail_styles(:h5, :text) %> margin-bottom: 10px;"><strong style="font-weight: 600;"><%= t("notifier.birthday_privacy") %></strong>: <%= birthday_privacy_label(birthday_user) %></h5>
+    </div>
+<%end%>

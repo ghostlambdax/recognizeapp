@@ -1,0 +1,28 @@
+<div class="value-filter-wrapper">
+  <div class="dropdown-wrapper">
+    <div class="dropdown">
+      <% all_path_args = leaderboard_path_args.slice(*(leaderboard_path_args.keys - [:anchor, :attribute_filter_key, :attribute_filter_value])) %>
+      <%= form_tag send(leaderboard_report_path_method, all_path_args), method: :get do |f|%>
+        <% all_path_args.select{|_, value| value.present?}.each do |key, value| %>
+            <%= hidden_field_tag key, value %>
+        <% end %>
+        <!--
+        Note:
+          When form parameters are unchanged, re-submitting the form doesn't send a new request but scrolls the
+          page to the bookmark(anchor) element, and keep the state of button to 'loading dots'. The `rand` value
+          is used to make sure that clicking on submit button ensures resubmission of the form and making sure the
+          loading indicator behavior in submit button doesn't break, even though no form parameters have changed.
+        -->
+        <%= hidden_field_tag :rand, Time.now.to_i %>
+        <%= attribute_filter_key_select %>
+        <%= text_field_tag "attribute_filter_value",
+                           params[:attribute_filter_value],
+                           type: :number, min: 0,
+                           class: "attribute-filter-value"
+        %>
+
+        <%= submit_tag(t('dict.go'), class: 'button button-primary')%>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<h2 style="<%= mail_styles(:text, :h2, :title) %>"><%=t("rewards.pending_reward")%></h2><br/>
+
+<p style="<%= mail_styles(:text, :p) %>">
+
+  <%=t("rewards.reward_email_body_html", first_name: @user.first_name, reward_title: @reward.title, full_name: @admin.full_name, email: @admin.email) %>
+
+</p>

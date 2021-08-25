@@ -1,0 +1,16 @@
+<%= form_for Document.new, url: documents_create_endpoint, remote: true do |f| %>
+  <div class="control-group well">
+    <h4>Upload Document</h4>
+    <hr>
+    <%= f.file_field :file, class: "marginBottom10" %>
+    <%= f.label :description %>
+    <%= f.text_field :description, class: "marginBottom10" %>
+
+    <div>&nbsp;</div>
+    <%= f.submit "Upload", class: "button button-primary" %>
+    <div class="file-attach-progress">
+      <div class="message marginBottom10"></div>
+      <div class="progress-bar"><div class="progress-inner"><span class="right"></span></div></div>
+    </div>
+  </div>
+<% end %>

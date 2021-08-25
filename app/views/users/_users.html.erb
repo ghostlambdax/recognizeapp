@@ -1,0 +1,45 @@
+<ul id="user-list" class="user-list">
+    <% users.each do |user|%>
+      <li>
+        <div class="row-fluid">
+          <div class="span1 avatar-wrapper">
+            <%= link_to user_path(user), class: "users-index-avatar-link" do %>
+              <%= image_tag(user.avatar.thumb.url, itemprop: "image", class: "avatar") %>
+            <% end %>
+          </div>
+          <div class="span2">
+            <h3><%= link_to user.full_name, user_path(user) %></h3>
+            <p><%= link_to t("dict.recognize"), user_recognition_path(user, network: user.network), class: "button button-inactive marginBottom20 users-index-name-link" if page_id != "users-show" && user != current_user && feature_permitted?(:recognition) %></p>
+          </div>
+
+          <div class="span8">
+            <% latest_recognitions = user.received_recognitions.approved.select{|r| r.permitted_to?(:show)}[0..2] %>
+
+            <% latest_recognitions.each do |recognition| %>
+              <div class="marginBottom10">
+                <%= link_to recognition_path(recognition) do %>
+                  <div class="row-fluid">
+                    <div class="span3 badge">
+                      <%= image_tag recognition.badge.image_url, class: "badge-image-extra-small", alt: recognition.badge.short_name %><br>
+                      <%= recognition.badge.short_name %>
+                    </div>
+                    <div class="span9">
+                      <% if recognition.message.present? %>
+                        <%# no need to simple_format here because we are already using h4 styles in the wrapper %>
+                        <% message = recognition_message(recognition, exclude_images: true, format: false) %>
+                        <div class="h4 message">
+                          "<%= message %>"
+                          <div class="overflow-overlay"></div>
+                        </div>
+                        <span class="subtle-text"><%= recognition.sender_name %></span>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </li>
+    <% end%>
+</ul>

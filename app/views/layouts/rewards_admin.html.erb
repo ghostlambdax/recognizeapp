@@ -1,0 +1,98 @@
+<% content_for :page_header do %>
+  <% content_for :left_nav do %>
+    <% unless show_currency?(@company) %>
+      <%= link_to "Contact us", contact_path, class: "button" %>
+    <% else %>
+      <nav class="clearfix animate-1 animate-hidden animate">
+        <%= yield(:rewards_filter) %>
+      </nav>
+    <% end %>
+  <% end %>
+
+  <%= page_nav({title: t("rewards.rewards"), cssclass: 'rewards-admin-nav'}) do %>
+    <% catalog = @catalog || Catalog.find_by_id((params[:catalog_id].to_i)) %>
+    <% catalog_persisted = catalog&.persisted? %>
+    <% header_class = catalog_persisted %>
+    <div class="aside-nav">
+      <nav class="tab-nav <%= header_class %>">
+        <ul class="clearfix marginTop10">
+          <%= rewards_nav_dashboard_link(catalog) if catalog_persisted %>
+          <%= rewards_nav_catalogs_link unless catalog_persisted %>
+          <%= rewards_nav_index_link(catalog) if catalog_persisted %>
+          <%= rewards_nav_budget_link(catalog) if catalog_persisted %>
+          <%= rewards_nav_redemptions_link(catalog) %>
+          <%= rewards_nav_transactions_link(catalog) %>
+          <%= edit_company_admin_catalog_link(catalog) if catalog_persisted %>
+        </ul>
+      </nav>
+    </div>
+  <% end %>
+<% end %>
+
+<% content_for :admin_content do %>
+  <%= page_layout do %>
+    <%= render_flash %>
+
+    <div class="rewards-admin-wrapper">
+      <% if show_currency?(@company) %>
+        <%= yield %>
+      <% else %>
+        <%
+          # See if we can guess ratio:
+          # (Doing this in view because this whole page is kind of throwaway once all companies' legacy rewards/redemptions have had their ratio set)
+          ratio_guess = nil
+          currency_amount_regexp = /\$\s*([0-9.]+)/
+          reward_with_amount_in_title = @company.rewards.detect{|r| r.title.match(currency_amount_regexp)}
+          if reward_with_amount_in_title
+            reward_amount = reward_with_amount_in_title.title.match(currency_amount_regexp)[1].try(:to_f)
+            ratio_guess = (reward_with_amount_in_title.deprecated_points / reward_amount).to_i if reward_amount.present? && reward_amount > 0
+          end
+        %>
+
+        <h2>Create a catalog</h2>
+        <p>
+          Recognize Rewards requires all companies to set at least one catalog to use the rewards platform.
+        </p>
+        <p>
+          <strong>We've had to disable your rewards to your employees until you decide. We apologize for any inconvenience.</strong><br>
+        </p>
+        <p>When it is all set up, you'll see <strong>how much anniversaries, badges, and rewards are worth in money</strong>.</p>
+
+        <% if ratio_guess.present? %>
+          <div class="well marginBottom20">
+            <p>
+              Based on your rewards, we guessed your ratio to be <strong><%= t('dict.pts', points: ratio_guess) %> per <%=humanized_money_with_symbol(Money.from_amount(1, @company.currency)) %></strong>.<br>We <strong>recommend</strong> at least 100pts to <%=humanized_money_with_symbol(Money.from_amount(1, @company.currency)).no_zeros %> to handle rewards with decimal values.
+            </p>
+          </div>
+        <% end %>
+
+        <% if @company.rewards.size > 0 %>
+          <h3>Current Rewards</h3>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-condensed table-hover">
+              <thead>
+              <tr class="row">
+                <th>Name</th>
+                <th>Description</th>
+                <th>Points</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @company.rewards.each do |reward| %>
+                <tr class="row">
+                  <td><%= reward.title %></td>
+                  <td><%= reward.description %></td>
+                  <td><%= reward.variants.enabled.first&.points %></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+
+      <% end %>
+    </div>
+  <% end %>
+
+<% end %>
+<%= render template: "layouts/company_admin" %>

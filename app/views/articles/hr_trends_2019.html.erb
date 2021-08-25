@@ -1,0 +1,32 @@
+<% content_for :title, "2019 HR Trends" %>
+<% content_for :description, "2019 Human Resources trends predicted by the Recognition team that follow the digital transformation occurring in most workplaces." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="2019 Trends in Human Resources | Recognize" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="See Recognize's predictions for 2019 in HR, while we also look back at 2018 trends." />
+  <meta property="og:image" content="/assets/pages/article-2019-hr-trends/image-3.jpg" />
+  <meta property="og:url" content="https://recognizeapp.com/2019-human-resources-trends" />
+  <link rel="amphtml" href="<%= hr_trends_2019_url format: :amp %>">
+<% end%>
+
+<% content_for :article_title do %>Recognize's Human Resources Trends for 2019<% end %>
+<% content_for :article_description do %>
+  <%= lazy_image_tag "pages/article-2019-hr-trends/image-1.jpg", alt: "Human Resources", class: "marginBottom30 marginRight30 left", itemprop: "image" %>
+
+  <p class="balance-text marginBottom40 tagline">The role of human resources (HR) has definitely been in flux over the past decade. While once regarded as an administrative team with little to no business ties, the perception of HR has since changed. This department has been <strong>transformed from a traditional 'paper pusher' to a full-fledged workplace 'business partner'</strong> – especially in recent years (<a href="https://www.forbes.com/sites/kylesmith/2013/04/04/its-time-for-companies-to-fire-their-human-resource-departments/#273f54de2070" target="_blank">Smith, 2013</a>). And as more and more industries adapt to changing technology and employee expectations, HR must reinvent itself as well – in order to help companies remain cutting-edge and survive the ongoing ‘war on talent’ (<a href="https://www.bamboohr.com/blog/13-hr-trends-stats-to-surprise-you/" target="_blank">De Luca, 2018</a>). So there has been an increasing push to optimize HR to help companies better manage their human capital.
+  </p>
+<% end %>
+
+<% tags = ["Introduction", "2018 Trends", "2019 Trends", "Corporate Recognition", "Final Thoughts"] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "2019_hr_trends_body", locals: {tags: tags} %>
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="top flex-centered">
+  <div>
+    <h2><%= t('welcome.how_many_users_do_you_have') %></h2>
+    <p class="lead">
+      <a href="javascript://" class="slideable-trigger" data-from="#user-count" data-to="#start" data-direction="reverse"><%= t('welcome.why_recognize') %></a>
+    </p>
+
+    <%= form_tag save_user_count_path, id: "user-count-form", method: :put, remote: true  do%>
+      <input name="user_count" type="number" id="user_count" class="form-control" placeholder="1000" min="1" required>
+      <button id="user_count_submit" class="form-control button button-primary button-large">Next</button>
+    <% end %>
+  </div>
+</div>
+<div class="testimonial">
+  <%= testimonial_html(3) %>
+</div>

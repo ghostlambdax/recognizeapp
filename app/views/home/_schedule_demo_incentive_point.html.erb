@@ -1,0 +1,11 @@
+<% if current_user.blank? %>
+
+<section class="centered pattern-subtle_dots cta_incentive_point" data-no-turbolink='true'>
+  <%= feather_icon('star', {color: '#ffa500', height: '40px', width: '40px'})%>
+  <h2>Incentivize, Recognize, Reward</h2>
+  <p class="tagline balance-text width-800 margin-auto">Recognize increases staff productivity, provides company engagement insights, and helps retain top employees. Providing HR with an out-of-box solution since 2012.</p>
+
+  <%= schedule_demo_link %>
+</section>
+
+<% end %>

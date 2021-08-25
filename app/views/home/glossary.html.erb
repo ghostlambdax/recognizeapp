@@ -1,0 +1,114 @@
+<% glossary_data = [{name: "Attendance management", description: "Attendance management is about reducing employee absentism through effective policies and procedures."},
+                    {name: "Absenteeism", description: "Absentism is the habitual evasion of work, or absence from the workplace. It does not include the occasional involuntary absence from work due to sickness or accidents."},
+                    {name: "Appreciation", description: "A form of recognition or giving thanks to an employee for an attitude, a view, an action or a behavior in the work place. A key component to an employee engagement strategy."},
+                    {name: "Attendance", description: "A measure of presence of employees at work, often measured over a year, taking into account authorized (holidays, illness, compassionate leave) and un-authorized absences (voluntary absence without good cause or reason)."},
+                    {name: "Attrition rate", description: "Attrition includes all employees who leave the company, voluntarily or involuntarily. An employee who chooses to leave a company for another job is an example of voluntary employee attrition. An employee fired by the company is an example of involuntary attrition."},
+                    {name: "Audience", description: "Audience is the intended recipients within the business who will receive or benefit from your employee engagement activities and communications."},
+                    {name: "Benefits", description: "Employee investment which includes healthcare, wellness programs, childcare, free on-site cafeteria, etc."},
+                    {name: "Bonus", description: "Cash-based rewards paid out upon achievement of pre-determined goals. Can be given monthly, quarterly or annually."},
+                    {name: "Bottom-up communication", description: "When information flows from the lower employment tier of a company upwards towards upper layers and potentially right to the top. For example, frontline workers to senior leaders. The opposite would ‘top-down’ communication."},
+                    {name: "Cascade", description: "The name given to the method of sharing employee communication, usually from the upper levels of the company down to the lower employment tier. Cascades are usually one-way, without a feedback mechanism in place."},
+                    {name: "Channel", description: "It is the method a message is delivered. Literally the mode in which information and communication flows. Examples include employee magazine, all employee meeting, intranet, email or video."},
+                    {name: "Collaboration", description: "When people work together to achieve a common purpose."},
+                    {name: "Compensation", description: "A component of total rewards that is the base wage earned by the employee. Paid in the local currency and received through appropriate payroll structures"},
+                    {name: "Cost to hire", description: "The total cost to attract and recruit new employees. It covers direct recruitment costs – advertising, agencies, consultants, as well as onboarding costs and other administrative, equipment, incentive and relocation costs."},
+                    {name: "Crowd-source or crowd-sourcing", description: "This is when ideas, content and conversations are initiated and shaped by a group of people, who each contribute to the final outcome of what they were involved in contributing to."},
+                    {name: "Crowd-sourced Performance Reviews", description: "Takes the “wisdom of the crowd” in the form of informal, positive feedback through recognition given from multiple perspectives and people throughout the year and adds it to the traditional, formal review process to better inform the single-point-of-view of the manager."},
+                    {name: "Desk-drop", description: "To put items on employees’ desks. Usually as part of a communication campaign and ideally something that they can see the value in and has a clear call to action or benefit."},
+                    {name: "Discretionary effort", description: "The effort an employee will put in over and above the direct terms and expectations of their contract of employment and role."},
+                    {name: "E-learning", description: "Learning, training and development delivered remotely via electronic media, e.g. web, apps, video streams."},
+                    {name: "Effective Recognition Programs", description: "Programs that help achieve a desired business outcome such as increased employee engagement, increased retention, improved performance and increased productivity."},
+                    {name: "Efficient Recognition Programs", description: "Programs that achieve effectiveness targets while ensuring the greatest percentage of program budget is enjoyed by the employees in the form of rewards and the least percentage of budget is used for program administration."},
+                    {name: "Employee Award", description: "Notification an employee receives that they have been recognized by a colleague. Can be in the form of an email, a letter, a certificate, etc."},
+                    {name: "Employee Engagement", description: "A measure of employee willingness to give additional discretionary effort to achieve organizational goals. Leaders can influence employee engagement, but ultimately employees alone can choose to engage in a company culture they believe in."},
+                    {name: "Employee Engagement Apps", description: "Online tools and SaaS programs used to improve and test employee engagement, staff morale, employee happiness, and employee productivity. These tools include employee engagement surveys, learning management systems, #{link_to 'employee recognition programs', employee_recognition_programs_path}, employee wellness programs, and performance management tools."},
+                    {name: "Employee Incentives", description: "Differs from #{link_to 'employee recognition programs', employee_recognition_programs_path} in that employees are informed of the “prize” they will receive if certain goals are achieved. Most common in sales and service organizations and characterized by “If/Then” rewards."},
+                    {name: "Employee Recognition", description: "The overarching concept around showing appreciation for employee's great work or tenure across service anniverary, peer-to-peer recognition, and/or but not limited to nominations. Employee recognition is a key component to an overall employee engagement strategy."},
+                    {name: "Employee Reward", description: "Item employee receives to commemorate a recognition moment. Preferably chosen directly by the employee and not presented as a pre-selected item that could be culturally or personally insulting. Best if employee has full choice of options locally within own culture or anywhere in the world if so desired."},
+                    {name: "Employee voice", description: "A platform where the views, thoughts, opinions and contributions from employees can be heard, documented or discussed."},
+                    {name: "Employer brand", description: "The image that prospective, current and past employees have in their minds about the employment experience at the company."},
+                    {name: "Enterprise Recognition", description: "The next stage in employee recognition practices, creating a more formal program including simple guidelines for managers and large catalogs of rewards and prizes for employees."},
+                    {name: "Exit survey", description: "Used at the exit interview to ascertain why an employee is leaving and objectively gather consistent, objective information and analysis to feed back into the organization. Learnings from this collective feedback are critical in helping to shape the talent attraction strategy, identify any organizational culture issues and any broad or specific managerial issues that may come to light through the process."},
+                    {name: "Feedback", description: "Asking for views and opinions on a given subject."},
+                    {name: "Focus group", description: "A small selection of people who are asked to give honest opinions on a subject or product."},
+                    {name: "Formal recognition", description: "The formal acknowledgement and communication to an employee by other employees or given on behalf of the employer by a senior member of staff within a recognition programme for an employee’s exceptional contribution."},
+                    {name: "Gifts", description: "Provision of an item or experience to an employee, either unexpectedly or as part of an incentive."},
+                    {name: "HR", description: "The broad and universally accepted title for roles and functions that involve the operational and strategic elements of people in an organization. Roles include the acquisition, engagement, performance and management of the people employed in a business to perform work as well as the regulatory and legal aspects of their employment terms and individual needs and behaviour."},
+                    {name: "If/Then Rewards", description: "Hallmark of incentives programs in which participants are pre-defined (sales team, customer service organization), a goal is established, and a deadline to achieve that goal is set. “If” a participant achieves that goal, “then” he or she will receive the incentive reward."},
+                    {name: "Individual or Tactical Recognition", description: "A one-to-one connection for recognition, usually between a manager and employee"},
+                    {name: "Induction", description: "The process for introducing and adapting new employees to their role and organisation as quickly as possible. Induction programmes are typically short, occur in the first few weeks and are consistent for all new employees."},
+                    {name: "Informal recognition", description: "Recognition of an employee’s contribution outside of any formal recognition programme. It is often spontaneous and delivered on the spot, at team meetings or via internal communications such as email."},
+                    {name: "Internal communication", description: "Internal Comms is communication inside an organization between a company and its audiences, which can include employees, contractors, shareholders, suppliers, stakeholders, unions, the community, potential employees and more."},
+                    {name: "Leadership communications", description: "Term given to how the most senior people in an organization share information. This can be with their peers or people in any part of an organization."},
+                    {name: "Learning and development", description: "Sometimes referred to as training and development, it is a process where individual, team and organizational skills and knowledge requirements are identified and programmes put in place to improve and align them with the organization's vision, values and goals."},
+                    {name: "Long service awards", description: "Employee recognition schemes to honour those who have worked in the industry or company. Previously marked in increments of five years and now more typically celebrated and recognised at two years or more. It’s an opportunity for employers and managers to genuinely celebrate the contribution and hard work and employee has made in their time with the business. An opportunity sadly missed by any employers, a thank you said well, goes a really long way and people are often very proud of how long they have been with a business."},
+                    {name: "Memo", description: "A fairly old fashioned term given to an internal message."},
+                    {name: "Morale", description: "A gauge of a person or groups mental condition in respect of confidence, cheerfulness, willingness and zeal. Especially used to refer to mental or team cohesion and belief in a goal or organization when faced with hardship or opposition."},
+                    {name: "NDA", description: "Non Disclosure Agreement"},
+                    {name: "Nomination", description: "The act of voting or state of being voted for going above and beyond. In regard to employee engagement, this might apply to a reward and recognition scheme, programme, even an employee panel, committee, employee engagement, or people champion. A nomination flow is responsible for ensuring important issues and communications keep flowing to and from leader and employees through the voting system."},
+                    {name: "Now/That Rewards", description: "Rewards associated with spontaneous recognition of employee behaviors and actions. Only given as a surprise reinforcement after an employee has demonstrated a desired behavior or achieved a goal and never promoted beforehand. “Now that” an employee has demonstrated desired values and been recognized for them, he or she can choose a desired reward."},
+                    {name: "Offsite", description: "Name given to an event that takes place away from the usual place of work, such as team building days, sometimes referred to as an away day.."},
+                    {name: "Onboarding", description: "Can also be described as employee induction – title given to bringing employees into an organization and the start of their employment. Its primary purpose is equipping them with the most relevant knowledge they may need to help feel part of the company and become as productive as possible as quickly as possible."},
+                    {name: "Peer-to-peer communication", description: "This is the opposite of hierarchical top-down or bottom-up communication, and is when information is shared ‘between ‘equals’ in an organization."},
+                    {name: "Peer-to-peer recognition", description: "Also known as employee to employee recognition."},
+                    {name: "Performance improvement", description: "A term commonly used to refer to either an individual’s performance plan as an outcome of performance management, or to a group or team programme designed to raise performance levels, and sustain them, across an organization."},
+                    {name: "Performance Management", description: "Portion of talent management process focused on helping employees improve performance in line with organization needs. Typically includes both informal and formal feedback and recognition processes, such as performance reviews or appraisals, and differentiation ranking exercises. This is a key component to an employee engagement program."},
+                    {name: "Performance review", description: "Sometimes referred to as an appraisal, is a process of evaluation and review of job performance."},
+                    {name: "Perks", description: "A term used informally to refer to something extra, or an advantage, you get as part of your employment"},
+                    {name: "Personal Development Plan", description: "Typically an annual process to analyze an employee’s performance which may or may not be linked to organizational goals or performance requirements."},
+                    {name: "Personal Development Review", description: "Annual process to analyze an employee’s performance."},
+                    {name: "Productivity", description: "Refers to the effectiveness of effort and measures outputs for given inputs. Its simplest form is where measurements are objective and clear – output per hour or per capita or per $. Raising productivity helps improve profitability."},
+                    {name: "Recognition", description: "The acknowledgement, formally or informally, publicly or privately, of an employee’s exceptional performance or achievement in supporting the aims and culture of the employer."},
+                    {name: "Recognition programmes", description: "Formal organization orientated programmes that recognize and reward performance and behaviors of employees that support the goals, values, culture and initiatives of the organization."},
+                    {name: "Recruitment", description: "The process of attracting and employing new employees."},
+                    {name: "Retention", description: "Organization's ability to retain its employees."},
+                    {name: "Salary", description: "A contractual, periodic payment by an employer to an employee for an agreed role at an agreed rate. Mostly expressed as an annual amount and exclusive of tax and other charges, it contrasts with wages which are paid by job, time or piece."},
+                    {name: "Stakeholders", description: "People with concern or interest in the business."},
+                    {name: "Talent acquisition", description: "The process of finding and acquiring employees with specific skills to meet a specific organizational need. It differs to recruitment in being more strategic and addresses the longer term needs of the organization, recruitment fills posts and is a sub-set of talent acquisition."},
+                    {name: "Talent attraction", description: "The ability of an organisation to be visible, reachable and desirable to talented individuals. It refers primarily, but not exclusively, to the worlds of digital and social media, and successful organisations have a clear employee value proposition."},
+                    {name: "Talent management", description: "Entire spectrum of the “people process” in an organization including recruiting, onboarding, training, development, performance management, succession planning, and exiting."},
+                    {name: "Talent retention", description: "The ability of an organisation to retain and develop employees with specific and desired talents. Retention is a key strategic goal for many organisations with highly skilled employees given the costs of attraction and recruitment."},
+                    {name: "Target group", description: "Better referred to as a segmented or specific audience. It really is just a term used to describe a distinct set of people that share a common the set of characteristics, either simply as being employees or a subset of employees that share a common trait at a given time, all about to go on maternity, all work in the warehouse etc."},
+                    {name: "Total Rewards", description: "An organization’s entire rewards package as provided to employees. Typically includes some combination of base pay, healthcare, insurance and similar benefits, bonuses, recognition, rewards, incentives, etc."},
+                    {name: "Town hall", description: "Typically an annual or infrequent all-employee gathering where the business shares important information, usually change focussed or announcing yearly results and any major changes to strategy, such as acquisitions or new services."},
+                    {name: "Values", description: "A set of words or phrases that demonstrate how an organization will achieve its vision. Often short, snappy phrases or singular words underpinned with a strap-line."},
+                    {name: "Vision", description: "The aspiration of the future of an organization – what they want it to be, underpinned by the corporate strategy, sales and marketing plans, as well as the values of the business and the people who lead and work for it, how they will get there."},
+                    {name: "WIIFM", description: "Acronym, What’s in it for Me? It is an essential consideration when writing any content for whatever purpose, be that external communications or internal; selling to customers, negotiating with suppliers, etc."}]
+
+   %>
+
+<%= content_for :title, "Employee Engagement Glossary" %>
+<%= content_for :description, "Stay up to date with the top terms in human resources, employee engagement, recognition and rewards programs." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Employee Engagement Glossary | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="Get all the terms HR needs to know around employee engagement and employee recognition." />
+  <meta property="og:image" content="/assets/illustrations/recognize.jpg" />
+<% end%>
+
+
+<section id="intro" class="">
+  <div class="inner" data-turbolinks="false">
+    <h1 class="balance-text">Employee Engagement Glossary</h1>
+    <p class="tagline width-800 balance-text">Every HR professional should know key terms to drive employee engagement in their organization. There is no better time than to be apart of the HR team as it continues to transition to a strategy role.</p>
+    <%= schedule_demo_link %>
+  </div>
+  <%= render partial: "home/patterns/orange.svg" %>
+
+</section>
+
+<div id="points">
+  <div class="padding3em "  itemscope itemtype="http://schema.org/DefinedTermSet">
+    <% glossary_data.each do |term| %>
+      <div itemscope itemtype="http://schema.org/DefinedTerm">
+        <h2 itemprop="name" class="capitalize"><%= term[:name] %></h2>
+        <p itemprop="description" class="width-800 balance-text"><%= term[:description].html_safe %></p>
+        <hr class="hr hr-space" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render :partial => 'footer' %>

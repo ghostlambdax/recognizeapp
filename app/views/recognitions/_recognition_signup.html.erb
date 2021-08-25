@@ -1,0 +1,39 @@
+<div id="recognition-show-signup">
+  <a href="#" class="close-icon">Close</a>
+  <h3><%= t("sign_up.wants_you_to_join", who: @invited_user.invited_by.full_name) %></h3>
+
+  <% unless @invited_user.company.disable_passwords? %>
+    <h4><%= t('dict.sign_up') %></h4>
+    <%= form_for @invited_user, url: password_signups_path, method: :put, html: {id: "user_password_form", data: {errorwrapper: "#password-wrapper .form-error-wrapper", event: "signup-password", eventproperties:'{"field": "password"}'}}, remote: true do |f|%>
+
+      <div class="form-error-wrapper"></div>
+      <div class="text-field-wrapper marginTop5">
+        <div class="inner">
+          <div class="form-wrapper">
+            <% if @invited_user.email.present? %>
+              <%= f.hidden_field :email, id: "password-hidden-email", class: "hidden-email" %>
+            <% else %>
+              <%= f.hidden_field :phone, id: "password-hidden-phone", class: "hidden-phone" %>
+            <% end %>
+            <%= f.text_field :first_name, tabindex: "1", placeholder: t('forms.first_name'), class: 'field'%>
+            <%= f.text_field :last_name, tabindex: "2", placeholder: t('forms.last_name'), class: 'field'%>
+            <%= f.password_field :password, tabindex: "3", placeholder: t('dict.password'), class: "field", autocomplete: false%>
+            <div>
+              <div class="consent marginBottom10">
+                <%=terms_consent_checkbox_with_label(f) %>
+              </div>
+
+              <%= button_tag t('dict.join'), class: "button-highlight button"%>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    <% end%>
+  <% end %>
+
+  <hr class='hr-space'>
+
+
+  <%= link_to t("sign_up.already_have_account"), identity_provider_path(network: @invited_user.network, email: @invited_user.email), class: "button button-primary" %>
+</div>

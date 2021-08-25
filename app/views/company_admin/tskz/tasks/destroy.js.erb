@@ -1,0 +1,12 @@
+(function(){
+  var $table = $("table#tasks-table");
+  var $button = $table.find('[data-taskid="<%= @task.id %>"]');
+  var $row = $button.closest('tr');
+
+  <% if @task.destroyed? %>
+    $row.hide();
+  <% else %>
+    $row.find('.status').text("<%= @task.enabled? ? 'Active' : 'Disabled'%>");
+    $row.find('.task-status-toggle').data( 'task-status', "<%= @task.enabled? ? 'Disable' : 'Activate'%>" );
+  <% end %>
+})();

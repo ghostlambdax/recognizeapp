@@ -1,0 +1,101 @@
+<%= form_for BulkMailerForm.new, url: company_admin_bulk_mailer_path, remote: true do |f| %>
+  <%# hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+  <div class="marginBottom20">
+    <h4>Recipients</h4>
+    <div class="button-group marginBottom10" id="bulk-mail-group-select">
+      <%= f.hidden_field :group %>
+      <% BulkMailerForm::GROUPS.each do |group| %>
+        <a id="bulk-mail-<%= group %>" href='javascript://'
+           class="button <%= 'active' if group == BulkMailerForm::DEFAULT_GROUP %>"
+           data-role="<%= group %>">
+          <%= group.to_s.humanize %>
+        </a>
+      <% end %>
+    </div>
+    <div>
+      <div id="bulk-mail-everyone-detail" class="bulk-mail-detail">
+        This will send invitation emails to <%= @company.users.not_disabled.where(crypted_password: nil).size %> users and password reset url to <%= @company.users.not_disabled.where.not(crypted_password: nil).size %> users in your organization even if they
+        have already signed in.
+      </div>
+
+      <div id="bulk-mail-pending-detail" class="bulk-mail-detail">
+        This will send invitation emails to <%= @company.users.where(status: User::PENDING_STATES).size %> users in your
+        organization who have not yet signed in.
+      </div>
+
+      <div id="bulk-mail-by_role-detail" class="bulk-mail-detail">
+        Choose roles
+        <%= select_tag "bulk_mailer_form[roles][]", options_from_collection_for_select(@company_roles, :id, :name), multiple: true %>
+      </div>
+
+      <div id="bulk-mail-by_status-detail" class="bulk-mail-detail">
+        Choose user status
+        <%= select_tag "bulk_mailer_form[statuses][]", options_from_collection_for_select(User::PUBLIC_STATES.sort.map(&:to_s), :to_s, :humanize), multiple: true %>
+      </div>
+
+      <div id="bulk-mail-by_team-detail" class="bulk-mail-detail">
+        Choose teams
+        <%= select_tag "bulk_mailer_form[teams][]", options_from_collection_for_select(@company.teams.sort, :id, :name), multiple: true %>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hr">
+
+  <div>
+    <h4>Delivery</h4>
+    <div class="flex marginBottom20" id="send-type-select">
+      <label>
+        <input type="checkbox" name="bulk-email" checked>
+        Email
+      </label>
+      <label>
+        <input type="checkbox" name="bulk-sms">
+        SMS
+      </label>
+    </div>
+
+    <div id="bulk-email-controls" class="marginBottom10">
+      <h5>Email</h5>
+      <label>Subject</label>
+      <div class="form-control">
+        <%= f.text_field :subject, placeholder: 'Subject (email only)' %>
+      </div>
+
+      <label>Body</label>
+      <div class="form-control">
+        <%= f.text_area :body, placeholder: 'Message body' %>
+      </div>
+
+      <div id="template-tags">
+        <label for="">Dynamic content</label>
+        <a class="badge" data-url="<%= BulkMailerForm::USER_TEMPLATE %>">Recipient First Name</a> |
+        <% if @company.saml_enabled? %>
+          <a class="badge" data-url="<%= BulkMailerForm::SSO_LINK_TEMPLATE %>">SSO link</a> |
+        <% end %>
+        <a class="badge" data-url="<%= BulkMailerForm::INVITE_LINK_TEMPLATE %>">Password link</a>
+      </div>
+    </div>
+
+    <div id="bulk-sms-controls" style="display:none;">
+      <h5>SMS</h5>
+      <label>Body</label>
+      <div class="form-control">
+        <%= f.text_area :sms_body, placeholder: 'SMS Message' %>
+      </div>
+
+      <div id="sms-template-tags">
+        <label for="">Dynamic content</label>
+        <a class="badge" data-url="<%= BulkMailerForm::USER_TEMPLATE %>">Recipient First Name</a> |
+        <% if @company.saml_enabled? %>
+          <a class="badge" data-url="<%= BulkMailerForm::SSO_LINK_TEMPLATE %>">SSO link</a> |
+        <% end %>
+        <a class="badge" data-url="<%= BulkMailerForm::INVITE_LINK_TEMPLATE %>">Password link</a>
+      </div>
+    </div>
+  </div>
+<% end %>
+<p class="subtle-text small-text">
+  A user who has not set a password will receive an invite and those who have will receive a password reset url. Password reset urls will expire in 10 minutes.
+</p>

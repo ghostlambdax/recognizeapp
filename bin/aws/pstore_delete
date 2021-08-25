@@ -1,0 +1,19 @@
+# Usage: aws/pstore_delete <name>
+name=$1
+
+echo "Command: aws/pstore_delete $name"
+
+
+read -r -p "Are you sure? [y/N] " response
+
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+  echo "Deleting $name"
+  output="`aws ssm delete-parameter --name $name`"
+  echo $output
+else
+  echo "Command canceled - nothing done"
+fi
+
+
+

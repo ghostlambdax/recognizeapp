@@ -1,0 +1,44 @@
+<%
+  if @weekend_anniversary_users.present?
+    saturday_anniversary_users = @weekend_anniversary_users[:saturday]
+    sunday_anniversary_users = @weekend_anniversary_users[:sunday]
+    today_anniversary_users = @anniversary_users - saturday_anniversary_users - sunday_anniversary_users
+  else
+    today_anniversary_users = @anniversary_users
+  end
+  weekday_year_day_format = lambda { |date| date.strftime("%A, %b #{date.day.ordinalize}") }
+%>
+
+<h2 style="<%= mail_styles(:h2, :text, :title) %>"><%= t("notifier.anniversaries") %></h2><br/>
+
+<%if @weekend_anniversary_users.present?%>
+  <% friday = Date.current %>
+
+  <%if saturday_anniversary_users.present?%>
+    <% saturday = friday + 1.day %>
+    <%= render partial: "anniversary_users",
+               locals: {
+                   anniversary_users: saturday_anniversary_users,
+                   day: weekday_year_day_format.call(saturday)
+               } %>
+  <%end%>
+  <%if sunday_anniversary_users.present?%>
+    <% sunday = friday + 2.days %>
+    <%= render partial: "anniversary_users",
+               locals: {
+                   anniversary_users: sunday_anniversary_users,
+                   day: weekday_year_day_format.call(sunday)
+               } %>
+  <%end%>
+<%end%>
+
+<%if today_anniversary_users.present?%>
+  <%= render partial: "anniversary_users",
+             locals: {
+                 anniversary_users: today_anniversary_users,
+                 day: t('datetime.today')
+             } %>
+<%end%>
+
+
+

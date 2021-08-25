@@ -1,0 +1,27 @@
+<% content_for(:tertiary_nav_label) { "Top Employees" } %>
+
+<% 
+  locals = {
+    report_path_method: :company_path, 
+    report_path_args: {anchor: "rank", sort: params[:sort]}
+  }
+%>
+
+<%= render(layout: "layouts/leaderboard", locals: locals) {} %>
+
+<div id="rank"
+     class="pagelet"
+     data-endpoint="<%= top_employees_report_company_path(
+                            network: @company.domain,
+                            sort: params[:sort],
+                            badge_id: params[:badge_id],
+                            team_id: params[:team_id],
+                            company_role_id: params[:company_role_id],
+                            start_date: params[:start_date],
+                            end_date: params[:end_date],
+                            interval: params[:interval],
+                            attribute_filter_key: params[:attribute_filter_key],
+                            attribute_filter_value: params[:attribute_filter_value]
+                        ) %> #wrapper-outer .wrapper">
+  <p class="subtle-text"><%= image_tag("icons/ajax-loader.gif") %> Loading Top Employees...</p>
+</div>

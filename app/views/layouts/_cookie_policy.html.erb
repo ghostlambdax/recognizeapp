@@ -1,0 +1,60 @@
+<script type="text/javascript">
+  var linkTag = "%3Clink%20rel%3D%22stylesheet%22%20type%3D%22text/css%22%20href%3D%22//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css%22%20/%3E";
+
+  if (window.cookiePolicy && window.readCookie) {
+    cookiePolicy();
+  } else {
+    window.addEventListener("load", cookiePolicy);
+  }
+
+  function cookiePolicy() {
+    if (readCookie("cookieconsent_status") !== "dismiss") {
+      var script = document.createElement("script");
+      script.src = "//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js";
+
+      $(document.body).append(unescape(linkTag));
+
+      script.onload = function() {
+        window.cookieconsent.initialise({
+          "palette": {
+            "popup": {
+              "background": "#edeff5",
+              "text": "#838391"
+            },
+            "button": {
+              "background": "#1568A6"
+            }
+          },
+          "theme": "edgeless",
+          "position": "bottom",
+          "content": {
+            header: "Hi",
+            "message": "We use cookies to keep you logged into Recognize and anonymously see how people use Recognize to improve the experience. By using Recognize, you agree to our",
+            "dismiss": "I accept",
+            "href": "/user-rights"
+          },
+          elements: {
+            messagelink: '<span id="cookieconsent:desc" class="cc-message">{{message}} <a href="/cookies" target="_blank">Cookie Policy</a>, <a href="/terms" target="_blank">Terms of Service</a>, and <a href="/privacy" target="_blank">Privacy Policy</a>.</span>'
+          },
+          onStatusChange: function(status) {
+            var uid = $body.data("uid");
+
+            if (this.hasConsented()) {
+              window.localStorage["recognizePolicyAccepted"] = true;
+
+              if (uid) {
+                $.ajax("/cookie-policy-check", {
+                  action: "post",
+                  data: "accepted-policy"
+                });
+              }
+
+            }
+          }
+        })};
+
+      document.body.appendChild(script);
+    }
+  }
+
+</script>

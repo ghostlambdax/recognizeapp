@@ -1,0 +1,7 @@
+<% sync_started_message = "Sync has been successfully started. Please allow a few minutes for this to complete. " \
+                           "If this is the first time you are running the sync, it may take up to 1 hour to complete." %>
+(function(){
+  $("#sync_provider_<%= @company.sync_provider %>")
+    .find("#manual-sync")
+    .html($("<div>", {text: '<%= j sync_started_message %>', id: "sync-status"}));
+})();

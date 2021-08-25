@@ -1,0 +1,33 @@
+<% content_for :title, "Company Holiday Party & Bonus Guide" %>
+<% content_for :description, "Learn what staff really want from employee benefits for holiday parties and end of year bonuses. This guide how corporate recognition can help during the holidays." %>
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Company Holiday Party & Year-end Staff Bonus Guide | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="Tips and stats on corporate holiday parties &amp; holiday company bonuses" />
+  <meta property="og:image" content="/assets/pages/article-holiday-party/tree.jpg" />
+  <link rel="amphtml" href="<%= holiday_party_url format: :amp %>">
+<% end%>
+
+
+<% content_for :article_title do %>Company Holiday Party & Year-End Staff Bonus Guide<% end %>
+<% content_for :article_description do %>
+  <div class="centered">
+    <%= lazy_image_tag "pages/article-holiday-party/tree.jpg", alt: "Christmas tree on an office desk", class: "marginBottom30", itemprop: "image" %>
+  </div>
+
+  <p class="balance-text marginBottom40 tagline">Since December is considered to be ‘the most wonderful time of the year’, it’s important for companies to understand their employee expectations. Many companies are expected to demonstrate their employee appreciation through a wide range of holiday perks. Ranging from year-end bonuses to holiday parties, companies have leveraged different types of rewards for their employees over the years. While year-end bonuses are typically seen as an “expression of gratitude by the employer for a job well done” <a href="https://www.sba.gov/blogs/5-things-know-about-year-end-bonuses" target="_blank">(Weltman, 2017)</a>, company holiday parties are viewed as cornerstones of organizational culture <a href="https://www.aaoe.net/news/322278/Office-Holiday-Parties-An-Investment-in-Employees-and-Company-Culture.htm">(DelPrete, 2016)</a>. But given the ongoing budgetary constraints that companies face, many business leaders are questioning the business impact of these holiday perks - especially on staff retention. While year-end bonuses are opportunities to recognize high-performers, do these expensive rewards actually help to retain them? And given the increasing costs of holiday parties over the years, do these events actually generate reasons for employees to stay? So in order to investigate these matters, <strong>the Recognize Team surveyed a wide range of employees and HR Managers to understand the current perceptions around year-end bonuses and holiday parties</strong>, as well as different ways to help companies meet these expectations.</p>
+
+<% end %>
+
+<% tags = ['Introduction', "Year End Bonuses", "Holiday Parties", "Corporate Recognition", "Concluding Thoughts"] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "holiday_party_body", locals: {tags: tags} %>
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

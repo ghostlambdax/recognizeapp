@@ -1,0 +1,142 @@
+<%= render partial: "layouts/office_script_tag" if outlook_viewer? %>
+<%= content_for :body_attributes, 'data-turbolinks=false' if outlook_viewer? %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Office 365 employee recognition app. Turnkey solution for Outlook, Sharepoint, Yammer, & Azure." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="Strengthen Employee Engagement through Employee Recognition, Service Anniversaries, Employee Rewards, Employee Nominations inside Office 365." />
+  <meta property="og:image" content="/assets/pages/home-office365/desktop-mobile.png" />
+<% end%>
+
+<% content_for :title, "Office 365 Employee Recognition" %>
+<% content_for :description, "A Turnkey Employee Recognition & Rewards Solution inside Outlook, Sharepoint, Microsoft Teams, Azure, and Yammer." %>
+<% content_for :meta_keywords, "Office 365 Suite, Sharepoint, Yammer, Outlook add-ins, Outlook Employee Recognition, Sharepoint Employee Recognition, Yammer Employee Recognition" %>
+
+<% if params[:viewer].blank? %>
+  <section class="masthead padding30">
+    <div class="recognize-marketing-header flex">
+      <div class="text-desc">
+        <h1>
+          <span class="recognize-color">Recognize</span>
+          <strong class="balance-text">The Microsoft 365 Engagement Provider</strong>
+        </h1>
+        <p class="balance-text tagline">Why should your staff go to another set of tools when you already have Office 365? The Recognize employee engagement platform comes to your where your employees work. That's why Recognize is integrated with five Microsoft apps. We are dedicated to provide a seamless experience for your employees.</p>
+        <%= schedule_demo_link %>
+      </div>
+      <div class="svg-image">
+        <svg width="1920px" height="400px" viewBox="0 0 1920 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="O365-page" transform="translate(0.000000, -226.000000)" fill="#D1D9DC">
+              <path d="M787.840442,359 C1028.36943,294.12367 1231.75595,249.790337 1920,226 L1920,626 L-265.316406,626 C196.259167,512.87633 547.311449,423.87633 787.840442,359 Z" id="Rectangle"></path>
+            </g>
+          </g>
+        </svg>
+        <%= lazy_image_tag "pages/home-office365/desktop-mobile.png", alt: "Recognize is available on Microsoft Teams mobile and desktops."%>
+      </div>
+    </div>
+  </section>
+
+  <section class="apps-wrapper">
+    <h2 class="centered balance-text width-500 margin-auto">Make Office 365 the hub for employee engagement</h2>
+    <ul class="apps-list">
+      <li class="app">
+        <%= lazy_image_tag "pages/home-office365/azure.png", alt: "Microsoft Azure logo", style: "padding-top: 50px"%>
+        <p>Recognize Provides a daily or weekly sync to Azure Active Directory. This enables your company to automatically add and remove employees.</p>
+        <%= link_to "Learn more", "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aad.recognize" %>
+      </li>
+      <li class="app">
+        <%= lazy_image_tag "pages/home-office365/teams.png", alt: "Microsoft Teams logo", style: "padding-top: 50px"%>
+        <p>Recognize MS Teams integration brings recognition and rewards to your main communication tool.</p>
+        <%= link_to "Learn more", microsoft_teams_employee_recognition_path %>
+      </li>
+
+      <li class="app">
+        <%= lazy_image_tag "pages/home-office365/outlook.png", alt: "Microsoft Outlook logo", style: "padding-top: 50px"%>
+        <p>Recognize outlook integration super charges Outlook into an employee engagement platform.</p>
+        <%= link_to "Learn more", marketing_outlook_path %>
+      </li>
+      <li class="app">
+        <%= lazy_image_tag "pages/home-office365/sharepoint.png", alt: "Microsoft Sharepoint logo", style: "padding-top: 50px"%>
+        <p>Recognize sharepoint app can be a side panel or full screen experience inside sharepoint.</p>
+        <%= link_to "Learn more", sharepoint_path %>
+      </li>
+      <li class="app">
+        <%= lazy_image_tag "pages/home-office365/yammer.png", alt: "Microsoft Yammer logo.", style: "padding-top: 50px"%>
+        <p>Recognize Yammer integration uses a browser integration for Chrome and Edge to put Recognize inside Yammer.</p>
+        <%= link_to "Learn more", extension_path %>
+      </li>
+    </ul>
+  </section>
+
+  <%= link_to "https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/recognize-tutorial", class: 'tutorial flex width-800 justify-content-space padding20 align-items-center', html: {'_target': 'blank'} do %>
+    <div>
+      <%= lazy_image_tag "pages/home-office365/peter.jpg", alt: "Peter Philips, Recognize" %>
+    </div>
+    <div>
+      <p class="cta"><strong>Microsoft Tutorial:</strong> <span class="recognize-color">Azure Active Directory Integration with Recognize</span></p>
+      <p>By Peter Philips, Recognize CTO</p>
+    </div>
+
+    <div class='arrow-right'>
+      <%= feather_icon('chevron-right', {width: 100, height: 200, 'stroke-width': 0.5 }) %>
+    </div>
+  <% end %>
+
+  <section class="quote-section flex width-800 margin-auto quote-box-side justify-content-center">
+    <div class="quote-box-image-wrapper">
+      <%= lazy_image_tag('pages/home-office365/employee.jpg') %>
+    </div>
+    <div class="quote-box">
+      <quote class="h2">Recognize inside Microsoft Teams makes promoting company values front and center.
+      </quote>
+      <p>Nick Martin<br><span class="subtle-text">Manager Home Depot</span></p>
+    </div>
+  </section>
+
+  <hr class="margin-auto marginBottom50"/>
+
+  <section class="contact marginBottom100 centered width-800 margin-auto">
+    <h2 class="balance-text">Recognize Microsoft integrations are included in all subscriptions</h2>
+    <%= link_to "Contact us", contact_sales_path, class: "button button-primary button-large" %>
+  </section>
+</div>
+
+<%= render partial: "home/footer" %>
+
+<% else %>
+
+  <section class="masterhead clearfix">
+    <div class="sign-up centered">
+
+      <div class="inner">
+        <% if params[:viewer] == "outlook" %>
+          <%= lazy_image_tag('chrome/logo-72x72.png', width: 50) %>
+          <h2 class="balance-text">Employee recognition &amp; rewards <i>for Outlook</i></h2>
+          <p class="tagline balance-text">Sign in with your Microsoft login. You don't need to be a user of Recognize to login!</p>
+        <% else %>
+          <h2 class="balance-text"><%= t(".title_html") %></h2>
+          <p class="tagline">Anyone can sign in! Create a free account by signing in with Microsoft.</p>
+        <% end %>
+
+        <% if current_user.blank? %>
+
+          <div class="sign-up-buttons">
+            <%= link_to_o365 t("dict.login_microsoft"), redirect: root_path(close_on_open: true), class: "button button-o365-plain" %>
+          </div>
+
+        <% else %>
+          <%= link_to t(".learn_about_outlook"), marketing_outlook_path, class: "button button-o365-plain" %>
+          <%= link_to t(".learn_about_azure"), "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aad.recognize", class: "button button-o365-plain" %>
+      <% end %>
+      </div>
+    </div>
+
+    <div id="loading" class="displayNone centered padding3em">
+      <%= lazy_image_tag "icons/outlook-progress.gif", alt: "Signing in to Recognize", class: "marginBottom10" %>
+      <p class="text"><%= t("home.office365.talking_to_microsoft") %></p>
+    </div>
+  </section>
+
+<% end %>
+

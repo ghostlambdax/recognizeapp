@@ -1,0 +1,6 @@
+<% content_for :points_filter do %>
+  <span></span>
+<% end %>
+
+<h2><%= image_tag(@user.avatar.thumb.url, class: 'avatar') %> <%= @user.full_name %>'s Points</h2>
+<%= litatablify(@datatable, endpoint: company_admin_point_path(@user)) %>

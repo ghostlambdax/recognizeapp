@@ -1,0 +1,22 @@
+<div class="bottom marginBottom40">
+  <div class="buttons">
+    <% if current_user.subscribed_account? %>
+      <%= render partial: "help/get_started_guide_link" %>
+      <%= link_to current_user.company.custom_labels.welcome_page_recognize_button_label, new_recognition_path, class: "button button-large"%>
+      <div class="pulser-wrapper inlineBlock">
+        <div class="pulser" title="<%= t("welcome.check_profile_tooltip") %>"></div>
+        <%= link_to t("users.update_profile"), edit_user_path(current_user), class: "button button-large button-primary"%>
+      </div>
+    <% else %>
+      <span data-turbolinks="false"><%= link_to t('dict.request_a_demo'), contact_sales_path, class: "marginRight10" %></span>
+      <% if current_user.company.subscription.present? %>
+        <%= link_to t('dict.upgrade'), upgrade_path, class: "button button-large button-primary" %>
+      <% else %>
+        <%= link_to t('dict.upgrade'), "javascript://", class: "button button-large button-primary slideable-trigger", data: {
+                                              from: "#start",
+                                              to: "#user-count"
+                                            } %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

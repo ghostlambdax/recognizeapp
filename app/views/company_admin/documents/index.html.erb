@@ -1,0 +1,21 @@
+<%
+  show_uploader = params[:type] == "uploads" && !manager_admin_controller?
+%>
+<div id="documents" class="documents-inner row-fluid">
+  <div class="span<%= show_uploader ? 8 : 12%>">
+    <%= explanation_bar do %>
+      <% if params[:type] == "downloads" %>
+        <p>Export files and reports will appear here once they have been compiled.</p>
+      <% else %>
+        <p>You can use this section to securely upload documents to share with your colleagues or with the Recognize team.</p>
+      <% end %>
+    <% end %>
+
+    <%= litatablify(@datatable, endpoint: documents_index_endpoint(type: params[:type]), daterange: true) %>
+  </div>
+  <% if show_uploader %>
+    <div class="span4">
+      <%= render "company_admin/documents/uploader" %>
+    </div>
+  <% end %>
+</div>

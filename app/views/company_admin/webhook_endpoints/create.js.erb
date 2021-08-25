@@ -1,0 +1,5 @@
+(function(){
+  var form ='<%= j render(template: "company_admin/webhook_endpoints/_webhook_endpoint_row", locals: {webhook_endpoint: @webhook_endpoint}) %>';
+  $("#webhooks table tbody").append(form)
+  window.R.ui.remoteCheckboxToggle();
+})();

@@ -1,0 +1,74 @@
+<%
+  submit_text = defined?(edit) && edit.present? ? t("dict.save") : t("dict.add")
+%>
+
+<% if provider_reward_of_reward_is_disabled?(reward) %>
+  <div class="warning">This reward has been disabled because it was either discontinued or disabled in the backend catalog.</div>
+<% end %>
+
+<div class="reward-card">
+  <%= form_for(reward, url: url, remote: true, multipart: true, authenticity_token: true) do |f| %>
+    <div class="row-fluid">
+
+      <div class="span6">
+        <div class="form-wrapper">
+          <div class="control-group">
+            <%= f.label(:title, t("rewards.title_of_reward"), for: "reward_title") %>
+            <%= f.text_field(:title, class: "input-xlarge title-input", placeholder: "An onsite massage", readonly: true) %>
+          </div>
+
+          <div class="control-group">
+            <%= f.label(:reward_type, t("rewards.reward_type"), for: "reward_type") %>
+            <%= f.text_field(:reward_type, class: "input title-input subtle-text", readonly: true, value: reward.provider_reward.reward_type) %>
+          </div>
+
+          <%= f.hidden_field(:description) %>
+
+          <div class="control-group">
+            <label><%= t("rewards.frequency_and_interval") %> <i><%= t('dict.optional') %></i></label>
+            <%= f.text_field(:frequency, type: :number, placeholder: "10", min: 0, style: "width: 50px;") %>
+            <select style="width: 100px;" name="reward[interval_id]">
+              <% Interval::RESET_INTERVALS_WITH_NULL.each do |value, name| %>
+                <% name = reward_interval_name(value, name) %>
+                <% selected = reward.interval_id == value ? "selected='true'" : "" %>
+                <option value="<%= value %>" <%= selected %>><%= name %></option>
+              <% end %>
+            </select>
+          </div>
+
+          <h5><%= t("rewards.how_much_value") %></h5>
+          <%= render partial: 'company_admin/rewards/variant_inputs', locals: {reward: @reward, form: f} %>
+
+          <div class="control-group">
+            <label title="<%= t('rewards.reward_manager_explanation') %>"><%= t("rewards.manager") %> <i><%= t('dict.optional') %></i>&nbsp;<sup>?</sup></label>
+            <%= f.select(:manager_id, [[reward.manager.try(:label), reward.manager_id]], { selected: reward.manager_id }, class: "reward-manager-select") %>
+          </div>
+
+          <div class="control-group">
+            <%= f.label :enabled do %>
+              <%= f.check_box(:enabled) %>
+              <span>Enabled</span>
+            <% end %>
+          </div>
+          
+          <div class="control-group">
+            <%= f.hidden_field :published, value: false %>
+            <%= f.hidden_field :provider_reward_id %>
+            <%= f.submit(submit_text, class: "button button-primary rewards-edit-submit") unless provider_reward_of_reward_is_disabled?(reward) %>
+            <%= link_to("Cancel", company_admin_catalog_rewards_path(reward.catalog_id), class: "button button-chromeless") %>
+          </div>
+        </div>
+      </div>
+      <div class="span5 offset1">
+        <h4>Vendor image</h4>
+        <%= image_tag(reward.image_url, class: "reward-image") %>
+        <hr class="hr hr-space">
+        <h4 title="The description and image can't be changed due to vendor requests.">Vendor description<sup>?</sup></h4>
+        <%= reward.description.html_safe %>
+      </div>
+    </div>
+
+  <% end %>
+</div>
+
+<%= render("rewards_manager") %>

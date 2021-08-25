@@ -1,0 +1,33 @@
+<% content_for :title, "Research the effects of appreciation on employee health" %>
+<% content_for :description, "Scientific research to determine how receiving employee recognition affects or does not affect employee mental or physical well-being." %>
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Research into the effects of appreciation on employee health | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="Scientific research to determine how receiving employee recognition affects or does not affect employee mental or physical well-being." />
+  <meta property="og:image" content="/assets/pages/articles/ways-foster-engagement/1.jpg" />
+  <link rel="amphtml" href="<%= holiday_party_url format: :amp %>">
+<% end%>
+
+
+<% content_for :article_title do %>The Effects of Employee Recognition on Worker Health<% end %>
+<% content_for :article_description do %>
+  <div class="centered">
+    <%= lazy_image_tag "pages/articles/ways-foster-engagement/1.jpg", alt: "A photo of a group of people putting their arms together.", class: "marginBottom30", itemprop: "image" %>
+    <p class="balance-text marginBottom40 tagline">Recognize Research Team investigated if employee health is affected by a sense of appreciation. Dan Pink in the book <i>Drive</i> showed us how autonomy, mastery, and purpose drive employee motivation. To have a sense of purpose is partly due to others reminding you have a purpose, or recognition for your work. If you receive less recognition, will that also affect your mental or physical health? We looked into it after surveying the general population.</p>
+  </div>
+
+
+<% end %>
+
+<% tags = ['Introduction', "Methodology", "Results", "Physical Health", 'Mental Health', 'Discussions', 'Download', 'References'] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "mental_health_research_body" %>
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

@@ -1,0 +1,30 @@
+<tr id="user-row-<%= user.id%>">
+  <td class="hidden">SK-<%= @sort_key_prefix + "-"+user.full_name.to_s.gsub(" ",'').gsub(/\@.*$/,'') %>-SK</td>
+  <td class="hidden">
+    <%= user_form.hidden_field :id %>
+    <%= user.full_name %>
+  </td>
+  <%# this column is used for preliminary sorting to keep new rows positioned at the top %>
+  <td class="hidden is_new_row"><%= defined?(new_row) && new_row ? 1 : 0 %></td>
+  <td class="offscreen">
+    <% if user.persisted? %>
+      <%= check_box_tag "bulk_user_updater[#{user.to_param}][update]" %>
+    <% else %>
+      <%= check_box_tag "bulk_user_updater[#{user.to_param}][create]" %>
+    <% end %>
+  </td>
+  <td data-order="<%= user.first_name%>"><%= user_form.text_field :first_name %></td>
+  <td data-order="<%= user.last_name%>"><%= user_form.text_field :last_name %></td>
+  <td data-order="<%= user.email%>">
+    <%= user_form.text_field :email %>
+    <input type="hidden" id="bulk_user_updater_<%= user.id%>_base">
+  </td>
+  <td data-order="<%= user.phone %>"><%= user_form.text_field :phone %></td>
+  <% if @bulk_user_updater.can_edit?(:department) %>
+    <td data-pete="true" data-order="<%= user.network%>"><%= user_form.select :network, company_family_set, selected: @company.domain %></td>
+  <% end %>
+  <td data-order="<%= user.job_title%>"><%= user_form.text_field :job_title %></td>
+  <td data-order="<%= user.start_date.try(:to_s) %>" class="datepicker"><%= user_form.text_field :start_date, value: user.start_date.try(:strftime, "%m/%d/%Y") %></td>
+  <td data-order="<%= user.birthday %>" class="datepicker noYear"><%= user_form.text_field :birthday, value: user.birthday.try(:strftime, "%m/%d") %></td>
+  <!-- <td><%= link_to "Roles", "javascript://none" %></td>-->
+</tr>

@@ -1,0 +1,76 @@
+<div id="badge-line-graph-wrapper">
+  <div class="placeholder"></div>
+  <div class="legend" style="margin-top: 50px;"></div>
+</div>
+
+<%= javascript_tag do %>
+  (function() {
+    var highChartsTimer = 0;
+
+    var series = [
+      <% report.data.each do |badge, data| %>
+        {
+          name: "<%= badge.short_name%>",
+          data: <%= raw data.collect{|d| [d.timestamp, d.count]}.as_json %>
+        },
+      <% end %>
+    ];
+
+    function initHighCharts() {
+      if (!$.fn.highcharts) {
+        return highChartsTimer = setTimeout(initHighCharts, 500);
+      }
+
+      clearTimeout(highChartsTimer);
+
+      $('#badge-line-graph-wrapper .placeholder').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: '<%= t("graphs.recognitions_by_week") %>',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Past 90 days',
+            x: -20
+        },
+        xAxis: {
+          type: 'datetime'
+        },
+        yAxis: {
+            stackLabels: { enabled: true},
+            title: {
+                text: '<%= t("graphs.recognitions_received") %>'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '',
+            crosshairs: true,
+            xDateFormat: 'Week of %b %e, %Y'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: series,
+        plotOptions: {
+          column: {
+            stacking: 'normal',
+            dataLabels: { enabled: false}
+          }
+        }
+      });
+    }
+
+    initHighCharts();
+  })();
+  
+<% end %>

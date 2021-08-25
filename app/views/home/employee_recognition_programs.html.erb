@@ -1,0 +1,354 @@
+<% vendors = [
+    {
+        "name": "Recognize",
+        "website": "https://recognizeapp.com/",
+        "stars": "5",
+        "established": "2012",
+        "programs": "Recognition, Rewards, Anniversaries, Birthdays, Nominations, Incentives, Company rewards system, Points optional",
+        "sso": "Lastpass, Onelogin, Okta, Azure, Ping Identity, SAML 2.0",
+        "hris": "Any that support sFTP, Azure Active Directory, Office 365, Yammer",
+        "browsers": "",
+        "other_integrations": "Office 365, Outlook, Sharepoint, Azure, Yammer, Workplace by Facebook, Slack, Chrome, Edge, TV monitors, iOS, Android",
+        "description_source": "https://www.capterra.com/p/148439/Recognize/",
+        "description": "A seamlessly integrated employee recognition & engagement platform inside Outlook, Office 365, Workplace by Facebook, Sharepoint, and more. Recognize's integrations coupled with its feedback-loop builds a habit of recognition in your company. Features include: + Automatic employee anniversary and birthday recognition + On-the-spot social employee recognition + Manager recognition & notifications + Nomination voting + 100+ gift cards & company-managed reward system + Super customizable.",
+        "logo_url": "https://cdn0.capterra-static.com/logos/150/2104830-1492804588.png"
+    },
+    {
+        "name": "Achievers",
+        "website": "https://www.achievers.com/",
+        "stars": "5",
+        "established": "2002",
+        "programs": "Recognition, Rewards, Anniversaries",
+        "sso": "SAML 2.0",
+        "hris": "Any",
+        "browsers": "",
+        "other_integrations": "iPhone, Android",
+        "description_source": "https://www.capterra.com/p/129232/Employee-Success-Platform/",
+        "description": "Achievers provides medium-sized to enterprise-class customers with its flagship Employee Success Platform, enabling rewards-based and social recognitions to increase employee engagement and drive business success. Designed specifically to meet the needs of today's workplace, it empowers employees to recognize each other in real time and aligns them to the objectives of the organisation. With more than 5,000,000 annual recognitions, the Platform inspires brilliant performance in 110 countries.",
+        "logo_url": "https://cdn0.capterra-static.com/logos/150/2090646.png"
+    },
+    {
+        "name": "Blueboard",
+        "website": "https://www.blueboard.com/",
+        "stars": "5",
+        "established": "2014",
+        "programs": "Experiential Rewards, Anniversary Gifts ",
+        "sso": "",
+        "hris": "",
+        "browsers": "",
+        "other_integrations": "",
+        "description_source": "https://www.capterra.com/p/153992/Blueboard/",
+        "description": "An employee rewards and recognition platform for the modern workplace. Best Places to Work reward with experiences - they're more memorable, personal and shareable than cash or gift cards. And they have lasting effects on the key metrics you care about - employee engagement, retention, and help to build a more positive company culture. Blueboard's platform makes sending experiences easy (send with just one click!), and our hand-curated catalog is exciting and delightful for your employees.",
+        "logo_url": "https://cdn0.capterra-static.com/logos/150/2108242-1470840863.png"
+    },
+    {
+        "name": "Bonusly",
+        "website": "https://bonus.ly/",
+        "stars": "5",
+        "established": "2012",
+        "programs": "Recognition, Rewards",
+        "sso": "Okta, Bitium, OneLogin, Centrify, Open ID, PingOne, Office365, Google, LinkedIn, Chatter",
+        "hris": "BambooHR, Workday, Namely, Zenefits, ADP, UltiPro, iSolved",
+        "browsers": "Chrome",
+        "other_integrations": "Slack, Microsoft Teams, Google Hangouts, Zapier, Yammer, Igloo, Jostle, Zoho",
+        "description_source": "https://www.capterra.com/p/167338/Bonusly/",
+        "description": "Bonusly is a fun, personal recognition & rewards program that enriches your company culture and improves employee engagement. With Bonusly, everyone in your organization can publicly recognize everyone else by giving small bonuses that add up to meaningful rewards. Connect recognition to your core values - Give visibility to everyone's contributions - Integrate with communication tools your employees use every day - Streamline all types of recognition & rewards - Evaluate recognition trends",
+        "logo_url": "https://cdn0.capterra-static.com/logos/150/2116598-1505957749.png"
+    },
+    {
+        "name": "Briq",
+        "website": "https://www.givebriq.com/",
+        "stars": "5",
+        "established": "2016",
+        "programs": "Recognition, Rewards",
+        "sso": "",
+        "hris": "",
+        "browsers": "",
+        "other_integrations": "Slack ",
+        "description_source": "https://www.capterra.com/p/181629/Briq/",
+        "description": "Briq is a customizable SaaS that helps to boost employee engagement while rewarding and recognizing what matters to your business. Thanks to virtual tokens called briqs, HR and managers can encourage, reward and measure engagement and performance, while employees remain motivated on a daily basis. Easy to use, and directly integrated with your existing tools, Briq enriches your company culture and improves employee engagement & recognition.",
+        "logo_url": "https://cdn0.capterra-static.com/logos/150/2126925-1544199190.png"
+    },
+    {
+        "name": "Bucketlist",
+        "website": "https://bucketlistrewards.com/",
+        "stars": "5",
+        "established": "2013",
+        "programs": "Experiential Rewards, Anniversaries, Recognition ",
+        "sso": "",
+        "hris": "",
+        "browsers": "",
+        "other_integrations": "Slack, G-Suite",
+        "description_source": "https://www.capterra.com/p/170710/Bucketlist/",
+        "description": "Bucketlist is an employee recognition, rewards, and incentive program that employees love to use. Bucketlist personalizes recognition to match the individual needs of the employee. With Bucketlist employees can earn points and redeem them to achieve life goals. Bucketlist is a powerful tool that results in higher employee engagement and lower voluntary turnover and is perfect for mid to large size companies (100 - 5,000 employees). Learn more at bucketlistrewards.com and schedule a demo now!",
+        "logo_url": "https://cdn0.capterra-static.com/logos/150/2118279-1513102851.png"
+    },
+    {
+        "name": "Fond",
+        "website": "https://www.fond.co/",
+        "stars": "3.5",
+        "established": "2012",
+        "programs": "Perks, Rewards, Anniversary Gifts, Recognition ",
+        "sso": "Okta, SAML, Google, OneLogin, PingIdentity ",
+        "hris": "ADP, Workday, Namely",
+        "browsers": "Chrome, Firefox",
+        "other_integrations": "Outlook, Gmail, Slack, Salesforce",
+        "description_source": "https://www.capterra.com/p/174749/Fond/",
+        "description": "Fond is an employee engagement platform that helps companies attract, retain, and motivate their workforces. Motivated employees are productive employees, and that's why organizations like Salesforce, Delta Dental, and Sephora use Fond. With Fond, you can recognize and reward employees, access exclusive corporate discounts, and measure engagement levels in your organization. Celebrate achievements, inspire employees, and encourage growth with Fond.",
+        "logo_url": "https://cdn0.capterra-static.com/logos/150/2121343-1523545311.png"
+    },
+    {
+        "name": "Kazoo",
+        "website": "https://www.kazoohr.com/",
+        "stars": "5",
+        "established": "2013",
+        "programs": "Recognition, Rewards",
+        "sso": "AuthO, Google, Kronos, Microsoft, Okta",
+        "hris": "ADP, Workday, Namely, BambooHR, SAP Success Factors",
+        "browsers": "",
+        "other_integrations": "Salesforce, outlook, slack, yammer",
+        "description_source": "https://www.capterra.com/p/187690/Kazoo/",
+        "description": "Organizations thrive when employees are empowered to take ownership of their work, when they can see the bigger picture, and know how they fit within the collective success of their team and company. Kazoo combines what people want with what companies need in one easy-to-use platform that celebrates every win and brings workplaces to life. Experience the joy of work with Kazoo's unique combination of Recognition & Rewards, Performance Management, and Engagement Surveys. Kazoo was previously YouEarnedIt. YouEarnedIt acquired Highground this year to rebrand and become Kazoo. Why they chose the name Kazoo we'll never know. This does give Kazoo a stronghold in being that go-to jack of all trades solution for both performance management and enterprise employee recognition.",
+        "logo_url": "https://cdn0.capterra-static.com/logos/150/2131485-1559814780.png"
+    },
+    {
+        "name": "Kudos ",
+        "website": "https://www.kudosnow.com/",
+        "stars": "5",
+        "established": "2010",
+        "programs": "Recognition, Annniversaries, Birthdays, Rewards",
+        "sso": "Okta, Bitium, One Login, Ping Identity, Azure, SaaS Pass, Yammer, LinkedIn, Google, Microsoft ",
+        "hris": "Workday",
+        "browsers": "Chrome, Firefox, Internet Explorer",
+        "other_integrations": "Slack, Sharepoint, Gmail, Zendesk",
+        "description_source": "https://www.capterra.com/p/140423/Kudos/",
+        "description": "Kudos is a corporate social network and peer-to-peer employee recognition system designed to engage your teams with enhanced communication, collaboration, appreciation, and recognition. Kudos is simple, scalable, flexible, effective and affordable. We help clients ranging from 100 to 20,000 users in over 80 countries and 30 verticals. If you care about your team, culture, and communication - Kudos can work for you. To learn more about Kudos check out our website or give us a call!",
+        "logo_url": "https://cdn0.capterra-static.com/logos/150/2099485-1550601247.png"
+    },
+    {
+        "name": "Motivosity ",
+        "website": "https://www.motivosity.com/index.html",
+        "stars": "5",
+        "established": "2013",
+        "programs": "Recognition, Rewards",
+        "sso": "Okta, PingIdentity, SAML",
+        "hris": "BambooHR, Namify",
+        "browsers": "",
+        "other_integrations": "ADFS, Slack, Vox, Sharepoint, Bridge by Instructure ",
+        "description_source": "https://www.capterra.com/p/147912/Motivosity/",
+        "description": "Motivosity is an employee recognition software solution. We don't mess around: Our customers experience a 95%+ user engagement rate. Motivosity promotes trust, better connects employees, and makes visible all the great work your team members are doing. We offer free trials and a six-month money-back guarantee. Motivosity is used by companies like HealthCatalyst, BlueHost, Instructure, and Workfront to improve employee engagement and company culture. Take a closer look. #thanksmatters",
+        "logo_url": "https://cdn0.capterra-static.com/logos/150/2104472.png"
+    },
+    {
+        "name": "O.C. Tanner",
+        "website": "https://www.octanner.com/",
+        "stars": "",
+        "established": "1927",
+        "programs": "Recognition, Anniversaries, Rewards",
+        "sso": "",
+        "hris": "Workday, ADP, SAP Success Factors",
+        "browsers": "",
+        "other_integrations": "Virgin Pulse, Vitality, Outlook, Yammer, Sharepoint, Brightspace, Salesforce, Oracle Sales Cloud, Microsoft, Cornerstone, Adobe Captivate Prime",
+        "description_source": "https://www.capterra.com/p/169556/Victories/",
+        "description": "O.C. Tanner, the global leader in engaging workplace cultures, helps thousands of top companies create peak moments that inspire people to achieve, appreciate, and thrive at work. Clients use O.C. Tanners Culture CloudTM suite of apps and solutions to retain, engage, and attract talent, inspire innovation, bond teams, drive performance goals, and connect people to company values. O.C. Tanner acquired Kwench this year for an unknown sum. Kwench is a quick riser serving hundreds of companies in India and Asia. This gives O.C. Tanner a strategic advantage in Asia.",
+        "logo_url": "https://cdn0.capterra-static.com/logos/150/2117761-1510595276.png"
+    },
+    {
+        "name": "PerkBox",
+        "website": "https://www.perkbox.com/uk",
+        "stars": "4.5",
+        "established": "2015",
+        "programs": "Recognition, Perks",
+        "sso": "",
+        "hris": "",
+        "browsers": "",
+        "other_integrations": "",
+        "description_source": "https://www.linkedin.com/company/perkbox/about/",
+        "description": "HQed in London, Perkbox operates across the globe, enhancing employee experiences through a number of tools and channels. We give teams a huge range of perks and benefits accessible any time via app or desktop. The Perkbox Recognition tool encourages people to celebrate outstanding work, while incentivising high performance. Perkbox Insights is the next generation of employee engagement survey, enabling you to gather and act on employee feedback in a transparent and meaningful way. Our latest product Perkbox Medical is the UK’s simplest and most affordable answer to employee health cover.",
+        "logo_url": "https://media.licdn.com/dms/image/C4D0BAQGVcGcVDhxXgQ/company-logo_400_400/0?e=1569456000&v=beta&t=sMpr3GFcuznVSfoF2rw7F6VElY4XaQzwKsLDhHqJYn0"
+    },
+    {
+        "name": "Pulse by Mango Apps",
+        "website": "https://www.mangoapps.com/solutions/pulse",
+        "stars": "4",
+        "established": "2008",
+        "programs": "Recognition, Anniversaries ",
+        "sso": "",
+        "hris": "",
+        "browsers": "",
+        "other_integrations": "",
+        "description_source": "https://www.capterra.com/p/131314/MangoApps/",
+        "description": "MangoApps is an integrated suite of workplace apps for mid-market companies. It brings together apps like Intranet, workspaces, filesharing, messaging, training, recognition and more into one comprehensive portal making it easy for organizations to create a central location employees go to for fast and seamless access to all the tools they already use. With an intelligent employee platform at its core, MangoApps is designed for & serves organizations with 50-50,000 employees in a broad range of industries.",
+        "logo_url": "https://cdn0.capterra-static.com/logos/150/2092408-1521244562.png"
+    },
+    {
+        "name": "SmartHub by Rewards Gateway",
+        "website": "https://www.rewardgateway.com",
+        "stars": "5",
+        "established": "2006",
+        "programs": "Recognition, Perks",
+        "sso": "ADFS, Okta, Microsoft Azure, Google, SAML, LinkedIn",
+        "hris": "",
+        "browsers": "",
+        "other_integrations": "Yammer, Facebook, SFTP, Webhooks, Google ANalytics, RSS Feeds, Atom Feeds, JSON Feeds",
+        "description_source": "https://www.capterra.com/p/142701/SmartHub/",
+        "description": "SmartHub is an all-in-one Employee Engagement Platform to help HR centralise and promote whats important to their organisation. From market-leading employee discounts and perks to reward and recognition, wellbeing and internal communications, SmartHub can be customised with existing (or new) tools to build employee engagement.",
+        "logo_url": "https://cdn0.capterra-static.com/logos/150/2100966-1493417547.png"
+    },
+    {
+        "name": "StartCherry",
+        "website": "https://www.startcherry.com/",
+        "stars": "",
+        "established": "2018",
+        "programs": "Perks",
+        "sso": "",
+        "hris": "",
+        "browsers": "",
+        "other_integrations": "Slack",
+        "description_source": "https://www.producthunt.com/posts/cherry",
+        "description": "Cherry lets employees choose their own workplace perks. With Cherry, employers cover their employees' favorite consumer services (ex: Netflix, Spotify, ClassPass, Lyft), instead of wasting money on perks no one uses like in-office yoga and ping pong tables.",
+        "logo_url": "https://ph-files.imgix.net/66265aeb-1495-4922-b1f9-c76082c71f82?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop&dpr=2"
+    },
+    {
+        "name": "TerryBerry",
+        "website": "https://www.terryberry.com/",
+        "stars": "5",
+        "established": "1918",
+        "programs": "Recognition, Merchandise Rewards, Anniversaries, Incentives ",
+        "sso": "",
+        "hris": "",
+        "browsers": "",
+        "other_integrations": "",
+        "description_source": "https://www.capterra.com/p/125712/360-Recognition/",
+        "description": "The 360 Recognition Platform encompasses a peer recognition program, service anniversary awards, achievement awards, and more. Modules work together to help build a culture of recognition in your organization. With 360 Recognition, add as many or as few modules as your needs require. The 360 Integrated Recognition Platform gives you a complete picture of your organization's overall recognition culture, and helps you pinpoint your recognition strengths and opportunities.",
+        "logo_url": "https://cdn0.capterra-static.com/logos/150/2087721-1551364143.png"
+    },
+    {
+        "name": "WorkHuman",
+        "website": "https://www.workhuman.com/",
+        "stars": "4.5",
+        "established": "1999",
+        "programs": "Recognition, Anniversaries, Birthdays, Rewards, International",
+        "sso": "",
+        "hris": "",
+        "browsers": "",
+        "other_integrations": "",
+        "description_source": "https://www.linkedin.com/company/workhuman/about/",
+        "description": "Workhuman® is the world’s fastest-growing integrated social recognition and continuous performance management platform. Our human applications are shaping the future of work by helping organizations connect culture to shared purpose. With a consistent stream of gratitude fueling unparalleled, provocative workplace data and human insights, Workhuman® Cloud is a critical software engine for global companies seeking to motivate and empower their people to do the best work of their lives. Formerly known as Globoforce and now operating as Workhuman® we were founded in 1999 and are located in Framingham, Mass., and Dublin, Ireland. Workhuman was previous Globoforce and has recently rebranded.",
+        "logo_url": "https://cdn0.capterra-static.com/logos/150/2087677.png"
+    }
+] %>
+
+<%= content_for :title, "Best Employee Recognition Programs" %>
+<%= content_for :description, "Choose the best platform for employee recognition and rewards for your company by looking at the best employee recognition vendors on the market." %>
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Best Employee Recognition Programs of <%= Time.current.year %> | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="The current state of the best employee recognition programs in <%= Time.current.year %>." />
+  <meta property="og:image" content="/assets/pages/employee-recognition-programs/intro.jpg" />
+<% end%>
+
+<section class="intro">
+  <div class="inner">
+    <h1 class="balance-text">Best Employee Recognition Program Names in <%= Time.current.year %></h1>
+    <p class="tagline">As companies continue to awaken to the advent of off-the-shelf employee recognition programs, more employee recognition program vendors arise. With some merging occurring in <%= Time.current.year %>, we look to 2020 with the possibility of more programs folding, others merging, and most staying course.</p>
+    <p class="tagline"><strong>Scroll down</strong> to see the complete list. If you'd like to meet with Recognize, schedule a demo here.</p>
+    <%= schedule_demo_link %>
+  </div>
+
+  <%= image_tag 'pages/employee-recognition-programs/intro.jpg', alt: 'Illustrations of people showing employee recognition' %>
+</section>
+
+
+<ul class="programs-list">
+  <% vendors.each do |vendor| %>
+
+  <li class="program-card">
+    <div class="avatar-horizontal-wrapper">
+      <%= lazy_image_tag vendor[:logo_url], alt: 'Logo' %>
+      <div class="summary">
+        <h2><%= vendor[:name] %></h2>
+        <p class="tagline"><%= vendor[:description] %></p>
+        <hr class="hr hr-space">
+        <div class="details flex">
+          <dl>
+            <dt><h3>Programs</h3></dt>
+            <dd>
+              <ul class="bullet-list">
+                <% vendor[:programs].split(',').each do |program| %>
+                  <li>
+                    <%= program %>
+                  </li>
+                <% end %>
+              </ul>
+
+            </dd>
+          </dl>
+          <% if vendor[:sso].present? %>
+            <dl>
+              <dt><h3>SSO support</h3></dt>
+              <dd>
+                <ul class="bullet-list">
+                  <% vendor[:sso].split(',').each do |sso| %>
+                    <li>
+                      <%= sso %>
+                    </li>
+                  <% end %>
+                </ul>
+              </dd>
+            </dl>
+          <% end %>
+          <% if vendor[:hris].present? %>
+            <dl>
+              <dt><h3>HRIS support</h3></dt>
+              <dd>
+                <ul class="bullet-list">
+                  <% vendor[:hris].split(',').each do |hris| %>
+                    <li>
+                      <%= hris %>
+                    </li>
+                  <% end %>
+                </ul>
+              </dd>
+            </dl>
+          <% end %>
+          <% if vendor[:other_integrations].present? %>
+            <dl>
+              <dt><h3>Integrations</h3></dt>
+              <dd>
+                <ul class="bullet-list">
+                  <% vendor[:other_integrations].split(',').each do |other_integration| %>
+                    <li>
+                      <%= other_integration %>
+                    </li>
+                  <% end %>
+                </ul>
+              </dd>
+            </dl>
+          <% end %>
+          <% if vendor[:stars].present? %>
+            <dl>
+              <dt><h3 title="Capterra star rating">Star rating<sup>?</sup></h3></dt>
+              <dd class="stars">
+                <%= vendor[:stars] %>/5
+              </dd>
+            </dl>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+  </li>
+
+  <% end %>
+</ul>
+
+<%= render partial: "marketing_cta_banner" %>
+
+
+<%= render partial: "footer" %>

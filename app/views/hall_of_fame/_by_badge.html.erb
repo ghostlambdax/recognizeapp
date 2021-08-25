@@ -1,0 +1,30 @@
+<ul class="badges">
+
+  <% hall_of_fame.badges.each do |badge| %>
+    <li class="badge">
+
+      <div class="badge-info">
+        <%= image_tag badge.permalink, class: "badge-graphic marginBottom10" %>
+        <h5><%= badge.short_name %></h5>
+      </div>
+      <div class="time-periods-wrapper" data-rightEnd='false'>
+        <a class="arrow-clip arrow-clip-left hidden" href="javascript://"><div><span><%= t("hall_of_fame.see_more") %></span></div></a>
+
+        <ul class="time-periods clearfix">
+          <% 
+            opts = { badge_id: badge.id } 
+            opts[:interval] = params[:interval] if params[:interval].present? 
+            opts[:team_id] = params[:team_id] if params[:team_id].present?
+          %>
+
+          <%= pagelet group_by_badge_hall_of_fame_index_path(opts) %>
+        </ul>
+        
+        <a class="arrow-clip arrow-clip-right" href="javascript://"><div><span><%= t("hall_of_fame.see_more") %></span></div></a>
+      </div>
+
+
+    </li>
+  <% end %>
+
+</ul>

@@ -1,0 +1,32 @@
+<%= form_for Redemption.new, remote: true, html: { class: "confirmForm" } do |f| %>
+
+  <%= f.hidden_field :reward_id, id: "", value: reward.id %>
+
+  <% if reward.variants.enabled.size > 1 %>
+    <%=
+      select_tag(
+          "redemption[variant_id]",
+          options_for_reward_variants(reward, current_user),
+          { class: "redemption-variant-select" }
+      )
+    %>
+
+  <% else %>
+    <%
+      variant = reward.variants.enabled.first
+      number_in_currency = humanized_money_with_symbol(Money.from_amount(variant.face_value, reward.catalog.currency)).no_zeros
+    %>
+    <%= f.hidden_field :variant_id, value: variant.id, "data-label": variant.label %>
+
+    <p>
+
+      <%= t('rewards.points', num_points: variant.points, count: variant.points) %>
+
+      <% if show_currency?(current_user.company) && reward.provider_reward? %>
+        - <%= number_in_currency %>
+      <% end %>
+
+    </p>
+  <% end %>
+  <%= f.button t("rewards.redeem"), type: "submit", class: "button centered confirmForm" %>
+<% end %>

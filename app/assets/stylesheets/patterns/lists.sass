@@ -1,0 +1,151 @@
+.list
+  li
+    margin-bottom: 3px
+
+  & > li > a
+    padding: 3px 5px
+    display: block
+
+    &.active
+      color: white
+      background: $headerBg
+
+.check-list
+  li
+    margin-bottom: 5px
+    position: relative
+    padding: 0 0 0 20px
+    text-align: left
+
+    &:before
+      content: "✓"
+      color: $headerBg
+      position: absolute
+      left: 0
+      top: 0
+
+
+ol.numbered
+  list-style-type: decimal
+  margin-bottom: 10px
+
+  li
+    overflow: visible
+    margin-left: 21px
+    list-style-position: outside
+    margin-bottom: 10px
+
+.dt-stats
+  dd
+    font-size: 28px
+  dt
+    color: $hrColor
+    font-size: 18px
+    margin-bottom: 20px
+
+.list-subtle-border.condensed
+  li
+    padding: 0.5em 0
+    border: none
+
+.list-subtle-border
+  li
+    border-bottom: 1px $hrColor solid
+    padding: 1.5em 0
+
+    &:last-child
+      border-bottom: 0
+
+
+.blue-links
+  border: none
+
+  li:not(.current):hover
+    .detail-link
+      background: lighten($headerBg, 10%)
+
+  li
+    list-style: none
+    text-align: left
+    position: relative
+
+    .link
+      text-decoration: none
+      transition: none !important
+      display: block
+      width: 100%
+
+    .blue-link-icon
+      margin: 0 5px
+
+    a:hover
+      transform: translate(0, 0px) !important
+
+    &:hover
+      .detail-link
+        display: block
+        background: lighten($headerBg, 10%)
+
+    .detail-link
+      display: none
+      position: absolute
+      right: 5px
+      top: 2px
+
+      a
+        color: white
+        font-size: 12px
+
+    h3, h4, h5
+      margin: 0
+
+    &:hover:not(.no-highlight)
+      background: lighten($headerBg, 10%)
+
+      a
+        color: text-color(lighten($buttonPrimaryBg, 10%))
+
+    &.current
+      background: $buttonPrimaryBg
+      margin: 12px 0
+      box-shadow: 0 0 13px rgba(0,0,0,.3)
+
+    &:hover,
+    &.current
+      .link
+        color: white !important
+
+    a
+      display: block
+      padding: 7px 4px
+      font-size: 20px
+      line-height: 22px
+      &.active
+        background: $headerBg
+        color: white !important
+
+
+
+.bullet-list li
+  list-style: disc
+  list-style-position: outside
+  margin-bottom: 5px
+  margin-left: 19px
+  overflow: visible
+
+.stylized-dl
+  min-width: 200px
+
+  dt
+    font-weight: 300
+    color: $headerBg
+    border-bottom: 1px solid $headerBg
+    padding: 0 35px 7px 0
+    margin-bottom: 3px
+    font-size: $h3
+
+  dd
+    font-weight: 600
+    color: black
+    font-size: 16px
+    margin-bottom: 15px

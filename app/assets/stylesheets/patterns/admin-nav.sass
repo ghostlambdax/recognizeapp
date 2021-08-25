@@ -1,0 +1,92 @@
+.no-touch #wrapper-outer
+  .admin-nav
+    a:hover
+      background: $headerBg
+      color: white
+
+#company-admin-settings-menu
+  position: relative
+
+.admin-nav-wrapper
+  overflow: auto
+  background: lighten($menuBg, 5%)
+  color: white
+  padding: 10px 0 80px 0
+  width: 200px
+  left: 0
+  position: fixed
+  height: 100%
+  min-height: 100%
+  z-index: 21
+  top: 64px
+
+  & + .content-wrapper
+    padding-left: 200px
+
+  h2
+    padding: 0 10px
+    color: white
+    font-size: 20px
+    margin-bottom: 5px
+
+  h4
+    color: white
+
+  .admin-nav
+    position: relative
+    z-index: 20
+
+    li.active a
+      background: $headerBg
+      color: white
+
+    li
+      display: block
+
+    a
+      padding: 10px 12px
+      display: block
+      color: white
+      display: flex
+      align-items: center
+
+@media (max-width: $tablet)
+  #company-admin-settings-menu
+    position: absolute
+    left: -9999px
+
+  .wrapper > .content-wrapper > .page-body
+    padding-top: 10px
+
+  .admin-nav-wrapper
+    display: block
+    position: relative
+    width: 100%
+    top: 0
+    padding-bottom: 10px
+
+    & + .content-wrapper
+      padding: 10px
+
+      .page-body
+        padding-top: 10px
+
+      .page-header
+        padding-top: 10px
+
+    .admin-nav ul
+      display: flex
+      flex-wrap: wrap
+
+    .admin-nav a
+      padding: 8px 9px
+
+
+@media (max-width: 650px)
+  .admin-nav-wrapper
+    margin-bottom: 0
+    margin-top: 0
+
+    a
+      font-size: 12px
+      padding: 10px

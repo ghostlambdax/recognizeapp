@@ -1,0 +1,30 @@
+<h2 style="<%= mail_styles(:h2, :text, :title) %>">
+  <%= _('A webhook has been disabled') %>
+</h2><br/>
+
+<% disable_threshold = Webhook::Endpoint::AUTO_DISABLE_FAILURE_THRESHOLD %>
+<p style="<%= mail_styles(:p) %>"><%= _('The following webhook has been disabled automatically due to %{n} consecutive failures.' % {n: disable_threshold}) %></p>
+<br>
+<h3 style="<%= mail_styles(:h3) %>"><%= _('Webhook details:') %></h3>
+<% if @endpoint.description.present? %>
+  <h4 style="<%= mail_styles(:h4) %>"><%= @endpoint.description %></h4>
+<% end %>
+
+<table style="<%= mail_styles(:table) %>">
+  <tr>
+    <td style="width: 175px"><p style="<%= mail_styles(:p) %>"><%= _('Target URL') %></p></td>
+    <td><p style="<%= mail_styles(:p) %>"><%= @endpoint.target_url %></p></td>
+  </tr>
+  <tr>
+    <td><p style="<%= mail_styles(:p) %>"><%= I18n.t('dict.event') %></p></td>
+    <td><p style="<%= mail_styles(:p) %>"><%= @endpoint.subscribed_event.humanize %></p></td>
+  </tr>
+  <tr>
+    <td><p style="<%= mail_styles(:p) %>"><%= _('Owner') %></p></td>
+    <td><p style="<%= mail_styles(:p) %>"><%= @endpoint.owner.full_name %></p></td>
+  </tr>
+  <tr>
+    <td><p style="<%= mail_styles(:p) %>"><%= _('Last response code') %></p></td>
+    <td><p style="<%= mail_styles(:p) %>"><%= @last_response_code %></p></td>
+  </tr>
+</table>

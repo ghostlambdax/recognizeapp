@@ -1,0 +1,630 @@
+$homepage_card_bg_light: $lightBodyBg
+$homepage_dark_bg: #345271
+
+@mixin flex-direction($direction)
+  -webkit-flex-direction: $direction
+  flex-direction: $direction
+  -ms-flex-direction: $direction
+  -moz-flex-direction: $direction
+  -o-column-flex-direction: $direction
+
+#home-index .illustration-wrapper,
+  .check-list,
+  li
+    font-size: 24px
+    letter-spacing: 0.26px
+
+  .tagline:hover
+    color: $linkColor
+
+    li
+      margin-bottom: 10px
+      padding: 0 0 0 30px
+
+#home-index
+  .illustrator-outer
+    border-bottom: 1px solid $lightGray
+    margin-bottom: 30px
+    padding-bottom: 0
+
+  .logos
+    width: 1200px
+    margin: auto
+    max-width: 100%
+    text-align: center
+
+    img
+      max-width: 75px
+      margin: 10px 20px
+      max-height: 75px
+
+  h2
+    @include pointH2()
+
+  .screenshot
+    position: relative
+    margin: 100px auto 50px
+    max-width: 100%
+    width: 1160px
+
+    .content
+      width: 900px
+      padding: 30px
+      background: $homepage_card_bg_light
+      max-width: 100%
+      box-shadow: 0 0 39px rgba(0, 0, 0, 0.1)
+      margin: auto
+
+    @media (max-width: 910px)
+      &
+        margin-top: 50px
+        margin-bottom: 10px
+
+
+      img
+        margin-left: 0
+
+
+
+  .illustration-wrapper
+    display: flex
+    padding: 10px 1% 0 1%
+    align-items: center
+    justify-content: center
+
+
+    .content
+      margin-top: -9vh
+      width: 50%
+      max-width: 100%
+      padding: 2vw
+
+    .button
+      @include highlightGradient()
+      border: 1px solid #979797
+      color: #FFFFFF
+      letter-spacing: 0.16px
+
+  h1
+    font-size: 49px
+    color: $headerBg
+    letter-spacing: -0.79px
+    line-height: 55px
+    margin-bottom: 12px
+    margin-top: 50px
+    font-weight: 600
+
+    @media (min-width: 2200px)
+      font-size: 61px
+      line-height: 67px
+
+  .homepage-illustration
+    height: 100%
+    margin: 20px 0 0 0
+    width: 1400px
+    max-width: 60%
+
+    img
+      width: 100%
+
+  .home-banner
+    position: relative
+    margin-bottom: 50px
+    padding-left: 2vw
+    padding-right: 2vw
+
+    .content
+      width: 500px
+
+    img
+      margin-top: -24px
+      margin-right: 20px
+      display: inline-block
+
+    h2, p
+      color: white
+
+    &:before
+      position: absolute
+      top: -57px
+      left: 0
+      z-index: -1
+      background-color: lighten($homepage_dark_bg, 20%)
+      height: 181px
+      width: 100%
+      content: ""
+      clip-path: polygon(0 46%, 100% 0%, 100% 100%, 0% 100%)
+
+    &:after
+      position: absolute
+      top: -26px
+      left: 0
+      z-index: -1
+      background-color: $homepage_dark_bg
+      height: 178px
+      width: 100%
+      content: ""
+      clip-path: polygon(0 29%, 100% 0%, 100% 100%, 0% 100%)
+
+
+  .top-rewards-stevie
+    margin-top: -38px
+    z-index: 100
+
+    h3
+      color: white
+      font-weight: 200
+
+
+    img
+      max-width: 40%
+
+    img + div
+      width: 399px
+      max-width: 100%
+
+  .article-2019
+    padding: 15px
+    background: $homepage_dark_bg
+
+    .flex-centered-all-screens
+      align-items: center
+
+      @media (max-width: $tablet)
+        flex-direction: column
+
+    &:after
+      background: none
+
+    img
+      width: 25%
+      margin: 0 5% 0 0
+
+  .metrobank-cs
+    background-image: asset-url("pages/home-index/metrobank-employees.jpg")
+
+  .ideas-cs
+    background-image: asset-url("pages/home-index/ideas-badges.jpg")
+
+    & + .cs-quote-box
+      width: 480px
+
+  .bg-blob
+    background-repeat: no-repeat
+    padding: 2vw
+
+    .flex
+      margin: 0 0 50px 0
+      justify-content: space-between
+
+      &:before,
+      &:after
+        content: ''
+        display: block
+
+
+  .bg-home-blob-1
+    background-image: asset-url("pages/home-index/blob-bg-1.png")
+
+  .bg-home-blob-1-stats
+    background-size: 80%
+    padding-top: 70px
+    margin-top: -30px
+
+  .bg-home-blob-2
+    background-image: asset-url("pages/home-index/blob-bg-2.jpg")
+    background-position: 30px 10px
+    padding: 55px 0 1px 0
+
+    @media (max-width: $phone)
+      .flex
+        flex-direction: column
+        text-align: center
+
+        .home-big-stat
+          width: 100%
+
+  .middle-area
+    padding-top: 40px
+    width: 100%
+    position: relative
+    background: white
+
+    img
+      filter: grayscale(100%)
+
+      &:hover
+        filter: grayscale(0)
+
+  .customers
+    position: relative
+    width: 100%
+    text-align: center
+
+    & > .inner
+      max-width: 100%
+      margin: auto
+
+    img
+      max-width: 110px
+      max-height: 70px
+      margin: 30px
+
+  .customers
+    .default
+      margin: 10px 0 50px
+
+
+  .integrations,
+  .customers
+
+    .default,
+    .hover-content-target
+      padding: 20px 4vw 50px
+      position: absolute
+      height: 100%
+
+    .default
+      top: 0
+      padding: 20px 50px 50px
+
+    .hover-content-target
+      top: 100%
+
+    .extra-info
+      position: absolute
+      left: -99999px
+
+    .content
+      overflow: hidden
+
+      .inner
+        position: relative
+        @include transitionTransform(.8s, $cubic)
+        height: 100%
+
+      &.show-content
+        .inner
+          @include transform(translate(0, -100%))
+
+
+  .integrations
+    position: relative
+    perspective: 1200px
+    height: 580px
+    width: 100%
+
+    div:not(.content) a
+      @include transitionTransform(1s, $cubic)
+
+      &:hover
+        transform: translate(0, -5px)
+
+    .top
+      margin-bottom: 50px
+
+    .bottom
+      margin-top: 50px
+
+      img
+        max-height: 100px
+        height: 70px
+
+    .right
+      margin-left: 50px
+
+    .left
+      margin-right: 50px
+
+    .left, .right
+      width: 19%
+      min-width: 50px
+
+      img
+        margin: 9%
+        max-height: 60px
+
+    .row-of-three
+      @include flex-display()
+      @include justify-content(center)
+      @include align-items(center)
+      max-width: 1020px
+      margin: auto
+
+    .content
+      z-index: 20
+      display: inline-block
+      background: $headerBg
+      width: 340px
+      height: 280px
+      box-shadow: 0 0 31px rgba(0,0,0,.3)
+      cursor: pointer
+
+      &:hover
+        background: darken($headerBg, 20%)
+
+      h2, h3, p, a
+        color: white
+
+    .top,
+    .bottom
+      @include flex-display()
+      margin-right: auto
+      margin-left: auto
+      justify-content: center
+
+      img
+        margin: 0 49px
+
+    img
+      height: 50px
+
+    .ad
+      height: 65px
+
+    .slack
+      height: 97px
+
+    .yammer
+      height: 70px
+    .outlook
+      height: 70px
+
+    .corvallis
+      width: 150px
+
+
+
+  .exp-buckets
+    text-align: center
+    background: $homepage_dark_bg
+    padding: 6em 1em 8em
+
+    .buckets-inner
+      width: 1000px
+      max-width: 100%
+
+    h2
+      color: white
+
+    @media (max-width: $tablet)
+      padding: 20px 10px
+
+    .closing
+      h3
+        padding-left: 0
+
+    .exp-feature-title
+      position: relative
+
+    span[class*=icon],
+    img.icon
+      position: absolute
+      top: 0
+      left: 0
+      background-size: 100%
+      max-width: 36px
+      max-height: 40px
+
+    .settings-icon
+      background: asset-url('pages/home-index/exp/settings-icon.png') no-repeat 0 0
+      width: 36px
+      height: 28px
+
+    .pilot-icon
+      background: asset-url('pages/home-index/exp/pilot-icon.png') no-repeat 0 0
+      width: 26px
+      height: 38px
+      top: -3px
+
+    .rewards-icon
+      background: asset-url('pages/home-index/exp/reward-icon.png') no-repeat 0 0
+      width: 33px
+      height: 40px
+
+    .o365-icon
+      background: asset-url('pages/home-index/exp/o365-icon.png') no-repeat 0 0
+      width: 30px
+      height: 35px
+
+    h3
+      padding-left: 45px
+
+    .bucket
+      max-width: 100%
+      width: 44%
+      display: inline-block
+      text-align: left
+      @include transition(all .5s $cubic)
+      vertical-align: top
+
+      a
+        font-weight: 600
+
+      p:last-child
+        margin-bottom: 0
+
+      &:first-child
+        margin-right: 8%
+
+    .exp-feature-card
+      background: #FFFFFF
+      box-shadow: 0px 0px 57px 0px rgba(0,0,0,0.50)
+      padding: 20px 30px
+
+    .bucket-row
+      margin-bottom: 50px
+
+    &:last-child
+      margin-bottom: 0
+
+  .movement
+    padding: 110px 1em
+    margin: auto
+    background: white
+
+    .inner
+      width: 929px
+      max-width: 100%
+      margin: auto
+      background-position: 51px 0
+      padding: 4vw
+
+    h2
+      margin-bottom: 60px
+
+    img
+      float: right
+
+    .content
+      float: left
+      max-width: 100%
+      width: 366px
+      padding-left: 50px
+
+@media (min-width: 950px) and (max-width: 1450px)
+  #home-index
+    .illustration-wrapper
+      width: 1400px
+
+@media(max-width: 1325px)
+  #home-index
+    .top-rewards-stevie
+      margin-top: -24px
+
+
+@media (max-width: 1200px)
+  #home-index
+
+    h1
+      font-size: 38px
+      line-height: 41px
+
+    .illustration-wrapper
+      .content
+        margin-top: 0
+        margin-bottom: 50px
+
+        .tagline
+          font-size: 22px
+
+
+    .top-rewards-stevie
+      margin-top: -20px
+
+
+@media (max-width: 1000px)
+  #home-index
+    .integrations
+      height: 420px
+
+      img
+        height: 5vw
+        width: auto
+        max-height: 30px
+
+    .row-of-three
+      .content
+        position: absolute
+
+@media (max-width: 950px)
+  #home-index
+
+    .top-rewards-stevie
+      margin-top: -80px
+
+    .illustration-wrapper
+      display: block !important
+      text-align: center
+      padding: 0
+      overflow: hidden
+
+      .content
+        padding: 0
+        width: 100%
+        margin-top: 0
+
+        .cta-button-wrapper
+          justify-content: center
+          margin-bottom: 50px
+
+      .homepage-illustration
+        width: 100%
+        max-width: 100%
+
+      .home-banner
+        margin-top: -170px
+        z-index: 100
+
+    .customers
+      .content
+        position: relative
+        width: 100%
+
+
+@media (max-width: 750px)
+  #home-index
+    .movement
+      img,
+      .content
+        float: none
+
+  .fade-carousel
+    min-height: 115px
+
+@media (max-width: 700px)
+  #home-index
+    .bg-home-blob-2
+      background: none
+
+    .integrations
+      height: auto
+
+      .right,
+      .left
+        display: none
+
+      .bottom
+        display: none !important
+
+      .top img
+        margin: 0 15px
+        height: 50px
+        padding: 4px
+
+      .content
+        position: relative
+
+@media (max-width: 700px)
+  #home-index
+    .top-rewards-stevie:after
+      top: -46px
+      height: 206px
+
+
+@media (max-width: 520px)
+  #home-index
+    .customers
+      .default
+        padding: 20px
+
+      .content
+        margin-left: 0
+        padding: 10px
+
+      img
+        margin: 7px
+
+@media (max-width: 480px)
+  #home-index
+    .wrapper
+      margin: 0 !important
+
+    .illustration-wrapper
+      .content
+        margin-bottom: 50px
+
+      .homepage-illustration
+        width: 100%
+        margin: 20px 10px 0
+

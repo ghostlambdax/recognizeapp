@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <%= csrf_meta_tag %>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="//appsforoffice.microsoft.com/fabric/1.0/fabric.min.css" rel="stylesheet">
+    <%= stylesheet_link_tag "panel", media: "all" %>
+    <%= render partial: "layouts/office_script_tag" %>
+    <%= javascript_include_tag "panel" %>
+    <link href="//appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+  <%= include_gon %>
+  <%= yield %>
+  </body>
+</html>

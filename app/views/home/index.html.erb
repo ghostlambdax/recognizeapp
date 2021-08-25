@@ -1,0 +1,451 @@
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Employee Recognition App | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="Recognize provides high quality employee recognition apps to communicate company values and retain top employees." />
+  <meta property="og:image" content="/assets/illustrations/recognize.jpg" />
+<% end%>
+
+<%= content_for :pagejs do %>
+  <script type="text/javascript">
+    if(window.location.hash.indexOf('access_token') >= 0) {
+        const form = document.createElement('form');
+        form.method = 'post';
+        form.action = '/auth/yammer';
+        form.append('<%= hidden_field_tag :authenticity_token, form_authenticity_token %>');
+        document.body.appendChild(form);
+        form.submit();
+    }
+  </script>
+<% end %>
+
+<section class="illustrator-outer">
+  <div class="illustration-wrapper">
+    <div class="content">
+      <h1 class="balance-text"><%= @homepage_h1 %></h1>
+      <p class="tagline balance-text cursor" title="Inside Outlook, MS Teams, Sharepoint, mobile, TVs, Okta, Workplace by Facebook, and much more!">An employee engagement program with social recognition, company values, and automated rewards inside Microsoft Office 365.</p>
+
+      <div class="flex cta-button-wrapper">
+        <div><%= schedule_demo_link link_text: 'Schedule a demo',service: "service2", cssclasses: "button", utm_campaign: 'Homepage', utm_content: 'Top demo link' %></div>
+        <div><%= image_tag 'pages/home-index/highest-rated.png', alt: 'Highest rated recognition program on Capterra', class: 'marginLeft10' %></div>
+      </div>
+
+
+    </div>
+    <div class="homepage-illustration">
+      <%= image_tag(@homepage_image, alt: 'A screenshot of Recognize where employees can give appreication to each other and see their own profile of points, recognitions, and rewards.') %>
+    </div>
+
+
+  </div>
+</section>
+
+<section class=" lazy marginBottom100">
+  <div class="centered">
+    <p class="tagline">Working with amazing brands from around the world</p>
+
+  </div>
+  <div class="logos">
+    <%= lazy_image_tag "pages/home-index/logos/bw/bbb.png", class: "bbb lazy", alt: 'BBB' %>
+
+    <%= lazy_image_tag "pages/home-index/logos/bw/cbre.png", class: "lazy", alt: 'CBRE' %>
+
+    <%= lazy_image_tag "pages/home-index/logos/bw/dtlr.png", class: "lazy", alt: 'DTLR' %>
+
+    <%= lazy_image_tag "pages/home-index/logos/bw/goodwill.png", class: "goodwill lazy", alt: "Goodwill" %>
+
+    <%= lazy_image_tag "pages/home-index/logos/bw/kerrygold.png", class: " lazy", alt: "Kerrygold" %>
+    <%= lazy_image_tag "pages/home-index/logos/bw/united.png", class: " lazy", alt: "United Site Services" %>
+
+    <%= lazy_image_tag "pages/home-index/logos/bw/swire.png", class: " lazy", alt: "Swire" %>
+  </div>
+</section>
+
+<section class="quote-section flex width-800 margin-auto marginBottom30">
+  <div class="image-box metrobank-cs lazy">
+    <h2>Metrobank enriches culture &amp; enhances communication</h2>
+    <%#= link_to "Read Case Study", "#", class: "button button-primary" %>
+  </div>
+  <div class="quote-box">
+    <div class="author">
+      <div class="avatar-horizontal-wrapper">
+        <%= lazy_image_tag "testimonials/bruce.jpg", alt: "Bruce Rioch", class: "avatar" %>
+        <div>
+          <p>Bruce Rioch<br><span class="subtle-text">Head of Business Intelligence</span></p>
+        </div>
+      </div>
+
+      <quote class="tagline">We wanted a “surprise and delight” recognition scheme and we encourage colleagues to tell
+        stories... how they surprised and delighted customers... Hence Recognize.
+      </quote>
+    </div>
+  </div>
+</section>
+
+<section class="bg-home-blob-2 bg-blob lazy width-800 margin-auto marginVertical30">
+  <div class="flex">
+    <dl class="home-big-stat">
+      <dd>96%</dd>
+      <dt class="balance-text">Employees on Recognize feel more engaged with their company</dt>
+    </dl>
+    <div>
+      <%= lazy_image_tag "pages/home-index/customer-badges.jpg", alt: "Employee reward program badges - One Team! and Drop the Mic" %>
+    </div>
+  </div>
+
+  <div class="flex">
+    <div>
+      <%= lazy_image_tag "pages/home-index/customer-employee-awards.jpg", alt: "Staff receiving employee rewards", class: "margin10" %>
+    </div>
+    <dl class="home-big-stat">
+      <dd>84%</dd>
+      <dt class="balance-text">Employees on Recognize understand company values better</dt>
+    </dl>
+  </div>
+</section>
+
+
+<section class="quote-section flex width-800 margin-auto marginBottom100">
+  <div class="image-box ideas-cs lazy">
+    <h2>Ideas Collide fosters innovation through values</h2>
+    <%= link_to "Read Case Study", "/docs/case-studies/id-employee-recognition-case-study.pdf", class: "button button-primary" %>
+  </div>
+  <div class="quote-box">
+    <div class="author">
+      <div class="avatar-horizontal-wrapper">
+        <%= lazy_image_tag "testimonials/matthew-clyde.jpg", alt: "Matthew Clyde", class: "avatar" %>
+        <div>
+          <p>Matthew Clyde<br><span class="subtle-text">Cofounder</span></p>
+        </div>
+      </div>
+
+      <quote class="tagline">We have a strategic plan in place to track all the recognitions, showcase our company culture, and reward our employees with Recognize. Remote and satellite office employees feel more connected and overall the entire team feels more inspired.</quote>
+    </div>
+  </div>
+</section>
+
+<section class="bg-home-blob-1 bg-blob lazy width-800 margin-auto marginBottom30 bg-home-blob-1-stats">
+  <div class="flex">
+    <div>
+      <dl class="home-big-stat marginBottom20">
+        <dd>99.7%</dd>
+        <dt>Employees on Recognize have seamless reward redemption experience</dt>
+      </dl>
+      <dl class="home-big-stat">
+        <dd>90%</dd>
+        <dt>Employees on Recognize want to stay longer with their employer</dt>
+      </dl>
+    </div>
+
+    <div>
+      <%= lazy_image_tag "pages/home-index/rewards-icons.png", class: "block marginBottom20", alt: "Recognize provides the best 100+ gift cards from branhds like Amazon, Starbucks, Habitat for Humanity, Spa Finder, and AMC Theatres as staff rewards." %>
+      <%= link_to "See employee rewards", rewards_path, class: 'button block' %>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+<section class="lazy home-banner article-2019">
+  <div class="flex-centered-all-screens">
+    <%= lazy_image_tag "pages/articles/amazing-award-certificates/image2.jpg", alt: "Employee of the month award certificate template." %>
+    <div class="content">
+      <h2>Ten amazing award certificate templates <i>for free</i></h2>
+      <p class="tagline">Recognize Design Team created a fantastic set of company award certificates for events from service anniversary awards to yearly award certificates.</p>
+      <%= link_to "Award Certificate Templates", amazing_award_certificates_path, class: 'button' %>
+    </div>
+
+  </div>
+</section>
+
+<div class="middle-area">
+
+  <div class="integrations hover-wrapper">
+    <div class="upper-portion">
+
+      <div class="top">
+        <%= link_to office365_path do %>
+          <%= lazy_image_tag("pages/home-index/integrations/microsoft-adfs.png", class: "ad lazy", alt: "An employee rewards app that provides OAuth and SSO for Microsoft.") %>
+        <% end %>
+
+        <%= link_to "http://saml-doc.okta.com/SAML_Docs/How-to-Configure-SAML-2.0-for-Recognize.html" do %>
+          <%= lazy_image_tag "pages/home-index/integrations/okta.png", class: "okta lazy", alt: "Recognize is in the Okta App Store. With a few clicks and a few entries in Recognize you can be up and running with Recognize in Okta." %>
+        <% end %>
+
+        <%= link_to "https://www.onelogin.com/connector/recognize" do %>
+          <%= lazy_image_tag "pages/home-index/integrations/onelogin.png", class: "onelogin lazy", alt: "We are also in the OneLogin store. Click the icon to get started with OneLogin and Recognize." %>
+        <% end %>
+
+        <%= link_to marketing_outlook_path do %>
+          <%= lazy_image_tag "pages/home-index/integrations/outlook.png", class: "outlook lazy", alt: "We get it, you are busy. Send recognition and view the entire Recognize platform inside Outlook 2013+ on Windows or the Web-based Outlook." %>
+        <% end %>
+      </div>
+
+      <div class="row-of-three">
+        <div class="left">
+          <%= lazy_image_tag "pages/home-index/integrations/bitium.png", class: "bitium lazy", alt: "Recognize integrates SSO for Bitium making it easy for your staff to login to Recognize." %>
+          <%= link_to mobile_path do %>
+            <%= lazy_image_tag "pages/home-index/integrations/ios.png", class: "ios lazy", alt: "Recognize provides an iOS app to send and receive recognition." %>
+          <% end %>
+        </div>
+
+        <div class="content">
+          <div class="inner">
+            <div class="default">
+              <%= link_to cms_integrations_path do %>
+                <h2 class="balance-text"><strong>Not yet another website</strong></h2>
+                <p class="tagline balance-text">From Workday to Outlook, Recognize is in your existing toolset.</p>
+                <% end %>
+            </div>
+
+            <p id="integration-info" class="tagline hover-content-target"></p>
+          </div>
+        </div>
+
+        <div class="right">
+
+          <%= link_to fb_workplace_path do %>
+            <%= lazy_image_tag "pages/home-index/integrations/workplace.png", class: "workplace", alt: "Automatically post employee recognitions to any Workplace by Facebook group." %>
+          <% end %>
+          <%= link_to chrome_extension_url do %>
+            <%= lazy_image_tag "pages/home-index/chrome.png", class: "chrome lazy", alt: "Enhance Yammer with the Chrome extension and view the entire employee rewards app from a popup in Chrome." %>
+          <% end %>
+          <%= link_to mobile_path do %>
+            <%= lazy_image_tag "pages/home-index/integrations/android.png", class: "android lazy", alt: "The Recognize Android app allows staff to send and receive recognition, or view all their company's recognitions." %>
+          <% end %>
+          <%= lazy_image_tag "pages/home-index/integrations/ping.png", class: "ping lazy", alt: "Recognize provides SSO with all Ping customers."  %>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="bottom">
+      <%= lazy_image_tag "pages/home-index/html5.png", class: "html5 lazy", alt: "Thanks to utilizing HTML5, staff can receive Desktop Notifications and enjoy a fast, responsive web application." %>
+      <%= link_to slack_employee_recognition_path do %>
+        <%= lazy_image_tag "pages/home-index/integrations/slack.png", class: "slack lazy", alt: "Send and receive employee recognition right from within Slack." %>
+      <% end %>
+
+      <%= link_to extension_path do %>
+        <%= lazy_image_tag "pages/home-index/integrations/yammer.png", class: "yammer lazy", alt: "Best integration on the market for Yammer. Automatically share employee recognitions to Yammer, send recognition from Yammer, administer the employee recognition app from Yammer, or view staff recognitions." %>
+      <% end %>
+
+      <%= link_to office365_path do %>
+        <%= lazy_image_tag "pages/home-index/integrations/sharepoint.png", class: "sharepoint lazy", alt: "An employee rewards app inside the Office store to provide the entire Recognize portal in Sharepoint." %>
+      <% end %>
+
+      <%= link_to office365_path do %>
+        <%= lazy_image_tag "pages/home-index/integrations/azure.png", class: "azure lazy", alt: "Recognize is in the Azure store to integrate your users for the employee recognition app. Click the icon to see more." %>
+      <% end %>
+    </div>
+  </div>
+
+
+</div>
+
+<section class="movement">
+  <div class="inner bg-home-blob-1 bg-blob lazy">
+    <div class="centered">
+      <h2>Join the Recognize Movement</h2>
+    </div>
+
+    <div class="clearfix">
+      <%= lazy_image_tag "pages/home-index/exp/movement.png", class: "lazy", alt: "People on Recognize" %>
+
+      <div class="content">
+        <p class="tagline">Join the hundreds of companies who are increasing employee retention and engaging their staff. These companies are following recognition best practices to optimize their workforce.</p>
+        <%= link_to "Try it out for free", sign_up_path, class: "button button-highlight", utm_content: 'home-movement-for-free' %>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="exp-buckets home-padding dark">
+  <div class="buckets-inner margin-auto">
+    <div class="centered">
+      <%= feather_icon('award', color: '#5985B2', height: 40) %>
+      <h2 class="color-white balance-text width-800 margin-auto marginBottom10">Enterprise recognition features to help companies with 20 to 20,000 employees. </h2>
+      <p class="tagline balance-text white">Add a social, value-driven employee recognition program to your benefits offering.</p>
+      <%= link_to "Recognize pricing", pricing_path, class: "button button-large marginBottom40", data: {event: "pricing-blue-section-home"} %>
+    </div>
+    <div class="inner">
+      <div class="bucket-row clearfix">
+        <div class="bucket">
+          <div class="exp-feature-card">
+            <div class="exp-feature-title">
+              <span class="rewards-icon"></span>
+              <h3>Employee rewards</h3>
+            </div>
+            <p class="subtext">We offer many types of employee rewards including the best brand gift cards, cash cards, nonprofits, and company-fulfilled system. Staff can redeem with points at no additional cost. When employee rewards really show the company cares, you will retain and engage staff.</p>
+            <p class="subtext"><%= link_to "Recognize employee rewards", rewards_path %></p>
+          </div>
+        </div>
+        <div class="bucket" data-turbolinks="false">
+          <div class="exp-feature-card">
+            <div class="exp-feature-title">
+              <%= lazy_image_tag "pages/home-index/exp/ios7-people.png", class: "icon lazy", alt: "People icon" %>
+              <h3 class="balance-text">Manager &amp; peer-to-peer employee recognition app</h3>
+            </div>
+            <p class="subtext">Recognize makes it easy to send and receive official positive feedback for any custom role in your company. Create recognition badges only for certain people, such as managers or executives. Direct report managers have access to a dashboard about their employees.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bucket-row clearfix">
+        <div class="bucket">
+          <div class="exp-feature-card">
+            <div class="exp-feature-title">
+              <span class="o365-icon"></span>
+              <h3 class="balance-text">Yammer + Sharepoint for employee rewards</h3>
+            </div>
+            <p class="subtext">Recognize is the best employee recognition program for Office 365. You can use the entire Recognize platform inside Sharepoint or inside Yammer, and more. Use Recognize's employee engagement strategy within your workflow.</p>
+            <p class="subtext"><%= link_to "Yammer Employee Recognition", extension_path %></p>
+          </div>
+        </div>
+
+        <div class="bucket" data-turbolinks="false">
+          <div class="exp-feature-card">
+            <div class="exp-feature-title">
+              <%= lazy_image_tag "pages/home-index/exp/key.png", class: "icon lazy", alt: "key icon" %>
+              <h3 class="balance-text">Office 365, Yammer, Google, & SAML 2.0 login</h3>
+            </div>
+            <p class="subtext">If your company has Office 365, SSO (such as Okta), Yammer, or Google accounts for your staff, they can login to Recognize automatically.</p>
+            <p class="subtext"><%= link_to "Employee recognition for Office 365", office365_path %></p>
+          </div>
+        </div>
+
+      </div>
+      <div class="bucket-row clearfix">
+        <div class="bucket" data-turbolinks="false">
+          <div class="exp-feature-card">
+            <div class="exp-feature-title">
+              <%= lazy_image_tag "pages/home-index/exp/slack.png", class: "icon lazy", alt: "Slack icon" %>
+              <h3 class="balance-text">Recognition add-on for Slack</h3>
+            </div>
+            <p class="subtext">Staff can send and receive official employee recognition from Slack. Users do not need to login to start using it. Just have the admin install it as a bot for your company's Slack account. </p>
+            <%= link_to "Employee Recognition for Slack", slack_path %>
+          </div>
+        </div>
+
+
+
+        <div class="bucket" data-turbolinks="false">
+          <div class="exp-feature-card">
+            <div class="exp-feature-title">
+              <%= lazy_image_tag "pages/home-index/exp/outlook.png", class: "icon lazy", alt: "navigate icon" %>
+              <h3 class="balance-text">Outlook employee recognition app</h3>
+            </div>
+            <p class="subtext">Send recognition where everyone already works: Outlook. View your company's employee recognitions, redeem employee rewards, and see your profile all within Outlook 2013 and newer.</p>
+            <p class="subtext"><%= link_to "Outlook Employee Recognition app", marketing_outlook_path %></p>
+          </div>
+        </div>
+
+
+
+      </div>
+      <div class="bucket-row clearfix">
+        <div class="bucket">
+          <div class="exp-feature-card">
+            <div class="exp-feature-title">
+              <span class="settings-icon"></span>
+              <h3 class="balance-text">Customize recognition badges &amp; points</h3>
+            </div>
+            <p class="subtext">Create a personalized gamification strategy with <strong>badges, leaderboards, points</strong>, and more. You can use one of 30 well-designed badges and change the characteristics of those employee recognition badges. You can also <strong>upload your own badges</strong> in just a couple of clicks. You can change the points associated with a badge or choose who can send a badge.</p>
+            <p class="subtext"><%= link_to "Customized employee recognition", customizations_path %></p>
+          </div>
+        </div>
+        <div class="bucket" data-turbolinks="false">
+          <div class="exp-feature-card">
+            <div class="exp-feature-title">
+              <%= lazy_image_tag "pages/home-index/exp/ios7-contact.png", class: "icon lazy", alt: "Person icon" %>
+              <h3 class="balance-text">Employee recognition user management</h3>
+            </div>
+            <p class="subtext">Recognize supports the popular Azure Active Directory, Yammer sync, and SAML for single sign on for your staff. This is the way to manage users in your company. Recognize can import user spreadsheet, Yammer user data, Slack user data, and Office 365 user data.</p>
+          </div>
+        </div>
+      </div>
+      <div class="bucket-row clearfix">
+        <div class="bucket" data-turbolinks="false">
+          <div class="exp-feature-card">
+            <div class="exp-feature-title">
+              <%= lazy_image_tag "pages/home-index/exp/podium.png", class: "icon lazy", alt: "Podium icon" %>
+              <h3 class="balance-text">Staff leaderboards</h3>
+            </div>
+            <p class="subtext">Customize the corporate recognition leaderboards to focus on the employee, teams, or overall throughout your company. The staff leaderboards include filtering by badge or by time.</p>
+            <p class="subtext"><%= link_to "View the Recognize engagement", engagement_path %></p>
+          </div>
+        </div>
+        <div class="bucket" data-turbolinks="false">
+          <div class="exp-feature-card">
+            <div class="exp-feature-title">
+              <%= lazy_image_tag "pages/home-index/exp/university.png", class: "icon lazy", alt: "Graduating hat icon" %>
+              <h3 class="balance-text">Employee award certificates</h3>
+            </div>
+            <p class="subtext">When a recognition is created, you can print off an employee award certificate that represents that recognition. Certificates can be customized.</p>
+            <p class="subtext"><%= link_to "Recognize employee awards", awards_path %></p>
+          </div>
+        </div>
+      </div>
+      <div class="bucket-row clearfix">
+        <div class="bucket" data-turbolinks="false">
+          <div class="exp-feature-card">
+            <div class="exp-feature-title">
+              <%= lazy_image_tag "pages/home-index/exp/iphone.png", class: "icon lazy", alt: "iPhone icon" %>
+              <h3 class="balance-text">Employee recognition mobile apps</h3>
+            </div>
+            <p class="subtext">Recognize provides mobile-ready employee recognition. Staff and recognition admins can login to the mobile website, Android and iPhone employee recognition apps.</p>
+            <%= link_to "See Recognize Mobile", mobile_path %>
+          </div>
+        </div>
+        <div class="bucket" data-turbolinks="false">
+          <div class="exp-feature-card">
+            <div class="exp-feature-title">
+              <%= lazy_image_tag "pages/home-index/exp/ios7-chatbubble.png", class: "icon lazy", alt: "chat bubble icon" %>
+              <h3 class="balance-text">Text message employee recognition</h3>
+            </div>
+            <p class="subtext">Staff can receive recognition through SMS text message. We help companies set up text message recognition for your entire staff. Your employees won't need to be an existing user.</p>
+          </div>
+        </div>
+      </div>
+      <div class="bucket-row clearfix">
+        <div class="bucket" data-turbolinks="false">
+          <div class="exp-feature-card">
+            <div class="exp-feature-title">
+              <%= lazy_image_tag "pages/home-index/exp/trophy.png", class: "icon lazy", alt: "Trophy icon" %>
+              <h3 class="balance-text">Employee Hall of Fame</h3>
+            </div>
+            <p class="subtext">Only Recognize offers a visual representation of the top employees across badges or teams in your company employee recognition program. View top employees in any time dimension. Companies signed up for Recognize can enable this feature in their admin settings.</p>
+          </div>
+        </div>
+        <div class="bucket" data-turbolinks="false">
+          <div class="exp-feature-card">
+            <div class="exp-feature-title">
+              <%= lazy_image_tag "pages/home-index/exp/navigate.png", class: "icon lazy", alt: "navigate icon" %>
+              <h3 class="balance-text">Employee engagement strategy</h3>
+            </div>
+            <p class="subtext">Increase employee retention and build stronger, happier company culture through monthly check-in meetings with Recognize team members. When you sign up for Recognize you also schedule strategy meetings on a monthly basis.</p>
+            <p class="subtext"><%= link_to "Best Practices Handbook", "/best-practices-handbook.pdf" %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="closing">
+    <h3 class="color-white">Request a demo <strong>or</strong> sign up for free</h3>
+    <p class="subtext">
+      <%= schedule_demo_link css_classes: 'button button-highlight', utm_content: 'home-features' %>
+      <%= link_to "Trial Recognize", sign_up_path, class: "button" %>
+    </p>
+  </div>
+
+</section>
+
+<%= render :partial => 'home/footer' %>

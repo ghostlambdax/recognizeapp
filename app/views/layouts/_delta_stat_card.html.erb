@@ -1,0 +1,45 @@
+<%
+  unless defined?(css_class)
+    css_class = ""
+  end
+
+  label_title = defined?(label_title) && label_title.present? ? label_title : nil
+%>
+
+<li class="delta-card <%= css_class %>">
+  <dl class="description">
+    <dt><%= label %></dt>
+
+    <dd><%= this_query %></dd>
+  </dl>
+
+
+  <% if defined?(last_query) %>
+    <div class="delta">
+
+      <% delta = numeric_delta_converter(last_query, this_query) %>
+
+      <% delta_percentage = delta.percent_change.round(0) %>
+
+      <% if delta.positive? %>
+        <span class="good">
+          <span class="css-arrow up"></span> <%= delta_percentage %>%
+        </span>
+      <% elsif delta.negative? %>
+
+        <span class="bad">
+          <span class="css-arrow down"></span> <%= delta_percentage %>%
+        </span>
+
+      <% elsif delta.zero? %>
+        <span>
+          <%= delta_percentage %>%
+        </span>
+      <% end %>
+      <p><span class="info-tooltip" title="<%=tooltip_text%>">
+          <%= last_query.to_i %> <%= last_label%><sup>?</sup>
+      </span></p>
+    </div>
+  <% end %>
+
+</li>

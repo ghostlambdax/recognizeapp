@@ -1,0 +1,162 @@
+//
+// NOTE:
+// This script is polling for Accounts Spreadsheet Importer background job.
+// Peculiarities in finding job completion:
+//    - When a job is complete, DelayedJob removes the job from table. So, the script relies on an ajax error triggered
+//      by job not found in the table.
+//    - However, when DelayedJob is not running (say in Development mode), the job is handled synchronously and is not
+//      removed from the table. In this case, the `progress_stage === 'Imported!'` is checked to find out if the job
+//      completed. This checking of progress_stage to determine completion of the job can be triggered even when
+//      DelayedJob is running depending on what the last ajax poll returns: either `progress_stage === 'Imported!'`
+//      or an error triggered job not found(as the job is removed from the table).
+//
+(function(R, $, undefined) {
+  var interval;
+  var intervalTime = 1000;
+
+  var processingStr = "Processing file..."
+  var importedStr = "Imported!"
+  var errorStr = "Sorry, something went wrong. Please contact support."
+  var errorStrShort = "Error"
+  var queuedStr = "Your import has been queued. <br />You may leave this page and check back later. Results will be emailed to you."
+
+  insertDataSheetImportProgressTag();
+
+  var $container = $('#accounts_spreadsheet_importer');
+  var $progress = $container.find('.data-sheet-import-progress');
+  var $progressMessage = $progress.find('.message');
+  var $progressBarWrapper = $progress.find('.progress-bar');
+  var $progressBar = $progressBarWrapper.find('.progress-inner');
+  var $progressBarMessage = $progressBarWrapper.find('span');
+  var $submitBtn = $progressBarWrapper.parents().find('input[type=submit]');
+  var $fileFieldTag = $('#accounts_spreadsheet_import_import_service_file');
+  var $optionsCheckboxes = $('#accounts_spreadsheet_import_import_service_update_only, #accounts_spreadsheet_import_import_service_remove_users');
+
+  initializeFormElements();
+
+  interval = setInterval(function() {
+    $.ajax({
+      url: '/progress-job/' + "<%= @job.id %>",
+      success: function(job) {
+        var progress;
+        var progressStage = job.progress_stage;
+
+        if (progressStage === null) {
+          progressStage = '';
+        }
+
+        // If there are errors
+        if (job.last_error != null) {
+          handleUnexpectedError();
+          return;
+        }
+
+        progress = job.progress_current / job.progress_max * 100;
+        progress = progress.toFixed(0)
+        var jobNotPutToProcessYet =  progress.toString() === 'NaN'
+
+        if (jobNotPutToProcessYet) {
+          // The job hasn't been picked by delayed_job for processing yet.
+          // Do nothing. Keeping polling.
+          $progressMessage.html(queuedStr);
+        }else {
+          // In job stage
+          $progressMessage.text(processingStr);
+          $progressBar.css('width', progress + '%');
+          $progressBarMessage.text(progressStage);
+          if (progressStage === importedStr) {
+            proceedAfterJobCompletes();
+          }
+        }
+      },
+      error: function(jqXHR) {
+        if (jqXHR.status === 404) {
+          // Job is no longer in database which means it finished successfully;
+          proceedAfterJobCompletes();
+        }else {
+          handleUnexpectedError();
+        }
+      }
+    })
+  }, intervalTime);
+
+  function insertDataSheetImportProgressTag() {
+    removeDataSheetImportProgressTag();
+    $('.file-attach-progress').before(getDataSheetImportProgressTag());
+  }
+
+  function removeDataSheetImportProgressTag() {
+    $('.data-sheet-import-progress').remove();
+  }
+
+  function getDataSheetImportProgressTag() {
+    var dataSheetImportProgressTag =
+      "<div class='data-sheet-import-progress'>" +
+      "<div class='message'></div>" +
+      "<div class='progress-bar'><div class='progress-inner'><span class='right'></span></div></div>" +
+      "</div>"
+    return dataSheetImportProgressTag;
+  }
+
+  function proceedAfterJobCompletes() {
+    clearInterval(interval);
+    setProgressBarToCompleted();
+    clearPreExistingErrors();
+    resetFormElements();
+    visitDataSheetImportReportPath();
+  }
+
+  function setProgressBarToCompleted() {
+    $progressMessage.text(importedStr);
+    $progressBarMessage.text(importedStr);
+    $progressBar.css('width', '100%');
+  }
+
+  function visitDataSheetImportReportPath() {
+    Turbolinks.visit("<%= show_last_import_company_admin_accounts_spreadsheet_importers_path %>");
+  }
+
+  function initializeFormElements() {
+    $optionsCheckboxes.prop("disabled", true);
+    $fileFieldTag.prop("disabled", true);
+    window.recognize.patterns.formLoading.setupButtons($submitBtn[0]);
+    $progressBar.css('width', '0%');
+    $progressBarWrapper.addClass('active');
+    $progressMessage.html(queuedStr);
+  }
+
+  function resetFormElements() {
+    $optionsCheckboxes.prop("disabled", false);
+    $fileFieldTag.prop("disabled",  false);
+    window.recognize.patterns.formLoading.resetButton();
+    var timeout = 2000
+    $progress.fadeOut(timeout);
+    setTimeout(function(){
+        removeDataSheetImportProgressTag();
+      },
+      timeout
+    );
+  }
+
+  function displayError() {
+    $progressMessage.text(errorStr );
+    $progressBarMessage.text(errorStrShort);
+    $progressBar.css('min-width', '50%');
+
+    var errors= [];
+    errors['accounts_spreadsheet_import_import_service_file'] = [errorStr];
+    var formErrors = new window.R.forms.Errors($container, errors)
+    formErrors.renderErrors();
+  }
+
+  function clearPreExistingErrors() {
+    $container.find(".error").remove();
+  }
+
+  function handleUnexpectedError() {
+    clearInterval(interval);
+    displayError();
+    resetFormElements();
+  }
+
+})(window.R, jQuery);

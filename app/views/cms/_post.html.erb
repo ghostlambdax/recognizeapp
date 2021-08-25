@@ -1,0 +1,17 @@
+<% path = p.existing_link_url.present? ? p.existing_link_url : cms_integration_path(slug: p.slug) %>
+<h2><%= p.title %></h2>
+<p><%= p.date %></p>
+
+<% if p.image.present? %>
+  <div class="marginBottom20"><%= lazy_image_tag p.image.url, alt: p.image.url %></div>
+<% end %>
+
+<%= p.description&.html_safe %>
+
+<% if false # Disabled until tags and slugs play nice %>
+  <% wp_client.get_tags_by_post(p.id).each do |tag| %>
+    <div class="subtle-text tag">
+      <%= link_to tag.name, cms_tag_path(tag.id) %>
+    </div>
+  <% end %>
+<% end %>

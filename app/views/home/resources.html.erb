@@ -1,0 +1,63 @@
+<%= content_for :title, "Resources for employee recognition and rewards programs"%>
+<%= content_for :description, "Find resources to help you manage your employee recognition and staff rewards programs including strategy and best practices" %>
+
+<% if current_user.present? && current_user.company.customizations.present? && current_user.company.customizations.youtube_id.present?
+     @youtube_id = current_user.company.customizations.youtube_id
+   else
+     @youtube_id = "l9k_CSBHPNY"
+   end %>
+
+<section id="intro" class="animate-hidden animate-1">
+  <div class="inner">
+    <h1>Resources</h1>
+    <ul class="blue-links width-500 margin-auto" style="rgba(255,255,255, 0.8)">
+      <% @cms_resources.first&.sections&.each_with_index do |a, index| %>
+        <li>
+          <a class='centered animate-scroll' href="#section-<%= index %>">
+            <%= a.section_title %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>
+
+<div id="topics" class="animate-hidden animate-2">
+  <% @cms_resources.first&.sections&.each_with_index do |a, index|
+    post_data = {}
+    post_data[:title] = a.section_title
+    post_data[:links] = a.links
+    post_data[:youtube] = a.youtube_video
+  %>
+
+    <section id="section-<%= index %>">
+      <div class="inner">
+        <h2><%= post_data[:title] %></h2>
+
+        <div class="flex">
+          <ul class="resource-list
+            <% if post_data[:youtube].blank? %>wrapped-list
+            <% end %>">
+            <% post_data[:links].each do |l| %>
+              <li>
+                <%= link_to l['title'], l['url'], class: 'marginBottom0' %>
+              </li>
+            <% end %>
+          </ul>
+
+          <% if post_data[:youtube].present? %>
+            <div class="youtube-video" data-id="<%= post_data[:youtube] %>"></div>
+          <% end %>
+        </div>
+
+      </div>
+    </section>
+
+  <% end %>
+
+
+</div>
+
+<%= render partial: "layouts/youtube_load" %>
+
+<%= render 'home/footer' %>

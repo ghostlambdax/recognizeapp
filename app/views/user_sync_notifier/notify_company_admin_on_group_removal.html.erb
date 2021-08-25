@@ -1,0 +1,9 @@
+<h2 style="<%= mail_styles(:h2, :text) %> margin-bottom: 20px;">
+  <%= t("user_sync.notifier.removal_of_invalid_groups", provider: @sync_provider_name) %>
+</h2>
+
+<div>
+  <% @invalid_groups.each do |group| %>
+    <p><%= group.displayName %></p>
+  <% end %>
+</div>

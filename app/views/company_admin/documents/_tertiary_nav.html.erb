@@ -1,0 +1,4 @@
+<%= tertiary_nav_link "Downloads", documents_index_endpoint(type: "downloads") %>
+<%= tertiary_nav_link "Uploads", documents_index_endpoint(type: "uploads") unless manager_admin_controller? %>
+
+

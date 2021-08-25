@@ -1,0 +1,149 @@
+<% content_for :rewards_filter do %>
+  <%= render layout: 'layouts/create_catalog_dropdown', locals: {company: @company, catalog: @catalog, show_all_currencies_in_dropdown: false} do |catalog| %>
+    <%= link_to(catalog.label, rewards_dashboard_path(catalog)) %>
+  <% end %>
+<% end %>
+
+<div class="row-fluid marginBottom40">
+  <div class="span6">
+    <h2 class="h4">Rewards Overview</h2>
+    <ul class="table-modern-stats color2">
+      <li>
+        <dl>
+          <dd class="balance-text">Deposit Balance</dd>
+          <dt id="deposit-balance"><%= humanized_money_with_symbol(@reward_calculator.reward_monetary_balance(money: true)) %> <i><%= t("dict.pts", points: number_with_delimiter(@reward_calculator.reward_points_balance)) %></i></dt>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dd class="balance-text">Redeemed Total</dd>
+          <dt id="redeemed-total"><%= humanized_money_with_symbol(@reward_calculator.redeemed_points_value) %> <i><%= t("dict.pts", points: number_with_delimiter(@reward_calculator.redeemed_points)) %></i></dt>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dd class="balance-text">Unredeemed Total</dd>
+          <dt id="unredeemed-total"><%= humanized_money_with_symbol(@reward_calculator.awarded_unredeemed_value) %> <i><%= t("dict.pts", points: number_with_delimiter(@reward_calculator.awarded_unredeemed_points)) %></i></dt>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dd class="balance-text">Redeemed Rewards</dd>
+          <dt id="rewards-redeemed"><%= number_with_delimiter(@redemptions.size) %></dt>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dd class="balance-text">Rewards needing approval</dd>
+          <dt id="rewards-unapproved"><%= number_with_delimiter(@redemptions.unapproved.size) %></dt>
+        </dl>
+      </li>
+
+    </ul>
+  </div>
+
+  <div class="span6">
+    <h2 class="h4">
+      <span title="Sorting by number of redemptions.">Top Redeeming Employees <sup>?</sup></span>
+    </h2>
+
+    <ul class="table-modern-stats light">
+      <% if @top_redeeming_employees.blank? %>
+        <p><%= t('rewards.company_no_approved_rewards_yet') %></p>
+      <% else %>
+        <% @top_redeeming_employees.each do |employee| %>
+          <li>
+            <dl>
+              <dd class="balance-text"><%= employee.full_name %></dd>
+              <% redemption_count, redeemed_money, redeemed_points = redemptions_info(employee) %>
+              <dt>(<%= redemption_count %>) <%= redeemed_money %> <i><%= redeemed_points %></i></dt>
+            </dl>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+
+  </div>
+</div>
+
+<% if @redemptions.present? %>
+  <%
+    top_stats = top_stats(@redemptions_for_chart)
+    top_company = top_stats[:company_rewards]
+    top_giftcards = top_stats[:giftcard_rewards]
+  %>
+
+  <div class="row-fluid">
+    <div class="span6">
+      <h2 class="h4">Top Company Rewards</h2>
+
+      <div id="top-company-rewards-piechart"></div>
+
+    </div>
+
+    <div class="span6" id="top-gift-cards">
+      <h2 class="h4">Top Gift Cards</h2>
+        <% if @catalog.rewards.provider_fulfilled.size == 0 %>
+          <%= link_to "Add gift cards", provider_company_admin_catalog_rewards_path(@catalog), class: "button button-primary" %>
+        <% else %>
+          <% if top_giftcards.length > 0%>
+            <div id="top-giftcard-rewards-piechart">
+            </div>
+          <% else %>
+            <div class="text-centered" style="margin:25%">No gift cards have been approved yet.</div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    (function() {
+      var data = [], giftcardData = [];
+      window.R = window.R || {};
+      window.R.company = window.R.company || {};
+      window.R.company.dashboard = window.R.company.dashboard || {};
+
+      <% top_company.each do |data| %>
+      data.push({
+        name: "<%= Reward.find(data[0]).title %>",
+        y: <%= data[1] %>
+      });
+      <% end %>
+
+      window.R.company.dashboard.pieChartDataCompany = [{
+        name: '',
+        colorByPoint: true,
+        data: data
+      }];
+
+      <% top_giftcards.each do |data| %>
+      giftcardData.push({
+        name: "<%= Reward.find(data[0]).title %>",
+        y: <%= data[1] %>
+      });
+      <% end %>
+
+      window.R.company.dashboard.pieChartDataGiftCards = [{
+        name: '',
+        colorByPoint: true,
+        data: giftcardData,
+        lang: {
+          noData: "No gift cards have been approved yet."
+        }
+      }];
+
+    })();
+  </script>
+
+<% else %>
+  <%# Turbolinks - reset old values from previous navigation (if any) %>
+  <script type="text/javascript">
+    (function(R) {
+      if (R && R.company && R.company.dashboard) {
+        var dashboard = R.company.dashboard;
+        dashboard.pieChartDataGiftCards = null;
+        dashboard.pieChartDataCompany = null;
+      }
+    })(window.R);
+  </script>
+<% end %>

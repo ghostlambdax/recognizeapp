@@ -1,0 +1,271 @@
+<%
+
+  results = [
+    {
+      title: "49% of employees surveyed quit a job for not receiving employee recognition",
+      q: "Have you ever left a job because you felt under-appreciated?",
+      image: "pages/demo-survey/reports/report-1.png",
+      alt: "49% of people have left a job for feeling under-appreciated."
+    },
+    {
+      title: "Most employees are generally happy with their jobs",
+      q: "In general, how satisfied are you with your current workplace?",
+      image: "pages/demo-survey/reports/report-2.png",
+      alt: "40% of people give their current employer 4 out of 5."
+    },
+    {
+      title: "76% of employees prefer less frequent employee recognition with higher value",
+      q: "Which type of recognition do you prefer?",
+      image: "pages/demo-survey/reports/report-3.png",
+      alt: "Only 922 people answered this compared to the 1030 people that have answered all the other questions."
+    },
+    {
+      title: "Most employees appreciate being appreciated",
+      q: "I appreciate being recognized by my peers for my contributions in the workplace.",
+      image: "pages/demo-survey/reports/report-4.png",
+      alt: "45% of people give 4 out of 5 in appreciating recognition."
+    },
+    {
+      title: "Employees prefer private employee recognition from their managers",
+      q: "I appreciate being publicly recognized by my company for my contributions. ",
+      image: "pages/demo-survey/reports/report-5.png",
+      alt: "Private recognition from managers got a 4.24/5."
+    },
+    {
+      q: "
+I appreciate being privately recognized by my company for my contributions.",
+      image: "pages/demo-survey/reports/report-6.png",
+      alt: "Public recognition from manager got a 3.72/5."
+    },
+    {
+      title: "Employees prefer private birthday recognition",
+      q: "I like when my company publicly recognizes my birthday.",
+      image: "pages/demo-survey/reports/report-7.png",
+      alt: ""
+    },
+    {
+      q: "I like when my company privately recognizes my birthday.",
+      image: "pages/demo-survey/reports/report-8.png",
+      alt: ""
+    },
+    {
+      title: "If employees had to choose, they would prefer work anniversaries than birthday celebrations.",
+      q: "I like when my company publicly recognizes my work anniversary.",
+      image: "pages/demo-survey/reports/report-9.png",
+      alt: ""
+    },
+    {
+      q: "I like when my company privately recognizes my work anniversary.",
+      image: "pages/demo-survey/reports/report-10.png",
+      alt: ""
+    },
+    {
+      title: "Employees love cash as a result of employee recognition",
+      q: "When receiving recognition at my company, I prefer cash rewards.",
+      image: "pages/demo-survey/reports/report-11.png",
+      alt: "4.45 average out of 5 for paid time off as an employee recognition reward of choice."
+    },
+    {
+      title: "Donation to charity is not preferred",
+      q: "When receiving recognition at my company, I prefer donating to the charity of my choice.",
+      image: "pages/demo-survey/reports/report-12.png",
+      alt: "2.37 average out of 5 for paid time off as an employee recognition reward of choice."
+    },
+    {
+      title: "Employees want paid time off as an employee recognition reward",
+      q: "When receiving recognition at my company, I prefer additional paid time off.",
+      image: "pages/demo-survey/reports/report-13.png",
+      alt: "3.78 average out of 5 for paid time off as an employee recognition reward of choice."
+    },
+    {
+      title: "Employees are least interested in a parking spot of the choices we asked",
+      q: "When receiving recognition at my company, I prefer a special parking spot.",
+      image: "pages/demo-survey/reports/report-14.png",
+      alt: "2.18 average out of 5 for paid time off as an employee recognition reward of choice."
+    },
+    {
+      title: "Merchandise is out for employee recognition",
+      q: "When receiving recognition at my company, I prefer merchandise.",
+      image: "pages/demo-survey/reports/report-15.png",
+      alt: "2.39 average out of 5 for merchandise as an employee recognition reward of choice. "
+    },
+    {
+      title: "Most employees are not interested in experiences as employee recognition rewards either",
+      q: "When receiving recognition at my company, I prefer experiences, such as a massage or sky dive trip",
+      image: "pages/demo-survey/reports/report-16.png",
+      alt: "2.41 average out of 5 for experiences as an employee recognition reward of choice"
+    },
+    {
+      title: "Employees feel similarly about plaques as they do about experiences.",
+      q: "When receiving recognition at my company, I prefer receiving a plaque or award certificate.",
+      image: "pages/demo-survey/reports/report-17.png",
+      alt: "2.38 average out of 5 for plaques as an employee recognition reward of choice"
+    },
+    {
+      title: "Employees self-report a similar motivation when recognized by peers, managers, or executives",
+      q: "I feel motivated in my work when I am recognized by my manager.",
+      image: "pages/demo-survey/reports/report-18.png",
+      alt: "4.07 out of 5"
+    },
+    {
+      q: "I feel motivated in my work when I am recognized by my peers.",
+      image: "pages/demo-survey/reports/report-19.png",
+      alt: "3.94 out of 5"
+    },
+    {
+      q: "
+I feel motivated in my work when I am recognized by my company's executives.",
+      image: "pages/demo-survey/reports/report-20.png",
+      alt: "4.01 out of 5"
+    },
+    {
+      title: "Employees slightly prefer recognizing peers in private",
+      q: "I feel comfortable recognizing peers for their contributions in a public group setting.",
+      image: "pages/demo-survey/reports/report-21.png",
+      alt: "3.86 out of 5"
+    },
+    {
+      q: "I feel comfortable recognizing peers for their contributions privately in person.
+",
+      image: "pages/demo-survey/reports/report-22.png",
+      alt: "4.19 out of 5"
+    },
+    {
+      title: "Employees slightly prefer recognizing peers in person than online",
+      q: "I feel comfortable recognizing peers for their contributions publicly through an online form.",
+      image: "pages/demo-survey/reports/report-23.png",
+      alt: "3.58 out of 5"
+    },
+    {
+      q: "I feel comfortable recognizing peers for their contributions privately through an online form.",
+      image: "pages/demo-survey/reports/report-24.png",
+      alt: "3.78 out of 5"
+    },
+    {
+      title: "35% of employees have never experienced an employee recognition program",
+      q: "Have you ever worked for a company with an official employee recognition program?",
+      image: "pages/demo-survey/reports/report-25.png",
+      alt: "65% yes and 35% no."
+    },
+    {
+      title: "",
+      q: "If yes, what types of employee recognition programs have you used?",
+      image: "pages/demo-survey/reports/report-26.png",
+      alt: "39% cash bonus, 34% plaques, 31% birthday, 28% gift card, 25% manager to peer recognition, 20% monthly nomination voting program, 20% peer to peer recognition, 18% non-monetary program, 15% yearly nomination voting program, 10% quarterly nomination voting program, 8% experience program, 4% other."
+    },
+    {
+      title: "Give employees quarterly recognition and you'll satisify 56% of the workforce.",
+      q: "How often do you wish you were recognized for your contributions?",
+      image: "pages/demo-survey/reports/report-27.png",
+      alt: "37% prefer quarterly employee recognition, 27% monthly, 19% yearly, 13% weekly, 5% daily."
+    }
+
+  ]
+
+
+
+%>
+
+
+<% content_for :title, "Employee Recognition Report" %>
+<% content_for :description, "A survey to discover the employee recognition and rewards preferences of employees across industries and pay." %>
+
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Employee Recognition Report | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="A survey to discover the employee recognition and rewards preferences of employees across industries and pay." />
+  <meta property="og:image" content="/assets/illustrations/recognize.jpg" />
+<% end%>
+
+<section id="intro" class="animate-hidden animate-1">
+  <div class="inner">
+    <h1 class="balance-text">2018 Employee Recognition Report</h1>
+    <p class="tagline balance-text width-800">Recognize Team surveyed over 1,000 employees across industry, pay-scale, gender, and age on their  employee recognition and rewards preferences. More updates in the works with participant-segmented insights.</p>
+    <p class="tagline balance-text">For 2019, we analyzed the 2018 data from three Recognize studies and combined them into one meta-analysis on the differences between age, job title, and gender in regards to <%= link_to 'employee recognition preferences', employee_recognition_report_2019_path %>.</p>
+    <%= link_to "Scroll to results", "#big-point-wrapper", class: "button animate-scroll button-large" %>
+    <%= link_to "Contact Us to Download report", contact_sales_path(body: "Get me the employee recognition report please!"), class: "button button-highlight button-large", rel: "noindex,nofollow" %>
+  </div>
+</section>
+
+<div id="points" class="animate-hidden animate-2">
+
+  <section id="point1-wrapper" class="clearfix">
+    <div class="inner clearfix">
+      <div class="row-fluid">
+        <div class="span8">
+          <h2 class="balance-text">Major takeaways from the Employee Recognition Report</h2>
+          <ul class=" check-list">
+            <li class="balance-text">Cash is still king, merchandise is out</li>
+
+            <li class="balance-text">49% of people have left jobs for not being recognized</li>
+            <li class="balance-text">People want regular recognition mostly quarterly, yearly, or monthly</li>
+            <li class="balance-text">76% of people aren't interested in micro-bonuses</li>
+            <li class="balance-text">People prefer work anniversaries over birthdays at work</li>
+            <li class="balance-text">People are generally comfortable with online recognition</li>
+          </ul>
+        </div>
+
+        <div class="span4">
+          <%= image_tag "pages/demo-survey/trophy.png", class: "take-away-graphic", alt: "An illustration of employee recognition with symbols of people sitting on trophies flying." %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="get-report">
+    <div class="" style="margin: auto;">
+      <div class="row-fluid">
+        <div class="span2">
+          <%= image_tag "pages/demo-survey/report.png", alt: "Report icon for employee recognition report.", class: "marginBottom20" %>
+        </div>
+        <div class="span10">
+          <h2 class="balance-text">Get Employee Recognition Report</h2>
+          <p class="balance-text">Download the PDF of the results from this webpage.</p>
+          <%= link_to "Contact Us to Get report", contact_sales_path(body: "Get me the employee recognition report please!"), class: "button button-highlight", rel: "noindex,nofollow" %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%= image_tag "pages/demo-survey/work.png", alt: "Employees working together.", class: "width100" %>
+
+  <section id="big-point-wrapper" class="clearfix">
+    <div class="inner clearfix">
+      <% results.each do |result| %>
+
+        <% if result[:title].present? %>
+        <h2 class="balance-text width-800"><%= result[:title] %></h2>
+        <% end %>
+        <p><strong>Q:&nbsp;</strong><%= result[:q] %></p>
+        <%= image_tag result[:image], alt: result[:alt], class: "width-800 marginBottom40" %>
+
+      <% end %>
+    </div>
+  </section>
+
+
+  <section id="" class="clearfix">
+    <div class="inner clearfix">
+      <h2>Employee Recognition Report methodology</h2>
+      <p>The report was conducted using Mechanical Turk in the Summer of 2018. 1030 participants answered most questions.</p>
+
+      <h3>Participant demographics</h3>
+      <ul>
+        <li>52% were female, 48% male</li>
+        <li>8% were 18-24, 33% were 25-34, 24% 35-44, 19% 45-54, 12% 55-64 years of age.</li>
+        <li>Although allowed internationally, 84% were in the USA and 10% in India. Canada and Mexico made up 1% each.</li>
+        <li>One major problem was the percentage of caucasians in the study: 70% white, 10% South Asian, 6% black, 4% Hispanic, Latino or Spanish origin, 4$ East Asian.</li>
+        <li>49% were married, 30% single, 9% living with their partner, 9% divorced, 2% separated.</li>
+        <li>On average people live with 2.99 people.</li>
+        <li>76% drive for transportation, 8% walk, 6% bike, 5% motorcycle, 3% bus, 2% metro, 1% train. One person said they travel by plane.</li>
+        <li>45% have a bachelor's degree, 15% attended college, 14% associate degree, 13% Master's degree, 8% high school, 3% professional degree, 1% doctorate degree.</li>
+        <li>18% technology, 10% work in health care, 8% financial services, 6% retail, 5% accounting, 5% education, and more across 102 industries.</li>
+        <li>22% make $50k to $75k, 18% $30k to $40k, 18% under $20k, 13% $75k to $100k, 10% $20k to $30k.</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<%= render :partial => 'footer' %>

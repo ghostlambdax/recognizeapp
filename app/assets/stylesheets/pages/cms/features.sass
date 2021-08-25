@@ -1,0 +1,79 @@
+body[class*=cms]
+  .home-intro
+    padding: 55px 20px
+
+#cms_features-show
+
+  .feature-image
+    margin: 100px
+    text-align: center
+
+    @media (max-width: $tablet)
+      margin: 30px 10px
+
+    img
+      box-shadow: 0 0 34px 17px rgba(200, 200, 200, 0.8)
+
+  .points
+    padding-bottom: 0
+
+    h2
+      @include pointH2()
+
+    .point
+      margin-bottom: 50px
+      padding: 50px 25px
+
+      &:last-child
+        margin-bottom: 0
+
+      @media (max-width: $tablet)
+        padding: 30px 10px
+
+      .inner
+        flex-direction: row-reverse
+
+        @media (max-width: $tablet)
+          flex-direction: column !important
+          height: auto !important
+
+          .point-image,
+          .point-body
+            width: 100%
+
+
+      &:nth-child(even)
+        background: $lightGray
+        background: url(image_path('patterns/pw_maze_white.png')) repeat
+
+        .inner
+          flex-direction: row
+
+      .inner
+        display: flex
+        justify-content: center
+        align-items: center
+        max-width: 1504px
+        margin: auto
+
+      .point-image
+        width: 35%
+
+        .inner
+          max-width: 700px
+          height: 550px
+
+        img
+          max-width: 100%
+          max-height: 100%
+
+      .point-body
+        width: 40%
+        padding: 50px 25px 25px 50px
+
+        @media (max-width: $desktop-medium)
+          width: 60%
+
+        @media (max-width: $tablet)
+          padding: 15px
+

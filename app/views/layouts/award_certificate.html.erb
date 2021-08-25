@@ -1,0 +1,38 @@
+
+
+<%= yield :fonts %>
+
+<%= yield :introductions %>
+
+<section id="awardGenerator" class="marginBottom30">
+
+  <div class="certificate-inner">
+    <div class="controls">
+      <div class="control"><a id='export-pdf' href="javascript://" class="button button-primary"><%= _('Generate PDF') %></a>
+      </div>
+      <div>
+        <label><%= _('Font Families') %> (<i>Comma separated any font on your computer</i>)</label>
+        <input type='text' value='<%= yield :default_fonts %>' id='fontFamily'>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="text-options">
+        <%= yield :controls %>
+      </div>
+
+
+      <div id="award-viewpoint"></div>
+    </div>
+  </div>
+
+</section>
+
+<label class=""><%= t("dict.language") %></label>
+
+<select id="langauge-select" class="marginVertical10">
+
+  <%= options_for_locales('en') %>
+</select>
+
+<%= javascript_include_tag "3p/konva" %>
+

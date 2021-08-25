@@ -1,0 +1,29 @@
+<% content_for :title, "Combat Healthcare Burnout" %>
+<% content_for :description, "Learn how Recognition and Engagement can combat Burnout in Healthcare. Learn why it matters and how you can identify burnout." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Combat Healthcare Burnout | Recognize" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="How Recognition and Engagement can combat Burnout in Healthcare" />
+  <meta property="og:image" content="/assets/pages/articles/combat-healthcare-burnout/main.jpg" />
+  <meta property="og:url" content="https://recognizeapp.com/combat-health-care-burnout" />
+  <link rel="amphtml" href="<%= combat_healthcare_burnout_url format: :amp %>">
+<% end%>
+
+<% content_for :article_title do %>How Recognition and Engagement can combat Burnout in Healthcare<% end %>
+<% content_for :article_description do %>
+  <%= lazy_image_tag "pages/articles/combat-healthcare-burnout/main.jpg", alt: "A nurse looking tired", class: "marginBottom30 marginRight30 left", itemprop: "image" %>
+<% end %>
+
+<% tags = ["Introduction", "Identifying Burnout", "Why Burnout Matters", "Team Huddles", "Employee Recognition", "Paid Time Off", "Utilize Saps", "Encourage Yoga", "Encourage Mentorship", "Sleep On It"] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "combat_healthcare_burnout", locals: {tags: tags} %>
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

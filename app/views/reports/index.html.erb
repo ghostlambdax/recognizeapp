@@ -1,0 +1,35 @@
+<% if current_user && !current_user.subscribed_account? %>
+  <% content_for :tour_content do %>
+      <h3><%= t("reports.marketing_title_html") %></h3>
+      <div class="youtube-video" id="youtube-video" data-id="dXy3Dm4GEj0"></div>
+  <% end %>
+<% end %>
+
+<%= render(layout: "layouts/leaderboard") {} %>
+
+<% if @company.allow_yammer_stats? %>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs marginBottom15" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#recognize_stats_tab" aria-controls="recognize_stats" role="tab" data-toggle="tab" class="unlocked" id="recognize_stats"><%= t("reports.recognize_stats") %></a>
+    </li>
+    <% if @company.allow_yammer_stats? %>
+      <li role="presentation">
+        <a href="#yammer-stats-tab" aria-controls="yammer_stats" role="tab" data-toggle="tab" class="unlocked", id="yammer_stats"><%= t("reports.yammer_stats") %></a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="recognize_stats_tab">
+    <%= render "recognize_stats" %>
+  </div>
+  <% if @company.allow_yammer_stats? %>
+    <div role="tabpanel" class="tab-pane fade" id="yammer-stats-tab">
+      <%= render "yammer_stats" %>
+    </div>
+  <% end %>
+</div>

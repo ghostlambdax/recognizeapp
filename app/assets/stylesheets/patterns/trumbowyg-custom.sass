@@ -1,0 +1,88 @@
+
+.trumbowyg
+  // BEGIN - reset global overrides that cause MAJOR IE11 ISSUES
+
+  // Override "overflow: hidden" in patterns/patterns.scss:74
+     Without this, the interface degrades significantly, showing element selection, borders and resize handles
+  p
+    overflow: visible !important
+    line-height: 1.5em
+
+  // Override "display :none" in reset.scss:251
+     Without this, new line insertion does not work when pressing enter
+  p:empty
+    display: block !important
+
+  // END - reset global overrides that cause MAJOR IE11 ISSUES
+
+.trumbowyg-modal
+  // prevent trumbowyg modal from overlaying the top navbar (who's z-index is 999)
+  z-index: 990 !important
+
+  // resort to default z-index for company / manager admin because the modal needs to be on top of swal
+  #company_admin_recognitions-index &,
+  #manager_admin_recognitions-index &
+    z-index: 99999 !important
+
+  // prevent position override by form-loading css
+  .trumbowyg-modal-button.form-loading-button
+    position: absolute
+
+  // make modal button colors consistent
+  .trumbowyg-modal-box .trumbowyg-modal-button
+    &.trumbowyg-modal-submit
+      background: $buttonPrimaryBg
+      &:hover, &:focus
+        background: darken($buttonPrimaryBg, 10%)
+
+    &.trumbowyg-modal-reset
+      &:hover, &:focus
+        background: darken(#e6e6e6, 10%)
+        color: #333
+
+  // lighten the close button icon for consistency
+  .trumbowyg-giphy-close svg
+    opacity: 0.6
+
+  .trumbowyg-powered-by-giphy span
+    opacity: 0.4
+
+  // overrides for appropriate positioning in small-width screens (mobile / outlook).
+  @media (max-width: 500px)
+    .trumbowyg-powered-by-giphy
+      top: calc(5% + 8px)
+
+    .trumbowyg-giphy-close
+      top: calc(5%)
+
+  @media (max-width: 400px)
+    .trumbowyg-powered-by-giphy
+      top: calc(5% + 5px)
+
+    .trumbowyg-powered-by-giphy span
+      opacity: 0.2
+
+    .trumbowyg-giphy-search
+      padding-right: 75px
+
+  @media (max-width: 350px)
+    .trumbowyg-powered-by-giphy span
+      display: none // starts overlapping beyond this point
+
+// custom class
+.trumbowyg-custom-error
+  padding: 10px
+  background: rgba(231, 76, 60, 0.29)
+
+// make default color for raw text uniform with <p> text
+.recognitions,
+.company_admin_recognitions,
+.manager_admin_recognitions
+  .trumbowyg-editor
+    color: #3F3F3F
+
+// maintain consistency for default font styles inside swals
+.company_admin_recognitions, .manager_admin_recognitions
+  .trumbowyg-editor
+    font-size: 13px
+    font-weight: initial

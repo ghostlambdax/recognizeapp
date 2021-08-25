@@ -1,0 +1,22 @@
+<h2 style="<%= mail_styles(:h2, :text, :title) %>">
+  <%=t("rewards.admin_email_header", name: @redeeming_user.full_name, email: @redeeming_user.email, reward_title: @reward_title) %>
+</h2><br/>
+
+
+<% if @redemption.auto_approved?%>
+  <p style="<%= mail_styles(:text, :p) %>"><%= t('rewards.admin_auto_approved_redemption_email_body') %></p>
+<% else %>
+  <p style="<%= mail_styles(:text, :p) %>"><%= t('rewards.admin_redemption_email_body') %></p>
+<% end %>
+
+<% unless @reward.provider_reward? %>
+  <p style="<%= mail_styles(:text, :p) %>"><%=t("rewards.please_see_them_html")%></p>
+<% end %>
+
+<% unless @redemption.auto_approved? %>
+  <%= link_to t('dict.approve_or_deny'), @approve_url, style: mail_styles(:text, :button) %><br>
+<% end %>
+
+<%= link_to t('rewards.email_name', name: @redeeming_user.first_name), "mailto:#{@redeeming_user.email}", style: mail_styles(:text, :a) %><br><br>
+
+

@@ -1,0 +1,17 @@
+*Anniversary Delivery Report for <%= Time.now.to_formatted_s(:long_ordinal) %>*
+<% if @results[:fail].present? %>
+  Attn: <%= SlackNotifierListener::SYSTEM_ADMIN_SLACK_HANDLES.html_safe %>, There are failed results:
+  *Failed Results:*
+    <% @results[:fail].sort_by{|r| r[:company].domain.downcase}.each do |result| %>
+><%= result[:company].domain %> | <%= result[:sa_users].length %> service anniversaries | <%= result[:b_users].length %> birthdays | <%= result[:exception] %>
+    <% end %>
+<% end %>
+
+<% if @results[:success].present? %>
+  *Successful Results:*
+    <% @results[:success].sort_by{|r| r[:company].domain.downcase}.each do |result| %>
+><%= result[:company].domain %> | <%= result[:sa_users].length %> service anniversaries | <%= result[:b_users].length %> birthdays 
+    <% end %>
+<% end %>
+
+

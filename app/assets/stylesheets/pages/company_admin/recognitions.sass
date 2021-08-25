@@ -1,0 +1,97 @@
+#company_admin_recognitions-index, #manager_admin_recognitions-index
+  .dt-buttons.pull-right
+    float: none !important
+
+  div[rel=tooltip]
+    width: 100%
+    height: 20px
+
+  .select2-selection__choice__remove
+    display: none
+
+  #view-main-wrapper
+    table
+      table-layout: fixed
+      width: auto !important // override js width
+      margin: 0
+      min-width: 100%
+
+      th, td
+        overflow: hidden
+
+      .message.sorting
+        width: 267px !important
+
+      .nominate-select
+        width: 100px !important
+
+      .slug
+        width: 30px !important
+
+      td.actions .button
+        display: block
+
+      .message
+        // make paragraph texts consistent with other text in the table
+        p
+          color: #000
+          font-size: 16px
+        img
+          width: auto
+          height: auto
+          max-width: 100px
+          max-height: 100px
+
+        // add scrolling for long content
+        .message-wrapper
+          max-height: 300px
+          overflow: auto
+
+    #recognitions-table
+      .dtrg-group
+        td
+          p
+            float: left
+            margin-right: 80px
+
+    #recognitions-filter-wrapper
+      input[type=search]
+        display: block
+
+      .litatable-row-group
+        display: block
+        height: 5em
+
+      .litatable-select-filter
+        float: left
+        margin: 0 10px 0 0
+
+  .select2-dropdown
+    z-index: 1100 // should be greater than swal's z-index (1060)
+
+  .swal2-container .recognition-attributes-wrapper
+    margin-top: 10px
+    text-align: left
+
+  .recognition-approval-swal
+
+    .message-wrapper
+      margin-top: 10px
+      text-align: left
+
+    textarea
+      width: 100%
+      max-height: 200px
+      min-height: 100px
+
+    .points-label
+      text-align: left
+      margin-top: 10px
+
+    .swal2-validation-message
+      margin-top: 20px
+
+  .recognition-denial-swal
+    .message img
+      max-width: 100px
+      max-height: 100px

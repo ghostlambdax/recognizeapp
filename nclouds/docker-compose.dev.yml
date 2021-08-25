@@ -1,0 +1,116 @@
+version: '3'
+services:
+  recognize:
+    build:
+      context: ../
+      dockerfile: infrastructure/Dockerfile
+      args:
+        #buildtime_env: "development"
+        #buildtime_env: "test"
+        buildtime_env: "production"
+        buildtime_region: "us-east-1"
+    #environment:
+      #- DATABASE_MYSQL_USERNAME=root
+      #- DATABASE_MYSQL_PASSWORD=root
+      #- DATABASE_MYSQL_HOST=localmysql
+      #- aws_elasticache_endpoint=localredis
+      # - START_UP="ssl"
+    extra_hosts:
+      - "l.recognizeapp.com:127.0.0.1"
+    ports:
+      - "3000"
+      - "50000"
+    # volumes:
+    #   - ../:/recognize # Linux Os
+    #   - recognize-sync:/recognize:nocopy # nocopy is important Win/Mac Os
+    networks:
+      - recognizenet
+    depends_on:
+      - mysql
+      - redis
+  mysql:
+    #image: mysql:5.7
+    # https://hub.docker.com/_/mariadb
+    image: mariadb:10.3
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      # note: if you are running recorgnize outside of docker you will need to open the mysql port up to the host
+      - "3306:3306"
+    volumes:
+      # internal/docker volumes are quite slow (use external nobarrier volumes below instead)
+      #- db-data-v1:/var/lib/mysql
+      # External Nobarrier volume
+      #   NOTE: the volume that this directory resides in needs to be mounted with the nobarrier flag, somethine like the following:
+      #         UUID="ddfe877e-fb97-4b05-9ac2-8e618e0fd27b" /media/recog-data     ext4      nobarrier,errors=remount-ro   0        1
+      #  more info on tuning for mysql: https://www.percona.com/blog/2018/07/03/linux-os-tuning-for-mysql-database-performance/
+      - /media/recog-data/v3/data:/var/lib/mysql
+      #~ - /media/recog-data/v3/log:/var/lib/mysql-log
+      # external ZFS (can be fast but requires a lot of tuning)
+      #~ - /tank/mysql/data:/var/lib/mysql
+      #~ - /tank/mysql/log:/var/lib/mysql-log
+      # local/project dir vol (slow - same as docker volume)
+      ##- ./tmp/data:/var/lib/mysql
+      # dumps
+      - ./tmp:/dumps
+    #~ command: [
+      #~ 'mysqld',
+      #~ '--datadir=/var/lib/mysql',
+      #~ '--innodb-log-group-home-dir=/var/lib/mysql-log',
+      #~ '--innodb-doublewrite=OFF',
+      #~ '--innodb-checksum-algorithm=none',
+      #~ '--slow_query_log_file=/var/lib/mysql-log/slow.log',
+      #~ '--log-error=/var/lib/mysql-log/error.log',
+      #~ '--server-id=1',
+      #~ '--log-bin=/var/lib/mysql-log/binlog',
+      #~ '--relay-log=/var/lib/mysql-log/relay-bin',
+      #~ '--expire-logs-days=7',
+      #~ '--symbolic-links=0',
+      #~ #'--disable-log-bin',
+
+      #~ '--max-binlog-size=500M',
+      #~ '--innodb-buffer-pool-size=1048576000',   #1gb
+
+      #~ # settings for nvme disks
+      #~ #'--innodb-flush-method=nosync',
+      #~ #'--innodb-checksum-algorithm=crc32',
+      #~ #'--innodb-flush-neighbors=0',   # disable
+      #~ #'--innodb-io-capacity=1000',    # nvme disk so use it!
+      #~ #'--innodb-io-capacity-max=2500',
+      #~ #'--innodb-log-compressed-pages=OFF',
+      #~ ## '--innodb-page-size=4096',
+      #~ #'--binlog-row-image=minimal',
+      #~ #'--sync_binlog=0',
+      #~ #'--innodb_flush_log_at_trx_commit=1',
+    #~ ]
+    networks:
+      - recognizenet
+  redis:
+    #image: redis
+    # https://hub.docker.com/_/redis
+    image: redis:5.0-alpine
+    ports:
+      # note: if you are running recorgnize outside of docker you will need to open the mysql port up to the host
+      - "6379:6379"
+    networks:
+      - recognizenet
+
+
+networks:
+  recognizenet:
+
+
+volumes:
+    db-data-v1: {}
+    db-data-v2: {}
+
+
+# volumes: # only for Win/Mac with docker-sync
+#   recognize-sync: # only for Win/Mac with docker-sync
+#     external: true # only for Win/Mac with docker-sync
+
+# Run:
+# cd nclouds
+# docker-compose build
+# docker-compose run --rm recognize ./nclouds/start_delayedjobs.sh
+# docker-compose up recognize

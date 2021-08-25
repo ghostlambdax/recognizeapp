@@ -1,0 +1,80 @@
+<h2 class="balance-text section-title">Employee Appreciation Foundations</h2>
+<p class="tagline">The basics are all about appreciating in a meaningful way, creating a super fun culture, do it in a way the employees appreciate, and making sure employee recognition doesn't backfire.</p>
+
+<ul id="foundations" class="article-list">
+  <% @the_basics.each do |list_item| %>
+    <%= render partial: "articles/article_list_item", locals: {article_list_item: list_item} %>
+  <% end %>
+</ul>
+
+<%= render partial: "articles/contact_us" %>
+
+
+<h2 class="balance-text section-title">Core Strategies for Employee Recognition Ideas</h2>
+<p class="tagline">These are the main ideas and components successful companies use to motivate and recognize their employees.</p>
+
+<ul id="core_strategies" class="article-list">
+
+  <% @core_strategies.each do |list_item| %>
+    <%= render partial: "articles/article_list_item", locals: {article_list_item: list_item} %>
+  <% end %>
+</ul>
+
+<%= render partial: "articles/contact_us" %>
+
+<h2 class="balance-text section-title">Creative Employee Reward Ideas</h2>
+<p class="tagline">Make your recognition program as unique as you can to create culture and buzz.</p>
+
+<ul id="creative" class="article-list">
+
+  <% @creative.each do |list_item| %>
+    <%= render partial: "articles/article_list_item", locals: {article_list_item: list_item} %>
+  <% end %>
+</ul>
+
+<%= render partial: "articles/contact_us" %>
+
+<h2 class="balance-text section-title">Perks for Employee Recognition Ideas</h2>
+<p class="tagline">Perks are what set the top 100 companies from the rest. Thankfully, you too can provide Google-level perks for your company with ease.</p>
+
+<ul id="perks" class="article-list">
+
+  <% @perks.each do |list_item| %>
+    <%= render partial: "articles/article_list_item", locals: {article_list_item: list_item} %>
+  <% end %>
+</ul>
+
+<%= render partial: "articles/contact_us" %>
+
+<h2 class="balance-text section-title">Non-Monetary Employee Reward Ideas</h2>
+<p class="tagline">Non-monetary experiences as employee recognition leave a lasting impression on your staff that can be shared with others.</p>
+
+<ul id="non-monetary" class="article-list">
+
+  <% @non_monetary.each do |list_item| %>
+    <%= render partial: "articles/article_list_item", locals: {article_list_item: list_item} %>
+  <% end %>
+</ul>
+
+<h2 class="balance-text section-title">Remote worker employee recognition ideas</h2>
+<p class="tagline">Since Covid-19 accelerated the pace towards remote employment, engaging in distributed, remote teams is top of mind in the 2020s.</p>
+
+<ul id="remote_workers" class="article-list">
+
+  <% @remote_workers.each do |list_item| %>
+    <%= render partial: "articles/article_list_item", locals: {article_list_item: list_item} %>
+  <% end %>
+</ul>
+
+<h2 class="balance-text section-title">Frontline employees</h2>
+<p class="tagline">Many organizations are not only back office enterprises. Many need to think about their stores, factories, and hospitals.</p>
+
+<ul id="frontline" class="article-list">
+  <% @frontline.each do |list_item| %>
+    <%= render partial: "articles/article_list_item", locals: {article_list_item: list_item} %>
+  <% end %>
+</ul>
+
+<%= render partial: "articles/contact_us" %>
+
+

@@ -1,0 +1,96 @@
+# Use the latest stable version of Semaphore 2.0 YML syntax:
+version: v1.0
+
+# Name your pipeline. In case you connect multiple pipelines with promotions,
+# the name will help you differentiate between, for example, a CI build phase
+# and delivery phases.
+name: Recognize Unit Tests
+
+# An agent defines the environment in which your code runs.
+# It is a combination of one of available machine types and operating
+# system images.
+# See https://docs.semaphoreci.com/article/20-machine-types
+# and https://docs.semaphoreci.com/article/32-ubuntu-1804-image
+agent:
+  machine:
+    type: e1-standard-4
+    os_image: ubuntu1804
+
+auto_cancel:
+  running:
+    when: "true"
+
+global_job_config:
+  prologue:
+    commands:
+      # Checkout code from Git repository. This step is mandatory if the
+      # job is to work with your code.
+      # Optionally you may use --use-cache flag to avoid roundtrip to
+      # remote repository.
+      # See https://docs.semaphoreci.com/article/54-toolbox-reference#checkout
+      - checkout
+      # Restore dependencies from cache.
+      # Read about caching: https://docs.semaphoreci.com/article/149-caching
+      - cache restore
+      # Set Ruby version:
+      - sem-version ruby 2.7.2
+      - gem install bundler:1.17.3
+      - bundle install --deployment -j 4 --path vendor/bundle
+
+
+
+# Blocks are the heart of a pipeline and are executed sequentially.
+# Each block has a task that defines one or more jobs. Jobs define the
+# commands to execute.
+# See https://docs.semaphoreci.com/article/62-concepts
+blocks:
+  - name: Setup
+    dependencies: []
+    task:
+      jobs:
+        - name: bundle
+          commands:
+          # Store the latest version of dependencies in cache,
+          # to be used in next blocks and future workflows:
+          - cache store
+
+  - name: Rspec
+    dependencies:
+      - Setup
+    task:
+      env_vars:
+        - name: KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES
+          value: "true"
+        - name: KNAPSACK_PRO_FIXED_QUEUE_SPLIT
+          value: "false"
+        # - name: KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN
+        #   value: "{spec/models/user_spec.rb,spec/controllers/**/*_spec.rb}"
+        # - name: KNAPSACK_PRO_TEST_FILE_PATTERN
+        #   value: "spec/**{,/*/**}/*_spec.rb"
+        - name: KNAPSACK_PRO_LOG_LEVEL
+          value: "debug"
+        - name: ENABLE_RETRY
+          value: "true"
+      secrets:
+        - name: test-credentials
+      prologue:
+        commands:
+          - sem-service start mysql 5.7.31
+          - sem-service start redis
+          - sem-version node 14.15.0
+          - nclouds/use_samples.sh
+
+      jobs:
+      - name: RSpec
+        parallelism: 25
+        commands:
+          - gem install semaphore_test_boosters
+          # - RAILS_ENV=test rspec_booster --job $SEMAPHORE_JOB_INDEX/$SEMAPHORE_JOB_COUNT
+          - RAILS_ENV=test bundle exec rake parallel:rake[recognize:init]
+          - RAILS_ENV=test bundle exec bin/rspec_job $SEMAPHORE_JOB_INDEX $SEMAPHORE_JOB_COUNT
+
+      epilogue:
+        on_fail:
+          commands:
+            - artifact push job tmp/capybara
+

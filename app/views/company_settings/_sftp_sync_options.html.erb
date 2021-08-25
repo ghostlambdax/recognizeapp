@@ -1,0 +1,16 @@
+<div class="row-fluid">
+  <div class="span4">
+    <p>Host: <strong>sftp.recognizeapp.com</strong></p>
+    <p><%= link_to "Contact Us", contact_path %> for access or to change who will be notified.</p>
+  </div>
+  <div class="span8">
+    <div class="well minusMarginTop50">
+      <h5>Notification Recipients: </h5>
+      <ul class="bullet-list">
+        <% @company.sync_report_notifieds.each do |user| %>
+          <li><%= user.full_name%> (<%= user.email %>)</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

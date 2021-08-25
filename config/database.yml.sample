@@ -1,0 +1,32 @@
+defaults: &defaults
+  adapter: mysql2
+  username: <%= ENV['DATABASE_MYSQL_USERNAME'] || 'root' %>
+  password: <%= ENV['DATABASE_MYSQL_PASSWORD'] || '' %>
+  encoding: utf8mb4
+  collation: utf8mb4_unicode_ci
+  port: 3306
+  host: <%= ENV['DATABASE_MYSQL_HOST'] || '127.0.0.1' %>
+  variables:
+    sql_mode: TRADITIONAL  # fix for `distinct` issue - https://github.com/rails/rails/issues/25924
+
+
+development:
+  <<: *defaults
+  database: <%= ENV['DATABASE_MYSQL_DATABASE'] || 'recognize_dev' %>
+
+staging:
+  <<: *defaults
+  database: <%= ENV['DATABASE_MYSQL_DATABASE'] || 'recognize_staging' %>
+
+production:
+  <<: *defaults
+  database: <%= ENV['DATABASE_MYSQL_DATABASE'] || 'recognize_production' %>
+  pool: <%= ENV["DB_POOL"] || ENV['RAILS_MAX_THREADS'] || 5 %>
+
+test:
+  <<: *defaults
+  database: <%= ENV['DATABASE_MYSQL_DATABASE'] || 'myapp_test' %><%= ENV['TEST_ENV_NUMBER'] %>
+  username: <%= ENV['DATABASE_MYSQL_USERNAME'] || 'root' %>
+  password: <%= ENV['DATABASE_MYSQL_PASSWORD'] || '' %>
+  reconnect: true
+  host: <%= ENV['DATABASE_MYSQL_HOST'] || '127.0.0.1' %>

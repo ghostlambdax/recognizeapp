@@ -1,0 +1,19 @@
+<div class="dropdown-wrapper create-reward-button-wrapper">
+  <div class="dropdown">
+    <button class="button button-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+      Create reward
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" id="create-reward-dropdown" role="menu" aria-labelledby="dropdownMenu1">
+      <li role="presentation">
+        <%= template_reward_link(@catalog) %>
+      </li>
+      <li role="presentation">
+        <%= custom_reward_link(@catalog) %>
+      </li>
+      <li role="presentation">
+        <%= provider_reward_link(@catalog) %>
+      </li>
+    </ul>
+  </div>
+</div>

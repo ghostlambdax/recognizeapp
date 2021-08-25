@@ -1,0 +1,201 @@
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Employee Recognition Icons and Badges" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="Download free set of designer-ready icons and badges" />
+  <meta property="og:image" content="/assets/illustrations/recognize.jpg" />
+<% end%>
+
+<% content_for :title, "Employee Recognition Icons" %>
+<% content_for :description, "Enhance your employee recognition and staff rewards program with a free set of designer-ready icons and badges." %>
+<% content_for :meta_keywords, "icons, graphics, free download, download icons, badges, download badges, employee recognition badges" %>
+
+
+<% sizes_data = [
+  {
+    size: "30x30px",
+    image: "pages/home-icons/hifive-30.jpg"
+  },
+  {
+    size: "75x75px",
+    image: "pages/home-icons/hifive-75.jpg"
+  },
+  {
+    size: "150x150px",
+    image: "pages/home-icons/hifive-150.jpg"
+  },
+  {
+    size: "300x300px",
+    image: "pages/home-icons/hifive-300.jpg"
+  }
+]
+%>
+
+<div class="icons-wrapper">
+  <div class="centered marginBottom50  ">
+    <h1 class="balance-text">Employee Recognition Icons &amp; Badges</h1>
+  </div>
+  <div class="sidepanel-wrapper  ">
+    <section class="side marginBottom50">
+      <p class="tagline">Originally designed for Recognizeapp.com as employee recognition badges, the icons and badges are now <strong>free</strong> to download for everyone. <br><br><strong>Please link to Recognizeapp.com as attribution</strong>.</p>
+
+      <div>
+        <%= link_to "Download icons", "/Recognize-Icons.zip", class: "button button-primary button-large download-icons-trigger" %>
+        <%= link_to "Feedback", contact_path, class: "button button-chromeless" %>
+      </div>
+
+    </section>
+
+
+
+    <section class="main">
+      <h3 class="text-center">Graphic sizes</h3>
+      <ul class="size-example">
+        <% sizes_data.each do |size_data_item| %>
+          <li class="centered">
+            <%= image_tag size_data_item[:image], alt: "Hi-five badge" %>
+            <p><%= size_data_item[:size] %></p>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  </div>
+
+  <div class="sidepanel-wrapper animate-3 animate-hidden animate ">
+    <section class="side" style="margin-top: 50px;">
+      <div class="marginBottom50">
+        <h3>License</h3>
+        <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.<br><br >
+        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+      </div>
+      <h3>Download Details</h3>
+
+      <div class="well marginBottom50 width100">
+
+        <div class="flex">
+          <div class="padding10 flex1">
+            <h4>33 Badges</h4>
+            <ul class="flex">
+              <li class="marginRight10">
+                icon<br>75px
+              </li>
+              <li class="marginRight10">
+                @2x<br>150px
+              </li>
+              <li>
+                @3x<br>300px
+              </li>
+            </ul>
+
+            <h4>33 Icons</h4>
+            <ul class="flex">
+              <li class="marginRight10">
+                icon<br>30px
+              </li>
+              <li class="marginRight10">
+                @2x<br>75px
+              </li>
+              <li class="marginRight10">
+                @3x<br>150px
+              </li>
+              <li>
+                @4x<br>300px
+              </li>
+            </ul>
+          </div>
+          <div class="border-left-1px padding10">
+            <h4>File types</h4>
+            <p>PNG AI PSD</p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+    <section class="main">
+
+      <% names = ["DETAILED",
+        "LEADER",
+        "PROBLEMSOLVER",
+        "FRIENDS",
+        "CHOOSE",
+        "LISTENER",
+        "PROVIDER",
+        "FUN",
+        "ONFIRE",
+        "PUNCTUALITY",
+        "BRILLIANT",
+        "GREATBOSS",
+        "ONTASK",
+        "RESPONSIVE",
+        "CARING",
+        "HARDWORKER",
+        "ORGANIZED",
+        "THUMBSUP",
+        "COFFEEMAKER",
+        "HALLOWEEN",
+        "PASSIONATE",
+        "SPEAKER",
+        "COMEDIAN",
+        "HIFIVE",
+        "PEACEMAKER",
+        "SPEED",
+        "COOPERATION",
+        "INSPIRATION",
+        "POPULAR"]
+         %>
+
+      <div class="text-center">
+        <h2>Badges</h2>
+      </div>
+
+      <div class="well marginBottom50">
+        <ul class="grid-5">
+          <% names.each do |badge| %>
+            <li class="">
+              <%= image_tag "badges/designer/badges-75/#{badge}.png", alt: badge, title: badge %>
+              <p class="offscreen"><%= badge %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="text-center">
+        <h2>Icons</h2>
+      </div>
+
+      <div class="well well-white marginBottom50">
+        <ul class="grid-5">
+          <% names.each do |icon| %>
+            <li class="">
+              <%= image_tag "badges/designer/icons-75/#{icon}@2x.png", alt: icon, title: icon %>
+              <p class="offscreen"><%= icon %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+
+    </section>
+  </div>
+
+
+  <div class="centered marginVertical20">
+    <hr class="hr hr-space">
+    <%= link_to "Download icons", "/Recognize-Icons.zip", class: "button button-primary button-grande download-icons-trigger" %>
+  </div>
+
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+  $document.on("click", ".download-icons-trigger", function(e) {
+    _gaq = window._gaq || [];
+    _gaq.push(['_trackEvent','download-icons','click', $body.attr("id") + " " + this.className.replace("download-icons-trigger", "")]);
+  });
+</script>
+
+<%= render :partial => 'home/footer' %>

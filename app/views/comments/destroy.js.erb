@@ -1,0 +1,16 @@
+var $comment = $("#<%= @comment.uniq_dom_id%>");
+var complete = function(){
+  if ($comment.closest('.isotope').length > 0) {
+    $comment.closest('.isotope').isotope("reLayout");
+  }
+};
+
+<% if @comment.commentable.comments.blank? %>
+  complete = function(){
+    $(".no-comments").fadeIn();
+    if ($comment.closest('.isotope').length > 0) {
+      $comment.closest('.isotope').isotope("reLayout");
+    }
+  }
+<% end %>
+$comment.fadeOut(500, complete);

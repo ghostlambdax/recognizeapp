@@ -1,0 +1,19 @@
+<div style="<%= mail_styles(:mail_border) %>">
+  <table style="width: 100%; <%= mail_styles(:header_bg) %>" id="recognize-mailer-header">
+    <tr>
+      <td style="width: 50%;  padding: 10px; <%= mail_styles(:header_bg) %> ">
+        <h2 style="<%= mail_styles(:h2, :text, :header_text) %> margin-bottom: 0 !important;"><%= t("layouts.mailer.greetings", name: ((@user.present? and @user.first_name.present?) ? @user.first_name : t("layouts.mailer.default_name"))) %></h2>
+        <% unless mail_styler.custom_email_header_logo? %>
+          <div style="<%= mail_styles(:text, :header_text) %>"><%= mail_styler.try(:company).try(:name) %></div>
+        <% end %>
+      </td>
+      <td style="width: 150px; max-width: 50%; padding: 10px; <%= mail_styles(:header_bg) %> text-align: right;">
+        <div style="display: inline-block; width: 150px;">
+          <a href="https://recognizeapp.com" style="max-height: 40px; width: 150px;">
+            <%= image_tag mail_styles(:email_header_logo_url), alt: mail_styles(:email_header_logo_alt), style: "max-width: 150px;" %>
+          </a>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

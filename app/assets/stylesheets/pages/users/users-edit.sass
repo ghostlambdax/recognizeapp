@@ -1,0 +1,45 @@
+.progress-bar
+  width: 320px
+  border: 1px solid #666
+  display: none
+
+  &.active
+    display: block
+
+  .progress-inner
+    @include progressBar()
+
+  span
+    color: #fff
+    padding: 13px
+
+#users-edit
+  .birthday-selects
+    select
+      width: 50%
+
+  #teams
+    position: relative
+
+  #user_birthday_1i
+    display: none
+
+  .email-settings
+    label,
+    input
+      float: left
+
+    input
+      margin-right: 5px
+
+  .button-no-chrome,
+  h1
+    display: inline-block
+
+  .button-no-chrome
+    position: relative
+    top: -7px
+
+.start-date
+  select
+    width: 31%

@@ -1,0 +1,177 @@
+.ie #recognitions-certificate
+  h1
+    font-family: impact, sans serif
+    font-size: 47px
+    margin-bottom: 22px !important
+    letter-spacing: -1px
+
+  .certificate .badge
+    width: 170px
+    height: 170px
+
+#recognitions-certificate
+  &,
+  .wrapper-outer
+    margin: 0
+    padding: 0
+
+
+  .wrapper
+    @include flex-display()
+    @include justify-content(center)
+    @include align-items(center)
+    height: 100%
+    min-height: 100%
+
+    .bg
+      width: 1000px
+
+  h1
+    //font-family: LeagueGothic, impact, sans serif
+    text-align: center
+    //font-size: 81px
+    //margin-bottom: 31px !important
+    //letter-spacing: 2px
+    text-transform: uppercase
+    font-family: impact, sans serif
+    font-size: 47px
+    margin-bottom: 22px !important
+    letter-spacing: -1px
+
+  .by-whom
+    font-size: 0.8em
+
+  #header,
+  #recognition-content,
+  #recognition-show-top,
+  #navbar,
+  .tooltip,
+  .recognition-tag
+    display: none !important
+
+  #view-main-wrapper
+    margin: 0
+    padding: 0 !important
+
+  .certificate
+    display: block
+
+    h1, h2, h3, h4, h5, h6, p, li, ol, ul, span, a, q, blockquote
+      margin: 0
+      padding: 0
+
+  p
+    margin-top: 20px
+    margin-bottom: 60px
+
+
+#recognitions-certificate
+  text-align: center
+  font-family: Lato, Heiti TC, Arial, Geneva, sans-serif
+
+  .certificate
+    position: absolute
+    width: 1000px
+    box-sizing: border-box
+    -moz-box-sizing: border-box
+    margin: auto
+    text-align: center
+    top: 221px
+    z-index: 10
+
+    .title
+      margin-bottom: 7px
+      width: 500px
+
+    .subtitle
+      font-size: 17px
+      display: block
+      text-align: center
+      margin-left: auto
+      margin-right: auto
+      margin-bottom: 30px
+
+#recognitions-certificate .certificate
+  .name
+    font-size: 24px
+
+  .avatar
+    width: 100px
+    height: 100px
+    margin-right: 20px
+
+    &[alt='User default']
+      display: none
+
+  .badge
+    width: 200px
+    height: 200px
+
+
+  .table
+    display: table
+
+
+  .table-row
+    display: table-row
+
+
+  .table-cell
+    display: table-cell
+
+  .personal
+    margin: 0 auto 16px
+    text-align: center
+
+  .pronouns
+    position: absolute
+    top: -200px
+    right: 21px
+    max-width: 200px
+    overflow: hidden
+    text-overflow: ellipsis
+
+  .images
+    display: inline-block
+    margin: 0
+
+  .quote
+    font-size: 16px
+    max-width: 590px
+    margin: auto
+    overflow: hidden
+
+  .images
+    display: flex
+    align-items: center
+    justify-content: center
+
+    .name
+      font-size: 30px
+
+  .by-whom
+    display: block
+    margin-top: 12px
+    font-size: 17px
+
+@media print
+  @page
+    size: letter landscape
+    margin: 0.22in 0 0 0
+
+
+body[data-name='edatai.com'],
+body[data-name='ideascollide.com'],
+body[data-name='bcbsri.org'],
+body[data-name='confilign.com'],
+body[data-name='balfourbeattyus.com'],
+body[data-name='softvision.com']
+  &#recognitions-certificate
+    .pronouns
+      top: -130px
+      right: 82px
+
+      .badge
+        width: 100px
+        height: 100px
+

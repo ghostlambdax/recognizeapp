@@ -1,0 +1,65 @@
+<div class="top row-fluid">
+  <div class="row">
+    <div class="span6">
+      <a href="javascript://" class="slideable-trigger" data-from="#user-count-low" data-to="#user-count" data-direction="reverse"><%= t('welcome.back_to_user_count') %></a>
+      <div class="payment-wrapper">
+        <h2><%= t('welcome.price_interval_for_num_users_html') %></h2>
+        
+        <%= form_tag subscriptions_path, id: "payment-form", remote: true do %>
+
+          <div class="marginBottom20 clearfix">
+            <div id="subscription-interval-group" class="button-group left">
+              <button id="subscription-interval-monthly" class="button button-pressed" data-interval="<%= Interval.monthly.to_i%>"><%= t("interval.monthly")%></button>
+              <button id="subscription-interval-yearly" class="button" data-interval="<%= Interval.yearly.to_i %>"><%= t("interval.yearly")%></button>
+            </div>
+            <div id="price-subheading" class="subtle-text right"></div>
+          </div>
+          
+          <%= render partial: "subscriptions/cc_fields" %>
+
+          <input type="hidden" id="quantity" name="quantity">
+          <input type="hidden" id="subscription-interval" name="subscription[interval]" value="<%= Interval.monthly.to_i %>">
+          <input type="hidden" id="coupon" name="subscription[coupon_code]">
+
+          <button id="submit-button" type="submit" class="button button-large button-highlight"><%= t('subscriptions.purchase') %></button>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="span6">
+      <div class="title-wrapper">
+        <h1><%= t('welcome.get_started_10_off_html') %></h1>
+        <p><%= @purchase_integration_value %></p>
+        <p><%= t('welcome.once_purchase_help_onboard_train') %></p>
+        <%= link_to t('welcome.question_contact_sales'), contact_path(), class: "button" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom row-fluid">
+  <div class="inner">
+    <div class="row">
+      <div class="span4">
+        <div class="title-inner" data-turbolinks="false">
+          <h2>Benefits</h2>
+          <%= link_to t('links.contact_us'), contact_sales_path, class: "button" %>
+        </div>
+      </div>
+
+      <div class="span4">
+        <ul>
+          <%= t('welcome.reasons_to_have_recognize_1_html') %>
+        </ul>
+      </div>
+
+      <div class="span4">
+        <ul>
+          <li><%= @purchase_value %></li>
+          <%= t('welcome.reasons_to_have_recognize_2_html') %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>

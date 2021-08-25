@@ -1,0 +1,132 @@
+<div id="recognition-new-wrapper" class='<% if params[:layout] === 'false' %> fadeTop overlay <% end %>'>
+
+    <% if current_user and !current_user.verified? and params[:controller] != "password_resets"%>
+      <%= render partial: "/recognitions/verify_warning"%>
+    <% end %>
+    
+    <%= form_for(@recognition, url: recognitions_url(network: current_user.network),remote: true, html: {autocomplete: "off", data: {errorwrapper: "#recognition-send-error-wrapper", event: "send-recognition-form"}}) do |f| %>
+    <%= f.hidden_field :request_form_id, value: SecureRandom.uuid %>
+      <div id="top" class="clearfix" <% if !current_user.verified? %> style="opacity: 0.2"<% end %>>
+                
+        <div id="recognition-form-inputs">
+          <div class="row-fluid">
+            <%
+            if @recognition.badge
+              name = @recognition.badge.name 
+              long_name = @recognition.badge.short_name 
+            else
+              name = "choose"
+              long_name = t("recognition_new.choose_a_badge")
+            end
+            %>
+  		
+            <div class="span4 <%= @recognition.badge ? 'chosen' : ''%>">
+              
+            <div class="image-wrapper marginBottom10 centered">
+              <%= f.hidden_field :badge_id %>
+              <h4 id="badge-name" class="subtle-text"><%= long_name%></h4>
+
+            	<a href="#" id="badge-trigger" class="badge-<%= name %> analyticsEvent", data-event="badge-trigger", data-eventtype="opened"></a><br>
+                <a id="badge-edit"><%= t("recognition_new.edit_badge_html")%></a>
+            </div>
+
+
+          </div>
+
+          <div id="main-text" class="span8">
+           <div class="controls">
+             <%= f.hidden_field :fb_workplace_post_id, value: params[:fb_workplace_post_id] if params[:fb_workplace_post_id].present? %>
+             <%# this field is mutated from view when wysiwyg editor is initialized %>
+             <%= f.hidden_field :input_format, value: 'text' %>
+
+             <%= hidden_field_tag :recognition_sender_name, @current_user.full_name %>
+
+              <h4><%= current_user.company.custom_labels.new_recognition_recipient_label %></h4>
+               <%= f.hidden_field :recipients, multiple: true, class: "hidden-field recognition_recipients", id: "recognition_recipients_1", 
+                value: nil, data: {index: 1} %>
+
+             <%= text_field_tag "", "", id: "recognition_recipient_name", class: "input-xlarge analyticsEvent", placeholder: t("recognition_new.recipient_input_placeholder", company: add_preceding_article(@current_user.company.domain)), data: {event: "recognition-recipient-name", eventtype: "focused"} %>
+           
+  					 <div id="recognition-new-autocomplete-wrapper"></div>
+           
+  					 <div id="chosen-recepient-wrapper" class="clearfix no-recipients">
+
+    				  <label class="subtle-text"><%= t("forms.recipients") %></label>
+
+              <%# error messages for individual recipients attach to this hidden field %>
+              <%= hidden_field_tag :recipients , "", class: "hidden-field", id: "recognition_recipients"%>
+
+                <div class="inner"><span class="message"><%= t("recognition_new.no_recipients_have_been_added") %></span></div>
+  					 </div>
+           </div>
+
+           <div id="recognition-form-extras" class="">
+              <%= f.label :message, message_label, class:"control-label subtle-text"%>
+              <div class="controls marginBottom10">
+                <%= f.text_area :message, class:"input-xlarge analyticsEvent", value: strip_tags(params[:message]),
+                                placeholder: t("recognition_new.reason_for_the_recognition"), cols: 1, rows: 2,
+                                data: data_attrs_for_message_field %>
+              </div>
+
+              <% if current_user.company.recognition_tags_enabled? %>
+              <%= hidden_field_tag :recognition_tags %>
+                <%= f.label :tag_ids, tags_label, class:"control-label subtle-text" %>
+                <div class="tags-wrapper controls marginBottom20">
+                  <%= tags_select2(f, @tags) %>
+                </div>
+             <% end %>
+
+               <div class="controls marginBottom10 recognition-settings clearfix">
+                <% if current_user.company.allow_posting_to_yammer_wall? &&
+                     current_user.company.allow_yammer_connect? %>
+
+                   <% if current_user.auth_with_yammer? %>
+                      <% if @company.post_to_yammer_group_id.present? %>
+                        <%= show_toggle true,
+                                            t("recognition_new.post_to_the_yammer_wall"),
+                                            {input: {name: "recognition[post_to_yammer_wall]"}, id: 'postYammer'} %>
+                        <%= hidden_field_tag "recognition[post_to_yammer_group_id]", @company.post_to_yammer_group_id %>
+                      <% else %>
+                        <%= show_toggle true,
+                                        t("recognition_new.post_to_the_yammer_wall"),
+                                        {input: {name: "recognition[post_to_yammer_wall]"}, id: 'postYammer'} %>
+
+                        <%= render partial: 'layouts/yammer_groups', locals: { groups_scope: :user } %>
+                      <% end %>
+                   <% else %>
+                      <p><%= _('Sign in to Yammer to post to Yammer') %></p>
+                      <%= prompt_for_yammer_authentication(yammer_groups_select_client.to_sym, current_user)%>
+                   <% end %>
+
+                <% end %>
+
+                <% if current_user.company.allows_private_recognitions? %>
+                    <%= show_toggle false,
+                                      t("recognition_new.private"), {
+                                      input: {name: "recognition[is_private]"},
+                                      id: "is-private-recognition"
+
+                                      } do %>
+                    <sup data-placement="right" title="<%= t('recognitions.privacy_checkbox_tooltip') %>">?</sup>
+                    <% end %>
+
+                <% end %>
+               </div>
+
+          </div>
+        
+        </div>
+        </div>
+             
+        </div>
+
+      </div>
+      <div class='button-wrapper'>
+        <div id="recognition-submit-wrapper">
+          <% if current_user.verified? %>
+            <%= f.submit t("recognition_new.send_recognition"), class:"button-primary button button-big", data: {"lf-page-change"=> true} %>
+          <% end %>
+        </div>
+      </div> 
+    <% end%>
+  </div>

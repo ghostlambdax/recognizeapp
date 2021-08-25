@@ -1,0 +1,31 @@
+<hr>
+
+<h3 id="leaderboards" class="scroll-item">Stats configuration</h3>
+<p>Stats is the leaderboards in the top nav.</p>
+<div id="allow-you-stats" class="marginBottom20">
+  <%= show_toggle @company.allow_you_stats?, "Enable leaderboards focused on the user", data: {setting: "allow_you_stats"} %>
+</div>
+
+<div id="allow-top-employee-stats" class="marginBottom20">
+  <%= show_toggle @company.allow_top_employee_stats?, "Enable leaderboards for top employees", data: {setting: "allow_top_employee_stats"} %>
+</div>
+
+<% if @company.has_at_least_one_yammer_user? && @company.permit_yammer_stats? %>
+  <div id="enable-yammer-stats" class="marginBottom20">
+    <%= show_toggle @company.enable_yammer_stats?, "Enable leaderboards for top Yammer stats", data: {setting: "enable_yammer_stats"} do %>
+      <%= link_to "Sync Now", sync_yammer_stats_company_path(network: @company.domain), remote: true, method: :post, class: "button"%>
+    <% end %>
+  </div>
+<% end %>
+
+<h4>Profile Badge Selection</h4>
+<div id="profile-badge-selection">
+  <h5>Select badges that will be shown in the pie graph on user profiles</h5>
+  
+  <%= autosave_setting_form do |f| %>
+    <label></label>
+    <% select_opts = options_from_collection_for_select(@company.company_badges.recognitions, :id, :short_name, @company.settings.profile_badge_ids) %>
+    <%= f.select :profile_badge_ids, select_opts, {}, multiple: true%>
+  <% end %>
+
+</div>

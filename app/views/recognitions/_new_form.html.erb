@@ -1,0 +1,22 @@
+<%= render partial: "/js_templates/recognition_new" %>
+<div class="flex justify-content-center">
+  <%= render_flash %>
+</div>
+
+  <%= javascript_tag do %>
+
+    window.R = window.R || {};
+
+    <% if @send_recipients %>
+      R.recipients = <%= recipients_prefill_json(@send_recipients) %>;
+    <% end %>
+
+  <% end%>
+
+<%= render '/recognitions/form' %>
+
+<% if current_user.company.allow_teams? %>
+  <%= javascript_tag do %>
+    R.userTeamMap = <%= @user_team_map.to_json.html_safe %>;
+  <% end %>
+<% end %>

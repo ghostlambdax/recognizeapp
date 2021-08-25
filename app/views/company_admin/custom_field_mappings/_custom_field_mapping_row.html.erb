@@ -1,0 +1,26 @@
+<tr id="cfm-row-<%= cfm.id%>">
+  <td class="hidden"><%= cfm_form.hidden_field :id %></td>
+  <td class="update_or_create offscreen">
+    <% if cfm.persisted? %>
+      <%= check_box_tag "bulk_custom_field_mapping_updater[#{cfm.to_param}][update]" %>
+    <% else %>
+      <%= check_box_tag "bulk_custom_field_mapping_updater[#{cfm.to_param}][create]" %>
+    <% end %>
+  </td>
+  <td class="key"><%= cfm_form.text_field :key, readonly: true %></td>
+  <td class="provider_type">
+    <%= cfm_form.select :provider_type,
+                        options_for_select(CustomFieldMapping.provider_types.map {|pt| [pt.humanize, pt]}, cfm.provider_type),
+                        include_blank: "Select a provider type" %>
+  </td>
+  <td class="provider_key"><%= cfm_form.text_field :provider_key %></td>
+  <td class="provider_attribute_key"><%= cfm_form.text_field :provider_attribute_key, readonly: !cfm.is_for_ms_graph_schema_extension? %></td>
+  <td>
+    <%= cfm_form.text_field :name%>
+    <input type="hidden" id="bulk_user_updater_<%= cfm.id%>_base">
+  </td>
+  <td class="mapped_to">
+    <%= cfm_form.select :mapped_to,
+                        options_for_select(CustomFieldMapping.mappable_user_attributes, cfm.mapped_to),
+                        include_blank: "Select an attribute" %>
+</tr>

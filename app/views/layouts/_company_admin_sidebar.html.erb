@@ -1,0 +1,47 @@
+<div class="admin-nav-wrapper clearfix" role="navigation">
+  <h2>Company Admin</h2>
+  <nav class="admin-nav">
+    <ul class="clearfix">
+      <% if current_user.director?%>
+        <% if current_user.company.family.length > 1 %>
+          <select id="dept-select" name="dept" style="width:100%">
+            <%= company_family_options_for_select %>
+          </select>
+          <hr>
+        <% end %>
+      <% end %>
+      <% dashboard_paths = %w(dashboard top_employees reports/roles reports/teams reports/departments reports/countries).map{|path| Regexp.new("/company/#{path}") }%>
+      <%= company_admin_tertiary_sidebar_link(t("layouts.company_admin_sidebar.dashboard"), company_admin_dashboard_path, dashboard_paths, {icon: 'bar-chart'}) if feature_permitted?(:recognition)  %>
+
+      <%= company_admin_sidebar_link(t("layouts.company_admin_sidebar.users"), company_admin_accounts_path, {data: {turbolinks: false}, icon: 'user'}) %>
+
+      <%= company_admin_sidebar_link(t("layouts.company_admin_sidebar.custom_badges"), company_path(anchor: "custom_badges", status: "active"), {data: {turbolinks: false}, icon: 'shield'}, ) if feature_permitted?(:recognition) %>
+
+      <% points_paths = %w(points).map{|path| Regexp.new("/company/#{path}") }%>
+      <%= company_admin_tertiary_sidebar_link(t("layouts.company_admin_sidebar.points"), summary_company_admin_points_path, points_paths,{data: {turbolinks: false}, icon: 'activity'}, ) %>
+
+
+      <% rewards_paths = %w(rewards catalogs).map{|path| "/company/#{path}" } %>
+      <%= company_admin_tertiary_sidebar_link(I18n.t("layouts.company_admin_sidebar.rewards"), company_admin_catalogs_path, rewards_paths, {icon: 'gift'}) %>
+
+      <%= company_admin_tertiary_sidebar_link(t("layouts.company_admin_sidebar.nominations"), company_admin_nominations_path, "/company/nominations", {icon: 'award'}) if feature_permitted?(:nomination) %>
+
+      <%= company_admin_tertiary_sidebar_link(t("tskz.tasks"), company_admin_completed_tasks_path, "/company/tasks", {icon: 'check-circle'}) if feature_permitted?(:tasks) %>
+
+      <%= company_admin_tertiary_sidebar_link(t("layouts.company_admin_sidebar.anniversaries"), company_admin_anniversaries_settings_path, "/company/anniversaries", {icon: 'calendar'}) if feature_permitted?(:anniversary) %>
+      <%= company_admin_tertiary_sidebar_link(t("layouts.company_admin_sidebar.recognitions"), company_admin_recognitions_path(status: 'approved'), "/company/recognitions", {icon: 'star'}) if feature_permitted?(:recognition) %>
+
+      <%= company_admin_sidebar_link(t("layouts.company_admin_sidebar.comments"), company_admin_comments_path, {icon: 'message-circle'}) %>
+
+      <%= company_admin_sidebar_link(t("layouts.company_admin_sidebar.roles"), company_admin_roles_path, {icon: 'filter'}) %>
+
+
+
+      <%= company_admin_sidebar_link(@company.custom_labels.tags_label, company_admin_tags_path, {icon: 'tag'}) if feature_permitted?(:tags) %>
+
+      <%= company_admin_sidebar_link(t("layouts.company_admin_sidebar.document_center"), company_admin_documents_path(type: :downloads), icon: 'paperclip') %>
+
+      <%= company_admin_tertiary_sidebar_link(t("layouts.company_admin_sidebar.settings"), company_admin_settings_path, ["company/settings", "/company/customizations", "/company/custom_field_mappings"], {icon: 'sliders'}) %>
+    </ul>
+  </nav>
+</div>

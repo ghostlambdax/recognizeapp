@@ -1,0 +1,16 @@
+<div class="checkbox-wrapper marginBottom5 <%= opts[:wrapper_class] %>" id="<%= opts[:id] %>">
+  <%= content_tag(:label,
+                  class: "checkbox-title #{'disabled' if opts[:disabled]}",
+                  title: opts[:title]) do %>
+    <%= tag(:input,
+            type: 'checkbox',
+            class: "on-off #{'remoteCheckboxToggle' if opts[:data] && opts[:data][:endpoint]}",
+            checked: condition,
+            data: opts[:data],
+            name: opts.dig(:input, :name),
+            disabled: opts[:disabled]
+        ) %>
+    <%= title %>
+  <% end %>
+  <%= capture(&block) if block %>
+</div>

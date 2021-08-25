@@ -1,0 +1,33 @@
+<div class="new-tskz-task-wrapper">
+  <%= form_for( task, remote: true, namespace: 'tskz', url: url, multipart: true, authenticity_token: true)  do |f| %>
+    <div class="control-group">
+      <h5><%= t('dict.name')%></h5>
+      <%= f.text_field :name, placeholder: "#{t("dict.task")} Name", id: 'task_name' %>
+    </div>
+
+    <div class="control-group">
+      <h5><%= t('dict.points')%></h5>
+      <%= f.text_field(:points, type: :number, placeholder: "Points", min: 0) %>
+    </div>
+
+    <div class="control-group">
+      <h5 data-placement="top" title="<%= t('tskz.task.tag_explanation', tag_label: company.custom_labels.task_tags_label.singularize(I18n.locale)) %>">
+        <%= company.custom_labels.task_tags_label %><sup>?</sup>
+      </h5>
+      <%= f.select :tag_name,  options_from_collection_for_select(tags, :name, :name, f.object.tag_name),{ include_blank: true }, placeholder: company.custom_labels.task_tags_label %>
+    </div>
+
+    <div class="control-group">
+      <h5 data-placement="top" title="<%= t('tskz.task.role_explanation') %>">
+        <%= t('dict.roles') %><sup>?</sup>
+      </h5>
+      <%= f.select :company_roles, options_from_collection_for_select(company_roles, :id, :name, f.object.company_roles), {}, multiple: true, class: "company-role-select" %>
+    </div>
+
+    <div class="control-group">
+      <%= f.submit t("dict.save"), class: "button button-primary" %>
+    </div>
+
+
+  <% end %>
+</div>

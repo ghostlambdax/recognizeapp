@@ -1,0 +1,65 @@
+<h1 style="<%= mail_styles(:h1, :title, :text) %>"><%= t('engagement_report.manager.direct_report_data', interval: reset_interval_noun(@report.interval).downcase) %></h1>
+
+<% unless @report.has_data? %>
+  <p style="<%= mail_styles(:p, :text) %>"><%= t('engagement_report.manager.no_recognitions', interval: reset_interval_noun(@report.interval).downcase) %></p>
+  <%= link_to t("dict.recognize"), new_recognition_url(network: @user.network), style: mail_styles(:button) %>
+<% else %>
+<table style="width: 100%;">
+
+  <tr>
+    <td style="vertical-align: top; <% if @bottom_receiving_reports.present? %>width: 47%; padding-right: 3%;<% end %>">
+      <h2 style="border-top: 5px solid blue; padding-top: 5px; <%= mail_styles(:h2, :text, :gray) %>"><%= t('engagement_report.most_received') %></h2>
+        <ul style="<%= mail_styles(:list) %>">
+        <% @top_receiving_reports.each_with_index do |user_report, index| %>
+          <% odd = index % 2 == 0 %>
+          <li style="padding: 20px; <% if odd %>background: #f4f4f4;<% end %>">
+            <table style="width: 100%;">
+              <tr>
+                <td style="width: 40%;"><h4 style="<%= mail_styles(:h4, :text, :margin0) %>"><%= link_to user_report.user.full_name, user_url(user_report.user) %></h4></td>
+                <% user_report.sent_recognitions_count = user_report.sent_recognitions_count.blank? ? 0 : user_report.sent_recognitions_count %>
+                <% user_report.received_recognitions_count = user_report.received_recognitions_count.blank? ? 0 : user_report.received_recognitions_count %>
+                <td style="width: 20%"><p style="<%= mail_styles(:p, :text) %> font-size: 11px;"><%= t('engagement_report.received_recognitions_html', count: user_report.received_recognitions_count) %></p>
+                </td>
+                <td style="width: 20%"><p style="<%= mail_styles(:p, :text) %> font-size: 11px;"><%= t('engagement_report.sent_recognitions_html', count: user_report.sent_recognitions_count) %></p>
+                </td>
+
+                <td style="width: 20%"><%= link_to t("dict.recognize"), new_recognition_url(network: user_report.user.network, recipient_id: user_report.user.id), style: mail_styles(:button) %> </td>
+              </tr>
+            </table>
+          </li>
+        <% end %>
+        </ul>
+      </td>
+
+     <% if @bottom_receiving_reports.present? %>
+      <td style=" width: 47%; vertical-align: top; padding-left: 3%;">
+        <h2 style="border-top: 5px solid orange; padding-top: 5px; <%= mail_styles(:h2, :text, :gray) %>"><%= t('engagement_report.least_received') %></h2>
+        <ul style="<%= mail_styles(:list) %>">
+          <% @bottom_receiving_reports.each_with_index do |user_report, index| %>
+            <% odd = index % 2 == 0 %>
+            <li style="padding: 20px; <% if odd %>background: #f4f4f4;<% end %>">
+              <table style="width: 100%;">
+                <tr>
+                  <td style="width: 50%;"><h4 style="<%= mail_styles(:h4, :text) %>"><%= link_to user_report.user.full_name, user_url(user_report.user) %></h4></td>
+                  <% user_report.sent_recognitions_count = user_report.sent_recognitions_count.blank? ? 0 : user_report.sent_recognitions_count %>
+                  <% user_report.received_recognitions_count = user_report.received_recognitions_count.blank? ? 0 : user_report.received_recognitions_count %>
+                  <td style="width: 20%"><p style="<%= mail_styles(:p, :text) %> font-size: 11px;"><%= t('engagement_report.received_recognitions_html', count: user_report.received_recognitions_count) %></p>
+                  </td>
+                  <td style="width: 20%"><p style="<%= mail_styles(:p, :text) %> font-size: 11px;"><%= t('engagement_report.sent_recognitions_html', count: user_report.sent_recognitions_count) %></p>
+                  </td>
+                  <td style="width: 20%"><%= link_to t("dict.recognize"), new_recognition_url(network: user_report.user.network, recipient_id: user_report.user.id), style: mail_styles(:button) %> </td>
+                </tr>
+              </table>
+
+            </li>
+          <% end %>
+        </ul>
+
+
+      </td>
+
+<% end %>
+        </tr>
+        </table>
+
+<% end %>

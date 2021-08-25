@@ -1,0 +1,24 @@
+@import ../3p/sweet-alert2
+
+.swal2-icon-content
+  font-size: 3.75em
+
+.swal2-container li
+  list-style-position: inside
+
+.swal2-container .swal2-select
+  height: 40px
+
+.swal2-container
+  .destroy-confirm-button
+    button.swal2-confirm
+      background-color: $swalDeleteButtonColor
+
+.swal2-container + .select2-container--open
+  z-index: 9999
+
+html.ie
+  .swal2-container
+    .swal2-title
+      display: block !important // Needed for word wrap to work as expected in Sharepoint/IE.
+

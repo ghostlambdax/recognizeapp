@@ -1,0 +1,51 @@
+<div>
+  <%= form_for @bulk_custom_field_mapping_updater, remote: true, url: company_admin_custom_field_mappings_path, method: :patch do |f| %>
+    <div id="edit-custom_field_mappings">
+      <div class="page-nav clearfix">
+        <div class="title-nav">
+          <h3>
+            Edit Extension Mapping
+            <span id="response-feedback-wrapper"></span>
+          </h3>
+        </div>
+
+        <div class="aside-nav">
+          <div class="inner">
+
+          <span class="button-group">
+            <%= f.submit "Save", class: 'button button-primary'%>
+            <%= link_to 'Done',  company_path(anchor: "settings"), class: "button", id: "leave-edit-custom_field_mappings"%>
+          </span>
+          </div>
+        </div>
+      </div>
+
+      <%= hidden_field_tag "bulk_custom_field_mapping_updater_cfms_saved", "", readonly: true %>
+
+      <div>
+        <table class="table table-striped table-bordered table-ranking table-condensed table-hover table-responsive">
+          <thead>
+          <tr>
+            <th class="hidden">Id</th>
+            <th class="offscreen">Update</th>
+            <th class="key">Recognize Key</th>
+            <th class="provider_type">Provider Type</th>
+            <th class="provider_key">Microsoft Key / Schema ID</th>
+            <th class="provider_attribute_key">Provider attribute key</th>
+            <th class="name">Recognize Attribute Name</th>
+            <th class="mapped_to">Mapped to user attribute</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% User.custom_field_attributes.each do |custom_field_key| %>
+            <% custom_field_mapping = find_or_build_custom_field_mapping(@company, custom_field_key, provision_temporary_id: true) %>
+            <%= fields_for "bulk_custom_field_mapping_updater[]", custom_field_mapping do |cfm_form| %>
+              <%= render "custom_field_mapping_row", cfm_form: cfm_form, cfm: custom_field_mapping %>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>

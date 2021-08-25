@@ -1,0 +1,34 @@
+<div class="centeredPage">
+  <div class="row-fluid" style="width: 1010px; max-width: 100%;">
+    <div class="span5">
+      <div class="subtle-border marginBottom40 text-left">
+        <h1 class="marginBottom20"><%= t('support_emails.thank_you_for_contact') %></h1>
+        <hr class="hr hr-space">
+        <h3><%= t('support_emails.before_you_go') %></h3>
+        <p>If you sign up for Recognize ahead of the call, we'll send you an email. Ask us to turn on the paid features in your account. In the call we can go over your account.</p>
+        <ul class="blue-links" data-turbolinks="false">
+          <li>
+            <a href="/sign-up">Sign up</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="span6 offset1">
+      <%= image_tag "pages/home-index/network.jpg", class: "maxWidth100", alt: "A network of people connected by their company." %>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  var capterra_vkey = 'e5f7211b953f442a7b319291582e0246',
+    capterra_vid = '2104830',
+    capterra_prefix = (('https:' == document.location.protocol) ? 'https://ct.capterra.com' : 'http://ct.capterra.com');
+
+  (function() {
+    var ct = document.createElement('script'); ct.type = 'text/javascript'; ct.async = true;
+    ct.src = capterra_prefix + '/capterra_tracker.js?vid=' + capterra_vid + '&vkey=' + capterra_vkey;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ct, s);
+  })();
+</script>

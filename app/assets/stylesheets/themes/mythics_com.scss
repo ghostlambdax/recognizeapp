@@ -1,0 +1,18 @@
+$headerBg: #009ACE;
+$gray: #53565A;
+$linkColor: #0C7FA6;
+$buttonPrimaryBg: #12CDE6;
+
+@import "application";
+
+#recognitions-index .theme-logo-large,
+#recognitions-grid .theme-logo-large {
+  max-height: 100%;
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+#recognitions-index #stream,
+#recognitions-grid #stream {
+  padding-top: 60px;
+}

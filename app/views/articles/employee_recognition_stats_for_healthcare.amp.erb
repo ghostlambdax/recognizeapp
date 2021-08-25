@@ -1,0 +1,19 @@
+<% content_for :title, @title %>
+<% content_for :description, "How healthcare employees are affected by employee appreciation. See Recognize's medical employee engagement study." %>
+
+<div class="centered">
+  <h1 itemprop="name">Research into Healthcare Employee Burnout & Employee Recognition</h1>
+  <p class="tagline"><b>Seven Ways to Combat Nurse Burnout</b> in your Health Care organization, and how employee recognition can possibly help.</p>
+</div>
+
+<div class="marginBottom30">
+  <amp-img src="<%= asset_url('pages/articles/healthcare_recognition/exhausted-nurse.jpg') %>" alt="An illustration of an exhausted nurse" height="389" width="600" layout='responsive' itemprop="image"></amp-img>
+</div>
+<p>With employee turnover rates in the healthcare industry over <%= link_to 'double the national average', 'http://ispub.com/IJHCA/1/2/10882', target: '_blank' %>, medical organizations are acutely aware of burnout’s role in the crisis. In order to combat burnout and help reduce employee turnover, HR and leadership must work together to come up with creative solutions to the problem. Based off research and surveys, we found that implementing an employee recognition program as well as offering rewards such as more paid time off can help to reduce burnout in the healthcare industry.</p>
+
+<h3 style="margin: 20px 0;">Learn more about our employee recognition program</h3>
+<%= link_to "Learn more about Recognize", root_path, class: "button button-large button-primary", style: "margin: 20px 0;" %>
+
+<hr>
+
+<%= render partial: "employee_recognition_stats_for_healthcare",formats: [:html] %>

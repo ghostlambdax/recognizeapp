@@ -1,0 +1,282 @@
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Recognize Pricing" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="Recognize pricing packages for the enterprise employee recognition & rewards app" />
+  <meta property="og:image" content="/assets/illustrations/10_years_with_tom_color.jpg" />
+<% end%>
+
+<% content_for :title, "Pricing" %>
+<% content_for :description, "Recognize pricing packages are flexible and customizable to meet the needs of any size employee recognition & rewards program." %>
+
+
+<% bronze = '
+       <li title="Insert your company rewards into Recognize for management of redemption and quantities in exchange for recognition points.">Configurable company rewards</li>
+        <li title="Set up any kind of recognition specific to an employee role, such as monetary manager recognition.">Role-based recognition</li>
+        <li title="Upload your own graphics and labels to represent your company values.">Configurable recognition badges</li>
+
+        <li title="See top employees across group, time, and badge. Download recognition reports and manage comments.">Reports &amp; analytics</li>
+        <li title="Automatically notify leadership of anniversaries, allow staff to make comments, share publicly or privately, and give employees points to redeem in the rewards.">Anniversaries &amp; birthdays</li>
+        <li title="Every recognition to an individual generates a printable, customizable reward certificate.">Award certificates</li>
+        <li title="View staff profiles on sending, receiving, and their company values DNA.">User profiles</li>
+        <li title="View engagement and recognitions for each group in your company. Send recognitions to an entire team.">Teams</li>
+        <li title="Edit, create, and disable any user along with all their metadata in one place.">User management</li>
+        <li title="Upload a spreadsheet to add or remove users, or update metadata on staff.">Spreadsheet user import</li>
+        <li title="Sharepoint, Outlook, Workplace by Facebook, iOS, Chrome ext, Android, Yammer, and more.">Integrations</li>
+        <li title="Login easily and securely">SSO, Oauth, user/pass</li>
+
+' %>
+
+
+<% silver = '
+<li title="Provide over 400 gift cards, such as Amazon, Target, Walmart, Best Buy, Starbucks, and more ts and accounting reports.">Automatic gift cards</li>
+        <li title="Roles in your staff can request approval for specific types of recognition. The approver can apply a monetary value.">Approval-based recognition</li>
+        <li title="Managers are notified when direct reports are recognized. Plus, managers get their own dashboard.">Manager features</li>
+        <li title="Allow for employee of the month voting on top employees. Also allow quarterly or annual voting.">Nomination system</li>
+        <li title="Admins create tasks employees can accomplish. Staff report to their managers for approval. Supports wellness, environment, and event-based bonuses.">Incentive program</li>
+        <li title="A visual dashboard for all employees to see who are the top employees across time, group, and company value.">Hall of Fame</li>
+        <li title="Force privacy for birthday, anniversaries, or recognition.">Privacy for anniversary, birthdays, or recognition</li>
+        <li title="Recognize themes your account\'s Recognize website portal and emails to your company colors and logos.">Themed to your branding</li>
+        <li title="Automatically update employee information from an HR system, including Azure Office 365 or Workday.">Weekly user sync</li>
+
+' %>
+
+<% gold = '<li title="Create reward catalogs for any currency to provide gift cards or company-fulfilled rewards, such as experiences or paid time off.">Multi-currency rewards</li>
+<li title="Let us know your language needs and we will make sure to fulfill them.">20+ languages</li>
+
+<li title="Help users with only telephone numbers without SSO to sign in via text message.">Frontline worker package&nbsp;<sup>NEW</sup></li>
+<li title="Text message notify to sign in or check a recognition from anywhere in the world unlimited.">World text messaging</li>
+
+<li title="Configure the colors and logos of emails, change award certificate look and feel, change welcome video and welcome PDF, and change in-web app text.">Customize text &amp; emails</li>
+<li title="Import recognitions from previous systems or send a spreadsheet every month.">Quarterly bulk recognition import</li>
+<li title="Navigate & manage child company accounts as a super admin">Child Companies</li>
+
+<li title="Create custom apps, list badges, or send recognition automatically through the API.">API access</li>
+<li title="Every night sync employee data to add, update, or remove staff from your HRIS.">Nightly user sync</li>
+' %>
+
+<% platinum = '<li title="Need a feature built? We can customize Recognize to your liking.">20 hours of custom development</li>
+<li title="Recognize team will make the onboarding and post onboarding graphics completely custom with your logo, text, badges, and more customizations.">Custom onboarding graphic assets</li>
+<li title="Any features or text that needs to be removed from Recognize web app can be done for Platinum customers.">Advanced customizations</li>
+
+<li title="Import recognitions from previous systems or send a spreadsheet every month.">Monthly bulk recognition import</li>
+
+<li title="We can send you swag with Recognize logo or your company recognition program logo on it to give out to staff. Recognize will send you 50 hot/cold glass mugs or any equivalent priced product.">Physical onboarding gifts</li>
+
+
+
+' %>
+
+<section id="intro">
+  <div class="inner marginBottom50" data-turbolinks="false">
+    <h1 class="balance-text"><%= t(".title") %></h1>
+    <p class="tagline balance-text"><%= t(".description") %></p>
+    <div class="flex justify-content-center">
+      <%= schedule_demo_link link_text: 'Get Price Quote',service: "service1", utm_campaign: 'pricing', css_classes: 'marginRight10 button button-primary button-large' %>
+      <%= link_to 'All Features', features_path, class: 'button button-large button-border' %>
+    </div>
+  </div>
+
+
+  <div class="centered marginBottom30">
+    <h3>Pick Yearly Product Package</h3>
+  </div>
+
+</section>
+
+<div id="points">
+  <div class="prices-inner">
+
+    <div class="prices clearfix">
+
+      <div class="price">
+        <div class="price-header price-header-1">
+          <div class="price-summary">
+            <span class="icon-wrapper"><%= lazy_image_tag 'icons/trophy-white.png', alt: 'Calendar icon' %>
+</span>
+            <h2>Bronze</h2>
+            <p><strong>Sign up for latest pricing</strong></p>
+            <p>The ultimate starter package to an official company recognition & rewards program. A one-size fits all pricing plan paid monthly or annually.</p>
+          </div>
+          <%= link_to _('Sign Up & Upgrade'), sign_up_path, class: 'button', utm_content: 'bronze', utm_campaign: 'pricing' %>
+
+        </div>
+
+        <ul>
+          <%= bronze.html_safe %>
+
+        </ul>
+      </div>
+
+      <div class="price">
+        <div class="price-header price-header-2">
+          <div class="price-summary">
+            <span class="icon-wrapper"><%= lazy_image_tag 'icons/shop-white.png', alt: 'Store front icon' %></span>
+            <h2>Silver</h2>
+            <p><strong>Custom low pricing</strong></p>
+            <p>Great package for companies that want to utilize managers, who are are often the most important role in recognition.</p>
+          </div>
+          <%= schedule_demo_link link_text: 'Get Price Quote', service: 'service1', css_classes: 'button schedule-demo integration', utm_content: 'silver', utm_campaign: 'pricing' %>
+        </div>
+
+        <ul>
+          <%= silver.html_safe %>
+          <li class="bronze">+ Bronze features</li>
+        </ul>
+
+
+
+      </div>
+
+      <div class="price">
+        <div class="price-header price-header-3">
+          <div class="price-summary" >
+            <span class="icon-wrapper"><%= lazy_image_tag 'icons/globe-white.png', alt: 'Globe icon' %></span>
+            <h2>Gold</h2>
+            <p><strong>Custom low pricing</strong></p>
+            <p>A set of tools to engage international employees and those who do not have work email nor a computer.</p>
+          </div>
+          <%= schedule_demo_link link_text: 'Get Price Quote', service: 'service1', css_classes: 'button schedule-demo enterprise', utm_content: 'gold', utm_campaign: 'pricing' %>
+        </div>
+
+        <ul>
+          <%= gold.html_safe %>
+          <li class="silver">+ Silver features</li>
+          <li class="bronze">+ Bronze features</li>
+        </ul>
+      </div>
+
+      <div class="price">
+        <div class="price-header price-header-4">
+          <div class="price-summary" >
+            <span class="icon-wrapper"><%= lazy_image_tag 'icons/gear-brain-white.png', alt: 'Gear in a brain icon' %></span>
+            <h2>Platinum</h2>
+            <p><strong>Custom low pricing</strong></p>
+            <p>Platinum is the white glove service at Recognize where we will build custom features and help set up customized programs.</p>
+          </div>
+          <%= schedule_demo_link link_text: 'Get Price Quote', service: 'service1', css_classes: 'button schedule-demo enterprise', utm_content: 'gold', utm_campaign: 'pricing' %>
+        </div>
+
+        <ul>
+          <%= platinum.html_safe %>
+          <li class="gold">+ Gold features</li>
+          <li class="silver">+ Silver features</li>
+          <li class="bronze">+ Bronze features</li>
+        </ul>
+      </div>
+
+    </div>
+
+  <div class="centered">
+    <h3 class="balance-text">One-Time: Pick Customer Success Support Tier</h3>
+  </div>
+
+  <ol class="pricing-option-table cs">
+    <li>
+      <div>
+        <%= lazy_image_tag 'icons/help-chat-blue.png', alt: 'Weekly user sync'  %>
+      </div>
+      <ul>
+        <li><label class="topic-label">TIER 1</label></li>
+        <li><h4 class="balance-text">Two Meetings Onboarding</h4></li>
+        <li>A customer success representative will walk you through two meetings one-on-one showing you how to get started and be successful.
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div>
+        <%= lazy_image_tag 'icons/help-person-blue.png', alt: 'Continuous sync' %>
+      </div>
+      <ul>
+        <li><label class="topic-label">TIER 2</label></li>
+        <li><h4 class="balance-text">Four Meetings + IT Meeting + Quarterly Webinars</h4></li>
+        <li>You are assigned a dedicated customer success rep who will meet with you every week to ensure a successful launch. They will project manage the launch through an accessible checklist. Plus, meeting with IT professional at Recognize for integration questions and setup.
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div>
+        <%= lazy_image_tag 'icons/people-table-blue.png', alt: 'People at a table icon' %>
+      </div>
+      <ul>
+        <li><label class="topic-label">TIER 3</label></li>
+        <li><h4 class="balance-text">Seven Meetings + Two IT Meetings + Quarterly Webinars + Annual Check-In</h4></li>
+        <li>For companies looking to slowly get started and meet with someone on our side every week for two months while project managing, strategizing, and providing IT support. Further, these customers will have access to special quarterly webinars and continued one-on-one meetings.
+        </li>
+      </ul>
+    </li>
+  </ol>
+
+</div>
+
+</div>
+
+
+<% questions = [
+
+    {
+        q: 'What is the pricing exactly?',
+        a: ' Recognize often runs discounts and promotions. Given the optimization and change in pricing, we ask that we get on the phone or email the price. Recognize will match and beat any price made by a similar competitor.'
+    },
+
+    {
+     q: 'Do you charge monthly or annually?',
+     a: 'We charge annually. Companies are able to do monthly trials and after signing an agreement, companies have a whole month for full refund.'
+    },
+
+    {
+        q: 'Do you charge per employee?',
+        a: 'Yes, we charge based on how many people are in your organization or that you believe will utilize the program. In future year subscriptions, we base the price off the current active user count.'
+    },
+
+    {
+        q: 'What if our user count changes through the year?',
+        a: 'You can add or remove people at any point at no change in price.'
+    },
+
+    {
+        q: 'What is the big difference between the product packages?',
+        a: 'Bronze is great for getting started with leader to peer or peer to peer social employee recognition. Silver provides those manager reports and automatic gift cards for a more automated and engaging program. Gold is for international companies or those that need extra control.'
+    },
+
+    {
+        q: 'Do you price match?',
+        a: 'Recognize will beat any price. Although we are focused on being the most customizable, integrated international recognition and rewards program, we also keep costs low and can pass those savings to our customers.'
+    },
+
+    {
+        q: 'Can we try before we buy?',
+        a: 'You can sign up for a free trial at the top of this website. Schedule a call with us and we can walk you through it.'
+    },
+
+    {
+          q: 'What if we want to cancel?',
+          a: "Any money for rewards you've deposited is returned to you, your data can be deleted after you export it, and you can cancel at anytime. There are no refunds after one month of subscription."
+    }
+
+
+] %>
+
+<div class="padding30">
+
+  <div class="centered">
+    <h2 class="margin0">Pricing FAQ</h2>
+  </div>
+
+  <ul class="question-cards">
+    <% questions.each_with_index do |q, i| %>
+    <li>
+      <label class="topic-label"><%= "%.2i" %(i+1).to_s %>.</label>
+      <h3><%= q[:q] %></h3>
+      <p><%= q[:a] %></p>
+    </li>
+    <% end %>
+  </ul>
+
+</div>
+
+<%= render partial: "marketing_cta_banner" %>
+
+
+
+<script> (function(){ window.ldfdr = window.ldfdr || {}; (function(d, s, ss, fs){ fs = d.getElementsByTagName(s)[0]; function ce(src){ var cs = d.createElement(s); cs.src = src; setTimeout(function(){fs.parentNode.insertBefore(cs,fs)}, 1); } ce(ss); })(document, 'script', 'https://sc.lfeeder.com/lftracker_v1_DzLR5a5ZPRY8BoQ2.js'); })(); </script>

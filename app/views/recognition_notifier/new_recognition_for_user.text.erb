@@ -1,0 +1,13 @@
+<%= @recognition.comments_allowed? ? t("recognition_notifier.view_comment_share_recognition") : t("recognition_notifier.view_share_recognition")%>
+
+<% if @recognition.comments_allowed? %>
+  <%= t("recognition_notifier.comment_on_recogntion") %>
+<% else %>
+  <%= t("recognition_notifier.view_recognition") %>
+<% end %>
+<%= recognition_url(@recognition) %>
+
+<% unless @sender.system_user? %>
+  <%= t("recognition_notifier.send_recognition_to", name: @sender.full_name) %>
+  <%= user_recognition_url(@sender, network: @sender.network) %>
+<% end %>

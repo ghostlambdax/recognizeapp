@@ -1,0 +1,37 @@
+@import '3p/DataTables-1.10.24/datatables';
+@import '3p/DataTables-1.10.24/FixedColumns-3.3.2/css/fixedColumns.dataTables';
+@import '3p/DataTables-1.10.12/extensions/TableTools/css/dataTables.tableTools';
+@import '3p/DataTables-1.10.24/Buttons-1.7.0/css/buttons.dataTables';
+
+table.dataTable thead .sorting { background: url('/assets/sort_both.png') no-repeat center right; }
+table.dataTable thead .sorting_asc { background: url('/assets/sort_asc.png') no-repeat center right; }
+table.dataTable thead .sorting_desc { background: url('/assets/sort_desc.png') no-repeat center right; }
+
+table.dataTable thead .sorting_asc_disabled { background: url('/assets/sort_asc_disabled.png') no-repeat center right; }
+table.dataTable thead .sorting_desc_disabled {
+  background: url('/assets/sort_desc_disabled.png') no-repeat center right;
+}
+
+// odd class has different background color due to being overridden by bootstrap `table-striped` class
+table.dataTable tbody tr.odd.selected td {
+  background-color: #B0BED9;
+}
+
+table.dataTable tbody tr.odd.selected:hover td {
+  background-color: #F5F5F5;
+}
+
+div.dt-buttons {
+  float: none;
+}
+
+.dataTables_wrapper {
+  .dt-buttons {
+    float: left;
+    margin-right: 20px;
+
+    a {
+      border-radius: 4px;
+    }
+  }
+}

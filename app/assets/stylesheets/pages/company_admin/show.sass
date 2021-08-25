@@ -1,0 +1,415 @@
+.drawer-open
+  #companies-show
+    #view-main-wrapper
+      padding-left: 320px
+
+
+body[class^=companies],
+#company_admin_dashboards-show
+  background: $lightBodyBg
+
+  .row.row-fluid
+    margin: 0
+
+  .sending-limit-setting-wrapper
+    select
+      height: 40px
+    .label
+      display: inline-block
+      width: 48px
+    .description
+      display: block
+
+  .saml-settings
+    input[type="text"],
+    textarea
+      width: 100%
+
+    textarea
+      height: 92px
+
+  .admin-dashboard-upgrade
+    display: block
+
+  .unpaid
+    #dashboard
+      text-align: center
+      padding: 40px
+
+      iframe, img
+        max-width: 100%
+
+  // FIXME: this selector scope (#recognitions) is no longer valid
+  //        also, the parent scoping above is relevant for dashboard / custom badges pages only
+  #recognitions
+    #recognitions-table_length
+      margin: 5px 25px 5px 0px
+
+      select
+        width: 70px
+
+    #recognitions-table
+      margin: 0
+      width: 100% !important
+      max-width: 100%
+
+    #recognitions-table-form-wrapper
+      float: left
+      height: 50px
+
+      input[type=text]
+        width: 100px
+
+    #recognitions-table_wrapper
+      margin-top: 30px
+
+      .slug
+        width: 5% !important
+      .date
+        width: 10% !important
+      .senderEmail
+        width: 10% !important
+      .senderName
+        width: 10% !important
+      .recipientName
+        width: 10% !important
+      .recipientEmail
+        width: 10% !important
+      .teams
+        width: 10% !important
+      .badge
+        width: 10% !important
+      .points
+        width: 8% !important
+      .message
+        width: auto !important
+      .recognized_team
+        width: 10% !important
+
+  .res-score
+    height: 200px !important
+
+
+  #rank
+    .page-aside
+      min-width: 264px
+    .dropdown
+      display: inline-block
+
+  .span2 input
+    width: 100%
+
+  .highcharts-container text[text-anchor=end]
+    display: none
+
+  #team_name
+    margin-bottom: 5px
+
+  #active-badges-wrapper,
+  #disabled-badges
+    .widget-box
+      margin-bottom: 30px
+      padding: 15px
+      box-sizing: border-box
+
+      input, textarea
+        max-width: 100%
+        width: 100%
+        @include box-sizing(border-box)
+
+      img
+        margin: 10px 0
+
+      input[type=checkbox]
+        margin: 0 3px 0 0
+
+      .button-group .button
+        padding: 10px 5px
+
+    .point-money-snippet, #budget-wrapper
+      display: none
+
+  #piechart, #piechart-user-by-status
+    position: relative
+    z-index: 20
+
+
+.drawer-open #companies-show
+
+  .content-wrapper
+    padding-left: 0
+
+#companies-show, #company_admin_dashboards-show
+
+  #custom_field_mappings_table
+    border: solid 1px #dddddd
+
+  #reset-interval
+    width: 110px
+    font-size: 16px
+
+  #currency-selection
+    .select2-container
+      width: 230px !important
+      #select2-currency-container
+        font-size: 16px
+
+  #placeholder
+    min-width: 540px
+    width: 100%
+    height: 410px
+
+  #badge-line-graph-wrapper .placeholder
+    width: 100%
+    height: 400px
+
+  .flipboard dt
+    text-shadow: none
+
+  #admin-flipboard
+    float: left
+
+    .flipboard-wrapper
+      float: left
+
+    .flipboard-wrapper:last-child
+      padding-right: 0
+
+      .flipboard:last-child
+        margin-right: 0
+
+  #admin-admins
+    position: relative
+    z-index: 10
+
+    .admin-avatars
+      margin-left: -10px
+
+    img
+      float: left
+      margin: 0 10px 10px
+      border-radius: 54px
+      border: 3px solid white
+      width: 75px
+      height: 75px
+      background-size: 75px
+
+  #admin-center
+    text-align: center
+
+  #recognition-line-graph-wrapper,
+  #badge-line-graph-wrapper
+    position: relative
+    z-index: 10
+
+  #custom_badges
+    padding-bottom: 100px
+
+    .budget-info-well
+      dl
+        border-bottom: 1px solid $dividerColor
+        padding-bottom: 15px
+        margin-bottom:  0px
+        border-top: 1px solid white
+
+        &:first-child
+          border-top: 0
+        &:last-child
+          border-bottom: 0
+
+      dt
+        margin-bottom: 5px
+        margin-top: 10px
+
+
+      dd
+        font-weight: 600
+
+    .badge-name,
+    .badge-points
+      font-size: 20px
+
+    .badge-sort-order
+      font-size: 20px
+
+    label
+      margin-bottom: 3px
+
+    .item
+      display: table-cell
+      width: 55%
+      vertical-align: top
+
+      &.centered
+        width: 20%
+        padding: 50px
+        padding-top: 19px
+        margin: auto
+
+    textarea
+      @include box-sizing(border-box)
+      height: 90px
+
+    .badge-options
+      margin: 15px 0
+
+    .achievement-options
+      input
+        width: 75px
+
+      select
+        width: 150px
+
+    // select2 calculates this width incorrectly when the element is hidden initially
+    .requires-approval-options
+      .point-values-select + .select2
+        .select2-search__field
+          width: 100% !important
+
+    .span3
+      margin-bottom: 50px
+
+      .badge-name, .badge-points
+        width: 65%
+        @include box-sizing(border-box)
+        height: 40px
+        display: inline
+        margin-top: 5px
+
+      .badge-points
+        width: 20%
+
+  #disabled-badges
+    img
+      opacity: .5
+
+#tooltip
+  z-index: 100
+
+.new_badge
+  margin: 5px
+
+  .subtle-text
+    margin-bottom: 5px
+
+  label
+    display: none
+
+#recognition-badge-graph-wrapper, #recognition-user-status-graph-wrapper
+  background: #FFFFFF
+
+.control-bar
+  padding-left: 200px
+  @include box-sizing(border-box)
+
+.new_badge
+  label
+    color: white
+    display: none
+
+  .actions
+    margin-top: 15px
+
+@media (max-width: 1150px)
+  #companies-show
+    .edit_company#point-values
+      .span3
+        width: 100% !important
+        margin-left: 0px !important
+
+
+@media (max-width: 1050px)
+  #companies-show
+    #custom_badges
+      .widget-box
+        width: 100%
+        margin-right: 0
+        float: none
+
+  #recognition-line-graph-wrapper,
+  #recognition-badge-graph-wrapper
+    float: none
+    margin-left: 0
+    margin-right: 0
+    width: 100%
+
+@media (max-width: 950px)
+  #companies-show
+    // FIXME: #companies-show and #recognitions - neither of these selectors are applicable in recognitions page
+    #recognitions #recognitions-table_wrapper
+      margin-top: 50px
+
+    #recognitions-table-export-wrapper
+      display: none
+
+    .unpaid
+      #dashboard
+        padding: 20px
+
+    #admin-admins .admin-avatars
+      padding-right: 0
+      margin-bottom: 50px
+
+    #admin-flipboard
+      position: static
+
+@media (max-width: $tablet)
+  .companies, [class^='company_']
+    #view-main-wrapper
+      padding-top: 0
+
+@media (max-width: $tablet)
+  .drawer-open #companies-show #view-main-wrapper
+    padding-left: 301px
+
+  .companies, [class^='company_']
+    padding-top: 30px
+
+    #dashboard
+      min-width: 100%
+
+    .control-bar
+      padding-left: 0
+
+    #wrapper-outer,
+    .wrapper
+      padding-left: 0 !important
+      padding-right: 0 !important
+      margin-left: 0
+      margin-right: 0
+
+
+@media (max-width: 650px)
+  .companies, [class^='company_']
+    #view-main-wrapper
+
+      #custom_badges
+
+        .item.centered
+          text-align: left
+
+        .item
+          width: 100%
+          padding: 0%
+          margin: 0 0 10px 0
+          display: block
+
+          textarea.badge-description
+            max-width: 100%
+
+
+@media (max-width: 537px)
+  #companies-show
+
+    #placeholder
+      min-width: 100%
+
+    #recognition-badge-graph-wrapper
+      display: none
+
+
+@media (max-width: 495px)
+  #companies-show, #company_admin_dashboards-show
+    .wrapper
+      margin-left: 0
+      margin-right: 0

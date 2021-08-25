@@ -1,0 +1,34 @@
+#authentications-failure,
+#saml-auth-placeholder
+  height: 100%
+  background: image-url("chrome/background.png") repeat
+
+  #view-main-wrapper
+  .tagline
+    @include homeText()
+
+  .wrapper
+    max-width: 100%
+    padding: 10px !important
+    width: 800px
+
+  .wrapper-outer
+    background: white
+
+@media (max-width: $tablet)
+  #authentications-failure,
+  #saml-auth-placeholder
+    background: white
+
+    #view-main-wrapper
+      display: block !important
+
+@media (min-width: $tablet)
+  #authentications-failure,
+  #saml-auth-placeholder
+    .wrapper-outer
+      border: 1px solid $hrColor
+      border-radius: 3px
+      @include flex-display()
+      @include align-items(center)
+      @include justify-content(center)

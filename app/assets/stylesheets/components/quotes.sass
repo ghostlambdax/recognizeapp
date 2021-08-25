@@ -1,0 +1,75 @@
+$homepage_card_bg_light: $lightBodyBg
+
+.quote-box-image-wrapper
+  position: relative
+
+.quote-section.quote-box-side
+  @media (max-width: $tablet)
+    display: block
+    text-align: center
+
+    & > *
+      width: 100%
+
+
+  .quote-box
+    padding: 27px 90px
+    width: 441px
+
+.quote-section
+  .image-box
+    position: relative
+    box-shadow: 0 0 10px rgba(0,0,0,.8)
+    background-size: 100%
+    width: 390px
+    height: 347px
+    padding: 30px
+
+    @media (max-width: $tablet)
+      padding: 10px
+      height: auto
+
+    h2
+      font-weight: 600
+      font-size: 50px
+      line-height: 42px
+      color: #FFFFFF !important
+      text-shadow: 0 0 12px rgba(0,0,0,0.99)
+
+      @media (max-width: $tablet)
+        font-size: 30px
+
+    img
+      position: absolute
+
+  .quote-box
+    background: $homepage_card_bg_light
+    margin: 15px -20px -20px
+    padding: 27px 40px
+    width: 320px
+
+    quote
+      position: relative
+
+      &:before
+        @include quoteBefore()
+
+      &:after
+        @include quoteAfter()
+
+
+    .avatar
+      width: 65px
+
+  .avatar-horizontal-wrapper
+    margin-bottom: 20px
+
+@media (max-width: 700px)
+  .quote-section
+    flex-direction: column
+
+    .image-box,
+    .quote-box
+      width: 90%
+      margin-left: auto
+      margin-right: auto

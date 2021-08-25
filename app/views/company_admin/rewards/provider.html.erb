@@ -1,0 +1,24 @@
+<% content_for :rewards_filter do %>
+<span></span>
+<% end %>
+<div id="rewards-header-area" class="clearfix">
+  <div class="page-main marginBottom10">
+    <h2>
+      <%= link_to("Back", company_admin_catalog_rewards_path(@catalog), class: "button button-chromeless align-middle") %>
+      <%= t("rewards.recognize_rewards") %>
+    </h2>
+    <%= render_flash %>
+  </div>
+</div>
+
+<div id="provider-rewards-area" class="tab tab-pane active clearfix">
+  <% if @provider_rewards.size > 0 %>
+    <%= render("provider_rewards", provider_rewards: @provider_rewards) %>
+  <% else %>
+    <div class="well">
+      <h3><%= @catalog.currency_info %> is not currently supported!</h3>
+      <% contact_us_link = link_to('contact us', contact_path(body: "I am requesting gift card support for #{@catalog.currency_info}.")) %>
+      <p>Please <%= contact_us_link %> if you want to enable gift cards for this currency.</p>
+    </div>
+  <% end %>
+</div>

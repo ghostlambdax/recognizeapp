@@ -1,0 +1,144 @@
+<div id="introduction" class="article-list marginBottom100">
+  <h2>Introduction</h2>
+
+  <%= lazy_image_tag "pages/articles/banking-survey/top.jpg", alt: "A number of banking buildings", itemprop: "image", class: "marginBottom20" %>
+  <p>Although half of finance companies provide employee awards, most do not provide monetary employee recognition. Why do finance companies wait for end of year to give bonuses? Credit unions, banking institutions, and finance have an opportunity to tie company values with recognition throughout the year. They should couple these activities with a monetary component. With most finance employees stating they don't receive enough recognition, an employee engagement strategy is an easy competitive advantage over the competition.</p>
+</div>
+
+
+<div id="research" class="article-list marginBottom100">
+
+  <h2>Banking survey employee recognition</h2>
+  <% demo = [
+      {
+          title: '28% of finance workers are tired half or most of the time in the last six months',
+          description: 'What factors are playing into exhaustion? Could it be only work or other factors, such as home life.',
+          img: 'p1',
+          alt: 'When asked, "I felt tired or had little energy in last quarter." 45% said Several days a week, 25% said not at all, 19% said half the days, and 9% said nearly every day.'
+      },
+      {
+          title: 'Most workers feel good about themselves',
+          description: '86% of people said that most of the time they feel good about life and themselves.',
+          img: 'p2',
+          alt: 'When asked, "I felt bad about myself - or that I was a failure and had let myself or my family down in last quarter." 53% said not at all, 33% on several days, 9% half the days, and 2% most days.'
+      },
+      {
+          title: 'Most workers are able to concentrate',
+          description: 'Similarly, 83% said they can concentrate all the time or most of the time. Only 15% said frequently or at least half the time they felt they had trouble concentrating.',
+          img: 'p3',
+          alt: 'When asked, "I had trouble concentrating on things, such as reading the newspaper or watching television in the last quarter." 50% said not at all. 34% several days in the last quarter. 13% More than half the days. 2% for '
+      },
+      {
+          title: 'Most companies do not provide monetary employee recognition',
+          description: 'Interestingly, only 2% of companies surveyed provide donation to charity. 1/3rd of companies offer on-the-spot bonuses, and only half have employee awards. Therefore, having an employee recognition and rewards program would give a strong competitive advantage. ',
+          img: 'r1',
+          alt: 'When asked, "If your company provides employee recognition, what are the ways in which it does?" 50% said Employee awards, 42% verbal affirmation. 41% employee anniversary or birthday. 35% Gift cards. 32% Cash awards. 12% paid time off. 8% professional perks, like a conference. 7% experiences. 2% parking spot. 2% donation to charity.'
+      },
+      {
+          title: 'More than half of companies have an official recognition program',
+          description: '42% of companies are missing out on not having an employee recognition program. However, this number might be slowly improving as 16% of financial companies have reported adding an official recognition program in the past six months.',
+          img: 'r2',
+          alt: '"Does your company have an official way to provide employee recognition?" 58% yes. 20% no. 16% Yes but only recently (6mo). 4% Unsure if company has an employee recognition program.'
+      },
+      {
+          title: "Less than half of employees are unsure or don't feel appreciated",
+          description: 'With a successful employee recognition program, at least 70% of people should feel appreciated.',
+          img: 'r3',
+          alt: '"I have felt like my company recognizes my accomplishments." 8% strongly disagree. 17% disagree. 18% unsure. 35% agree. 19% strongly agree.'
+      },
+      {
+          title: 'Similar results with half of staff not appreciated',
+          description: 'Still, 9% of finance workers say they strongly disagree with the recognition they received and only 19% strongly agree.',
+          img: 'r4',
+          alt: '"I have been satisfied with the employee recognition I receive." 9% strongly disagree. 19% disagree. 19% unsure. 32% agree. 19% strongly agree.'
+      },
+      {
+          title: 'Slightly more people strongly agree their recognition was at least adequate.',
+          description: 'Less than half of people strongly agree or agree that they are adequately recognized for their work. Financial institutions should aim to fix this problem in order to have a more engaged workforce.',
+          img: 'r5',
+          alt: '"I believe I have been adequately recognized at my company." 7% strongly disagree. 20% agree. 22% unsure. 27% agree. 22% strongly agree.'
+      },
+      {
+          title: 'No recognition is not acceptable for the banking industry',
+          description: 'With half of employees feeling unsure or under appreciated, staff need to be recognized at least quarterly.',
+          img: 'r6',
+          alt: '"On average, how often do you receive employee recognition." 29% quarterly. 22% monthly. 19% seldom or never. 19% yearly. 5% weekly.'
+      },
+      {
+          title: 'Half say no',
+          description: 'Like most of this survey it is split between people who agree they appreciate the amount of recognition their employer provides and half that do not. What side is your company on?',
+          img: 'r7',
+          alt: '"I have been satisfied with how often my company gives me recognition." 9% strongly disagree. 21% disagree. 19% unsure. 28% agree. 21% strongly agree.'
+      }
+  ] %>
+
+  <% demo.each do |d| %>
+    <h3><%= d[:title] %></h3>
+    <p><%= d[:description] %></p>
+    <%= lazy_image_tag "pages/articles/banking-survey/#{d[:img]}.png", alt: d[:alt] %>
+    <hr class="hr hr-space">
+  <% end %>
+
+
+</div>
+
+<div id="demographics" class="article-list marginBottom100">
+  <h2>Banking survey demoraphics</h2>
+  <p class="tagline">The Recognize team always tries to get an accurate look at the population when conducting surveys. We were able to hit the mark by surveying an equal amount of men and women and people with different job titles and salaries. Unfortunately, it wasn't easy to get enough banking professionals to take the survey. Our aim was to get at least 500 responses, but we had to settle at only 184. We hope to provide a more comprehensive look in the future. </p>
+  <% demo = [
+
+     {
+         title: '',
+         description: '',
+         img: 'p4',
+          alt: '"What is your gender?" 51% male. 48% female.'
+     },
+     {
+         title: '',
+         description: '',
+         img: 'p5',
+         alt: '"What is your age?" 42% 25-34. 27% 35-44. 14% 45-54. 6% 18-24. 55-64 6%.'
+     },
+     {
+         title: '',
+         description: '',
+         img: 'p6',
+         alt: '"What level is your job position?" 50% intermediate or senior. 27% Management or supervisory role. 12% entry level. 3% part-time. 3% upper management.'
+     },
+     {
+         title: '',
+         description: '',
+         img: 'p7',
+         alt: '"If you live in the United States, what state are you from?" 17% not in USA. 11% California. 7% Florida. 6% Ohio. 5% Wisconsin.'
+     },
+     {
+         title: '',
+         description: '',
+         img: 'p8',
+         alt: '"What is your ethnicity?" 59% white. 15% South Asian. 12% East Asian. 6% Black or African. 4% Hispanic, Latino, or Spanish Origin.'
+     },
+     {
+         title: '',
+         description: '',
+         img: 'p9',
+         alt: '"What is your income level?" 22% $50k-$75k. 16% $20k or less. 15% $40k-$50k. 13% $30k-$40k. 10% $75k-$100k. 9% $100k-$150k. 6% $20k-$30k. 4% $150k+.'
+
+     }
+
+
+
+  ] %>
+
+  <% demo.each do |d| %>
+  <% unless d[:title].blank? %>
+  <h3><%= d[:title] %></h3>
+  <% end %>
+
+  <% unless d[:description].blank? %>
+  <p><%= d[:description] %></p>
+  <% end %>
+
+  <%= lazy_image_tag "pages/articles/banking-survey/#{d[:img]}.png", alt: d[:alt] %>
+  <hr class="hr hr-space">
+  <% end %>
+</div>

@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /saml/sso
+Disallow: /<yourdomain>/saml/sso
+Disallow: /recognitions/*/share/*
+Disallow: /recognize-chrome-grouppolicy-v2.adm
+Sitemap: https://recognizeapp.com/sitemap.xml.gz

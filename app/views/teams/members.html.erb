@@ -1,0 +1,8 @@
+<% @team_members.find_each do |user|%>
+  <li class="user">
+    <%= link_to user_path(user, network: user.network) do %>
+      <%= image_tag(user.avatar.thumb.url, itemprop: "image", class: "avatar") if user.avatar %>
+      <%= user.full_name %>
+    <% end %>
+  </li>
+<% end %>

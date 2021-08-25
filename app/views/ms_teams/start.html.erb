@@ -1,0 +1,35 @@
+<% content_for :pagejs do %>
+  document.addEventListener('DOMContentLoaded', function() {
+    window.R.msTeams.Loader(function() {
+      window.R.msTeams.auth(function(){
+
+      var defaultPathForCurrentTab = window.R.utils.addParamsToUrlString('<%= escape_redirect ms_teams_tab_placeholder_path %>', {entity_id: window.R.msTeams.context.entityId});
+      var redirectPath = <% if params[:redirect].present? %>
+          '<%= escape_redirect params[:redirect] %>';
+        <% else %>
+          defaultPathForCurrentTab;
+        <% end %>
+
+        window.location = redirectPath;
+      });
+    });
+  });
+<% end %>
+
+<div class="text-centered">
+  <%= image_tag 'chrome/logo-72x72.png', alt: 'Recognize logos'  %>
+  <h1>Recognize + Microsoft Teams</h1>
+  <p class="balance-text">To begin, we'll need to connect or create your Recognize account. <br>Click the button below to proceed securely in a new window.</p>
+
+<%#
+  NOTE: This button needs to be handled by MsTeams
+        specific js (ms_teams/auth.js), otherwise communication
+        will be broken upon successful auth which results in the
+        closing of the pop up window.
+%>
+  <button id="ms-teams-signin-btn" class="ms-Button ms-Button--primary">
+    <span class="ms-Button-label">Get Started</span>
+  </button><br>
+  <div class="errors"></div>
+
+</div>

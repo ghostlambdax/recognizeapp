@@ -1,0 +1,172 @@
+<div id="new-recognition" class="slideable current ms-Grid">
+  <%
+     if @recognition.badge
+       name = @recognition.badge.name
+       long_name = @recognition.badge.short_name
+     else
+       name = t("dict.choose")
+       long_name = t("recognition_new.choose_a_badge")
+     end
+  %>
+
+  <% if current_user and !current_user.verified? and params[:controller] != "password_resets"%>
+    <%= render partial: "/recognitions/verify_warning"%>
+  <% else %>
+
+    <%= form_for(@recognition, url: recognitions_url(network: current_user.network),remote: true, html: {data: {errorwrapper: "#recognition-send-error-wrapper", event: "send-recognition-form"}}) do |f| %>
+      <div class="ms-Grid-row marginBottom10">
+        <div class="ms-Grid-col ms-u-sm12 ms-u-md4 ms-u-lg2">
+          <div class="image-wrapper marginBottom10 text-center">
+            <%= f.hidden_field :badge_id %>
+            <h4 id="badge-name" class="ms-font-l"><%= long_name%></h4>
+
+            <a href="javascript://" id="badge-trigger" class="badge-<%= name.downcase %> analyticsEvent" data-event="badge-trigger" data-eventtype="opened"></a><br>
+            <a href="javascript://" id="badge-edit" data-from="#new-recognition" data-to="#badges-wrapper" class="slideable-trigger"><%= t("recognition_new.edit_badge_html")%></a>
+          </div>
+        </div>
+
+        <div class="main-text ms-Grid-col ms-u-sm12 ms-u-md8 ms-u-lg10 ms-u-xl6">
+          <%= hidden_field_tag :recognition_sender_name, @current_user.full_name %>
+          <%= f.hidden_field :recipients, multiple: true, class: "hidden-field recognition_recipients", id: "recognition_recipients_1",
+                             value: nil, data: {index: 1} %>
+          <%# this field is mutated from view when wysiwyg editor is initialized %>
+          <%= f.hidden_field :input_format, value: 'text' %>
+
+          <div id="chosen-recepient-wrapper" class="clearfix no-recipients">
+
+            <label class="ms-Label"><%= t("forms.recipients") %></label>
+
+            <%# error messages for individual recipients attach to this hidden field %>
+            <%= hidden_field_tag :recipients , "", class: "hidden-field", id: "recognition_recipients"%>
+
+            <div class="inner"><span class="message"><%= t("forms.recipients_in_to_field") %></span></div>
+          </div>
+          <%= hidden_field_tag :recipients , "", class: "hidden-field", id: "recognition_recipients"%>
+
+
+          <div class="ms-TextField ms-TextField--multiline">
+            <%= f.label :message, message_label, class:"ms-Label"%>
+            <%= f.text_area :message, class:"ms-TextField-field analyticsEvent",
+                            placeholder: t("recognition_new.reason_for_the_recognition"), cols: 1, rows: 2,
+                            data: data_attrs_for_message_field %>
+          </div>
+
+          <% if current_user.company.recognition_tags_enabled? %>
+            <%= f.label :tag_ids, tags_label, class:"ms-Label" %>
+            <div class="tags-wrapper controls marginBottom10">
+              <%= tags_select2(f, @tags) %>
+            </div>
+          <% end %>
+
+          <div class="controls marginBottom10 recognition-settings clearfix">
+            <% if current_user.company.allow_posting_to_yammer_wall? &&
+                     current_user.company.allow_yammer_connect? %>
+              <% if current_user.auth_with_yammer? %>
+                <% if @company.post_to_yammer_group_id.present? %>
+                  <%= show_toggle true,
+                                      t("recognition_new.post_to_the_yammer_wall"),
+                                      {input: {name: "recognition[post_to_yammer_wall]"}, id: 'postYammer'} %>
+                  <%= hidden_field_tag "recognition[post_to_yammer_group_id]", @company.post_to_yammer_group_id %>
+                <% else %>
+                  <%= show_toggle true,
+                                  t("recognition_new.post_to_the_yammer_wall"),
+                                  {input: {name: "recognition[post_to_yammer_wall]"}, id: 'postYammer'} %>
+
+                  <%= render partial: 'layouts/yammer_groups', locals: { groups_scope: :user } %>
+                <% end %>
+              <% else %>
+                <p><%= _('Sign in to Yammer to post to Yammer') %> <%= prompt_for_yammer_authentication(yammer_groups_select_client.to_sym, current_user)%>
+              <% end %>
+
+            <% end %>
+
+            <% if current_user.company.allows_private_recognitions? %>
+              <%= show_toggle false,
+                              t("recognition_new.private"), {
+                                  input: {name: "recognition[is_private]"},
+                                  id: "is-private-recognition",
+                                  title: t('recognitions.privacy_checkbox_tooltip')
+                              } do %>
+                <sup data-placement="right" title="<%= t('recognitions.privacy_checkbox_tooltip') %>">?</sup>
+              <% end %>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="text-center">
+        <%= f.button type:"submit", class:"ms-Button ms-Button--primary", data: {"lf-page-change"=> true} do %>
+          <span class="ms-Button-label">
+            <div class="loader">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <span class="submit-text"><%= t("recognition_new.send_recognition") %></span>
+          </span>
+        <% end %>
+      </div>
+
+      <hr class="hr-space">
+
+      <div class="outlook-links marginBottom30">
+        <%= link_to root_path, class: "marginRight10" do %>
+          Company recognitions
+        <% end %>
+        <%= link_to user_path(current_user) do %>
+          Your profile
+        <% end %>
+      </div>
+
+    <% end %>
+  <% end  %>
+</div>
+
+<div id="complete-recognition" class="slideable">
+  <h2 class="ms-font-xxl"><%= t("recognition_new.your_recognition_sent") %></h2>
+  <%= image_tag "panel/success-badge.png", alt: "Success!", class: "marginBottom10" %>
+
+  <a href="" id="recognition-link" class="ms-Button ms-Button--hero">
+    <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--caretRight"></i></span>
+    <span class="ms-Button-label">Loading recognition</span>
+  </a>
+</div>
+
+<div id="badges-wrapper" class="slideable">
+  <% badge_set = sendable_recognition_badges %>
+  <ul id="badge-list" class="bootstrap-toggle-check clearfix" data-badges-remaining-endpoint="<%= remaining_company_badges_path %>">
+
+    <%= render :partial => "badges/badge", :collection => sort_badges(badge_set.reject(&:is_achievement?)) %>
+
+    <% if current_user.can_send_achievements? %>
+      <%= render :partial => "badges/badge", :collection => sort_badges(badge_set.select(&:is_achievement?)) %>
+    <% end %>
+
+    <% if !current_user.company.custom_badges_enabled? %>
+      <li class="badge-item">
+        <%= link_to welcome_path(upgrade: true), id: "upgrade-badges-link-badge" do %>
+          <%= image_tag "badges/200/new-badge-p.png", width: 130, height: 130, class: "badge-image-small"%>
+          <div class="button button-small">
+            <%= feather_icon('check', color: 'white', height: 15, class: 'opacity0') %>
+            <span><%= t("badges.get_more_badges") %></span>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<%= render partial: "/js_templates/recognition_new" %>
+<%= render partial: "/js_templates/panel_message" %>
+
+
+<script type="text/javascript" charset="utf-8">
+  window.R.transition = new R.Transition();
+  window.R.post = new window.R.ui.Post("recognition");
+</script>
+
+
+
+

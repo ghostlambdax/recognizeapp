@@ -1,0 +1,38 @@
+<% content_for :title, "Last Accounts Spreadsheet Import Report | Recognize" %>
+<h3>Import report <%= link_to 'Back', new_company_admin_accounts_spreadsheet_importers_path, class: 'button button-chromeless' %></h3>
+<br>
+
+<% if @last_import_summary.present? %>
+    <div id="last_import_status_wrapper" class="span8">
+      <table id="last_import_status" class="table table-bordered table-condensed table-functionality table-hover table-responsive table-striped">
+        <thead>
+        <tr>
+          <th>Total records</th>
+          <th>Successful records</th>
+          <th>Failed records</th>
+          <th>Records that saved but require attention</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><%= @last_import_summary.total_records_count %></td>
+          <td><%= @last_import_summary.successful_records_count %></td>
+          <td><%= @last_import_summary.failed_records_count %></td>
+          <td><%= @last_import_summary.saved_but_require_attention_records_count %></td>
+        </tr>
+        </tbody>
+      </table>
+      <div>
+        <% if last_accounts_spreadsheet_import_was_problematic?(@company) %>
+          To see problematic records, see
+          <%= link_to "data sheet with problematic records.",
+              last_accounts_spreadsheet_import_results_document_path(@company),
+              target: "_blank",
+              rel: "noopener noreferrer" %>
+          Please re-import the spreadsheet after going over issues mentioned in the linked file.
+        <% end %>
+      </div>
+    </div>
+<% else %>
+    Looks like accounts spreadsheet has never been imported.
+<% end %>

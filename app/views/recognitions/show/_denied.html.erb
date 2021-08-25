@@ -1,0 +1,29 @@
+<div class="flex-centered">
+  <div class="centered">
+    <h1 class="marginBottom40 marginTop40"><%= t("recognitions.has_been_denied") %></h1>
+
+    <%= render 'recognitions/show/recognition_preview', recognition: recognition %>
+
+    <h4 class="marginTop20"><%= t('dict.details') %></h4>
+    <div class="clearfix denial-details">
+      <div class="well span6">
+        <table class="table-ranking">
+          <tr>
+            <td class="subtle-text"><%= t('recognitions.requested_from') %></td>
+            <td><%= recognition.sender_name %></td>
+          </tr>
+          <tr>
+            <td class="subtle-text"><%= t('recognitions.denied_by') %></td>
+            <td><%= recognition.resolver.full_name %></td>
+          </tr>
+          <% if recognition.denial_message.present? %>
+            <tr>
+              <td class="subtle-text"><%= t('recognitions.reason_for_denial') %></td>
+              <td><i>"<%= recognition.denial_message %>"</i></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

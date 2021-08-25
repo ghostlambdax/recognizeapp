@@ -1,0 +1,418 @@
+html[dir=rtl]
+  direction: rtl
+
+  #header-controls span, #header-settings span
+    font-size: 15px
+
+  /*User show and edit*/
+
+  #users-show
+    .main
+      margin-right: unset
+      margin-left: 35px
+
+    .nav-pills > li
+      float: right
+
+    .stylized-dl dt
+      padding: 0 0 7px 35px
+    .marginRight5
+      margin-right: unset
+      margin-left: 5px !important
+
+  #users-edit
+    .row-fluid
+      .span4
+        float: right
+      @media (max-width: 767px)
+        .span4
+          float: none
+      .pulser
+        right: -8px
+        &:after
+          right: -20px
+
+  body
+    font-size: 15px
+
+  label.iOSCheckLabelOn span
+    padding-right: 10px
+    padding-left: 0
+
+
+  .delta-cards .delta-card:last-child
+    margin-right: auto
+
+  header#header .primary-controls
+    max-width: 100%
+
+  /* User index page */
+
+
+  #users-index
+    .row-fluid [class*="span"]
+      float: right
+      @media (max-width: 767px)
+        float: none
+        width: auto
+        margin-left: 0
+      &:first-child
+        margin-right: 0
+    #users-filter-wrapper
+      margin-right: 2.564102564%
+      margin-left: 0
+      #users-search
+        input
+          float: left
+    #users-table
+      .child-table-wrapper
+        margin-right: 5px
+        margin-left: unset
+      .child-row > td
+        padding: 0 8px 0 0
+      .child-row.shown > td
+        border-left: 1px solid #ccc
+        border-right: unset
+    .dataTables_wrapper
+      .dataTables_length, .dataTables_info
+        float: right
+      .dataTables_paginate
+        float: left
+
+  /* Rewards */
+  #redemptions-index
+    .reward-card
+      .reward-title-wrapper, .reward-content
+        text-align: right
+    .page-header
+      .page-nav
+        .title-nav
+          margin-right: unset
+          margin-left: 5%
+          .title
+            margin-left: 4vw
+            margin-right: unset
+        .filters .filter-wrapper
+          margin-left: 2vw
+          margin-right: unset
+          &:last-child
+            margin-left: 0
+    .redeemable_points_total_wrapper
+      margin-right: 0
+      margin-left: 30px
+
+  /* Manager Portal */
+  #manager_admin_users-index, #manager_admin_recognitions-index, #manager_admin_anniversaries_calendars-show, #manager_admin_tskz_completed_tasks-index, #manager_admin_documents-index, #manager_admin_redemptions-index
+    .admin-nav-wrapper
+      right: 0
+    .admin-nav-wrapper + .content-wrapper
+      padding-right: 200px
+      padding-left: unset
+      @media(max-width: 768px)
+        padding-right: 0
+    .total-points-wrapper
+      float: left
+      .total-points
+        float: left
+    #view-main-wrapper
+      #recognitions-filter-wrapper, #anniversaries-filter-wrapper, #completed_tasks-filter-wrapper, #documents-table-wrapper, #redemptions-filter-wrapper
+        .nav-tabs > li
+          float: right
+        .litatable-select-filter
+          float: right
+          margin: 0 0 0 10px
+      .tab-nav ul li
+        float: right
+        margin-left: 25px
+        margin-right: unset
+      .page-nav .title-nav
+        margin-right: unset
+        .title
+          margin-right: unset
+      .row-fluid
+        .span7
+          float: left
+          margin-right: 0
+          margin-left: 0
+          @media (max-width: 768px)
+            margin-right: 2.762430939%
+            margin-left: 0
+        .span5
+          float: right
+          .date-range
+            float: right
+    .dataTables_wrapper
+      .dataTables_length, .dataTables_info
+        float: right
+      .dataTables_paginate
+        float: left
+
+  /* task submissions form */
+  #task_submissions-new
+    .task_submissions-form-wrapper
+      #task-list
+        input.quantity
+          margin-left: 10px
+          margin-right: unset
+        .select2
+          margin-left: 10px
+          margin-right: unset
+          .select2-selection
+            text-align: right
+      .add-task-wrapper
+        text-align: right
+
+  /* Bades Index and Badge Show page */
+  #badges-index, #badges-show
+    .badge-page-item
+      .badge-stats dl
+        padding: 0 0 0 20px
+      .content
+        padding: 10px 250px 10px 10px
+      img
+        right: 20px
+
+  /* Stream Page */
+  #recognitions-index
+    .right-column
+      margin: 0 20px 15px 0
+    .column-switch
+      float: left
+    .blue-links
+      li
+        .detail-link
+          left: 5px
+      h3, h4, h5
+        float: right
+    .star
+      &:after
+        right: 0
+    #team-list
+      .link
+        margin-right: 5px
+
+
+  /* Teams index page */
+  #teams-index
+    .table th, .table td
+      text-align: right
+    .button-primary i + span
+      padding-right: 21px
+
+  /* Teams show page */
+  #teams-show
+    .row-fluid
+      .span4, .span6, .span2
+        float: right
+        @media (max-width: 767px)
+          display: block
+          float: none
+          width: auto
+          margin-right: 0
+          margin-left: unset
+      .span4
+        margin-right: 0
+        margin-left: unset
+        #name-wrapper > h1
+          float: right
+          .team-name
+            padding-left: 34px
+            padding-right: unset
+            .button-tall
+              float: right
+    .pen-link
+      left: 5px
+      right: unset
+
+    .stat-wrapper li
+      float: right
+
+    .user-list .user
+      float: right
+
+  /* Comments wrapper */
+  .comments-wrapper
+    .comments-list-wrapper
+      .comment-inner
+        padding-right: 45px
+        margin-right: 10px
+        [itemprop="author"]
+          float: right
+          margin-left: 5px
+      img
+        right: 0
+        margin-left: 15px
+
+  /* Recognition New, Edit and Nominations New Page*/
+  #recognitions-new, #recognitions-edit, #nominations-new
+    #recognition-new-wrapper #top
+      text-align: right
+      .left
+        float: right
+    .row-fluid [class*="span"]
+      float: right
+      @media (max-width: 767px)
+        float: none
+        width: auto
+        margin-left: 0
+    .checkbox-wrapper
+      float: right
+      margin-left: 15px
+      margin-right: unset
+
+  /* Recognitions Show Page */
+  #recognitions-show
+    .row-fluid [class*="span"]
+      float: right
+      margin-right: 2.564102564%
+      @media (max-width: 767px)
+        float: unset
+        display: block
+        width: auto
+        margin-right: 0
+    #recognition-show-top
+      #main-text h1, #recipients-avatars, p
+        text-align: left
+        @media (max-width: 767px)
+          text-align: unset
+
+  /* Header */
+  header#header
+    .primary-controls
+      margin-right: 0
+      margin-left: auto
+
+      #header-controls
+        a
+          float: right
+          margin-right: unset
+          margin-left: 3px
+          @media (max-width: 1250px) and (min-width: 769px)
+            margin-top: 8px !important
+
+        span
+          @media (max-width: 1250px) and (min-width: 601px)
+            position: absolute
+            right: -9999px
+    .secondary-controls
+      margin-left: 0
+      margin-right: auto
+
+      #header-profile-wrapper
+
+        .profile
+          h2
+            margin: 0 7px 0 0
+
+  /* Menu */
+  #settings-menu
+    right: unset
+    left: 15px
+    a
+      background-position: right 3px
+      padding-right: 22px
+      padding-left: unset
+
+  /* Search Popup */
+  #search-popup
+    right: 0
+
+
+  /* recognition card used in stream, badge show, users show...etc */
+  .recognition-card
+    .image-wrapper
+      right: 0
+      margin: -4px 15px 0 0
+    .to-wrapper
+      padding: 0 85px 0 0
+      li
+        margin-left: 10px
+        margin-right: unset
+        img
+          margin-left: 5px
+          margin-right: unset
+    .options
+      left: 0
+      right: unset
+      .options-trigger
+        float: left
+      .options-menu
+        float: right
+        li
+          float: right
+    .bottom
+      .vote
+        float: right
+        a
+          margin-left: 10px
+      .who
+        float: right
+    .from-wrapper dt
+      right: -9999px
+      left: unset
+    .comment-wrapper .button
+      margin-left: unset
+      margin-right: 15px
+
+  /* Stats */
+
+  #reports-index
+    .page-main
+      float: right
+      .dropdown-menu
+        right: 0
+        left: unset
+        li
+          text-align: right
+    .page-aside
+      float: left
+      .date-range
+        .tab-nav ul li
+          float: right
+          margin-left: 25px
+          margin-right: 0
+
+  /* Fame */
+  #hall_of_fame-index
+    .top-pane
+      .top-users
+        li
+          text-align: right
+        .users-wrapper .user
+          float: right
+    .badges
+      .badge-info
+        right: 20px
+    .time-periods-wrapper
+      &:before
+        left: unset
+        right: 0
+        width: 81px
+        height: 140px
+      &:after
+        left: 0
+        right: unset
+        width: 225px
+        height: 140px
+      .time-period:first-child
+        margin-right: 220px
+        margin-left: unset
+    .users li
+      float: right
+      margin-left: 30px
+      margin-right: unset
+
+  /* Company Admin dashboard */
+  #company_admin_dashboards-show
+    #dashboard
+      .delta-stats-wrapper
+        .delta-cards
+          .delta-card
+            margin: 0 60px 5% 0
+
+            &:first-child
+              margin-right: 0
+
+            &:last-child
+              margin-left: 0
+

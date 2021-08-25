@@ -1,0 +1,13 @@
+<%= select_tag("company_setting[sync_groups]",
+               options_from_collection_for_select(@available_sync_groups, :id, :full_name, @selected_sync_groups.map(&:id)),
+               multiple: true, class: "company-setting-sync-groups", style: "width:100%", disabled: params[:disabled],
+               data: {
+                   url: company_admin_sync_groups_path(network: @company.domain, provider: params[:provider]),
+                   lazyload: @lazy_load
+               }) %>
+
+<% if @error %>
+    <div class="error"><%= @error %></div>
+
+  <%= link_to_microsoft_graph('Reauthenticate', admin_consent: true, redirect: company_path(network: @company)) %>
+<% end %>

@@ -1,0 +1,29 @@
+<% content_for :title, "A Finance Survey on Health and Employee Recognition" %>
+<% content_for :description, "What is the pulse of the banking industry? Are staff feeling appreciated? Does the finance world use recognition? Find out in the Recognize survey." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="An Employee Recognition Survey of the Banking Industry" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="Research into the finance industry and their sense of happiness, well-being, and appreciation." />
+  <meta property="og:image" content="/assets/pages/articles/banking-survey/man.jpg" />
+  <link rel="amphtml" href="<%= employee_recognition_stats_for_healthcare_url format: :amp %>">
+<% end%>
+
+
+<% content_for :article_title do %>A survey into finance employee well-being and sense of employee recognition<% end %>
+<% content_for :article_description do %>
+  <p class="tagline">How are employees at credit unions, financial services, bank branches, and corporate banking feeling? We asked about 180 banking professionals of all walks of life those exact questions.</p>
+
+<% end %>
+
+<% tags = ['Introduction', 'Research', 'Demographics'] %>
+
+<% content_for :article_body do %>
+  <%= render partial: "banking_survey", locals: {tags: tags} %>
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>z

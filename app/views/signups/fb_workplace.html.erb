@@ -1,0 +1,52 @@
+<% content_for :title do
+  t('fb_workplace.signup_title')
+ end %>
+
+<% @user_session ||= UserSession.new %>
+
+<div class="well">
+  <div class="image-left-content-right">
+    <%= image_tag "pages/fbworkplace/start/fb-workplace-logo.png" %>
+    <div>
+      <h1 class="balance-text"><%= t("signups.workplace.intro") %></h1>
+      <p class="balance-text"><%= t("signups.workplace.fb_workplace_signup") %></p>
+    </div>
+  </div>
+
+
+
+  <div class="hr hr-thick hr-space"></div>
+
+
+  <% if params[:org_install].present? %>
+    <h2>Find Recognize in Workplace Chat to get started</h2>
+    <%= image_tag "workplace/install_recognize_to_workplace.gif" %>
+
+    <hr class="hr hr-space marginBottom50">
+  <% end %>
+
+  <div class="fb-signup-wrapper">
+
+
+    <h3><%= t('fb_workplace.sign_in_to_install') %></h3>
+    <div class=" marginBottom50">
+      <div data-turbolinks="false">
+        <%= link_to t("signups.sign_up_for_free"), sign_up_path(network: params[:network]), class: "button button-large" %>
+      </div>
+      <hr class="hr hr-space">
+      <h4><%= t("sign_up.exist_users") %></h4>
+      <%= render partial: "user_sessions/login" %>
+    </div>
+
+
+
+  </div>
+
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+  setTimeout(function() {
+    $body.addClass("loaded");
+  }, 1000);
+</script>

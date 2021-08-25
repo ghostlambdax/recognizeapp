@@ -1,0 +1,271 @@
+#redemptions-index
+
+  .upgrade-banner
+    margin-top: 8px
+    margin-bottom: 0
+
+  .swal2-image
+    max-height: 110px
+
+  .redeemable_points_total_wrapper
+    position: relative
+    top: 9px
+    margin-bottom: 20px
+
+  .redeemable_points_total
+    margin: 3px 0 0 0
+
+    .small
+      font-size: 13px
+
+  .redeemable_points_total_wrapper
+    display: inline-block
+    margin-right: 30px
+
+  .select-catalog-button-wrapper
+    display: inline-block
+
+  .banner
+    padding: 1.5em
+
+  .reward-card.unredeemable
+    .reward-form-wrapper
+      border-right: 1px solid $gray
+      border-left: 1px solid $gray
+      border-bottom: 1px solid $gray
+      box-shadow: none
+
+      .unredeemable-wrapper
+        color: $gray
+
+
+  .reward-card
+    min-height: 474px
+    width: 30%
+    color: rgb(7, 7, 7)
+    float: left
+    margin: 0px 1% 2em 1%
+    position: relative
+    @include transitionTransform(2s, $cubic)
+    position: relative
+
+    .reward-success-button
+      display: none
+
+    &.redeemed
+      @include transform(translate(0, -10px))
+
+    &.redeemed .reward-success-button
+      display: block
+
+    .reward-content
+      @include background(linear-gradient(135deg, #fff 0%, desaturate(lighten($headerBg, 50%), 30%) 100%) )
+      border-right: 1px solid $gray
+      border-left: 1px solid $gray
+      height: 161px
+      overflow: scroll
+      padding-bottom: 50px
+
+      p
+        font-size: 1.3em
+
+    & > div
+      padding: 1em
+
+
+    .reward-title-wrapper
+      color: #fff
+      background: rgba($darkened, 0.8)
+      padding: 5px 25px
+      bottom: 0
+      left: 0
+      width: 100%
+      text-align: left
+
+      h3
+        margin-bottom: 0
+
+      p, h2, h3, h4, h5, li
+        display: inline-block
+        color: white
+        font-weight: 600
+
+      .total-quantity
+        font-style: italic
+
+
+    .reward-header
+      position: relative
+      overflow: hidden
+      border-radius: 16px 16px 0 0
+      text-align: center
+      padding-right: 0
+      padding-left: 0
+
+      .img-wrapper
+        height: 250px
+        display: flex
+        align-items: center
+
+      img
+        max-height: 100%
+        max-width: 100%
+        margin: auto
+        flex-shrink: 0
+
+      *:last-child,
+      *:only-child
+        margin-bottom: 0
+
+
+    .reward-success-button,
+    .reward-form-wrapper
+      text-align: center
+
+    .reward-form-wrapper
+      bottom: 0
+      background: #fff
+      border: 1px solid #828282
+      border-radius: 0 0 16px 16px
+
+      .points
+        margin-bottom: 7px
+
+      form
+        margin: 0 0 0 0
+        padding: 0
+
+        .button
+          text-transform: uppercase
+
+        .button:disabled
+          box-shadow: none
+          pointer-events: none
+
+        select
+          width: 100%
+
+    .redemption-success-button
+      background-color: #1568A6
+      cursor: default
+
+    h4
+      font-size: 20px
+      font-weight: 400
+      color: black
+
+    h1
+      font-size: 30px!important
+      margin-top: 0px!important
+      margin-bottom: 26px!important
+      text-align: center
+
+    .button
+      width: 100%
+
+  .redeemable
+    form
+      display: block
+      margin-bottom: 0
+
+    .unredeemable-wrapper
+      display: none
+
+  .unredeemable
+    form
+      display: none
+
+    .unredeemable-wrapper
+      display: block
+      color: black
+      font-weight: 400
+
+    &.unredeemable-by-points
+      .points
+        display: block
+      .frequency
+        display: none
+      .quantity
+        display: none
+
+    &.unredeemable-by-frequency
+      .points
+        display: none
+      .frequency
+        display: block
+      .quantity
+        display: none
+
+    &.unredeemable-by-quantity
+      .points
+        display: none
+      .frequency
+        display: none
+      .quantity
+        display: block
+
+  .has-variants-with-quantity.unredeemable.unredeemable-by-quantity
+    form
+      display: block
+
+    .unredeemable-wrapper
+      display: none
+
+    &.has-only-single-variant
+      form
+        display: none
+
+      .unredeemable-wrapper
+        display: block
+
+
+  .redeemed
+    @include background(linear-gradient(135deg,  #fff 0%, lighten($highlightTopColor, 50%) 100%) )
+
+  .tango-terms
+    overflow: auto
+    height: 100px
+    h4
+      font-size: 15px
+      color: $lighterGrayTextColor
+    p
+      font-size: 13px
+      color: $lighterGrayTextColor
+
+@media (min-width: $tablet)
+  #redemptions-index
+    .banner
+      .span4
+        text-align: center
+        float: right
+
+@media (max-width: 1170px)
+  #redemptions-index
+    .reward-card
+      width: 27%
+      margin-right: 2.5%
+      margin-left: 2.5%
+
+
+@media (max-width: 1040px)
+  #redemptions-index
+    .button-large
+      font-size: 13px
+
+@media (max-width: 900px)
+  #redemptions-index
+    .page-body
+      padding-left: 5px
+      padding-right: 5px
+
+    .reward-header
+      height: auto
+
+      .img-wrapper
+        max-height: 160px !important
+
+    .reward-card
+      width: 45%
+      margin-right: 2%
+      margin-left: 2%
+

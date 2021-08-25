@@ -1,0 +1,76 @@
+<% content_for :title, "Microsoft Sharepoint Employee Recognition" %>
+<% content_for :description, "Recognize is an employee recognition & rewards platform inside Microsoft Sharepoint on-premise and online." %>
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Recognize Sharepoint Integration" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="Recognize is an employee recognition & rewards platform inside Microsoft Sharepoint on-premise and online." />
+  <meta property="og:image" content="https://recognizeapp.com/assets/pages/home-sharepoint/sharepoint.jpg" />
+<% end%>
+
+<div class="flex-points">
+  <section class="flex-point pattern-dotpattern ">
+    <div class="inner">
+      <div class="image">
+        <%= image_tag "pages/home-sharepoint/sharepoint.jpg", alt: "Screenshot of sending a recognition inside of Sharepoint.", class: 'image-boxshadow' %>
+      </div>
+
+      <div class="content width-800" data-turbolinks="false">
+        <h1>Sharepoint <em>Social employee Recognition &amp; rewards</em></h1>
+        <ul class="check-list tagline">
+          <li class="balance-text tagline bold">Leader-to-peer, peer-to-peer official employee praise redeemable for monetary or non-monetary value.</li>
+          <li class="balance-text tagline ">Staff can redeem rewards like Massage Envy, Visa, or Cabela's.</li>
+          <li class="balance-text tagline ">Focus &amp; analyze company culture through a value-driven program.</li>
+          <li class="balance-text tagline ">And much more all inside Sharepoint and <%= link_to 'Microsoft Office 365', office365_path %>.</li>
+        </ul>
+        <%= schedule_demo_link utm_content: "top" %>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<div class="flex-points">
+  <section class="flex-point">
+    <div class="inner">
+      <div class="image"><%= lazy_image_tag 'pages/home-sharepoint/rewards.jpg', alt: 'Microsoft Sharepoint showing a window of employee rewards to redeem, such as Amazon gift card or donation to American Cancer Society.' %>
+      </div>
+      <div class="content width-500">
+        <h2 class="balance-text">Redeem rewards from Sharepoint</h2>
+        <p class="balance-text tagline">Much like the other Office 365 tools, Recognize inside Sharepoint also provides access to the gift cards and rewards catalog. Staff can redeem either rewards Recognize provides in the form of Amazon, Visa, Starbucks, and other brands as well as company-fulfilled rewards. These can be items including company sweatshirt or dinner for two.</p>
+        <%= link_to "View Recognize rewards", rewards_path, itemprop:"relatedLink", class: "button button-border" %>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="flex-point">
+    <div class="inner">
+      <div class="content width-500">
+        <h2 class="balance-text">Seamless experience</h2>
+        <p class="balance-text tagline">When a manager recognizes their employee publicly in <%= link_to 'Microsoft Outlook', marketing_outlook_path %>, it is now immediately visible in all the other Office 365 tools. It will be inside Sharepoint and <%= link_to "MS Teams", microsoft_teams_employee_recognition_path %> right when the recognition is sent. That interconnected experience is what companies need to demonstrate the importance of company values and culture.</p>
+        <%= link_to "See Office 365", office365_path, itemprop:"relatedLink", class: "button button-border" %>
+      </div>
+      <div class="image">
+        <%= lazy_image_tag 'pages/home-office365/office-365-recognize.png', class: 'rotating', alt: 'A diagram showing Recognize inside a circle of O365 integrations, such as Outlook, Sharepoint, Azure, and Teams.' %>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="flex-point centered flex flex-centered">
+    <div class="width-800">
+      <h2 class="balance-text">How to add Recognize to Sharepoint</h2>
+      <p class="balance-text tagline">It is super easy to add Recognize to all of the tools inside Office 365. In Sharepoint, Recognize is a web part that can be added on any page. It can be a full width experience or a side panel. The video goes through how to create both.</p>
+      <div class="youtube-video" data-id="oDYlzSHlI44" data-play="stop"></div>
+    </div>
+  </section>
+
+
+</div>
+<%= render partial: "marketing_cta_banner" %>
+
+
+<%= render partial: 'footer' %>
+<%= render partial: "layouts/youtube_load" %>

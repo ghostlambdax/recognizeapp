@@ -1,0 +1,25 @@
+<div class="dropdown-wrapper role-dropdown-wrapper marginRight5 inlineBlock">
+  <div class="dropdown">
+    <button class="button button-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+      <%= t("dict.filter_by_role") %>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <li role="presentation">
+        <% all_path_args = leaderboard_path_args.slice(*(leaderboard_path_args.keys - [:company_role_id])) %>
+        <%= link_to t("dict.all"), send(leaderboard_report_path_method, all_path_args), class: "#{'active' if @company_role.blank?}" %>
+      </li>
+      <% @company.company_roles.each do |company_role| %>
+        <li role="presentation">
+          <% btn_pressed_class = (@company_role&.id == company_role.id) ? "active" : ""%>
+          <%= link_to company_role.name, send(leaderboard_report_path_method, leaderboard_path_args.merge(company_role_id: company_role.id)), class: "#{btn_pressed_class}"%>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <% if @company_role.present? %>
+    <div class="selected-wrapper selected-company-role-wrapper">
+      <h4 class="left"><%= @company_role.name %></h4>
+    </div>
+  <% end %>
+</div>

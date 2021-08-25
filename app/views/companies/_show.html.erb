@@ -1,0 +1,6 @@
+<div id="company-admin-content-wrapper" class="<%= paid_class%>">
+  <%= render_flash %>
+
+  <%= render partial: "companies/custom_badges" %>
+  <%= render partial: "companies/departments" if current_user.director? %>
+</div>

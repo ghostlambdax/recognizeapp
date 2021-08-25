@@ -1,0 +1,21 @@
+<h2 style="<%= mail_styles(:h2, :text) %> margin-bottom: 20px;">
+  <%=
+    I18n.t("notifier.recognition_denied", name: @resolver.full_name)
+  %>
+</h2>
+
+<h3 style="<%= mail_styles(:h3, :text) %> text-align: center; max-width:600px; margin: 0 auto;">
+  <%= @recognition.recipients.map(&:full_name).join(", ") %>
+</h3>
+
+<%= render partial: "user_notifier/recognition", locals: {
+    sender: @sender,
+    badge: @recognition.badge,
+    recognition: @recognition
+}
+%>
+
+<% if @recognition.denial_message.present? %>
+  <p style="<%= mail_styles(:text, :p) %>"><%= t("recognition.recognition_denial_message") %>:</p>
+  <p style="<%= mail_styles(:text, :quote) %>"><%= @recognition.denial_message %></p>
+<% end %>

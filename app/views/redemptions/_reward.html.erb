@@ -1,0 +1,83 @@
+<%
+  reward_card_css_classes = []
+  reward_card_css_classes << "reward-card"
+  reward_card_css_classes << reward_availability_status(reward, current_user)
+  if reward.has_variants_with_quantity?
+    reward_card_css_classes << "has-variants-with-quantity"
+    reward_card_css_classes << "has-only-single-variant" if reward.variants.enabled.size == 1
+  end
+
+  terms = reward.reward_type == "cash equivalent" ? sanitize(reward.provider_reward&.terms) : ""
+%>
+
+<div id="reward-card-<%= reward.id %>" class="<%= reward_card_css_classes.join(" ") %>" data-points='<%= reward.lowest_variant.points %>'
+     data-title='<%= reward.title %>'
+     data-image='<%= reward.image_url %>'
+     data-reward-terms ='<%= %Q(#{terms}) %>'
+     data-rewards-terms-label = '<%= _('Terms') %>'
+>
+  <div class="reward-header">
+
+    <% if reward.image_url.present? %>
+      <div class="img-wrapper">
+        <%= image_tag reward.image_url, alt: reward.title %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="reward-title-wrapper">
+    <h3>
+      <%= reward.title %>
+    </h3>
+
+    <% if reward.company_fulfilled_reward? %>
+      <% if reward.quantity_remaining.present? %>
+        <% quantity_remaining = reward.quantity_remaining <= 0 ? 0 : reward.quantity_remaining %>
+
+        <h3 class="total-quantity"><%= t("rewards.quantity_left_html", quantity: quantity_remaining) %></h3>
+      <% end %>
+    <% end %>
+  </div>
+
+
+  <div class="reward-content">
+    <p><%= reward.description.html_safe %></p>
+  </div>
+
+  <div class="reward-form-wrapper">
+      <%= render "form", reward: reward %>
+      <div class="unredeemable-wrapper">
+
+        <% points = reward.lowest_variant.points %>
+
+        <% if points > 1 %>
+          <h4><%= t("rewards.redeemable_for", num_points: points) %></h4>
+        <% else %>
+          <h4><%= t("rewards.redeemable_for_point", num_points: points) %></h4>
+        <% end %>
+
+        <div class="points">
+          <% num_of_points = redemption_points_needed(points, current_user) %>
+          <% if num_of_points > 1 %>
+            <%=t("rewards.you_need_html", num_points: num_of_points)%>
+          <% else %>
+            <%=t("rewards.you_need_point_html", num_points: num_of_points)%>
+          <% end %>
+        </div>
+
+        <% if reward.restricted_by_user_limit? %>
+          <div class="frequency">
+            <%= t('rewards.no_redemptions_left_for_interval', interval: reset_interval_noun(reward.interval))%>
+          </div>
+        <% end %>
+
+        <% if reward.restricted_by_quantity? %>
+          <div class="quantity">
+            <%= t('rewards.no_redemptions_left_for_quantity', interval: reset_interval_noun(reward.quantity_interval))%>
+          </div>
+        <% end %>
+      </div>
+  </div>
+
+  <div class='reward-success-button centered'><h4><%= t("rewards.redemption_requested")%></h4><div><%= t("rewards.you_will_be_contacted")%></div></div>
+</div>

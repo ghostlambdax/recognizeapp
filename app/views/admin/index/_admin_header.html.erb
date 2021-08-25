@@ -1,0 +1,44 @@
+<header  class="site-admin-header flex">
+  <div class="">
+  <h1>Recognize Administration</h1>
+  
+    <%= link_to_unless_current _("Dashboard"), admin_path%> |
+    <%= link_to_unless_current _("Engagement"), admin_engagement_path%> |
+    <%= link_to_unless_current "Users" , admin_users_path%> |
+    <%= link_to_unless_current "Recognitions" , admin_recognitions_path%> |
+    <%= link_to_unless_current "Rewards" , admin_rewards_path%> |
+    <%= link_to_unless_current "Analytics" , admin_analytics_path%> |
+    <%= link_to_unless_current "Subscriptions" , admin_subscriptions_path%> |
+    <%= link_to_unless_current "Coupons" , admin_coupons_path%> |
+    <%= link_to_unless_current "Background tasks" , admin_queue_path%> |
+    <%= link_to_unless_current "Recent Emails Sent Out" , admin_emails_path%> |
+    <%= link_to_unless_current "Login As User" , admin_login_path %>
+
+  </div>
+  <div style="margin-left:auto">
+    <div class="well flex justify-content-space align-items-center" >
+      <div>
+        <h5>Current release</h5>
+        <% full_release_info = content_tag(:div, id: 'current_release_tooltip') do %>
+          <% Rails.application.config.current_release.map.each do |k, v| %>
+            <div>
+              <strong><%= k %>: </strong>
+              <span class='subtle-text'><%= v %></span>
+            </div>
+          <% end %>
+          <div>Ruby: <%= RUBY_VERSION %></div>
+          <div>Rails: <%= Rails.version %></div>
+
+        <% end %>
+        <div id="current_release_info" title="<%= %Q(#{full_release_info.html_safe}) %>">
+          <%= Rails.application.config.current_release.branch %>
+        </div>
+      </div>
+  
+      <div class="margin10 marginLeft30">
+        <%= link_to "Refresh CMS Cache" , "" , class: "button" , id: "refresh-cms-btn" %>
+      </div>
+    </div>
+
+  </div>
+</header>

@@ -1,0 +1,39 @@
+<% content_for :pagejs do %>
+  <%= render "ms_teams/js_auth_init" %>
+  document.addEventListener('DOMContentLoaded', function() {
+    <% if ms_teams_viewer? %>
+    window.R.msTeams.Loader(function() {
+      window.R.msTeams.auth(function(){
+        console.log("Redirecting now. ")
+        document.getElementById("wrapper").className = "loaded";
+        window.location = '<%= escape_redirect ms_teams_tab_choice_url(@tab_config) if current_user %>'
+      });
+    });   
+    <% else %>
+      <%# 
+        This path can occur if user clicks "Go to website" in MS Teams interface
+        which will pop out the tab in a new page - but without the viewer param 
+        (btw, this is made happen by tabConfig.js setting the websiteUrl param when the tab is installed )
+        In this case, we'll just redirect user to the appropriate page
+        The user may not be logged in and this is handled in MsTeamsController#require_ms_teams_user
+
+        NOTE: Also, see #ms_teams_tab_choice_url in ms_teams_helper.rb as there
+              is additional logic managed there. 
+      %>
+        window.location = '<%= escape_redirect ms_teams_tab_choice_url(@tab_config) %>'
+    <% end %>     
+  });
+<% end %>
+
+<div class="font-semibold font-title">
+
+  <div id="wrapper" style="display: flex; align-items: center; justify-content: center; height: 100%; min-height: 100%; width: 100%; min-width: 100%;margin-top: 20px">
+    <div class="inner">
+      <img src="/assets/icons/outlook-progress.gif" alt="Loading Recognize">
+      <p style="font-family: lato, san francisco, ariel, sans serif;">Loading <span class="recognize">Recognize</span></p>
+    </div>
+    <div class="errorMessage"></div>
+  </div>
+
+</div>
+

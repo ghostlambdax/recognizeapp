@@ -1,0 +1,24 @@
+{
+    "Rule": "",
+    "Targets": [
+        {
+            "Id": "",
+            "Arn": "",
+            "RoleArn": "",
+            "Input": "",
+            "EcsParameters": {
+                "TaskDefinitionArn": "",
+                "TaskCount": 0,
+                "LaunchType": "FARGATE",
+                "PlatformVersion": "1.4.0",
+                "NetworkConfiguration": {
+                    "awsvpcConfiguration": {
+                        "AssignPublicIp": "DISABLED",
+                        "SecurityGroups": [],
+                        "Subnets": []
+                    }
+                }
+            }
+        }
+    ]
+}

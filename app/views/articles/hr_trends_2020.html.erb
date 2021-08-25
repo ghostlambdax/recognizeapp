@@ -1,0 +1,29 @@
+<% content_for :title, "2020 HR Trends" %>
+<% content_for :description, "Learn the most recent HR trends by looking at past trends, the importance of company culture, workplace diversity and inclusion, and how to fight fatigue in the workplace." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="2020 Trends in Human Resources | Recognize" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="See Recognize's predictions for 2020 in HR, while we also look back at 2019 trends." />
+  <meta property="og:image" content="/assets/pages/articles/2020-hr-trends/main.jpg" />
+  <meta property="og:url" content="https://recognizeapp.com/2020-human-resources-trends" />
+  <link rel="amphtml" href="<%= hr_trends_2020_url format: :amp %>">
+<% end%>
+
+<% content_for :article_title do %>Recognize's Human Resources Trends for 2020<% end %>
+<% content_for :article_description do %>
+  <%= lazy_image_tag "pages/articles/2020-hr-trends/main.jpg", alt: "2020 text design on creative business symbols", class: "marginBottom30 marginRight30 left", itemprop: "image" %>
+<% end %>
+
+<% tags = ["Introduction", "2019 Trends", "Company Culture", "Workplace Diversity and Inclusion", "Integration of Technology", "Fighting Fatigue", "Upskilling and Reskilling", "Remote Work", "HR Gets Personal", "A Year for Imagination"] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "2020_hr_trends_body", locals: {tags: tags} %>
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

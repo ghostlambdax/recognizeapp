@@ -1,0 +1,18 @@
+<% if permitted_to?(:create, @recognition.comments.build) %>
+  <div class="comments-form">
+    <%= form_for [@recognition, comment], remote: true, :html => {:id => "comments-form-#{@recognition.id}", data: {event: "recognition-comment-submit"}} do |f| %>
+      <div class="controls">
+        <div class="error"></div>
+        <%= f.text_field :content, id: "comment-content-#{@recognition.id}", class: "input-xlarge comment_content", placeholder: t("recognitions.leave_a_comment") %>
+      </div>
+      <%
+        submit_copy = if @comment and @comment.persisted?
+                        t("recognitions.edit_this_comment")
+                      else
+                        t("recognitions.add_this_comment")
+                      end
+      %>
+      <%= f.submit submit_copy, class: "button button-small" %>
+    <% end %>
+  </div>
+<% end %>

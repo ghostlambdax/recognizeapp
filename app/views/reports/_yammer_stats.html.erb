@@ -1,0 +1,36 @@
+<%
+  pagelet_params = {
+      network: current_user.network,
+      start_date: params[:start_date],
+      end_date: params[:end_date]
+  }
+%>
+
+<% grid_css_class = current_user.allow_top_employee_stats? && current_user.allow_you_stats? ? "span4" : "span6" %>
+
+<div class="stats-columns-wrapper row-fluid">
+  <div class="<%= grid_css_class %>">
+    <h2><%= t('dict.posts') %></h2>
+    <div class="pagelet" data-endpoint="<%= top_yammer_users_reports_path(pagelet_params) %>">
+      <div class="loading-wrapper">
+        <%= image_tag "icons/outlook-progress.gif" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="<%= grid_css_class %>">
+    <h2><%= t('dict.groups') %></h2>
+    <div class="pagelet" data-endpoint="<%= top_yammer_groups_reports_path(pagelet_params) %>">
+      <div class="loading-wrapper">
+        <%= image_tag "icons/outlook-progress.gif" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% if @company.yammer_stats_synced_at.present? %>
+  <div class="subtle-text marginBottom10">
+    <strong><%= t('reports.last_update')%>: <%= l(@company.yammer_stats_synced_at, format: :slash_date_with_time_and_zone) %></strong>
+  </div>
+<% end %>

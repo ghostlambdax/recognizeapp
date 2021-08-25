@@ -1,0 +1,13 @@
+<% days =  (due_invoice.due_date - Date.today).to_i %>
+<% is_late = days < 0 %>
+<% css_classes = is_late ? 'is-late' : '' %>
+<% href = contact_path %>
+<% link_css_classes = 10 > days ? 'warning' : '' %>
+
+<div class="invoice-due-wrapper <%= css_classes %>">
+  <% unless is_late %>
+    <%= link_to t("invoice_document.banner_html", days: days), href, class: link_css_classes, target: '_blank' %>
+  <% else %>
+    <%= link_to t("invoice_document.banner_late_html"), href, target: '_blank' %>
+  <% end %>
+</div>

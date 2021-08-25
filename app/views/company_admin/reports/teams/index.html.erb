@@ -1,0 +1,10 @@
+<% content_for(:tertiary_nav_label) { "Engagement" } %>
+<% content_for :engagement_report_selector do %>
+  <%= render 'company_admin/reports/engagement_report_selector', label: "By Team" %>
+<% end %>
+
+<div class='page-body'>
+
+  <%= litatablify(@datatable, endpoint: company_admin_reports_teams_path) %>
+
+</div>

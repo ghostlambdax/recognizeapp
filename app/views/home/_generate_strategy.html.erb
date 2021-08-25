@@ -1,0 +1,120 @@
+<div class="row-fluid survey-wrapper">
+  <div class="span7 form-wrapper">
+    <%= form_for Survey.new, data: {remote: true} do |survey| %>
+      <input type="hidden" name="survey[data][title]" value="Company engagement strategy document">
+      <div id="start-exp" class="slideable current marginVertical50">
+
+        <div class="text-left">
+          <h1 class="marginBottom30">Generate your company's <strong title="This is a document you can deliver to your leadership to guide how you can engage your staff with employee recognition, rewards, and awards.">Employee Engagement Roadmap<sup>?</sup></strong></h1>
+
+          <h2>1. About you</h2>
+          <input id="company_name" name="survey[data][company_name]" placeholder="Company name" value="<%= current_user.company.name if current_user.present? %>" type="hidden" style="width: 300px;"><br>
+          <select name="survey[data][industry]" id="industry" class="select2">
+            <option value="">Industry</option>
+            <option value="Government">Government</option>
+            <option value="University">University</option>
+            <option value="Transportation">Transportation</option>
+            <option value="Banking or  financial">Banking or financial</option>
+            <option value="Customerservice">Customer service</option>
+            <option value="service">Service industry</option>
+            <option value="Retail">Retail</option>
+            <option value="other">Other</option>
+          </select><br>
+          <input name="survey[data][num_of_users]" id="num_of_users" placeholder="Number of employees" value="" type="text"><br>
+          <input type="text" id="name" name="survey[data][full_name]" placeholder="Your name" value="<%= current_user.full_name if current_user.present? %>"><br>
+          <% if current_user.present? %>
+            <%= survey.email_field :email, value: current_user.email, required: true, class: "offscreen" %>
+          <% else %>
+            <%= survey.email_field :email, placeholder: "Work email address (required)", required: true %><br>
+          <% end %>
+          <a href="javascript://" class="survey-validator-trigger button button-large button-primary" data-from="#start-exp" data-to="#values-you">Two Questions Left</a>
+        </div>
+      </div>
+
+      <div id="values-you" class="slideable marginVertical50 text-center">
+        <h2>2. What are your company values?</h2>
+        <div class="row-fluid marginBottom30">
+          <div class="span6">
+            <input type="text" placeholder="Efficient" name="survey[data][value_1]"><br>
+            <input type="text" placeholder="Power" name="survey[data][value_2]"><br>
+            <input type="text" placeholder="Leadership" name="survey[data][value_3]">
+          </div>
+          <div class="span6">
+            <input type="text" placeholder="Deal closer" name="survey[data][value_4]"><br>
+            <input type="text" placeholder="Customer focused" name="survey[data][value_5]"><br>
+            <input type="text" placeholder="All star" name="survey[data][value_6]">
+          </div>
+        </div>
+        <div class="marginTop15">
+          <a href="javascript://" class="slideable-trigger button button-large button-chromeless" data-from="#values-you" data-to="#start-exp" data-direction="reverse">Back</a>
+          <a href="javascript://" class="slideable-trigger button button-large button-primary" data-from="#values-you" data-to="#about-rewards">One Question Left</a>
+        </div>
+      </div>
+
+      <div id="about-rewards" class="slideable marginVertical50 text-left">
+        <div class="inner">
+          <h2>3. Rewards</h2>
+          <div class="row-fluid marginBottom30">
+            <div class="span6">
+              <label>
+                <h4 class="balance-text">What is your rewards/bonus budget for the year?</h4>
+                <input id="rewards_budget" name="survey[data][rewards_budget]" placeholder="$20,000" type="number"><br>
+              </label>
+            </div>
+            <div class="span5">
+              <h4 class="balance-text">What kind of rewards do you prefer?</h4>
+              <label><input type="checkbox" id="reward_exp" name="survey[data][reward_exp]" checked="checked"> Experiences</label>
+              <label><input type="checkbox" id="reward_gifts" name="survey[data][reward_gifts]" value="gifts" checked="checked"> Gift cards</label>
+              <label><input type="checkbox" id="reward_nonmonetary" name="survey[data][reward_nonmonetary]" value="nonmonetary"> Non-monetary (parking spot or day off)</label>
+              <label><input type="checkbox" id="reward_system" name="survey[data][reward_system]" value="system"> Existing company rewards</label>
+            </div>
+          </div>
+          <div class="centered">
+            <a href="javascript://" class="slideable-trigger button button-large button-chromeless" data-from="#about-rewards" data-to="#values-you" data-direction="reverse">Back</a>
+            <input type="submit" value="Generate Strategy" class="button button-large button-primary marginTop15 slideable-trigger" data-from="#about-rewards" data-to="#generate-success">
+          </div>
+        </div>
+      </div>
+
+      <div id="generate-success" class="slideable marginVertical50 text-center">
+        <h2>Your Engagement Strategist is on the Case!</h2>
+        <div class="well marginBottom10">
+          <h4>We'll review your information and get back to you in 24hr. </h4>
+        </div><br>
+        <a href="https://alexgrande.youcanbook.me" class="button button-primary button-large" target="_blank">Schedule a free 15min strategy meeting</a>
+      </div>
+
+    <% end %>
+  </div>
+  <div class="span5 marginVertical50 report-graphic-wrapper">
+    <%= image_tag "pages/welcome/report.jpg", alt: "A report that provides information about your company rewards, company values and more." %>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  (function() {
+    var $wrapper = $(".survey-wrapper");
+
+    $wrapper.find("input:not([type=submit])").keypress(function(e) {
+      if (e.keyCode !== 13) {
+        return;
+      }
+
+      e.preventDefault();
+
+      $(this).closest(".slideable").find(".button:last").click();
+    });
+
+    $("#start-exp .survey-validator-trigger").click(function(e) {
+      var $validForm = $("#survey_email:valid");
+
+      e.preventDefault();
+
+      if ($validForm.length) {
+        $(this).unbind("click").addClass("slideable-trigger").click();
+      } else {
+        $("#survey_email").focus();
+      }
+    });
+  })();
+</script>

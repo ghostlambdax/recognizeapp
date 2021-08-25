@@ -1,0 +1,15 @@
+<% content_for :rewards_filter do %>
+<span></span>
+<% end %>
+
+<div id="rewards-header-area" class="clearfix">
+  <div class="page-main marginBottom10">
+    <h2><%= t("rewards.edit_reward") %></h2>
+  </div>
+</div>
+
+<% if @reward.provider_reward? %>
+  <%= render("provider_form", reward: @reward, url: company_admin_reward_path(@reward), edit: true) %>
+<% else %>
+  <%= render("form", {reward: @reward, url: company_admin_reward_path(@reward), edit: true}) %>
+<% end %>

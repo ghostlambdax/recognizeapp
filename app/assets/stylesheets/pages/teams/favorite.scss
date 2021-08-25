@@ -1,0 +1,57 @@
+/* The container */
+.favorite-team {
+
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+
+  .checkbox-title {
+    display: block;
+    position: relative;
+    height: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    /* Hide the browser's default checkbox */
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+      position: absolute;
+    }
+
+    /* Show the checkmark when checked */
+    input:disabled:checked ~ .checkmark:after {
+      cursor: not-allowed;
+    }
+  }
+}
+
+.star {
+  position: relative;
+}
+
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.favorite-team .checkmark:after,
+.star:after {
+  position: absolute;
+  content: '\2605';
+  font-size: 20px;
+  line-height: 20px;
+  color: #cacaca;
+
+}
+
+/* Show the checkmark when checked */
+.favorite-team input:checked ~ .checkmark:after,
+.star.current:after {
+  color: lighten($headerBg, 20%);
+}

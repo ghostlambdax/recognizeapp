@@ -1,0 +1,127 @@
+<% content_for :title, "Accounts spreadsheet importer | Recognize" %>
+<h1>Import accounts from spreadsheet</h1>
+<% if @queued_accounts_spreadsheet_importer.present? %>
+    <hr>
+    <h4>
+      <%= t("accounts_spreadsheet.queued_import_instructions") %>
+      <%= link_to 'Back to Accounts', company_admin_accounts_path, class: 'button button-chromeless', "data-turbolinks" => false %>
+    </h4>
+    <ul class="bullet-list">
+      <li>You may only import one spreadsheet at a time.</li>
+      <li>Results will be posted on this page when the import has completed.</li>
+      <li>You will be emailed the results.</li>
+    </ul>
+<% else %>
+
+    <p>
+      <%= t("accounts_spreadsheet.upload_instructions") %>
+    </p>
+
+  <% unless iframe_viewer? %>
+    <p>
+      <%= render "layouts/learn_more", url: "https://recognize.zendesk.com/hc/en-us/articles/115002534232" %>
+    </p>
+  <% end %>
+    <hr class="hr hr-space">
+    <div class="row-fluid">
+      <div class="span7">
+        <%= form_for @accounts_spreadsheet_importer, url: upload_data_sheet_company_admin_accounts_spreadsheet_importers_path(network: @company.domain), remote: true, method: :put, html: {id: "accounts_spreadsheet_importer" } do |f| %>
+
+            <h3>Step 1: Download spreadsheet &amp; fill in user data</h3>
+
+            <a href="/docs/getting-started/Sample-spreadsheet-for-import.xlsx">
+              Download sample spreadsheet
+            </a>
+
+            <hr class="hr hr-space">
+
+            <h3>Step 2: Upload</h3>
+            <p>By default, uploading a spreadsheet will add new users and update existing users.</p>
+
+            <div class="control-group well">
+              <%= f.file_field :file, class: "marginBottom10" %>
+              <div class="file-attach-progress">
+                <div class="message marginBottom10"></div>
+                <div class="progress-bar"><div class="progress-inner"><span class="right"></span></div></div>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="control-group">
+              <%= f.label :update_only do %>
+                  <%= f.check_box :update_only %>
+                  <span>Update only</span>
+                  <p class="subtle-text small-text">Updates attributes of users in the data-sheet who are found in Recognize. If new users are found in the data-sheet, they will not be added.</p>
+              <% end %>
+              <%= f.label :remove_users do %>
+                  <%= f.check_box :remove_users %>
+                  <span>Remove users</span>
+                  <p class="subtle-text small-text">Updates attributes of users in the data-sheet and removes users who are not present in the data-sheet.</p>
+              <% end %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Import", class: "button button-primary button-large" %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="span4 offset1">
+        <% if @last_import_summary.present? %>
+          <div class="well marginBottom20">
+            <h3 class="positive">Last Import</h3>
+            <%
+              last_import_completed_at = localize_datetime(@last_import_summary.completed_at.in_time_zone, :slash_date_with_time)
+              importing_actor = ActorConcern.actor_from_signature(@last_import_summary.importing_actor_signature)
+              last_import_when_and_how = "Last import completed on #{last_import_completed_at}"
+              if importing_actor.present?
+                preposition = importing_actor.is_a?(User) ? 'by' : 'from'
+                last_import_when_and_how += " #{preposition} #{importing_actor.label}"
+              end
+            %>
+            <p><%= last_import_when_and_how %></p>
+            <table>
+              <tr>
+                <td>Total Records</td>
+                <td><%= @last_import_summary.total_records_count %></td>
+              </tr>
+              <tr>
+                <td>Successful Records</td>
+                <td><%= @last_import_summary.successful_records_count %></td>
+              </tr>
+              <tr>
+                <td>Failed Records</td>
+                <td><%= @last_import_summary.failed_records_count %></td>
+              </tr>
+              <% if @last_import_summary.saved_but_require_attention_records_count > 0 %>
+                <tr>
+                  <td>Saved Records (but require attention)</td>
+                  <td><%= @last_import_summary.saved_but_require_attention_records_count %></td>
+                </tr>
+              <% end %>
+            </table>
+            <% if last_accounts_spreadsheet_import_was_problematic?(@company) %>
+              <hr>
+              <%= link_to "Download results",
+                  last_accounts_spreadsheet_import_results_document_path(@company),
+                  target: "_blank",
+                  rel: "noopener noreferrer" %>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="well">
+          <h3 class="warning">Requirements</h3>
+          <ul class="bullet-list marginBottom20">
+            <li>You must keep the columns in order from the sample spreadsheet.</li>
+            <li>Format date columns as strings and follow formats in sample spreadsheet. Date formats, such as birthday should only be 05/25.</li>
+            <li>Use commas to separate roles or teams. For instance, "Marketing, Sales, HR".</li>
+            <li>Roles are used to decide which users can send which badges. You can have multiple roles.</li>
+            <li>Locale can be one of the following supported locales: <%= User.supported_locale_list %> </li>
+          </ul>
+          <%= link_to t("links.contact_us"), contact_path, class: "button" %>
+        </div>
+      </div>
+
+    </div>
+<% end %>

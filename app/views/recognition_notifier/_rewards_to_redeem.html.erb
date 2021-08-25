@@ -1,0 +1,52 @@
+<% show_points(@user.company) do %>
+  <% if @user.company.allow_rewards? && @recognition.earned_points > 0 %>
+
+    <table style="<%= mail_styles(:table) %> text-align: center; padding: 25px 0; margin: 0 auto 30px auto; <%= mail_styles(:header_bg, :header_text) %>">
+      <tr style="<%= mail_styles(:text) %> font-size: 20px;">
+        <td style="width:50%; <%= mail_styles(:text, :header_text) %>" >
+          <%= t("user_notifier.points_available", points: @user.redeemable_points) %>
+        </td>
+        <td style="width:50%; <%= mail_styles(:text, :header_text) %>">
+          <%= t("user_notifier.points_from_recognition", points: @recognition.earned_points, badge: @recognition.badge.short_name) %>
+        </td>
+      </tr>
+    </table>
+
+
+    <% rewards = Reward.redeemable_rewards(@user).shuffle[0..1] %>
+
+    <% if rewards.present? %>
+
+      <div style="text-align: center;">
+        <h3 style="<%= mail_styles(:text, :h3)%>"><%= t("dict.rewards") %></h3>
+      </div>
+
+      <table style="<%= mail_styles(:table, :body_bg) %> text-align: center; margin-bottom: 50px;">
+        <tr>
+          <% width = 100/(rewards.size+1) %>
+          <% rewards.each do |r| %>
+            <td width="<%=width %>%">
+              <%= link_to redemptions_url(network: @user.company.domain) do %>
+
+                <%= image_tag r.image_url, alt: r.description, width: "80%", style: "max-width: 300px; display: inline-block; margin-bottom: 15px;"  %>
+                <h5 style="<%= mail_styles(:text, :h5)%>">
+                  <%= r.title %>
+                </h5>
+
+              <% end%>
+
+            </td>
+          <% end %>
+
+
+          <td width="<%=width %>%">
+            <h5 style="<%= mail_styles(:text, :h5) %>">
+              <%= link_to t("rewards.view_all_rewards"), redemptions_url(network: @user.company.domain), style: "#{mail_styles(:button)} display: inline-block;" %>
+            </h5>
+          </td>
+        </tr>
+      </table>
+
+    <% end %>
+  <% end %>
+<% end %>

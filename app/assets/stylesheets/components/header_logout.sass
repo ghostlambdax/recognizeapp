@@ -1,0 +1,211 @@
+#navbar
+  a
+    text-decoration: none
+
+  .navbar-header
+    margin-left: 10px
+    margin-right: 0
+
+$logoBgY: 17px
+
+#logo
+  font-weight: 700
+  font-size: 16px
+  background: transparent asset-data-url($logo) no-repeat 0 $logoBgY
+  display: block
+  height: 100%
+  margin-left: 5px
+
+  span
+    margin-top: 1px
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+  #logo
+    background: transparent asset-data-url('chrome/logo-mark-white@2x.png') no-repeat 0 $logoBgY
+    background-size: 20px
+    padding: 13px 0px 0 17px
+
+#navbar h1,
+#navbar #logo-text
+  font-size: 25px
+  text-align: center
+  line-height: 25px
+  color: #fff
+  font-weight: 400
+  padding: 0px 10px
+  letter-spacing: normal
+
+#navbar
+  position: fixed
+  width: 100%
+  top: 0
+  left: 0
+  z-index: 1000
+  background: $headerBg
+  border-radius: 0
+  border: 0
+
+  .navbar-brand
+    padding: 14px 0 0 15px
+
+    h1
+      margin-bottom: 0
+
+  .navbar-toggle
+    border: 0
+    padding: 10px 10px
+
+  h1
+    margin-right: 0
+
+  .navbar-nav > li > a
+    color: white
+    font-weight: 400
+    font-size: 16px
+
+  .dropdown-menu > li > a
+    color: $linkColor
+
+  #header-profile-wrapper
+    padding: 6px 10px 0 10px
+
+  .dropdown-menu
+    box-shadow: 0 10px 31px -9px rgba(0,0,0,.5)
+
+    input, .button, .sign-in-with-google
+      width: 100%
+
+    .button, .sign-in-with-google
+      font-size: 16px
+
+    .sign-in-with-google
+      text-align: center
+
+  #dashboard-menu
+    a
+      box-shadow: 1px -5px 17px 3px rgba(0, 0, 0, 0.61)
+      background: lighten($headerBg, 10%)
+
+#bs-example-navbar-collapse-1
+  overflow: auto
+
+#login-menu
+  border-left: 1px solid darken($headerBg, 10%)
+
+  .dropdown-menu
+    min-width: 340px
+    max-width: 100%
+    padding: 10px
+
+
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus
+  background: transparent
+
+.navbar-default .navbar-toggle .icon-bar
+  background-color: #FFF
+
+@media (min-width: $tablet)
+  #navbar .navbar-nav > li
+
+    &.dropdown.open > a
+      background: #fff
+      color: $headerBg
+
+    & > a
+      padding-top: 20px
+      padding-bottom: 20px
+
+@media (max-width: $tablet)
+
+  #navbar
+    a
+      display: block
+
+    .links
+      a
+        padding: 7px 5px
+
+      li
+        margin: 0
+
+  .navbar-collapse.collapse.in
+    padding-left: 0
+    padding-right: 0
+    margin-left: 0
+    margin-right: 0
+
+  body.menuOpen.logout
+    padding-top: 0px !important
+    background: $headerBg !important
+    min-height: 100%
+
+    #wrapper-outer
+      display: none
+
+    #navbar
+      min-height: 100%
+      position: static
+
+  #login-menu
+    .dropdown-toggle
+      margin-bottom: 8px
+
+    &.open
+      background: darken($headerBg, 15%)
+
+    .dropdown-menu
+      min-width: 200px
+      max-width: 100%
+      padding: 3px
+
+      label
+        color: white
+
+      input.button
+        background: lighten($headerBg, 20%)
+
+
+  #session-nav
+    li
+      float: left
+
+  .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus
+    background-color: #38aae7
+
+  body.logout
+    padding-left: 0
+    padding-right: 0
+    padding-top: 75px !important
+
+    #logo
+      background-position: 3px 16px
+
+@media (max-width: 940px)
+  #navbar .navbar-nav > li > a
+    font-size: 12px
+    padding-left: 10px
+    padding-right: 10px
+
+@media (max-width: $tablet)
+  #navbar .navbar-nav > li > a
+    font-size: 15px
+
+@media (max-width: 820px)
+  .navbar>.container .navbar-brand,
+  .navbar>.container-fluid .navbar-brand
+    margin-left: 0px !important
+
+  #navbar .navbar-nav > li > a
+    padding-left: 8px
+    padding-right: 8px
+
+
+@media (max-width: 480px)
+  #navbar
+    .navbar-brand
+      padding-top: 13px
+
+    .navbar-header
+      margin-left: 0
+      margin-right: 0

@@ -1,0 +1,12 @@
+(function(){
+  var $table = $("table#rewards-table");
+  var $button = $table.find('[data-rewardId="<%= @reward.id %>"]');
+  var $row = $button.closest('tr');
+  $row.find('.status').text("<%= @reward.enabled? ? I18n.t("dict.active") : I18n.t("dict.disabled") %>");
+  <% if !@reward.enabled? && !@reward.can_be_enabled? %>
+    var $actionTd = $row.find('.reward-status-toggle').parent("td");
+    $actionTd.empty();
+  <% else %>
+    $row.find('.reward-status-toggle').data('reward-status', "<%= @reward.enabled? ? I18n.t("dict.disable") : I18n.t("dict.activate") %>");
+  <% end %>
+})();

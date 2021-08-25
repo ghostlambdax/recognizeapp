@@ -1,0 +1,150 @@
+<% content_for :title, "Recognize Mobile Apps for Employee Recognition" %>
+<% content_for :description, "A corporate employee recognition & staff rewards mobile app for iOS and Android. Like, comment, send, and receive social employee recognition and anniversaries." %>
+
+<section class="top">
+  <h1>Employee Recognition <span>For Mobile</span></h1>
+  <div class="actions">
+    <p class="balance-text bold">Send employee recognition or redeem <%= link_to "staff rewards", rewards_path %> from the Recognize mobile app.</p>
+    <a href="https://itunes.apple.com/us/app/recognizeapp/id1124254520" style="display:inline-block;overflow:hidden;background:url(https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us) no-repeat;width:136px;height:40px;"></a>
+    <a href="https://play.google.com/store/apps/details?id=com.recognizeapp"><%= image_tag "pages/home-mobile/android-store.png", alt: "Download Recognize for your Android phone", height: "40px", class: "android-store-link" %></a>
+  </div>
+
+  <section class="features">
+    <ul>
+      <li>
+        <%= lazy_image_tag "pages/home-mobile/android-arrow-up-right.png", alt: "Arrow pointing up", height: "27px" %>
+        Easily send your colleagues a <span title="With role-based recognition, you can create your own type of users and allow only these employees send certain types of recognition values. This way managers, HR, directors, and employees can send their own unique recognition values.">role-based<sup>?</sup></span> employee recognition
+      </li>
+      <li>
+        <%= lazy_image_tag "pages/home-mobile/android-arrow-down-right.png", alt: "Arrow pointing down", height: "27px" %>
+        Get gift card or company-fulfilled employee rewards
+      </li>
+      <li>
+        <%= lazy_image_tag "pages/home-mobile/android-share.png", alt: "Share your recognitions", height: "27px" %>
+        Share on <%= link_to "Workplace by Facebook", fb_workplace_path %>, <%= link_to "Yammer", extension_path %>, Sharepoint, <%= link_to "Outlook", marketing_outlook_path %>, or Linkedin
+      </li>
+    </ul>
+    <%= render partial: "home/patterns/yellow_wave.svg" %>
+    <%= render partial: "home/patterns/blue_wave.svg" %>
+  </section>
+</section>
+
+
+<section class="padding10 marginTop50">
+  <div class="centered marginBottom50">
+    <h2 class="balance-text">Recognize &amp; redeem from your phone</h2>
+
+    <%= lazy_image_tag "pages/home-mobile/apps.png", alt: "Screenshots of rewards, sending recognition, redemptions, stream page, and profile page." %>
+
+    <br>
+    <%= schedule_demo_link utm_content: "demo link on mobile" %>
+
+
+  </div>
+
+  <div id="points">
+
+    <section class="clearfix flex-centered">
+
+      <div class="content">
+        <h2 class="balance-text">See your corporate recognition profile</h2>
+        <p>Help staff know where they stand in your company's <%= link_to "employee recognition", employee_recognition_app_guide_path %> stats. See how many points you've accrued, how many are redeemable for a reward, and what recognitions you received or sent.</p>
+      </div>
+
+      <div class="image">
+        <%= lazy_image_tag "pages/home-mobile/profile.jpg", alt: "See how many points you have left to redeem, the recognitions you've received, and the employee recognitions you've sent", class: "width100" %>
+      </div>
+
+    </section>
+
+    <section class="redemptions-point clearfix flex-centered">
+
+      <div class="content">
+        <h2 class="balance-text">See all your <%= link_to "employee rewards", rewards_path %> from the mobile app to use in the store</h2>
+        <p>Earn <%= link_to "employee recognition", employee_recognition_app_guide_path %> for doing great work and use those corporate recognitions to redeem rewards. These rewards can include gift cards, such as Starbucks or Amazon. You can get the gift card claim code from the app to use in the store or online. Recognize supports both Android and iOS (iPhone).</p>
+      </div>
+
+      <div class="image">
+        <%= lazy_image_tag "pages/home-mobile/redemptions.png", alt: "View and get all your redemptions from the employee recognition app Recognize" %>
+      </div>
+
+    </section>
+
+
+    <section class="clearfix flex-centered">
+
+      <div class="image">
+        <%= lazy_image_tag "pages/home-mobile/stream.jpg", alt: "View employee recognitions, comment, or like a publicly sent social recognition in Recognize mobile app", class: "width100" %>
+      </div>
+
+      <div class="content">
+        <h2 class="balance-text">Make corporate recognition social with commenting and liking in the Recognize mobile app</h2>
+        <p>Send recognition either publicly, privately, or one that requires approval from a manager. Once sent publicly, staff can comment or like the employee recognitions.</p>
+        <p>Automate the <%= link_to "employee service award", marketing_anniversaries_path %> process, while showcasing the publicly sent anniversary or birthday recognitions in the mobile app. Staff can comment or like these special events. Even recognize someone for joining the company or first few months of service.</p>
+
+      </div>
+
+    </section>
+
+    <section class="clearfix">
+
+      <div class="width-800 centered margin-auto">
+        <h2 class="balance-text">Implement the best corporate recognition programs for your company</h2>
+        <p>From all of Recognize's integrations, including <%= link_to "Outlook", marketing_outlook_path %>, Mobile, and more, your staff can send monetary recognition using a points economy, non-monetary recognition, and approval recognition. If it is an approval recognition then the direct report manager has to approve or deny the recognition. Company Admins choose how many points a manager can then apply to the approved recognition. All of which can be created via the Android or iPhone Recognize employee recognition mobile apps.</p>
+      </div>
+
+      <div class="centered">
+        <%= lazy_image_tag "pages/home-mobile/badges.jpg", alt: "Showing the employee recognition badges that can be monetary, non-monetary, or requires a manager approval." %>
+      </div>
+
+    </section>
+
+    <section class="clearfix flex-centered">
+      <div class="image">
+        <%= lazy_image_tag "pages/home-mobile/share-recognition.jpg", alt: "Share your recognitions to Workplace by Facebook or Yammer", class: "width100 image-border" %>
+      </div>
+      <div class="content">
+        <h2 class="balance-text">Share employee recognitions to your company's social collaboration tool</h2>
+        <p>Staff will want to send employee recognition from their phones, let's face it. At the same time, as an admin of Recognize, you want the employee recognitions to be posted to <%= link_to "Workplace by Facebook", fb_workplace_path %>, the Recognize Kiosk on your TVs in your lobby, to your Recognize <%= link_to "Outlook", marketing_outlook_path %> add-on, or to <%= link_to "Yammer by Microsoft", extension_path %>. Recognize mobile app for iPhone or Android helps share your company's employee recognitions across your company. </p>
+      </div>
+
+    </section>
+
+  </div>
+
+
+</section>
+
+<section class="questions-answers clearfix">
+
+  <div>
+    <h2 class="balance-text">Can I administer our Recognize account from the mobile app?</h2>
+    <p class="balance-text">You can fully customize and manage your Recognize employee recognition program from recognizeapp.com from your smart phone or tablet. The mobile app is meant for core functionality while on the go, such as getting a redemption or sending a recognition.</p>
+  </div>
+
+  <div>
+    <h2 class="balance-text">Does Recognize read my phone's data?</h2>
+    <p class="balance-text">Unlike many mobile apps, the Recognize employee recognition mobile app does absolutely nothing other than try to make positivity the forefront of your company's culture. The Recognize employee recognition app does not read your contact data, observe your behavior, nor track your location.</p>
+  </div>
+
+  <div>
+    <h2 class="balance-text">How much does it cost to use the Recognize mobile app?</h2>
+    <p class="balance-text">Recognize employee recognition app for Android and iPhone costs nothing to use. If your company would like to customize their Recognize employee recognition program, they will need to purchase a subscription.</p>
+    <%= link_to "See Recognize pricing", pricing_path, class: "button button-highlight" %>
+  </div>
+
+  <div>
+    <h2 class="balance-text">Can I sign up for Recognize from the mobile app?</h2>
+    <p class="balance-text">You need to already have an account with Recognize to use the Recognize employee recognition mobile app. You can sign up from the website now. </p>
+    <h3>Single Sign On (SAML) support for mobile</h3>
+    <p>Recognize supports SSO with SAML, such as Okta, ADFS, LastPass, and other authentication options. Check out the <a href="https://recognizeapp.com/resources#integrations">Resources on integrations</a> to learn more.</p>
+  </div>
+
+
+</section>
+
+<%= render partial: "marketing_cta_banner" %>
+
+
+<%= render :partial => 'footer' %>
+<%= render partial: "layouts/youtube_load" %>

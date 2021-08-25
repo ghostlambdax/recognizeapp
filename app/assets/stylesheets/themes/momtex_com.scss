@@ -1,0 +1,10 @@
+$headerBg: #FF690A;
+$linkColor: #FF690A;
+$btnBlueTopColor: $linkColor;
+$buttonPrimaryBg: $linkColor;
+
+@import "application";
+
+body:not(.admin-privilege) .recognition-delete {
+  display: none !important;
+}

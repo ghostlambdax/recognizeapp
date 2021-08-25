@@ -1,0 +1,32 @@
+<table style="<%= mail_styles(:table, :body_bg) %> text-align: center;">
+  <tr>
+    <td>
+      <%= link_to recognition_url(recognition) do %>
+        <%= image_tag badge.permalink(200, "http:"), style: "margin: 10px auto; max-width: 90%;" %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h1 style="<%= mail_styles(:text, :h1) %> font-size: 40px; font-weight: 600; margin-bottom: 8px;"><%= badge.short_name %></h1>
+    </td>
+  </tr>
+  <% if recognition.message.present? %>
+    <tr>
+      <td>
+        <div style="<%= mail_styles(:h2, :text) %>; margin: 10px auto; max-width: 600px;"><%= recognition_message_for_mail(recognition) %> <span style="<%= mail_styles(:textSubtle) %>"></span></div>
+      </td>
+    </tr>
+  <% end %>
+  <tr>
+    <td>
+      <p style="<%= mail_styles(:text, :p) %>">
+        <% if recognition.is_cross_company? %>
+          <%= t("user_notifier.sender_from_company", sender: recognition.sender_name, company: sender.company.name) %>
+        <% else %>
+          <%= t("user_notifier.from_sender", sender: recognition.sender_name) %>
+        <% end %>
+      </p>
+    </td>
+  </tr>
+</table>

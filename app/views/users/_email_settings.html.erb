@@ -1,0 +1,132 @@
+<% if !@user.personal_account? && current_user.company.allow_teams? && feature_permitted?(:teams) %>
+  <div id="teams" class="span4">
+    <% if current_user.teams.length == 0 %>
+      <div class="pulser" title="<%= t("user_edit.team_notification") %>"></div>
+      <h3><%= t("user_edit.add_teams_now") %></h3>
+    <% end %>
+    <%= link_to t("teams.teams_directory"), teams_path, class: "marginBottom30 button" %>
+  </div>
+<% end %>
+
+<div class="form-vertical span4 email-settings">
+  <div class="well">
+    <h2><%= t("user_edit.email_settings") %></h2>
+    <% label_class = @user.email_setting.global_unsubscribe? ? "subtle-text" : ""%>
+    <%= form.fields_for :email_setting do |setting| %>
+      <div class="control-group">
+        <div class="controls clearfix">
+          <%= setting.check_box :new_recognition, disabled: (@user.email_setting.global_unsubscribe?)%>
+          <%= setting.label :new_recognition, t("user_edit.new_recognition_notification"), class: label_class %>
+        </div>
+      </div>
+
+      <% if @user.company.settings.allow_comments? %>
+        <div class="control-group">
+          <div class="controls clearfix">
+            <%= setting.check_box :new_comment, disabled: (@user.email_setting.global_unsubscribe?)%>
+            <%= setting.label :new_comment, t("user_edit.new_comment_notification"), class: label_class %>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @user.company.allow_daily_emails? %>
+        <div class="control-group">
+          <div class="controls clearfix">
+            <%= setting.check_box :daily_updates, disabled: (@user.email_setting.global_unsubscribe?)%>
+            <%= setting.label :daily_updates, t("user_edit.daily_updates"), class: label_class %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="displayNone">
+        <div class="control-group">
+          <div class="controls clearfix">
+            <%= setting.check_box :weekly_updates, disabled: (@user.email_setting.global_unsubscribe?)%>
+            <%= setting.label :weekly_updates, t("user_edit.weekly_updates"), class: label_class %>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls clearfix">
+            <%= setting.check_box :monthly_updates, disabled: (@user.email_setting.global_unsubscribe?)%>
+            <%= setting.label :monthly_updates, t("user_edit.monthly_updates"), class: label_class %>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls clearfix">
+            <%= setting.check_box :activity_reminders, disabled: (@user.email_setting.global_unsubscribe?)%>
+            <%= setting.label :activity_reminders, t("user_edit.activity_reminders"), class: label_class%>
+          </div>
+        </div>
+      </div>
+
+      <% if @user.company.allow_recognition_sms_notifications? %>
+        <div class="control-group">
+          <div class="controls clearfix">
+            <%= setting.check_box :allow_recognition_sms_notifications, disabled: (@user.email_setting.global_unsubscribe?) %>
+            <%= setting.label :allow_recognition_sms_notifications, t("user_edit.allow_sms_notifications"), class: label_class %>
+          </div>
+        </div>
+      <% end %>
+
+
+      <% if @user.company.allow_admin_report_mailer? && @user.company_admin? && feature_permitted?(:manager) %>
+        <hr>
+
+        <div class="control-group">
+          <div class="controls clearfix">
+            <%= setting.check_box :allow_admin_report_mailer, disabled: (@user.email_setting.global_unsubscribe?) %>
+            <%= setting.label :allow_admin_report_mailer, t("user_edit.admin_engagement_mailer"), class: label_class %>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @user.manager? %>
+
+        <hr>
+
+        <% if @user.company.allow_manager_report_mailer? && feature_permitted?(:manager) %>
+          <div class="control-group">
+            <div class="controls clearfix">
+              <%= setting.check_box :allow_manager_report_mailer, disabled: (@user.email_setting.global_unsubscribe?) %>
+              <%= setting.label :allow_manager_report_mailer, t("user_edit.manager_engagement_mailer"), class: label_class %>
+            </div>
+          </div>
+        <% end %>
+
+
+        <% if feature_permitted?(:recognition) %>
+          <div class="control-group">
+            <div class="controls clearfix">
+              <%= setting.check_box :receive_direct_report_peer_recognition_notifications, disabled: (@user.email_setting.global_unsubscribe?) %>
+              <%= setting.label :receive_direct_report_peer_recognition_notifications, t("user_edit.direct_report_peer_recognition_notification"), class: label_class  %>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="control-group">
+          <div class="controls clearfix">
+            <%= setting.check_box :receive_direct_report_anniversary_notifications, disabled: (@user.email_setting.global_unsubscribe?) %>
+            <%= setting.label :receive_direct_report_anniversary_notifications, t("user_edit.direct_report_anniversary_notification"), class: label_class  %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="controls clearfix">
+            <%= setting.check_box :receive_direct_report_birthday_notifications, disabled: (@user.email_setting.global_unsubscribe?) %>
+            <%= setting.label :receive_direct_report_birthday_notifications, t("user_edit.direct_report_birthday_notification"), class: label_class  %>
+          </div>
+        </div>
+
+      <% end %>
+
+      <hr>
+      <div class="control-group">
+        <div class="controls unsubscribe-wrapper clearfix">
+          <%= setting.check_box :global_unsubscribe%>
+          <%= setting.label :global_unsubscribe, t("user_edit.unsubscribe_from_all"), id: "unsubscribe"%>
+        </div>
+      </div>
+
+    <% end%>
+  </div>
+</div>

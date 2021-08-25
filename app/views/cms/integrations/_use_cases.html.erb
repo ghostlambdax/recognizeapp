@@ -1,0 +1,61 @@
+<div class="use-case-partial-wrapper">
+  <% use_cases.each do |use_case| %>
+    <% if use_case['integration_use_case_title'].present? %>
+      <span class="label-badge"><%= feather_icon('info', class: 'feather-16') %> Use case</span>
+      <div class="width-800">
+        <h2 class="balance-text"><%= use_case['integration_use_case_title'] %></h2>
+        <%= use_case['integration_use_case_description'].html_safe %>
+
+        <%= lazy_image_tag use_case['integration_use_case_image']['url'], alt: use_case['integration_use_case_image']['alt'], class: 'use-case-image marginBottom50' if use_case['integration_use_case_image'].present? %>
+      </div>
+
+      <% if use_case['the_workflow'].present? %>
+        <h3>What Happens</h3>
+        <ol class="integration-use-cases integration-workflow well width-800 padding30 marginBottom50">
+          <% use_case['the_workflow'].each do |step| %>
+            <li>
+              <%= lazy_image_tag step['workflow_image']['url'], alt: step['workflow_image']['alt'] if step['workflow_image'].present? %>
+              <h4 class="balance-text"><%= step['workflow_step_title'] %></h4>
+            </li>
+          <% end %>
+        </ol>
+      <% end %>
+
+
+
+      <% if use_case['integration_use_case_steps'].present? %>
+        <div class="flex width-800 justify-content-between">
+          <h3>Set Up</h3>
+
+          <div>
+            <%= feather_icon('clock') %>
+            <%= use_case['setup_time'] %>
+          </div>
+        </div>
+
+
+        <ol class="integration-use-cases well width-800 padding30">
+          <% use_case['integration_use_case_steps'].each do |step| %>
+            <li>
+              <h4 class="balance-text"><%= step['integration_use_case_step_title'] %></h4>
+
+              <% if step['integration_use_case_step_description'].present? %>
+                <div class="marginBottom20">
+                  <%= step['integration_use_case_step_description'].html_safe %>
+                </div>
+
+              <% end %>
+
+
+              <% if step['integration_use_case_step_image'].present? %>
+                <%= lazy_image_tag step['integration_use_case_step_image']['url'], alt: step['integration_use_case_step_image']['alt'], class: "integration-use-case-image" %>
+
+
+              <% end %>
+            </li>
+          <% end %>
+        </ol>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

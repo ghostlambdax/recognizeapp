@@ -1,0 +1,172 @@
+
+<%
+  privacyClass = recognition.is_public_to_world? ? "" : "private"
+  accessEnabledClass = "access-enabled" if permitted_to?(:toggle_privacy, recognition) and (recognition.is_publicly_viewable? or (!recognition.is_public_to_world? and recognition.authoritative_company.allows_public_recognitions?))
+%>
+
+<% if current_user && @company.fb_workplace_client.connected? && !@recognition.is_private? %>
+  <div class="centered padding10 top-integration-share-link">
+    <%= workplace_share_link @recognition.permalink, {class: 'button button-small block button-primary marginVertical10', target: '_blank'} %>
+  </div>
+<% end %>
+<div id="recognition-show-top" class="clearfix widget-box top <%= @pending_user_signup ? 'bg-blur' : '' %>">
+  <div id="recognition-show-row" class="row-fluid">
+    <div class="image-wrapper span4">
+      <%= image_tag recognition.badge.image_url, class: "badge-image" %>
+      <h4 class="marginBottom20"><%= recognition.badge.short_name %></h4>
+      <% if permitted_to?(:certificate, recognition) %>
+        <% if recognition.recipients.length == 1 %>
+          <%= link_to t("recognition_show.view_certificate.one"), certificate_recognition_path(recognition), class: "view-certificate-link", target: "_blank" %>
+        <% else %>
+          <%= link_to t('recognition_show.view_certificate.other'), '', class: "recognition-award-certificate" %>
+          <%= link_to '', certificate_recognition_path(recognition), class: "hidden", target: "_blank", id: 'view-certificate-link' %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div id="main-text" class="span7">
+      <h1 class="marginBottom10" itemscope itemtype="http://schema.org/Person">
+        <em itemprop="name"><%= recipients_label(recognition)%></em>
+      </h1>
+
+      <div id="recipients-avatars">
+        <%= recipients_avatars(recognition) %>
+        <div class="hr hr-space"></div>
+      </div>
+
+      <% if recognition.reason.present? %>
+        <p class="message"><%= recognition.reason %></p>
+      <% end %>
+
+      <% if recognition.message.present? %>
+        <div class="message">
+          <%= recognition_message(recognition) %>
+        </div>
+      <% end %>
+
+      <p itemscope itemtype="http://schema.org/Person">
+        <span class="subtle-text"><%= t("recognitions.sent_from") %></span>
+        <strong itemprop="name"><%= recognition.sender_name%></strong>
+        <i itemprop="worksFor" class="displayNone"><%= recognition.authoritative_company.name %></i>
+        <span class="subtle-text" title="<%= localize_datetime(recognition.created_at, :friendly_with_time)%>">
+          <%= t("dict.ago_in_words", time: time_ago_in_words(recognition.created_at)) %>
+        </span>
+      </p>
+
+      <%# Note (6/18): Although skills is deprecated in favor of tags (skills column still exists)
+          the following is left out for historic recognitions that still have skills %>
+      <% if recognition.skills.present? %>
+        <div id="skills">
+          <label class="time subtle-text"><%= t("forms.skills") %></label>
+          <div>
+            <% recognition.skills.split(",").each do |skill| %>
+              <% next if skill.blank? %>
+              <span><%= skill.strip %></span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <% if recognition.tags.present? %>
+        <div id="tags">
+          <label class="time subtle-text"><%= recognition.authoritative_company.custom_labels.recognition_tags_label %></label>
+          <div>
+            <% recognition.tags.each do |tag| %>
+              <span><%= tag.name %></span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+
+    </div>
+
+  </div><!-- fluid row -->
+
+</div>
+
+<% show_comments =  permitted_to?(:index, recognition.comments.build, context: :comments) %>
+  <div id="recognition-content" class="<%= @pending_user_signup ? 'bg-blur' : '' %>">
+  <div class="sub-wrapper">
+    <div class="row-fluid marginBottom40">
+      <% if show_comments %>
+        <div class="span7">
+          <%= render partial: "comments"%>
+        </div>
+      <% else %>
+        <div class="span7 nametag-wrapper">
+          <%= render partial: "users/nametag", collection: @participants_for_nametag, as: :user %>
+        </div>
+      <% end %>
+
+      <div class="span4 offset1">
+        <% if recognition.approvable_by?(current_user, @company&.id) or recognition.has_approvals? %>
+          <div class="marginBottom20">
+            <%= render partial: "recognitions/recognition_approval_section", locals: {recognition: recognition, approvers_limit: 0}%>
+          </div>
+          <hr>
+        <% end %>
+
+        <div class="privacy-wrapper marginBottom20">
+          <h4><%= t("recognitions.who_can_see_recognition") %></h4>
+          <ul>
+            <% if recognition.is_private? %>
+              <li class="subtle-text" title="<%= t("recognitions.privacy_tooltip") %>"><%= t("recognitions.private_who_can_see") %></li>
+            <% else %>
+              <li>
+                <div id="recognition-access-wrapper" class="<%= "#{privacyClass} #{accessEnabledClass}" %>" data-param="<%= recognition.to_param%>">
+                  <span id="private" class="analyticsEvent subtle-text" data-event="toggle-recognition-public" data-eventtype="click"><%= t("dict.employees") %></span>
+                  <span id="public" class="analyticsEvent subtle-text" data-event="toggle-recognition-private" data-eventtype="click"><%= t("dict.the_world") %></span>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+
+        <% if recognition.is_publicly_viewable? %>
+          <div id="sharing" class="<%= accessEnabledClass%>">
+            <div class="sharing-badges marginBottom20">
+              <%= link_to "Google Plus", share_recognition_path(recognition, :googleplus), class: "google badge analyticsEvent", target: "_blank", data: {event: "share", eventtype: "click", eventproperties: '{"network": "google"}'} %>
+              <%= link_to "Linkedin", share_recognition_path(recognition, :linkedin), class: "linkedin badge analyticsEvent", target: "_blank", data: {event: "share", eventtype: "click", eventproperties: '{"network": "linkedin"}'} %>
+              <%= link_to "Facebook", share_recognition_path(recognition, :facebook), class: "facebook badge analyticsEvent", target: "_blank", data: {event: "share", eventtype: "click", eventproperties: '{"network": "facebook"}'} %>
+              <%= link_to "Twitter", share_recognition_path(recognition, :twitter), class: "twitter badge analyticsEvent", target: "_blank", data: {event: "share", eventtype: "click", eventproperties: '{"network": "twitter"}'} %>
+            </div>
+          </div>
+          <hr>
+        <% end %>
+
+        <div class="edit-delete marginBottom10">
+          <% if permitted_to?(:edit, recognition)#current_user.try(:company_admin?) || (current_user == recognition.sender)%>
+            <%= link_to t("recognitions.edit_recognition"),
+                        edit_recognition_path(recognition), class: "button button-inactive button-small button-big"%>
+          <% end %>
+
+          <% if permitted_to?(:destroy, recognition)%>
+            <%= render "recognitions/delete_button", recognition: recognition, button_class: "recognition-delete button button-no-chrome danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <% if show_comments %>
+      <div class="hr hr-space"></div>
+
+      <div class="nametag-wrapper">
+        <%= render partial: "users/nametag", collection: @participants_for_nametag, as: :user %>
+      </div>
+    <% end %>
+
+    <div class="clear"></div>
+  </div>
+</div>
+
+<%= render "recognitions/show/fb_workplace_share_js" %>
+
+<script id="recipient-select-template" type="text/x-handlebars-template">
+  <select name="award-certificate-recipient-select" id="award-certificate-recipient">
+    <option value=''>{{selectUser}}</option>
+    {{#each recipients}}
+      <option value="{{type}}:{{id}}">{{name}}</option>
+    {{/each}}
+  </select>
+</script>

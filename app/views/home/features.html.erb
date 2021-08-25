@@ -1,0 +1,75 @@
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Recognizeapp.com Features" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="Strengthen Employee Engagement through an Employee Recognition App with Service Anniversaries, Employee Rewards, & Employee Nominations." />
+  <meta property="og:image" content="/assets/illustrations/recognize.jpg" />
+<% end%>
+
+<% content_for :title, "All Features" %>
+<% content_for :description, "Discover the features of the Recognize Employee Recognition App with Service Anniversaries, Employee Rewards, & Employee Nominations." %>
+<% content_for :meta_keywords, "Recognize Features" %>
+
+<section id="intro">
+  <div class="inner">
+    <h1>Recognize Features</h1>
+
+    <p class="tagline balance-text width-800 balance-text">Recognize is dedicated to releasing improved and new features on an ongoing basis. Schedule a demo to see the latest.</p>
+
+    <% if current_user.present? && !current_user.subscribed_account? %>
+      <span data-turbolinks="false">
+        <a href="/upgrade" class="button button-primary button-big" data-turbolinks="false">Upgrade</a>
+      </span>
+    <% else %>
+      <%= schedule_demo_link %>
+    <% end %>
+  </div>
+  <%= render partial: "home/patterns/red.svg" %>
+</section>
+
+
+<% icon_colors = ['#1568A6', '#ffa500', '#06263a', '#5cb8ff', '#008ce5', '#7796AE', '#0FB034', '#0C5F98' ];%>
+
+<ul class="feature-category-list width-1000 marginVertical50 margin-auto flex flex-wrap padding10">
+  <% @features.reverse.each_with_index do |c, index| %>
+    <% posts = wp_client.posts_for_category(c.id) %>
+    <% unless (c.slug == 'integration' || c.slug == 'uncategorized') || posts.blank? %>
+      <li class="feature-list-item">
+        <div class="flex align-items-center marginBottom20">
+          <span class="marginRight5">
+            <%= feather_icon(c.description, color: icon_colors[index]) %>
+          </span>
+
+          <h2 class="small-h2 marginBottom0"><%= c.name.html_safe %></h2>
+        </div>
+
+        <ul>
+          <% posts.reverse.each do |app| %>
+            <% path = app.existing_link_url.present? ? app.existing_link_url : cms_feature_path(slug: app.slug) %>
+            <% if app.link_on_features_page.blank? || app.link_on_features_page == true %>
+              <li class="marginBottom10 integration-list-item">
+                <h3 class="marginBottom5"><%= link_to app.title, path %></h3>
+
+                <% if app.integration_logo.present? %>
+                  </div>
+                <% end %>
+
+                <% if app.description.present? %>
+                  <div class="flex justify-content-between">
+                    <div class="flex1">
+                      <%= app.description.html_safe %>
+                    </div>
+                  </div>
+                <% end %>
+            <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+
+
+<%= render :partial => 'footer' unless current_user.present? %>

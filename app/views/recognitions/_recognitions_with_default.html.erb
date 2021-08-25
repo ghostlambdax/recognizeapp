@@ -1,0 +1,14 @@
+<% if recognitions.present? %>
+  <%= render recognitions %>
+
+  <div class="recognition-card hidden">
+    <%= will_paginate @recognitions, team_id: params[:team_id] %>
+  </div>
+<% else %>
+  <div class="recognition-card centered flex justify-content-center no-box-shadow" style="height:100%">
+    <div>
+      <%= image_tag('illustrations/employee_recognitions_screen_color_small.jpg', alt: 'Someone typing a recognition', width: 400, class: 'maxWidth100 marginBottom20') %>
+      <h4><%= t('recognitions.no_recognitions') %></h4>
+    </div>
+  </div>
+<% end %>

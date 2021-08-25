@@ -1,0 +1,167 @@
+// since we are not upgrading bourbon yet
+$output-bourbon-deprecation-warnings: false;
+@import "bourbon";
+
+@import "patterns/variables";
+
+@import "3p/bootstrap";
+@import "3p/bootstrap-dropdown";
+@import "3p/bootstrap-nav";
+@import "3p/bootstrap-table";
+@import "patterns/bootstrap-responsive.min";
+@import "3p/bootstrap-tooltip";
+@import "3p/trumbowyg/trumbowyg";
+@import "3p/trumbowyg/trumbowyg.giphy";
+@import "3p/material-ui/input";
+
+@import "3p/ios-checkboxes";
+@import "3p/google-button";
+$nprogress-color: #fff;
+@import "nprogress";
+@import "nprogress-bootstrap";
+@import "nprogress-turbolinks5";
+@import "3p/hopscotch";
+@import "reset";
+
+@import "datatables";
+
+@import "components/messaging";
+@import "components/chrome";
+@import "components/header";
+@import "components/first-user";
+@import "components/faq";
+@import "components/badge-list";
+@import "components/forms";
+@import "components/people-list";
+@import "components/notice";
+@import "components/payment";
+@import "components/fullscreen";
+@import "components/recognition-card";
+@import "components/header_logout";
+@import "components/page-nav";
+@import "components/date-range";
+@import "components/policyPopup";
+@import "components/tooltips";
+@import "components/dashboards";
+@import "components/labels";
+@import "components/integration-use-cases";
+@import "components/graphs";
+@import "components/invoice-due";
+
+@import "patterns/grande-menu";
+@import "patterns/buttons";
+@import "patterns/helpers";
+@import "patterns/patterns";
+@import "patterns/widget-box";
+@import "patterns/bootstrap-check";
+@import "patterns/bootstrap-forms";
+@import "patterns/teams";
+@import "patterns/table";
+@import "patterns/tabs";
+@import "patterns/transitions";
+@import "patterns/animate-blocks";
+@import "patterns/page-aside";
+@import "patterns/tab-nav";
+@import "patterns/badges";
+@import "patterns/isotope";
+@import "patterns/sharing";
+@import "patterns/comments";
+@import "patterns/overlay";
+@import "patterns/dropdown";
+@import "patterns/toggle";
+@import "patterns/welcome-steps-list";
+@import "patterns/people-picker";
+@import "patterns/leaderboard";
+@import "patterns/form-loading";
+@import "patterns/simple-autocomplete";
+@import "patterns/value-props";
+@import "patterns/recognition-nomination-task";
+@import "patterns/admin-nav";
+@import "patterns/analytics";
+@import "patterns/lists";
+@import "patterns/survey";
+@import "patterns/notifications/pulser";
+@import "patterns/cc";
+@import "patterns/litatables";
+@import "patterns/layouts";
+@import "patterns/sweet-alert";
+@import "patterns/trumbowyg-custom";
+@import "patterns/captcha";
+
+@import "pages/home/contest";
+@import "pages/recognitions/recognitions-new";
+@import "pages/recognitions/recognitions-edit";
+@import "pages/recognitions/recognitions-show";
+@import "pages/recognitions/certificate";
+@import "pages/recognitions/recognitions";
+@import "pages/signups/welcome";
+@import "pages/home/sign-up";
+
+@import "pages/users/users-edit";
+@import "pages/users/nametag";
+@import "pages/users/user-show";
+@import "pages/users/user-invite";
+@import "pages/users/users-index";
+@import "pages/teams/favorite";
+@import "pages/teams/show";
+@import "pages/teams/index";
+@import "pages/admin";
+@import "pages/contact";
+@import "pages/redemptions/index";
+@import "pages/subscriptions/new";
+@import "pages/subscriptions/show";
+@import "pages/chromeless";
+@import "pages/mailers";
+@import "pages/badges/index";
+@import "pages/badges/show";
+@import "pages/hall_of_fame/index";
+@import "pages/departments/index";
+@import "pages/admin/subscriptions/new";
+@import "pages/identity_providers/show";
+@import "pages/saml/index";
+@import "pages/account_chooser/show";
+@import "pages/reports/index";
+@import "pages/application/routing_error";
+@import "pages/nominations/new";
+@import "pages/authentications/failure";
+@import "pages/help/index";
+@import "pages/support";
+@import "pages/fb_workplace/start";
+@import "pages/signups/fb_workplace";
+@import "pages/task_submissions/new";
+@import "pages/task_submissions/index";
+@import "pages/ms_teams/signup";
+
+@import "pages/company_admin/accounts";
+@import "pages/company_admin/documents";
+@import "pages/company_admin/dashboard";
+@import "pages/company_admin/recognitions";
+@import "pages/company_admin/roles";
+@import "pages/company_admin/tags";
+@import "pages/company_admin/show";
+@import "pages/company_admin/nominations";
+@import "pages/company_admin/anniversaries/settings";
+@import "pages/company_admin/anniversaries/notifications";
+@import "pages/company_admin/rewards";
+@import "pages/company_admin/comments";
+@import "pages/company_admin/custom_field_mappings";
+@import "pages/company_admin/customizations";
+@import "pages/company_admin/rewards/points/index";
+@import "pages/company_admin/rewards/redemptions/index";
+@import "pages/company_admin/rewards/dashboard";
+@import "pages/company_admin/rewards/catalogs";
+@import "pages/company_admin/tskz/tasks";
+@import "pages/company_admin/top_employees";
+
+@import "pages/company_admin/settings";
+
+@import "patterns/long-languages";
+@import "browsers/ie10";
+
+@import "extension/sharepoint/index";
+@import "pages/user_sessions/user_sessions";
+@import "pages/user_sessions/email_form";
+@import "pages/award_generator/show";
+
+
+@import "i18n/rtl";

@@ -1,0 +1,7 @@
+<ul class="posts width-1000 padding30">
+<% posts.each do |p| %>
+  <li class="post">
+    <%= render partial: 'cms/post', locals: {p: p} %>
+  </li>
+<% end %>
+</ul>

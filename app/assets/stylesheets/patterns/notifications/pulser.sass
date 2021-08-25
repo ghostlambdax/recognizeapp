@@ -1,0 +1,85 @@
+@include keyframes(pulse)
+  0%
+    @include transform(scale(0))
+    opacity: 0
+  8%
+    @include transform(scale(0))
+    opacity: 0
+
+  15%
+    @include transform(scale(0.1))
+    opacity: 1
+
+  30%
+    @include transform(scale(0.5))
+    opacity: 1
+
+  100%
+    opacity: 0
+    @include transform(scale(1))
+
+@mixin pulse
+  border-radius: 50%
+  opacity: 0.1
+  display: block
+  content: ""
+  width: 50px
+  height: 50px
+  border: 2px solid lighten($headerBg, 10%)
+  @include animation(pulse 2s linear infinite)
+  position: relative
+  top: -20px
+  left: -20px
+
+.pulser-wrapper
+  position: relative
+  display: inline-block
+
+.pulser,
+.pulser-bg
+  display: block
+  position: absolute
+  top: -12px
+  left: -8px
+  border-radius: 50%
+  width: 10px
+  height: 10px
+  background: $headerBg
+  cursor: pointer
+
+  &:hover
+    background: lighten($headerBg, 10%)
+
+    &:after
+      @include animation-play-state(paused)
+
+  &:after
+    @include pulse()
+
+
+.pulser-base
+  &:after
+    @include pulse()
+    position: absolute
+
+/* CSS for the header that pulsates on the recognition icon */
+
+#header-recognize
+  position: relative
+
+  &.pulser-base:after
+    top: 50%
+    left: 50%
+    margin-top: -25px
+    margin-left: -26px
+    border-color: white
+
+  &.pulser-base:hover:after
+    @include animation-play-state(paused)
+
+
+#welcome-show,
+#users-edit
+  #header-recognize.pulser-base
+    &:after
+      display: none

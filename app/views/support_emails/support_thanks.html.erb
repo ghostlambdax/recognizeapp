@@ -1,0 +1,21 @@
+<div class="centeredPage">
+  <div class="subtle-border">
+    <h1><%= t('support_emails.thank_you_for_contact') %></h1>
+    <h3><%= t('support_emails.we_will_be_in_touch_shortly') %></h3>
+
+    <ul class="blue-links" data-turbolinks="false">
+      <li>
+        <%= link_to "General Help", help_path %>
+      </li>
+      <li>
+        <%= link_to "Resources", resources_path %>
+      </li>
+      <% if !iframe_viewer? %>
+      <li>
+        <%= link_to "Support Articles & FAQ", "https://recognize.zendesk.com", target: "_blank" %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+

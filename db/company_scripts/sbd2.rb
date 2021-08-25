@@ -1,0 +1,1 @@
+imgs.each{|img| i=File.basename(imgs[0]).gsub('ANNIVERSARY_','').gsub('.png','');b=c.badges.anniversary.where(anniversary_template_id: "year_#{i.to_i<10 ? '0'+i.to_s : i}").first;b.image=Rails.root.join("public/sbd2/Badges/ANNIVERSARY_#{i}.png").open;b.save}

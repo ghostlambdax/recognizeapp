@@ -1,0 +1,5 @@
+<% if @company.allow_admin_dashboard? %>
+  <%= render partial: "show", locals: {paid_class: "paid"} %>
+<% else %>
+  <%= render partial: "companies/show_sample", locals: {paid_class: "unpaid"} %>
+<% end %>

@@ -1,0 +1,288 @@
+<%
+  has_errors =  flash[:badge_errors].present? && flash[:badge_errors][badge.id].present?
+  badge_style = has_errors ? 'border: 1px solid red' : ''
+%>
+
+<div class="badge widget-box dark <%= badge.disabled? ? 'disabled' : 'enabled' %>" id="badge-<%= badge.id%>" style="<%=  badge_style %>" data-sendableusercount="<%= badge.sendable_user_count %>" data-badgeid="<%= badge.id%>">
+  <% if has_errors %>
+      <div class="error">
+        <h5><%= flash[:badge_errors][badge.id].to_sentence%></h5>
+      </div>
+  <% end %>
+
+  <div class="item centered">
+
+    <%= text_field_tag "company[badges][#{badge.id}][short_name]", badge.short_name, class: "badge-name" %>
+    <%= image_tag badge.permalink(200) %>
+    <div class="marginVertical20">
+      <div class="badge_image_edit_container" data-endpoint=<%= update_image_company_badges_path(network: @company.domain) %> >
+        <input type="button" style="width:40%" class="button button-border change_badge_image" title="Allows to upload new badge image." value="Change">
+        <div class="inner_container">
+        <span class="centered subtle-text smallPrint block">
+          <%= t("badges.upload_instructions") %>
+          <br>
+          Crop image to badge
+        </span>
+          <div class="file-attach-progress">
+            <div class="message"></div>
+            <div class="progress-bar"><div class="progress-inner"><span class="right"></span></div></div>
+          </div>
+          <div class="control-group" id="badge-image-control">
+            <%= file_field_tag 'image' %>
+            <%= hidden_field_tag('badge_id', badge.id) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <label class="button button-border" title="Disables badge and doesn't delete recognitions.">
+      <%= hidden_field_tag "company[badges][#{badge.id}][enabled]", false, id: nil %>
+      <%= check_box_tag "company[badges][#{badge.id}][enabled]", true, !badge.disabled? %>
+      Enable
+    </label>
+
+    <div class="badge-options static-option">
+      <label>
+        <%= hidden_field_tag "company[badges][#{badge.id}][show_in_badge_list]", false %>
+        <%= check_box_tag "company[badges][#{badge.id}][show_in_badge_list]", true, badge.show_in_badge_list? %>
+        Show in badge listing
+      </label>
+    </div>
+
+
+  </div>
+
+  <div class="item badge-information-column">
+    <label class="marginBottom10">
+      <span title="This shows on the send recognition badge selection.">
+        Description <sup>?</sup>
+      </span><br>
+      <%= text_area_tag "company[badges][#{badge.id}][description]", badge.description, class: "badge-description", placeholder: t("companies.badge.badge_description_placeholder") %>
+    </label>
+
+    <label class="marginBottom10">
+      <span title="This shows on the Badge page in the top header.">
+        Additional details <sup>?</sup>
+      </span><br>
+      <%= text_area_tag "company[badges][#{badge.id}][long_description]", badge.long_description, class: "badge-longdescription", placeholder: t("companies.badge.badge_long_description_placeholder") %>
+    </label>
+
+    <div class="button-group badge-type-selectors clearfix">
+      <% if @company.allow_nominations? %>
+        <div class="nomination-wrapper marginBottom10">
+          <%= show_toggle badge.is_nomination?, t("companies.badge.nomination_badge"), input: {name: "company[badges][#{badge.id}][is_nomination]"} %>
+        </div>
+      <% end %>
+
+
+
+      <% nomination_options_style = badge.is_nomination? ? "" : "display:none" %>
+      <div class="nomination-options" style="<%= nomination_options_style %>">
+        <label>Limit award winners to:<br>
+          <%= select_tag "company[badges][#{badge.id}][nomination_award_limit_interval_id]", options_for_badge_nomination_award_limit(badge) %>
+        </label>
+
+        <%= show_toggle badge.is_quick_nomination?, "Quick nomination", input: {name: "company[badges][#{badge.id}][is_quick_nomination]"} %>
+        <small class="marginBottom10">Quick nominations can be given by managers or admins on the Recognitions view in Company Admin or Manager Portal. They can select these badges to nominate the recipient of a recognition.</small>
+
+        <%= show_toggle badge.allow_self_nomination?, "Allow sender to nominate themselves", input: {name: "company[badges][#{badge.id}][allow_self_nomination]"}, wrapper_class: "marginTop10" %>
+
+      </div>
+
+
+    </div>
+
+    <hr class="hr hr-space recognition-badge-points-budget-wrapper">
+
+    <div class="row-fluid recognition-badge-points-budget-wrapper">
+
+
+      <div class="<% if @company.allow_rewards? %>span8<% else %>span12<% end %>">
+
+        <% if feature_permitted?(:approvals) %>
+        <div class="badge-options static-option requires-approval-wrapper" style="<%= badge.is_nomination? ? "display:none" : "" %>"  >
+          <label>
+            <%= hidden_field_tag "company[badges][#{badge.id}][requires_approval]", false %>
+            <%= check_box_tag "company[badges][#{badge.id}][requires_approval]", true, badge.requires_approval?, class: "requires-approval"%>
+            <span title="<%= t("company_admin.custom_badges.description_for_requires_approval") %>">
+                <%=	t("company_admin.custom_badges.requires_approval") %> <sup>?</sup>
+              </span>
+          </label>
+          <% requires_approval_options_style = badge.requires_approval? ? "" : "display:none" %>
+          <div class="requires-approval-options" style="<%= requires_approval_options_style %>">
+            <label title="Select multiple point values for approval by manager or admin.">
+              Point variants for approval<sup>?</sup>
+            </label>
+            <%= select_tag "company[badges][#{badge.id}][point_values][]",
+                           options_for_point_variants(badge),
+                           { multiple: true, class: "point-values-select marginBottom10", placeholder: "Enter point values" }
+            %>
+
+            <label title="Choose the person that will approve the recognition: either one of the recipients' managers, or only company admins. Company admins can always approve all recognitions.">
+              Approver<sup>?</sup>
+            </label>
+            <%= select_tag "company[badges][#{badge.id}][approver]",
+                           options_from_collection_for_select(
+                             Badge.roles_that_can_approve_badge_that_requires_approval,
+                             :id,
+                             :long_name,
+                             badge.approver.presence || Role.manager.id
+                           ),
+                           { class: "approver-select" } %>
+            <div class="approval-strategy-wrapper <%= "hidden" if badge.approver == Role.company_admin.id %>">
+              <label>
+                <%= hidden_field_tag "company[badges][#{badge.id}][approval_strategy]", false %>
+                <%= check_box_tag "company[badges][#{badge.id}][approval_strategy]",
+                                  Badge.approval_strategies[:any_manager],
+                                  badge.any_manager_approval_strategy?,
+                                  class: "approval-strategy",
+                                  style: "margin-top: 10px"%>
+                <%= t("company_admin.custom_badges.any_manager_approval_strategy") %>
+                <small style="display: block">Only the recipient's manager can approve it by default.</small>
+              </label>
+            </div>
+          </div>
+        </div>
+        <% end %>
+
+        <% points_style = (badge.is_nomination? || badge.requires_approval?) ? "display:none" : ""%>
+        <label class="points-label" style="<%= points_style %>"><%= t("dict.points") %><br>
+          <%= text_field_tag "company[badges][#{badge.id}][points]", default_value_for_points(badge), class: "badge-points", type: "number", placeholder: t("dict.points"), style: "width: 100px;" %>
+        </label>
+
+        <label>
+          <span title="This is how many times a user can send this badge. If you enter 10 a month and you have 10 employees, it can potentially be sent 100 times in a month.">
+            Badge sending limits (per user) <sup>?</sup>
+          </span>
+        </label>
+        <div class="marginBottom10 sending-limit-wrapper">
+          <%= text_field_tag "company[badges][#{badge.id}][sending_frequency]", badge.sending_frequency, type: :number, placeholder: "Amount", style:"width: 50px;", class: "sending-frequency" %>
+          <% %>
+          <%= sending_limit_scope_select("company[badges][#{badge.id}][sending_limit_scope_id]", badge.sending_limit_scope_id, class: "sending-limit-type-select") %>
+
+          <select class="sending-interval-select" style="width: 100px;" name="company[badges][<%= badge.id %>][sending_interval_id]">
+            <% ordered_intervals(Interval::RESET_INTERVALS_WITH_TRIMESTER).each do |value, name| %>
+              <% selected = badge.sending_interval_id == value ? "selected='true'" : "" %>
+              <option value="<%= value %>" <%= selected %>><%= t("interval.#{name}") %></option>
+            <% end %>
+          </select>
+        </div>
+
+        <%
+          # opting to not show number of users if no roles have been specified
+          roles = badge.roles_with_permission(:send)
+          sendable_user_count = badge.sendable_user_count
+          sendable_count_style = roles.present? ? "" : "display:none"
+
+          learn_more_link = link_to t('dict.learn_more'), "https://recognize.zendesk.com/hc/en-us/articles/215212518-How-to-set-specific-badge-privileges-", target: :blank
+        %>
+        <label title="Create custom roles in the Roles view. Add those roles to users in Accounts. They can send badges with that role. You can select multiple roles.">
+          Roles <span class="user-role-count-wrapper" style="<%= sendable_count_style %>">
+          (<%= n_('one person', "%{count} people", sendable_user_count) % {count: sendable_user_count} %>)
+        </span> <%= learn_more_link %>
+        </label>
+
+        <div class="marginBottom10">
+          <%= select_tag "company[badges][#{badge.id}][roles][]", options_from_collection_for_select(@company_roles, :id, :name, selected_badge_roles(badge)), multiple: true, class: "company-role-select" %>
+        </div>
+
+
+        <% if @company.allow_achievements? %>
+          <hr class="hr hr-space">
+          <div class="button-group badge-type-selectors achievement-wrapper clearfix marginBottom10">
+            <%= show_toggle badge.is_achievement?, t('dict.achievement'), input: {name: "company[badges][#{badge.id}][is_achievement]"} %>
+          </div>
+        <% end %>
+
+        <% if current_user.auth_with_yammer? %>
+          <hr class="hr hr-space">
+
+          <div class="normal-options badge-options <% if badge.is_achievement? || badge.restricted? %>hidden<% end %>">
+            <p><%= t("companies.badge.instant_description") %></p>
+            <label class="">
+              <%= hidden_field_tag "company[badges][#{badge.id}][is_instant]", false %>
+              <%= check_box_tag "company[badges][#{badge.id}][is_instant]", true, badge.instant? %>
+              <%= t("companies.badge.instant") %>
+            </label>
+          </div>
+        <% end %>
+
+        <% if @company.allow_achievements? %>
+          <div class="achievement-options badge-options <% unless badge.is_achievement? %>hidden<% end %>">
+            <p><%= t("companies.badge.achievement_description") %></p>
+            <label><%= t("companies.badge.how_many_times_achievement") %></label>
+            <%= text_field_tag "company[badges][#{badge.id}][achievement_frequency]", badge.achievement_frequency, type: :number, placeholder: "10" %>
+            <select name="company[badges][<%= badge.id %>][achievement_interval_id]">
+              <% Interval::RESET_INTERVALS.each do |value, name| %>
+                <% selected = badge.achievement_interval_id == value ? "selected='true'" : "" %>
+                <option value="<%= value %>" <%= selected %>><%= name %></option>
+              <% end %>
+            </select>
+          </div>
+        <% end %>
+
+        <hr class="hr hr-space">
+
+        <% if @company.allows_private_recognitions? %>
+          <div class="badge-options static-option">
+            <label>
+              <%= hidden_field_tag "company[badges][#{badge.id}][force_private_recognition]", false %>
+              <%= check_box_tag "company[badges][#{badge.id}][force_private_recognition]", true, badge.force_private_recognition? %>
+              <span title="<%= t("company_admin.custom_badges.description_for_force_private_recognition") %>">
+                <%=	t("company_admin.custom_badges.force_private_recognition") %> <sup>?</sup>
+              </span>
+            </label>
+          </div>
+        <% end %>
+
+        <label>
+          <span title="This determines the badge sort order in the Badges page, New Recognition/Nomination page and the API. Badges with lower order values are placed at the top.">
+            <%= _('Order') %><sup> ?</sup>
+          </span>
+          <br>
+          <%= text_field_tag "company[badges][#{badge.id}][sort_order]", badge.sort_order, class: "badge-sort-order", type: "number", min: 0, placeholder: _('Order'), style: "width: 100px;" %>
+        </label>
+
+      </div>
+
+      <% if @company.allow_rewards? && show_currency?(@company) %>
+        <div class="span4">
+          <div class="well budget-info-well" style="<%= badge.is_nomination? ? "display: none" : "" %>">
+            <dl class="point-badge-conversion-description">
+              <dt>Badge currency value</dt>
+              <dd class="point-to-currency"></dd>
+            </dl>
+            <dl>
+              <dt>Employee count</dt>
+              <dd class="employee-count"><%= badge.sendable_user_count %></dd>
+            </dl>
+            <dl class="point-money-snippet">
+              <dt>
+                Budget (<%= reset_interval_noun(Interval.new(@company.reset_interval)) %>)
+              </dt>
+              <dd>
+                <span class="money-snippet-value"></span><br>
+                <span class="point-snippet-value"></span>pts
+              </dd>
+            </dl>
+            <dl>
+              <dt>
+                Per employee budget (<%= reset_interval_noun(Interval.new(@company.reset_interval)) %>)
+              </dt>
+              <dd>
+                <span class="money-snippet-per-employee-value"></span><br>
+                <span class="point-snippet-per-employee-value"></span>pts
+              </dd>
+            </dl>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+
+  <% unless @non_deletable_badge_ids && @non_deletable_badge_ids.include?(badge.id) %>
+    <%= link_to t("dict.delete"), company_badge_path(badge), method: :delete, remote: true, class: "button button-no-chrome", title: t("companies.badge.with_recognitions_not_deleted") %>
+<% end %>
+
+</div>

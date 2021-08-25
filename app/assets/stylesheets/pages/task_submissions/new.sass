@@ -1,0 +1,80 @@
+#task_submissions-new,
+#task_submissions-new_chromeless
+  $input-height: 38px
+  $input-margin: 10px
+
+  .task_submissions-form-wrapper
+    max-width: 600px
+    margin: 0 auto
+
+    #task-list
+      overflow: auto
+
+      .task
+        margin-bottom: 10px
+        @include flex-display()
+
+        .remove-task
+          display: none
+          position: absolute
+          content: " "
+          left: 100%
+          width: 30px
+          height: $input-height
+          cursor: pointer
+          background: url(/assets/icons/remove-icon.png) 8px 11px no-repeat
+          opacity: 0.2
+
+        &:not(:only-child):hover .remove-task
+          @media (min-width: $tablet)
+            display: block
+
+      input
+        margin-right: $input-margin
+        margin-bottom: 0
+        @include flex(2)
+
+        &:last-of-type
+          margin-right: 0
+
+        &.name
+          @include flex(1)
+          @media (max-width: $phone)
+            @include flex(2)
+        &.quantity
+          @include flex(0)
+          flex-basis: auto // ie
+          max-width: 100px
+          min-width: 80px
+          @media (max-width: $phone)
+            @include flex(2)
+        &.comment
+          min-width: 100px // fix for mobile overflow issue (FF/Edge)
+
+        @media (max-width: $phone)
+          width: 100% // override fixed width
+
+      .select2
+        margin-right: $input-margin
+        @media (max-width: $phone)
+          max-width: 150px
+          min-width: 125px // ff
+
+        .select2-selection,
+        .select2-selection__arrow
+          height: $input-height
+        .select2-selection__rendered
+          line-height: $input-height
+        .select2-selection
+          border-color: #ccc
+
+      // shown before select2 renders
+      select
+        height: $input-height
+        margin-right: $input-margin
+
+    #add-task
+      font-style: italic
+
+    .add-task-wrapper
+      margin-top: 25px

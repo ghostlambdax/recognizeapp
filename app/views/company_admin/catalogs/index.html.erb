@@ -1,0 +1,6 @@
+<%= link_to t("company_admin.rewards.catalog.create_catalog"),
+            new_company_admin_catalog_path,
+            class: "pull-right button" %>
+
+<h2>Reward Catalogs</h2>
+<%= litatablify(@datatable, endpoint: company_admin_catalogs_path, daterange: false) %>

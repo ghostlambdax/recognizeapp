@@ -1,0 +1,21 @@
+attributes:
+  - foreign_key
+  - inheritance
+disconnected: false
+filename: erd
+filetype: pdf
+indirect: false
+inheritance: false
+markup: true
+notation: crowsfoot
+orientation: horizontal
+only: "Company,User,Recognition,PointActivity,Badge,Role"
+polymorphism: false
+sort: true
+warn: true
+title: Recognize ERD
+exclude: null
+only_recursion_depth: 0
+prepend_primary: false
+cluster: false
+splines: spline

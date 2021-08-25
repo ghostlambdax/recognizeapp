@@ -1,0 +1,58 @@
+<div class="giftcard-table-wrapper">
+  <div class="giftcard-table-inner">
+    <table class="centered">
+      <tr>
+        <th>Country</th>
+      </tr>
+      <tr><td>United States</td></tr>
+      <tr><td>United Kingdom</td></tr>
+      <tr><td>Canada</td></tr>
+      <tr><td>Argentina</td></tr>
+      <tr><td>Australia</td></tr>
+      <tr><td>Austria</td></tr>
+      <tr><td>Belgium</td></tr>
+      <tr><td>Brazil</td></tr>
+      <tr><td>Czech Republic</td></tr>
+      <tr><td>Denmark</td></tr>
+      <tr><td>France</td></tr>
+      <tr><td>Germany</td></tr>
+      <tr><td>Hong Kong</td></tr>
+      <tr><td>India</td></tr>
+      <tr><td>Ireland</td></tr>
+      <tr><td>Italy</td></tr>
+      <tr><td>Japan</td></tr>
+      <tr><td>Luxembourg</td></tr>
+      <tr><td>Mexico</td></tr>
+      <tr><td>Netherlands</td></tr>
+      <tr><td>Philippines</td></tr>
+      <tr><td>Poland</td></tr>
+      <tr><td>Portugal</td></tr>
+      <tr><td>Qatar</td></tr>
+      <tr><td>Romania</td></tr>
+      <tr><td>Saudi Arabia</td></tr>
+      <tr><td>Singapore</td></tr>
+      <tr><td>Spain</td></tr>
+      <tr><td>Sweden</td></tr>
+      <tr><td>Switzerland</td></tr>
+      <tr><td>United Arab Emirates</td>
+    </table>
+  </div>
+
+  <a href="javascript://" id="giftcard-table-open-trigger">See all</a>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $("#giftcard-table-open-trigger").click(function() {
+    var $this = $(this),
+        text = "See more",
+        $wrapper = $this.closest(".giftcard-table-wrapper");
+
+    $wrapper.toggleClass("open");
+
+    if ($wrapper.hasClass("open")) {
+      text = "See less";
+    }
+
+    $this.text(text);
+  });
+</script>

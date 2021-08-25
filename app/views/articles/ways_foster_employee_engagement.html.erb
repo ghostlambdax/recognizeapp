@@ -1,0 +1,34 @@
+<% content_for :title, "Great Ways to Foster Authentic Employee Engagement" %>
+<% content_for :description, "Ten easy steps to improve employee engagement through recognition, social environments, and more. Learn how to deal with stress and feedback in the workplace." %>
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Great Ways to Foster Authentic Employee Engagement | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="Ten easy steps to improve employee engagement through recognition, social environments, and more." />
+  <meta property="og:image" content="/assets/pages/articles/ways-foster-engagement/1.jpg" />
+  <link rel="amphtml" href="<%= holiday_party_url format: :amp %>">
+<% end%>
+
+
+<% content_for :article_title do %>10 Great Ways to Foster Authentic Employee Engagement<% end %>
+<% content_for :article_description do %>
+  <div class="centered">
+    <%= lazy_image_tag "pages/articles/ways-foster-engagement/1.jpg", alt: "A photo of a group of people putting their arms together.", class: "marginBottom30", itemprop: "image" %>
+    <p class="balance-text marginBottom40 tagline">When it comes to the workforce of today, it’s safe to say, we most definitely are not in Kansas anymore. With no shortage of tools and apps for communication and a blossoming culture of flextime and remote working, the term “clocking in” is fast becoming a figurative expression.</p>
+
+  </div>
+
+
+<% end %>
+
+<% tags = ['Introduction', "Recognition", "Environment", "Team", "Stress", 'Feedback', 'Inspiration', 'Flextime', 'Projects', 'Healthy Food', 'Work Life'] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "ways_foster_engagement" %>
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

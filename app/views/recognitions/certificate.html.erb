@@ -1,0 +1,67 @@
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="<%= render(partial: "recognitions/title", locals: {recognition: @recognition})%>" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="<%= t('recognition_new.recipient_characterized_badge_with_message', sender: @recognition.sender_name, recipient: @recognition.recipients_label, badge: @recognition.badge.short_name, message: @recognition.message_plain) %>" />
+  <meta property="og:image" content="<%= @recognition.badge.permalink %>" />
+<% end%>
+<% content_for :title, t("recognition_new.sender_recognized_recipient_on_recognze", sender: @recognition.sender_name, recipient: @recognition.recipients_label) %>
+
+<% content_for :description, t("recognition_new.recipient_characterized_badge_with_message", sender: @recognition.sender_name, recipient: @recognition.recipients_label, badge: @recognition.badge.short_name, message: @recognition.message_plain) %>
+
+<style>
+  @font-face {
+    font-family: LeagueGothic;
+    src: url("<%= asset_path('LeagueGothic-CondensedRegular.otf') %>") format("opentype");
+  }
+  #recognitions-certificate .certificate .images .small-text {
+    font-size: 20px;
+  }
+  #recognitions-certificate .certificate .images .name {
+    word-break: break-word;
+  }
+</style>
+
+<script>
+  $(function() {
+    var $recipient = $('.certificate .recipient .name');
+    if($recipient.html().length > 80) {
+      $recipient.addClass('small-text');
+    }
+  });
+</script>
+
+<div class="certificate">
+  <h1><%= t("recognition_certificate.title") %></h1>
+  <p class="subtitle">
+    <%= t("recognition_certificate.presented_to") %>
+    <br>
+  </p>
+
+  <div class="personal clearfix"><!--this is the flexible personalized data formatted in tables-->
+    <div class="images recipient">
+      <% if @recipient.present? %>
+        <%= image_tag(@recipient.avatar_thumb_url, class: "avatar") if @recipient.respond_to?(:avatar) %>
+        <p class="name"><%= @recipient.label %></p>
+      <% else %>
+        <%= image_tag(@recognition.recipients.first.avatar_thumb_url, class: "avatar") if @recognition.recipients.first.respond_to?(:avatar) %>
+        <p class="name"><%= @recognition.recipients.first.label %></p>
+      <% end %>
+    </div>
+
+    <div class="pronouns">
+      <%= image_tag @recognition.badge.image_url, class: "badge" %>
+      <p class="name"><%= @recognition.badge.short_name %></p>
+    </div>
+
+  </div>
+
+  <% message = recognition_message(@recognition, exclude_images: true) %>
+  <div class="quote">
+    <div class="message"><%= message %></div>
+    <span class="by-whom">- <%= @recognition.sender_name %></span>
+  </div>
+
+  <p class="certificate-date"><%= localize_datetime(@recognition.created_at, :slash_date) %></p>
+</div>
+<%= image_tag @certificate_url, alt: t("recognition_certificate.certificate_background_print"), class: "bg" %>

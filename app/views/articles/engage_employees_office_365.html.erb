@@ -1,0 +1,26 @@
+<%= content_for :title, "How to engage your employees in Office 365" %>
+<%= content_for :description, "Use Office365 to engage and retain your employees by leveraging an employee recognition and rewards program that integrates directly into Office365 and Microsoft products." %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="How to engage your employees in Office 365 | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:image" content="/assets/images/pages/articles/office-365.png" />
+  <link rel="amphtml" href="<%= engage_employees_office_365_url format: :amp %>">
+<% end%>
+
+
+<% content_for :article_title do %>How to engage your employees in Office 365<% end %>
+
+
+<% tags = ["Introduction", "Communication", "Overview", "Engagement", "Recognition", "Feedback", "Discussion", "Wellness", "Fun", "References"] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "engage_employees_office_365", locals: {tags: tags} %>
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

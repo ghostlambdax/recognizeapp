@@ -1,0 +1,28 @@
+<% @recognition = defined?(recognition) ? recognition : @recognition %>
+<% comment_limit = defined?(comment_limit) ? comment_limit : nil %>
+<% hide_comments_header = defined?(hide_comments_header) ? hide_comments_header : false %>
+<!--joins needed for excluding deleted commenter's comments-->
+<% recognition_comments = @recognition.comments.joins(:commenter) %>
+<div id="comments-<%= @recognition.id%>" class="comments-wrapper">
+  <% unless hide_comments_header %>
+    <h3 class="marginBottom20"><%= t("dict.comments") %></h3>
+  <% end %>
+
+  <%= render partial: "comments/form", locals: {comment: Comment.new} unless is_grid_view? %>
+
+  <div class="comments-list-wrapper">
+    <%if recognition_comments.present? %>
+      <% comments =  comment_limit ? recognition_comments.visible.limit(comment_limit) : recognition_comments %>
+      <% comments = comments.order("created_at desc") %>
+      <%= render comments %>
+      <% unless current_user.present? || is_grid_view? %>
+        <div style="margin-bottom: 15px;" data-turbolinks="false">
+          <%= t("dict.sign_in_or_sign_up_html") %>
+        </div>
+      <% end %>
+    <% end %></div>
+
+  <% if comment_limit && recognition_comments.present? && !is_grid_view? && recognition_comments.size > comment_limit %>
+    <%= link_to t("dict.read_more"), recognition_path(@recognition), class: "small-text block marginTop20" %>
+  <% end%>
+</div>

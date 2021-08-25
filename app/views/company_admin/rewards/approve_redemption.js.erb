@@ -1,0 +1,31 @@
+(function(){
+  <% if @redemption.errors.size == 0 %>
+    var $table = $("table#redemptions-table");
+    var $approval_link = $table.find('a.approve-button[data-redemption-id="<%= @redemption.id %>"]');
+    var $redemptionRow = $approval_link.closest('tr');
+    var status_column_class = ".status",
+        action_wrapper_class = ".actions";
+
+    $redemptionRow.find('a.button').not('.redemption-additional-instructions-link').hide();
+    $redemptionRow.find(status_column_class).html('<%= redemption_status_text @redemption.status %>')
+
+    <% if @redemption.reward.provider_reward? %>
+      $viewDetailsLink = $("<%= escape_javascript(redemption_view_details_link(@redemption)) %>");
+    <% else %>
+      $viewDetailsLink = $("<%= escape_javascript(redemption_view_additional_instructions_link(@redemption)) %>");
+    <% end %>
+    $redemptionRow.find(action_wrapper_class).html($viewDetailsLink);
+
+  <% else %>
+    <%
+      detail = j @redemption.errors.full_messages.map{|m| "<li>#{m}</li>"}.join.html_safe
+    %>
+    Swal.fire({
+      title: "Not approving",
+      html: "<h4>Something has happened that is preventing the gift card to be approved. </h4><ul><%= detail %></ul>",
+      icon: 'error',
+      showCancelButton: false,
+      confirmButtonText: 'Okay'
+    });
+  <% end %>
+})();

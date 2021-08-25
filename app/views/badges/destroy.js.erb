@@ -1,0 +1,7 @@
+(function(){
+  <% if @badge.deleted? %>
+    $("#badge-<%= @badge.id%>").remove();
+  <% else %>
+    Swal.fire("<%= t("badges.cannot_delete") %>", "<%= t("badges.cannot_delete_badge") %>", 'error');
+  <% end %>
+})();

@@ -1,0 +1,15 @@
+<div class="page-nav clearfix <% if defined?(cssclass) %><%= cssclass %><% end %>">
+  <div class="title-nav">
+    <h1 class="title"><%= title %></h1>
+    <div class="primary-nav-content">
+      <%= yield :left_nav %>
+    </div>
+
+  </div>
+
+  <div class="aside-nav">
+    <div class="inner">
+      <%= yield if block_given? %>
+    </div>
+  </div>
+</div>

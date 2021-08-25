@@ -1,0 +1,9 @@
+<h2 style="<%= mail_styles(:h2, :text) %> margin-bottom: 20px;">
+  <%= t("tskz.notifier.requesting_approval_of_tasks", name: @submitter.full_name).concat(".") %>
+</h2>
+
+<div>
+  <%= link_to t('tskz.task_submission.approve_or_deny_tasks'),
+              manager_admin_completed_tasks_url(network: @submitter.company.domain),
+              style: "#{mail_styles(:button)}" %>
+</div>

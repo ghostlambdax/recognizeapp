@@ -1,0 +1,11 @@
+#!/bin/bash
+# export RSPEC_SPLIT_CONFIGURATION_PATH="$(echo `pwd`)/spec/rspec_split_configuration.json"
+# RAILS_ENV=$RAILS_ENV bundle exec rspec_booster --job $1
+echo "Calling rspec_job $1/$2"
+
+export PARALLEL_TESTS_CONCURRENCY=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || echo "$NUMBER_OF_PROCESSORS")
+CI_NODE_INDEX=$(($1-1))
+
+echo PARALLEL_TESTS_CONCURRENCY=$PARALLEL_TESTS_CONCURRENCY CI_NODE_INDEX=$CI_NODE_INDEX
+
+CI_NODE_TOTAL=$2 CI_NODE_INDEX=$CI_NODE_INDEX bundle exec parallel_test -n $PARALLEL_TESTS_CONCURRENCY -e './bin/parallel_tests'

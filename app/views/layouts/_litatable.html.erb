@@ -1,0 +1,145 @@
+<div id='<%= namespace %>-table-wrapper' class="litatable">
+  <% if daterange || datatable.allow_search || datatable.allow_export %>
+    <div class="row-fluid">
+        <div id="<%= namespace %>-table-form-wrapper" class="span5 marginBottom20">
+          <% if daterange %>
+            <%= form_tag endpoint, id: "#{namespace}-table-form" do %>
+              <%= render partial: "layouts/time_selector", locals: {param_scope: namespace} %>
+            <% end %>
+          <% end %>
+        </div>
+
+      <div id="<%= namespace %>-filter-wrapper" class="span7">
+        <% if show_nav_tabs && (datatable.allow_search || datatable.allow_export) %>
+          <ul class="nav nav-tabs" role="tablist">
+            <% if datatable.filters.present? %>
+              <li role="presentation" class="active">
+                <a href="#<%= namespace %>-search" role="tab" data-toggle="tab"><%= t('dict.filters') %></a></li>
+            <% end %>
+            <% if datatable.allow_export %>
+              <li role="presentation" class="<%= 'active' if datatable.filters.blank? %>">
+                <a href="#<%= namespace %>-export-buttons" role="tab" data-toggle="tab"><%= t("dict.export") %></a></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if datatable.filters.present? %>
+          <div id='<%= namespace %>-search' class="tab tab-pane active">
+            <div class="litatable-filters">
+              <% datatable.filters.each do |filter| %>
+                <%= render "litatables/filter", filter: filter %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <% if datatable.allow_export %>
+          <div id="<%= namespace %>-export-buttons" class="export-buttons tab tab-pane <%= 'active' if datatable.filters.blank? %>">
+            <div id="<%= namespace %>-table-export-wrapper">
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  <% end %>
+
+  <% table_classes = 'table table-ranking minWidth100 table-condensed table-responsive'
+      table_classes << ' table-striped table-bordered table-hover' unless minimal_table_styles
+  %>
+  <table class="<%= table_classes %>" id="<%= namespace %>-table" data-endpoint="<%= endpoint %>" data-order="<%= datatable.default_order %>">
+      <thead>
+      <tr>
+        <% datatable.columns.values.each_with_index do |c, index| %>
+
+          <%
+            data_attrs = []
+            if datatable.column_attributes[index].present?
+              data_attrs = datatable.column_attributes[index].inject([]) do |array, (attr, value)|
+                unless [:if].include?(attr.to_sym) # skip these attributes
+                  array << "data-#{attr}=\"#{value.to_s}\""
+                end
+                array
+              end
+            end
+          %>
+
+          <%
+           custom_title = datatable.column_attributes[index].present? && datatable.column_attributes[index][:title]
+          %>
+          <th <%= data_attrs.join(" ").html_safe %>><%= custom_title || c.humanize %></th>
+        <% end %>
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+  </table>
+</div>
+
+<% if datatable.group_rows? %>
+  <% if datatable.respond_to?(:row_group_template_path) %>
+    <script id="<%= namespace %>-row-group-template" type="text/x-handlebars-template">
+      <%= render partial: datatable.row_group_template_path(current_user) %>
+    </script>
+  <% end %>
+<% end %>
+
+<%= javascript_tag do %>
+  var columns = [
+    <%=
+      datatable.columns.map do |index, c|
+        pairs = []
+        pairs << "data: \"#{c}\""
+        pairs << "className: \"#{c}\""
+
+        order_sequence = datatable.column_attributes[index] && datatable.column_attributes[index][:orderSequence]
+        pairs << "orderSequence: #{order_sequence}" if order_sequence
+
+        default_content = datatable.column_attributes[index] && datatable.column_attributes[index][:defaultContent]
+        pairs << "defaultContent: #{default_content}" if default_content
+
+        "{ #{pairs.join(", ")}}"
+      end.join(", ").html_safe
+    %>
+  ];
+
+  var groupRows = null;
+  <% if datatable.group_rows? %>
+
+    groupRows = {
+      dataSrc: '<%= datatable.group_rows_by %>',
+      startRender: function(rows, group) {
+        if(window.R.currentPage.renderGroupRow) {
+          return window.R.currentPage.renderGroupRow(this, rows, group);
+        } else {
+          return group;
+        }
+      } // to be added by page specific javascript
+    };
+  <% end %>
+
+  R.LitaTables = R.LitaTables || {};
+  R.LitaTables['<%= namespace %>'] = new window.R.LitaTable({
+    namespace: '<%= namespace %>',
+    searching: <%= datatable.allow_search %>,
+    columns: columns,
+    groupRows: groupRows,
+    paging: <%= datatable.paging %>,
+    colvis: <%= datatable.colvis_options.to_json.html_safe %>,
+  <% if datatable.server_side_export %>
+    lengthMenu: [25, 50, 100, 250, 500],
+    serverSideExport: true,
+    serverSideExportUrl: '<%= datatable_export_url %>',
+  <% else %>
+    includeAllOptionInLengthMenu: <%= datatable.include_all_option_in_length_menu %>,
+    exportOptions: {
+        title: '<%= datatable.export_filename %>',
+        exportOptions: {format: {body: <%= litatable_format_function(datatable) %> }}
+    },
+    <% end %>
+  });
+<% end %>
+
+<% # Only supporting one lita table per page with this architecture %>
+<%= content_for :body_attributes do %>
+  data-litatable="<%= namespace %>"
+<% end %>

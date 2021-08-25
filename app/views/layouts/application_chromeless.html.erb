@@ -1,0 +1,31 @@
+<%= render :partial => 'layouts/head' %>
+
+<body id=<%= page_id %> class="<%= page_class %> <%= body_classes %> <% if !current_user %>logout<% end %>" <% if current_user%> data-name="<%= current_user.company.domain %>" data-uid="<%= current_user.id%>" data-email="<%= current_user.email%>"<% end %> data-script="<%= js_class %>"  itemscope itemtype="https://schema.org/WebPage" data-parent-name="<%= current_user.company.parent_company.domain if current_user and current_user.company.child_company? %>">
+
+  <!--[if lt IE 9]>
+    <div id="ie">
+  <![endif]-->
+
+  <%= include_gon %>
+
+  <div id="wrapper-outer" class="wrapper-outer">
+    <div class="wrapper">
+      <%= yield %>
+    </div>
+  </div>
+  
+  <%= yield :pagetemplates %>
+  <%= render "js_templates/autocomplete" %>
+
+  <!--[if lt IE 9]>
+    </div>
+  <![endif]-->
+
+  <%= render partial: "/layouts/ruby_to_js"%>
+
+  <%= render partial: 'layouts/analytics' %>
+
+</body>
+</html>
+
+

@@ -1,0 +1,11 @@
+<%= render :partial => "layouts/mailer/header"%>
+
+<table style="<%= mail_styles(:table, :mail_border) %> border-top: none;">
+  <tr>
+    <td style="<%= mail_styles(:body_bg) %> padding: 2%;">
+      <%= yield %>
+    </td>
+  </tr>
+</table>
+
+<%= render :partial => "layouts/mailer/footer"%>

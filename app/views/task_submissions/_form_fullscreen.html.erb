@@ -1,0 +1,48 @@
+<div id="recognition-new-wrapper">
+  <% if current_user and !current_user.verified? and params[:controller] != "password_resets"%>
+    <%= render partial: "/recognitions/verify_warning"%>
+  <% end %>
+
+  <%= render "recognitions/nomination_task_toggle" %>
+
+  <div class="task_submissions-form-wrapper">
+    <%= form_for(@task_submission,
+                 url: task_submissions_url(network: current_user.network),
+                 as: :task_submission,
+                 remote: true) do |f| %>
+      <%= hidden_field_tag :request_form_id, SecureRandom.uuid %>
+      <div id="top" class="clearfix" <% unless current_user.verified? %> style="opacity: 0.2"<% end %>>
+        <div class="controls">
+          <div id="tskz_task_submission_description"></div> <%# error container %>
+          <%=	f.text_field :description, placeholder: t('tskz.task_submission.new.description') %>
+        </div>
+
+        <div id="tskz_task_submission_completed_tasks"></div> <%# error container %>
+        <% if current_user.completable_tasks.present? %>
+          <div id="task-list" class="marginTop20">
+            <div class="task">
+              <%=	select_tag 'task_submission[tasks[0][id]]',
+                              options_from_collection_for_select(current_user.completable_tasks, "id", "name"),
+                              { include_blank: true, data: { placeholder: t('tasks.task_name') }, class: 'name'} %>
+              <%=	number_field_tag 'task_submission[tasks[0][quantity]]', "", placeholder: t('tasks.quantity'), class: 'quantity', min: '1' %>
+              <%=	text_field_tag 'task_submission[tasks[0][comment]]', "", placeholder: t('tasks.comment'), class: 'comment' %>
+              <span class="remove-task"></span>
+            </div>
+          </div>
+          <div class="add-task-wrapper">
+            <a href="#" id="add-task">
+              <%= t('tskz.task_submission.new.add_task') %>
+            </a>
+          </div>
+        <% end %>
+        <div class='button-wrapper'>
+          <div id="recognition-submit-wrapper">
+            <% if current_user.verified? %>
+              <%= f.submit t("tskz.task_submission.new.submit"), class:"button-primary button button-big", data: {"lf-page-change"=> true} %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

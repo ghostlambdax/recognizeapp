@@ -1,0 +1,34 @@
+<% endpoint_path = company_admin_webhook_endpoint_path(webhook_endpoint) %>
+<% toggle = show_toggle webhook_endpoint.is_active?, "" , input: {name: "webhook_endpoint[#{webhook_endpoint.id}][is_active]"}, class: "webhook_endpoint-toggle" , data: {method: "PATCH", endpoint: endpoint_path}, wrapper_class: "inline" %>
+<tr id="webhook-endpoint-<%= webhook_endpoint.id %>">
+  <td><%= toggle %></td>
+  <td><%= webhook_endpoint.subscribed_event.humanize %></td>
+  <td><%= webhook_endpoint.request_method%></td>
+  <td title="<%= webhook_endpoint.payload_template %>">
+    <%= webhook_endpoint.description %><br />
+    <span class="subtle-text"><%= webhook_endpoint.target_url %></span>
+  </td>
+  <td>
+    <%= link_to_swal_form _('Edit'), 
+          "company_admin/webhook_endpoints/_webhook_endpoint_form", 
+          render: {locals: {webhook_endpoint: webhook_endpoint}},
+          swal_form: {
+            id: "edit_webhook_endpoint_#{webhook_endpoint.id}",
+            title: _('Edit Webhook'),
+            successmessage: _('Webhook has been saved'),
+            reshowform: true
+          }
+    %>
+  </td>
+  <td>
+    <%= link_to _('Destroy'), 
+        company_admin_webhook_endpoint_path(webhook_endpoint), 
+        method: :delete,
+        remote: true, 
+        data:{ confirm: _('Are you sure want to delete this webhook?'), 'confirm-button-text': t("swal.delete_confirm"), 'custom-class': 'destroy-confirm-button' } 
+        %>
+  </td>
+  <td>
+    <%= link_to_remote_swal _('Events'), events_company_admin_webhook_endpoint_path(webhook_endpoint), class: "button" %>
+  </td>
+</tr>

@@ -1,0 +1,11 @@
+<%
+  paid_class = @company.allow_admin_dashboard? ? "paid" : "unpaid"
+%>
+
+<% content_for :content do %>
+  <%= render partial: "layouts/company_admin_sidebar" %>
+  <div class="content-wrapper company-admin-wrapper <%= paid_class %>">
+    <%= content_for?(:admin_content) ? yield(:admin_content) : yield %>
+  </div>
+<% end %>
+<%= render template: "layouts/application" %>

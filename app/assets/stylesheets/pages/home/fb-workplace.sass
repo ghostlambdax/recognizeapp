@@ -1,0 +1,200 @@
+$fbPadding: 173px
+
+#home-fb_workplace
+
+  .fb-header
+    margin-top: 20px
+
+  .fb-top-hero
+    margin-bottom: -20px
+    box-shadow: 0px 9px 16px 1px hsla(0, 0%, 0%, 0.1)
+    height: 450px
+    width: 629px
+    max-width: 629px
+
+  #points
+
+    .point-1, .point-3
+      padding-top: $fbPadding
+      padding-bottom: $fbPadding
+
+    .point-3 .inner img
+      padding-bottom: 20px
+
+  #celebrate-content
+    padding: 2em 0
+
+    h2
+      margin-bottom: 25px
+
+    ul
+      padding-left: 20px
+      line-height: 28px
+
+      li
+        overflow: visible
+        list-style-type: disc
+
+    .header-container
+      max-width: 600px
+
+    .header-flex
+      display: flex
+      flex-direction: column
+      padding-right: 20px
+
+  .point-2
+    position: relative
+    padding-left: 0
+    padding-right: 0
+    text-align: center
+    height: 521px
+
+    .inner
+      margin-top: -110px
+
+    & .inner > img
+      position: absolute
+      top: 0
+      height: 43em
+      top: -3em
+
+    .outlook-left
+      left: 0
+      padding-top: 3em
+
+    .outlook-right
+      right: 0
+
+    .outlook-center
+      max-width: 446px
+      margin: -30px 0 0 250px
+      text-align: left
+
+@media (max-width: 1400px)
+  #home-fb_workplace
+    .point-2 .outlook-left
+      left: -6em
+
+    .point-2 .outlook-right
+      right: -6em
+
+@media (max-width: 1300px)
+  #home-fb_workplace
+    .fb-header
+      .span6:last-child
+        margin-left: 0px
+
+@media (max-width: 1235px)
+  #home-fb_workplace
+    .point-2 .outlook-right
+      right: -12em
+
+    .point-2 .outlook-center
+      margin: 10px 0 0 275px
+
+    #celebrate-content .header-container
+      padding-top: 10px
+
+@media (max-width: 1160px)
+  #home-fb_workplace
+    .point-2 .outlook-right
+      display: none
+
+    .point-2 .outlook-left
+      left: 0
+
+    .point-2 .outlook-center
+      margin-left: 40em
+
+@media (max-width: 1030px)
+  body
+    font-size: 0.7em
+
+  #home-fb_workplace
+    .fb-header
+      margin-top: 0
+
+      .span6:last-child
+        margin-left: 0
+        margin-top: 20px
+
+      .fb-top-hero
+        width: auto
+        height: auto
+        max-width: 100%
+
+      #celebrate-content
+        padding: 20px 0
+
+    .point-2
+      height: 400px
+
+      .inner > img
+        top: -80px
+
+@media (max-width: 980px)
+  #home-fb_workplace
+    .fb-header #celebrate-content .header-container
+      max-width: 430px
+
+@media (max-width: 900px)
+  $fbPadding: 50px
+  #home-fb_workplace
+    .fb-top-hero
+      clip: rect(0px, 900px, 300px, 0px)
+
+      #celebrate-content
+        margin: auto
+
+    #points
+
+      .point-1, .point-3
+        padding-top: $fbPadding
+        padding-bottom: $fbPadding
+
+      .point-2
+        height: auto
+
+        img
+          top: 0
+
+@media (max-width: $tablet)
+  #home-fb_workplace
+    .fb-header #celebrate-content .header-container
+      margin: auto
+      max-width: 600px
+      padding: 0 20px
+
+    .wrapper #points .point-2
+      padding: 1px
+
+      img
+        top: -80px
+
+      .inner .outlook-center
+        padding: 55px 0
+
+@media (max-width: 650px)
+  #home-fb_workplace
+    .point-2
+      height: 330px
+
+    .wrapper .point-2 .inner
+      .outlook-center
+        margin: auto
+
+      & > img
+        position: static
+        height: auto
+        display: block
+
+        &:last-child
+          display: none
+
+@media (max-width: 480px)
+  #home-fb_workplace
+    #points
+      .point-2
+        img
+          margin-left: -10px

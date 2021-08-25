@@ -1,0 +1,14 @@
+
+------
+
+<%= t("layouts.mailer.footer.edit_profile_page") %>
+<%= edit_user_url(@user, network: @user.network) %>
+
+<%= t("layouts.mailer.footer.to_unsubscribe") %>
+<%= unsubscribe_url(@user.unsubscribe_token) %>
+
+<%= t("layouts.mailer.footer.forgot_password") %>
+<%= new_password_reset_url %>
+
+<%= t("layouts.mailer.footer.questions") %>
+<%= contact_url %>

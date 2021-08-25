@@ -1,0 +1,29 @@
+<% content_for :meta_properties do %>
+  <meta property="og:url" content="<%= @recognition.permalink %>" />
+  <meta property="og:title" content="<%= render(partial: "recognitions/title", locals: {recognition: @recognition})%>" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognizeapp.com" />
+  <meta property="og:description" content="<%= t("recognition_new.recipient_characterized_badge_with_message", sender: @recognition.sender_name, recipient: @recognition.recipients_label, badge: @recognition.badge.short_name, message: @recognition.message_plain) %>" />
+  <meta property="og:image" content="<%= @recognition.badge.permalink %>" />
+<% end%>
+
+<%
+  title = t("recognition_new.sender_recognized_recipient_on_recognze", sender: @recognition.sender_name, recipient: @recognition.recipients_label)
+  title << " (#{@recognition.status_label})" if @recognition.pending_approval?
+%>
+<% content_for :title, title %>
+<% content_for :description, t("recognition_new.recipient_characterized_badge_with_message", sender: @recognition.sender_name,recipient: @recognition.recipients_label, badge: @recognition.badge.short_name, message: @recognition.message_plain) %>
+
+<% if @recognition.badge.is_achievement? %>
+  <div class="recognition-tag">
+    <h5><%= t('dict.achievement') %></h5>
+  </div>
+<% end %>
+
+<% if @pending_user_signup %>
+  <%= render "recognition_signup" %>
+<% end %>
+
+<%= render_flash %>
+
+<%= render show_partial_name(@recognition), recognition: @recognition %>

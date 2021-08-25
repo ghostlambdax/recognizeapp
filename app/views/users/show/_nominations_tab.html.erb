@@ -1,0 +1,22 @@
+
+<ul>
+  <% @nominations_sent.each do |nom| %>
+
+    <li class="avatar-horizontal-wrapper marginBottom20">
+      <img />
+      <div>
+        <% recipient = User.find(nom.recipient_id) %>
+        <p>To <%= link_to recipient.full_name, user_path(recipient) %></p>
+        <p>Is awarded: <%= nom.is_awarded %></p>
+        <p>Received <%= nom.votes_count %> vote.</p>
+        <p><%= t("dict.ago_in_words", time: time_ago_in_words(nom.created_at)) %></p>
+      </div>
+
+
+    </li>
+
+
+
+  <% end %>
+</ul>
+

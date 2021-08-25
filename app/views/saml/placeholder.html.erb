@@ -1,0 +1,29 @@
+<% content_for(:title, params[:viewer].humanize) %>
+<% content_for(:body_id, "saml-auth-placeholder") %>
+
+<%= javascript_tag do %>
+  (function() {
+
+  function checkLogin(popup) {
+    R.utils.checkLoginStatus(function(){
+      window.location.replace(window.location);
+    }, {network: '<%= params[:network] %>', referrer: '<%= params[:referrer] %>'}, popup);
+  }
+
+  <% if @popup_url %>
+    checkLogin( R.utils.openWindow('<%= @popup_url %>', 520, 570) );
+    $document.on(R.touchEvent, ".openPopup", function(e) {
+      var popup = R.utils.openWindow('<%= @popup_url %>', 520, 570);
+      e.preventDefault();
+      checkLogin(popup);
+    });
+  <% else %>
+    checkLogin(false);
+  <% end %>
+
+
+  })();
+<% end %>
+
+<%= render "saml/placeholder" %>
+

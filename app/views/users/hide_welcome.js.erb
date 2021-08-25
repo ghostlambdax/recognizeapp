@@ -1,0 +1,10 @@
+(function() {
+  $("#first-user-welcome").fadeOut(function() {
+    $(this).remove();
+
+    if (R.currentPage && R.currentPage.fixStreamHeight) {
+      R.currentPage.fixStreamHeight();
+    }
+  });
+
+})();

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="MailApp" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0">
+  <Id>8d77590c-f556-41ed-b52f-b755d4a5ba12</Id>
+  <!--<Id>7c9418cf-cc96-4f90-b3fc-dcf319f39ba0</Id> recognizedev-->
+  <!-- <Id>947c144b-d686-4964-a2ff-0b037ed830a0</Id> recognizedev2 -->
+  <Version>2.1</Version>
+  <ProviderName>Recognize Services Inc</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Recognize"/>
+  <Description DefaultValue="Helping companies engage their employees through employee recognition and rewards, while helping our communities."/>
+  <IconUrl DefaultValue="https://recognizeapp.com/assets/logo_72x72.png" />
+  <HighResolutionIconUrl DefaultValue="https://recognizeapp.com/assets/chrome/logo_128x128.png"/>
+  <SupportUrl DefaultValue="https://recognizeapp.com/help" />
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="MailBox" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemEdit">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://recognizeapp.com"/>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteItem</Permissions>
+  <Rule xsi:type="ItemIs" ItemType="Message" FormType="Edit"/>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <!-- Use the default tab of the ExtensionPoint or create your own with <CustomTab id="myTab"> -->
+            <OfficeTab id="TabDefault">
+              <!-- Up to 6 Groups added per Tab -->
+              <Group id="msgReadGroup">
+                <Label resid="groupLabel1" />
+                <!-- Launch the add-in : task pane button -->
+                <Control xsi:type="Button" id="taskpaneButtonCommand">
+                  <Label resid="menuLabel"/>
+                  <Supertip>
+                    <Title resid="homeStreamPage"/>
+                    <Description resid="streamPageLong"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="stream-16"/>
+                    <bt:Image size="32" resid="stream-32"/>
+                    <bt:Image size="80" resid="stream-80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="streamUrl"/>
+                  </Action>
+                </Control>
+                <!-- Go to http://aka.ms/ButtonCommands to learn how to add more Controls: ExecuteFunction and Menu -->
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+
+
+          <ExtensionPoint xsi:type="MessageComposeCommandSurface">
+            <OfficeTab id="TabDefault">
+
+
+              <Group id="group1">
+                <Label resid="groupLabel1"/>
+
+                <Control xsi:type="Button" id="taskpaneButton2">
+                  <Label resid="recipientsButton"/>
+                  <Supertip>
+                    <Title resid="taskpaneButtonSuperTipTitle1"/>
+                    <Description resid="taskpaneButtonSuperTipDesc1"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="taskpaneButtonIcon1-16"/>
+                    <bt:Image size="32" resid="taskpaneButtonIcon1-32"/>
+                    <bt:Image size="80" resid="taskpaneButtonIcon1-80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="recipientSendUrl"/>
+                  </Action>
+                </Control>
+
+
+                <Control xsi:type="Button" id="taskpaneButton1">
+                  <Label resid="streamButton"/>
+                  <Supertip>
+                    <Title resid="streamPageLabel"/>
+                    <Description resid="streamPageLong"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="stream-16"/>
+                    <bt:Image size="32" resid="stream-32"/>
+                    <bt:Image size="80" resid="stream-80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="streamUrl"/>
+                  </Action>
+                </Control>
+
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="stream-16" DefaultValue="https://recognizeapp.com/assets/icons/stream-16.png"/>
+        <bt:Image id="stream-32" DefaultValue="https://recognizeapp.com/assets/icons/stream-32.png"/>
+        <bt:Image id="stream-80" DefaultValue="https://recognizeapp.com/assets/icons/stream-80.png"/>
+
+        <bt:Image id="taskpaneButtonIcon1-16" DefaultValue="https://recognizeapp.com/assets/icons/recognize-16.png"/>
+        <bt:Image id="taskpaneButtonIcon1-32" DefaultValue="https://recognizeapp.com/assets/icons/recognize-32.png"/>
+        <bt:Image id="taskpaneButtonIcon1-80" DefaultValue="https://recognizeapp.com/assets/icons/recognize-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="recipientSendUrl" DefaultValue="https://recognizeapp.com/outlook-addin?viewer=outlook&amp;page=recipient"/>
+        <bt:Url id="streamUrl" DefaultValue="https://recognizeapp.com/outlook-addin?viewer=outlook&amp;page=stream"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="groupLabel1" DefaultValue="Recognize"/>
+        <bt:String id="streamButton" DefaultValue="Stream"/>
+        <bt:String id="recipientsButton" DefaultValue="Send recognition"></bt:String>
+        <bt:String id="sendRecognition" DefaultValue="Send recognition"/>
+        <bt:String id="menuLabel" DefaultValue="Open app"/>
+
+        <bt:String id="taskpaneButtonSuperTipTitle1" DefaultValue="Send recognition to the email recipients"/>
+        <bt:String id="homeStreamPage" DefaultValue="Recognize homepage to access your profile or send recognition."/>
+        <bt:String id="sendRecognitionLabel" DefaultValue="Send a recognition."/>
+        <bt:String id="streamPageLabel" DefaultValue="View all your company's recognitions."/>
+
+
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="taskpaneButtonSuperTipDesc1" DefaultValue="Send a recognition to the To recipients of the email."/>
+        <bt:String id="streamPageLong" DefaultValue="Access the entire Recognize portal and view all your company's recognitions."/>
+        <bt:String id="sendRecognitionLabelLong" DefaultValue="Send a recognition to anyone within your company with a badge and message."/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

@@ -1,0 +1,30 @@
+<h2 style="<%= mail_styles(:h2, :text, :title) %> padding: 0;"><%= t('recognize.welcome') %></h2>
+
+<table style="<%= mail_styles(:table) %>">
+  <tr>
+    <td>
+      <p style="<%= mail_styles(:p) %>">
+        <% if @user.from_inbound_email_id.present? %>
+          <%= t("user_notifier.received_recognition_email_please_verify") %>
+        <% else %>
+          <%= t('user_notifier.thanks_for_signing_up_please_verify') %>
+        <% end %>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="<%= @verification_url %>" style="<%= mail_styles(:button) %>"><%= t('user_notifier.verify_account_now') %></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3 style="<%= mail_styles(:text, :h3)%>"><%= t('user_notifier.or_go_to_this_website') %></h3>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="<%= @verification_url %>" style="<%= mail_styles(:text, :a) %>"><%= @verification_url %></a>
+    </td>
+  </tr>
+</table>

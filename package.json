@@ -1,0 +1,14 @@
+{
+   "name":"scripts",
+   "version":"1.0.0",
+   "description":"script for load the enviromnet variables",
+   "main":"nclouds/ssm_get_parameters.js",
+   "scripts":{
+      "test":"echo \"Error: no test specified in dir\" && exit 1"
+   },
+   "author":"Fernando Gonzalez",
+   "license":"ISC",
+   "dependencies":{
+      "aws-sdk":"latest"
+   }
+}

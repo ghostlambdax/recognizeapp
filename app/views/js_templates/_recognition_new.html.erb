@@ -1,0 +1,18 @@
+<script type="text/template" id='addRecepient'>
+  <div class="recipient-wrapper" data-signature="{{#if email}}{{email}}{{else}}{{type}}:{{id}}{{/if}}" {{#if count}}data-count="{{count}}"{{/if}}>
+    {{#avatar_thumb_url}}
+      <div class='left marginRight10'>
+        <img src="{{.}}" width='26px' class="avatar">
+      </div>
+    {{/avatar_thumb_url}}
+    
+    <div class='left marginRight25 paddingTop5'>
+      <p>{{#if count includeZero=true}}({{count}}) {{/if}}{{name}}</p>
+    </div>
+    
+    <div class='recipient-remove'>
+      ✖
+      <span class=offscreen><%= t("dict.remove") %></span>
+    </div>
+  </div>
+</script>

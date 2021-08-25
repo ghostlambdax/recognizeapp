@@ -1,0 +1,21 @@
+<% content_for :pagejs do %>
+  $(document).on("turbolinks:load", ready);
+
+  function ready() {
+    R.msTeams.Loader(function(){
+      <% if current_user.present? %>
+        try {
+          // https://docs.microsoft.com/en-us/microsoftteams/platform/tabs/how-to/using-teams-client-sdk
+          R.msTeams.client.authentication.notifySuccess("true");            
+        } catch(e) {
+          console.log("Caught error in msTeams.Loader callback for authentication.notifySuccess function", e);
+        }
+      <% else %>
+        R.msTeams.client.authentication.notifyFailure();
+      <% end %>
+    });
+  };
+<% end %>
+
+<h1>Authentication is successful!</h1>
+<div>One moment while we redirect you</div>

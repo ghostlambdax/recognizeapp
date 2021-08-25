@@ -1,0 +1,28 @@
+<div class="custom_field_mappings_table_wrapper well width-100 marginBottom10">
+  <h5 style="display: inline-block">
+    Extension Mapping
+  </h5>
+  <%= link_to I18n.t("dict.manage"), company_admin_custom_field_mappings_path(network: @company.domain),
+    class: "button button-primary marginLeft10 marginBottom10" %>
+
+    <% if @company.custom_field_mappings.any? %>
+      <table id="custom_field_mappings_table" class="table table-condensed table-responsive">
+        <thead>
+          <tr>
+            <th>Recognize Key</th>
+            <th>Provider Type</th>
+            <th>Microsoft key / Schema ID</th>
+            <th>Provider attribute key</th>
+            <th>Recognize Attribute Name</th>
+            <th>Mapped to user attribute</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% User.custom_field_attributes.each do |custom_field_key| %>
+            <%= render "company_admin/custom_field_mappings/custom_field_mapping" , company: @company, custom_field_key:
+              custom_field_key if @company.custom_field_mappings.get(key: custom_field_key).present? %>
+              <% end %>
+        </tbody>
+      </table>
+      <% end %>
+</div>

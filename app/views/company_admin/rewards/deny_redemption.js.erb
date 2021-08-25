@@ -1,0 +1,22 @@
+(function(){
+  <% if @redemption.errors.size == 0 %>
+    var $table = $("table#redemptions-table");
+    var $deny_link = $table.find('a.deny-button[data-redemption-id="<%= @redemption.id %>"]');
+    var $redemptionRow = $deny_link.closest('tr');
+    var status_column_class = ".status";
+
+    $redemptionRow.find('a.button').not('.redemption-additional-instructions-link').hide();
+    $redemptionRow.find(status_column_class).html('<%= redemption_status_text @redemption.status %>')
+  <% else %>
+    <%
+      detail = j @redemption.errors.full_messages.map{|m| "<li>#{m}</li>"}.join.html_safe
+    %>
+    Swal.fire({
+      title: "Not approving",
+      html: "<h4>Something has happened that is preventing the gift card to be denied. </h4><ul><%= detail %></ul>",
+      icon: 'error',
+      showCancelButton: false,
+      confirmButtonText: 'Okay'
+    });
+  <% end %>
+})();

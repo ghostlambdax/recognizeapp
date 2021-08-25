@@ -1,0 +1,64 @@
+<tr id="user_row_<%= user.id %>">
+
+  <td class="not-mobile">
+    <%= @company.uses_employee_id? ? user.employee_id : user.id %>
+  </td>
+
+  <td>
+    <%= first_name_link(user) %>
+  </td>
+
+  <td>
+    <%= last_name_link(user) %>
+  </td>
+
+  <td>
+    <%= email_with_login_link(user) %>
+  </td>
+
+  <% if @company.in_family? %>
+      <td class="not-mobile">
+        <%= user.network %>
+      </td>
+  <% end %>
+
+  <td data-order="<%= user.manager %>">
+    <%= select_manager(user) %>
+  </td>
+
+  <td class="teams-cell not-mobile">
+    <%= select_teams(user) %>
+  </td>
+
+  <td class="roles not-mobile">
+    <%= roles(user) %>
+  </td>
+
+  <td class='promote_demote_link'>
+    <%= promote_demote_link(user) %>
+  </td>
+
+  <!--<td class='promote-executive-cell'>-->
+    <%#= promote_demote_executive_link(user) if current_user.admin? or current_user.company_admin? %>
+  <!--</td>-->
+
+  <td class='company_roles'>
+    <%= select_company_roles(user) %>
+  </td>
+
+  <td class="status">
+    <%= status(user) %>
+  </td>
+
+  <td class="not-mobile">
+    <%= created_at(user) %>
+  </td>
+
+  <td>
+    <%= edit_link(user) %>
+  </td>
+
+  <td class="activate-disable-cell">
+    <%= activate_link(user) %>
+  </td>
+</tr>

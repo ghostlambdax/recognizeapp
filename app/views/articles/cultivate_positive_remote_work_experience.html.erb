@@ -1,0 +1,27 @@
+<% content_for :title, @title %>
+
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="<%= @title %> | Recognize" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:image" content="/assets/pages/articles/cultivate-positive-remote-work-experience/image1.jpg" />
+  <meta property="og:url" content="https://recognizeapp.com/cultivate-positive-remote-work-experience" />
+  <link rel="amphtml" href="<%= cultivate_positive_remote_work_experience_url format: :amp %>">
+<% end%>
+
+<% content_for :article_title do %><%= @title %><% end %>
+<% content_for :article_description do %>  
+  <%= lazy_image_tag "pages/articles/cultivate-positive-remote-work-experience/image1.jpg", alt: "A woman working from home", itemprop: "image", class: "marginBottom20"%>
+<% end %>
+
+<% tags = ["Introduction", "Build a Leadership Team", "Start small and Grow", "Stay Secure", "Communication is Key", "Carve out a Routine", "Make space for Success", "Stay Engaged", "Encourage Self Care", "Recognize Burnout", "Set Boundaries"] %>
+
+
+<% content_for :article_body do %>
+  <%= render partial: "cultivate_positive_remote_work_experience", locals: {tags: tags} %>
+<% end %>
+
+
+<% content_for :article_side do %>
+  <%= render partial: "article_menu", locals: {tags: tags} %>
+<% end %>

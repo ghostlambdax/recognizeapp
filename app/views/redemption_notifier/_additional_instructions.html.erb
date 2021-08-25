@@ -1,0 +1,5 @@
+<% if redemption.additional_instructions.present? %>
+    <p style="<%= mail_styles(:text, :p) %>"><%= t("redemption.additional_instructions_for_user_title") %>:</p>
+    <p style="<%= mail_styles(:text, :quote) %>"><%= redemption.additional_instructions %></p>
+<% end %>
+

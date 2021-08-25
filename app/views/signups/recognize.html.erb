@@ -1,0 +1,23 @@
+<% content_for :title do %>
+  Sign in to continue
+<% end %>
+<%= render partial: "layouts/office_script_tag" if outlook_viewer? %>
+
+<% @user_session ||= UserSession.new %>
+<div class="well padding30">
+  <h1 class='offscreen'><%= t("signups.login_or_sign_up_to_send_recognition") %></h1>
+  <div class="row-fluid">
+    <div class="span6">
+      <h2><%= t("dict.login") %></h2>
+      <%= render partial: "user_sessions/login" %>
+      <hr>
+    </div>
+
+    <div class="span6 marginBottom20 text-centered" data-turbolinks="false">
+
+      <h2><%= t("dict.sign_up") %></h2>
+      <%= link_to t("signups.sign_up_for_free"), sign_up_path, class: "button button-large button-highlight" %>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="flex-centered">
+  <div class="congrats centered width-500">
+    <div class="well marginVertical50">
+      <h4 class="warning balance-text"><%= @error %></h4>
+      <%= link_to t("support_emails.please_contact_us"), contact_path(body: "Linked to wrong Recognize account from Workplace by FB."), class: "button" %>
+    </div>
+    <%= image_tag "illustrations/marching_band-1.0.jpg", alt: "A marching band through an office", class: "width-500" %>
+  </div>
+</div>

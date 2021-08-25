@@ -1,0 +1,126 @@
+.user_sessions.logout,
+.password_resets.logout,
+#home-sign_up
+  #navbar
+    .nav
+      li:not(#signup-menu):not(#login-menu)
+        display: none
+
+.password_resets
+  #view-main-wrapper
+    .form-vertical
+      .button
+        width: 100%
+
+#home-sign_up
+  background: image-url("chrome/background.png") repeat
+
+  #action
+    height: 485px
+
+    .content
+      box-shadow: 0 120px 341px 150px #FFF
+      background: rgba(255, 255, 255, 0.7)
+      margin-top: 30px
+      margin-bottom: 15px
+
+.user_sessions
+  padding-bottom: 50px
+
+  .login-wrapper
+    .button-yammer-signup,
+    .button-microsoft-graph-signup,
+    .sign-in-with-google
+      float: left
+
+// There is a flexbox related bug in IE - see https://github.com/philipwalton/flexbugs/issues/231
+// align-items: center doesn't work in IE if there is a min-height set for the flex container
+// This is a workaround for the issue. Note: IE renders the page with no-flexboxlegacy class from Modernizr
+.no-flexboxlegacy .signups,
+.no-flexboxlegacy .user_sessions,
+.no-flexboxlegacy .password_resets,
+.no-flexboxlegacy .authentications,
+  #view-main-wrapper
+    height: 100%
+
+.signups,
+.user_sessions,
+.password_resets,
+.authentications,
+.saml
+  .wrapper
+    form
+      input[type=text], input[type=email], input[type=password]
+        width: 100%
+        @include box-sizing(border-box)
+        height: 40px
+
+    .login-wrapper,
+    .user-sesssion-content
+      max-width: 600px
+      @include transform(translate(0, 0))
+      opacity: 1
+      background: white
+      padding: 4%
+      border-radius: 4px
+      box-shadow: 0 0 21px rgba(0,0,0,.5)
+
+  #view-main-wrapper
+    display: flex
+    @include align-items(center)
+    @include justify-content(center)
+    box-pack: center
+
+html body.user_sessions,
+body.authentications,
+body.signups,
+body#identity_providers-show
+  padding-bottom: 10px
+  background: $headerBg url(asset_path('chrome/transparent-polygon-bg.png'))
+  background-size: cover
+
+  @media (max-width: $tablet)
+    background-image: none
+
+  .login-wrapper
+    @include transitionTransformWithStuff(.8s, cubic-bezier(.17,.67,.17,.95), opacity .8s linear)
+
+  .wrapper .login-wrapper.login-hide
+    opacity: 0
+    @include transform(translate(0, 20px))
+
+  .centered h1
+    display: inline-block
+
+  .well h1
+    color: $bodyText
+
+  #wrapper-outer .sign-in-with-google
+    margin: 0 0 0 7px
+    position: relative
+    top: 1px
+
+
+@media (min-height: 700px)
+  .user_sessions,
+  .authentications,
+  .password_resets,
+  .saml
+    #view-main-wrapper
+      padding-top: 0
+
+
+@media (max-width: 800px)
+  #home-sign_up
+    #action
+      height: 485px
+
+@media(max-width: 480px)
+  .user_sessions
+    .sign-in-with-google
+      margin: 10px 0 0 0
+    .login-wrapper
+      .button-yammer-signup,
+      .button-microsoft-graph-signup,
+      .sign-in-with-google
+        display: block

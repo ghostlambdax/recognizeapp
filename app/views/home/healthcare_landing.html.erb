@@ -1,0 +1,237 @@
+<%= content_for :title, "Healthcare Employee Recognition" %>
+<%= content_for :description, "Ideas to create a culture of appreciation amongst your healthcare staff through an employee recognition program" %>
+<% content_for :meta_properties do %>
+  <meta property="og:title" content="Healthcare Employee Recognition | Recognize" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Recognize" />
+  <meta property="og:description" content="Clinical, healthcare, nurses, and medical staff of all kinds need recognition. We are facing a burn out epidemic." />
+  <meta property="og:image" content="/assets/pages/healthcare-landing/intro.jpg" />
+<% end%>
+
+<section class="intro">
+  <div class="inner">
+    <h1 class="balance-text">Healthcare Employee Recognition</h1>
+    <p class="tagline">Clinics and healthcare companies need to consider a multi-faceted approach to combat nurse burnout. Adding employee recognition to your workflow helps reach healthcare goals of reduced burnout.</p>
+    <%= schedule_demo_link %>
+  </div>
+
+  <%= image_tag 'pages/healthcare-landing/intro.jpg', alt: 'An illustration of healthcare professionals.' %>
+</section>
+
+<section class="brad-buckets">
+  <div class="bucket h-container">
+    <div class="item">
+      <%= lazy_image_tag 'pages/healthcare-landing/icon-research.png', alt: 'An icon of a clipboard with a chedcklist to symbolize a survey as part of the medical burnout research' %>
+    </div>
+
+    <div>
+      <h2>Nurse Burnout Research</h2>
+      <p>See the groundbreaking study by Recognize on epidemic nurse burnout and what to do about it through an employee recognition program.</p>
+      <%= link_to 'See nurse burnout stats', employee_recognition_stats_for_healthcare_path %>
+    </div>
+  </div>
+
+  <div class="bucket h-container">
+    <div class="item">
+      <%= lazy_image_tag 'pages/healthcare-landing/icon-casestudy.png', alt: 'An icon of a paper report.' %>
+    </div>
+
+    <div>
+      <h2>Healthcare Case Study</h2>
+      <p>How to increase employee engagement over time amongst healthcare workers with an employee recognition program.</p>
+      <%= link_to 'See case study', corvallisclinic_case_study_path %>
+    </div>
+  </div>
+</section>
+
+
+<section id='values' class="badges">
+  <div class="centered">
+    <h2 class="balance-text">Company Values For Healthcare Employee Recognition</h2>
+    <p class="tagline balance-text">The following are company values that healthcare companies can use to promote excellence, safety, and wellness with their medical staff.</p>
+    <%= link_to 'Download', 'healthcare-values.zip', target: "_blank", class: "button button-primary" %>
+    <hr class="hr hr-space">
+  </div>
+  <% badges = [{
+                   name: 'Thank You',
+                   description: 'For lending a helping hand to someone in need.',
+                   path: 'badges/healthcare/THANK_YOU.png',
+                   alt: 'Fireworks of bursting streams of color icon'
+               },
+               {
+                name: 'Attendance',
+                description: 'We know the work we do is not easy, and in the face of it all you are able to come in on a regular basis and get the job done. Thanks so much!',
+                path: 'badges/healthcare/ATTENDANCE.png',
+                alt: 'A calendar check mark icon'
+               },
+               {
+                   name: 'Flu Vaccination',
+                   description: 'Thanks for being a self-starter with getting a flu shot. It means a lot to the organization and to the patients. Plus, hopefully you will not get sick this year!',
+                   path: 'badges/healthcare/FLU_VACCINATION.png',
+                   alt: 'A syringe icon'
+               },
+               {
+                   name: 'Voice of Safety',
+                   description: 'Makes sure to follow safety protocols and uses agreed upon verbal cues. Does not hold back from speaking up on safety. Displays leadership qualities on topics of safety.',
+                   path: 'badges/healthcare/VOICE_OF_SAFETY.png',
+                   alt: 'A red megaphone icon'
+               },
+               {
+                   name: 'Team Player',
+                   description: 'Supports fellow teammates by assisting floating nurses and others with all tasks involved, such as discharge or admissions. Partners and mentors with other staff.',
+                   path: 'badges/healthcare/TEAM_PLAYER.png',
+                   alt: 'A handshake icon'
+               },
+               {
+                   name: 'Above & Beyond',
+                   description: 'Went above and beyond in duties outside of routine. Stepping in to assist with throughput.',
+                   path: 'badges/healthcare/ABOVE_BEYOND.png',
+                   alt: 'A person with star ribbon icon'
+               },
+               {
+                   name: 'Injury Free',
+                   description: 'Been injury free for 30 days or was injury free during emergency. Encourages others to follow processes to avoid injuries.',
+                   path: 'badges/healthcare/INJURY_FREE.png',
+                   alt: 'A person with both hands in the air icon'
+               },
+               {
+                   name: 'Infection Protection',
+                   description: 'Practices prevention strategies to protect yourself, patients, and others. Follows hand hygiene standards and aseptic techniques.',
+                   path: 'badges/healthcare/INFECTION_PROTECTION.png',
+                   alt: 'A person washing their hands icon'
+               },
+               {
+                   name: 'Care Transition',
+                   description: 'When the patient is discharged in the morning. The patient is safely discharged. Coordinate with case management for needed items at home health follow up.',
+                   path: 'badges/healthcare/CARE_TRANSITION.png',
+                   alt: 'A home symbol icon'
+               },
+               {
+                   name: 'HIPAA Hero',
+                   description: 'Thanks for all your efforts in helping your organization be HIPAA compliant!',
+                   path: 'badges/healthcare/HIPAA_HERO.png',
+                   alt: 'A padlock icon'
+               },
+               {
+                   name: 'Compassion',
+                   description: 'For showing compassion, empathy, or special care for yourself, your team, and the patients.',
+                   path: 'badges/healthcare/COMPASSION.png',
+                   alt: 'A heart icon'
+               },
+               {
+                   name: 'Mobility',
+                   description: 'Following best practices around ambulation. Ensuring efficient and safe movement of patients and yourself.',
+                   path: 'badges/healthcare/MOBILITY.png',
+                   alt: 'A gurney icon'
+               }] %>
+
+
+  <ul>
+    <% badges.each do |b| %>
+      <li class="h-container">
+        <div class="item">
+          <%= lazy_image_tag b[:path], alt: b[:alt] %>
+        </div>
+
+        <div class="content">
+          <h3><%= b[:name] %></h3>
+          <p><%= b[:description] %></p>
+        </div>
+      </li>
+
+    <% end %>
+  </ul>
+
+
+</section>
+
+<section class="todos">
+  <div class="centered">
+    <h2 class="marginBottom50">10 Todos for a Successful Healthcare Employee Recognition Program</h2>
+  </div>
+
+  <% ideas = [{
+                title: 'Include everyone',
+                description: 'Make sure all staff have access to the employee recognition portal. Have Recognize inside Outlook, mobile, TVs in hallways and everywhere people work.',
+                path: 'pages/healthcare-landing/ideas/docs.jpg',
+                alt: 'Nurses standing at a table'
+              },
+              {
+                  title: 'Give rewards your staff want',
+                  description: 'The number one requested reward from healthcare workers is extra paid time off. Paid time off can help burnt out healthcare workers to recharge and find their passion for their work again. Offering relaxation experiences such as massages, yoga, or meditation classes can also help staff to relax and reduce burnout.',
+                  path: 'pages/employee-rewards-ideas/pto.jpg',
+                  alt: 'A man going on vacation'
+              },
+              {
+                  title: 'Everyone deserves recognition',
+                  description: 'Use award certificates to give status. Make the recognition personal. Ensure everyone is recognized at least twice a year for meaningful contributions.',
+                  path: 'pages/healthcare-landing/ideas/happy-doc.jpg',
+                  alt: 'A happy nurse'
+              },
+              {
+                  title: 'Promote what’s important',
+                  description: 'Give recognition around your organization’s specific values such as Safety, HIPAA Compliance, Patient Feedback, or Infection Protection.',
+                  path: 'pages/healthcare-landing/ideas/nurse-safe.jpg',
+                  alt: 'A nurse using safety procedures'
+              },
+              {
+                  title: 'Encourage health and wellness',
+                  description: 'With Recognize, you can incentivize your staff to take care of their physical and mental health by offering rewards for steps, exercising, or biking to work.',
+                  path: 'pages/healthcare-landing/ideas/wellness.jpg',
+                  alt: 'Nurse holding a salad'
+              },
+              {
+                  title: 'Provide easy peer-to-peer recognition',
+                  description: 'Reducing barriers for your staff to send recognition is key in ensuring adoption. Add a recognition tool to Outlook, mobile, or shared kiosks, and make sure everyone can be invited to use the platform.',
+                  path: 'chrome/logo-blue-256.png',
+                  alt: 'Recognize icon'
+              },
+              {
+                  title: 'Correlate recognition data to KPIs',
+                  description: 'Is your recognition and rewards program lowering the rate of infection, number of safety issues, or HIPAA violations at your organization? Track data points and correlate KPIs to see relationships.',
+                  path: 'pages/healthcare-landing/ideas/kpi.jpg',
+                  alt: 'A photo showing a number of icons symbolizing KPIs, such as wellness and efficiency.'
+              },
+              {
+                  title: 'Choose partners that value privacy and security',
+                  description: 'Knowing that your data is safe and protected is crucial for healthcare organizations. Make sure that any vendors you work with store employee data encrypted and that contract agreements do not allow selling of personal data.',
+                  path: 'pages/healthcare-landing/ideas/hipaa.jpg',
+                  alt: 'HIPAA Compliant icon'
+              },
+              {
+                  title: 'Develop a communications strategy',
+                  description: 'Use posters, free standing banners, desk cards, email signatures, and town halls to communicate the recognition program and how it can be best utilized.',
+                  path: 'pages/healthcare-landing/ideas/communications.jpg',
+                  alt: 'Medical professionals looking at an ipad'
+              },
+              {
+                  title: 'Train managers',
+                  description: 'Managers are the rubber that meets the road in a recognition program. Set time aside with your recognition vendor to host webinars where managers can learn best practices.',
+                  path: 'pages/healthcare-landing/ideas/training.jpg',
+                  alt: 'Healthcare workers conducting a training and holding a clipboard'
+              }] %>
+
+
+  <ul>
+
+    <% ideas.each do |i| %>
+      <li class="h-container">
+        <div class="item">
+          <%= lazy_image_tag i[:path], alt: i[:alt] %>
+        </div>
+        <div class="content">
+          <h3><%= i[:title] %></h3>
+          <p><%= i[:description] %></p>
+        </div>
+
+
+      </li>
+
+    <% end %>
+
+  </ul>
+</section>
+
+<%= render partial: "marketing_cta_banner" %>
+
+<%= render partial: 'home/footer' %>

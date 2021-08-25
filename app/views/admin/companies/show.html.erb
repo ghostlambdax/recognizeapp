@@ -1,0 +1,126 @@
+<h2><%= link_to @company.domain, "/admin?network=#{@company.domain}" %>
+</h2>
+<% if @company.parent_company.present? %>
+  <p>Child of <%= link_to @company.parent_company.domain, admin_company_path(@company.parent_company) %></p>
+<% end %>
+
+<ul id="site-admin-company-nav" class="nav nav-pills marginBottom20">
+
+  <li class='active'><a href="#settings" data-toggle="tab">Settings</a></li>
+  <li><a href="#users" data-toggle="tab">Users</a></li>
+  <li><a href="#money" data-toggle="tab">Deposit Money</a></li>
+  <li><a href="#invoices" data-toggle="tab">Invoices</a></li>
+  <li><a href="#subscription" data-toggle="tab">Subscription</a></li>
+  <li><a href="#subcompanies" data-toggle="tab">Sub Companies</a></li>
+  <li class='pull-right'>
+    <%= select_tag nil, options_for_select(["Select admin to impersonate", nil] + @company.company_admins.active.map { |ca| ["#{ca.full_name} (#{ca.email})", admin_login_as_path(id: ca.id)] }), id: "admin-impersonate-select" %>
+    <%= javascript_tag do %>
+      $(document).on('ready turbolinks:load', function() {
+      window.R.Select2(function(){
+      $("#admin-impersonate-select").select2().on('select2:select', function (e) {
+      var url = e.params.data.id;
+      var userLabel = e.params.data.text;
+      SweetAlert.fire({
+      showCancelButton: true,
+      title: "Proceed with impersonating?",
+      text: userLabel,
+      footer: "Don't forget to logout when you're done!"
+      }).then(function(result){
+      if(result.value) {
+      window.location = url;
+      SweetAlert.fire('ok, Logging in now as: '+userLabel)
+      }
+      });
+      });
+      });
+      });
+    <% end %>
+  </li>
+</ul>
+
+<%= render_flash %>
+
+
+<section id="settings" class="active tab tab-pane">
+  <%= render "setup_links" %>
+</section>
+
+<section id='users' class="tab tab-pane">
+  <h2>Users</h2>
+  <%= render partial: "users/user_set", locals: {users: @users, user_endpoint: users_admin_company_path(@company), company: @company} %>
+</section>
+
+<section id='money' class='tab tab-pane'>
+  <%= render "money_deposit" %>
+</section>
+
+<section id='invoices' class='tab tab-pane'>
+  <%= render "invoices" %>
+</section>
+
+<section id='subscription' class='tab tab-pane'>
+  <%= admin_company_subscription_link %>
+</section>
+
+<section id='subcompanies' class='tab tab-pane'>
+  <% if @company.parent_company.present? %>
+
+    <%= render partial: "companies/move_users" %>
+
+  <% else %>
+
+    <div class="row-fluid">
+      <div class="span6">
+        <h4>Child companies</h4>
+        <div>Add new:</div>
+        <%= form_for [:admin, Company.new], remote: true do |f| %>
+          <%= hidden_field_tag :id, @company.domain %>
+          <%= f.text_field :domain, placeholder: "Enter child company's domain" %>
+          <%= f.submit "Create" %>
+        <% end %>
+        <% if @company.child_companies.present? %>
+          <ol>
+            <% @company.child_companies.each do |c| %>
+              <li><%= "#{c.id} - #{link_to(c.domain, admin_company_path(c))} - #{c.created_at.to_formatted_s(:db)}".html_safe %></li>
+            <% end %>
+          </ol>
+        <% end %>
+      </div>
+
+      <div class="span6">
+        <h4>Add Directors</h4>
+        <div>Add new:</div>
+        <%= form_for User.new, url: add_directors_admin_company_path(@company), remote: true do |f| %>
+          <%= hidden_field_tag :id, @company.domain %>
+          <%= f.text_field :email, placeholder: "Enter email address", data: {endpoint: search_admin_users_path(company_id: @company.id), responseRootNode: 'users', itemLabelAttribute: 'email', itemUrlAttribute: 'avatar_thumb_url'} %>
+          <%= f.submit "Create" %>
+        <% end %>
+        <%= javascript_tag do %>
+          (function(){
+          var autocomplete = new window.simpleAutocomplete('#user_email');
+          })();
+        <% end %>
+        <ul id="directors-list">
+          <% @company.directors.each do |user| %>
+            <%= render "director_list_item", user: user %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</section>
+
+
+
+<% if false #not implemented properly, come back to this... %>
+  <div class="row-fluid admin-dashboard">
+    <h3>Subscription: </h3>
+    <span>
+      <%= form_for [:admin, @company, @subscription], remote: true, html: {style: "display: inline"} do |f| %>
+        <%= f.select :plan_id, Plan.all.collect { |p| [p.long_label, p.id] } %>
+        <%= f.text_field :user_count, value: @subscription.user_count, size: 6, maxlength: 6, style: "width: 25px; min-height: 10px" %>
+        <%= f.submit (@subscription.persisted? ? "Update" : "Create"), data: {disable_with: "Please wait..."}, class: "create_subscription_button" %>
+      <% end %>
+    </span>
+  </div>
+<% end %>

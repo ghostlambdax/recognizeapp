@@ -1,0 +1,5 @@
+<% if @users.size > 0 %>
+  <h2><%= t('manager_admin.dashboard.your_direct_reports') %></h2>
+  <%= render "direct_reports_table", company: @company, users: @users %>
+  <hr class="hr hr-space">
+<% end %>

@@ -1,0 +1,68 @@
+.catalog-wrapper
+  width: 175px
+  margin: 10px
+  text-align: center
+  display: inline-block
+
+  .catalog
+    padding: 10px 10px
+    margin: 10px
+    border: 1px solid transparent
+    display: inline-block
+    min-width: 155px
+
+    &:hover
+      border-radius: 5px
+      border: 1px solid #C0BFBF
+      box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5)
+    .symbol
+      font-size: 100px
+      color: #4799ff
+      &.disabled
+        color: grey
+
+    .link-wrapper
+      padding: 10px 0
+
+
+.catalog-form-wrapper
+  input[type='text']
+    min-width: 220px
+
+.catalog-edit
+  margin: 20px
+  line-height: 40px
+  font-size: 16px
+
+#company_admin_catalogs-new,
+#company_admin_catalogs-edit
+  .control-group
+    margin-bottom: 20px
+
+  #catalog_company_roles + .select2
+    .select2-search__field
+      margin: 0
+
+  #catalog_currency + .select2
+    .select2-selection
+      height: 35px
+    .select2-selection__rendered
+      line-height: 35px
+    .select2-selection__arrow
+      height: 33px
+
+  form.new_catalog,
+  form.edit_catalog
+    max-width: 250px
+
+    input#catalog_points_to_currency_ratio
+      width: 100%
+      margin: 0
+
+    select,
+    .select2.select2-container
+      width: 100% !important
+
+  #ratio-hint
+    color: #888
+    margin-top: 10px

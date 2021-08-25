@@ -1,0 +1,5 @@
+<%= render :partial => "layouts/mailer/header"%>
+<div style="<%= mail_styles(:body_bg) %>; padding: 2%;">
+  <%= yield%>
+</div>
+<%= render :partial => "layouts/mailer/footer"%>

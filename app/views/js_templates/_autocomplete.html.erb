@@ -1,0 +1,38 @@
+<script type="text/template" id='emailItem'>
+  <li class="email-wrapper">
+    <a class='email' data-email="{{value}}">
+      <span><%= t("dict.email") %>:</span>{{value}}
+    </a>
+  </li>
+</script>
+
+<script type="text/template" id='userItem'>
+  {{#items}}
+    <li>
+      <a>
+        {{#avatar_thumb_url}}
+          <img src="{{.}}" width="25" height="25" class="avatar" />
+        {{/avatar_thumb_url}}
+        
+        {{label}}
+
+        {{#jobTitle}}
+        | {{.}}
+        {{/jobTitle}}
+        {{#team}}
+         | {{.}}
+        {{/team}}
+      </a>
+    </li>
+  {{/items}}
+</script>
+
+<script type="text/template" id='teamItem'>
+  {{#items}}
+    <li>
+      <a>
+        {{label}}
+      </a>
+    </li>
+  {{/items}}
+</script>

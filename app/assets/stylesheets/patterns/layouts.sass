@@ -1,0 +1,43 @@
+$splitScreenBg: lighten($headerBg, 5%)
+
+.split-screen
+  @include flex-display()
+
+  .half.primary
+    background: $splitScreenBg
+
+    h1, h2, h3, h4, p
+      color: text-color($splitScreenBg)
+
+  & > .half
+    width: 50%
+    padding: 15px
+
+.image-left-content-right
+  @include flex-display()
+
+  h1
+    margin-bottom: 10px
+
+  img
+    margin-right: 20px
+
+
+#company_admin_accounts-show,
+#company_admin_rewards_points-index,
+#company_admin_rewards_transactions-index,
+#company_admin_comments-index,
+#company_admin_recognitions-index,
+body[class*=company_admin_reports]
+  background: $lightBodyBg
+
+
+@media (max-width: 900px)
+  .split-screen,
+  .image-left-content-right
+    display: block !important
+
+    & > .half
+      width: 100%
+      padding-left: 5px
+      padding-right: 5px

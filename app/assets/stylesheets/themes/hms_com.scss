@@ -1,0 +1,17 @@
+$headerBg: #5b6771;
+$linkColor: #f25b3a;
+$btnBlueTopColor: $linkColor;
+$buttonPrimaryBg: #6bc34a;
+
+@import "application";
+
+
+#recognitions-certificate .certificate {
+  h1, .subtitle  {
+    font-family: georgia, serif;
+  }
+
+  h1 {
+    font-size: 37px;
+  }
+}

@@ -1,0 +1,29 @@
+<% r_path, n_path, t_path = recognition_nomination_task_paths %>
+
+<% recognitions_enabled = permitted_to?(:create, @recognition || current_user.sent_recognitions.new) %>
+<% nominations_enabled = @company.nominations_enabled?(current_user) %>
+<% tasks_enabled = permitted_to?(:create, current_user, context: :task_submissions) %>
+
+<% if recognitions_enabled || nominations_enabled || tasks_enabled %>
+  <div class="recognition-type clearfix">
+    <nav>
+      <% if recognitions_enabled %>
+        <%= link_to r_path, class: "recognition-page-trigger", title: t('instructions.recognitions') do %>
+          <div><%= t('dict.recognize') %></div>
+        <% end %>
+      <% end %>
+
+      <% if nominations_enabled %>
+        <%= link_to n_path, class: "nomination-page-trigger", title: t('instructions.nominations') do %>
+          <div><%= t("nominations.nominate") %></div>
+        <% end %>
+      <% end %>
+
+      <% if tasks_enabled %>
+        <%= link_to t_path, class: "tasks-page-trigger", title: t('instructions.tasks') do %>
+          <div><%= t("tskz.tasks") %></div>
+        <% end %>
+    <% end %>
+    </nav>
+  </div>
+<% end %>

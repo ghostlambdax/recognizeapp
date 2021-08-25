@@ -1,0 +1,61 @@
+<%
+  container_id = "uploader-container-#{form.object.id}-#{field}"
+  thumb_size = opts.has_key?(:thumb_size) ? opts[:thumb_size] : :thumb
+%>
+<div id="<%= container_id %>" class="<%= field %>">
+  <% if opts[:label].present? %>
+    <%= form.label field, opts[:label] %>
+  <% else %>
+    <%= form.label field, class: "offscreen" %>
+  <% end %>
+  <% attachment = form.object.send(field) %>
+  <% if thumb_size == :link %>
+    <% if attachment.present? %>
+      <%= link_to File.basename(attachment.path), attachment.url  %>
+      <br />
+    <% end %>
+  <% else %>
+    <%= image_tag attachment.send(thumb_size).url || '', class: "uploader-image-thumbnail" %>
+  <% end %>
+  <%= form.file_field field %>
+  <%= form.hidden_field "#{field}_cache".to_sym %>
+  <div class="file-attach-progress">
+    <div class="message"></div>
+    <div class="progress-bar"><div class="progress-inner"><span class="right"></span></div></div>
+  </div>
+</div>
+
+<%= javascript_tag do %>
+    // Use of setTimeout:
+    // - The submitBtn (which is present outside this partial) is rendered after the this _partial is processed.
+    // - Therefore, the execution of creation of `Uploader' is delayed to make sure submitBtn has appeared in the DOM.
+    setTimeout(function(){
+      var uploader = new R.Uploader(
+        $document.find("#<%= container_id %>"),
+        function(e,json){
+          var objectScope= '<%= form.object.class.to_s.underscore %>';
+          var fieldScope= '<%= field %>';
+          var thumbSize= '<%= thumb_size %>' || 'small_thumb';
+          if (thumbSize == "link") {
+            var linkUrl = json[objectScope][fieldScope].url;
+            $relevantAnchorTag =  $document.find("#<%= container_id %>").find("a");
+            if ($relevantAnchorTag.length == 0) {
+              // This is needed for end user guide, particularly when there is none right now, and a new one is being
+              // uploaded!
+              $document.find("#<%= container_id %>").find("input[type=file]").before("<a></a><br/>");
+              $relevantAnchorTag =  $document.find("#<%= container_id %>").find("a");
+            }
+            $relevantAnchorTag.attr("href", linkUrl);
+            $relevantAnchorTag.html(linkUrl.split('/').reverse()[0]);
+          }else {
+            var thumbUrl = json[objectScope][fieldScope][thumbSize].url;
+            $document.find("#<%= container_id %>").find(".uploader-image-thumbnail").attr("src", thumbUrl);
+          }
+        },
+        {
+          submitBtn: $document.find("#<%= container_id %>").closest("form").find("input[type=submit]")
+        }
+      )
+      $document.find("#<%= container_id %>").data('uploader', uploader)
+    }, 300);
+<% end %>

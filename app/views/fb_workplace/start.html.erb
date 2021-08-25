@@ -1,0 +1,138 @@
+<% if params[:success] == 'true' %>
+  <section class="primary">
+
+    <div class="centered">
+      <h1 class="big">
+        <%= image_tag("pages/fbworkplace/start/fb-workplace-logo.png", alt: "Workplace by Facebook logo", height: 72) %>
+        <%= image_tag("chrome/logo-72x72.png", alt: "Recognize logo", height: 72) %>
+        <strong class="balance-text">Welcome to Recognize</strong>
+
+      </h1>
+      <p class="tagline"><strong>You are all set now!</strong> Recognize is your company's employee recognition and rewards program inside Workplace by Facebook.</p>
+
+      <a href="/docs/about/fb-workplace.pdf" class="button button-primary">Learn more</a>
+      <%= link_to t("dict.contact"), contact_path, class:"button" %>
+      <hr class="hr hr-space">
+
+    </div>
+
+
+    <div>
+
+      <h2 class="marginBottom50">How to find &amp; use Recognize in Workplace</h2>
+      <div class="steps row-fluid">
+        <div class="step span3 offset1">
+          <h3 class="balance-text">1. Find Recognize</h3>
+          <%= image_tag "pages/fbworkplace/install/top-corner.png", alt: "Find Recognize in the bot section in the top right of Workplace", class: "image-border marginBottom10" %>
+          <p>Recognize will always be in the bot section in Workplace Chat and in the top right of Workplace on the Desktop.</p>
+        </div>
+
+        <div class="step span6">
+          <h3>2. Open Recognize in <strong>Workplace Chat</strong>, find the Menu</h3>
+          <%= image_tag "pages/fbworkplace/install/menu.png", alt: "Open the Recognize menu in the Workplace Chat", class: "image-border marginBottom10" %>
+          <p class="balance-text">Now you can send recognition or open the Recognize app. The recognition may be posted to Workplace.</p>
+          <p class="balance-text">Recognize is supported in all versions of Workplace: <strong>Desktop, web, and mobile Workplace Chat</strong>.</p>
+        </div>
+
+        <% if false %>
+        <div class="span2">
+          <div class="well">
+            <h4>Pro Tip</h4>
+            <p>Scroll down to see more commands and ways to use Recognize</p>
+            <a href="#protips" class="animate-scroll">Scroll down</a>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+
+    <div class="section zebra">
+      <h2>Useful commands</h2>
+      <p class="tagline">You can get shortcuts by writing simple commands to Recognize.</p>
+
+
+      <ul class="flex marginBottom30">
+        <li>
+          <h3><strong>Profile</strong></h3>
+          <p class="balance-text">As an employee, you can see your profile for what recognitions you received, sent, or what you represent as the company badges.</p>
+          <%= image_tag "pages/fbworkplace/install/profile.png", alt: "View your recognition profile" %>
+
+        </li>
+        <% show_points(current_user.company) do %>
+        <li>
+          <h3><strong>Rewards</strong></h3>
+          <p class="balance-text">If the rewards program is enabled, you can get a shortcut to the rewards catalog in Recognize.</p>
+          <%= image_tag "pages/fbworkplace/install/rewards.png", alt: "Redeem rewareds on Workplace" %>
+
+        </li>
+        <% end %>
+      </ul>
+
+      <ul class="flex">
+
+        <% if permitted_to?(:manage, current_user.company) %>
+        <li>
+          <h3><strong>Manage</strong></h3>
+          <p class="balance-text">As a manager you can get links to your Manager Portal in Recognize.</p>
+          <%= image_tag "pages/fbworkplace/install/manage.png", alt: "View data on your direct reports" %>
+
+        </li>
+        <% end %>
+
+        <% if permitted_to?(:show, current_user.company) %>
+        <li>
+          <h3><strong>Admin</strong></h3>
+          <p class="balance-text">As an Admin of Recognize, you can get lists to the Company Admin in Recognize.</p>
+          <%= image_tag "pages/fbworkplace/install/admin.png", alt: "Run reports and configure Recognize" %>
+
+        </li>
+        <% end %>
+      </ul>
+
+
+    </div>
+
+    <% if false %>
+    <div id="protips" class="section protip">
+      <h2 class="balance-text">Power user pro-tip</h2>
+      <p class="tagline">You can make a post or comment turn into a recognition!</p>
+      <hr>
+
+
+      <div class="row-fluid">
+        <div class="span4">
+          <h4>1. Tag <strong>@Recognize</strong> in post or comment</h4>
+          <p class="balance-text">Make posts or comments on an official recognition by tagging @Recognize.</p>
+          <%= image_tag "pages/fbworkplace/install/post.png", alt: "Post a recognition on Workplace" %>
+        </div>
+        <div class="span4">
+          <h4 class="balance-text">2. Choose a badge in Workplace Chat</h4>
+          <p class="balance-text">Recognize will ask which recognition badge to send via Work Chat.</p>
+          <%= image_tag "pages/fbworkplace/install/badges.png", alt: "Choose a badge from Work Chat", class: "marginBottom40"%>
+        </div>
+        <div class="span4">
+          <h4 class="balance-text">3. Recognize comments in original post</h4>
+          <p class="balance-text">The recognition will be posted back as a comment to the post and mention the manager.</p>
+          <%= image_tag "pages/fbworkplace/install/comment.png", alt: "A recognition is shown as a comment in Workplace" %>
+        </div>
+      </div>
+
+
+      <hr class="hr hr-space">
+      <p class="balance-text">If you have any questions about the Facebook Worplace integration or how it works with Recognize, please <%= link_to "contact us", contact_path %>.</p>
+    </div>
+    <% end %>
+
+  </section>
+
+<% else %>
+<div class="flex-centered">
+  <div class="well marginTop50">
+    <div class="error warning marginTop0"><%= t("fb_workplace.installation_failed") %></div>
+    <p class="tagline balance-text"><%= t("fb_workplace.installation_failed_description") %></p>
+    <%= link_to t("dict.get_help"), new_support_email_path(body: "Workplace by Facebook did not install."), class: 'button' %>
+  </div>
+</div>
+<% end %>
+

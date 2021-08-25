@@ -1,0 +1,12 @@
+<% content_for :title, t("password_resets.choose_password") %>
+<h1><%= t("dict.choose_password") %></h1>
+
+<%= form_for @user, :url => password_reset_path do |f| %>
+  <%= render_flash(include_errors: @user) %>
+
+  <%# note i took out 'required' because i want to force server side pw validation, for testing... %>
+  <%= f.label :password, t("password_resets.new_password") %><br />
+  <%= f.password_field :password, autocomplete: false %><br />
+  <br />
+  <%= f.submit t("password_resets.update_log_in"), class: "button button-primary" %>
+<% end %>

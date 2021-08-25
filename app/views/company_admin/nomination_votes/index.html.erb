@@ -1,0 +1,11 @@
+<div class="page-nav clearfix">
+  <div class="title-nav">
+    <h1>All votes</h1>
+  </div>
+
+  <div class="aside-nav">
+    <%= link_to "Back", company_admin_nominations_path, class: "button"%>
+  </div>
+</div>
+
+<%= litatablify(@datatable, endpoint: company_admin_nominations_votes_path) %>

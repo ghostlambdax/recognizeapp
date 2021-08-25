@@ -1,0 +1,17 @@
+<table style="<%= mail_styles(:table) %>">
+  <tr>
+    <td>
+      <p style="<%= mail_styles(:p) %>"><%= t("recognition_notifier.recognize_why") %></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p style="<%= mail_styles(:p) %>"><%= t("recognition_notifier.receive_recognition_invited") %></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="<%= recognition_url(@recognition, invite: @recipient.perishable_token) %>" style="<%= mail_styles(:button) %>"><%= @recipient.company.custom_labels.label_for_viewing_own_recognition %></a>
+    </td>
+  </tr>
+</table>

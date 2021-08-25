@@ -1,0 +1,11 @@
+<% unless current_user.has_read_welcome?%>
+  <div id="first-user-welcome" class="flex justify-content-center">
+    <div id="secondary-users" class="widget-box welcome-image-wrapper">
+      <%= link_to "close welcome", hide_welcome_user_path(current_user), method: :put, remote: true, class: "close-icon form-loading-ignore" %>
+      <div class="content">
+        <h2><%= t("recognitions_index.hello", name: current_user.full_name) %></h2>
+        <%= render partial: "welcome_steps" %>
+      </div>
+    </div>
+  </div>
+<% end%>
